@@ -22,6 +22,7 @@ namespace LenovoLegionToolkit.Lib
             builder.Register<GodModeSettings>();
             builder.Register<PackageDownloaderSettings>();
             builder.Register<SunriseSunsetSettings>();
+            builder.Register<ProcessorSettings>();
 
             builder.Register<AlwaysOnUSBFeature>();
             builder.Register<BatteryFeature>();
@@ -67,6 +68,9 @@ namespace LenovoLegionToolkit.Lib
             builder.Register<RGBKeyboardBacklightController>();
             builder.Register<GodModeController>();
             builder.Register<DisplayBrightnessController>();
+            builder.Register<ProcessorController>();
+            builder.Register<IntelProcessorController>();
+            builder.Register<AMDProcessorController>();
 
             builder.Register<UpdateChecker>();
             builder.Register<WarrantyChecker>();

@@ -10,6 +10,8 @@ namespace LenovoLegionToolkit.WPF
         {
             builder.Register<ThemeManager>();
 
+            builder.Register<ProcessorManager>();
+
             builder.Register<NotificationsManager>().AutoActivate();
         }
     }

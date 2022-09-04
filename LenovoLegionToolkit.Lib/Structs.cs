@@ -401,4 +401,39 @@ namespace LenovoLegionToolkit.Lib
             Height = height;
         }
     }
+
+    public struct TDPLimits
+    {
+        public double Stapm { get; set; }
+        public double Fast { get; set; }
+        public double Slow { get; set; }
+        public double MsrFast { get; set; }
+        public double MsrSlow { get; set; }
+
+        [JsonConstructor]
+        public TDPLimits(
+            double stapm,
+            double fast,
+            double slow,
+            double msrFast,
+            double msrSlow)
+        {
+            Stapm = stapm;
+            Fast = fast;
+            Slow = slow;
+            MsrFast = msrFast;
+            MsrSlow = msrSlow;
+        }
+    }
+
+    public struct TDPState
+    {
+        public Dictionary<TDPMode, TDPLimits> Mode { get; set; }
+
+        [JsonConstructor]
+        public TDPState(Dictionary<TDPMode, TDPLimits> mode)
+        {
+            Mode = mode;
+        }
+    }
 }

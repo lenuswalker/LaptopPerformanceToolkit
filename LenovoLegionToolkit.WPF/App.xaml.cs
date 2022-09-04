@@ -92,6 +92,19 @@ namespace LenovoLegionToolkit
 
             try
             {
+                if (Log.Instance.IsTraceEnabled)
+                    Log.Instance.Trace($"Starting Processor Manager to manage TDP limits...");
+
+                var processorManager = IoCContainer.Resolve<ProcessorManager>();
+            }
+            catch (Exception ex)
+            {
+                if (Log.Instance.IsTraceEnabled)
+                    Log.Instance.Trace($"Couldn't start Processor Manager.", ex);
+            }
+
+            try
+            {
                 var rgbKeyboardBacklightController = IoCContainer.Resolve<RGBKeyboardBacklightController>();
 
                 if (rgbKeyboardBacklightController.IsSupported())

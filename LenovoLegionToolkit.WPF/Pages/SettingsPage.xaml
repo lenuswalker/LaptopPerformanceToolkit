@@ -121,5 +121,11 @@
             </wpfui:CardAction.Content>
         </wpfui:CardAction>
 
+        <wpfui:CardAction Margin="0,0,0,8" Click="ProcessorTDPModes_Click">
+            <wpfui:CardAction.Content>
+                <controls:CardHeaderControl Title="Processor TDP Modes" />
+            </wpfui:CardAction.Content>
+        </wpfui:CardAction>
+
     </StackPanel>
 </Page>

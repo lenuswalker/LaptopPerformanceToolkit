@@ -226,4 +226,40 @@ namespace LenovoLegionToolkit.Lib
     }
 
     public enum WinKeyChanged { }
+
+    public enum PowerType
+    {
+        Slow = 0,
+        Stapm = 1,
+        Fast = 2,
+        MsrSlow = 3,
+        MsrFast = 4,
+    }
+
+    public enum RyzenFamily
+    {
+        FAM_UNKNOWN = -1,
+        FAM_RAVEN = 0,
+        FAM_PICASSO,
+        FAM_RENOIR,
+        FAM_CEZANNE,
+        FAM_DALI,
+        FAM_LUCIENNE,
+        FAM_VANGOGH,
+        FAM_REMBRANDT,
+        FAM_END
+    };
+
+    public enum TDPMode
+    {
+        Off = -1,
+        [Display(Name = "AC")]
+        AC = 0,
+        [Display(Name = "DC")]
+        DC = 1,
+        [Display(Name = "Game Mode")]
+        GameMode = 2,
+        [Display(Name = "Pre Game Mode")]
+        PreGameMode = 3,
+    }
 }
