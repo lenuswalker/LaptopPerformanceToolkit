@@ -40,8 +40,12 @@ namespace LenovoLegionToolkit.Lib.Features
 
         public async Task EnsureCorrectPowerPlanIsSetAsync()
         {
-            var state = await GetStateAsync().ConfigureAwait(false);
-            await Power.ActivatePowerPlanAsync(state, true).ConfigureAwait(false);
+            var compatibility = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
+            if (compatibility.isCompatible)
+            {
+                var state = await GetStateAsync().ConfigureAwait(false);
+                await Power.ActivatePowerPlanAsync(state, true).ConfigureAwait(false);
+            }
         }
     }
 }
