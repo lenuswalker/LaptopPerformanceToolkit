@@ -47,7 +47,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps
 
         public ProcessorTDPAutomationStepControl(ProcessorTDPAutomationStep step) : base(step)
         {
-            Icon = SymbolRegular.BrainCircuit24;
+            Icon = SymbolRegular.DeveloperBoardLightning20;
             Title = "Processor TDP";
             Subtitle = "Change the TDP limits of the processor.\n\nNOTE: This action uses RyzenAdj for AMD,\nand KX utility for Intel.";
         }
