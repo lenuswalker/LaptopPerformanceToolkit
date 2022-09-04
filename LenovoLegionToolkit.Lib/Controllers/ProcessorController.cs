@@ -1,10 +1,12 @@
 ﻿using LenovoLegionToolkit.Lib.Settings;
+using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using System;
 using System.Collections.Generic;
 using System.Management;
 using System.Threading.Tasks;
 using System.Timers;
+using System.Management;
 
 namespace LenovoLegionToolkit.Lib.Controllers
 {
@@ -44,14 +46,14 @@ namespace LenovoLegionToolkit.Lib.Controllers
 
         private readonly ProcessorSettings _settings;
 
-        public static ProcessorController GetCurrent()
+        public ProcessorController GetCurrent()
         {
             if (processor != null)
                 return processor;
 
-            Manufacturer = GetProcessorDetails("Manufacturer");
+            var manufacturer = GetProcessorDetailsAsync("Manufacturer").Result.ToString();
 
-            switch (Manufacturer)
+            switch (manufacturer)
             {
                 case "GenuineIntel":
                     processor = new IntelProcessorController();
@@ -60,24 +62,18 @@ namespace LenovoLegionToolkit.Lib.Controllers
                     processor = new AMDProcessorController();
                     break;
             }
-
             return processor;
         }
 
-        private static string GetProcessorDetails(string value)
-        {
-            var managCollec = managClass.GetInstances();
-            foreach (ManagementObject managObj in managCollec)
-                return managObj.Properties[value].Value.ToString();
-
-            return "";
-        }
+        private Task<string> GetProcessorDetailsAsync(string property) => WMI.CallAsync(@"root\cimv2",
+            $"SELECT * FROM Win32_Processor",
+            $"{property}");
 
         public ProcessorController()
         {
             _settings = new();
-            Name = GetProcessorDetails("Name");
-            ProcessorID = GetProcessorDetails("processorID");
+            Name = GetProcessorDetailsAsync("Name").Result.ToString();
+            ProcessorID = GetProcessorDetailsAsync("ProcessorId").Result.ToString();
 
             // write default miscs
             m_Misc["gfx_clk"] = m_PrevMisc["gfx_clk"] = 0;

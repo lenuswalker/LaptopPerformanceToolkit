@@ -83,7 +83,7 @@ namespace LenovoLegionToolkit.WPF.Utils
             gfxWatchdog.Elapsed += gfxWatchdog_Elapsed;
 
             // initialize processor
-            _controller = ProcessorController.GetCurrent();
+            _controller = _controller.GetCurrent();
             _controller.ValueChanged += Processor_ValueChanged;
             _controller.StatusChanged += Processor_StatusChanged;
             _controller.LimitChanged += Processor_LimitChanged;
