@@ -1,4 +1,5 @@
 ﻿using LenovoLegionToolkit.Lib.System;
+using LenovoLegionToolkit.Lib.Utils;
 using System;
 using System.Timers;
 
@@ -95,6 +96,9 @@ namespace LenovoLegionToolkit.Lib.Controllers
 
         public override void SetTDPLimit(PowerType type, double limit, int result)
         {
+            if (limit == 0)
+                return;
+
             lock (base.IsBusy)
             {
                 var error = 0;
@@ -110,6 +114,26 @@ namespace LenovoLegionToolkit.Lib.Controllers
                 }
 
                 base.SetTDPLimit(type, limit, error);
+            }
+        }
+
+        public override int GetTDPLimit(PowerType type)
+        {
+
+            lock (base.IsBusy)
+            {
+                int limit = 0;
+
+                switch (type)
+                {
+                    case PowerType.Fast:
+                        limit = (int)platform.get_short_limit(true);
+                        break;
+                    case PowerType.Slow:
+                        limit = (int)platform.get_long_limit(true);
+                        break;
+                }
+                return limit;
             }
         }
 

@@ -3,19 +3,15 @@ using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using System;
 using System.Collections.Generic;
-using System.Management;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
-using System.Management;
 
 namespace LenovoLegionToolkit.Lib.Controllers
 {
     public class ProcessorController
     {
-        private static ManagementClass managClass = new ManagementClass("win32_processor");
-
-        private static ProcessorController processor;
-        private static string Manufacturer;
+        private static ProcessorController _controller;
 
         protected string Name, ProcessorID;
 
@@ -29,6 +25,16 @@ namespace LenovoLegionToolkit.Lib.Controllers
 
         protected Dictionary<string, float> m_Misc = new();
         protected Dictionary<string, float> m_PrevMisc = new();
+
+        // TDP limits
+        private double[] FallbackTDP = new double[3];   // used to store fallback TDP
+        private double[] StoredTDP = new double[3];     // used to store TDP
+        private double[] CurrentTDP = new double[5];    // used to store current TDP
+
+        // GPU limits
+        private double FallbackGfxClock;
+        private double StoredGfxClock;
+        private double CurrentGfxClock;
 
         #region events
         public event LimitChangedHandler LimitChanged;
@@ -48,21 +54,21 @@ namespace LenovoLegionToolkit.Lib.Controllers
 
         public ProcessorController GetCurrent()
         {
-            if (processor != null)
-                return processor;
+            if (_controller != null)
+                return _controller;
 
             var manufacturer = GetProcessorDetailsAsync("Manufacturer").Result.ToString();
 
             switch (manufacturer)
             {
                 case "GenuineIntel":
-                    processor = new IntelProcessorController();
+                    _controller = new IntelProcessorController();
                     break;
                 case "AuthenticAMD":
-                    processor = new AMDProcessorController();
+                    _controller = new AMDProcessorController();
                     break;
             }
-            return processor;
+            return _controller;
         }
 
         private Task<string> GetProcessorDetailsAsync(string property) => WMI.CallAsync(@"root\cimv2",
@@ -77,6 +83,21 @@ namespace LenovoLegionToolkit.Lib.Controllers
 
             // write default miscs
             m_Misc["gfx_clk"] = m_PrevMisc["gfx_clk"] = 0;
+
+            //Init();
+
+            //LimitChanged += Processor_LimitChanged;
+        }
+
+        public void RequestTDP(PowerType type, double value, bool UserRequested = true)
+        {
+            int idx = (int)type;
+
+            if (UserRequested)
+                FallbackTDP[idx] = value;
+
+            // update value read by timer
+            StoredTDP[idx] = value;
         }
 
         public async Task<List<Dictionary<TDPMode, TDPLimits>>> GetSettingsAsync()
@@ -119,9 +140,7 @@ namespace LenovoLegionToolkit.Lib.Controllers
         public async Task SetSettingsAsync(TDPMode mode, TDPLimits limits)
         {
             _settings.Store.State.Mode[mode] = limits;
-
             _settings.SynchronizeStore();
-            
             await Task.CompletedTask;
         }
 
@@ -145,6 +164,13 @@ namespace LenovoLegionToolkit.Lib.Controllers
                 Log.Instance.Trace($"User requested {type} TDP limit: {limit}, error code: {result}");
         }
 
+        public virtual int GetTDPLimit(PowerType type)
+        {
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"User requested {type} TDP limit.");
+            return 0;
+        }
+
         public virtual void SetGPUClock(double clock, int result = 0)
         {
             /*
@@ -158,9 +184,9 @@ namespace LenovoLegionToolkit.Lib.Controllers
                 Log.Instance.Trace($"User requested GPU clock: {clock}, error code: {result}");
         }
 
-        protected virtual void UpdateTimer_Elapsed(object sender, ElapsedEventArgs e)
+        protected async virtual void UpdateTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            // search for limit changes
+            //search for limit changes
             foreach (KeyValuePair<PowerType, int> pair in m_Limits)
             {
                 if (m_PrevLimits[pair.Key] == pair.Value)

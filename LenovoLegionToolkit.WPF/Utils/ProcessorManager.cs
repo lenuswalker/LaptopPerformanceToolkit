@@ -1,15 +1,15 @@
 ﻿using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib;
-using LenovoLegionToolkit.WPF.Windows;
-using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
 using LenovoLegionToolkit.Lib.Settings;
+using LenovoLegionToolkit.Lib.System;
+using LenovoLegionToolkit.Lib.Automation.Pipeline;
+using LenovoLegionToolkit.Lib.Automation.Utils;
+using LenovoLegionToolkit.Lib.Automation.Steps;
 
 namespace LenovoLegionToolkit.WPF.Utils
 {
@@ -53,6 +53,9 @@ namespace LenovoLegionToolkit.WPF.Utils
         public event StatusChangedHandler ProcessorStatusChanged;
         public delegate void StatusChangedHandler(bool CanChangeTDP, bool CanChangeGPU);
 
+
+        private Dictionary<PowerType, int> m_CurrentLimits = new();
+        private Dictionary<PowerType, int> m_SavedLimits = new();
         // TDP limits
         private double[] FallbackTDP = new double[3];   // used to store fallback TDP
         private double[] StoredTDP = new double[3];     // used to store TDP
@@ -119,42 +122,168 @@ namespace LenovoLegionToolkit.WPF.Utils
                     PowerSetActiveOverlayScheme(RequestedPowerMode);
         }
 
-        private void cpuWatchdog_Elapsed(object? sender, ElapsedEventArgs e)
+        private async void cpuWatchdog_Elapsed(object? sender, ElapsedEventArgs e)
         {
+            ProcessorSettings processorSettings = new();
+            PowerAdapterStatus powerAdapterStatus = await Power.IsPowerAdapterConnectedAsync().ConfigureAwait(false);
             lock (cpuLock)
             {
-                // read current values and (re)apply requested TDP if needed
-                foreach (PowerType type in (PowerType[])Enum.GetValues(typeof(PowerType)))
+                m_CurrentLimits = new();
+                m_SavedLimits = new();
+                foreach (PowerType type in Enum.GetValues(typeof(PowerType)))
                 {
-                    int idx = (int)type;
-
-                    // skip msr
-                    if (idx >= StoredTDP.Length)
-                        break;
-
-                    double TDP = StoredTDP[idx];
-
-                    //if (processor.GetType() == typeof(AMDProcessor))
-                    //{
-                    //    // AMD reduces TDP by 10% when OS power mode is set to Best power efficiency
-                    //    if (RequestedPowerMode == PowerMode.BetterBattery)
-                    //        TDP = (int)Math.Truncate(TDP * 0.9);
-                    //}
-                    //else if (processor.GetType() == typeof(IntelProcessor))
-                    //{
-                    //    // Intel doesn't have stapm
-                    //    if (type == PowerType.Stapm)
-                    //        continue;
-                    //}
-
-                    // not ready yet
-                    if (CurrentTDP[idx] == 0)
-                        break;
-
-                    // only request an update if current limit is different than stored
-                    if (CurrentTDP[idx] != TDP)
-                        _controller.SetTDPLimit(type, TDP);
+                    if (type == PowerType.Stapm || type == PowerType.Fast || type == PowerType.Slow)
+                    {
+                        int limit = _controller.GetTDPLimit(type);
+                        m_CurrentLimits.Add(type, limit);
+                    }
                 }
+
+                if (Environment.GetEnvironmentVariable("GameMode", EnvironmentVariableTarget.Machine) == "1")
+                {
+                    m_SavedLimits = new()
+                    {
+                        {
+                            PowerType.Stapm,
+                            (int)processorSettings.Store.State.Mode[TDPMode.GameMode].Stapm
+                        },
+                        {
+                            PowerType.Fast,
+                            (int)processorSettings.Store.State.Mode[TDPMode.GameMode].Fast
+                        },
+                        {
+                            PowerType.Slow,
+                            (int)processorSettings.Store.State.Mode[TDPMode.GameMode].Slow
+                        }
+                    };
+                    cpuWatchdog.Interval = 3000;
+                }
+                else
+                {
+                    AutomationSettings automationSettings = new();
+                    AutomationPipeline ACPipeline = new();
+                    AutomationPipeline DCPipeline = new();
+                    List<AutomationPipeline> automationPipelines = new();
+                    automationPipelines = automationSettings.Store.Pipelines;
+                    foreach (var pipeline in automationPipelines)
+                    {
+                        if(pipeline.Trigger == null) 
+                            continue;
+
+                        if (pipeline.Trigger.DisplayName == "When on AC power")
+                            ACPipeline = pipeline;
+                        if (pipeline.Trigger.DisplayName == "When on battery power")
+                            DCPipeline = pipeline;
+                    }
+                    
+                    if (powerAdapterStatus == PowerAdapterStatus.Connected)
+                    {
+                        if (ACPipeline != null)
+                        {
+                            foreach (var step in ACPipeline.Steps)
+                            {
+                                if (step.GetType() == typeof(ProcessorTDPAutomationStep))
+                                {
+                                    ProcessorTDPAutomationStep processorTDPAutomationStep = (ProcessorTDPAutomationStep)step;
+                                    m_SavedLimits = new()
+                                    {
+                                        {
+                                            PowerType.Stapm,
+                                            (int)processorTDPAutomationStep.Stapm
+                                        },
+                                        {
+                                            PowerType.Fast,
+                                            (int)processorTDPAutomationStep.Fast
+                                        },
+                                        {
+                                            PowerType.Slow,
+                                            (int)processorTDPAutomationStep.Slow
+                                        }
+                                    };
+                                }
+                            }
+                        }
+                        else
+                        {
+                            m_SavedLimits = new()
+                            {
+                                {
+                                    PowerType.Stapm,
+                                    (int)processorSettings.Store.State.Mode[TDPMode.AC].Stapm
+                                },
+                                {
+                                    PowerType.Fast,
+                                    (int)processorSettings.Store.State.Mode[TDPMode.AC].Fast
+                                },
+                                {
+                                    PowerType.Slow,
+                                    (int)processorSettings.Store.State.Mode[TDPMode.AC].Slow
+                                }
+                            };
+                        }
+                        cpuWatchdog.Interval = 3000;
+                    }
+                    else
+                    {
+                        if (DCPipeline != null)
+                        {
+                            foreach (var step in DCPipeline.Steps)
+                            {
+                                if (step.GetType() == typeof(ProcessorTDPAutomationStep))
+                                {
+                                    ProcessorTDPAutomationStep processorTDPAutomationStep = (ProcessorTDPAutomationStep)step;
+                                    m_SavedLimits = new()
+                                    {
+                                        {
+                                            PowerType.Stapm,
+                                            (int)processorTDPAutomationStep.Stapm
+                                        },
+                                        {
+                                            PowerType.Fast,
+                                            (int)processorTDPAutomationStep.Fast
+                                        },
+                                        {
+                                            PowerType.Slow,
+                                            (int)processorTDPAutomationStep.Slow
+                                        }
+                                    };
+                                }
+                            }
+                        }
+                        else
+                        {
+                            m_SavedLimits = new()
+                            {
+                                {
+                                    PowerType.Stapm,
+                                    (int)processorSettings.Store.State.Mode[TDPMode.DC].Stapm
+                                },
+                                {
+                                    PowerType.Fast,
+                                    (int)processorSettings.Store.State.Mode[TDPMode.DC].Fast
+                                },
+                                {
+                                    PowerType.Slow,
+                                    (int)processorSettings.Store.State.Mode[TDPMode.DC].Slow
+                                }
+                            };
+                        }
+                        cpuWatchdog.Interval = 10000;
+                    }
+                }
+
+                // search for limit changes
+                if (m_CurrentLimits.Any())
+                    foreach (KeyValuePair<PowerType, int> pair in m_CurrentLimits)
+                    {
+                        if (!m_SavedLimits.ContainsKey(pair.Key))
+                            continue;
+
+                        if (m_SavedLimits[pair.Key] == pair.Value)
+                            continue;
+
+                        _controller.SetTDPLimit(pair.Key, m_SavedLimits[pair.Key]);
+                    }
 
                 // processor specific
                 if (_controller.GetType() == typeof(IntelProcessorController))

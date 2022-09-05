@@ -54,24 +54,21 @@ namespace LenovoLegionToolkit.WPF.Controls.Settings
         {
             TDPMode tdpMode = _settings.Keys.First();
             TDPLimits limits = GetLimits();
-            if (limits.Fast != 0)
-                await _controller.SetSettingsAsync(tdpMode, limits);
+            await _controller.SetSettingsAsync(tdpMode, limits);
         }
 
         private async void TextBoxFastLimit_TextChanged(object sender, TextChangedEventArgs e)
         {
             TDPMode tdpMode = _settings.Keys.First();
             TDPLimits limits = GetLimits();
-            if (limits.Fast != 0)
-                await _controller.SetSettingsAsync(tdpMode, limits);
+            await _controller.SetSettingsAsync(tdpMode, limits);
         }
 
         private async void TextBoxSlowLimit_TextChanged(object sender, TextChangedEventArgs e)
         {
             TDPMode tdpMode = _settings.Keys.First();
             TDPLimits limits = GetLimits();
-            if (limits.Fast != 0)
-                await _controller.SetSettingsAsync(tdpMode, limits);
+            await _controller.SetSettingsAsync(tdpMode, limits);
         }
 
         public TDPLimits GetLimits()

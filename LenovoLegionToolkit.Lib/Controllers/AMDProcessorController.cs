@@ -1,5 +1,6 @@
 ﻿using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.System;
+using LenovoLegionToolkit.Lib.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -109,6 +110,9 @@ namespace LenovoLegionToolkit.Lib.Controllers
             if (ry == IntPtr.Zero)
                 return;
 
+            if (limit == 0)
+                return;
+
             lock (base.IsBusy)
             {
                 // 15W : 15000
@@ -130,6 +134,31 @@ namespace LenovoLegionToolkit.Lib.Controllers
                 }
 
                 base.SetTDPLimit(type, limit, error);
+            }
+        }
+
+        public override int GetTDPLimit(PowerType type)
+        {
+            if (ry == IntPtr.Zero)
+                return 0;
+
+            lock (base.IsBusy)
+            {
+                int limit = 0;
+
+                switch (type)
+                {
+                    case PowerType.Fast:
+                        limit = (int)RyzenAdj.get_fast_limit(ry);
+                        break;
+                    case PowerType.Slow:
+                        limit = (int)RyzenAdj.get_slow_limit(ry);
+                        break;
+                    case PowerType.Stapm:
+                        limit = (int)RyzenAdj.get_stapm_limit(ry);
+                        break;
+                }
+                return limit;
             }
         }
 

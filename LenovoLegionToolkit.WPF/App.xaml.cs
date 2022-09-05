@@ -96,6 +96,7 @@ namespace LenovoLegionToolkit
                     Log.Instance.Trace($"Starting Processor Manager to manage TDP limits...");
 
                 var processorManager = IoCContainer.Resolve<ProcessorManager>();
+                //var processorController = IoCContainer.Resolve<ProcessorController>();
             }
             catch (Exception ex)
             {
