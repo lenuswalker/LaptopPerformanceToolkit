@@ -76,6 +76,7 @@ namespace LenovoLegionToolkit.Lib
 
     public enum ModelYear
     {
+        Unknown,
         MY2020OrEarlier,
         MY2021OrLater,
     }
