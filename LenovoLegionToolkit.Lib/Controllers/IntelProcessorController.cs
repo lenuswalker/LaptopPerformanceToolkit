@@ -127,10 +127,10 @@ namespace LenovoLegionToolkit.Lib.Controllers
                 switch (type)
                 {
                     case PowerType.Fast:
-                        limit = (int)platform.get_short_limit(true);
+                        limit = (int)platform.get_short_limit(false);
                         break;
                     case PowerType.Slow:
-                        limit = (int)platform.get_long_limit(true);
+                        limit = (int)platform.get_long_limit(false);
                         break;
                 }
                 return limit;
