@@ -13,6 +13,27 @@ using LenovoLegionToolkit.Lib.Automation.Steps;
 
 namespace LenovoLegionToolkit.WPF.Utils
 {
+    public static class PowerMode
+    {
+        /// <summary>
+        /// Better Battery mode.
+        /// </summary>
+        public static Guid BetterBattery = new Guid("961cc777-2547-4f9d-8174-7d86181b8a7a");
+
+        /// <summary>
+        /// Better Performance mode.
+        /// </summary>
+        // public static Guid BetterPerformance = new Guid("3af9B8d9-7c97-431d-ad78-34a8bfea439f");
+        public static Guid BetterPerformance = new Guid("00000000-0000-0000-0000-000000000000");
+
+        /// <summary>
+        /// Best Performance mode.
+        /// </summary>
+        public static Guid BestPerformance = new Guid("ded574b5-45a0-4f42-8737-46345c09c238");
+
+        public static List<Guid> PowerModes = new() { BetterBattery, BetterPerformance, BestPerformance };
+    }
+    
     public class ProcessorManager
     {
         #region imports
@@ -276,6 +297,22 @@ namespace LenovoLegionToolkit.WPF.Utils
                 if (m_CurrentLimits.Any())
                     foreach (KeyValuePair<PowerType, int> pair in m_CurrentLimits)
                     {
+                        if (_controller.GetType() == typeof(AMDProcessorController))
+                        {
+                            // AMD reduces TDP by 10% when OS power mode is set to Best power efficiency
+                            if (RequestedPowerMode == PowerMode.BetterBattery)
+                                m_SavedLimits[pair.Key] = (int)Math.Truncate(m_SavedLimits[pair.Key] * 0.9);
+                        }
+                        else if (_controller.GetType() == typeof(IntelProcessorController))
+                        {
+                            // Intel doesn't have stapm
+                            if (pair.Key == PowerType.Stapm)
+                                continue;
+
+                            // Set limits anyway test
+                            _controller.SetTDPLimit(pair.Key, m_SavedLimits[pair.Key]);
+                        }
+
                         if (!m_SavedLimits.ContainsKey(pair.Key))
                             continue;
 
@@ -286,20 +323,20 @@ namespace LenovoLegionToolkit.WPF.Utils
                     }
 
                 // processor specific
-                //if (_controller.GetType() == typeof(IntelProcessorController))
-                //{
-                //    // not ready yet
-                //    if (CurrentTDP[(int)PowerType.MsrSlow] == 0 || CurrentTDP[(int)PowerType.MsrFast] == 0)
-                //        return;
+                if (_controller.GetType() == typeof(IntelProcessorController))
+                {
+                    // not ready yet
+                    if (CurrentTDP[(int)PowerType.MsrSlow] == 0 || CurrentTDP[(int)PowerType.MsrFast] == 0)
+                        return;
 
-                //    int TDPslow = (int)StoredTDP[(int)PowerType.Slow];
-                //    int TDPfast = (int)StoredTDP[(int)PowerType.Fast];
+                    int TDPslow = (int)StoredTDP[(int)PowerType.Slow];
+                    int TDPfast = (int)StoredTDP[(int)PowerType.Fast];
 
-                //    // only request an update if current limit is different than stored
-                //    if (CurrentTDP[(int)PowerType.MsrSlow] != TDPslow ||
-                //        CurrentTDP[(int)PowerType.MsrFast] != TDPfast)
-                //        ((IntelProcessorController)_controller).SetMSRLimit(TDPslow, TDPfast);
-                //}
+                    // only request an update if current limit is different than stored
+                    if (CurrentTDP[(int)PowerType.MsrSlow] != TDPslow ||
+                        CurrentTDP[(int)PowerType.MsrFast] != TDPfast)
+                        ((IntelProcessorController)_controller).SetMSRLimit(TDPslow, TDPfast);
+                }
             }
         }
 
