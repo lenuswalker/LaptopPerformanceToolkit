@@ -286,20 +286,20 @@ namespace LenovoLegionToolkit.WPF.Utils
                     }
 
                 // processor specific
-                if (_controller.GetType() == typeof(IntelProcessorController))
-                {
-                    // not ready yet
-                    if (CurrentTDP[(int)PowerType.MsrSlow] == 0 || CurrentTDP[(int)PowerType.MsrFast] == 0)
-                        return;
+                //if (_controller.GetType() == typeof(IntelProcessorController))
+                //{
+                //    // not ready yet
+                //    if (CurrentTDP[(int)PowerType.MsrSlow] == 0 || CurrentTDP[(int)PowerType.MsrFast] == 0)
+                //        return;
 
-                    int TDPslow = (int)StoredTDP[(int)PowerType.Slow];
-                    int TDPfast = (int)StoredTDP[(int)PowerType.Fast];
+                //    int TDPslow = (int)StoredTDP[(int)PowerType.Slow];
+                //    int TDPfast = (int)StoredTDP[(int)PowerType.Fast];
 
-                    // only request an update if current limit is different than stored
-                    if (CurrentTDP[(int)PowerType.MsrSlow] != TDPslow ||
-                        CurrentTDP[(int)PowerType.MsrFast] != TDPfast)
-                        ((IntelProcessorController)_controller).SetMSRLimit(TDPslow, TDPfast);
-                }
+                //    // only request an update if current limit is different than stored
+                //    if (CurrentTDP[(int)PowerType.MsrSlow] != TDPslow ||
+                //        CurrentTDP[(int)PowerType.MsrFast] != TDPfast)
+                //        ((IntelProcessorController)_controller).SetMSRLimit(TDPslow, TDPfast);
+                //}
             }
         }
 
