@@ -50,11 +50,7 @@ namespace LenovoLegionToolkit.Lib.Utils
             {
                 var (vendor, machineType, model, serialNumber) = await GetModelDataAsync().ConfigureAwait(false);
                 var biosVersion = await GetBIOSVersionAsync().ConfigureAwait(false);
-<<<<<<< HEAD
                 var modelYear = (vendor == "LENOVO") ? GetModelYear() : ModelYear.Unknown;
-=======
-                var modelYear = await GetModelYearAsync();
->>>>>>> master
 
                 _machineInformation = new()
                 {
