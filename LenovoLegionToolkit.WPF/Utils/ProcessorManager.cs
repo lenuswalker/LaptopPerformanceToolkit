@@ -91,10 +91,17 @@ namespace LenovoLegionToolkit.WPF.Utils
         private Guid RequestedPowerMode;
 
         private readonly ProcessorSettings _settings;
+        private readonly AutomationSettings _automationSettings;
+        
+        AutomationPipeline ACPipeline = new();
+        AutomationPipeline DCPipeline = new();
+        List<AutomationPipeline> automationPipelines = new();
 
-        public ProcessorManager(ProcessorSettings settings)
+
+        public ProcessorManager(ProcessorSettings settings, AutomationSettings automationSettings)
         {
             _settings = settings;
+            _automationSettings = automationSettings;
 
             // initialize timer(s)
             powerWatchdog = new Timer() { Interval = 3000, AutoReset = true, Enabled = false };
@@ -145,7 +152,6 @@ namespace LenovoLegionToolkit.WPF.Utils
 
         private async void cpuWatchdog_Elapsed(object? sender, ElapsedEventArgs e)
         {
-            ProcessorSettings processorSettings = new();
             PowerAdapterStatus powerAdapterStatus = await Power.IsPowerAdapterConnectedAsync().ConfigureAwait(false);
             lock (cpuLock)
             {
@@ -166,26 +172,22 @@ namespace LenovoLegionToolkit.WPF.Utils
                     {
                         {
                             PowerType.Stapm,
-                            (int)processorSettings.Store.State.Mode[TDPMode.GameMode].Stapm
+                            (int)_settings.Store.State.Mode[TDPMode.GameMode].Stapm
                         },
                         {
                             PowerType.Fast,
-                            (int)processorSettings.Store.State.Mode[TDPMode.GameMode].Fast
+                            (int)_settings.Store.State.Mode[TDPMode.GameMode].Fast
                         },
                         {
                             PowerType.Slow,
-                            (int)processorSettings.Store.State.Mode[TDPMode.GameMode].Slow
+                            (int)_settings.Store.State.Mode[TDPMode.GameMode].Slow
                         }
                     };
                     cpuWatchdog.Interval = 3000;
                 }
                 else
                 {
-                    AutomationSettings automationSettings = new();
-                    AutomationPipeline ACPipeline = new();
-                    AutomationPipeline DCPipeline = new();
-                    List<AutomationPipeline> automationPipelines = new();
-                    automationPipelines = automationSettings.Store.Pipelines;
+                    automationPipelines = _automationSettings.Store.Pipelines;
                     foreach (var pipeline in automationPipelines)
                     {
                         if(pipeline.Trigger == null) 
@@ -230,15 +232,15 @@ namespace LenovoLegionToolkit.WPF.Utils
                             {
                                 {
                                     PowerType.Stapm,
-                                    (int)processorSettings.Store.State.Mode[TDPMode.AC].Stapm
+                                    (int)_settings.Store.State.Mode[TDPMode.AC].Stapm
                                 },
                                 {
                                     PowerType.Fast,
-                                    (int)processorSettings.Store.State.Mode[TDPMode.AC].Fast
+                                    (int)_settings.Store.State.Mode[TDPMode.AC].Fast
                                 },
                                 {
                                     PowerType.Slow,
-                                    (int)processorSettings.Store.State.Mode[TDPMode.AC].Slow
+                                    (int)_settings.Store.State.Mode[TDPMode.AC].Slow
                                 }
                             };
                         }
@@ -277,19 +279,19 @@ namespace LenovoLegionToolkit.WPF.Utils
                             {
                                 {
                                     PowerType.Stapm,
-                                    (int)processorSettings.Store.State.Mode[TDPMode.DC].Stapm
+                                    (int)_settings.Store.State.Mode[TDPMode.DC].Stapm
                                 },
                                 {
                                     PowerType.Fast,
-                                    (int)processorSettings.Store.State.Mode[TDPMode.DC].Fast
+                                    (int)_settings.Store.State.Mode[TDPMode.DC].Fast
                                 },
                                 {
                                     PowerType.Slow,
-                                    (int)processorSettings.Store.State.Mode[TDPMode.DC].Slow
+                                    (int)_settings.Store.State.Mode[TDPMode.DC].Slow
                                 }
                             };
                         }
-                        cpuWatchdog.Interval = 10000;
+                        cpuWatchdog.Interval = 15000;
                     }
                 }
 
@@ -310,7 +312,7 @@ namespace LenovoLegionToolkit.WPF.Utils
                                 continue;
 
                             // Set limits anyway test
-                            _controller.SetTDPLimit(pair.Key, m_SavedLimits[pair.Key]);
+                            //_controller.SetTDPLimit(pair.Key, m_SavedLimits[pair.Key]);
                         }
 
                         if (!m_SavedLimits.ContainsKey(pair.Key))
@@ -322,21 +324,21 @@ namespace LenovoLegionToolkit.WPF.Utils
                         _controller.SetTDPLimit(pair.Key, m_SavedLimits[pair.Key]);
                     }
 
-                // processor specific
-                if (_controller.GetType() == typeof(IntelProcessorController))
-                {
-                    // not ready yet
-                    if (CurrentTDP[(int)PowerType.MsrSlow] == 0 || CurrentTDP[(int)PowerType.MsrFast] == 0)
-                        return;
+                //// processor specific
+                //if (_controller.GetType() == typeof(IntelProcessorController))
+                //{
+                //    // not ready yet
+                //    if (CurrentTDP[(int)PowerType.MsrSlow] == 0 || CurrentTDP[(int)PowerType.MsrFast] == 0)
+                //        return;
 
-                    int TDPslow = (int)StoredTDP[(int)PowerType.Slow];
-                    int TDPfast = (int)StoredTDP[(int)PowerType.Fast];
+                //    int TDPslow = (int)StoredTDP[(int)PowerType.Slow];
+                //    int TDPfast = (int)StoredTDP[(int)PowerType.Fast];
 
-                    // only request an update if current limit is different than stored
-                    if (CurrentTDP[(int)PowerType.MsrSlow] != TDPslow ||
-                        CurrentTDP[(int)PowerType.MsrFast] != TDPfast)
-                        ((IntelProcessorController)_controller).SetMSRLimit(TDPslow, TDPfast);
-                }
+                //    // only request an update if current limit is different than stored
+                //    if (CurrentTDP[(int)PowerType.MsrSlow] != TDPslow ||
+                //        CurrentTDP[(int)PowerType.MsrFast] != TDPfast)
+                //        ((IntelProcessorController)_controller).SetMSRLimit(TDPslow, TDPfast);
+                //}
             }
         }
 
