@@ -106,10 +106,10 @@ namespace LenovoLegionToolkit.Lib.Controllers
                 switch (type)
                 {
                     case PowerType.Slow:
-                        error = platform.set_long_limit((int)limit);
+                        error = platform.set_long_limit((int)limit, true);
                         break;
                     case PowerType.Fast:
-                        error = platform.set_short_limit((int)limit);
+                        error = platform.set_short_limit((int)limit, true);
                         break;
                 }
 
@@ -119,7 +119,7 @@ namespace LenovoLegionToolkit.Lib.Controllers
 
         public override int GetTDPLimit(PowerType type)
         {
-
+            
             lock (base.IsBusy)
             {
                 int limit = 0;
@@ -127,10 +127,10 @@ namespace LenovoLegionToolkit.Lib.Controllers
                 switch (type)
                 {
                     case PowerType.Fast:
-                        limit = (int)platform.get_short_limit(false);
+                        limit = (int)platform.get_short_limit(true);
                         break;
                     case PowerType.Slow:
-                        limit = (int)platform.get_long_limit(false);
+                        limit = (int)platform.get_long_limit(true);
                         break;
                 }
                 return limit;

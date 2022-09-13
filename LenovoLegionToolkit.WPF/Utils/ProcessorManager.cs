@@ -165,8 +165,9 @@ namespace LenovoLegionToolkit.WPF.Utils
                         m_CurrentLimits.Add(type, limit);
                     }
                 }
-
-                if (Environment.GetEnvironmentVariable("GameMode", EnvironmentVariableTarget.Machine) == "1")
+                
+                if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("GameMode", EnvironmentVariableTarget.Machine)) ||
+                    Environment.GetEnvironmentVariable("GameMode", EnvironmentVariableTarget.Machine) == "1")
                 {
                     m_SavedLimits = new()
                     {

@@ -167,14 +167,28 @@ namespace LenovoLegionToolkit.Lib.System
             return -1; // not supported
         }
 
-        internal int set_short_limit(int limit)
+        internal int set_short_limit(int limit, bool msr)
         {
-            return set_limit("a4", limit);
+            switch (msr)
+            {
+                default:
+                case false:
+                    return set_limit("a4", limit);
+                case true:
+                    return set_msr_limit("438", limit);
+            }
         }
 
-        internal int set_long_limit(int limit)
+        internal int set_long_limit(int limit, bool msr)
         {
-            return set_limit("a0", limit);
+            switch(msr)
+            {
+                default:
+                case false:
+                    return set_limit("a0", limit);
+                case true:
+                    return set_msr_limit("DD8", limit);
+            }
         }
 
         internal int set_limit(string pointer1, int limit)
@@ -199,6 +213,21 @@ namespace LenovoLegionToolkit.Lib.System
 
             // register command
             startInfo.Arguments = $"/wrmsr 0x610 0x00438{hexPL2} 00DD8{hexPL1}";
+            using (var ProcessOutput = Process.Start(startInfo))
+            {
+                ProcessOutput.StandardOutput.ReadToEnd();
+                ProcessOutput.Close();
+            }
+
+            return 0; // implement error code support
+        }
+        
+        internal int set_msr_limit(string pointer, int limit)
+        {
+            string hex = TDPToHex(limit);
+
+            // register command
+            startInfo.Arguments = $"/wrmsr 0x610 0x00{pointer}{hex}";
             using (var ProcessOutput = Process.Start(startInfo))
             {
                 ProcessOutput.StandardOutput.ReadToEnd();
