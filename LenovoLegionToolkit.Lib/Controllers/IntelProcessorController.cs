@@ -1,6 +1,7 @@
 ﻿using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using System;
+using System.Collections.Generic;
 using System.Timers;
 
 namespace LenovoLegionToolkit.Lib.Controllers
@@ -106,13 +107,13 @@ namespace LenovoLegionToolkit.Lib.Controllers
                 switch (type)
                 {
                     case PowerType.Slow:
-                        error = platform.set_long_limit((int)limit, true);
+                        error = platform.set_long_limit((int)limit, false);
                         break;
                     case PowerType.Fast:
-                        error = platform.set_short_limit((int)limit, true);
+                        error = platform.set_short_limit((int)limit, false);
                         break;
                 }
-
+                
                 base.SetTDPLimit(type, limit, error);
             }
         }
@@ -127,19 +128,30 @@ namespace LenovoLegionToolkit.Lib.Controllers
                 switch (type)
                 {
                     case PowerType.Fast:
-                        limit = (int)platform.get_short_limit(true);
+                        limit = (int)platform.get_short_limit(false);
                         break;
                     case PowerType.Slow:
-                        limit = (int)platform.get_long_limit(true);
+                        limit = (int)platform.get_long_limit(false);
                         break;
                 }
                 return limit;
             }
         }
 
-        public void SetMSRLimit(double PL1, double PL2)
+        public void SetMSRLimits(double PL1, double PL2)
         {
             platform.set_msr_limits((int)PL1, (int)PL2);
+        }
+        
+        public Dictionary<PowerType, int> GetMSRLimits()
+        {
+            lock (base.IsBusy)
+            {
+                Dictionary<PowerType, int> limits = new Dictionary<PowerType, int>();
+                limits.Add(PowerType.MsrFast, (int)platform.get_short_limit(true));
+                limits.Add(PowerType.MsrSlow, (int)platform.get_long_limit(true));
+                return limits;
+            }
         }
 
         public override void SetGPUClock(double clock, int result)

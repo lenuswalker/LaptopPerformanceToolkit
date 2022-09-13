@@ -57,13 +57,13 @@ namespace LenovoLegionToolkit.WPF.Utils
         private readonly ProcessorController _controller = IoCContainer.Resolve<ProcessorController>();
 
         // timers
-        private Timer powerWatchdog;
+        //private Timer powerWatchdog;
 
         private Timer cpuWatchdog;
         protected object cpuLock = new();
 
-        private Timer gfxWatchdog;
-        protected object gfxLock = new();
+        //private Timer gfxWatchdog;
+        //protected object gfxLock = new();
 
         public event LimitChangedHandler PowerLimitChanged;
         public delegate void LimitChangedHandler(PowerType type, int limit);
@@ -75,16 +75,19 @@ namespace LenovoLegionToolkit.WPF.Utils
         public delegate void StatusChangedHandler(bool CanChangeTDP, bool CanChangeGPU);
 
 
-        private Dictionary<PowerType, int> m_CurrentLimits = new();
-        private Dictionary<PowerType, int> m_SavedLimits = new();
+        private Dictionary<PowerType, int> currentLimits = new();
+        private Dictionary<PowerType, int> savedLimits = new();
+
+        private Dictionary<PowerType, int> currentMSRLimits = new();
+
         // TDP limits
         private double[] FallbackTDP = new double[3];   // used to store fallback TDP
         private double[] StoredTDP = new double[3];     // used to store TDP
         private double[] CurrentTDP = new double[5];    // used to store current TDP
 
         // GPU limits
-        private double FallbackGfxClock;
-        private double StoredGfxClock;
+        //private double FallbackGfxClock;
+        //private double StoredGfxClock;
         private double CurrentGfxClock;
 
         // Power modes
@@ -104,35 +107,35 @@ namespace LenovoLegionToolkit.WPF.Utils
             _automationSettings = automationSettings;
 
             // initialize timer(s)
-            powerWatchdog = new Timer() { Interval = 3000, AutoReset = true, Enabled = false };
-            powerWatchdog.Elapsed += powerWatchdog_Elapsed;
+            //powerWatchdog = new Timer() { Interval = 3000, AutoReset = true, Enabled = false };
+            //powerWatchdog.Elapsed += powerWatchdog_Elapsed;
 
             cpuWatchdog = new Timer() { Interval = 3000, AutoReset = true, Enabled = false };
             cpuWatchdog.Elapsed += cpuWatchdog_Elapsed;
 
-            gfxWatchdog = new Timer() { Interval = 3000, AutoReset = true, Enabled = false };
-            gfxWatchdog.Elapsed += gfxWatchdog_Elapsed;
+            //gfxWatchdog = new Timer() { Interval = 3000, AutoReset = true, Enabled = false };
+            //gfxWatchdog.Elapsed += gfxWatchdog_Elapsed;
 
             // initialize processor
             _controller = _controller.GetCurrent();
             _controller.ValueChanged += Processor_ValueChanged;
             _controller.StatusChanged += Processor_StatusChanged;
             _controller.LimitChanged += Processor_LimitChanged;
-            _controller.MiscChanged += Processor_MiscChanged;
+            //_controller.MiscChanged += Processor_MiscChanged;
 
             // initialize settings
             //var TDPdown = Properties.Settings.Default.QuickToolsPerformanceTDPEnabled ? Properties.Settings.Default.QuickToolsPerformanceTDPSustainedValue : 0;
             //var TDPup = Properties.Settings.Default.QuickToolsPerformanceTDPEnabled ? Properties.Settings.Default.QuickToolsPerformanceTDPBoostValue : 0;
 
-            var TDPdown = _settings.Store.IsEnabled ? _settings.Store.State.Mode[_settings.Store.State.Mode.Keys.First()].Slow : 0;
-            var TDPup = _settings.Store.IsEnabled ? _settings.Store.State.Mode[_settings.Store.State.Mode.Keys.First()].Fast : 0;
+            //var TDPdown = _settings.Store.IsEnabled ? _settings.Store.State.Mode[_settings.Store.State.Mode.Keys.First()].Slow : 0;
+            //var TDPup = _settings.Store.IsEnabled ? _settings.Store.State.Mode[_settings.Store.State.Mode.Keys.First()].Fast : 0;
 
             //TDPdown = TDPdown != 0 ? TDPdown : MainWindow.handheldDevice.nTDP[(int)PowerType.Slow];
             //TDPup = TDPup != 0 ? TDPup : MainWindow.handheldDevice.nTDP[(int)PowerType.Fast];
 
-            RequestTDP(PowerType.Slow, TDPdown);
-            RequestTDP(PowerType.Stapm, TDPdown);
-            RequestTDP(PowerType.Fast, TDPup);
+            //RequestTDP(PowerType.Slow, TDPdown);
+            //RequestTDP(PowerType.Stapm, TDPdown);
+            //RequestTDP(PowerType.Fast, TDPup);
 
             //var GPU = Properties.Settings.Default.QuickToolsPerformanceGPUEnabled ? Properties.Settings.Default.QuickToolsPerformanceGPUValue : 0;
             //if (GPU != 0)
@@ -155,21 +158,20 @@ namespace LenovoLegionToolkit.WPF.Utils
             PowerAdapterStatus powerAdapterStatus = await Power.IsPowerAdapterConnectedAsync().ConfigureAwait(false);
             lock (cpuLock)
             {
-                m_CurrentLimits = new();
-                m_SavedLimits = new();
+                currentLimits = new();
+                savedLimits = new();
                 foreach (PowerType type in Enum.GetValues(typeof(PowerType)))
                 {
                     if (type == PowerType.Stapm || type == PowerType.Fast || type == PowerType.Slow)
                     {
                         int limit = _controller.GetTDPLimit(type);
-                        m_CurrentLimits.Add(type, limit);
+                        currentLimits.Add(type, limit);
                     }
                 }
                 
-                if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("GameMode", EnvironmentVariableTarget.Machine)) ||
-                    Environment.GetEnvironmentVariable("GameMode", EnvironmentVariableTarget.Machine) == "1")
+                if (Environment.GetEnvironmentVariable("GameMode", EnvironmentVariableTarget.Machine) == "1")
                 {
-                    m_SavedLimits = new()
+                    savedLimits = new()
                     {
                         {
                             PowerType.Stapm,
@@ -209,7 +211,7 @@ namespace LenovoLegionToolkit.WPF.Utils
                                 if (step.GetType() == typeof(ProcessorTDPAutomationStep))
                                 {
                                     ProcessorTDPAutomationStep processorTDPAutomationStep = (ProcessorTDPAutomationStep)step;
-                                    m_SavedLimits = new()
+                                    savedLimits = new()
                                     {
                                         {
                                             PowerType.Stapm,
@@ -229,7 +231,7 @@ namespace LenovoLegionToolkit.WPF.Utils
                         }
                         else
                         {
-                            m_SavedLimits = new()
+                            savedLimits = new()
                             {
                                 {
                                     PowerType.Stapm,
@@ -256,7 +258,7 @@ namespace LenovoLegionToolkit.WPF.Utils
                                 if (step.GetType() == typeof(ProcessorTDPAutomationStep))
                                 {
                                     ProcessorTDPAutomationStep processorTDPAutomationStep = (ProcessorTDPAutomationStep)step;
-                                    m_SavedLimits = new()
+                                    savedLimits = new()
                                     {
                                         {
                                             PowerType.Stapm,
@@ -276,7 +278,7 @@ namespace LenovoLegionToolkit.WPF.Utils
                         }
                         else
                         {
-                            m_SavedLimits = new()
+                            savedLimits = new()
                             {
                                 {
                                     PowerType.Stapm,
@@ -297,78 +299,93 @@ namespace LenovoLegionToolkit.WPF.Utils
                 }
 
                 // search for limit changes
-                if (m_CurrentLimits.Any())
-                    foreach (KeyValuePair<PowerType, int> pair in m_CurrentLimits)
+                if (currentLimits.Any())
+                    foreach (KeyValuePair<PowerType, int> pair in currentLimits)
                     {
+                        if (!savedLimits.ContainsKey(pair.Key))
+                            continue;
+
+                        if (savedLimits[pair.Key] == pair.Value)
+                            continue;
+
                         if (_controller.GetType() == typeof(AMDProcessorController))
                         {
                             // AMD reduces TDP by 10% when OS power mode is set to Best power efficiency
                             if (RequestedPowerMode == PowerMode.BetterBattery)
-                                m_SavedLimits[pair.Key] = (int)Math.Truncate(m_SavedLimits[pair.Key] * 0.9);
+                                savedLimits[pair.Key] = (int)Math.Truncate(savedLimits[pair.Key] * 0.9);
                         }
                         else if (_controller.GetType() == typeof(IntelProcessorController))
                         {
                             // Intel doesn't have stapm
                             if (pair.Key == PowerType.Stapm)
                                 continue;
-
-                            // Set limits anyway test
-                            //_controller.SetTDPLimit(pair.Key, m_SavedLimits[pair.Key]);
                         }
 
-                        if (!m_SavedLimits.ContainsKey(pair.Key))
-                            continue;
-
-                        if (m_SavedLimits[pair.Key] == pair.Value)
-                            continue;
-
-                        _controller.SetTDPLimit(pair.Key, m_SavedLimits[pair.Key]);
+                        _controller.SetTDPLimit(pair.Key, savedLimits[pair.Key]);
                     }
 
-                //// processor specific
-                //if (_controller.GetType() == typeof(IntelProcessorController))
-                //{
-                //    // not ready yet
-                //    if (CurrentTDP[(int)PowerType.MsrSlow] == 0 || CurrentTDP[(int)PowerType.MsrFast] == 0)
-                //        return;
+                // processor specific
+                if (_controller.GetType() == typeof(IntelProcessorController))
+                {
+                    currentMSRLimits = ((IntelProcessorController)_controller).GetMSRLimits();
 
-                //    int TDPslow = (int)StoredTDP[(int)PowerType.Slow];
-                //    int TDPfast = (int)StoredTDP[(int)PowerType.Fast];
+                    foreach (KeyValuePair<PowerType, int> pair in currentMSRLimits)
+                    {
+                        if (!savedLimits.ContainsKey(pair.Key))
+                            continue;
 
-                //    // only request an update if current limit is different than stored
-                //    if (CurrentTDP[(int)PowerType.MsrSlow] != TDPslow ||
-                //        CurrentTDP[(int)PowerType.MsrFast] != TDPfast)
-                //        ((IntelProcessorController)_controller).SetMSRLimit(TDPslow, TDPfast);
-                //}
+                        if (savedLimits[pair.Key] == pair.Value)
+                            continue;
+                        
+                        // Set MSR limit
+                        ((IntelProcessorController)_controller).SetMSRLimits(savedLimits[PowerType.Slow], savedLimits[PowerType.Fast]);
+                    }
+                }
+
+                    //// processor specific
+                    //if (_controller.GetType() == typeof(IntelProcessorController))
+                    //{
+                    //    // not ready yet
+                    //    if (CurrentTDP[(int)PowerType.MsrSlow] == 0 || CurrentTDP[(int)PowerType.MsrFast] == 0)
+                    //        return;
+
+                    //    int TDPslow = (int)StoredTDP[(int)PowerType.Slow];
+                    //    int TDPfast = (int)StoredTDP[(int)PowerType.Fast];
+
+                    //    // only request an update if current limit is different than stored
+                    //    if (CurrentTDP[(int)PowerType.MsrSlow] != TDPslow ||
+                    //        CurrentTDP[(int)PowerType.MsrFast] != TDPfast)
+                    //        ((IntelProcessorController)_controller).SetMSRLimit(TDPslow, TDPfast);
+                    //}
             }
         }
 
-        private void gfxWatchdog_Elapsed(object? sender, ElapsedEventArgs e)
-        {
-            lock (gfxLock)
-            {
-                if (_controller.GetType() == typeof(AMDProcessorController))
-                {
-                    // not ready yet
-                    if (CurrentGfxClock == 0)
-                        return;
-                }
-                else if (_controller.GetType() == typeof(IntelProcessorController))
-                {
-                    // not ready yet
-                    if (CurrentGfxClock == 12750)
-                        return;
-                }
+        //private void gfxWatchdog_Elapsed(object? sender, ElapsedEventArgs e)
+        //{
+        //    lock (gfxLock)
+        //    {
+        //        if (_controller.GetType() == typeof(AMDProcessorController))
+        //        {
+        //            // not ready yet
+        //            if (CurrentGfxClock == 0)
+        //                return;
+        //        }
+        //        else if (_controller.GetType() == typeof(IntelProcessorController))
+        //        {
+        //            // not ready yet
+        //            if (CurrentGfxClock == 12750)
+        //                return;
+        //        }
 
-                // not ready yet
-                if (StoredGfxClock == 0)
-                    return;
+        //        // not ready yet
+        //        if (StoredGfxClock == 0)
+        //            return;
 
-                // only request an update if current gfx clock is different than stored
-                if (CurrentGfxClock != StoredGfxClock)
-                    _controller.SetGPUClock(StoredGfxClock);
-            }
-        }
+        //        // only request an update if current gfx clock is different than stored
+        //        if (CurrentGfxClock != StoredGfxClock)
+        //            _controller.SetGPUClock(StoredGfxClock);
+        //    }
+        //}
 
         public void RequestTDP(PowerType type, double value, bool UserRequested = true)
         {
@@ -390,14 +407,14 @@ namespace LenovoLegionToolkit.WPF.Utils
             StoredTDP = values;
         }
 
-        public void RequestGPUClock(double value, bool UserRequested = true)
-        {
-            if (UserRequested)
-                FallbackGfxClock = value;
+        //public void RequestGPUClock(double value, bool UserRequested = true)
+        //{
+        //    if (UserRequested)
+        //        FallbackGfxClock = value;
 
-            // update value read by timer
-            StoredGfxClock = value;
-        }
+        //    // update value read by timer
+        //    StoredGfxClock = value;
+        //}
 
         //public void RequestPowerMode(int idx)
         //{
@@ -440,16 +457,16 @@ namespace LenovoLegionToolkit.WPF.Utils
         }
         #endregion
 
-        internal void Start()
-        {
-            _controller.Initialize();
-            powerWatchdog.Start();
-        }
+        //internal void Start()
+        //{
+        //    _controller.Initialize();
+        //    powerWatchdog.Start();
+        //}
 
-        internal void Stop()
-        {
-            _controller.Stop();
-            powerWatchdog.Stop();
-        }
+        //internal void Stop()
+        //{
+        //    _controller.Stop();
+        //    powerWatchdog.Stop();
+        //}
     }
 }
