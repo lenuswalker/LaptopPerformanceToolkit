@@ -65,30 +65,10 @@ namespace LenovoLegionToolkit.WPF.Utils
         //private Timer gfxWatchdog;
         //protected object gfxLock = new();
 
-        public event LimitChangedHandler PowerLimitChanged;
-        public delegate void LimitChangedHandler(PowerType type, int limit);
-
-        public event ValueChangedHandler PowerValueChanged;
-        public delegate void ValueChangedHandler(PowerType type, float value);
-
-        public event StatusChangedHandler ProcessorStatusChanged;
-        public delegate void StatusChangedHandler(bool CanChangeTDP, bool CanChangeGPU);
-
-
-        private Dictionary<PowerType, int> currentLimits = new();
-        private Dictionary<PowerType, int> savedLimits = new();
-
-        private Dictionary<PowerType, int> currentMSRLimits = new();
-
-        // TDP limits
-        private double[] FallbackTDP = new double[3];   // used to store fallback TDP
-        private double[] StoredTDP = new double[3];     // used to store TDP
-        private double[] CurrentTDP = new double[5];    // used to store current TDP
-
         // GPU limits
         //private double FallbackGfxClock;
         //private double StoredGfxClock;
-        private double CurrentGfxClock;
+        //private double CurrentGfxClock;
 
         // Power modes
         private Guid RequestedPowerMode;
@@ -107,9 +87,6 @@ namespace LenovoLegionToolkit.WPF.Utils
             _automationSettings = automationSettings;
 
             // initialize timer(s)
-            //powerWatchdog = new Timer() { Interval = 3000, AutoReset = true, Enabled = false };
-            //powerWatchdog.Elapsed += powerWatchdog_Elapsed;
-
             cpuWatchdog = new Timer() { Interval = 3000, AutoReset = true, Enabled = false };
             cpuWatchdog.Elapsed += cpuWatchdog_Elapsed;
 
@@ -118,28 +95,6 @@ namespace LenovoLegionToolkit.WPF.Utils
 
             // initialize processor
             _controller = _controller.GetCurrent();
-            _controller.ValueChanged += Processor_ValueChanged;
-            _controller.StatusChanged += Processor_StatusChanged;
-            _controller.LimitChanged += Processor_LimitChanged;
-            //_controller.MiscChanged += Processor_MiscChanged;
-
-            // initialize settings
-            //var TDPdown = Properties.Settings.Default.QuickToolsPerformanceTDPEnabled ? Properties.Settings.Default.QuickToolsPerformanceTDPSustainedValue : 0;
-            //var TDPup = Properties.Settings.Default.QuickToolsPerformanceTDPEnabled ? Properties.Settings.Default.QuickToolsPerformanceTDPBoostValue : 0;
-
-            //var TDPdown = _settings.Store.IsEnabled ? _settings.Store.State.Mode[_settings.Store.State.Mode.Keys.First()].Slow : 0;
-            //var TDPup = _settings.Store.IsEnabled ? _settings.Store.State.Mode[_settings.Store.State.Mode.Keys.First()].Fast : 0;
-
-            //TDPdown = TDPdown != 0 ? TDPdown : MainWindow.handheldDevice.nTDP[(int)PowerType.Slow];
-            //TDPup = TDPup != 0 ? TDPup : MainWindow.handheldDevice.nTDP[(int)PowerType.Fast];
-
-            //RequestTDP(PowerType.Slow, TDPdown);
-            //RequestTDP(PowerType.Stapm, TDPdown);
-            //RequestTDP(PowerType.Fast, TDPup);
-
-            //var GPU = Properties.Settings.Default.QuickToolsPerformanceGPUEnabled ? Properties.Settings.Default.QuickToolsPerformanceGPUValue : 0;
-            //if (GPU != 0)
-            //    RequestGPUClock(GPU, true);
 
             cpuWatchdog.Start();
             //gfxWatchdog.Start();  
@@ -158,8 +113,9 @@ namespace LenovoLegionToolkit.WPF.Utils
             PowerAdapterStatus powerAdapterStatus = await Power.IsPowerAdapterConnectedAsync().ConfigureAwait(false);
             lock (cpuLock)
             {
-                currentLimits = new();
-                savedLimits = new();
+                Dictionary<PowerType, int> currentLimits = new();
+                Dictionary<PowerType, int> currentMSRLimits = new();
+                Dictionary<PowerType, int> savedLimits = new();
                 foreach (PowerType type in Enum.GetValues(typeof(PowerType)))
                 {
                     if (type == PowerType.Stapm || type == PowerType.Fast || type == PowerType.Slow)
@@ -341,22 +297,6 @@ namespace LenovoLegionToolkit.WPF.Utils
                         ((IntelProcessorController)_controller).SetMSRLimits(savedLimits[PowerType.Slow], savedLimits[PowerType.Fast]);
                     }
                 }
-
-                    //// processor specific
-                    //if (_controller.GetType() == typeof(IntelProcessorController))
-                    //{
-                    //    // not ready yet
-                    //    if (CurrentTDP[(int)PowerType.MsrSlow] == 0 || CurrentTDP[(int)PowerType.MsrFast] == 0)
-                    //        return;
-
-                    //    int TDPslow = (int)StoredTDP[(int)PowerType.Slow];
-                    //    int TDPfast = (int)StoredTDP[(int)PowerType.Fast];
-
-                    //    // only request an update if current limit is different than stored
-                    //    if (CurrentTDP[(int)PowerType.MsrSlow] != TDPslow ||
-                    //        CurrentTDP[(int)PowerType.MsrFast] != TDPfast)
-                    //        ((IntelProcessorController)_controller).SetMSRLimit(TDPslow, TDPfast);
-                    //}
             }
         }
 
@@ -387,26 +327,6 @@ namespace LenovoLegionToolkit.WPF.Utils
         //    }
         //}
 
-        public void RequestTDP(PowerType type, double value, bool UserRequested = true)
-        {
-            int idx = (int)type;
-
-            if (UserRequested)
-                FallbackTDP[idx] = value;
-
-            // update value read by timer
-            StoredTDP[idx] = value;
-        }
-
-        public void RequestTDP(double[] values, bool UserRequested = true)
-        {
-            if (UserRequested)
-                FallbackTDP = values;
-
-            // update value read by timer
-            StoredTDP = values;
-        }
-
         //public void RequestGPUClock(double value, bool UserRequested = true)
         //{
         //    if (UserRequested)
@@ -422,51 +342,6 @@ namespace LenovoLegionToolkit.WPF.Utils
         //    LogManager.LogInformation("User requested power scheme: {0}", RequestedPowerMode);
 
         //    PowerSetActiveOverlayScheme(RequestedPowerMode);
-        //}
-
-        #region events
-        private void Processor_StatusChanged(bool CanChangeTDP, bool CanChangeGPU)
-        {
-            ProcessorStatusChanged?.Invoke(CanChangeTDP, CanChangeGPU);
-        }
-
-        private void Processor_ValueChanged(PowerType type, float value)
-        {
-            PowerValueChanged?.Invoke(type, value);
-        }
-
-        private void Processor_LimitChanged(PowerType type, int limit)
-        {
-            int idx = (int)type;
-            CurrentTDP[idx] = limit;
-
-            // raise event
-            PowerLimitChanged?.Invoke(type, limit);
-        }
-
-        private void Processor_MiscChanged(string misc, float value)
-        {
-            switch (misc)
-            {
-                case "gfx_clk":
-                    {
-                        CurrentGfxClock = value;
-                    }
-                    break;
-            }
-        }
-        #endregion
-
-        //internal void Start()
-        //{
-        //    _controller.Initialize();
-        //    powerWatchdog.Start();
-        //}
-
-        //internal void Stop()
-        //{
-        //    _controller.Stop();
-        //    powerWatchdog.Stop();
         //}
     }
 }
