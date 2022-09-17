@@ -35,6 +35,28 @@
 		<None Remove="Assets\paypal_button.png" />
 		<None Remove="Assets\paypal_qr.png" />
 		<None Remove="Assets\icon.ico" />
+		<None Remove="inpoutx64.dll" />
+		<None Remove="libryzenadj.dll" />
+		<None Remove="Resources\Intel\KX\KX.exe" />
+		<None Remove="WinRing0x64.dll" />
+		<None Remove="WinRing0x64.sys" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Include="inpoutx64.dll">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="libryzenadj.dll">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Resources\Intel\KX\KX.exe">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="WinRing0x64.dll">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="WinRing0x64.sys">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Autofac" Version="6.4.0" />
@@ -53,30 +75,5 @@
 		<Resource Include="Assets\icon.ico" />
 		<Resource Include="Assets\paypal_button.png" />
 		<Resource Include="Assets\paypal_qr.png" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Resources\Intel\KX\" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Content Include="..\..\..\..\OneDrive\Documents\Scripts\Razer\bin\ryzenadj\inpoutx64.dll" Link="inpoutx64.dll">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content>
-	  <Content Include="..\..\..\..\OneDrive\Documents\Scripts\Razer\bin\ryzenadj\libryzenadj.dll" Link="libryzenadj.dll">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content>
-	  <Content Include="..\..\..\..\OneDrive\Documents\Scripts\Razer\bin\ryzenadj\WinRing0x64.dll" Link="WinRing0x64.dll">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content>
-	  <Content Include="..\..\..\..\OneDrive\Documents\Scripts\Razer\bin\ryzenadj\WinRing0x64.sys" Link="WinRing0x64.sys">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content>
-	</ItemGroup>
-	<ItemGroup>
-	  <Page Update="Controls\Settings\ProcessorTDPModeControl.xaml">
-	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-	  </Page>
-	  <Page Update="Windows\Settings\ProcessorTDPModesWindow.xaml">
-	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-	  </Page>
 	</ItemGroup>
 </Project>

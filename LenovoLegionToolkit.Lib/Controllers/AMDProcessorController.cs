@@ -1,11 +1,5 @@
-﻿using LenovoLegionToolkit.Lib.Settings;
-using LenovoLegionToolkit.Lib.System;
-using LenovoLegionToolkit.Lib.Utils;
+﻿using LenovoLegionToolkit.Lib.System;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
 
 namespace LenovoLegionToolkit.Lib.Controllers
@@ -19,9 +13,12 @@ namespace LenovoLegionToolkit.Lib.Controllers
         {
             ry = RyzenAdj.init_ryzenadj();
 
-            if (ry != IntPtr.Zero)
+            if (ry == IntPtr.Zero)
+                IsInitialized = false;
+            else
             {
                 family = RyzenAdj.get_cpu_family(ry);
+                IsInitialized = true;
 
                 switch (family)
                 {
@@ -77,7 +74,7 @@ namespace LenovoLegionToolkit.Lib.Controllers
             base.Stop();
         }
 
-        protected override void UpdateTimer_Elapsed(object sender, ElapsedEventArgs e)
+        protected override void UpdateTimer_Elapsed(object? sender, ElapsedEventArgs e)
         {
             lock (base.IsBusy)
             {

@@ -10,11 +10,12 @@ namespace LenovoLegionToolkit.Lib.Controllers
     {
         public KX platform = new KX();
 
-        public string family;
+        public string? family;
 
         public IntelProcessorController() : base()
         {
-            if (platform.init())
+            IsInitialized = platform.init();
+            if (IsInitialized)
             {
                 family = ProcessorID.Substring(ProcessorID.Length - 5);
 
@@ -63,7 +64,7 @@ namespace LenovoLegionToolkit.Lib.Controllers
             base.Stop();
         }
 
-        protected override void UpdateTimer_Elapsed(object sender, ElapsedEventArgs e)
+        protected override void UpdateTimer_Elapsed(object? sender, ElapsedEventArgs e)
         {
             lock (base.IsBusy)
             {

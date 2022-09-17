@@ -18,12 +18,15 @@ namespace LenovoLegionToolkit.Lib.Automation
         private readonly PowerStateAutomationListener _powerStateListener;
         private readonly ProcessAutomationListener _processListener;
         private readonly TimeAutomationListener _timeListener;
+        private readonly TimeIntervalAutomationListener _timeIntervalListener;
 
         private readonly AsyncLock _ioLock = new();
         private readonly AsyncLock _runLock = new();
 
         private List<AutomationPipeline> _pipelines = new();
         private CancellationTokenSource? _cts;
+        
+        private int comInterval = 0;
 
         public bool IsEnabled => _settings.Store.IsEnabled;
 
@@ -32,12 +35,14 @@ namespace LenovoLegionToolkit.Lib.Automation
         public AutomationProcessor(AutomationSettings settings,
             PowerStateAutomationListener powerStateListener,
             ProcessAutomationListener processListener,
-            TimeAutomationListener timeListener)
+            TimeAutomationListener timeListener,
+            TimeIntervalAutomationListener timeIntervalListener)
         {
             _settings = settings ?? throw new ArgumentNullException(nameof(settings));
             _powerStateListener = powerStateListener ?? throw new ArgumentNullException(nameof(powerStateListener));
             _processListener = processListener ?? throw new ArgumentNullException(nameof(processListener));
             _timeListener = timeListener ?? throw new ArgumentNullException(nameof(timeListener));
+            _timeIntervalListener = timeIntervalListener ?? throw new ArgumentNullException(nameof(timeIntervalListener));
         }
 
         private async void PowerStateListener_Changed(object? sender, EventArgs _)
@@ -94,6 +99,27 @@ namespace LenovoLegionToolkit.Lib.Automation
             await RunAsync(e).ConfigureAwait(false);
         }
 
+        private async void TimeIntervalListener_Changed(object? sender, int interval)
+        {
+            comInterval += interval;
+            var e = new TimeIntervalAutomationEvent { Interval = comInterval };
+
+            var potentialMatch = _pipelines.Select(p => p.Trigger)
+                .Where(t => t is not null)
+                .Where(t => t is TimeIntervalAutomationPipelineTrigger)
+                .Select(async t => await t!.IsSatisfiedAsync(e).ConfigureAwait(false))
+                .Select(t => t.Result)
+                .Where(t => t)
+                .Any();
+
+            if (!potentialMatch)
+                return;
+            else
+                comInterval = 0;
+
+            await RunAsync(e).ConfigureAwait(false);
+        }
+
         public async Task SetEnabledAsync(bool enabled)
         {
             using (await _ioLock.LockAsync().ConfigureAwait(false))
@@ -112,6 +138,7 @@ namespace LenovoLegionToolkit.Lib.Automation
                 _powerStateListener.Changed += PowerStateListener_Changed;
                 _processListener.Changed += ProcessListener_Changed;
                 _timeListener.Changed += TimeListener_Changed;
+                _timeIntervalListener.Changed += TimeIntervalListener_Changed;
 
                 _pipelines = _settings.Store.Pipelines;
 
@@ -267,6 +294,7 @@ namespace LenovoLegionToolkit.Lib.Automation
                 Log.Instance.Trace($"Stopping listeners...");
 
             await _timeListener.StopAsync().ConfigureAwait(false);
+            await _timeIntervalListener.StopAsync().ConfigureAwait(false);
             await _processListener.StopAsync().ConfigureAwait(false);
             await _powerStateListener.StopAsync().ConfigureAwait(false);
 
@@ -305,6 +333,14 @@ namespace LenovoLegionToolkit.Lib.Automation
                     Log.Instance.Trace($"Starting time listener...");
 
                 await _timeListener.StartAsync().ConfigureAwait(false);
+            }
+
+            if (triggers.OfType<TimeIntervalAutomationPipelineTrigger>().Any())
+            {
+                if (Log.Instance.IsTraceEnabled)
+                    Log.Instance.Trace($"Starting time interval listener...");
+
+                await _timeIntervalListener.StartAsync().ConfigureAwait(false);
             }
 
             if (Log.Instance.IsTraceEnabled)

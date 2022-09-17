@@ -15,4 +15,9 @@
     {
         public Time Time { get; init; }
     }
+
+    public struct TimeIntervalAutomationEvent : IAutomationEvent
+    {
+        public int Interval { get; init; }
+    }
 }

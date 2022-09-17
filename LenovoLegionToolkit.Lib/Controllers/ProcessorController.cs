@@ -3,7 +3,6 @@ using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
 
@@ -11,12 +10,13 @@ namespace LenovoLegionToolkit.Lib.Controllers
 {
     public class ProcessorController
     {
-        private static ProcessorController _controller;
+        private static ProcessorController? _controller;
 
         protected string Name, ProcessorID;
 
         protected bool CanChangeTDP, CanChangeGPU;
         protected object IsBusy = new();
+        public bool IsInitialized;
 
         protected Timer updateTimer = new Timer() { Interval = 3000, AutoReset = true };
 
@@ -37,16 +37,16 @@ namespace LenovoLegionToolkit.Lib.Controllers
         private double CurrentGfxClock;
 
         #region events
-        public event LimitChangedHandler LimitChanged;
+        public event LimitChangedHandler? LimitChanged;
         public delegate void LimitChangedHandler(PowerType type, int limit);
 
-        public event ValueChangedHandler ValueChanged;
+        public event ValueChangedHandler? ValueChanged;
         public delegate void ValueChangedHandler(PowerType type, float value);
 
-        public event GfxChangedHandler MiscChanged;
+        public event GfxChangedHandler? MiscChanged;
         public delegate void GfxChangedHandler(string misc, float value);
 
-        public event StatusChangedHandler StatusChanged;
+        public event StatusChangedHandler? StatusChanged;
         public delegate void StatusChangedHandler(bool CanChangeTDP, bool CanChangeGPU);
         #endregion
 
@@ -61,6 +61,7 @@ namespace LenovoLegionToolkit.Lib.Controllers
 
             switch (manufacturer)
             {
+                default:
                 case "GenuineIntel":
                     _controller = new IntelProcessorController();
                     break;
@@ -84,9 +85,12 @@ namespace LenovoLegionToolkit.Lib.Controllers
             // write default miscs
             m_Misc["gfx_clk"] = m_PrevMisc["gfx_clk"] = 0;
 
-            //Init();
-
             //LimitChanged += Processor_LimitChanged;
+        }
+
+        public bool IsSupported()
+        {
+            return true;
         }
 
         public void RequestTDP(PowerType type, double value, bool UserRequested = true)
@@ -134,6 +138,7 @@ namespace LenovoLegionToolkit.Lib.Controllers
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"RyzenAdj settings retrieved.");
 
+            await Task.CompletedTask;
             return result;
         }
 
@@ -184,7 +189,7 @@ namespace LenovoLegionToolkit.Lib.Controllers
                 Log.Instance.Trace($"User requested GPU clock: {clock}, error code: {result}");
         }
 
-        protected async virtual void UpdateTimer_Elapsed(object sender, ElapsedEventArgs e)
+        protected virtual void UpdateTimer_Elapsed(object? sender, ElapsedEventArgs e)
         {
             //search for limit changes
             foreach (KeyValuePair<PowerType, int> pair in m_Limits)

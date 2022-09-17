@@ -9,4 +9,10 @@ namespace LenovoLegionToolkit.Lib.Automation
         [Display(Name = "Restart GPU")]
         RestartGPU,
     }
+
+    public enum MaintainProcessorTDPAutomationStepState
+    {
+        Enabled,
+        Disabled
+    }
 }

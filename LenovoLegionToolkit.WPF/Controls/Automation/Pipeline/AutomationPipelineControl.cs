@@ -236,6 +236,18 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
                 }
             }
 
+            if (AutomationPipeline.Trigger is TimeIntervalAutomationPipelineTrigger tit)
+            {
+                if (tit.ACInterval is not null)
+                {
+                    result += $" | every {tit.ACInterval} sec on AC";
+                }
+                if (tit.DCInterval is not null)
+                {
+                    result += $" | every {tit.DCInterval} sec on Battery";
+                }
+            }
+
             return result;
         }
 
@@ -300,6 +312,36 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
                 return button;
             }
 
+            if (AutomationPipeline.Trigger is TimeIntervalAutomationPipelineTrigger tit)
+            {
+
+                var button = new Button
+                {
+                    Content = "Configure",
+                    Margin = new(16, 0, 16, 0),
+                    Width = 120,
+                };
+                button.Click += (s, e) =>
+                {
+                    var window = new TimeIntervalWindow(tit.ACInterval ?? 0, tit.DCInterval ?? 0)
+                    {
+                        Owner = Window.GetWindow(this),
+                        WindowStartupLocation = WindowStartupLocation.CenterOwner,
+                        ShowInTaskbar = false,
+                    };
+                    window.OnSave += (s, e) =>
+                    {
+                        AutomationPipeline.Trigger = tit.DeepCopy(e.Item1, e.Item2);
+                        _cardHeaderControl.Subtitle = GenerateSubtitle();
+                        _cardHeaderControl.Accessory = GenerateAccessory();
+                        _cardHeaderControl.SubtitleToolTip = _cardHeaderControl.Subtitle;
+                        OnChanged?.Invoke(this, EventArgs.Empty);
+                    };
+                    window.ShowDialog();
+                };
+                return button;
+            }
+
             return null;
         }
 
@@ -313,6 +355,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
                 new DisplayBrightnessAutomationStep(default),
                 new FlipToStartAutomationStep(default),
                 new FnLockAutomationStep(default),
+                new MaintainProcessorTDPAutomationStep(default),
                 new OverDriveAutomationStep(default),
                 new PowerModeAutomationStep(default),
                 new ProcessorTDPAutomationStep(default, default, default),
@@ -363,6 +406,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
                 DisplayBrightnessAutomationStep s => new DisplayBrightnessAutomationStepControl(s),
                 FlipToStartAutomationStep s => new FlipToStartAutomationStepControl(s),
                 FnLockAutomationStep s => new FnLockAutomationStepControl(s),
+                MaintainProcessorTDPAutomationStep s => new MaintainProcessorTDPAutomationStepControl(s),
                 OverDriveAutomationStep s => new OverDriveAutomationStepControl(s),
                 PowerModeAutomationStep s => new PowerModeAutomationStepControl(s),
                 ProcessorTDPAutomationStep s => new ProcessorTDPAutomationStepControl(s),

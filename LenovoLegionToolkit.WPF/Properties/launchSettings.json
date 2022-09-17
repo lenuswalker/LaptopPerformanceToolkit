@@ -1,8 +1,7 @@
 {
   "profiles": {
     "LenovoLegionToolkit.WPF": {
-      "commandName": "Project",
-      "commandLineArgs": ""
+      "commandName": "Project"
     },
     "LenovoLegionToolkit.WPF (Trace)": {
       "commandName": "Project",
@@ -15,6 +14,10 @@
     "LenovoLegionToolkit.WPF (Trace, Minimized)": {
       "commandName": "Project",
       "commandLineArgs": "--trace --minimized"
+    },
+    "LenovoLegionToolkit.WPF (Trace, SkipCompat)": {
+      "commandName": "Project",
+      "commandLineArgs": "--trace --skip-compat-check"
     }
   }
 }

@@ -90,18 +90,19 @@ namespace LenovoLegionToolkit
                     Log.Instance.Trace($"Couldn't ensure correct power plan.", ex);
             }
 
-            try
-            {
-                if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Starting Processor Manager to manage TDP limits...");
+            //try
+            //{
+            //    if (Log.Instance.IsTraceEnabled)
+            //        Log.Instance.Trace($"Starting Processor Manager to manage TDP limits...");
 
-                var processorManager = IoCContainer.Resolve<ProcessorManager>();
-            }
-            catch (Exception ex)
-            {
-                if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Couldn't start Processor Manager.", ex);
-            }
+            //    var processorManager = IoCContainer.Resolve<ProcessorManager>();
+            //    processorManager.Start();
+            //}
+            //catch (Exception ex)
+            //{
+            //    if (Log.Instance.IsTraceEnabled)
+            //        Log.Instance.Trace($"Couldn't start Processor Manager.", ex);
+            //}
 
             try
             {
@@ -195,9 +196,6 @@ namespace LenovoLegionToolkit
 
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Incompatible system detected. [Vendor={mi.Vendor}, Model={mi.Model}, MachineType={mi.MachineType}]");
-
-            //Bypass unsupportedWindow for now.
-            return;
 
             var unsuportedWindow = new UnsupportedWindow(mi);
             unsuportedWindow.Show();

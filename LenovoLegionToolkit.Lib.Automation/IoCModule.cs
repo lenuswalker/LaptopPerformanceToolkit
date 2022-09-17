@@ -10,10 +10,12 @@ namespace LenovoLegionToolkit.Lib.Automation
         protected override void Load(ContainerBuilder builder)
         {
             builder.Register<AutomationSettings>();
+            builder.Register<ProcessorManager>();
 
             builder.Register<PowerStateAutomationListener>();
             builder.Register<ProcessAutomationListener>();
             builder.Register<TimeAutomationListener>();
+            builder.Register<TimeIntervalAutomationListener>();
 
             builder.Register<AutomationProcessor>();
         }
