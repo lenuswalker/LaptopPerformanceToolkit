@@ -16,6 +16,7 @@ namespace LenovoLegionToolkit.Lib.Automation
     {
         private readonly AutomationSettings _settings;
         private readonly PowerStateAutomationListener _powerStateListener;
+        private readonly PowerModeAutomationListener _powerModeListener;
         private readonly ProcessAutomationListener _processListener;
         private readonly TimeAutomationListener _timeListener;
         private readonly TimeIntervalAutomationListener _timeIntervalListener;
@@ -34,12 +35,14 @@ namespace LenovoLegionToolkit.Lib.Automation
 
         public AutomationProcessor(AutomationSettings settings,
             PowerStateAutomationListener powerStateListener,
+            PowerModeAutomationListener powerModeListener,
             ProcessAutomationListener processListener,
             TimeAutomationListener timeListener,
             TimeIntervalAutomationListener timeIntervalListener)
         {
             _settings = settings ?? throw new ArgumentNullException(nameof(settings));
             _powerStateListener = powerStateListener ?? throw new ArgumentNullException(nameof(powerStateListener));
+            _powerModeListener = powerModeListener ?? throw new ArgumentNullException(nameof(powerModeListener));
             _processListener = processListener ?? throw new ArgumentNullException(nameof(processListener));
             _timeListener = timeListener ?? throw new ArgumentNullException(nameof(timeListener));
             _timeIntervalListener = timeIntervalListener ?? throw new ArgumentNullException(nameof(timeIntervalListener));
@@ -47,11 +50,29 @@ namespace LenovoLegionToolkit.Lib.Automation
 
         private async void PowerStateListener_Changed(object? sender, EventArgs _)
         {
-            var e = new PowerAutomationEvent();
+            var e = new PowerStateAutomationEvent();
 
             var potentialMatch = _pipelines.Select(p => p.Trigger)
                 .Where(t => t is not null)
-                .Where(t => t is IPowerAutomationPipelineTrigger)
+                .Where(t => t is IPowerStateAutomationPipelineTrigger)
+                .Select(async t => await t!.IsSatisfiedAsync(e).ConfigureAwait(false))
+                .Select(t => t.Result)
+                .Where(t => t)
+                .Any();
+
+            if (!potentialMatch)
+                return;
+
+            await RunAsync(e).ConfigureAwait(false);
+        }
+
+        private async void PowerModeListenerOnChanged(object? sender, PowerModeState powerModeState)
+        {
+            var e = new PowerModeAutomationEvent { PowerModeState = powerModeState };
+
+            var potentialMatch = _pipelines.Select(p => p.Trigger)
+                .Where(t => t is not null)
+                .Where(t => t is IPowerModeAutomationPipelineTrigger)
                 .Select(async t => await t!.IsSatisfiedAsync(e).ConfigureAwait(false))
                 .Select(t => t.Result)
                 .Where(t => t)
@@ -136,6 +157,7 @@ namespace LenovoLegionToolkit.Lib.Automation
             using (await _ioLock.LockAsync().ConfigureAwait(false))
             {
                 _powerStateListener.Changed += PowerStateListener_Changed;
+                _powerModeListener.Changed += PowerModeListenerOnChanged;
                 _processListener.Changed += ProcessListener_Changed;
                 _timeListener.Changed += TimeListener_Changed;
                 _timeIntervalListener.Changed += TimeIntervalListener_Changed;
@@ -296,6 +318,7 @@ namespace LenovoLegionToolkit.Lib.Automation
             await _timeListener.StopAsync().ConfigureAwait(false);
             await _timeIntervalListener.StopAsync().ConfigureAwait(false);
             await _processListener.StopAsync().ConfigureAwait(false);
+            await _powerModeListener.StopAsync().ConfigureAwait(false);
             await _powerStateListener.StopAsync().ConfigureAwait(false);
 
             if (Log.Instance.IsTraceEnabled)
@@ -318,6 +341,14 @@ namespace LenovoLegionToolkit.Lib.Automation
             await _powerStateListener.StartAsync().ConfigureAwait(false);
 
             var triggers = _pipelines.Select(p => p.Trigger).ToArray();
+
+            if (triggers.OfType<IPowerModeAutomationPipelineTrigger>().Any())
+            {
+                if (Log.Instance.IsTraceEnabled)
+                    Log.Instance.Trace($"Starting power mode listener...");
+
+                await _powerModeListener.StartAsync().ConfigureAwait(false);
+            }
 
             if (triggers.OfType<IProcessesAutomationPipelineTrigger>().Any())
             {
