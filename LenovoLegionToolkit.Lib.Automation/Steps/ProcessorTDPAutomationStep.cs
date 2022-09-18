@@ -31,6 +31,10 @@ namespace LenovoLegionToolkit.Lib.Automation.Steps
                 processor.SetTDPLimit(PowerType.Fast, Fast);
             if (Slow != 0)
                 processor.SetTDPLimit(PowerType.Slow, Slow);
+            if (processor.GetType() == typeof(IntelProcessorController))
+            {
+                ((IntelProcessorController)processor).SetMSRLimits(Slow, Fast);
+            }
         }
 
         IAutomationStep IAutomationStep.DeepCopy() => new ProcessorTDPAutomationStep(Stapm, Fast, Slow);
