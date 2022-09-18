@@ -1,0 +1,34 @@
+﻿using System.Threading.Tasks;
+using Newtonsoft.Json;
+
+namespace LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers
+{
+    public class PowerModeAutomationPipelineTrigger : IAutomationPipelineTrigger, IPowerModeAutomationPipelineTrigger
+    {
+        public string DisplayName => "When power mode is changed";
+
+        public PowerModeState PowerModeState { get; }
+
+        [JsonConstructor]
+        public PowerModeAutomationPipelineTrigger(PowerModeState powerModeState)
+        {
+            PowerModeState = powerModeState;
+        }
+
+        public Task<bool> IsSatisfiedAsync(IAutomationEvent automationEvent)
+        {
+            if (automationEvent is StartupAutomationEvent)
+                return Task.FromResult(false);
+
+            if (automationEvent is not PowerModeAutomationEvent pmae)
+                return Task.FromResult(false);
+
+            var result = pmae.PowerModeState == PowerModeState;
+            return Task.FromResult(result);
+        }
+
+        public IAutomationPipelineTrigger DeepCopy() => new PowerModeAutomationPipelineTrigger(PowerModeState);
+
+        public IAutomationPipelineTrigger DeepCopy(PowerModeState powerModeState) => new PowerModeAutomationPipelineTrigger(powerModeState);
+    }
+}
