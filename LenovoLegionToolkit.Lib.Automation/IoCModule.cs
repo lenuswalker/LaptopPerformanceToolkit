@@ -11,11 +11,12 @@ namespace LenovoLegionToolkit.Lib.Automation
         {
             builder.Register<AutomationSettings>();
             builder.Register<ProcessorManager>();
-
+            
             builder.Register<PowerStateAutomationListener>(true);
             builder.Register<PowerModeAutomationListener>(true);
             builder.Register<ProcessAutomationListener>(true);
             builder.Register<TimeAutomationListener>(true);
+            builder.Register<TimeIntervalAutomationListener>(true);
 
             builder.Register<AutomationProcessor>();
         }

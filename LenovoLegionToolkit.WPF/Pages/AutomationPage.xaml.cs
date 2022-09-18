@@ -262,7 +262,7 @@ namespace LenovoLegionToolkit.WPF.Pages
                 new ProcessesStopRunningAutomationPipelineTrigger(Array.Empty<ProcessInfo>()),
                 new TimeAutomationPipelineTrigger(false, false, null),
                 new TimeIntervalAutomationPipelineTrigger(null, null),
-            };
+            });
             
             var menuItems = new List<MenuItem>();
 
