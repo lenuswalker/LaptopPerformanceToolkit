@@ -21,7 +21,10 @@ namespace LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers
             if (automationEvent is StartupAutomationEvent)
                 return Task.FromResult(false);
 
-            if (automationEvent is not ProcessAutomationEvent pae || pae.ProcessEventInfo.Type != ProcessEventInfoType.Stopped)
+            if (automationEvent is not ProcessAutomationEvent { ProcessEventInfo.Type: ProcessEventInfoType.Stopped } pae)
+                return Task.FromResult(false);
+
+            if (!Processes.Contains(pae.ProcessEventInfo.Process))
                 return Task.FromResult(false);
 
             var result = Processes.SelectMany(p => Process.GetProcessesByName(p.Name)).IsEmpty();

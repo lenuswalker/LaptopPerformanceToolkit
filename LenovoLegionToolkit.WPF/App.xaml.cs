@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Threading;
@@ -14,7 +15,9 @@ using LenovoLegionToolkit.Lib.Automation;
 using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Features;
+#if !DEBUG
 using LenovoLegionToolkit.Lib.System;
+#endif
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF;
 using LenovoLegionToolkit.WPF.Utils;
@@ -163,23 +166,23 @@ namespace LenovoLegionToolkit
             try
             {
                 if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Resigning light controll owner...");
+                    Log.Instance.Trace($"Resigning light control owner...");
 
                 await IoCContainer.Resolve<RGBKeyboardBacklightController>().SetLightControlOwnerAsync(false);
             }
             catch (Exception ex)
             {
                 if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Couldn't set light controll owner.", ex);
+                    Log.Instance.Trace($"Couldn't set light control owner.", ex);
             }
         }
 
         private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
-            Log.Instance.Trace($"Unhandled exception occured.", e.Exception);
+            Log.Instance.Trace($"Unhandled exception occurred.", e.Exception);
             Log.Instance.ErrorReport(e.Exception);
 
-            MessageBox.Show($"Unexpected exception occured:\n{e.Exception.Message}\n\nPlease report the issue on {Constants.BugReportUri}.",
+            MessageBox.Show($"Unexpected exception occurred:\n{e.Exception.Message}\n\nPlease report the issue on {Constants.BugReportUri}.",
                             "Error",
                             MessageBoxButton.OK,
                             MessageBoxImage.Error);
@@ -192,12 +195,12 @@ namespace LenovoLegionToolkit
             if (isCompatible)
             {
                 if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Compatibility check passed. [Vendor={mi.Vendor}, Model={mi.Model}, MachineType={mi.MachineType}]");
+                    Log.Instance.Trace($"Compatibility check passed. [Vendor={mi.Vendor}, Model={mi.Model}, MachineType={mi.MachineType}, BIOS={mi.BIOSVersion}, MY={mi.ModelYear}]");
                 return;
             }
 
             if (Log.Instance.IsTraceEnabled)
-                Log.Instance.Trace($"Incompatible system detected. [Vendor={mi.Vendor}, Model={mi.Model}, MachineType={mi.MachineType}]");
+                Log.Instance.Trace($"Incompatible system detected. [Vendor={mi.Vendor}, Model={mi.Model}, MachineType={mi.MachineType}, BIOS={mi.BIOSVersion}, MY={mi.ModelYear}]");
 
             var unsuportedWindow = new UnsupportedWindow(mi);
             unsuportedWindow.Show();
@@ -290,8 +293,22 @@ namespace LenovoLegionToolkit
         {
             var result = args.Contains("--trace");
             if (result)
+            {
                 if (Log.Instance.IsTraceEnabled)
                     Log.Instance.Trace($"Argument present");
+            }
+
+            if (!result)
+            {
+                if (Keyboard.IsKeyDown(Key.LeftShift) && Keyboard.IsKeyDown(Key.LeftCtrl))
+                {
+                    if (Log.Instance.IsTraceEnabled)
+                        Log.Instance.Trace($"LeftShift+LeftCtrl down.");
+
+                    result = true;
+                }
+            }
+
             return result;
         }
 
