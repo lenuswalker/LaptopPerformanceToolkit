@@ -8,20 +8,20 @@ namespace LenovoLegionToolkit.Lib.Automation.Steps
     {
         //private readonly ProcessorManager _manager = IoCContainer.Resolve<ProcessorManager>();
 
+        private ProcessorManager? _manager;
+
         public MaintainProcessorTDPAutomationStepState State { get; }
-        
+
         public MaintainProcessorTDPAutomationStep(MaintainProcessorTDPAutomationStepState state) => State = state;
 
         public Task<MaintainProcessorTDPAutomationStepState[]> GetAllStatesAsync() => Task.FromResult(Enum.GetValues<MaintainProcessorTDPAutomationStepState>());
-
-        //public Task<bool> IsSupportedAsync() => Task.FromResult(_manager.IsSupported());
         
         public Task<bool> IsSupportedAsync() => Task.FromResult(true);
 
 
         public async Task RunAsync()
         {
-            ProcessorManager _manager = IoCContainer.Resolve<ProcessorManager>();
+            _manager = IoCContainer.Resolve<ProcessorManager>();
 
             if (!_manager.IsSupported())
                 return;
