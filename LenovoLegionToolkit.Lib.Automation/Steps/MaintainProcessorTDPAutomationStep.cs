@@ -7,9 +7,8 @@ namespace LenovoLegionToolkit.Lib.Automation.Steps
     public class MaintainProcessorTDPAutomationStep : IAutomationStep<MaintainProcessorTDPAutomationStepState>, IDisallowDuplicatesAutomationStep
     {
         //private readonly ProcessorManager _manager = IoCContainer.Resolve<ProcessorManager>();
-
         private ProcessorManager? _manager;
-
+        
         public MaintainProcessorTDPAutomationStepState State { get; }
 
         public MaintainProcessorTDPAutomationStep(MaintainProcessorTDPAutomationStepState state) => State = state;

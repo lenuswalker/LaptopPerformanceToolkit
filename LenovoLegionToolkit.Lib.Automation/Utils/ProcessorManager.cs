@@ -7,6 +7,7 @@ using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Automation.Pipeline;
 using LenovoLegionToolkit.Lib.Automation.Steps;
 using System.Threading.Tasks;
+using LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
 
 namespace LenovoLegionToolkit.Lib.Automation.Utils
 {
@@ -38,6 +39,7 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils
 
         public bool IsSupported()
         {
+            // Need to add some logic here
             return true;
         }
 
@@ -71,9 +73,9 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils
                     if (pipeline.Trigger == null)
                         continue;
 
-                    if (pipeline.Trigger.DisplayName == "When on AC power")
+                    if (pipeline.Trigger.GetType() == typeof(ACAdapterConnectedAutomationPipelineTrigger))
                         _acPipeline = pipeline;
-                    if (pipeline.Trigger.DisplayName == "When on battery power")
+                    if (pipeline.Trigger.GetType() == typeof(ACAdapterDisconnectedAutomationPipelineTrigger))
                         _dcPipeline = pipeline;
                 }
 
