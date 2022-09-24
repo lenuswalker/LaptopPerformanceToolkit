@@ -7,6 +7,7 @@ using LenovoLegionToolkit.Lib.Automation.Listeners;
 using LenovoLegionToolkit.Lib.Automation.Pipeline;
 using LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
 using LenovoLegionToolkit.Lib.Automation.Utils;
+using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.Utils;
 using NeoSmart.AsyncLock;
 
@@ -15,7 +16,7 @@ namespace LenovoLegionToolkit.Lib.Automation
     public class AutomationProcessor
     {
         private readonly AutomationSettings _settings;
-        private readonly PowerStateAutomationListener _powerStateListener;
+        private readonly PowerStateListener _powerStateListener;
         private readonly PowerModeAutomationListener _powerModeListener;
         private readonly ProcessAutomationListener _processListener;
         private readonly TimeAutomationListener _timeListener;
@@ -34,7 +35,7 @@ namespace LenovoLegionToolkit.Lib.Automation
         public event EventHandler<List<AutomationPipeline>>? PipelinesChanged;
 
         public AutomationProcessor(AutomationSettings settings,
-            PowerStateAutomationListener powerStateListener,
+            PowerStateListener powerStateListener,
             PowerModeAutomationListener powerModeListener,
             ProcessAutomationListener processListener,
             TimeAutomationListener timeListener,
@@ -331,7 +332,6 @@ namespace LenovoLegionToolkit.Lib.Automation
             await _timeIntervalListener.StopAsync().ConfigureAwait(false);
             await _processListener.StopAsync().ConfigureAwait(false);
             await _powerModeListener.StopAsync().ConfigureAwait(false);
-            await _powerStateListener.StopAsync().ConfigureAwait(false);
 
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Stopped listeners...");
@@ -346,11 +346,6 @@ namespace LenovoLegionToolkit.Lib.Automation
 
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Starting listeners...");
-
-            if (Log.Instance.IsTraceEnabled)
-                Log.Instance.Trace($"Starting power state listener...");
-
-            await _powerStateListener.StartAsync().ConfigureAwait(false);
 
             var triggers = _pipelines.Select(p => p.Trigger).ToArray();
 
