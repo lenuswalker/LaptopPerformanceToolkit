@@ -14,11 +14,11 @@ namespace LenovoLegionToolkit.Lib.Settings
 
         public override ProcessorSettingsStore Default => new()
         {
-            IsEnabled = false,
+            IsEnabled = true,
             State = new(new Dictionary<TDPMode, TDPLimits> {
                 { TDPMode.AC, new(0, 0, 0, 0, 0) },
-                { TDPMode.DC, new(15, 15, 15, 80, 80) },
-                { TDPMode.GameMode, new(20, 20, 45, 90, 90) },
+                { TDPMode.DC, new(0, 0, 0, 0, 0) },
+                { TDPMode.GameMode, new(0, 0, 0, 0, 0) },
                 { TDPMode.PreGameMode, new(0, 0, 0, 0, 0) },
             })
         };

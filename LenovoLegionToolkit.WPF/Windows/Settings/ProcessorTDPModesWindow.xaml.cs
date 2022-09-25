@@ -2,6 +2,7 @@
 using System.Windows;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Controllers;
+using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.WPF.Controls.Settings;
 
 namespace LenovoLegionToolkit.WPF.Windows.Settings
@@ -9,6 +10,7 @@ namespace LenovoLegionToolkit.WPF.Windows.Settings
     public partial class ProcessorTDPModesWindow
     {
         private readonly ProcessorController _controller = IoCContainer.Resolve<ProcessorController>();
+        private readonly ProcessorSettings _settings = IoCContainer.Resolve<ProcessorSettings>();
 
         public ProcessorTDPModesWindow()
         {

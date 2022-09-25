@@ -46,7 +46,6 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils
         public Task MaintainTDP()
         {
             PowerAdapterStatus powerAdapterStatus = Power.IsPowerAdapterConnectedAsync().ConfigureAwait(false).GetAwaiter().GetResult();
-            _settings.SynchronizeStore();
             if (Environment.GetEnvironmentVariable("GameMode", EnvironmentVariableTarget.Machine) == "1")
             {
                 savedLimits = new()
