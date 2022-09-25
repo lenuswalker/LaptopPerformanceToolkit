@@ -243,7 +243,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
             {
                 if (tit.ACInterval is not null)
                 {
-                    result += $" | every {tit.ACInterval} sec on AC";
+                    result += $" | every {tit.ACInterval} sec when Plugged In";
                 }
                 if (tit.DCInterval is not null)
                 {

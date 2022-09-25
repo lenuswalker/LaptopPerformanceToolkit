@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using LenovoLegionToolkit.Lib.Automation.Listeners;
 using LenovoLegionToolkit.Lib.Automation.Pipeline;
 using LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
@@ -150,6 +151,9 @@ namespace LenovoLegionToolkit.Lib.Automation
                 return;
             else
                 comInterval = 0;
+
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Change detected from time interval listener. [interval={comInterval}]");
 
             await RunAsync(e).ConfigureAwait(false);
         }
