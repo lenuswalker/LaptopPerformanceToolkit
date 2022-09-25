@@ -102,7 +102,9 @@ namespace LenovoLegionToolkit.Lib
         MicrophoneOn,
         RefreshRate,
         TouchpadOn,
-        TouchpadOff
+        TouchpadOff,
+        CameraOn,
+        CameraOff
     }
 
     public enum OS
@@ -197,6 +199,8 @@ namespace LenovoLegionToolkit.Lib
         Fn_LockOn = 2,
         Fn_LockOff = 3,
         Fn_PrtSc = 4,
+        CameraOn = 12,
+        CameraOff = 13,
         Fn_R = 16,
         Fn_R_2 = 0x0041002A
     }
