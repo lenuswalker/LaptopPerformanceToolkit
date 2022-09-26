@@ -103,7 +103,7 @@ namespace LenovoLegionToolkit.WPF.Pages
             _loaderAutomatic.IsLoading = true;
             _loaderManual.IsLoading = true;
 
-            var loadingTask = Task.Delay(500);
+            var loadingTask = Task.Delay(1000);
 
             var pipelines = await _automationProcessor.GetPipelinesAsync();
 
@@ -262,6 +262,7 @@ namespace LenovoLegionToolkit.WPF.Pages
                 new ProcessesStopRunningAutomationPipelineTrigger(Array.Empty<ProcessInfo>()),
                 new TimeAutomationPipelineTrigger(false, false, null),
                 new TimeIntervalAutomationPipelineTrigger(null, null),
+                new OnStartupAutomationPipelineTrigger()
             });
             
             var menuItems = new List<MenuItem>();
