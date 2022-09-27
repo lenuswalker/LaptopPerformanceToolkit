@@ -13,7 +13,7 @@ namespace LenovoLegionToolkit.Lib.Features
 
         public PowerModeFeature(GodModeController controller) : base("SmartFanMode", 1, "IsSupportSmartFan")
         {
-            _controller = controller;
+            _controller = controller ?? throw new ArgumentNullException(nameof(controller));
         }
 
         public override async Task<PowerModeState[]> GetAllStatesAsync()

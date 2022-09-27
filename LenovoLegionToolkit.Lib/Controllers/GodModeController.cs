@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.System;
+using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.Lib.Controllers
 {
@@ -26,10 +27,12 @@ namespace LenovoLegionToolkit.Lib.Controllers
     public class GodModeController
     {
         private readonly GodModeSettings _settings;
+        private readonly LegionZone _legionZone;
 
-        public GodModeController(GodModeSettings settings)
+        public GodModeController(GodModeSettings settings, LegionZone legionZone)
         {
-            _settings = settings;
+            _settings = settings ?? throw new ArgumentNullException(nameof(settings));
+            _legionZone = legionZone ?? throw new ArgumentNullException(nameof(legionZone));
         }
 
         public async Task<GodModeState> GetStateAsync()
@@ -94,6 +97,9 @@ namespace LenovoLegionToolkit.Lib.Controllers
 
         public async Task ApplyStateAsync()
         {
+            if (await _legionZone.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
+                throw new InvalidOperationException("Can't correctly apply state when Legion Zone is running.");
+
             var cpuLongTermPowerLimit = _settings.Store.CPULongTermPowerLimit;
             var cpuShortTermPowerLimit = _settings.Store.CPUShortTermPowerLimit;
             var cpuCrossLoadingPowerLimit = _settings.Store.CPUCrossLoadingPowerLimit;
@@ -105,36 +111,141 @@ namespace LenovoLegionToolkit.Lib.Controllers
             var maxFan = _settings.Store.FanFullSpeed;
 
             if (cpuLongTermPowerLimit is not null)
-                await SetCPULongTermPowerLimitAsync(cpuLongTermPowerLimit.Value).ConfigureAwait(false);
+            {
+                try
+                {
+                    await SetCPULongTermPowerLimitAsync(cpuLongTermPowerLimit.Value).ConfigureAwait(false);
+                }
+                catch (Exception ex)
+                {
+                    if (Log.Instance.IsTraceEnabled)
+                        Log.Instance.Trace($"Apply failed. [setting=cpuLongTermPowerLimit]", ex);
+                    throw;
+                }
+            }
 
             if (cpuShortTermPowerLimit is not null)
-                await SetCPUShortTermPowerLimitAsync(cpuShortTermPowerLimit.Value).ConfigureAwait(false);
+            {
+                try
+                {
+                    await SetCPUShortTermPowerLimitAsync(cpuShortTermPowerLimit.Value).ConfigureAwait(false);
+                }
+                catch (Exception ex)
+                {
+                    if (Log.Instance.IsTraceEnabled)
+                        Log.Instance.Trace($"Apply failed. [setting=cpuShortTermPowerLimit]", ex);
+                    throw;
+                }
+            }
 
             if (cpuCrossLoadingPowerLimit is not null)
-                await SetCPUCrossLoadingPowerLimitAsync(cpuCrossLoadingPowerLimit.Value).ConfigureAwait(false);
+            {
+                try
+                {
+                    await SetCPUCrossLoadingPowerLimitAsync(cpuCrossLoadingPowerLimit.Value).ConfigureAwait(false);
+                }
+                catch (Exception ex)
+                {
+                    if (Log.Instance.IsTraceEnabled)
+                        Log.Instance.Trace($"Apply failed. [setting=cpuCrossLoadingPowerLimit]", ex);
+                    throw;
+                }
+            }
 
             if (cpuTemperatureLimit is not null)
-                await SetCPUTemperatureLimitAsync(cpuTemperatureLimit.Value).ConfigureAwait(false);
+            {
+                try
+                {
+                    await SetCPUTemperatureLimitAsync(cpuTemperatureLimit.Value).ConfigureAwait(false);
+                }
+                catch (Exception ex)
+                {
+                    if (Log.Instance.IsTraceEnabled)
+                        Log.Instance.Trace($"Apply failed. [setting=cpuTemperatureLimit]", ex);
+                    throw;
+                }
+            }
 
             if (gpuPowerBoost is not null)
-                await SetGPUPowerBoostAsync(gpuPowerBoost.Value).ConfigureAwait(false);
+            {
+                try
+                {
+                    await SetGPUPowerBoostAsync(gpuPowerBoost.Value).ConfigureAwait(false);
+                }
+                catch (Exception ex)
+                {
+                    if (Log.Instance.IsTraceEnabled)
+                        Log.Instance.Trace($"Apply failed. [setting=gpuPowerBoost]", ex);
+                    throw;
+                }
+            }
 
             if (gpuConfigurableTGP is not null)
-                await SetGPUConfigurableTGPAsync(gpuConfigurableTGP.Value).ConfigureAwait(false);
+            {
+                try
+                {
+                    await SetGPUConfigurableTGPAsync(gpuConfigurableTGP.Value).ConfigureAwait(false);
+                }
+                catch (Exception ex)
+                {
+                    if (Log.Instance.IsTraceEnabled)
+                        Log.Instance.Trace($"Apply failed. [setting=gpuConfigurableTGP]", ex);
+                    throw;
+                }
+            }
 
             if (gpuTemperatureLimit is not null)
-                await SetGPUTemperatureLimitAsync(gpuTemperatureLimit.Value).ConfigureAwait(false);
+            {
+                try
+                {
+                    await SetGPUTemperatureLimitAsync(gpuTemperatureLimit.Value).ConfigureAwait(false);
+                }
+                catch (Exception ex)
+                {
+                    if (Log.Instance.IsTraceEnabled)
+                        Log.Instance.Trace($"Apply failed. [setting=gpuTemperatureLimit]", ex);
+                    throw;
+                }
+            }
 
             if (maxFan is not null)
             {
                 if (fanTable is null || maxFan.Value)
                 {
-                    await SetFanFullSpeedAsync(maxFan.Value).ConfigureAwait(false);
+                    try
+                    {
+                        await SetFanFullSpeedAsync(maxFan.Value).ConfigureAwait(false);
+                    }
+                    catch (Exception ex)
+                    {
+                        if (Log.Instance.IsTraceEnabled)
+                            Log.Instance.Trace($"Apply failed. [setting=maxFan]", ex);
+                        throw;
+                    }
                 }
                 else
                 {
-                    await SetFanFullSpeedAsync(false).ConfigureAwait(false);
-                    await SetFanTable(fanTable.Value).ConfigureAwait(false);
+                    try
+                    {
+                        await SetFanFullSpeedAsync(false).ConfigureAwait(false);
+                    }
+                    catch (Exception ex)
+                    {
+                        if (Log.Instance.IsTraceEnabled)
+                            Log.Instance.Trace($"Apply failed. [setting=maxFan]", ex);
+                        throw;
+                    }
+
+                    try
+                    {
+                        await SetFanTable(fanTable.Value).ConfigureAwait(false);
+                    }
+                    catch (Exception ex)
+                    {
+                        if (Log.Instance.IsTraceEnabled)
+                            Log.Instance.Trace($"Apply failed. [setting=fanTable]", ex);
+                        throw;
+                    }
                 }
             }
         }
@@ -222,7 +333,7 @@ namespace LenovoLegionToolkit.Lib.Controllers
         private Task SetCPUCrossLoadingPowerLimitAsync(StepperValue value) => WMI.CallAsync("root\\WMI",
             $"SELECT * FROM LENOVO_CPU_METHOD",
             "CPU_Set_Cross_Loading_PowerLimit",
-            new() { { "value", $"{value.Value}" } });
+            new() { { "CurrentCpuCrossLoading", $"{value.Value}" } });
 
         #endregion
 
