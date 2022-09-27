@@ -4,9 +4,8 @@ using LenovoLegionToolkit.Lib.Automation.Utils;
 
 namespace LenovoLegionToolkit.Lib.Automation.Steps
 {
-    public class MaintainProcessorTDPAutomationStep : IAutomationStep<MaintainProcessorTDPAutomationStepState>, IDisallowDuplicatesAutomationStep
+    public class MaintainProcessorTDPAutomationStep : IAutomationStep<MaintainProcessorTDPAutomationStepState>
     {
-        //private readonly ProcessorManager _manager = IoCContainer.Resolve<ProcessorManager>();
         private ProcessorManager? _manager;
         
         public MaintainProcessorTDPAutomationStepState State { get; }
