@@ -63,8 +63,6 @@ namespace LenovoLegionToolkit.Lib.Utils
                     BIOSVersion = biosVersion,
                     Properties = new()
                     {
-                        ShouldFlipFnLock = (vendor == "LENOVO") ? GetShouldFlipFnLock() : false,
-                        SupportsGodMode = (vendor == "LENOVO") ? GetSupportsGodMode(biosVersion) : false,
                         SupportsGodMode = GetSupportsGodMode(biosVersion),
                         SupportsACDetection = await GetSupportsACDetection().ConfigureAwait(false),
                         SupportsExtendedHybridMode = await GetSupportsExtendedHybridModeAsync().ConfigureAwait(false),
