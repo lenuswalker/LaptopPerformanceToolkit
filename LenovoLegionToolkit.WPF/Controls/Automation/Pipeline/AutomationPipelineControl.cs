@@ -390,7 +390,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
                 new MaintainProcessorTDPAutomationStep(default),
                 new OverDriveAutomationStep(default),
                 new PowerModeAutomationStep(default),
-                new ProcessorTDPAutomationStep(default, default, default),
+                new ProcessorTDPAutomationStep(default, default, default, default),
                 new RefreshRateAutomationStep(default),
                 new RGBKeyboardBacklightAutomationStep(default),
                 new RunAutomationStep(default, default),

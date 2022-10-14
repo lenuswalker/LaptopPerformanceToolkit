@@ -43,6 +43,13 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps
             DecimalPlaces = 0
         };
 
+        private readonly CheckBox _useMSR = new()
+        {
+            Content = "Use MSR Limits?",
+            HorizontalContentAlignment = HorizontalAlignment.Right,
+            IsChecked = false
+        };
+
         private readonly StackPanel _stackPanel = new();
 
         public ProcessorTDPAutomationStepControl(ProcessorTDPAutomationStep step) : base(step)
@@ -52,7 +59,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps
             Subtitle = "Change the TDP limits of the processor.\n\nNOTE: This action uses RyzenAdj for AMD,\nand KX utility for Intel.";
         }
 
-        public override IAutomationStep CreateAutomationStep() => new ProcessorTDPAutomationStep(_stapm.Value, _fast.Value, _slow.Value);
+        public override IAutomationStep CreateAutomationStep() => new ProcessorTDPAutomationStep(_stapm.Value, _fast.Value, _slow.Value, _useMSR.IsChecked);
 
         protected override UIElement? GetCustomControl()
         {
@@ -84,7 +91,18 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps
 
             _stackPanel.Children.Add(_slow);
 
-            return _stackPanel;
+            if (processor.GetType() == typeof(IntelProcessorController))
+            {
+                _useMSR.Checked += (s, e) =>
+                {
+                    if (_useMSR.IsChecked != AutomationStep.UseMSR)
+                        RaiseChanged();
+                };
+
+                _stackPanel.Children.Add(_useMSR);
+            }
+
+                return _stackPanel;
         }
 
         protected override void OnFinishedLoading() { }
@@ -94,6 +112,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps
             _stapm.Value = AutomationStep.Stapm;
             _fast.Value = AutomationStep.Fast;
             _slow.Value = AutomationStep.Slow;
+            _useMSR.IsChecked = AutomationStep.UseMSR;
             return Task.CompletedTask;
         }
     }

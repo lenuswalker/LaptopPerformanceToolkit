@@ -19,6 +19,7 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils
         private Dictionary<PowerType, int> currentLimits = new();
         private Dictionary<PowerType, int> currentMSRLimits = new();
         private Dictionary<PowerType, int> savedLimits = new();
+        private List<bool> useMSRList = new();
 
         private readonly ProcessorSettings _settings;
         private readonly AutomationSettings _automationSettings;
@@ -49,20 +50,20 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils
             if (Environment.GetEnvironmentVariable("GameMode", EnvironmentVariableTarget.Machine) == "1")
             {
                 savedLimits = new()
+                {
                     {
-                        {
-                            PowerType.Stapm,
-                            (int)_settings.Store.State.Mode[TDPMode.GameMode].Stapm
-                        },
-                        {
-                            PowerType.Fast,
-                            (int)_settings.Store.State.Mode[TDPMode.GameMode].Fast
-                        },
-                        {
-                            PowerType.Slow,
-                            (int)_settings.Store.State.Mode[TDPMode.GameMode].Slow
-                        }
-                    };
+                        PowerType.Stapm,
+                        (int)_settings.Store.State.Mode[TDPMode.GameMode].Stapm
+                    },
+                    {
+                        PowerType.Fast,
+                        (int)_settings.Store.State.Mode[TDPMode.GameMode].Fast
+                    },
+                    {
+                        PowerType.Slow,
+                        (int)_settings.Store.State.Mode[TDPMode.GameMode].Slow
+                    }
+                };
             }
             else
             {
@@ -88,40 +89,45 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils
                             {
                                 ProcessorTDPAutomationStep processorTDPAutomationStep = (ProcessorTDPAutomationStep)step;
                                 savedLimits = new()
+                                {
                                     {
-                                        {
-                                            PowerType.Stapm,
-                                            (int)processorTDPAutomationStep.Stapm
-                                        },
-                                        {
-                                            PowerType.Fast,
-                                            (int)processorTDPAutomationStep.Fast
-                                        },
-                                        {
-                                            PowerType.Slow,
-                                            (int)processorTDPAutomationStep.Slow
-                                        }
-                                    };
+                                        PowerType.Stapm,
+                                        (int)processorTDPAutomationStep.Stapm
+                                    },
+                                    {
+                                        PowerType.Fast,
+                                        (int)processorTDPAutomationStep.Fast
+                                    },
+                                    {
+                                        PowerType.Slow,
+                                        (int)processorTDPAutomationStep.Slow
+                                    }
+                                };
+                                if (_controller.GetType() == typeof(IntelProcessorController))
+                                {
+                                    if (processorTDPAutomationStep.UseMSR != null)
+                                        useMSRList.Add((bool)processorTDPAutomationStep.UseMSR);
+                                }
                             }
                         }
                     }
                     else
                     {
                         savedLimits = new()
+                        {
                             {
-                                {
-                                    PowerType.Stapm,
-                                    (int)_settings.Store.State.Mode[TDPMode.AC].Stapm
-                                },
-                                {
-                                    PowerType.Fast,
-                                    (int)_settings.Store.State.Mode[TDPMode.AC].Fast
-                                },
-                                {
-                                    PowerType.Slow,
-                                    (int)_settings.Store.State.Mode[TDPMode.AC].Slow
-                                }
-                            };
+                                PowerType.Stapm,
+                                (int)_settings.Store.State.Mode[TDPMode.AC].Stapm
+                            },
+                            {
+                                PowerType.Fast,
+                                (int)_settings.Store.State.Mode[TDPMode.AC].Fast
+                            },
+                            {
+                                PowerType.Slow,
+                                (int)_settings.Store.State.Mode[TDPMode.AC].Slow
+                            }
+                        };
                     }
                 }
                 else
@@ -134,40 +140,45 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils
                             {
                                 ProcessorTDPAutomationStep processorTDPAutomationStep = (ProcessorTDPAutomationStep)step;
                                 savedLimits = new()
+                                {
                                     {
-                                        {
-                                            PowerType.Stapm,
-                                            (int)processorTDPAutomationStep.Stapm
-                                        },
-                                        {
-                                            PowerType.Fast,
-                                            (int)processorTDPAutomationStep.Fast
-                                        },
-                                        {
-                                            PowerType.Slow,
-                                            (int)processorTDPAutomationStep.Slow
-                                        }
-                                    };
+                                        PowerType.Stapm,
+                                        (int)processorTDPAutomationStep.Stapm
+                                    },
+                                    {
+                                        PowerType.Fast,
+                                        (int)processorTDPAutomationStep.Fast
+                                    },
+                                    {
+                                        PowerType.Slow,
+                                        (int)processorTDPAutomationStep.Slow
+                                    }
+                                };
+                                if (_controller.GetType() == typeof(IntelProcessorController))
+                                {
+                                    if (processorTDPAutomationStep.UseMSR != null)
+                                        useMSRList.Add((bool)processorTDPAutomationStep.UseMSR);
+                                }
                             }
                         }
                     }
                     else
                     {
                         savedLimits = new()
+                        {
                             {
-                                {
-                                    PowerType.Stapm,
-                                    (int)_settings.Store.State.Mode[TDPMode.DC].Stapm
-                                },
-                                {
-                                    PowerType.Fast,
-                                    (int)_settings.Store.State.Mode[TDPMode.DC].Fast
-                                },
-                                {
-                                    PowerType.Slow,
-                                    (int)_settings.Store.State.Mode[TDPMode.DC].Slow
-                                }
-                            };
+                                PowerType.Stapm,
+                                (int)_settings.Store.State.Mode[TDPMode.DC].Stapm
+                            },
+                            {
+                                PowerType.Fast,
+                                (int)_settings.Store.State.Mode[TDPMode.DC].Fast
+                            },
+                            {
+                                PowerType.Slow,
+                                (int)_settings.Store.State.Mode[TDPMode.DC].Slow
+                            }
+                        };
                     }
                 }
             }
@@ -206,20 +217,23 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils
                 }
 
             // processor specific
-            if (_controller.GetType() == typeof(IntelProcessorController))
+            if (useMSRList.Any(r => r.Equals(true)))
             {
-                currentMSRLimits = ((IntelProcessorController)_controller).GetMSRLimits();
-
-                foreach (KeyValuePair<PowerType, int> pair in currentMSRLimits)
+                if (_controller.GetType() == typeof(IntelProcessorController))
                 {
-                    if (!savedLimits.ContainsKey(pair.Key))
-                        continue;
+                    currentMSRLimits = ((IntelProcessorController)_controller).GetMSRLimits();
 
-                    if (savedLimits[pair.Key] == pair.Value)
-                        continue;
+                    foreach (KeyValuePair<PowerType, int> pair in currentMSRLimits)
+                    {
+                        if (!savedLimits.ContainsKey(pair.Key))
+                            continue;
 
-                    // Set MSR limit
-                    ((IntelProcessorController)_controller).SetMSRLimits(savedLimits[PowerType.Slow], savedLimits[PowerType.Fast]);
+                        if (savedLimits[pair.Key] == pair.Value)
+                            continue;
+
+                        // Set MSR limit
+                        ((IntelProcessorController)_controller).SetMSRLimits(savedLimits[PowerType.Slow], savedLimits[PowerType.Fast]);
+                    }
                 }
             }
 

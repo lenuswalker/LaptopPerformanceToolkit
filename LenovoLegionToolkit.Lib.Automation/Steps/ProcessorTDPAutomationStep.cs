@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Controllers;
-using LenovoLegionToolkit.Lib.System;
 using Newtonsoft.Json;
 
 namespace LenovoLegionToolkit.Lib.Automation.Steps
@@ -11,13 +10,15 @@ namespace LenovoLegionToolkit.Lib.Automation.Steps
         public double Stapm { get; }
         public double Fast { get; }
         public double Slow { get; }
+        public bool? UseMSR { get; }
 
         [JsonConstructor]
-        public ProcessorTDPAutomationStep(double stapm, double fast, double slow)
+        public ProcessorTDPAutomationStep(double stapm, double fast, double slow, bool? useMSR)
         {
             Stapm = stapm;
             Fast = fast;
             Slow = slow;
+            UseMSR = useMSR;
         }
         
         public Task<bool> IsSupportedAsync() => Task.FromResult(true);
@@ -31,12 +32,16 @@ namespace LenovoLegionToolkit.Lib.Automation.Steps
                 processor.SetTDPLimit(PowerType.Fast, Fast);
             if (Slow != 0)
                 processor.SetTDPLimit(PowerType.Slow, Slow);
-            if (processor.GetType() == typeof(IntelProcessorController))
-            {
-                ((IntelProcessorController)processor).SetMSRLimits(Slow, Fast);
-            }
+            if (UseMSR != null)
+                if ((bool)UseMSR)
+                {
+                    if (processor.GetType() == typeof(IntelProcessorController))
+                    {
+                        ((IntelProcessorController)processor).SetMSRLimits(Slow, Fast);
+                    }
+                }
         }
 
-        IAutomationStep IAutomationStep.DeepCopy() => new ProcessorTDPAutomationStep(Stapm, Fast, Slow);
+        IAutomationStep IAutomationStep.DeepCopy() => new ProcessorTDPAutomationStep(Stapm, Fast, Slow, UseMSR);
     }
 }

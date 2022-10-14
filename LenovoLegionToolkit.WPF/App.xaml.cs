@@ -39,7 +39,7 @@ namespace LenovoLegionToolkit.WPF
 
         private async void Application_Startup(object sender, StartupEventArgs e)
         {
-            await CheckBasicCompatibilityAsync();
+            //await CheckBasicCompatibilityAsync();
 
             var args = e.Args.Concat(LoadExternalArgs()).ToArray();
 

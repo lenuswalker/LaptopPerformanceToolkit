@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Automation.Utils;
+using Newtonsoft.Json;
 
 namespace LenovoLegionToolkit.Lib.Automation.Steps
 {
     public class MaintainProcessorTDPAutomationStep : IAutomationStep<MaintainProcessorTDPAutomationStepState>
     {
         private ProcessorManager? _manager;
-        
+
         public MaintainProcessorTDPAutomationStepState State { get; }
 
-        public MaintainProcessorTDPAutomationStep(MaintainProcessorTDPAutomationStepState state) => State = state;
+        [JsonConstructor]
+        public MaintainProcessorTDPAutomationStep(MaintainProcessorTDPAutomationStepState state)
+        {
+            State = state;
+        }
 
         public Task<MaintainProcessorTDPAutomationStepState[]> GetAllStatesAsync() => Task.FromResult(Enum.GetValues<MaintainProcessorTDPAutomationStepState>());
         
@@ -25,7 +30,7 @@ namespace LenovoLegionToolkit.Lib.Automation.Steps
                 return;
 
             switch (State)
-            {
+            { 
                 case MaintainProcessorTDPAutomationStepState.Enabled:
                     await _manager.MaintainTDP().ConfigureAwait(false);
                     break;

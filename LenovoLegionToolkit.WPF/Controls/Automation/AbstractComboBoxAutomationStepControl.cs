@@ -18,7 +18,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation
             Visibility = Visibility.Hidden,
         };
 
-        private T _state;
+        public T _state;
 
         public AbstractComboBoxAutomationStepCardControl(IAutomationStep<T> step) : base(step) { }
 
