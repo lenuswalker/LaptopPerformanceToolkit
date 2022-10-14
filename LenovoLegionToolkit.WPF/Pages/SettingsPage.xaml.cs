@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Controllers;
+using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
+using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
 using LenovoLegionToolkit.WPF.Windows.Settings;
 
@@ -46,7 +50,19 @@ namespace LenovoLegionToolkit.WPF.Pages
 
             var loadingTask = Task.Delay(250);
 
-            _themeComboBox.SetItems(Enum.GetValues<Theme>(), _settings.Store.Theme);
+            var languages = LocalizationHelper.GetLanguages().ToArray();
+            var language = await LocalizationHelper.GetLanguageAsync();
+            if (languages.Length > 1)
+            {
+                _langComboBox.SetItems(languages, language, cc => cc.NativeName);
+                _langComboBox.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                _langCardControl.Visibility = Visibility.Collapsed;
+            }
+
+            _themeComboBox.SetItems(Enum.GetValues<Theme>(), _settings.Store.Theme, t => t.GetDisplayName());
             _accentColor.SetColor(_settings.Store.AccentColor ?? _themeManager.DefaultAccentColor);
             _systemAccentColorToggle.IsChecked = _settings.Store.SystemAccentColor;
             _autorunToggle.IsChecked = Autorun.IsEnabled;
@@ -81,6 +97,19 @@ namespace LenovoLegionToolkit.WPF.Pages
             _dontShowNotificationsToggle.Visibility = Visibility.Visible;
 
             _isRefreshing = false;
+        }
+
+        private async void LangComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (_isRefreshing)
+                return;
+
+            if (!_langComboBox.TryGetSelectedItem(out CultureInfo? cultureInfo) || cultureInfo is null)
+                return;
+
+            await LocalizationHelper.SetLanguageAsync(cultureInfo);
+
+            App.Current.RestartMainWindow();
         }
 
         private void ThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -190,7 +219,7 @@ namespace LenovoLegionToolkit.WPF.Pages
                 }
                 catch
                 {
-                    await SnackbarHelper.ShowAsync("Couldn't disable Vantage", "Vantage may have not been disabled correctly", true);
+                    await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableVantage_Error_Title, Resource.SettingsPage_DisableVantage_Error_Message, true);
                     return;
                 }
 
@@ -228,7 +257,7 @@ namespace LenovoLegionToolkit.WPF.Pages
                 }
                 catch
                 {
-                    await SnackbarHelper.ShowAsync("Couldn't enable Vantage", "Vantage may have not been enabled correctly", true);
+                    await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableVantage_Error_Title, Resource.SettingsPage_EnableVantage_Error_Message, true);
                     return;
                 }
             }
@@ -255,7 +284,7 @@ namespace LenovoLegionToolkit.WPF.Pages
                 }
                 catch
                 {
-                    await SnackbarHelper.ShowAsync("Couldn't disable Legion Zone", "Legion Zone may have not been disabled correctly", true);
+                    await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableLegionZone_Error_Title, Resource.SettingsPage_DisableLegionZone_Error_Message, true);
                     return;
                 }
             }
@@ -267,7 +296,7 @@ namespace LenovoLegionToolkit.WPF.Pages
                 }
                 catch
                 {
-                    await SnackbarHelper.ShowAsync("Couldn't enable Legion Zone", "Legion Zone may have not been enabled correctly", true);
+                    await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableLegionZone_Error_Title, Resource.SettingsPage_EnableLegionZone_Error_Message, true);
                     return;
                 }
             }
@@ -294,7 +323,7 @@ namespace LenovoLegionToolkit.WPF.Pages
                 }
                 catch
                 {
-                    await SnackbarHelper.ShowAsync("Couldn't disnable Fn Keys", "Fn Keys may have not been disabled correctly", true);
+                    await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableLenovoHotkeys_Error_Title, Resource.SettingsPage_DisableLenovoHotkeys_Error_Message, true);
                     return;
                 }
             }
@@ -306,7 +335,7 @@ namespace LenovoLegionToolkit.WPF.Pages
                 }
                 catch
                 {
-                    await SnackbarHelper.ShowAsync("Couldn't enable Fn Keys", "Fn Keys may have not been enabled correctly", true);
+                    await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableLenovoHotkeys_Error_Title, Resource.SettingsPage_EnableLenovoHotkeys_Error_Message, true);
                     return;
                 }
             }
