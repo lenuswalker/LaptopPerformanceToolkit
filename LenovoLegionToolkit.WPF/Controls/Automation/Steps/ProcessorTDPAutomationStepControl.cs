@@ -50,7 +50,27 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps
             IsChecked = false
         };
 
+        private readonly CheckBox _maintainTDP = new()
+        {
+            Content = "Maintain TDP Limits?",
+            HorizontalContentAlignment = HorizontalAlignment.Right,
+            IsChecked = false
+        };
+
+        private readonly NumberBox _interval = new()
+        {
+            PlaceholderText = "Interval",
+            Width = 150,
+            Max = 120,
+            Min = 0,
+            Value = 5,
+            DecimalPlaces = 0,
+            IntegersOnly = true
+        };
+
         private readonly StackPanel _stackPanel = new();
+
+        private ProcessorTDPState _state;
 
         public ProcessorTDPAutomationStepControl(ProcessorTDPAutomationStep step) : base(step)
         {
@@ -59,7 +79,16 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps
             Subtitle = "Change the TDP limits of the processor.\n\nNOTE: This action uses RyzenAdj for AMD,\nand KX utility for Intel.";
         }
 
-        public override IAutomationStep CreateAutomationStep() => new ProcessorTDPAutomationStep(_stapm.Value, _fast.Value, _slow.Value, _useMSR.IsChecked);
+        public override IAutomationStep CreateAutomationStep()
+        {
+            _state.Stapm = _stapm.Value;
+            _state.Fast = _fast.Value;
+            _state.Slow = _slow.Value;
+            _state.UseMSR = _useMSR.IsChecked;
+            _state.MaintainTDP = _maintainTDP.IsChecked;
+            _state.Interval = (int)_interval.Value;
+            return new ProcessorTDPAutomationStep(_state);
+        }
 
         protected override UIElement? GetCustomControl()
         {
@@ -68,7 +97,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps
             {
                 _stapm.TextChanged += (s, e) =>
                 {
-                    if (_stapm.Value != AutomationStep.Stapm)
+                    if (_stapm.Value != AutomationStep.State.Stapm)
                         RaiseChanged();
                 };
 
@@ -77,7 +106,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps
 
             _fast.TextChanged += (s, e) =>
             {
-                if (_fast.Value != AutomationStep.Fast)
+                if (_fast.Value != AutomationStep.State.Fast)
                     RaiseChanged();
             };
 
@@ -85,7 +114,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps
 
             _slow.TextChanged += (s, e) =>
             {
-                if (_slow.Value != AutomationStep.Slow)
+                if (_slow.Value != AutomationStep.State.Slow)
                     RaiseChanged();
             };
 
@@ -95,24 +124,49 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps
             {
                 _useMSR.Checked += (s, e) =>
                 {
-                    if (_useMSR.IsChecked != AutomationStep.UseMSR)
+                    if (_useMSR.IsChecked != AutomationStep.State.UseMSR)
                         RaiseChanged();
                 };
 
                 _stackPanel.Children.Add(_useMSR);
             }
 
-                return _stackPanel;
+            _maintainTDP.Checked += (s, e) =>
+            {
+                if (_maintainTDP.IsChecked != AutomationStep.State.MaintainTDP)
+                    RaiseChanged();
+            };
+
+            _stackPanel.Children.Add(_maintainTDP);
+
+            _interval.TextChanged += (s, e) =>
+            {
+                if (_interval.Value != AutomationStep.State.Interval)
+                    RaiseChanged();
+            };
+
+            _stackPanel.Children.Add(_interval);
+
+            return _stackPanel;
         }
 
         protected override void OnFinishedLoading() { }
 
         protected override Task RefreshAsync()
         {
-            _stapm.Value = AutomationStep.Stapm;
-            _fast.Value = AutomationStep.Fast;
-            _slow.Value = AutomationStep.Slow;
-            _useMSR.IsChecked = AutomationStep.UseMSR;
+            _stapm.Value = AutomationStep.State.Stapm;
+            _fast.Value = AutomationStep.State.Fast;
+            _slow.Value = AutomationStep.State.Slow;
+            _useMSR.IsChecked = AutomationStep.State.UseMSR;
+            _maintainTDP.IsChecked = AutomationStep.State.MaintainTDP;
+            _interval.Value = AutomationStep.State.Interval;
+
+            if (_maintainTDP.IsChecked != null)
+                if ((bool)_maintainTDP.IsChecked)
+                    _interval.IsEnabled = true;
+                else
+                    _interval.IsEnabled = false;
+
             return Task.CompletedTask;
         }
     }

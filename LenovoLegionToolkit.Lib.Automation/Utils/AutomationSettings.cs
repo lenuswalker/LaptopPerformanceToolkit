@@ -33,11 +33,6 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils
                 },
                 new AutomationPipeline
                 {
-                    Trigger = new TimeIntervalAutomationPipelineTrigger(5,15),
-                    Steps = { new MaintainProcessorTDPAutomationStep(MaintainProcessorTDPAutomationStepState.Enabled) },
-                },
-                new AutomationPipeline
-                {
                     Name = "Deactivate GPU",
                     Steps = { new DeactivateGPUAutomationStep(DeactivateGPUAutomationStepState.KillApps) },
                 },

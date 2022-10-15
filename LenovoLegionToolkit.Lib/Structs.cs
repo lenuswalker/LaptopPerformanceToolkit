@@ -574,22 +574,16 @@ namespace LenovoLegionToolkit.Lib
         public double Stapm { get; set; }
         public double Fast { get; set; }
         public double Slow { get; set; }
-        public double MsrFast { get; set; }
-        public double MsrSlow { get; set; }
 
         [JsonConstructor]
         public TDPLimits(
             double stapm,
             double fast,
-            double slow,
-            double msrFast,
-            double msrSlow)
+            double slow)
         {
             Stapm = stapm;
             Fast = fast;
             Slow = slow;
-            MsrFast = msrFast;
-            MsrSlow = msrSlow;
         }
     }
 
@@ -601,6 +595,34 @@ namespace LenovoLegionToolkit.Lib
         public TDPState(Dictionary<TDPMode, TDPLimits> mode)
         {
             Mode = mode;
+        }
+    }
+
+    public struct ProcessorTDPState
+    {
+        public double Stapm { get; set; }
+        public double Fast { get; set; }
+        public double Slow { get; set; }
+        public bool? UseMSR { get; set; }
+        public bool? MaintainTDP { get; set; }
+        public int Interval { get; set; }
+
+        [JsonConstructor]
+        public ProcessorTDPState(
+            double stapm,
+            double fast,
+            double slow,
+            bool? useMSR,
+            bool? maintainTDP,
+            int interval
+        )
+        {
+            Stapm = stapm;
+            Fast = fast;
+            Slow = slow;
+            UseMSR = useMSR;
+            MaintainTDP = maintainTDP;
+            Interval = interval;
         }
     }
 }

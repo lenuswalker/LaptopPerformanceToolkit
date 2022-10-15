@@ -28,8 +28,6 @@ namespace LenovoLegionToolkit.Lib.Automation
 
         private List<AutomationPipeline> _pipelines = new();
         private CancellationTokenSource? _cts;
-        
-        private int comInterval = 0;
 
         public bool IsEnabled => _settings.Store.IsEnabled;
 
@@ -341,8 +339,6 @@ namespace LenovoLegionToolkit.Lib.Automation
 
         private async Task ProcessEvent(TimeIntervalAutomationEvent e)
         {
-            comInterval += e.Interval;
-
             var potentialMatch = _pipelines.Select(p => p.Trigger)
                 .Where(t => t is not null)
                 .Where(t => t is TimeIntervalAutomationPipelineTrigger)
@@ -353,11 +349,9 @@ namespace LenovoLegionToolkit.Lib.Automation
 
             if (!potentialMatch)
                 return;
-            else
-                comInterval = 0;
 
             if (Log.Instance.IsTraceEnabled)
-                Log.Instance.Trace($"Processing time interval event. [interval={comInterval}]");
+                Log.Instance.Trace($"Processing time interval event. [interval={e.Interval}]");
 
             await RunAsync(e).ConfigureAwait(false);
         }

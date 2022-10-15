@@ -26,6 +26,17 @@ namespace LenovoLegionToolkit.Lib.Automation.Listeners
             return Task.CompletedTask;
         }
 
+        public Task StartAsync(int interval)
+        {
+            if (!_timer.Enabled)
+            {
+                _timer.Interval = interval;
+                _timer.Enabled = true;
+            }
+
+            return Task.CompletedTask;
+        }
+
         public Task StopAsync()
         {
             _timer.Enabled = false;
@@ -35,7 +46,7 @@ namespace LenovoLegionToolkit.Lib.Automation.Listeners
 
         private void Timer_Elapsed(object? sender, ElapsedEventArgs e)
         {
-            Changed?.Invoke(this, 5);
+            Changed?.Invoke(this, 5_000);
         }
     }
 }
