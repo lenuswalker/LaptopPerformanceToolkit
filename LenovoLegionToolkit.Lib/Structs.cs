@@ -625,4 +625,21 @@ namespace LenovoLegionToolkit.Lib
             Interval = interval;
         }
     }
+
+    public struct ProcessAutomationState
+    {
+        public ProcessInfo[] Processes { get; set; }
+        public ProcessState State { get; set;}
+
+
+        [JsonConstructor]
+        public ProcessAutomationState(
+            ProcessInfo[] processes,
+            ProcessState state
+        )
+        {
+            Processes = processes;
+            State = state;
+        }
+    }
 }

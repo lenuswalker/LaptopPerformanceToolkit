@@ -289,4 +289,12 @@ namespace LenovoLegionToolkit.Lib
         [Display(Name = "Pre Game Mode")]
         PreGameMode = 3,
     }
+
+    public enum ProcessState
+    {
+        [Display(ResourceType = typeof(Resource), Name = "Stop")]
+        Stop,
+        [Display(ResourceType = typeof(Resource), Name = "Start")]
+        Start
+    }
 }
