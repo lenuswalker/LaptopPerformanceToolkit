@@ -1,6 +1,12 @@
+<img height="128" align="left" src="assets/logo.png" alt="Logo">
+
 # Lenovo Legion Toolkit
 
-[![Build](https://github.com/BartoszCichecki/LenovoLegionToolkit/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/BartoszCichecki/LenovoLegionToolkit/actions/workflows/build.yml) [![Join Discord](https://img.shields.io/discord/761178912230473768?label=Legion%20Series%20Discord)](https://discord.com/invite/legionseries)
+[![Build](https://github.com/BartoszCichecki/LenovoLegionToolkit/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/BartoszCichecki/LenovoLegionToolkit/actions/workflows/build.yml)
+[![Crowdin](https://badges.crowdin.net/llt/localized.svg)](https://crowdin.com)
+[![Join Discord](https://img.shields.io/discord/761178912230473768?label=Legion%20Series%20Discord)](https://discord.com/invite/legionseries)
+
+<br />
 
 Lenovo Legion Toolkit (LLT) is a utility created for Lenovo Legion laptops, that allows changing a couple of features that are only available in Lenovo Vantage or Legion Zone.
 
@@ -11,6 +17,7 @@ It runs no background services, uses less memory, uses virtually no CPU, and con
 Join the Legion Series Discord: https://discord.com/invite/legionseries!
 
 <img src="assets/screenshot.png" width="700" alt="PayPal QR code" />
+
 
 # Table of Contents
   - [Disclaimer](#disclaimer)
@@ -51,7 +58,7 @@ If you are getting an incompatible message on startup, you can check the *Contri
 
 The list of supported models can be found here: [Compatibility.cs](https://github.com/BartoszCichecki/LenovoLegionToolkit/blob/master/LenovoLegionToolkit.Lib/Utils/Compatibility.cs).
 
-Support for other laptop that are not part of Legion line is not planned.
+**Support for other laptop that are not part of Legion or Ideapad Gaming lines is not planned.**
 
 ## Features
 
@@ -102,6 +109,10 @@ Special thanks to:
 * [falahati](https://github.com/falahati), for creating [NvAPIWrapper](https://github.com/falahati/NvAPIWrapper) and [WindowsDisplayAPI](https://github.com/falahati/WindowsDisplayAPI)
 * [SmokelessCPU](https://github.com/SmokelessCPU) for help with 4-zone RGB keyboard support
 
+Translations provided by:
+* Chinese - [凌卡Karl](https://github.com/KarlLee830)
+* Romanian - [Mario Bălănică](https://github.com/mariobalanica)
+
 ## FAQ
 
 #### Why doesn't LLT launch on startup even though Autorun option is enabled?
@@ -111,10 +122,6 @@ LLT is started using Task Scheduler, so that it can launch with admin rights. St
 #### My motherboard was replaced and now LLT gives me incompatible massage. What do I do?
 
 Sometimes new motherboard does not contain correct model numbers and serial numbers. You should try [this tutorial](https://laptopwiki.eu/index.php/guides-and-tutorials/important-bios-related-guides/recover-original-model-sku-values/) to try and recover them. If that method does not succeed, you can workaround by going to `%LOCALAPPDATA%\LenovoLegionToolkit` and creating an `args.txt` file. Inside that file paste `--skip-compat-check`. This will disable all compatibility checks in LLT. Use this workaround only if correct model number, serial number etc. can't be restored.
-
-#### I can't find Legion AI Engine option.
-
-AI Engine is not supported. It requires Lenovo services to run. I recommend simply switching to Performance mode.
 
 #### Which RGB types are supported?
 
@@ -166,6 +173,10 @@ On version 2.6.0 or higher, you can also enable logs in a quicker way:
 ## Contribution
 
 I appreciate any feedback that you have, so please do not hesitate to report issues. PRs are also welcome!
+
+#### Translation
+
+Lenovo Legion Toolkit is in the process of getting translations for more languages. For now please hold with creating PRs, because a process is being put in place for making the translation process more streamlined.
 
 #### Bugs
 

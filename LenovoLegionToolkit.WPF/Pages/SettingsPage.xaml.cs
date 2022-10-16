@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -50,11 +49,16 @@ namespace LenovoLegionToolkit.WPF.Pages
 
             var loadingTask = Task.Delay(250);
 
-            var languages = LocalizationHelper.GetLanguages().ToArray();
+            var languages = LocalizationHelper.Languages;
             var language = await LocalizationHelper.GetLanguageAsync();
             if (languages.Length > 1)
             {
-                _langComboBox.SetItems(languages, language, cc => cc.NativeName);
+                _langComboBox.SetItems(languages, language, cc =>
+                {
+                    if (cc.NativeName == cc.DisplayName)
+                        return cc.NativeName;
+                    return $"{cc.NativeName} ({cc.DisplayName})";
+                });
                 _langComboBox.Visibility = Visibility.Visible;
             }
             else
