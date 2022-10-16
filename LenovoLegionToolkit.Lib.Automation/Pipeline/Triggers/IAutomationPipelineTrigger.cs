@@ -40,4 +40,11 @@ namespace LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers
         Time? Time { get; }
         IAutomationPipelineTrigger DeepCopy(bool isSunrise, bool isSunset, Time? time);
     }
+
+    public interface ITimeIntervalAutomationPipelineTrigger
+    {
+        int? ACInterval { get; }
+        int? DCInterval { get; }
+        IAutomationPipelineTrigger DeepCopy(int? acInterval, int? dcInterval);
+    }
 }

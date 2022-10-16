@@ -239,7 +239,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
                 }
             }
 
-            if (AutomationPipeline.Trigger is TimeIntervalAutomationPipelineTrigger tit)
+            if (AutomationPipeline.Trigger is ITimeIntervalAutomationPipelineTrigger tit)
             {
                 if (tit.ACInterval is not null)
                 {
@@ -344,7 +344,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
                 return button;
             }
 
-            if (AutomationPipeline.Trigger is TimeIntervalAutomationPipelineTrigger tit)
+            if (AutomationPipeline.Trigger is ITimeIntervalAutomationPipelineTrigger tit)
             {
 
                 var button = new Button
