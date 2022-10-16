@@ -629,7 +629,7 @@ namespace LenovoLegionToolkit.Lib
     public struct ProcessAutomationState
     {
         public ProcessInfo[] Processes { get; set; }
-        public ProcessState State { get; set;}
+        public ProcessState State { get; set; }
 
 
         [JsonConstructor]

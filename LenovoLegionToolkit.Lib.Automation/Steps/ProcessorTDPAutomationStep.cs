@@ -11,7 +11,7 @@ namespace LenovoLegionToolkit.Lib.Automation.Steps
         
         private ProcessorManager? _manager;
 
-        public ProcessorTDPState State;
+        public ProcessorTDPState State { get; }
 
         [JsonConstructor]
         public ProcessorTDPAutomationStep(ProcessorTDPState state) => State = state;
