@@ -16,10 +16,10 @@ namespace LenovoLegionToolkit.Lib.Settings
         {
             IsEnabled = true,
             State = new(new Dictionary<TDPMode, TDPLimits> {
-                { TDPMode.AC, new(0, 0, 0, 0, 0) },
-                { TDPMode.DC, new(0, 0, 0, 0, 0) },
-                { TDPMode.GameMode, new(0, 0, 0, 0, 0) },
-                { TDPMode.PreGameMode, new(0, 0, 0, 0, 0) },
+                { TDPMode.AC, new(0, 0, 0) },
+                { TDPMode.DC, new(0, 0, 0) },
+                { TDPMode.GameMode, new(0, 0, 0) },
+                { TDPMode.PreGameMode, new(0, 0, 0) },
             })
         };
     }
