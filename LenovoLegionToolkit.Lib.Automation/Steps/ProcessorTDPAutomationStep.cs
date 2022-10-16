@@ -29,14 +29,14 @@ namespace LenovoLegionToolkit.Lib.Automation.Steps
                 processor.SetTDPLimit(PowerType.Fast, State.Fast);
             if (State.Slow != 0)
                 processor.SetTDPLimit(PowerType.Slow, State.Slow);
-            if ((bool)State.UseMSR)
+            if (State.UseMSR)
             {
                 if (processor.GetType() == typeof(IntelProcessorController))
                 {
                     ((IntelProcessorController)processor).SetMSRLimits(State.Slow, State.Fast);
                 }
             }
-            if ((bool)State.MaintainTDP)
+            if (State.MaintainTDP)
             {
                 await _manager.StartAsync(State.Stapm, State.Fast, State.Slow, State.UseMSR, State.Interval).ConfigureAwait(false);
             }
