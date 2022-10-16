@@ -603,8 +603,8 @@ namespace LenovoLegionToolkit.Lib
         public double Stapm { get; set; }
         public double Fast { get; set; }
         public double Slow { get; set; }
-        public bool? UseMSR { get; set; }
-        public bool? MaintainTDP { get; set; }
+        public bool UseMSR { get; set; }
+        public bool MaintainTDP { get; set; }
         public int Interval { get; set; }
 
         [JsonConstructor]
@@ -612,8 +612,8 @@ namespace LenovoLegionToolkit.Lib
             double stapm,
             double fast,
             double slow,
-            bool? useMSR,
-            bool? maintainTDP,
+            bool useMSR,
+            bool maintainTDP,
             int interval
         )
         {

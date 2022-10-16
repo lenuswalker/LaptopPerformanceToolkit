@@ -33,6 +33,7 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils
         private double _stapm;
         private double _fast;
         private double _slow;
+        private bool _useMSR;
 
 
         public ProcessorManager(ProcessorSettings settings, AutomationSettings automationSettings, TimeIntervalAutomationListener timeIntervalListener)
@@ -53,18 +54,23 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils
             return true;
         }
 
-        public Task StartAsync(double stapm, double fast, double slow, int interval)
+        public Task StartAsync(double stapm, double fast, double slow, bool useMSR, int interval)
         {
             _stapm = stapm;
             _fast = fast;
             _slow = slow;
-            _timeIntervalListener.StartAsync(interval);
+            _useMSR = useMSR;
+            _timeIntervalListener.StartAsync(interval*1000);
             return Task.CompletedTask;
         }
 
         public Task StopAsync()
         {
             _timeIntervalListener.StopAsync();
+            _stapm = 0;
+            _fast = 0;
+            _slow = 0;
+            _useMSR = false;
             return Task.CompletedTask;
         }
 
@@ -268,13 +274,13 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils
             return Task.CompletedTask;
         }
 
-        public Task MaintainTDP(double stamp, double fast, double slow)
+        public Task MaintainTDP(double stapm, double fast, double slow, bool useMSR)
         {
             savedLimits = new()
             {
                 {
                     PowerType.Stapm,
-                    (int)stamp
+                    (int)stapm
                 },
                 {
                     PowerType.Fast,
@@ -290,18 +296,19 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils
             // get current limits
             foreach (PowerType type in Enum.GetValues(typeof(PowerType)))
             {
-                if (type == PowerType.Stapm || type == PowerType.Fast || type == PowerType.Slow)
-                {
-                    if (_controller.GetType() == typeof(IntelProcessorController))
-                    {
-                        // Intel doesn't have stapm
-                        if (type == PowerType.Stapm)
-                            continue;
-                    }
 
-                    int limit = _controller.GetTDPLimit(type);
-                    currentLimits.Add(type, limit);
+                if (_controller.GetType() == typeof(IntelProcessorController))
+                {
+                    // Intel doesn't have stapm
+                    if (type == PowerType.Stapm)
+                        continue;
                 }
+
+                int limit = _controller.GetTDPLimit(type);
+                if (currentLimits.ContainsKey(type))
+                    currentLimits[type] = limit;
+                else
+                    currentLimits.Add(type, limit);
             }
 
             // search for limit changes
@@ -321,7 +328,7 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils
                 }
 
             // processor specific
-            if (useMSRList.Any(r => r.Equals(true)))
+            if (useMSR)
             {
                 if (_controller.GetType() == typeof(IntelProcessorController))
                 {
@@ -350,7 +357,7 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils
 
         private async void TimeIntervalListener_Changed(object? sender, int interval)
         {
-            await MaintainTDP(_stapm, _fast, _slow).ConfigureAwait(false);
+            await MaintainTDP(_stapm, _fast, _slow, _useMSR).ConfigureAwait(false);
         }
     }
 }

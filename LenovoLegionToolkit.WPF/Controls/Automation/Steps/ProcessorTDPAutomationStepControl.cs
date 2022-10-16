@@ -84,8 +84,8 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps
             _state.Stapm = _stapm.Value;
             _state.Fast = _fast.Value;
             _state.Slow = _slow.Value;
-            _state.UseMSR = _useMSR.IsChecked;
-            _state.MaintainTDP = _maintainTDP.IsChecked;
+            _state.UseMSR = (bool)_useMSR.IsChecked;
+            _state.MaintainTDP = (bool)_maintainTDP.IsChecked;
             _state.Interval = (int)_interval.Value;
             return new ProcessorTDPAutomationStep(_state);
         }
@@ -122,6 +122,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps
 
             if (processor.GetType() == typeof(IntelProcessorController))
             {
+                _useMSR.IsChecked = false;
                 _useMSR.Checked += (s, e) =>
                 {
                     if (_useMSR.IsChecked != AutomationStep.State.UseMSR)
@@ -131,6 +132,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps
                 _stackPanel.Children.Add(_useMSR);
             }
 
+            _maintainTDP.IsChecked = false;
             _maintainTDP.Checked += (s, e) =>
             {
                 if (_maintainTDP.IsChecked != AutomationStep.State.MaintainTDP)

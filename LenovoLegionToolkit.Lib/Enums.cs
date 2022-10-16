@@ -258,11 +258,9 @@ namespace LenovoLegionToolkit.Lib
 
     public enum PowerType
     {
-        Slow = 0,
-        Stapm = 1,
-        Fast = 2,
-        MsrSlow = 3,
-        MsrFast = 4,
+        Stapm = 0,
+        Fast = 1,
+        Slow = 2,
     }
 
     public enum RyzenFamily

@@ -29,23 +29,21 @@ namespace LenovoLegionToolkit.Lib.Automation.Steps
                 processor.SetTDPLimit(PowerType.Fast, State.Fast);
             if (State.Slow != 0)
                 processor.SetTDPLimit(PowerType.Slow, State.Slow);
-            if (State.UseMSR != null)
-                if ((bool)State.UseMSR)
+            if ((bool)State.UseMSR)
+            {
+                if (processor.GetType() == typeof(IntelProcessorController))
                 {
-                    if (processor.GetType() == typeof(IntelProcessorController))
-                    {
-                        ((IntelProcessorController)processor).SetMSRLimits(State.Slow, State.Fast);
-                    }
+                    ((IntelProcessorController)processor).SetMSRLimits(State.Slow, State.Fast);
                 }
-            if (State.MaintainTDP != null)
-                if ((bool)State.MaintainTDP)
-                {
-                    await _manager.StartAsync(State.Stapm, State.Fast, State.Slow, State.Interval).ConfigureAwait(false);
-                }
-                else
-                {
-                    await _manager.StopAsync().ConfigureAwait(false);
-                }
+            }
+            if ((bool)State.MaintainTDP)
+            {
+                await _manager.StartAsync(State.Stapm, State.Fast, State.Slow, State.UseMSR, State.Interval).ConfigureAwait(false);
+            }
+            else
+            {
+                await _manager.StopAsync().ConfigureAwait(false);
+            }
         }
 
         IAutomationStep IAutomationStep.DeepCopy() => new ProcessorTDPAutomationStep(State);

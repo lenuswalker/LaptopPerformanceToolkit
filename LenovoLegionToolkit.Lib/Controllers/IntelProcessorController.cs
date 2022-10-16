@@ -82,9 +82,9 @@ namespace LenovoLegionToolkit.Lib.Controllers
                 int msr_long = (int)platform.get_long_limit(true);
 
                 if (msr_short != -1)
-                    base.m_Limits[PowerType.MsrFast] = msr_short;
+                    base.m_Limits[PowerType.Fast] = msr_short;
                 if (msr_long != -1)
-                    base.m_Limits[PowerType.MsrSlow] = msr_long;
+                    base.m_Limits[PowerType.Slow] = msr_long;
 
                 // read gfx_clk
                 int gfx_clk = (int)platform.get_gfx_clk();
