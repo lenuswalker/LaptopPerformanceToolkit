@@ -477,7 +477,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
             var moveUpMenuItem = new MenuItem
             {
                 SymbolIcon = SymbolRegular.ArrowUp24,
-                Header = Resource.AutomationPipelineControl_MoveUp
+                Header = Resource.MoveUp
             };
             if (index > 0)
                 moveUpMenuItem.Click += (s, e) => MoveStep(control, index - 1);
@@ -488,7 +488,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
             var moveDownMenuItem = new MenuItem
             {
                 SymbolIcon = SymbolRegular.ArrowDown24,
-                Header = Resource.AutomationPipelineControl_MoveDown
+                Header = Resource.MoveDown
             };
             if (index < maxIndex)
                 moveDownMenuItem.Click += (s, e) => MoveStep(control, index + 1);

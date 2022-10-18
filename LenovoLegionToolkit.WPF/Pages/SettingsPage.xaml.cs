@@ -57,7 +57,7 @@ namespace LenovoLegionToolkit.WPF.Pages
                 {
                     if (cc.NativeName == cc.DisplayName)
                         return cc.NativeName;
-                    return $"{cc.NativeName} ({cc.DisplayName})";
+                    return $"{cc.NativeName} - {cc.DisplayName}";
                 });
                 _langComboBox.Visibility = Visibility.Visible;
             }
