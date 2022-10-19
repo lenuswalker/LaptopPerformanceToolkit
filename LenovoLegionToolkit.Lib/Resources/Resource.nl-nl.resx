@@ -59,114 +59,114 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AlwaysOnUSBState_Off" xml:space="preserve">
-    <value>Kapalı</value>
+    <value>Uit</value>
   </data>
   <data name="AlwaysOnUSBState_OnAlways" xml:space="preserve">
-    <value>Her zaman açık</value>
+    <value>Aan, altijd</value>
   </data>
   <data name="AlwaysOnUSBState_OnWhenSleeping" xml:space="preserve">
-    <value>Uykudayken açık</value>
+    <value>Aan, wanneer in-slaap</value>
   </data>
   <data name="BatteryState_Conservation" xml:space="preserve">
-    <value>Pil Koruma Modu</value>
+    <value>Behoudmodus</value>
   </data>
   <data name="BatteryState_Normal" xml:space="preserve">
-    <value>Normal</value>
+    <value>Normaal</value>
   </data>
   <data name="BatteryState_RapidCharge" xml:space="preserve">
-    <value>Hızlı Şarj</value>
+    <value>Snel opladen</value>
   </data>
   <data name="GPUController_PoweredOff" xml:space="preserve">
-    <value>Kapatıldı</value>
+    <value>Uitgezet</value>
   </data>
   <data name="GPUController_PoweredOn" xml:space="preserve">
-    <value>Açık</value>
+    <value>Ingeschakeld</value>
   </data>
   <data name="HybridModeState_Off" xml:space="preserve">
     <value>dGPU</value>
   </data>
   <data name="HybridModeState_On" xml:space="preserve">
-    <value>Hibrit</value>
+    <value>Hybride</value>
   </data>
   <data name="HybridModeState_OnAuto" xml:space="preserve">
-    <value>Hibrit-Oto</value>
+    <value>Hybride-Auto</value>
   </data>
   <data name="HybridModeState_OnIGPUOnly" xml:space="preserve">
-    <value>Hibrit-iGPU</value>
+    <value>Hybride-iGPU</value>
   </data>
   <data name="PowerModeState_Balance" xml:space="preserve">
-    <value>Denge</value>
+    <value>Gebalanceerd</value>
   </data>
   <data name="PowerModeState_GodMode" xml:space="preserve">
-    <value>Özel</value>
+    <value>Aangepast</value>
   </data>
   <data name="PowerModeState_Performance" xml:space="preserve">
-    <value>Performans</value>
+    <value>Prestaties</value>
   </data>
   <data name="PowerModeState_Quiet" xml:space="preserve">
-    <value>Sessiz</value>
+    <value>Stille</value>
   </data>
   <data name="RBGKeyboardSpeed_Fast" xml:space="preserve">
-    <value>Hızlı</value>
+    <value>Snel</value>
   </data>
   <data name="RBGKeyboardSpeed_Fastest" xml:space="preserve">
-    <value>En Hızlı</value>
+    <value>Snelste</value>
   </data>
   <data name="RBGKeyboardSpeed_Slow" xml:space="preserve">
-    <value>Yavaş</value>
+    <value>Langzaam</value>
   </data>
   <data name="RBGKeyboardSpeed_Slowest" xml:space="preserve">
-    <value>En yavaş</value>
+    <value>Langzaamste</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_Off" xml:space="preserve">
-    <value>Kapalı</value>
+    <value>Uit</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_One" xml:space="preserve">
-    <value>1. Hazır Ayar</value>
+    <value>Voorinstelling 1</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_Three" xml:space="preserve">
-    <value>3. Hazır Ayar</value>
+    <value>Voorinstelling 3</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_Two" xml:space="preserve">
-    <value>2. Hazır Ayar</value>
+    <value>Voorinstelling 2</value>
   </data>
   <data name="RGBKeyboardBrightness_High" xml:space="preserve">
-    <value>Yüksek</value>
+    <value>Hoog</value>
   </data>
   <data name="RGBKeyboardBrightness_Low" xml:space="preserve">
-    <value>Düşük</value>
+    <value>Laag</value>
   </data>
   <data name="RGBKeyboardEffect_Breath" xml:space="preserve">
-    <value>Nefes</value>
+    <value>Adem</value>
   </data>
   <data name="RGBKeyboardEffect_Smooth" xml:space="preserve">
-    <value>Akıcı</value>
+    <value>Vloeiend</value>
   </data>
   <data name="RGBKeyboardEffect_Static" xml:space="preserve">
-    <value>Sabit</value>
+    <value>Statisch</value>
   </data>
   <data name="RGBKeyboardEffect_WaveLTR" xml:space="preserve">
-    <value>Soldan Dalga</value>
+    <value>Golf (Links)</value>
   </data>
   <data name="RGBKeyboardEffect_WaveRTL" xml:space="preserve">
-    <value>Sağdan Dalga</value>
+    <value>Golf (Rechts)</value>
   </data>
   <data name="Theme_Dark" xml:space="preserve">
-    <value>Koyu</value>
+    <value>Donker</value>
   </data>
   <data name="Theme_Light" xml:space="preserve">
-    <value>Açık</value>
+    <value>Licht</value>
   </data>
   <data name="Theme_System" xml:space="preserve">
-    <value>Sistem</value>
+    <value>Systeem</value>
   </data>
   <data name="WhiteKeyboardBacklightState_High" xml:space="preserve">
-    <value>Yüksek</value>
+    <value>Hoog</value>
   </data>
   <data name="WhiteKeyboardBacklightState_Low" xml:space="preserve">
-    <value>Düşük</value>
+    <value>Laag</value>
   </data>
   <data name="WhiteKeyboardBacklightState_Off" xml:space="preserve">
-    <value>Kapalı</value>
+    <value>Uit</value>
   </data>
 </root>

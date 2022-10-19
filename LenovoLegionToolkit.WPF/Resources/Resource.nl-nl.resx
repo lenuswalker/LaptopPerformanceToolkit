@@ -59,509 +59,505 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutPage_AppName" xml:space="preserve">
-    <value>拯救者工具箱 Lenovo Legion Toolkit</value>
+    <value>Lenovo Legion Toolkit</value>
   </data>
   <data name="AboutPage_Build" xml:space="preserve">
     <value>Build</value>
   </data>
   <data name="AboutPage_LatestReleaseOnGitHub" xml:space="preserve">
-    <value>在Github上查看最新版本</value>
+    <value>Laatste release op GitHub</value>
   </data>
   <data name="AboutPage_Links" xml:space="preserve">
-    <value>项目链接</value>
+    <value>Links</value>
   </data>
   <data name="AboutPage_ProjectWebsiteOnGitHub" xml:space="preserve">
-    <value>在Github上查看项目主页</value>
+    <value>Project website op GitHub</value>
   </data>
   <data name="AboutPage_ThirdPartyLibraries" xml:space="preserve">
-    <value>第三方依赖库</value>
+    <value>Bibliotheken van derden</value>
   </data>
   <data name="AboutPage_Title" xml:space="preserve">
-    <value>关于</value>
+    <value>Over</value>
   </data>
   <data name="AboutPage_TranslationCredit" xml:space="preserve">
-    <value>Translated by Karl Lee. 由凌卡Karl汉化，开源社区校正。</value>
+    <value>Vertalingen geleverd door Melm.</value>
     <comment>Please replace this text with something like "Translated into &lt;language&gt; by &lt;your name&gt;."</comment>
   </data>
   <data name="AboutPage_Version" xml:space="preserve">
-    <value>版本</value>
+    <value>Versie</value>
   </data>
   <data name="Add" xml:space="preserve">
-    <value>添加</value>
+    <value>Toevoegen</value>
   </data>
   <data name="AddNew" xml:space="preserve">
-    <value>新建</value>
+    <value>Nieuwe Toevoegen</value>
   </data>
   <data name="AlwaysActivatePowerPlans_Message" xml:space="preserve">
-    <value>当Vantage启用时仍然启用电源计划
-此选项仅适用于没有附带多种电源计划的设备。</value>
+    <value>Activeer Energie Plan zelfs wanneer Vantage is ingeschakeld.</value>
   </data>
   <data name="AlwaysActivatePowerPlans_Title" xml:space="preserve">
-    <value>始终启用Windows电源计划</value>
+    <value>Activeer altijd Windows Energie Plan</value>
   </data>
   <data name="AlwaysOnUSBControl_Message" xml:space="preserve">
-    <value>在电脑关机、睡眠或休眠时USB保持供电。
-并不是全部的USB接口，一般是笔记本旁标有电池标志的USB接口。</value>
+    <value>Laad USB-apparaten op wanneer de computer is uitgeschakeld of in de slaap- of sluimerstand staat.</value>
   </data>
   <data name="AlwaysOnUSBControl_Title" xml:space="preserve">
-    <value>保持USB供电</value>
+    <value>USB Altijd Aan</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
-    <value>在电脑关机、睡眠或休眠时USB保持供电。
-并不是全部的USB接口，一般是笔记本旁标有电池标志的USB接口。</value>
+    <value>Laad USB-apparaten op wanneer de computer is uitgeschakeld of in de slaap- of sluimerstand staat.</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Title" xml:space="preserve">
-    <value>保持USB供电</value>
+    <value>USB Altijd Aan</value>
   </data>
   <data name="AppName" xml:space="preserve">
-    <value>拯救者工具箱 Lenovo Legion Toolkit</value>
+    <value>Lenovo Legion Toolkit</value>
   </data>
   <data name="Apply" xml:space="preserve">
-    <value>应用</value>
+    <value>Opslaan</value>
   </data>
   <data name="ApplyAndClose" xml:space="preserve">
-    <value>应用并关闭</value>
+    <value>Opslaan &amp; sluiten</value>
   </data>
   <data name="AutomationPage_ActionsEnable_Message" xml:space="preserve">
-    <value>只有程序运行时自动化才可生效。</value>
+    <value>Lenovo Legion Toolkit moet actief zijn om automatische acties te laten werken.</value>
   </data>
   <data name="AutomationPage_ActionsEnabled_Title" xml:space="preserve">
-    <value>启用自动化</value>
+    <value>Inschakelen</value>
   </data>
   <data name="AutomationPage_Actions_Empty" xml:space="preserve">
-    <value>没有自动化脚本，请点击“新建”来新建一个自动化。</value>
+    <value>Geen acties gedefinieerd. Klik op "Nieuwe toevoegen" om een nieuwe actie te maken.</value>
   </data>
   <data name="AutomationPage_Actions_Message" xml:space="preserve">
-    <value>启用后自动化将会自动执行。当状态改变时将会从上到下检测自动化是否符合执行条件。
-只有自动化条件符合时才会执行。</value>
+    <value>Indien ingeschakeld, wordt deze actie automatisch uitgevoerd. Wanneer de status verandert, worden alle acties van boven naar beneden geëvalueerd.
+Alleen acties die overeenkomen met de huidige status worden uitgevoerd.</value>
   </data>
   <data name="AutomationPage_Actions_Title" xml:space="preserve">
-    <value>自动化</value>
+    <value>Acties</value>
   </data>
   <data name="AutomationPage_AddManualPipeline_Placeholder" xml:space="preserve">
-    <value>点此输入名称</value>
+    <value>Naam...</value>
   </data>
   <data name="AutomationPage_AddManualPipeline_Title" xml:space="preserve">
-    <value>新建</value>
+    <value>Nieuw Toevoegen</value>
   </data>
   <data name="AutomationPage_QuickActions_Empty" xml:space="preserve">
-    <value>没有快捷方式，请点击“新建”来新建快捷方式。</value>
+    <value>Geen snelle acties gedefinieerd. Klik op "Nieuwe toevoegen" om een nieuwe snelle actie te maken.</value>
   </data>
   <data name="AutomationPage_QuickActions_Message" xml:space="preserve">
-    <value>你可以右键软件托盘图标来激活快捷方式。</value>
+    <value>Snelle acties zijn beschikbaar in het rechtsklikmenu van het systeemvakpictogram.</value>
   </data>
   <data name="AutomationPage_QuickActions_Title" xml:space="preserve">
-    <value>快捷方式</value>
+    <value>Snelle acties</value>
   </data>
   <data name="AutomationPage_RenamePipeline_Placeholder" xml:space="preserve">
-    <value>点此输入名称</value>
+    <value>Naam...</value>
   </data>
   <data name="AutomationPage_RenamePipeline_Title" xml:space="preserve">
-    <value>重命名</value>
+    <value>Hernoemen</value>
   </data>
   <data name="AutomationPage_Reverted_Message" xml:space="preserve">
-    <value>所有修改已被重置</value>
+    <value>Alle wijzigingen teruggedraaid!</value>
   </data>
   <data name="AutomationPage_Reverted_Title" xml:space="preserve">
-    <value>重置</value>
+    <value>Teruggedraaid</value>
   </data>
   <data name="AutomationPage_Saved_Message" xml:space="preserve">
-    <value>所有修改已成功保存</value>
+    <value>Wijzigingen opgeslagen!</value>
   </data>
   <data name="AutomationPage_Saved_Title" xml:space="preserve">
-    <value>已保存</value>
+    <value>Opgeslagen</value>
   </data>
   <data name="AutomationPage_Title" xml:space="preserve">
-    <value>自动化</value>
+    <value>Automatisering</value>
   </data>
   <data name="AutomationPipelineControl_AddStep" xml:space="preserve">
-    <value>添加步骤</value>
+    <value>Stap toevoegen</value>
   </data>
   <data name="AutomationPipelineControl_Configure" xml:space="preserve">
-    <value>配置</value>
+    <value>Configureren</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive" xml:space="preserve">
-    <value>独占此条件</value>
+    <value>Exclusief</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive_ToolTip" xml:space="preserve">
-    <value>勾选后，此条件将无法新建自动化。</value>
+    <value>Voer geen verdere acties uit wanneer deze actie wordt uitgevoerd.</value>
   </data>
   <data name="AutomationPipelineControl_RunNow" xml:space="preserve">
-    <value>立刻运行</value>
+    <value>Nu uitvoeren</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Error_Message" xml:space="preserve">
-    <value>运行出错</value>
+    <value>Voltooid met fouten.</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Error_Title" xml:space="preserve">
-    <value>立刻运行</value>
+    <value>Nu uitvoeren</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Success_Message" xml:space="preserve">
-    <value>运行成功</value>
+    <value>Succesvol afgerond!</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Success_Title" xml:space="preserve">
-    <value>立刻运行</value>
+    <value>Nu uitvoeren</value>
   </data>
   <data name="AutomationPipelineControl_Running" xml:space="preserve">
-    <value>运行中...</value>
+    <value>Wordt uitgevoerd...</value>
   </data>
   <data name="AutomationPipelineControl_Step" xml:space="preserve">
-    <value>共{0}个步骤</value>
+    <value>{0} stap</value>
   </data>
   <data name="AutomationPipelineControl_Step_Many" xml:space="preserve">
-    <value>共{0}个步骤</value>
+    <value>{0} stappen</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_Apps" xml:space="preserve">
-    <value>应用列表</value>
+    <value>Applicaties</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_AtSunrise" xml:space="preserve">
-    <value>日出时</value>
+    <value>Bij zonsopgang</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_AtSunset" xml:space="preserve">
-    <value>日落时</value>
+    <value>Bij zonsondergang</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_AtTime" xml:space="preserve">
-    <value>将在{0:D2}:{1:D2}运行</value>
+    <value>Om {0:D2}:{1:D2}</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_PowerMode" xml:space="preserve">
-    <value>性能模式</value>
+    <value>Energiemodus</value>
   </data>
   <data name="AutomationPipelineControl_Unnamed" xml:space="preserve">
-    <value>未命名</value>
+    <value>naamloos</value>
   </data>
   <data name="BalanceModeSettingsWindow_AIEngine_Message" xml:space="preserve">
-    <value>启用LegionAI引擎以自动检测游戏玩法并调整CPU/GPU性能。可能会增加机身温度和风扇噪音。</value>
+    <value>Detecteert automatisch wanneer bepaalde games worden uitgevoerd en past de CPU- en GPU-prestaties aan. Temperaturen en ventilatorgeluid kunnen toenemen.</value>
   </data>
   <data name="BalanceModeSettingsWindow_AIEngine_Title" xml:space="preserve">
-    <value>启用Legion AI 引擎</value>
+    <value>AI Engine inschakelen</value>
   </data>
   <data name="BalanceModeSettingsWindow_Title" xml:space="preserve">
-    <value>均衡模式设置</value>
+    <value>Instellingen voor balansmodus</value>
   </data>
   <data name="BatteryAutomationStepControl_Message" xml:space="preserve">
-    <value>选择电池充电模式</value>
+    <value>Kies hoe de batterij wordt opgeladen.</value>
   </data>
   <data name="BatteryAutomationStepControl_Title" xml:space="preserve">
-    <value>充电模式</value>
+    <value>Batterij modus</value>
   </data>
   <data name="BatteryModeControl_Message" xml:space="preserve">
-    <value>选择电池充电模式。养护模式可充至75%~80%，快充可使用较大功率充电。</value>
+    <value>Kies hoe de batterij wordt opgeladen.</value>
   </data>
   <data name="BatteryModeControl_Title" xml:space="preserve">
-    <value>充电模式</value>
+    <value>Batterij modus</value>
   </data>
   <data name="BatteryPage_ACAdapterConnectedAndCharging" xml:space="preserve">
-    <value>已插入充电器，充电中...</value>
+    <value>Aangesloten, opladen...</value>
   </data>
   <data name="BatteryPage_ACAdapterConnectedNotCharging" xml:space="preserve">
-    <value>已插入充电器，未充电...</value>
+    <value>Verbonden, laadt niet op</value>
   </data>
   <data name="BatteryPage_BatteryTemperature_Message" xml:space="preserve">
-    <value>当前电池温度。</value>
+    <value>Huidige temperatuur van de batterij.</value>
   </data>
   <data name="BatteryPage_BatteryTemperature_Title" xml:space="preserve">
-    <value>电池温度</value>
+    <value>Batterij temperatuur</value>
   </data>
   <data name="BatteryPage_CurrentCapacity_Message" xml:space="preserve">
-    <value>当前电池容量。</value>
+    <value>Huidige batterijcapaciteit</value>
   </data>
   <data name="BatteryPage_CurrentCapacity_Title" xml:space="preserve">
-    <value>当前容量</value>
+    <value>Huidige capaciteit</value>
   </data>
   <data name="BatteryPage_CycleCount_Message" xml:space="preserve">
-    <value>电池充放电循环次数。</value>
+    <value>Aantal laad-/ontlaadcyclus.</value>
   </data>
   <data name="BatteryPage_CycleCount_Title" xml:space="preserve">
-    <value>循环次数</value>
+    <value>Telling van cyclus</value>
   </data>
   <data name="BatteryPage_DesignCapacity_Message" xml:space="preserve">
-    <value>电池设计容量。</value>
+    <value>Batterijcapaciteit zoals ontworpen.</value>
   </data>
   <data name="BatteryPage_DesignCapacity_Title" xml:space="preserve">
-    <value>设计容量</value>
+    <value>Ontwerpcapaciteit</value>
   </data>
   <data name="BatteryPage_DischargeRate_Message" xml:space="preserve">
-    <value>【+】为电池充电，【-】为电池放电。</value>
+    <value>Snelheid waarmee de batterij wordt opgeladen (+) of ontladen (-).</value>
   </data>
   <data name="BatteryPage_DischargeRate_Title" xml:space="preserve">
-    <value>电池充放电功率</value>
+    <value>Ontlading snelheid</value>
   </data>
   <data name="BatteryPage_EstimatedBatteryLifeRemaining" xml:space="preserve">
-    <value>预估剩余时间：{0}</value>
+    <value>Geschatte resterende tijd: {0}</value>
   </data>
   <data name="BatteryPage_EstimatingBatteryLife" xml:space="preserve">
-    <value>剩余时间...</value>
+    <value>Tijdschatting...</value>
   </data>
   <data name="BatteryPage_FirstUseDate_Title" xml:space="preserve">
-    <value>电池首次使用时间</value>
+    <value>Eerste gebruiksdatum</value>
   </data>
   <data name="BatteryPage_FirstUse_Message" xml:space="preserve">
-    <value>代表电池被第一次使用的时间。</value>
+    <value>Wanneer is de batterij voor het eerst gebruikt.</value>
   </data>
   <data name="BatteryPage_FullChargeCapacity_Message" xml:space="preserve">
-    <value>当电池充满电时的容量</value>
+    <value>Batterijcapaciteit wanneer volledig opgeladen.</value>
   </data>
   <data name="BatteryPage_FullChargeCapacity_Title" xml:space="preserve">
-    <value>满电容量</value>
+    <value>Volledige laadcapaciteit</value>
   </data>
   <data name="BatteryPage_LowWattageChargerConnected" xml:space="preserve">
-    <value>已插入低功率充电器</value>
+    <value>Lader met laag wattage aangesloten</value>
   </data>
   <data name="BatteryPage_ManufactureDate_Message" xml:space="preserve">
-    <value>电池的生产日期。</value>
+    <value>Wanneer is de batterij gemaakt.</value>
   </data>
   <data name="BatteryPage_ManufactureDate_Title" xml:space="preserve">
-    <value>生产日期</value>
+    <value>Productiedatum</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Message" xml:space="preserve">
-    <value>笔记本充电器拔下后到现在的时间。
-当笔记本在关机或休眠时充电可能会导致此时间不准确。</value>
+    <value>Tijd sinds de laptop voor het laatst is aangesloten op de netvoeding.
+Deze tijd is mogelijk niet nauwkeurig als de laptop is opgeladen tijdens het slapen of uit.</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Title" xml:space="preserve">
-    <value>电池使用时间</value>
+    <value>Op batterij sinds</value>
   </data>
   <data name="BatteryPage_Title" xml:space="preserve">
-    <value>电池</value>
+    <value>Batterij</value>
   </data>
   <data name="CPUBoostModeControl_OnBattery" xml:space="preserve">
-    <value>使用电池时</value>
+    <value>Op batterij</value>
   </data>
   <data name="CPUBoostModeControl_PluggedIn" xml:space="preserve">
-    <value>插入充电器时</value>
+    <value>Aangesloten</value>
   </data>
   <data name="CPUBoostModeControl_PowerPlans" xml:space="preserve">
-    <value>性能计划</value>
+    <value>Energieschema's</value>
   </data>
   <data name="CPUBoostModesWindow_LearnMore" xml:space="preserve">
-    <value>访问 microsoft.com 以了解更多</value>
+    <value>Meer informatie op microsoft.com</value>
   </data>
   <data name="CPUBoostModesWindow_Title" xml:space="preserve">
-    <value>CPU睿频模式</value>
+    <value>CPU Boost Modus</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>取消</value>
+    <value>Annuleren</value>
   </data>
   <data name="Celsius" xml:space="preserve">
     <value>°C</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>关闭</value>
+    <value>Sluiten</value>
   </data>
   <data name="ColorCardControl_Blue" xml:space="preserve">
-    <value>蓝色 (B)</value>
+    <value>Blauw</value>
   </data>
   <data name="ColorCardControl_Green" xml:space="preserve">
-    <value>绿色 (G)</value>
+    <value>Groen</value>
   </data>
   <data name="ColorCardControl_Red" xml:space="preserve">
-    <value>红色 (R)</value>
+    <value>Rood</value>
   </data>
   <data name="ComboBoxHybridModeControl_Message" xml:space="preserve">
-    <value>根据你的使用场景所需的性能与续航选择显卡工作模式。
-切换至独显直连模式或从独显直连模式切换到混合模式需要重启。</value>
+    <value>Selecteer de GPU-bedieningsmodus op basis van het gebruik en de stroomvoorziening van uw computer.
+Voor het wisselen van modi is mogelijk opnieuw opstarten vereist.</value>
   </data>
   <data name="ComboBoxHybridModeControl_RestartRequired_Message" xml:space="preserve">
-    <value>切换至 {0} 需要重启，现在重启吗？</value>
+    <value>Als u wilt wijzigen naar {0}, moet u opnieuw opstarten. Wil je nu opnieuw opstarten?</value>
   </data>
   <data name="ComboBoxHybridModeControl_RestartRequired_Title" xml:space="preserve">
-    <value>需要重启</value>
+    <value>Opnieuw opstarten vereist</value>
   </data>
   <data name="ComboBoxHybridModeControl_Title" xml:space="preserve">
-    <value>显卡工作模式</value>
+    <value>GPU Bedieningsmodus</value>
   </data>
   <data name="ContextMenu_QuickActions" xml:space="preserve">
-    <value>快捷方式</value>
+    <value>Snelle Acties</value>
   </data>
   <data name="Continue" xml:space="preserve">
-    <value>继续</value>
+    <value>Doorgaan</value>
   </data>
   <data name="CopyAll" xml:space="preserve">
-    <value>复制全部</value>
+    <value>Alles kopiëren</value>
   </data>
   <data name="DashboardPage_Graphics_Title" xml:space="preserve">
-    <value>显示</value>
+    <value>Grafisch</value>
   </data>
   <data name="DashboardPage_Other_Title" xml:space="preserve">
-    <value>其他</value>
+    <value>Ander</value>
   </data>
   <data name="DashboardPage_Power_Title" xml:space="preserve">
-    <value>电源</value>
+    <value>Stroom</value>
   </data>
   <data name="DashboardPage_Title" xml:space="preserve">
-    <value>主页</value>
+    <value>Startscherm</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>在不需要显卡时关闭显卡
+    <value>Schakel discrete GPU uit als deze onnodig actief is.
 
-警告：在非混合模式或笔记本内置屏幕关闭的情况下此功能将不起作用。</value>
+WAARSCHUWING: Deze actie wordt niet correct uitgevoerd als het interne display is uitgeschakeld of de hybride modus niet actief is.</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
-    <value>独立显卡</value>
+    <value>GPU Deactiveren</value>
   </data>
   <data name="DelayAutomationStepControl_Message" xml:space="preserve">
-    <value>运行下一步前的延迟。</value>
+    <value>Vertraging toevoegen voordat de volgende stap wordt uitgevoerd.</value>
   </data>
   <data name="DelayAutomationStepControl_Title" xml:space="preserve">
-    <value>延迟</value>
+    <value>Stel uit</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>删除</value>
+    <value>Verwijderen</value>
   </data>
   <data name="DeviceInformationWindow_BiosVersion_Title" xml:space="preserve">
-    <value>BIOS版本</value>
+    <value>BIOS versie</value>
   </data>
   <data name="DeviceInformationWindow_Copied_Message" xml:space="preserve">
-    <value>"{0}" 已复制到剪切板。</value>
+    <value>{0} gekopieerd naar klembord.</value>
   </data>
   <data name="DeviceInformationWindow_Copied_Title" xml:space="preserve">
-    <value>已复制！</value>
+    <value>Gekopieerd!</value>
   </data>
   <data name="DeviceInformationWindow_Device_Title" xml:space="preserve">
-    <value>设备信息</value>
+    <value>Apparaat</value>
   </data>
   <data name="DeviceInformationWindow_InWarranty" xml:space="preserve">
-    <value>在保</value>
+    <value>In garrantie</value>
   </data>
   <data name="DeviceInformationWindow_LenovoSupport" xml:space="preserve">
-    <value>联想支持</value>
+    <value>Lenovo Support</value>
   </data>
   <data name="DeviceInformationWindow_MachineType_Title" xml:space="preserve">
-    <value>产品类型</value>
+    <value>Machine Type</value>
   </data>
   <data name="DeviceInformationWindow_Manufacturer_Title" xml:space="preserve">
-    <value>制造商</value>
+    <value>Fabrikant</value>
   </data>
   <data name="DeviceInformationWindow_Model_Title" xml:space="preserve">
-    <value>产品型号</value>
+    <value>Model</value>
   </data>
   <data name="DeviceInformationWindow_OutOfWarranty" xml:space="preserve">
-    <value>过保</value>
+    <value>Vervallen</value>
   </data>
   <data name="DeviceInformationWindow_SerialNumber_Title" xml:space="preserve">
-    <value>序列号</value>
+    <value>Serienummer</value>
   </data>
   <data name="DeviceInformationWindow_Title" xml:space="preserve">
-    <value>关于设备</value>
+    <value>Over je apparaat</value>
   </data>
   <data name="DeviceInformationWindow_WarrantyEndDate_Title" xml:space="preserve">
-    <value>结束时间</value>
+    <value>Einddatum</value>
   </data>
   <data name="DeviceInformationWindow_WarrantyStartDate_Title" xml:space="preserve">
-    <value>开始时间</value>
+    <value>Startdatum</value>
   </data>
   <data name="DeviceInformationWindow_WarrantyStatus_Title" xml:space="preserve">
-    <value>状态</value>
+    <value>Status</value>
   </data>
   <data name="DeviceInformationWindow_Warranty_Title" xml:space="preserve">
-    <value>保修信息</value>
+    <value>Garantie</value>
   </data>
   <data name="DiscreteGPUControl_Active" xml:space="preserve">
-    <value>活动中</value>
+    <value>Actief</value>
   </data>
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
-    <value>强制休眠显卡</value>
+    <value>Deactiveren</value>
   </data>
   <data name="DiscreteGPUControl_DisablePossible" xml:space="preserve">
-    <value>手动强制休眠英伟达显卡
+    <value>nVidia GPU kan worden uitgeschakeld.
 
-谨记，如果强制休眠可能导致一些应用崩溃。</value>
+Houd er rekening mee dat sommige programma's kunnen crashen als u dit doet.</value>
   </data>
   <data name="DiscreteGPUControl_GPUIsNotActive" xml:space="preserve">
-    <value>英伟达显卡休眠中</value>
+    <value>nvidia GPU is niet actief.</value>
   </data>
   <data name="DiscreteGPUControl_Inactive" xml:space="preserve">
-    <value>休眠中</value>
+    <value>inactief</value>
   </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
-    <value>关闭占用应用</value>
+    <value>Apps stoppen</value>
   </data>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
-    <value>在不需要时通过关闭占用应用或重启显卡强制休眠显卡，减少发热与风扇噪音。
-可能会导致应用崩溃，请尽量手动关闭将鼠标放到右侧问号图标处看到的使用显卡的程序。</value>
+    <value>Schakel discrete GPU uit als deze onnodig actief is.</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
-    <value>一个显示器已连接到英伟达显卡</value>
+    <value>Een scherm is connecteerd met de nVidia GPU.</value>
   </data>
   <data name="DiscreteGPUControl_NoProcesses" xml:space="preserve">
-    <value>无进程</value>
+    <value>Geen processen</value>
   </data>
   <data name="DiscreteGPUControl_PerformanceState" xml:space="preserve">
-    <value>性能状态</value>
+    <value>Prestatie statistieken</value>
   </data>
   <data name="DiscreteGPUControl_PerformanceState_Unknown" xml:space="preserve">
-    <value>未知</value>
+    <value>Onbekend</value>
   </data>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
-    <value>正在使用显卡的进程</value>
+    <value>Processen</value>
   </data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
-    <value>重启显卡</value>
+    <value>GPU Opnieuw Opstarten</value>
   </data>
   <data name="DiscreteGPUControl_Title" xml:space="preserve">
-    <value>独立显卡</value>
+    <value>Discrete GPU</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>更改内置屏幕亮度。
-性能模式会更改屏幕亮度，如果无法正常生效请确保把这步放到最后。
+    <value>Wijzig de helderheid van het ingebouwde display.
+Energiemodi veranderen de helderheid op sommige apparaten. Zorg ervoor dat u deze stap als laatste zet, als iets niet goed werkt.
 
-警告：当内置显示器关闭时此步将不起作用。</value>
+WAARSCHUWING: Deze actie wordt niet correct uitgevoerd als het interne display is uitgeschakeld.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
-    <value>显示器亮度</value>
+    <value>Schermhelderheid</value>
   </data>
   <data name="DonatePage_Message" xml:space="preserve">
-    <value>开发与维护联想拯救箱需要大量时间。如果你喜欢这个软件，你可以通过赞助来支持软件的开发。
+    <value>De ontwikkeling en het onderhoud van Lenovo Legion Toolkit kost veel tijd. Als u deze software graag gebruikt, kunt u de toekomst ervan steunen door een bedrag naar keuze te doneren.
 
-点击下方的PayPal图标或扫描二维码使用PayPal赞助。
+Klik op het PayPal-logo hieronder of scan de QR-code om te doneren met PayPal.
 
-万分感谢！</value>
+Bij voorbaat bedankt!</value>
   </data>
   <data name="DonatePage_Title" xml:space="preserve">
-    <value>赞助</value>
+    <value>Doneer</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_NoRefreshRatesFound_Message" xml:space="preserve">
-    <value>请确保笔记本屏幕已打开，联想拯救箱无法加载关闭的屏幕的刷新率。</value>
+    <value>Zorg ervoor dat het beeldscherm van de laptop is ingeschakeld. Lenovo Legion Toolkit kan geen verversingsfrequenties laden voor een beeldscherm dat niet is ingeschakeld.</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_NoRefreshRatesFound_Title" xml:space="preserve">
-    <value>未发现可调节刷新率</value>
+    <value>Geen verversingsnelheiden gevonden</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Title" xml:space="preserve">
-    <value>快捷键刷新率档位选择</value>
+    <value>Verversingsnelheid uitsluiten</value>
   </data>
   <data name="Exit" xml:space="preserve">
-    <value>退出</value>
+    <value>Sluiten</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Auto_Message" xml:space="preserve">
-    <value>使用电池时只使用核显，连接充电器时同时使用核显与独显。当连接非标准充电器器时，系统会切换到混合核显模式。</value>
+    <value>Gebruik alleen geïntegreerde GPU wanneer op batterij en zowel geïntegreerde als discrete GPU wanneer AC-adapter is aangesloten. Wanneer een niet-standaard adapter is aangesloten, schakelt het systeem over naar de modus Hybrid-iGPU Only.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Auto_Title" xml:space="preserve">
-    <value>混合自动模式</value>
+    <value>Hybride-Auto Mode</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_DGPU_Disclaimer" xml:space="preserve">
-    <value>切换到此模式需要重启。</value>
+    <value>Voor het overschakelen van en naar deze modus is opnieuw opstarten vereist.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_DGPU_Message" xml:space="preserve">
-    <value>仅使用独立显卡，此模式将会释放全部显卡性能，但会显著增加功耗。</value>
+    <value>Gebruik alleen discrete GPU. Deze modus biedt de beste grafische prestaties, maar verhoogt het stroomverbruik.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_DGPU_Title" xml:space="preserve">
-    <value>独显直连模式</value>
+    <value>dGPU Modus</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Hybrid_Message" xml:space="preserve">
-    <value>核显与独显都将启用，系统将自动决定使用哪一个。</value>
+    <value>Zowel geïntegreerde als discrete GPU zijn ingeschakeld. Het systeem schakelt automatisch tussen deze op basis van zijn behoeften.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Hybrid_Title" xml:space="preserve">
-    <value>混合模式</value>
+    <value>Hybride modus</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_IGPU_Disclaimer" xml:space="preserve">
-    <value>这种模式只有在独显停用时才会生效。</value>
+    <value>Deze modus wordt alleen van kracht als de discrete GPU niet werkt.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_IGPU_Message" xml:space="preserve">
-    <value>仅使用独显，将获得最长的续航与最小的风扇噪音。</value>
+    <value>Gebruik alleen geïntegreerde GPU. Deze modus minimaliseert het stroomverbruik en geluid.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_IGPU_Title" xml:space="preserve">
-    <value>混合核显模式</value>
+    <value>Hybride-iGPU Only Modus</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Title" xml:space="preserve">
-    <value>关于显卡工作模式</value>
+    <value>Over GPU-werkstanden</value>
   </data>
   <data name="Fahrenheit" xml:space="preserve">
     <value>°F</value>
@@ -570,633 +566,632 @@
     <value>CPU</value>
   </data>
   <data name="FanCurveControl_CPUSensor" xml:space="preserve">
-    <value>CPU传感器</value>
+    <value>CPU Sensor</value>
   </data>
   <data name="FanCurveControl_FanSpeed" xml:space="preserve">
-    <value>风扇转速</value>
+    <value>Ventilatorsnelheid</value>
   </data>
   <data name="FanCurveControl_GPU" xml:space="preserve">
     <value>GPU</value>
   </data>
   <data name="FanCurveControl_RPM" xml:space="preserve">
-    <value>转/分钟 (RPM)</value>
+    <value>RPM</value>
   </data>
   <data name="FlipToStartAutomationStepControl_Message" xml:space="preserve">
-    <value>打开盖子时将自动开启笔记本。</value>
+    <value>Zet de laptop aan als je het deksel opent.</value>
   </data>
   <data name="FlipToStartAutomationStepControl_Title" xml:space="preserve">
-    <value>开盖启动</value>
+    <value>Starten door open te klappen</value>
   </data>
   <data name="FlipToStartControl_Message" xml:space="preserve">
-    <value>打开盖子时将会自动开启笔记本。</value>
+    <value>Zet de laptop aan als je het deksel opent.</value>
   </data>
   <data name="FlipToStartControl_Title" xml:space="preserve">
-    <value>开盖启动</value>
+    <value>Starten door open te klappen</value>
   </data>
   <data name="FnLockAutomationStepControl_Message" xml:space="preserve">
-    <value>开启后将无需按下Fn键即可触发功能。
-开启后需通过按下Fn键才可触发原F1至F12键。</value>
+    <value>Gebruik secundaire functies van F1-F12-toetsen zonder de Fn-toets ingedrukt te houden.</value>
   </data>
   <data name="FnLockAutomationStepControl_Title" xml:space="preserve">
-    <value>锁定Fn键</value>
+    <value>Fn Lock</value>
   </data>
   <data name="FnLockControl_Message" xml:space="preserve">
-    <value>开启后将无需按下Fn键即可触发功能
-开启后需通过按下Fn键才可触发原F1至F12键。</value>
+    <value>Gebruik secundaire functies van F1-F12-toetsen zonder de Fn-toets ingedrukt te houden.</value>
   </data>
   <data name="FnLockControl_Title" xml:space="preserve">
-    <value>锁定Fn键</value>
+    <value>Fn Lock</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
-    <value>警告！
-一些笔记本可以使用更高的功耗限制，但【一定小心】，这个选项可能会导致未知后果！除非你【准确的知道你在做什么】，否则请保持这个选项为0。</value>
+    <value>WAARSCHUWING!
+Sommige laptops accepteren mogelijk hogere vermogenslimieten dan ze aangeven, maar wees voorzichtig. Deze optie kan leiden tot onvoorspelbaar gedrag, dus als u niet zeker weet wat u doet, laat dit dan op 0 staan.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
-    <value>最大功耗限制偏移量</value>
+    <value>Maximale vermogenslimiet offset</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
-    <value>不要修改下面的选项除非你准确的知道你在做什么</value>
+    <value>Wijzig deze instellingen alleen als u weet wat u doet.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Title" xml:space="preserve">
-    <value>高级选项</value>
+    <value>Geavanceerd</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading" xml:space="preserve">
-    <value>长时睿频功耗限制 (Cross Loading)</value>
+    <value>Vermogenslimiet op lange termijn (Cross Loading)</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL" xml:space="preserve">
-    <value>长时睿频功耗限制 (PL1)</value>
+    <value>Vermogenslimiet op lange termijn</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL" xml:space="preserve">
-    <value>短时睿频功耗限制 (PL2)</value>
+    <value>Vermogenslimiet op korte termijn</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit" xml:space="preserve">
-    <value>CPU温度限制</value>
+    <value>CPU Temperatuur Limiet</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_Title" xml:space="preserve">
     <value>CPU</value>
   </data>
   <data name="GodModeSettingsWindow_Error_Apply_Title" xml:space="preserve">
-    <value>无法应用设置</value>
+    <value>Kon de instelling niet toepassen</value>
   </data>
   <data name="GodModeSettingsWindow_Error_Load_Title" xml:space="preserve">
-    <value>无法加载设置</value>
+    <value>Kon de instelling niet toepassen.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
-    <value>风扇速度不是仅仅由一个温度传感器决定的。它将根据CPU、GPU和散热器温度之间的最高值决定转速。把鼠标悬停在滑块上时，可以看到准确的数值。</value>
+    <value>Ventilatorsnelheid wordt niet strikt bepaald door één temperatuursensor. Het zal de snelheid verhogen of verlagen volgens de hoogste sensor tussen CPU, GPU en Heatsink-temperatuur. Exacte waarden verschijnen wanneer u de muisaanwijzer over elke stap beweegt.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Title" xml:space="preserve">
-    <value>风扇曲线</value>
+    <value>Ventilatorcurve</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Message" xml:space="preserve">
-    <value>警告！
-长时间使风扇保持满转速将会减少其寿命。
-我认真的╰（‵□′）╯，谨慎使用此选项！</value>
+    <value>WAARSCHUWING!
+Langdurig gebruik van deze optie zal de ventilators degraderen en hun levensduur verkorten.
+Serieus, wees voorzichtig met deze optie!</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Title" xml:space="preserve">
-    <value>使风扇满转速</value>
+    <value>Maximale ventilatorsnelheid</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Title" xml:space="preserve">
-    <value>风扇</value>
+    <value>Ventilatoren</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_CTGP" xml:space="preserve">
-    <value>可配置 TGP</value>
+    <value>Configureerbare TGP</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost" xml:space="preserve">
-    <value>动态加速功率 (DynamicBoost)</value>
+    <value>Dynamische boost</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit" xml:space="preserve">
-    <value>显卡温度限制</value>
+    <value>GPU Temperatuur Limiet</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_Title" xml:space="preserve">
-    <value>显卡</value>
+    <value>GPU</value>
   </data>
   <data name="GodModeSettingsWindow_Title" xml:space="preserve">
-    <value>自定义模式设置</value>
+    <value>Instellingen aangepaste modus</value>
   </data>
   <data name="IncompatibleDevice_Message" xml:space="preserve">
-    <value>此设备可能与联想拯救箱不兼容</value>
+    <value>Dit apparaat is niet compatibel met Lenovo Legion Toolkit.</value>
   </data>
   <data name="IncompatibleDevice_Title" xml:space="preserve">
-    <value>联想拯救箱 Lenovo Legion Toolkit</value>
+    <value>Lenovo Legion Toolkit</value>
   </data>
   <data name="KeyboardBacklightPage_NoCompatibleKeyboardsFound" xml:space="preserve">
-    <value>未发现兼容的键盘</value>
+    <value>Geen compatibele toetsenborden gevonden</value>
   </data>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
-    <value>键盘背光</value>
+    <value>Toetsenbordverlichting</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
-    <value>关于</value>
+    <value>Over</value>
   </data>
   <data name="MainWindow_NavigationItem_Actions" xml:space="preserve">
-    <value>自动化</value>
+    <value>Acties</value>
   </data>
   <data name="MainWindow_NavigationItem_Battery" xml:space="preserve">
-    <value>电池</value>
+    <value>Batterij</value>
   </data>
   <data name="MainWindow_NavigationItem_Dashboard" xml:space="preserve">
-    <value>控制台</value>
+    <value>Dashboard</value>
   </data>
   <data name="MainWindow_NavigationItem_Donate" xml:space="preserve">
-    <value>赞助</value>
+    <value>Doneer</value>
   </data>
   <data name="MainWindow_NavigationItem_Keyboard" xml:space="preserve">
-    <value>键盘</value>
+    <value>Toetsenbord</value>
   </data>
   <data name="MainWindow_NavigationItem_Packages" xml:space="preserve">
-    <value>驱动下载</value>
+    <value>Pakketten</value>
   </data>
   <data name="MainWindow_NavigationItem_Settings" xml:space="preserve">
-    <value>设置</value>
+    <value>Instellingen</value>
   </data>
   <data name="MainWindow_UpdateAvailable" xml:space="preserve">
-    <value>新版本可用！</value>
+    <value>Updates beschikbaar!</value>
   </data>
   <data name="MainWindow_UpdateAvailableWithVersion" xml:space="preserve">
-    <value>新版本！可升级至{0}！</value>
+    <value>Update {0} is beschikbaar!</value>
   </data>
   <data name="MoveDown" xml:space="preserve">
-    <value>上移</value>
+    <value>Omlaag verplaatsen</value>
   </data>
   <data name="MoveUp" xml:space="preserve">
-    <value>下移</value>
+    <value>Verplaats naar boven</value>
   </data>
   <data name="No" xml:space="preserve">
-    <value>否</value>
+    <value>Nee</value>
   </data>
   <data name="OK" xml:space="preserve">
-    <value>是</value>
+    <value>OK</value>
   </data>
   <data name="Open" xml:space="preserve">
-    <value>打开</value>
+    <value>Open</value>
   </data>
   <data name="OverDriveAutomationStepControl_Message" xml:space="preserve">
-    <value>开启后通过加压超频提升内置屏幕响应速度，可能会导致屏幕过冲产生鬼影。</value>
+    <value>Verbeter de responstijd van het ingebouwde display.</value>
   </data>
   <data name="OverDriveAutomationStepControl_Title" xml:space="preserve">
-    <value>OverDrive</value>
+    <value>Over Drive</value>
   </data>
   <data name="OverDriveControl_Message" xml:space="preserve">
-    <value>开启后通过加压超频提升内置屏幕响应速度，
-可能会导致屏幕过冲产生鬼影。</value>
+    <value>Verbeter de responstijd van het ingebouwde display.</value>
   </data>
   <data name="OverDriveControl_Title" xml:space="preserve">
-    <value>OverDrive</value>
+    <value>Over Drive</value>
   </data>
   <data name="PackageControl_DownloadComplete_Message" xml:space="preserve">
-    <value>已下载{0}！</value>
+    <value>{0} gedownload!</value>
   </data>
   <data name="PackageControl_DownloadComplete_Title" xml:space="preserve">
-    <value>下载完成</value>
+    <value>Download voltooid</value>
   </data>
   <data name="PackageControl_GeneralError_Title" xml:space="preserve">
-    <value>什么地方出错了(っ °Д °;)っ</value>
+    <value>Er is iets misgegaan</value>
   </data>
   <data name="PackageControl_Http404Error_Message" xml:space="preserve">
-    <value>服务器返回404</value>
+    <value>Server heeft code 404 geretourneerd.</value>
   </data>
   <data name="PackageControl_Http404Error_Title" xml:space="preserve">
-    <value>文件看起来没了</value>
+    <value>Dit bestand is mogelijk corrupt of verwijdert.</value>
   </data>
   <data name="PackageControl_HttpGeneralError_Message" xml:space="preserve">
-    <value>请确保你的网络正常</value>
+    <value>Controleer of uw internetverbinding actief is.</value>
   </data>
   <data name="PackageControl_HttpGeneralError_Title" xml:space="preserve">
-    <value>什么地方出错了(っ °Д °;)っ</value>
+    <value>Er is iets misgegaan</value>
   </data>
   <data name="PackageControl_OldPackageWarning" xml:space="preserve">
-    <value>这个包已经是一年多前的了</value>
+    <value>Dit pakket is meer dan een jaar oud.</value>
   </data>
   <data name="PackageControl_Version" xml:space="preserve">
-    <value>版本</value>
+    <value>Versie</value>
   </data>
   <data name="PackagesPage_Disclaimer_Message" xml:space="preserve">
-    <value>下面是根据你的电脑型号获取的软件列表，
-请确保你安装的软件对应型号与版本正确。
-同时下列软件来自于联想国际服务网站，软件和驱动不一定适用于在中国大陆销售的机型。</value>
+    <value>Hieronder vindt u een lijst met softwarepakketten die zijn gemarkeerd als compatibel met uw laptop.
+Zorg er altijd voor dat u de juiste pakketten installeert.</value>
   </data>
   <data name="PackagesPage_Disclaimer_Title" xml:space="preserve">
-    <value>重要提醒</value>
+    <value>Belangrijk</value>
   </data>
   <data name="PackagesPage_DownloadFailed_Message" xml:space="preserve">
-    <value>请确保机器类型与系统类型设置正确！</value>
+    <value>Controleer of Machine Type en OS correct zijn ingesteld.</value>
   </data>
   <data name="PackagesPage_DownloadFailed_Title" xml:space="preserve">
-    <value>什么地方出错了(っ °Д °;)っ</value>
+    <value>Er is iets misgegaan</value>
   </data>
   <data name="PackagesPage_DownloadInProgress_Message" xml:space="preserve">
-    <value>改变排序、搜索关键词、隐藏软件包或刷新列表将停止下载。确定吗？</value>
+    <value>Het wijzigen van sortering, het filteren van resultaten, het verbergen van pakketten of het vernieuwen van de lijst zal het downloaden stoppen. Wil je doorgaan?</value>
   </data>
   <data name="PackagesPage_DownloadInProgress_Title" xml:space="preserve">
-    <value>下载进行中</value>
+    <value>Bezig met downloaden</value>
   </data>
   <data name="PackagesPage_DownloadTo" xml:space="preserve">
-    <value>下载到</value>
+    <value>Download naar</value>
   </data>
   <data name="PackagesPage_Filter" xml:space="preserve">
-    <value>搜索...</value>
+    <value>Filteren...</value>
   </data>
   <data name="PackagesPage_MachineType" xml:space="preserve">
-    <value>设备型号</value>
+    <value>Machine Type</value>
   </data>
   <data name="PackagesPage_OperatingSystem" xml:space="preserve">
-    <value>系统</value>
+    <value>Besturingssysteem</value>
   </data>
   <data name="PackagesPage_PrimarySource" xml:space="preserve">
-    <value>首选来源（推荐）</value>
+    <value>Primair (aanbevolen)</value>
   </data>
   <data name="PackagesPage_PrimarySource_ToolTip" xml:space="preserve">
-    <value>从联想服务网站获取</value>
+    <value>Hetzelfde als Lenovo pc-ondersteuning</value>
   </data>
   <data name="PackagesPage_SecondarySource" xml:space="preserve">
-    <value>备用来源（第三方）</value>
+    <value>Secundair</value>
   </data>
   <data name="PackagesPage_SecondarySource_ToolTip" xml:space="preserve">
-    <value>来自 Lenovo DriverGrabber</value>
+    <value>Hetzelfde als Lenovo DriverGrabber</value>
   </data>
   <data name="PackagesPage_Sort_Category" xml:space="preserve">
-    <value>类别</value>
+    <value>Categorie</value>
   </data>
   <data name="PackagesPage_Sort_Date" xml:space="preserve">
-    <value>日期</value>
+    <value>Datum</value>
   </data>
   <data name="PackagesPage_Sort_Name" xml:space="preserve">
-    <value>名字</value>
+    <value>Naam</value>
   </data>
   <data name="PackagesPage_Source" xml:space="preserve">
-    <value>来源</value>
+    <value>Bron</value>
   </data>
   <data name="PackagesPage_Title" xml:space="preserve">
-    <value>驱动下载</value>
+    <value>Downloads</value>
   </data>
   <data name="Paste" xml:space="preserve">
-    <value>粘贴</value>
+    <value>Plakken</value>
   </data>
   <data name="PickProcessesWindow_Title" xml:space="preserve">
-    <value>应用列表</value>
+    <value>Applicaties</value>
   </data>
   <data name="PowerModeAutomationStepControl_Message" xml:space="preserve">
-    <value>选择性能模式</value>
+    <value>Selecteer prestatiemodus.</value>
   </data>
   <data name="PowerModeAutomationStepControl_Title" xml:space="preserve">
-    <value>性能模式</value>
+    <value>Energiemodus</value>
   </data>
   <data name="PowerModeControl_ChangeError" xml:space="preserve">
-    <value>无法更改性能模式</value>
+    <value>Kan de energiemodus niet wijzigen</value>
   </data>
   <data name="PowerModeControl_Message" xml:space="preserve">
-    <value>选择性能模式
-你可以通过快捷键 Fn+Q 快速更改。</value>
+    <value>Selecteer prestatiemodus.
+U kunt van modus wisselen met Fn+Q.</value>
   </data>
   <data name="PowerModeControl_Settings" xml:space="preserve">
-    <value>设置</value>
+    <value>Instellingen</value>
   </data>
   <data name="PowerModeControl_Title" xml:space="preserve">
-    <value>性能模式</value>
+    <value>Energiemodus</value>
   </data>
   <data name="PowerModeWindow_Title" xml:space="preserve">
-    <value>性能模式</value>
+    <value>Energiemodus</value>
   </data>
   <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Message" xml:space="preserve">
-    <value>当Lenovo Vantage运行时启用该选项并修改笔记本上的电源计划可能会导致意外情况。</value>
+    <value>Als u deze optie inschakelt wanneer Lenovo Vantage actief is en het energiebeheerschema op uw laptop verandert, kan dit leiden tot onverwacht gedrag.</value>
   </data>
   <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Title" xml:space="preserve">
-    <value>你确定吗？</value>
+    <value>Weet je het zeker?</value>
   </data>
   <data name="PowerPlansWindow_BalanceMode" xml:space="preserve">
-    <value>均衡模式</value>
+    <value>Balansmodus</value>
   </data>
   <data name="PowerPlansWindow_CustomMode" xml:space="preserve">
-    <value>自定义模式</value>
+    <value>Aangepaste modus</value>
   </data>
   <data name="PowerPlansWindow_PerformanceMode" xml:space="preserve">
-    <value>野兽模式</value>
+    <value>Prestatiemodus</value>
   </data>
   <data name="PowerPlansWindow_QuietMode" xml:space="preserve">
-    <value>安静模式</value>
+    <value>Stille modus</value>
   </data>
   <data name="PowerPlansWindow_Title" xml:space="preserve">
-    <value>性能计划</value>
+    <value>Energieschema's</value>
   </data>
   <data name="RGBKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>调节键盘背光预设</value>
+    <value>Pas de voorinstelling van de achtergrondverlichting van het toetsenbord aan.
+</value>
   </data>
   <data name="RGBKeyboardBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>键盘背光</value>
+    <value>Toetsenbordverlichting</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Preset1" xml:space="preserve">
-    <value>预设1</value>
+    <value>Voorinstelling 1</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Preset2" xml:space="preserve">
-    <value>预设2</value>
+    <value>Voorinstelling 2</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Preset3" xml:space="preserve">
-    <value>预设3</value>
+    <value>Voorinstelling 3</value>
   </data>
   <data name="RGBKeyboardBacklightControl_PresetOff" xml:space="preserve">
-    <value>关闭</value>
+    <value>Uit</value>
   </data>
   <data name="RGBKeyboardBacklightControl_VantageEnabled_Message" xml:space="preserve">
-    <value>由于Vantage或其服务正在运行导致冲突，无法在此控制键盘背光。</value>
+    <value>De achtergrondverlichting van het toetsenbord kan hier niet worden geregeld wanneer Vantage of zijn services actief zijn.
+</value>
   </data>
   <data name="RGBKeyboardBacklightControl_VantageEnabled_Title" xml:space="preserve">
-    <value>Lenovo Vantage似乎已启用。</value>
+    <value>Lenovo Vantage lijkt te zijn ingeschakeld</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Zone1" xml:space="preserve">
-    <value>区域1</value>
+    <value>Zone 1</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Zone2" xml:space="preserve">
-    <value>区域2</value>
+    <value>Zone 2</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Zone3" xml:space="preserve">
-    <value>区域3</value>
+    <value>Zone 3</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Zone4" xml:space="preserve">
-    <value>区域4</value>
+    <value>Zone 4</value>
   </data>
   <data name="RGBKeyboardBrightnessCardControl_Brightness" xml:space="preserve">
-    <value>亮度</value>
+    <value>Helderheid</value>
   </data>
   <data name="RGBKeyboardEffectCardControl_Title" xml:space="preserve">
-    <value>效果</value>
+    <value>Effect</value>
   </data>
   <data name="RGBKeyboardSpeedCardControl_Title" xml:space="preserve">
-    <value>速度</value>
+    <value>Snelheid</value>
   </data>
   <data name="ReadmeWindow_Title" xml:space="preserve">
-    <value>Readme</value>
+    <value>Leesmij</value>
   </data>
   <data name="Refresh" xml:space="preserve">
-    <value>刷新</value>
+    <value>Vernieuw</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Message" xml:space="preserve">
-    <value>切换内置屏幕刷新率。
+    <value>Wijzig de verversingssnelheid van het ingebouwde beeldscherm.
 
-警告！当内置屏幕关闭时此选项无法生效。</value>
+WAARSCHUWING: Deze actie wordt niet correct uitgevoerd als het interne display is uitgeschakeld.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
-    <value>刷新率</value>
+    <value>Verversingssnelheid</value>
   </data>
   <data name="RefreshRateControl_Message" xml:space="preserve">
-    <value>切换内置屏幕刷新率。</value>
+    <value>Wijzig de verversingssnelheid van het ingebouwde beeldscherm.</value>
   </data>
   <data name="RefreshRateControl_Title" xml:space="preserve">
-    <value>刷新率</value>
+    <value>Verversingssnelheid</value>
   </data>
   <data name="Rename" xml:space="preserve">
-    <value>重命名</value>
+    <value>Hernoemen</value>
   </data>
   <data name="RestartLater" xml:space="preserve">
-    <value>稍后自行重启</value>
+    <value>Ik zal later opnieuw opstarten</value>
   </data>
   <data name="RestartNow" xml:space="preserve">
-    <value>立刻重启</value>
+    <value>Nu opnieuw opstarten</value>
   </data>
   <data name="Revert" xml:space="preserve">
-    <value>重置</value>
+    <value>Terug draaien</value>
   </data>
   <data name="RunAutomationStepControl_ExeArguments" xml:space="preserve">
-    <value>参数</value>
+    <value>Argumenten</value>
   </data>
   <data name="RunAutomationStepControl_ExePath" xml:space="preserve">
-    <value>执行路径</value>
+    <value>Uitvoerbaar Pad</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
-    <value>运行脚本或应用
-确保你的脚本运行正常</value>
+    <value>Voer een script of een programma uit.
+Zorg ervoor dat uw script eerst correct wordt uitgevoerd.</value>
   </data>
   <data name="RunAutomationStepControl_Title" xml:space="preserve">
-    <value>运行</value>
+    <value>Uitvoeren</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>保存</value>
+    <value>Opslaan</value>
   </data>
   <data name="SettingsPage_AccentColor_Description" xml:space="preserve">
-    <value>改变应用的主题色。</value>
+    <value>Pas het thema en de kleuren van de app aan</value>
   </data>
   <data name="SettingsPage_AccentColor_Title" xml:space="preserve">
-    <value>主题色</value>
+    <value>Accentkleur</value>
   </data>
   <data name="SettingsPage_Advanced_Message" xml:space="preserve">
-    <value>不要修改下面的选项，除非你准确的知道你在做什么。</value>
+    <value>Wijzig deze instellingen alleen als u weet wat u doet.</value>
   </data>
   <data name="SettingsPage_Advanced_Title" xml:space="preserve">
-    <value>高级设置</value>
+    <value>Geavanceerd</value>
   </data>
   <data name="SettingsPage_Autorun_Message" xml:space="preserve">
-    <value>最小化启动至托盘
-因为兼容性需要延迟30秒后才会自启。</value>
+    <value>Start geminimaliseerd naar lade wanneer u zich aanmeldt bij Windows.
+Het opstarten wordt om compatibiliteitsredenen met 30 seconden vertraagd.</value>
   </data>
   <data name="SettingsPage_Autorun_Title" xml:space="preserve">
-    <value>开机启动</value>
+    <value>Automatisch uitvoeren</value>
   </data>
   <data name="SettingsPage_CPUBoostModes_Title" xml:space="preserve">
-    <value>CPU睿频模式</value>
+    <value>CPU Boost Modus</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone可能没有被正确禁用。</value>
+    <value>Legion Zone is mogelijk niet correct uitgeschakeld</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Title" xml:space="preserve">
-    <value>无法禁用Legion Zone</value>
+    <value>Kan Legion Zone niet uitschakelen</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Message" xml:space="preserve">
-    <value>禁用Legion Zone服务而无需卸载。
-推荐修改此项后重启电脑。</value>
+    <value>Schakel Legion Zone en zijn service uit zonder het te verwijderen.
+Opnieuw opstarten wordt aanbevolen na het wijzigen van deze optie.</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Title" xml:space="preserve">
-    <value>禁用Legion Zone</value>
+    <value>Schakel Legion Zone Uit</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys可能没有被正确禁用。</value>
+    <value>Legion Zone is mogelijk niet correct uitgeschakeld</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>无法禁用Lenovo Hotkeys</value>
+    <value>Kan Legion Zone niet uitschakelen</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
-    <value>禁用Lenovo Hotkeys而无需卸载。
-禁用后本应用将接管Fn快捷键。
-推荐修改此项后重启电脑。</value>
+    <value>Schakel Lenovo Hotkeys en zijn service uit zonder deze te verwijderen.
+Indien uitgeschakeld, verwerkt deze app Fn-snelkoppelingen
+Opnieuw opstarten wordt aanbevolen na het wijzigen van deze optie.</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
-    <value>禁用Lenovo Hotkeys</value>
+    <value>Schakel Lenovo Hotkeys uit</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>Vantage可能没有被正确禁用。</value>
+    <value>Vantage is mogelijk niet correct uitgeschakeld</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
-    <value>无法禁用Vantage</value>
+    <value>Kan Vantage niet uitschakelen</value>
   </data>
   <data name="SettingsPage_DisableVantage_Message" xml:space="preserve">
-    <value>禁用Lenovo Vantage而无需卸载。
-推荐修改此项后重启电脑。</value>
+    <value>Schakel Lenovo Vantage en zijn service uit zonder het te verwijderen.
+Opnieuw opstarten wordt aanbevolen na het wijzigen van deze optie.</value>
   </data>
   <data name="SettingsPage_DisableVantage_Title" xml:space="preserve">
-    <value>禁用Lenovo Vantage</value>
+    <value>Lenovo Vantage uitschakelen</value>
   </data>
   <data name="SettingsPage_DontShowNotifications_Message" xml:space="preserve">
-    <value>禁用麦克风静音等Fn键操作的弹窗
-如果弹窗与全屏应用有冲突，请启用此选项。</value>
+    <value>Melding uitschakelen voor acties met Fn-toetsen, zoals microfoon dempen
+Schakel deze optie in als u conflicten hebt met toepassingen op volledig scherm.</value>
   </data>
   <data name="SettingsPage_DontShowNotifications_Title" xml:space="preserve">
-    <value>不要显示弹窗</value>
+    <value>Geen meldingen weergeven</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone可能没有被正确启用。</value>
+    <value>Legion Zone is mogelijk niet correct ingeschakeld</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Title" xml:space="preserve">
-    <value>无法启用Legion Zone</value>
+    <value>Kan Legion Zone niet uitschakelen</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys可能没有被正确启用。</value>
+    <value>Legion Hotkeys is mogelijk niet correct uitgeschakeld</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>无法启用Lenovo Hotkeys Keys</value>
+    <value>Kan Lenovo Hotkeys niet uitschakelen</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Vantage可能没有被正确启用</value>
+    <value>Vantage is mogelijk niet correct ingeschakeld</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
-    <value>无法启用Vantage</value>
+    <value>Kan Vantage niet inschakelen</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
-    <value>你可以排除某个刷新率，使Fn+R快捷键切换更快速。</value>
+    <value>U kunt verversingssnelheid uitsluiten om de Fn+R-snelkoppeling nuttiger te maken.</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Title" xml:space="preserve">
-    <value>排除刷新率</value>
+    <value>Verversingsnelheid uitsluiten</value>
   </data>
   <data name="SettingsPage_Language_Message" xml:space="preserve">
-    <value>选择语言</value>
+    <value>Selecteer taal.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
-    <value>语言</value>
+    <value>Taal</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
-    <value>总是最小化到托盘。开启后右键点击托盘图标点击关闭即可关闭软件。</value>
+    <value>Minimaliseer altijd tot tray. Sluit met de rechtermuisknop op het systeemvakpictogram.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
-    <value>关闭时最小化</value>
+    <value>Minimaliseer Bij Sluiten</value>
   </data>
   <data name="SettingsPage_PowerPlans_Title" xml:space="preserve">
-    <value>性能计划</value>
+    <value>Energieschema's</value>
   </data>
   <data name="SettingsPage_Theme_Description" xml:space="preserve">
-    <value>选择浅色或深色模式，亦或者跟随系统。</value>
+    <value>Stel een licht thema, een donker thema in of volg de systeeminstellingen.</value>
   </data>
   <data name="SettingsPage_Theme_Title" xml:space="preserve">
-    <value>主题</value>
+    <value>Thema</value>
   </data>
   <data name="SettingsPage_Title" xml:space="preserve">
-    <value>设置</value>
+    <value>Instellingen</value>
   </data>
   <data name="TimeWindow_Sunrise" xml:space="preserve">
-    <value>日出</value>
+    <value>Zonsopgang</value>
   </data>
   <data name="TimeWindow_Sunset" xml:space="preserve">
-    <value>日落</value>
+    <value>Zonsopgang</value>
   </data>
   <data name="TimeWindow_Time" xml:space="preserve">
-    <value>时间</value>
+    <value>Tijd</value>
   </data>
   <data name="TimeWindow_TimeWindow_Title" xml:space="preserve">
-    <value>时间</value>
+    <value>Tijd</value>
   </data>
   <data name="ToggleHybridModeControl_Message" xml:space="preserve">
-    <value>允许在集成和独立GPU之间切换。
-需要重启。</value>
+    <value>Schakelen tussen geïntegreerde en discrete GPU mogelijk.
+Vereist opnieuw opstarten.</value>
   </data>
   <data name="ToggleHybridModeControl_RestartRequired_Message" xml:space="preserve">
-    <value>更改混合模式需要重新启动。你想现在重启吗？</value>
+    <value>Het wijzigen van de hybride modus vereist opnieuw opstarten. Wil je nu opnieuw opstarten?</value>
   </data>
   <data name="ToggleHybridModeControl_RestartRequired_Title" xml:space="preserve">
-    <value>需要重启</value>
+    <value>Opnieuw opstarten vereist</value>
   </data>
   <data name="ToggleHybridModeControl_Title" xml:space="preserve">
-    <value>混合模式</value>
+    <value>Hybride modus</value>
   </data>
   <data name="TouchpadLockAutomationStepControl_Message" xml:space="preserve">
-    <value>停止使用触摸板</value>
+    <value>Touchpad uitschakelen.</value>
   </data>
   <data name="TouchpadLockAutomationStepControl_Title" xml:space="preserve">
-    <value>锁定触摸板</value>
+    <value>Touchpadvergrendeling</value>
   </data>
   <data name="TouchpadLockControl_Message" xml:space="preserve">
-    <value>停用触摸板。推荐在使用鼠标时开启以避免误触。</value>
+    <value>Touchpad uitschakelen.</value>
   </data>
   <data name="TouchpadLockControl_Title" xml:space="preserve">
-    <value>锁定触摸板</value>
+    <value>Touchpadvergrendeling</value>
   </data>
   <data name="TryAgain" xml:space="preserve">
-    <value>重试</value>
+    <value>Probeer het opnieuw</value>
   </data>
   <data name="UnexpectedException" xml:space="preserve">
-    <value>发生了意外错误：
+    <value>Er is een onverwachte uitzondering opgetreden:
 {0}
 
-请在 {1} 上报告。</value>
+Meld het probleem op {1}.</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
-    <value>未命名</value>
+    <value>naamloos</value>
   </data>
   <data name="UnsupportedWindow_Disclaimer" xml:space="preserve">
-    <value>你可以选择继续，风险自负，但请谨记，一些功能可能无法正常使用。
+    <value>U kunt ervoor kiezen om op eigen risico door te gaan, maar houd er rekening mee dat sommige functies mogelijk niet beschikbaar zijn en/of niet goed werken.
 
-如果你选择继续，将自动启动日志记录。</value>
+Logboekregistratie wordt automatisch ingeschakeld als u ervoor kiest om door te gaan.</value>
   </data>
   <data name="UnsupportedWindow_Disclaimer_GitHub" xml:space="preserve">
-    <value>请查看GitHub上的项目页面以了解更多信息。</value>
+    <value>Bekijk de projectpagina op GitHub voor meer informatie.</value>
   </data>
   <data name="UnsupportedWindow_Disclaimer_Logs" xml:space="preserve">
-    <value>日志文件夹</value>
+    <value>Map met logboeken</value>
   </data>
   <data name="UnsupportedWindow_MachineType" xml:space="preserve">
-    <value>设备类型</value>
+    <value>Machine Type</value>
   </data>
   <data name="UnsupportedWindow_Message" xml:space="preserve">
-    <value>Lenovo Legion Toolkit尚未在您的设备上经过测试。</value>
+    <value>Lenovo Legion Toolkit is niet getest met uw apparaat.</value>
   </data>
   <data name="UnsupportedWindow_Model" xml:space="preserve">
-    <value>设备型号</value>
+    <value>Model</value>
   </data>
   <data name="UnsupportedWindow_Title" xml:space="preserve">
-    <value>不支持的设备</value>
+    <value>Apparaat wordt niet ondersteund</value>
   </data>
   <data name="UnsupportedWindow_Vendor" xml:space="preserve">
-    <value>制造商</value>
+    <value>Leverancier</value>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>更新</value>
+    <value>Bijwerken</value>
   </data>
   <data name="UpdateWindow_Title" xml:space="preserve">
-    <value>有新的更新！</value>
+    <value>Update beschikbaar</value>
   </data>
   <data name="UpdateWindow_WhatsNew" xml:space="preserve">
-    <value>各版本更新日志：</value>
+    <value>Wat is er nieuw?</value>
   </data>
   <data name="WhiteKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>调节键盘背光</value>
+    <value>Pas de voorinstelling van de achtergrondverlichting van het toetsenbord aan.
+</value>
   </data>
   <data name="WhiteKeyboardBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>键盘背光</value>
+    <value>Toetsenbordverlichting</value>
   </data>
   <data name="WhiteKeyboardBacklightControl_Message" xml:space="preserve">
-    <value>你可以通过快捷键 Fn+空格 调节键盘背光开关与亮度。</value>
+    <value>U kunt de helderheid wijzigen met Fn+Space</value>
   </data>
   <data name="WhiteKeyboardBacklightControl_Title" xml:space="preserve">
-    <value>键盘背光亮度</value>
+    <value>Helderheid</value>
   </data>
   <data name="WinKeyAutomationStepControl_Message" xml:space="preserve">
-    <value>启用或禁用Win键。</value>
+    <value>Windows-toets in- of uitschakelen.</value>
   </data>
   <data name="WinKeyAutomationStepControl_Title" xml:space="preserve">
-    <value>Win键开关</value>
+    <value>Windows-toets</value>
   </data>
   <data name="WinKeyControl_Message" xml:space="preserve">
-    <value>仅在内置键盘上生效。开启后Win键按下不再有反应。</value>
+    <value>Werkt alleen op ingebouwd toetsenbord.</value>
   </data>
   <data name="WinKeyControl_Title" xml:space="preserve">
-    <value>禁用Win键</value>
+    <value>Windows-toetsvergrendeling</value>
   </data>
   <data name="Yes" xml:space="preserve">
-    <value>是</value>
+    <value>Ja</value>
   </data>
 </root>

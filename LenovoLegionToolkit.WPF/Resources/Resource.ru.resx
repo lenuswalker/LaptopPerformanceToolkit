@@ -59,1144 +59,1137 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutPage_AppName" xml:space="preserve">
-    <value>拯救者工具箱 Lenovo Legion Toolkit</value>
+    <value>Lenovo Legion Toolkit</value>
   </data>
   <data name="AboutPage_Build" xml:space="preserve">
-    <value>Build</value>
+    <value>Сборка</value>
   </data>
   <data name="AboutPage_LatestReleaseOnGitHub" xml:space="preserve">
-    <value>在Github上查看最新版本</value>
+    <value>Последняя версия на GitHub</value>
   </data>
   <data name="AboutPage_Links" xml:space="preserve">
-    <value>项目链接</value>
+    <value>Ссылки</value>
   </data>
   <data name="AboutPage_ProjectWebsiteOnGitHub" xml:space="preserve">
-    <value>在Github上查看项目主页</value>
+    <value>Страница проекта на GitHub</value>
   </data>
   <data name="AboutPage_ThirdPartyLibraries" xml:space="preserve">
-    <value>第三方依赖库</value>
+    <value>Сторонние библиотеки</value>
   </data>
   <data name="AboutPage_Title" xml:space="preserve">
-    <value>关于</value>
+    <value>О программе</value>
   </data>
   <data name="AboutPage_TranslationCredit" xml:space="preserve">
-    <value>Translated by Karl Lee. 由凌卡Karl汉化，开源社区校正。</value>
+    <value>Переводы предоставлены сообществом.</value>
     <comment>Please replace this text with something like "Translated into &lt;language&gt; by &lt;your name&gt;."</comment>
   </data>
   <data name="AboutPage_Version" xml:space="preserve">
-    <value>版本</value>
+    <value>Версия</value>
   </data>
   <data name="Add" xml:space="preserve">
-    <value>添加</value>
+    <value>Добавить</value>
   </data>
   <data name="AddNew" xml:space="preserve">
-    <value>新建</value>
+    <value>Добавить новую</value>
   </data>
   <data name="AlwaysActivatePowerPlans_Message" xml:space="preserve">
-    <value>当Vantage启用时仍然启用电源计划
-此选项仅适用于没有附带多种电源计划的设备。</value>
+    <value>Активировать схемы питания даже при работе Vantage.
+Этот параметр предназначен только для устройств, которые не поставляются с несколькими схемами питания.</value>
   </data>
   <data name="AlwaysActivatePowerPlans_Title" xml:space="preserve">
-    <value>始终启用Windows电源计划</value>
+    <value>Всегда включать схемы питания Windows</value>
   </data>
   <data name="AlwaysOnUSBControl_Message" xml:space="preserve">
-    <value>在电脑关机、睡眠或休眠时USB保持供电。
-并不是全部的USB接口，一般是笔记本旁标有电池标志的USB接口。</value>
+    <value>Зарядка устройств через USB, когда компьютер выключен или находится в режиме сна или гибернации.</value>
   </data>
   <data name="AlwaysOnUSBControl_Title" xml:space="preserve">
-    <value>保持USB供电</value>
+    <value>Постоянное питание от USB</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
-    <value>在电脑关机、睡眠或休眠时USB保持供电。
-并不是全部的USB接口，一般是笔记本旁标有电池标志的USB接口。</value>
+    <value>Зарядка устройств через USB, когда компьютер выключен или находится в режиме сна или гибернации.</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Title" xml:space="preserve">
-    <value>保持USB供电</value>
+    <value>Постоянное питание от USB</value>
   </data>
   <data name="AppName" xml:space="preserve">
-    <value>拯救者工具箱 Lenovo Legion Toolkit</value>
+    <value>Lenovo Legion Toolkit</value>
   </data>
   <data name="Apply" xml:space="preserve">
-    <value>应用</value>
+    <value>Применить</value>
   </data>
   <data name="ApplyAndClose" xml:space="preserve">
-    <value>应用并关闭</value>
+    <value>Применить и закрыть</value>
   </data>
   <data name="AutomationPage_ActionsEnable_Message" xml:space="preserve">
-    <value>只有程序运行时自动化才可生效。</value>
+    <value>Lenovo Legion Toolkit должен быть запущен для выполнения автоматических действий.</value>
   </data>
   <data name="AutomationPage_ActionsEnabled_Title" xml:space="preserve">
-    <value>启用自动化</value>
+    <value>Активировать</value>
   </data>
   <data name="AutomationPage_Actions_Empty" xml:space="preserve">
-    <value>没有自动化脚本，请点击“新建”来新建一个自动化。</value>
+    <value>Действия не заданы. Нажмите "Добавить новое действие" для создания.</value>
   </data>
   <data name="AutomationPage_Actions_Message" xml:space="preserve">
-    <value>启用后自动化将会自动执行。当状态改变时将会从上到下检测自动化是否符合执行条件。
-只有自动化条件符合时才会执行。</value>
+    <value>При активации эти действия будут выполняться автоматически. При изменении состояния все действия будут обрабатываться сверху вниз.
+Будут выполняться только те действия, которые соответствуют текущему состоянию.</value>
   </data>
   <data name="AutomationPage_Actions_Title" xml:space="preserve">
-    <value>自动化</value>
+    <value>Действия</value>
   </data>
   <data name="AutomationPage_AddManualPipeline_Placeholder" xml:space="preserve">
-    <value>点此输入名称</value>
+    <value>Название...</value>
   </data>
   <data name="AutomationPage_AddManualPipeline_Title" xml:space="preserve">
-    <value>新建</value>
+    <value>Добавить новое</value>
   </data>
   <data name="AutomationPage_QuickActions_Empty" xml:space="preserve">
-    <value>没有快捷方式，请点击“新建”来新建快捷方式。</value>
+    <value>Быстрые действия не заданы. Нажмите "Добавить новое действие" для создания.</value>
   </data>
   <data name="AutomationPage_QuickActions_Message" xml:space="preserve">
-    <value>你可以右键软件托盘图标来激活快捷方式。</value>
+    <value>Быстрые действия доступны в меню иконки в области уведомлений, вызываемом правой кнопкой мыши.</value>
   </data>
   <data name="AutomationPage_QuickActions_Title" xml:space="preserve">
-    <value>快捷方式</value>
+    <value>Быстрые действия</value>
   </data>
   <data name="AutomationPage_RenamePipeline_Placeholder" xml:space="preserve">
-    <value>点此输入名称</value>
+    <value>Название...</value>
   </data>
   <data name="AutomationPage_RenamePipeline_Title" xml:space="preserve">
-    <value>重命名</value>
+    <value>Переименовать</value>
   </data>
   <data name="AutomationPage_Reverted_Message" xml:space="preserve">
-    <value>所有修改已被重置</value>
+    <value>Все изменения отменены!</value>
   </data>
   <data name="AutomationPage_Reverted_Title" xml:space="preserve">
-    <value>重置</value>
+    <value>Сброшено</value>
   </data>
   <data name="AutomationPage_Saved_Message" xml:space="preserve">
-    <value>所有修改已成功保存</value>
+    <value>Изменения успешно сохранены!</value>
   </data>
   <data name="AutomationPage_Saved_Title" xml:space="preserve">
-    <value>已保存</value>
+    <value>Сохранено</value>
   </data>
   <data name="AutomationPage_Title" xml:space="preserve">
-    <value>自动化</value>
+    <value>Автоматизация</value>
   </data>
   <data name="AutomationPipelineControl_AddStep" xml:space="preserve">
-    <value>添加步骤</value>
+    <value>Добавить шаг</value>
   </data>
   <data name="AutomationPipelineControl_Configure" xml:space="preserve">
-    <value>配置</value>
+    <value>Настроить</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive" xml:space="preserve">
-    <value>独占此条件</value>
+    <value>Исключение</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive_ToolTip" xml:space="preserve">
-    <value>勾选后，此条件将无法新建自动化。</value>
+    <value>Не выполнять последующие операции при запуске этого действия.</value>
   </data>
   <data name="AutomationPipelineControl_RunNow" xml:space="preserve">
-    <value>立刻运行</value>
+    <value>Выполнить сейчас</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Error_Message" xml:space="preserve">
-    <value>运行出错</value>
+    <value>Завершено с ошибками.</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Error_Title" xml:space="preserve">
-    <value>立刻运行</value>
+    <value>Выполнение</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Success_Message" xml:space="preserve">
-    <value>运行成功</value>
+    <value>Успешно завершено!</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Success_Title" xml:space="preserve">
-    <value>立刻运行</value>
+    <value>Выполнение</value>
   </data>
   <data name="AutomationPipelineControl_Running" xml:space="preserve">
-    <value>运行中...</value>
+    <value>Выполнение...</value>
   </data>
   <data name="AutomationPipelineControl_Step" xml:space="preserve">
-    <value>共{0}个步骤</value>
+    <value>{0} шаг</value>
   </data>
   <data name="AutomationPipelineControl_Step_Many" xml:space="preserve">
-    <value>共{0}个步骤</value>
+    <value>{0} шагов</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_Apps" xml:space="preserve">
-    <value>应用列表</value>
+    <value>Приложения</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_AtSunrise" xml:space="preserve">
-    <value>日出时</value>
+    <value>На рассвете</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_AtSunset" xml:space="preserve">
-    <value>日落时</value>
+    <value>На закате</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_AtTime" xml:space="preserve">
-    <value>将在{0:D2}:{1:D2}运行</value>
+    <value>В {0:D2}:{1:D2}</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_PowerMode" xml:space="preserve">
-    <value>性能模式</value>
+    <value>Режим питания</value>
   </data>
   <data name="AutomationPipelineControl_Unnamed" xml:space="preserve">
-    <value>未命名</value>
+    <value>Без имени</value>
   </data>
   <data name="BalanceModeSettingsWindow_AIEngine_Message" xml:space="preserve">
-    <value>启用LegionAI引擎以自动检测游戏玩法并调整CPU/GPU性能。可能会增加机身温度和风扇噪音。</value>
+    <value>Автоматически определяет, когда запущены определенные игры, и настраивает производительность CPU и GPU. Возможно повышение температуры и шума вентиляторов.</value>
   </data>
   <data name="BalanceModeSettingsWindow_AIEngine_Title" xml:space="preserve">
-    <value>启用Legion AI 引擎</value>
+    <value>Включить AI Engine</value>
   </data>
   <data name="BalanceModeSettingsWindow_Title" xml:space="preserve">
-    <value>均衡模式设置</value>
+    <value>Настройки режима баланса</value>
   </data>
   <data name="BatteryAutomationStepControl_Message" xml:space="preserve">
-    <value>选择电池充电模式</value>
+    <value>Выберите способ зарядки батареи.</value>
   </data>
   <data name="BatteryAutomationStepControl_Title" xml:space="preserve">
-    <value>充电模式</value>
+    <value>Режим батареи</value>
   </data>
   <data name="BatteryModeControl_Message" xml:space="preserve">
-    <value>选择电池充电模式。养护模式可充至75%~80%，快充可使用较大功率充电。</value>
+    <value>Выберите способ зарядки батареи.</value>
   </data>
   <data name="BatteryModeControl_Title" xml:space="preserve">
-    <value>充电模式</value>
+    <value>Режим батареи</value>
   </data>
   <data name="BatteryPage_ACAdapterConnectedAndCharging" xml:space="preserve">
-    <value>已插入充电器，充电中...</value>
+    <value>Подключен, заряжается...</value>
   </data>
   <data name="BatteryPage_ACAdapterConnectedNotCharging" xml:space="preserve">
-    <value>已插入充电器，未充电...</value>
+    <value>Подключен, не заряжается</value>
   </data>
   <data name="BatteryPage_BatteryTemperature_Message" xml:space="preserve">
-    <value>当前电池温度。</value>
+    <value>Текущая температура батареи.</value>
   </data>
   <data name="BatteryPage_BatteryTemperature_Title" xml:space="preserve">
-    <value>电池温度</value>
+    <value>Температура батареи</value>
   </data>
   <data name="BatteryPage_CurrentCapacity_Message" xml:space="preserve">
-    <value>当前电池容量。</value>
+    <value>Текущая емкость батареи.</value>
   </data>
   <data name="BatteryPage_CurrentCapacity_Title" xml:space="preserve">
-    <value>当前容量</value>
+    <value>Текущая емкость</value>
   </data>
   <data name="BatteryPage_CycleCount_Message" xml:space="preserve">
-    <value>电池充放电循环次数。</value>
+    <value>Число циклов перезарядки.</value>
   </data>
   <data name="BatteryPage_CycleCount_Title" xml:space="preserve">
-    <value>循环次数</value>
+    <value>Число циклов</value>
   </data>
   <data name="BatteryPage_DesignCapacity_Message" xml:space="preserve">
-    <value>电池设计容量。</value>
+    <value>Первоначальная емкость батареи.</value>
   </data>
   <data name="BatteryPage_DesignCapacity_Title" xml:space="preserve">
-    <value>设计容量</value>
+    <value>Расчетная емкость</value>
   </data>
   <data name="BatteryPage_DischargeRate_Message" xml:space="preserve">
-    <value>【+】为电池充电，【-】为电池放电。</value>
+    <value>Частота заряда (+) или разряда (-) батареи.</value>
   </data>
   <data name="BatteryPage_DischargeRate_Title" xml:space="preserve">
-    <value>电池充放电功率</value>
+    <value>Мгновенная мощность при разрядке</value>
   </data>
   <data name="BatteryPage_EstimatedBatteryLifeRemaining" xml:space="preserve">
-    <value>预估剩余时间：{0}</value>
+    <value>Оставшееся время: {0}</value>
   </data>
   <data name="BatteryPage_EstimatingBatteryLife" xml:space="preserve">
-    <value>剩余时间...</value>
+    <value>Оценка времени...</value>
   </data>
   <data name="BatteryPage_FirstUseDate_Title" xml:space="preserve">
-    <value>电池首次使用时间</value>
+    <value>Дата первого применения</value>
   </data>
   <data name="BatteryPage_FirstUse_Message" xml:space="preserve">
-    <value>代表电池被第一次使用的时间。</value>
+    <value>Когда впервые была использована батарея.</value>
   </data>
   <data name="BatteryPage_FullChargeCapacity_Message" xml:space="preserve">
-    <value>当电池充满电时的容量</value>
+    <value>Емкость батареи при полной зарядке.</value>
   </data>
   <data name="BatteryPage_FullChargeCapacity_Title" xml:space="preserve">
-    <value>满电容量</value>
+    <value>Полная емкость заряда</value>
   </data>
   <data name="BatteryPage_LowWattageChargerConnected" xml:space="preserve">
-    <value>已插入低功率充电器</value>
+    <value>Подключено зарядное устройство низкой мощности</value>
   </data>
   <data name="BatteryPage_ManufactureDate_Message" xml:space="preserve">
-    <value>电池的生产日期。</value>
+    <value>Когда была изготовлена батарея.</value>
   </data>
   <data name="BatteryPage_ManufactureDate_Title" xml:space="preserve">
-    <value>生产日期</value>
+    <value>Дата изготовления</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Message" xml:space="preserve">
-    <value>笔记本充电器拔下后到现在的时间。
-当笔记本在关机或休眠时充电可能会导致此时间不准确。</value>
+    <value>Время с момента последнего подключения ноутбука к сети.
+Это время может быть неточным, если ноутбук заряжался во время сна или был выключен.</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Title" xml:space="preserve">
-    <value>电池使用时间</value>
+    <value>На батарее</value>
   </data>
   <data name="BatteryPage_Title" xml:space="preserve">
-    <value>电池</value>
+    <value>Батарея</value>
   </data>
   <data name="CPUBoostModeControl_OnBattery" xml:space="preserve">
-    <value>使用电池时</value>
+    <value>От батареи</value>
   </data>
   <data name="CPUBoostModeControl_PluggedIn" xml:space="preserve">
-    <value>插入充电器时</value>
+    <value>От сети</value>
   </data>
   <data name="CPUBoostModeControl_PowerPlans" xml:space="preserve">
-    <value>性能计划</value>
+    <value>Схемы питания</value>
   </data>
   <data name="CPUBoostModesWindow_LearnMore" xml:space="preserve">
-    <value>访问 microsoft.com 以了解更多</value>
+    <value>Подробнее на сайте microsoft.com</value>
   </data>
   <data name="CPUBoostModesWindow_Title" xml:space="preserve">
-    <value>CPU睿频模式</value>
+    <value>Режимы ускорения процессора</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>取消</value>
+    <value>Отмена</value>
   </data>
   <data name="Celsius" xml:space="preserve">
     <value>°C</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>关闭</value>
+    <value>Закрыть</value>
   </data>
   <data name="ColorCardControl_Blue" xml:space="preserve">
-    <value>蓝色 (B)</value>
+    <value>Синий</value>
   </data>
   <data name="ColorCardControl_Green" xml:space="preserve">
-    <value>绿色 (G)</value>
+    <value>Зеленый</value>
   </data>
   <data name="ColorCardControl_Red" xml:space="preserve">
-    <value>红色 (R)</value>
+    <value>Красный</value>
   </data>
   <data name="ComboBoxHybridModeControl_Message" xml:space="preserve">
-    <value>根据你的使用场景所需的性能与续航选择显卡工作模式。
-切换至独显直连模式或从独显直连模式切换到混合模式需要重启。</value>
+    <value>Выберите режим работы видеокарты в зависимости от особенностей использования компьютера и условий питания.
+Для переключения режимов может потребоваться перезагрузка.</value>
   </data>
   <data name="ComboBoxHybridModeControl_RestartRequired_Message" xml:space="preserve">
-    <value>切换至 {0} 需要重启，现在重启吗？</value>
+    <value>Изменение на {0} требует перезагрузки. Вы хотите выполнить перезапуск сейчас?</value>
   </data>
   <data name="ComboBoxHybridModeControl_RestartRequired_Title" xml:space="preserve">
-    <value>需要重启</value>
+    <value>Требуется перезапуск</value>
   </data>
   <data name="ComboBoxHybridModeControl_Title" xml:space="preserve">
-    <value>显卡工作模式</value>
+    <value>Режим работы видеокарты</value>
   </data>
   <data name="ContextMenu_QuickActions" xml:space="preserve">
-    <value>快捷方式</value>
+    <value>Быстрые действия</value>
   </data>
   <data name="Continue" xml:space="preserve">
-    <value>继续</value>
+    <value>Далее</value>
   </data>
   <data name="CopyAll" xml:space="preserve">
-    <value>复制全部</value>
+    <value>Скопировать все</value>
   </data>
   <data name="DashboardPage_Graphics_Title" xml:space="preserve">
-    <value>显示</value>
+    <value>Графика</value>
   </data>
   <data name="DashboardPage_Other_Title" xml:space="preserve">
-    <value>其他</value>
+    <value>Прочее</value>
   </data>
   <data name="DashboardPage_Power_Title" xml:space="preserve">
-    <value>电源</value>
+    <value>Питание</value>
   </data>
   <data name="DashboardPage_Title" xml:space="preserve">
-    <value>主页</value>
+    <value>Домашняя страница</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>在不需要显卡时关闭显卡
+    <value>Отключить дискретный графический процессор, если он активен без необходимости.
 
-警告：在非混合模式或笔记本内置屏幕关闭的情况下此功能将不起作用。</value>
+ВНИМАНИЕ: Это действие не будет выполняться корректно, если внутренний дисплей выключен или не активен Гибридный режим.</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
-    <value>独立显卡</value>
+    <value>Деактивировать GPU</value>
   </data>
   <data name="DelayAutomationStepControl_Message" xml:space="preserve">
-    <value>运行下一步前的延迟。</value>
+    <value>Добавить задержку перед выполнением следующего шага.</value>
   </data>
   <data name="DelayAutomationStepControl_Title" xml:space="preserve">
-    <value>延迟</value>
+    <value>Задержка</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>删除</value>
+    <value>Удалить</value>
   </data>
   <data name="DeviceInformationWindow_BiosVersion_Title" xml:space="preserve">
-    <value>BIOS版本</value>
+    <value>Версия BIOS</value>
   </data>
   <data name="DeviceInformationWindow_Copied_Message" xml:space="preserve">
-    <value>"{0}" 已复制到剪切板。</value>
+    <value>"{0}" скопировано в буфер обмена.</value>
   </data>
   <data name="DeviceInformationWindow_Copied_Title" xml:space="preserve">
-    <value>已复制！</value>
+    <value>Скопировано!</value>
   </data>
   <data name="DeviceInformationWindow_Device_Title" xml:space="preserve">
-    <value>设备信息</value>
+    <value>Устройство</value>
   </data>
   <data name="DeviceInformationWindow_InWarranty" xml:space="preserve">
-    <value>在保</value>
+    <value>На гарантии</value>
   </data>
   <data name="DeviceInformationWindow_LenovoSupport" xml:space="preserve">
-    <value>联想支持</value>
+    <value>Поддержка Lenovo</value>
   </data>
   <data name="DeviceInformationWindow_MachineType_Title" xml:space="preserve">
-    <value>产品类型</value>
+    <value>Тип модели устройства</value>
   </data>
   <data name="DeviceInformationWindow_Manufacturer_Title" xml:space="preserve">
-    <value>制造商</value>
+    <value>Производитель</value>
   </data>
   <data name="DeviceInformationWindow_Model_Title" xml:space="preserve">
-    <value>产品型号</value>
+    <value>Модель</value>
   </data>
   <data name="DeviceInformationWindow_OutOfWarranty" xml:space="preserve">
-    <value>过保</value>
+    <value>Истек</value>
   </data>
   <data name="DeviceInformationWindow_SerialNumber_Title" xml:space="preserve">
-    <value>序列号</value>
+    <value>Серийный номер</value>
   </data>
   <data name="DeviceInformationWindow_Title" xml:space="preserve">
-    <value>关于设备</value>
+    <value>О вашем устройстве</value>
   </data>
   <data name="DeviceInformationWindow_WarrantyEndDate_Title" xml:space="preserve">
-    <value>结束时间</value>
+    <value>Дата окончания гарантии</value>
   </data>
   <data name="DeviceInformationWindow_WarrantyStartDate_Title" xml:space="preserve">
-    <value>开始时间</value>
+    <value>Начало действия гарантии</value>
   </data>
   <data name="DeviceInformationWindow_WarrantyStatus_Title" xml:space="preserve">
-    <value>状态</value>
+    <value>Состояние</value>
   </data>
   <data name="DeviceInformationWindow_Warranty_Title" xml:space="preserve">
-    <value>保修信息</value>
+    <value>Гарантия</value>
   </data>
   <data name="DiscreteGPUControl_Active" xml:space="preserve">
-    <value>活动中</value>
+    <value>Активный</value>
   </data>
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
-    <value>强制休眠显卡</value>
+    <value>Деактивировать</value>
   </data>
   <data name="DiscreteGPUControl_DisablePossible" xml:space="preserve">
-    <value>手动强制休眠英伟达显卡
+    <value>Графический процессор nVidia может быть отключен.
 
-谨记，如果强制休眠可能导致一些应用崩溃。</value>
+Обратите внимание, что некоторые программы могут выйти из строя, если вы это сделаете.</value>
   </data>
   <data name="DiscreteGPUControl_GPUIsNotActive" xml:space="preserve">
-    <value>英伟达显卡休眠中</value>
+    <value>Графический процессор nVidia не активен.</value>
   </data>
   <data name="DiscreteGPUControl_Inactive" xml:space="preserve">
-    <value>休眠中</value>
+    <value>Неактивный</value>
   </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
-    <value>关闭占用应用</value>
+    <value>Завершить процессы</value>
   </data>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
-    <value>在不需要时通过关闭占用应用或重启显卡强制休眠显卡，减少发热与风扇噪音。
-可能会导致应用崩溃，请尽量手动关闭将鼠标放到右侧问号图标处看到的使用显卡的程序。</value>
+    <value>Отключить дискретный графический процессор, если он активен без необходимости.</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
-    <value>一个显示器已连接到英伟达显卡</value>
+    <value>Монитор подключен к графическому процессору nVidia.</value>
   </data>
   <data name="DiscreteGPUControl_NoProcesses" xml:space="preserve">
-    <value>无进程</value>
+    <value>Нет процессов</value>
   </data>
   <data name="DiscreteGPUControl_PerformanceState" xml:space="preserve">
-    <value>性能状态</value>
+    <value>Состояние производительности</value>
   </data>
   <data name="DiscreteGPUControl_PerformanceState_Unknown" xml:space="preserve">
-    <value>未知</value>
+    <value>Неизвестно</value>
   </data>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
-    <value>正在使用显卡的进程</value>
+    <value>Процессы</value>
   </data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
-    <value>重启显卡</value>
+    <value>Перезапустить граф. процессор</value>
   </data>
   <data name="DiscreteGPUControl_Title" xml:space="preserve">
-    <value>独立显卡</value>
+    <value>Дискретный граф. процессор</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>更改内置屏幕亮度。
-性能模式会更改屏幕亮度，如果无法正常生效请确保把这步放到最后。
+    <value>Изменить яркость встроенного дисплея.
+На некоторых устройствах режимы питания изменяют яркость. Убедитесь, что этот шаг последний, если что-то работает не так, как нужно.
 
-警告：当内置显示器关闭时此步将不起作用。</value>
+ВНИМАНИЕ: Это действие не будет выполнено правильно, если внутренний дисплей выключен.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
-    <value>显示器亮度</value>
+    <value>Яркость дисплея</value>
   </data>
   <data name="DonatePage_Message" xml:space="preserve">
-    <value>开发与维护联想拯救箱需要大量时间。如果你喜欢这个软件，你可以通过赞助来支持软件的开发。
+    <value>На разработку и обслуживание Lenovo Legion Toolkit уходит много времени. Если вам нравится пользоваться этим программным обеспечением, вы можете поддержать его будущее, пожертвовав любую сумму денег.
 
-点击下方的PayPal图标或扫描二维码使用PayPal赞助。
+Нажмите на логотип PayPal ниже или отсканируйте QR-код, чтобы сделать пожертвование через PayPal.
 
-万分感谢！</value>
+Заранее спасибо!</value>
   </data>
   <data name="DonatePage_Title" xml:space="preserve">
-    <value>赞助</value>
+    <value>Сделать пожертвование</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_NoRefreshRatesFound_Message" xml:space="preserve">
-    <value>请确保笔记本屏幕已打开，联想拯救箱无法加载关闭的屏幕的刷新率。</value>
+    <value>Убедитесь, что дисплей ноутбука включен. Lenovo Legion Toolkit не может загрузить частоты обновления для не включенного дисплея.</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_NoRefreshRatesFound_Title" xml:space="preserve">
-    <value>未发现可调节刷新率</value>
+    <value>Частота обновления не обнаружена</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Title" xml:space="preserve">
-    <value>快捷键刷新率档位选择</value>
+    <value>Исключить частоту обновления</value>
   </data>
   <data name="Exit" xml:space="preserve">
-    <value>退出</value>
+    <value>Выход</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Auto_Message" xml:space="preserve">
-    <value>使用电池时只使用核显，连接充电器时同时使用核显与独显。当连接非标准充电器器时，系统会切换到混合核显模式。</value>
+    <value>Использовать только интегрированную видеокарту при работе от батареи и одновременно встроенную и дискретную GPU при подключении блока питания. При подключении нестандартного блока питания система переключится в Гибридный режим с использованием интегрированной GPU (Hybrid-iGPU Only Mode).</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Auto_Title" xml:space="preserve">
-    <value>混合自动模式</value>
+    <value>Режим Hybrid-Auto</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_DGPU_Disclaimer" xml:space="preserve">
-    <value>切换到此模式需要重启。</value>
+    <value>Переключение этого режима требует перезапуска.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_DGPU_Message" xml:space="preserve">
-    <value>仅使用独立显卡，此模式将会释放全部显卡性能，但会显著增加功耗。</value>
+    <value>Использовать исключительно дискретный графический процессор. Этот режим дает наилучшую производительность, но увеличивает энергопотребление.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_DGPU_Title" xml:space="preserve">
-    <value>独显直连模式</value>
+    <value>Режим дискретной видеокарты</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Hybrid_Message" xml:space="preserve">
-    <value>核显与独显都将启用，系统将自动决定使用哪一个。</value>
+    <value>Будут включены как встроенная, так и дискретная видеокарта. Система будет автоматически переключаться между ними в зависимости от потребностей.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Hybrid_Title" xml:space="preserve">
-    <value>混合模式</value>
+    <value>Гибридный режим</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_IGPU_Disclaimer" xml:space="preserve">
-    <value>这种模式只有在独显停用时才会生效。</value>
+    <value>Этот режим действует только в том случае, если дискретная видеокарта не работает.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_IGPU_Message" xml:space="preserve">
-    <value>仅使用独显，将获得最长的续航与最小的风扇噪音。</value>
+    <value>Использовать только встроенную видеокарту. Этот режим минимизирует энергопотребление и шум.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_IGPU_Title" xml:space="preserve">
-    <value>混合核显模式</value>
+    <value>Гибридный режим с использованием интегрированной GPU</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Title" xml:space="preserve">
-    <value>关于显卡工作模式</value>
+    <value>О режимах работы графического процессора</value>
   </data>
   <data name="Fahrenheit" xml:space="preserve">
     <value>°F</value>
   </data>
   <data name="FanCurveControl_CPU" xml:space="preserve">
-    <value>CPU</value>
+    <value>ЦП</value>
   </data>
   <data name="FanCurveControl_CPUSensor" xml:space="preserve">
-    <value>CPU传感器</value>
+    <value>Датчик ЦП</value>
   </data>
   <data name="FanCurveControl_FanSpeed" xml:space="preserve">
-    <value>风扇转速</value>
+    <value>Скорость вентилятора</value>
   </data>
   <data name="FanCurveControl_GPU" xml:space="preserve">
-    <value>GPU</value>
+    <value>Граф. процессор</value>
   </data>
   <data name="FanCurveControl_RPM" xml:space="preserve">
-    <value>转/分钟 (RPM)</value>
+    <value>об/мин</value>
   </data>
   <data name="FlipToStartAutomationStepControl_Message" xml:space="preserve">
-    <value>打开盖子时将自动开启笔记本。</value>
+    <value>Включить ноутбук при открытии крышки.</value>
   </data>
   <data name="FlipToStartAutomationStepControl_Title" xml:space="preserve">
-    <value>开盖启动</value>
+    <value>Flip To Start</value>
   </data>
   <data name="FlipToStartControl_Message" xml:space="preserve">
-    <value>打开盖子时将会自动开启笔记本。</value>
+    <value>Включить ноутбук при открытии крышки.</value>
   </data>
   <data name="FlipToStartControl_Title" xml:space="preserve">
-    <value>开盖启动</value>
+    <value>Flip To Start</value>
   </data>
   <data name="FnLockAutomationStepControl_Message" xml:space="preserve">
-    <value>开启后将无需按下Fn键即可触发功能。
-开启后需通过按下Fn键才可触发原F1至F12键。</value>
+    <value>Использовать вторичные функции клавиш F1-F12, не удерживая клавишу Fn.</value>
   </data>
   <data name="FnLockAutomationStepControl_Title" xml:space="preserve">
-    <value>锁定Fn键</value>
+    <value>Fn Lock</value>
   </data>
   <data name="FnLockControl_Message" xml:space="preserve">
-    <value>开启后将无需按下Fn键即可触发功能
-开启后需通过按下Fn键才可触发原F1至F12键。</value>
+    <value>Использовать вторичные функции клавиш F1-F12, не удерживая клавишу Fn.</value>
   </data>
   <data name="FnLockControl_Title" xml:space="preserve">
-    <value>锁定Fn键</value>
+    <value>Fn Lock</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
-    <value>警告！
-一些笔记本可以使用更高的功耗限制，但【一定小心】，这个选项可能会导致未知后果！除非你【准确的知道你在做什么】，否则请保持这个选项为0。</value>
+    <value>ВНИМАНИЕ!
+Некоторые ноутбуки могут допускать более высокие пределы мощности, чем они указывают, однако будьте осторожны. Этот параметр может привести к непредсказуемому поведению, поэтому, если вы не уверены в своих действиях, оставьте значение 0.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
-    <value>最大功耗限制偏移量</value>
+    <value>Смещение ограничения максимальной мощности</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
-    <value>不要修改下面的选项除非你准确的知道你在做什么</value>
+    <value>Не изменяйте указанные ниже параметры, если вы не знаете, что делаете.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Title" xml:space="preserve">
-    <value>高级选项</value>
+    <value>Доп. настройки</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading" xml:space="preserve">
-    <value>长时睿频功耗限制 (Cross Loading)</value>
+    <value>Долгосрочное ограничение мощности (перекрестная загрузка)</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL" xml:space="preserve">
-    <value>长时睿频功耗限制 (PL1)</value>
+    <value>Долгосрочное ограничение мощности</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL" xml:space="preserve">
-    <value>短时睿频功耗限制 (PL2)</value>
+    <value>Краткосрочное ограничение мощности</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit" xml:space="preserve">
-    <value>CPU温度限制</value>
+    <value>Ограничение температуры ЦП</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_Title" xml:space="preserve">
-    <value>CPU</value>
+    <value>ЦП</value>
   </data>
   <data name="GodModeSettingsWindow_Error_Apply_Title" xml:space="preserve">
-    <value>无法应用设置</value>
+    <value>Не удалось применить настройки</value>
   </data>
   <data name="GodModeSettingsWindow_Error_Load_Title" xml:space="preserve">
-    <value>无法加载设置</value>
+    <value>Не удалось загрузить настройки.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
-    <value>风扇速度不是仅仅由一个温度传感器决定的。它将根据CPU、GPU和散热器温度之间的最高值决定转速。把鼠标悬停在滑块上时，可以看到准确的数值。</value>
+    <value>Скорость вращения вентилятора не определяется одним температурным датчиком. Он будет увеличивать или уменьшать скорость в зависимости от наибольшего датчика между температурой CPU, GPU и кулера. Точные значения будут отображаться при наведении курсора мыши на каждый шаг.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Title" xml:space="preserve">
-    <value>风扇曲线</value>
+    <value>Кривая вентилятора</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Message" xml:space="preserve">
-    <value>警告！
-长时间使风扇保持满转速将会减少其寿命。
-我认真的╰（‵□′）╯，谨慎使用此选项！</value>
+    <value>ВНИМАНИЕ!
+Длительное использование этой опции приводит к деградации вентиляторов, снижая их срок службы.
+Серьезно, будьте осторожны с этой опцией!</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Title" xml:space="preserve">
-    <value>使风扇满转速</value>
+    <value>Максимальная скорость вентилятора</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Title" xml:space="preserve">
-    <value>风扇</value>
+    <value>Вентиляторы</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_CTGP" xml:space="preserve">
-    <value>可配置 TGP</value>
+    <value>Настраиваемый TGP</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost" xml:space="preserve">
-    <value>动态加速功率 (DynamicBoost)</value>
+    <value>Dynamic Boost</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit" xml:space="preserve">
-    <value>显卡温度限制</value>
+    <value>Ограничение температуры GPU</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_Title" xml:space="preserve">
-    <value>显卡</value>
+    <value>Граф. процессор</value>
   </data>
   <data name="GodModeSettingsWindow_Title" xml:space="preserve">
-    <value>自定义模式设置</value>
+    <value>Настройки пользовательского режима</value>
   </data>
   <data name="IncompatibleDevice_Message" xml:space="preserve">
-    <value>此设备可能与联想拯救箱不兼容</value>
+    <value>Это устройство не совместимо с Lenovo Legion Toolkit.</value>
   </data>
   <data name="IncompatibleDevice_Title" xml:space="preserve">
-    <value>联想拯救箱 Lenovo Legion Toolkit</value>
+    <value>Lenovo Legion Toolkit</value>
   </data>
   <data name="KeyboardBacklightPage_NoCompatibleKeyboardsFound" xml:space="preserve">
-    <value>未发现兼容的键盘</value>
+    <value>Не найдено подходящих клавиатур</value>
   </data>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
-    <value>键盘背光</value>
+    <value>Подсветка клавиатуры</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
-    <value>关于</value>
+    <value>О программе</value>
   </data>
   <data name="MainWindow_NavigationItem_Actions" xml:space="preserve">
-    <value>自动化</value>
+    <value>Действия</value>
   </data>
   <data name="MainWindow_NavigationItem_Battery" xml:space="preserve">
-    <value>电池</value>
+    <value>Батарея</value>
   </data>
   <data name="MainWindow_NavigationItem_Dashboard" xml:space="preserve">
-    <value>控制台</value>
+    <value>Обзор</value>
   </data>
   <data name="MainWindow_NavigationItem_Donate" xml:space="preserve">
-    <value>赞助</value>
+    <value>Поддержка</value>
   </data>
   <data name="MainWindow_NavigationItem_Keyboard" xml:space="preserve">
-    <value>键盘</value>
+    <value>Клавиатура</value>
   </data>
   <data name="MainWindow_NavigationItem_Packages" xml:space="preserve">
-    <value>驱动下载</value>
+    <value>Пакеты ПО</value>
   </data>
   <data name="MainWindow_NavigationItem_Settings" xml:space="preserve">
-    <value>设置</value>
+    <value>Настройки</value>
   </data>
   <data name="MainWindow_UpdateAvailable" xml:space="preserve">
-    <value>新版本可用！</value>
+    <value>Доступно обновление!</value>
   </data>
   <data name="MainWindow_UpdateAvailableWithVersion" xml:space="preserve">
-    <value>新版本！可升级至{0}！</value>
+    <value>Доступно обновление {0}!</value>
   </data>
   <data name="MoveDown" xml:space="preserve">
-    <value>上移</value>
+    <value>Переместить вниз</value>
   </data>
   <data name="MoveUp" xml:space="preserve">
-    <value>下移</value>
+    <value>Переместить вверх</value>
   </data>
   <data name="No" xml:space="preserve">
-    <value>否</value>
+    <value>Нет</value>
   </data>
   <data name="OK" xml:space="preserve">
-    <value>是</value>
+    <value>ОК</value>
   </data>
   <data name="Open" xml:space="preserve">
-    <value>打开</value>
+    <value>Открыть</value>
   </data>
   <data name="OverDriveAutomationStepControl_Message" xml:space="preserve">
-    <value>开启后通过加压超频提升内置屏幕响应速度，可能会导致屏幕过冲产生鬼影。</value>
+    <value>Улучшить время отклика встроенного дисплея.</value>
   </data>
   <data name="OverDriveAutomationStepControl_Title" xml:space="preserve">
-    <value>OverDrive</value>
+    <value>Over Drive</value>
   </data>
   <data name="OverDriveControl_Message" xml:space="preserve">
-    <value>开启后通过加压超频提升内置屏幕响应速度，
-可能会导致屏幕过冲产生鬼影。</value>
+    <value>Улучшить время отклика встроенного дисплея.</value>
   </data>
   <data name="OverDriveControl_Title" xml:space="preserve">
-    <value>OverDrive</value>
+    <value>Over Drive</value>
   </data>
   <data name="PackageControl_DownloadComplete_Message" xml:space="preserve">
-    <value>已下载{0}！</value>
+    <value>{0} загружен!</value>
   </data>
   <data name="PackageControl_DownloadComplete_Title" xml:space="preserve">
-    <value>下载完成</value>
+    <value>Скачивание завершено</value>
   </data>
   <data name="PackageControl_GeneralError_Title" xml:space="preserve">
-    <value>什么地方出错了(っ °Д °;)っ</value>
+    <value>Что-то пошло не так</value>
   </data>
   <data name="PackageControl_Http404Error_Message" xml:space="preserve">
-    <value>服务器返回404</value>
+    <value>Сервер вернул код ошибки 404.</value>
   </data>
   <data name="PackageControl_Http404Error_Title" xml:space="preserve">
-    <value>文件看起来没了</value>
+    <value>Похоже, файл отсутствует</value>
   </data>
   <data name="PackageControl_HttpGeneralError_Message" xml:space="preserve">
-    <value>请确保你的网络正常</value>
+    <value>Убедитесь, что ваше интернет-соединение работает.</value>
   </data>
   <data name="PackageControl_HttpGeneralError_Title" xml:space="preserve">
-    <value>什么地方出错了(っ °Д °;)っ</value>
+    <value>Что-то пошло не так</value>
   </data>
   <data name="PackageControl_OldPackageWarning" xml:space="preserve">
-    <value>这个包已经是一年多前的了</value>
+    <value>Этому пакету ПО более года.</value>
   </data>
   <data name="PackageControl_Version" xml:space="preserve">
-    <value>版本</value>
+    <value>Версия</value>
   </data>
   <data name="PackagesPage_Disclaimer_Message" xml:space="preserve">
-    <value>下面是根据你的电脑型号获取的软件列表，
-请确保你安装的软件对应型号与版本正确。
-同时下列软件来自于联想国际服务网站，软件和驱动不一定适用于在中国大陆销售的机型。</value>
+    <value>Ниже приведен список пакетов программного обеспечения, отмеченные как совместимые с вашим ноутбуком.
+Убедитесь, что вы устанавливаете правильные пакеты.</value>
   </data>
   <data name="PackagesPage_Disclaimer_Title" xml:space="preserve">
-    <value>重要提醒</value>
+    <value>Внимание</value>
   </data>
   <data name="PackagesPage_DownloadFailed_Message" xml:space="preserve">
-    <value>请确保机器类型与系统类型设置正确！</value>
+    <value>Проверьте, верно ли заданы Тип модели устройства и ОС.</value>
   </data>
   <data name="PackagesPage_DownloadFailed_Title" xml:space="preserve">
-    <value>什么地方出错了(っ °Д °;)っ</value>
+    <value>Что-то пошло не так</value>
   </data>
   <data name="PackagesPage_DownloadInProgress_Message" xml:space="preserve">
-    <value>改变排序、搜索关键词、隐藏软件包或刷新列表将停止下载。确定吗？</value>
+    <value>При изменении сортировки, фильтрации результатов, скрытии пакетов или обновлении списка процесс загрузки будет остановлен. Вы хотите продолжить?</value>
   </data>
   <data name="PackagesPage_DownloadInProgress_Title" xml:space="preserve">
-    <value>下载进行中</value>
+    <value>Идет скачивание</value>
   </data>
   <data name="PackagesPage_DownloadTo" xml:space="preserve">
-    <value>下载到</value>
+    <value>Место загрузки</value>
   </data>
   <data name="PackagesPage_Filter" xml:space="preserve">
-    <value>搜索...</value>
+    <value>Фильтр...</value>
   </data>
   <data name="PackagesPage_MachineType" xml:space="preserve">
-    <value>设备型号</value>
+    <value>Тип модели устройства</value>
   </data>
   <data name="PackagesPage_OperatingSystem" xml:space="preserve">
-    <value>系统</value>
+    <value>Операционная система</value>
   </data>
   <data name="PackagesPage_PrimarySource" xml:space="preserve">
-    <value>首选来源（推荐）</value>
+    <value>Основной (Рекомендуется)</value>
   </data>
   <data name="PackagesPage_PrimarySource_ToolTip" xml:space="preserve">
-    <value>从联想服务网站获取</value>
+    <value>Аналогичен Поддержке ПК Lenovo</value>
   </data>
   <data name="PackagesPage_SecondarySource" xml:space="preserve">
-    <value>备用来源（第三方）</value>
+    <value>Вторичный</value>
   </data>
   <data name="PackagesPage_SecondarySource_ToolTip" xml:space="preserve">
-    <value>来自 Lenovo DriverGrabber</value>
+    <value>Аналогичен Lenovo DriverGrabber</value>
   </data>
   <data name="PackagesPage_Sort_Category" xml:space="preserve">
-    <value>类别</value>
+    <value>Категория</value>
   </data>
   <data name="PackagesPage_Sort_Date" xml:space="preserve">
-    <value>日期</value>
+    <value>Дата</value>
   </data>
   <data name="PackagesPage_Sort_Name" xml:space="preserve">
-    <value>名字</value>
+    <value>Название</value>
   </data>
   <data name="PackagesPage_Source" xml:space="preserve">
-    <value>来源</value>
+    <value>Источник</value>
   </data>
   <data name="PackagesPage_Title" xml:space="preserve">
-    <value>驱动下载</value>
+    <value>Загрузки</value>
   </data>
   <data name="Paste" xml:space="preserve">
-    <value>粘贴</value>
+    <value>Вставить</value>
   </data>
   <data name="PickProcessesWindow_Title" xml:space="preserve">
-    <value>应用列表</value>
+    <value>Приложения</value>
   </data>
   <data name="PowerModeAutomationStepControl_Message" xml:space="preserve">
-    <value>选择性能模式</value>
+    <value>Выбрать режим работы.</value>
   </data>
   <data name="PowerModeAutomationStepControl_Title" xml:space="preserve">
-    <value>性能模式</value>
+    <value>Режим питания</value>
   </data>
   <data name="PowerModeControl_ChangeError" xml:space="preserve">
-    <value>无法更改性能模式</value>
+    <value>Не удалось изменить режим питания</value>
   </data>
   <data name="PowerModeControl_Message" xml:space="preserve">
-    <value>选择性能模式
-你可以通过快捷键 Fn+Q 快速更改。</value>
+    <value>Выбрать режим работы.
+Переключение режима осуществляется с помощью Fn+Q. </value>
   </data>
   <data name="PowerModeControl_Settings" xml:space="preserve">
-    <value>设置</value>
+    <value>Настройки</value>
   </data>
   <data name="PowerModeControl_Title" xml:space="preserve">
-    <value>性能模式</value>
+    <value>Режим питания</value>
   </data>
   <data name="PowerModeWindow_Title" xml:space="preserve">
-    <value>性能模式</value>
+    <value>Режим питания</value>
   </data>
   <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Message" xml:space="preserve">
-    <value>当Lenovo Vantage运行时启用该选项并修改笔记本上的电源计划可能会导致意外情况。</value>
+    <value>Включение этой опции во время работы Lenovo Vantage и изменения планов электропитания на ноутбуке может привести к неожиданным последствиям.</value>
   </data>
   <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Title" xml:space="preserve">
-    <value>你确定吗？</value>
+    <value>Вы уверены?</value>
   </data>
   <data name="PowerPlansWindow_BalanceMode" xml:space="preserve">
-    <value>均衡模式</value>
+    <value>Сбалансированный режим</value>
   </data>
   <data name="PowerPlansWindow_CustomMode" xml:space="preserve">
-    <value>自定义模式</value>
+    <value>Пользовательский режим</value>
   </data>
   <data name="PowerPlansWindow_PerformanceMode" xml:space="preserve">
-    <value>野兽模式</value>
+    <value>Режим макс. производительности</value>
   </data>
   <data name="PowerPlansWindow_QuietMode" xml:space="preserve">
-    <value>安静模式</value>
+    <value>Тихий режим</value>
   </data>
   <data name="PowerPlansWindow_Title" xml:space="preserve">
-    <value>性能计划</value>
+    <value>Схемы питания</value>
   </data>
   <data name="RGBKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>调节键盘背光预设</value>
+    <value>Настройть пресет подсветки клавиатуры.</value>
   </data>
   <data name="RGBKeyboardBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>键盘背光</value>
+    <value>Подсветка клавиатуры</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Preset1" xml:space="preserve">
-    <value>预设1</value>
+    <value>Пресет 1</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Preset2" xml:space="preserve">
-    <value>预设2</value>
+    <value>Пресет 2</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Preset3" xml:space="preserve">
-    <value>预设3</value>
+    <value>Пресет 3</value>
   </data>
   <data name="RGBKeyboardBacklightControl_PresetOff" xml:space="preserve">
-    <value>关闭</value>
+    <value>Откл.</value>
   </data>
   <data name="RGBKeyboardBacklightControl_VantageEnabled_Message" xml:space="preserve">
-    <value>由于Vantage或其服务正在运行导致冲突，无法在此控制键盘背光。</value>
+    <value>Подсветкой клавиатуры нельзя управлять здесь, когда работает Vantage или его службы.</value>
   </data>
   <data name="RGBKeyboardBacklightControl_VantageEnabled_Title" xml:space="preserve">
-    <value>Lenovo Vantage似乎已启用。</value>
+    <value>Похоже, что Lenovo Vantage включен</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Zone1" xml:space="preserve">
-    <value>区域1</value>
+    <value>Зона 1</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Zone2" xml:space="preserve">
-    <value>区域2</value>
+    <value>Зона 2</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Zone3" xml:space="preserve">
-    <value>区域3</value>
+    <value>Зона 3</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Zone4" xml:space="preserve">
-    <value>区域4</value>
+    <value>Зона 4</value>
   </data>
   <data name="RGBKeyboardBrightnessCardControl_Brightness" xml:space="preserve">
-    <value>亮度</value>
+    <value>Яркость</value>
   </data>
   <data name="RGBKeyboardEffectCardControl_Title" xml:space="preserve">
-    <value>效果</value>
+    <value>Эффект</value>
   </data>
   <data name="RGBKeyboardSpeedCardControl_Title" xml:space="preserve">
-    <value>速度</value>
+    <value>Скорость</value>
   </data>
   <data name="ReadmeWindow_Title" xml:space="preserve">
-    <value>Readme</value>
+    <value>Информация</value>
   </data>
   <data name="Refresh" xml:space="preserve">
-    <value>刷新</value>
+    <value>Обновить</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Message" xml:space="preserve">
-    <value>切换内置屏幕刷新率。
+    <value>Изменить частоту обновления встроенного дисплея.
 
-警告！当内置屏幕关闭时此选项无法生效。</value>
+ВНИМАНИЕ: Это действие не будет выполняться корректно, если внутренний дисплей выключен.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
-    <value>刷新率</value>
+    <value>Частота обновления</value>
   </data>
   <data name="RefreshRateControl_Message" xml:space="preserve">
-    <value>切换内置屏幕刷新率。</value>
+    <value>Изменить частоту обновления встроенного дисплея.</value>
   </data>
   <data name="RefreshRateControl_Title" xml:space="preserve">
-    <value>刷新率</value>
+    <value>Частота обновления</value>
   </data>
   <data name="Rename" xml:space="preserve">
-    <value>重命名</value>
+    <value>Переименовать</value>
   </data>
   <data name="RestartLater" xml:space="preserve">
-    <value>稍后自行重启</value>
+    <value>Перезапущу позже</value>
   </data>
   <data name="RestartNow" xml:space="preserve">
-    <value>立刻重启</value>
+    <value>Перезапустить сейчас</value>
   </data>
   <data name="Revert" xml:space="preserve">
-    <value>重置</value>
+    <value>Отменить</value>
   </data>
   <data name="RunAutomationStepControl_ExeArguments" xml:space="preserve">
-    <value>参数</value>
+    <value>Аргументы</value>
   </data>
   <data name="RunAutomationStepControl_ExePath" xml:space="preserve">
-    <value>执行路径</value>
+    <value>Путь к исполняемому файлу</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
-    <value>运行脚本或应用
-确保你的脚本运行正常</value>
+    <value>Запустите сценарий или программу.
+Убедитесь, что ваш сценарий выполняется правильно.</value>
   </data>
   <data name="RunAutomationStepControl_Title" xml:space="preserve">
-    <value>运行</value>
+    <value>Выполнить</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>保存</value>
+    <value>Сохранить</value>
   </data>
   <data name="SettingsPage_AccentColor_Description" xml:space="preserve">
-    <value>改变应用的主题色。</value>
+    <value>Изменить контрастный цвет приложения.</value>
   </data>
   <data name="SettingsPage_AccentColor_Title" xml:space="preserve">
-    <value>主题色</value>
+    <value>Контрастный цвет</value>
   </data>
   <data name="SettingsPage_Advanced_Message" xml:space="preserve">
-    <value>不要修改下面的选项，除非你准确的知道你在做什么。</value>
+    <value>Не изменяйте указанные ниже параметры, если вы не знаете, что делаете.</value>
   </data>
   <data name="SettingsPage_Advanced_Title" xml:space="preserve">
-    <value>高级设置</value>
+    <value>Доп. настройки</value>
   </data>
   <data name="SettingsPage_Autorun_Message" xml:space="preserve">
-    <value>最小化启动至托盘
-因为兼容性需要延迟30秒后才会自启。</value>
+    <value>Запуск свернутым в область уведомлений при входе в Windows.
+Запуск откладывается на 30 секунд по причинам совместимости.</value>
   </data>
   <data name="SettingsPage_Autorun_Title" xml:space="preserve">
-    <value>开机启动</value>
+    <value>Автозагрузка</value>
   </data>
   <data name="SettingsPage_CPUBoostModes_Title" xml:space="preserve">
-    <value>CPU睿频模式</value>
+    <value>Режимы ускорения процессора</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone可能没有被正确禁用。</value>
+    <value>Возможно, Legion Zone был неверно отключен</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Title" xml:space="preserve">
-    <value>无法禁用Legion Zone</value>
+    <value>Не удалось отключить Legion Zone</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Message" xml:space="preserve">
-    <value>禁用Legion Zone服务而无需卸载。
-推荐修改此项后重启电脑。</value>
+    <value>Отключить Legion Zone и его службы, не удаляя его.
+После изменения этого параметра рекомендуется перезагрузка.</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Title" xml:space="preserve">
-    <value>禁用Legion Zone</value>
+    <value>Отключить Legion Zone</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys可能没有被正确禁用。</value>
+    <value>Возможно, Lenovo Hotkeys был неверно отключен</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>无法禁用Lenovo Hotkeys</value>
+    <value>Не удалось отключить Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
-    <value>禁用Lenovo Hotkeys而无需卸载。
-禁用后本应用将接管Fn快捷键。
-推荐修改此项后重启电脑。</value>
+    <value>Отключить Lenovo Hotkeys и его службы, не удаляя его.
+Если отключить, данное приложение будет управлять сочетаниями клавиш Fn
+После изменения этого параметра рекомендуется перезагрузка.</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
-    <value>禁用Lenovo Hotkeys</value>
+    <value>Отключить Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>Vantage可能没有被正确禁用。</value>
+    <value>Возможно, Vantage был неверно отключен</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
-    <value>无法禁用Vantage</value>
+    <value>Не удалось отключить Vantage</value>
   </data>
   <data name="SettingsPage_DisableVantage_Message" xml:space="preserve">
-    <value>禁用Lenovo Vantage而无需卸载。
-推荐修改此项后重启电脑。</value>
+    <value>Отключить Lenovo Vantage и его службы, не удаляя его.
+После изменения этого параметра рекомендуется перезагрузка.</value>
   </data>
   <data name="SettingsPage_DisableVantage_Title" xml:space="preserve">
-    <value>禁用Lenovo Vantage</value>
+    <value>Отключить Lenovo Vantage</value>
   </data>
   <data name="SettingsPage_DontShowNotifications_Message" xml:space="preserve">
-    <value>禁用麦克风静音等Fn键操作的弹窗
-如果弹窗与全屏应用有冲突，请启用此选项。</value>
+    <value>Отключает уведомления о действиях клавиш Fn, таких как приглушение микрофона
+Включите эту опцию, если у вас возникают конфликты с полноэкранными приложениями.</value>
   </data>
   <data name="SettingsPage_DontShowNotifications_Title" xml:space="preserve">
-    <value>不要显示弹窗</value>
+    <value>Не показывать уведомления</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone可能没有被正确启用。</value>
+    <value>Возможно, Legion Zone был неверно запущен</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Title" xml:space="preserve">
-    <value>无法启用Legion Zone</value>
+    <value>Не удалось включить Legion Zone</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys可能没有被正确启用。</value>
+    <value>Возможно, Lenovo Hotkeys был неверно запущен</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>无法启用Lenovo Hotkeys Keys</value>
+    <value>Не удалось включить клавиши горячих клавиш Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Vantage可能没有被正确启用</value>
+    <value>Возможно, Vantage был неверно запущен</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
-    <value>无法启用Vantage</value>
+    <value>Не удалось включить Vantage</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
-    <value>你可以排除某个刷新率，使Fn+R快捷键切换更快速。</value>
+    <value>Вы можете исключить частоту обновления, чтобы сделать сочетание клавиш Fn+R более полезным.</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Title" xml:space="preserve">
-    <value>排除刷新率</value>
+    <value>Исключить частоту обновления</value>
   </data>
   <data name="SettingsPage_Language_Message" xml:space="preserve">
-    <value>选择语言</value>
+    <value>Выбрать язык.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
-    <value>语言</value>
+    <value>Язык</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
-    <value>总是最小化到托盘。开启后右键点击托盘图标点击关闭即可关闭软件。</value>
+    <value>Всегда сворачивать в область уведомлений. Закрывать правой кнопкой мыши на значке в области уведомлений.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
-    <value>关闭时最小化</value>
+    <value>Сворачивать при закрытии</value>
   </data>
   <data name="SettingsPage_PowerPlans_Title" xml:space="preserve">
-    <value>性能计划</value>
+    <value>Схемы питания</value>
   </data>
   <data name="SettingsPage_Theme_Description" xml:space="preserve">
-    <value>选择浅色或深色模式，亦或者跟随系统。</value>
+    <value>Установить светлую тему, темную тему или следовать системным настройкам.</value>
   </data>
   <data name="SettingsPage_Theme_Title" xml:space="preserve">
-    <value>主题</value>
+    <value>Тема оформления</value>
   </data>
   <data name="SettingsPage_Title" xml:space="preserve">
-    <value>设置</value>
+    <value>Настройки</value>
   </data>
   <data name="TimeWindow_Sunrise" xml:space="preserve">
-    <value>日出</value>
+    <value>Рассвет</value>
   </data>
   <data name="TimeWindow_Sunset" xml:space="preserve">
-    <value>日落</value>
+    <value>Закат</value>
   </data>
   <data name="TimeWindow_Time" xml:space="preserve">
-    <value>时间</value>
+    <value>Время</value>
   </data>
   <data name="TimeWindow_TimeWindow_Title" xml:space="preserve">
-    <value>时间</value>
+    <value>Время</value>
   </data>
   <data name="ToggleHybridModeControl_Message" xml:space="preserve">
-    <value>允许在集成和独立GPU之间切换。
-需要重启。</value>
+    <value>Позволяет переключаться между встроенным и дискретным графическим процессором.
+Требуется перезагрузка.</value>
   </data>
   <data name="ToggleHybridModeControl_RestartRequired_Message" xml:space="preserve">
-    <value>更改混合模式需要重新启动。你想现在重启吗？</value>
+    <value>Изменение Гибридного режима требует перезагрузки. Вы хотите выполнить перезапуск сейчас?</value>
   </data>
   <data name="ToggleHybridModeControl_RestartRequired_Title" xml:space="preserve">
-    <value>需要重启</value>
+    <value>Требуется перезапуск</value>
   </data>
   <data name="ToggleHybridModeControl_Title" xml:space="preserve">
-    <value>混合模式</value>
+    <value>Гибридный режим</value>
   </data>
   <data name="TouchpadLockAutomationStepControl_Message" xml:space="preserve">
-    <value>停止使用触摸板</value>
+    <value>Выключить сенсорную панель.</value>
   </data>
   <data name="TouchpadLockAutomationStepControl_Title" xml:space="preserve">
-    <value>锁定触摸板</value>
+    <value>Блокировка сенсорной панели</value>
   </data>
   <data name="TouchpadLockControl_Message" xml:space="preserve">
-    <value>停用触摸板。推荐在使用鼠标时开启以避免误触。</value>
+    <value>Выключить сенсорную панель.</value>
   </data>
   <data name="TouchpadLockControl_Title" xml:space="preserve">
-    <value>锁定触摸板</value>
+    <value>Блокировка сенсорной панели</value>
   </data>
   <data name="TryAgain" xml:space="preserve">
-    <value>重试</value>
+    <value>Повторите попытку</value>
   </data>
   <data name="UnexpectedException" xml:space="preserve">
-    <value>发生了意外错误：
+    <value>Произошло непредвиденное исключение:
 {0}
 
-请在 {1} 上报告。</value>
+Пожалуйста, сообщите о проблеме на {1}.</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
-    <value>未命名</value>
+    <value>Без имени</value>
   </data>
   <data name="UnsupportedWindow_Disclaimer" xml:space="preserve">
-    <value>你可以选择继续，风险自负，但请谨记，一些功能可能无法正常使用。
+    <value>Вы можете продолжить на свой страх и риск, но имейте в виду, что некоторые функции могут быть недоступны и/или работать некорректно.
 
-如果你选择继续，将自动启动日志记录。</value>
+Ведение журнала будет включено автоматически, если вы решите продолжить.</value>
   </data>
   <data name="UnsupportedWindow_Disclaimer_GitHub" xml:space="preserve">
-    <value>请查看GitHub上的项目页面以了解更多信息。</value>
+    <value>Для получения дополнительной информации посетите страницу проекта на GitHub.</value>
   </data>
   <data name="UnsupportedWindow_Disclaimer_Logs" xml:space="preserve">
-    <value>日志文件夹</value>
+    <value>Папка журнала</value>
   </data>
   <data name="UnsupportedWindow_MachineType" xml:space="preserve">
-    <value>设备类型</value>
+    <value>Тип модели устройства</value>
   </data>
   <data name="UnsupportedWindow_Message" xml:space="preserve">
-    <value>Lenovo Legion Toolkit尚未在您的设备上经过测试。</value>
+    <value>Lenovo Legion Toolkit не был проверен на вашем устройстве.</value>
   </data>
   <data name="UnsupportedWindow_Model" xml:space="preserve">
-    <value>设备型号</value>
+    <value>Модель</value>
   </data>
   <data name="UnsupportedWindow_Title" xml:space="preserve">
-    <value>不支持的设备</value>
+    <value>Устройство не поддерживается</value>
   </data>
   <data name="UnsupportedWindow_Vendor" xml:space="preserve">
-    <value>制造商</value>
+    <value>Поставщик</value>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>更新</value>
+    <value>Обновление</value>
   </data>
   <data name="UpdateWindow_Title" xml:space="preserve">
-    <value>有新的更新！</value>
+    <value>Доступно обновление</value>
   </data>
   <data name="UpdateWindow_WhatsNew" xml:space="preserve">
-    <value>各版本更新日志：</value>
+    <value>﻿Что нового?</value>
   </data>
   <data name="WhiteKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>调节键盘背光</value>
+    <value>Настройть яркость подсветки клавиатуры.</value>
   </data>
   <data name="WhiteKeyboardBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>键盘背光</value>
+    <value>Подсветка клавиатуры</value>
   </data>
   <data name="WhiteKeyboardBacklightControl_Message" xml:space="preserve">
-    <value>你可以通过快捷键 Fn+空格 调节键盘背光开关与亮度。</value>
+    <value>Вы можете изменить яркость с помощью Fn+Пробел</value>
   </data>
   <data name="WhiteKeyboardBacklightControl_Title" xml:space="preserve">
-    <value>键盘背光亮度</value>
+    <value>Яркость</value>
   </data>
   <data name="WinKeyAutomationStepControl_Message" xml:space="preserve">
-    <value>启用或禁用Win键。</value>
+    <value>Включить или отключить клавишу Windows.</value>
   </data>
   <data name="WinKeyAutomationStepControl_Title" xml:space="preserve">
-    <value>Win键开关</value>
+    <value>Клавиша Windows</value>
   </data>
   <data name="WinKeyControl_Message" xml:space="preserve">
-    <value>仅在内置键盘上生效。开启后Win键按下不再有反应。</value>
+    <value>Действует только на встроенной клавиатуре.</value>
   </data>
   <data name="WinKeyControl_Title" xml:space="preserve">
-    <value>禁用Win键</value>
+    <value>Блокировка клавиши Windows</value>
   </data>
   <data name="Yes" xml:space="preserve">
-    <value>是</value>
+    <value>Да</value>
   </data>
 </root>

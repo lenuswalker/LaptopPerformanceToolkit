@@ -17,7 +17,9 @@ namespace LenovoLegionToolkit.WPF.Utils
             new("en"),
             new("zh-hans"),
             new("es"),
+            new("nl-nl"),
             new("ro"),
+            new("ru"),
             new("tr"),
             new("vi"),
         };

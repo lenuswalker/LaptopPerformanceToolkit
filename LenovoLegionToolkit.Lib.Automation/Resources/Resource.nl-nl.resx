@@ -59,42 +59,42 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ACAdapterConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Khi kết nối với nguồn điện</value>
+    <value>Wanneer de AC-stroomadapter is aangesloten</value>
   </data>
   <data name="ACAdapterDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Khi ngắt kết nối nguồn điện</value>
+    <value>Wanneer de AC-stroomadapter is losgekoppeld</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Hủy</value>
+    <value>Annuleren</value>
   </data>
   <data name="DeactivateGPUAutomationStepState_KillApps" xml:space="preserve">
-    <value>Tắt app dùng GPU rời</value>
+    <value>Apps stoppen</value>
   </data>
   <data name="DeactivateGPUAutomationStepState_RestartGPU" xml:space="preserve">
-    <value>Khởi động lại GPU</value>
+    <value>GPU Opnieuw Opstarten</value>
   </data>
   <data name="Delay_Second" xml:space="preserve">
-    <value>{0} giây</value>
+    <value>{0} seconde</value>
   </data>
   <data name="Delay_Second_Many" xml:space="preserve">
-    <value>{0} giây</value>
+    <value>{0} seconden</value>
   </data>
   <data name="LowWattageACAdapterConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Khi nối với nguồn điện công suất thấp</value>
+    <value>Wanneer een wisselstroomadapter met laag wattage is aangesloten</value>
   </data>
   <data name="OnStartupAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Khi khởi động</value>
+    <value>Bij Opstarten</value>
   </data>
   <data name="PowerModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Khi đổi chế độ hoạt động</value>
+    <value>Wanneer de energiemodus wordt gewijzigd</value>
   </data>
   <data name="ProcessesAreRunningAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Khi ứng dụng được khởi chạy</value>
+    <value>Wanneer de app actief is</value>
   </data>
   <data name="ProcessesStopRunningAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Khi ứng dụng được tắt đi</value>
+    <value>Wanneer app sluit</value>
   </data>
   <data name="TimeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Tại một thời điểm nhất định</value>
+    <value>Op bepaalde tijd</value>
   </data>
 </root>

@@ -59,114 +59,114 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AlwaysOnUSBState_Off" xml:space="preserve">
-    <value>Kapalı</value>
+    <value>Выкл.</value>
   </data>
   <data name="AlwaysOnUSBState_OnAlways" xml:space="preserve">
-    <value>Her zaman açık</value>
+    <value>Вкл. всегда</value>
   </data>
   <data name="AlwaysOnUSBState_OnWhenSleeping" xml:space="preserve">
-    <value>Uykudayken açık</value>
+    <value>Вкл. в спящем режиме</value>
   </data>
   <data name="BatteryState_Conservation" xml:space="preserve">
-    <value>Pil Koruma Modu</value>
+    <value>Энергосбережение</value>
   </data>
   <data name="BatteryState_Normal" xml:space="preserve">
-    <value>Normal</value>
+    <value>Обычный</value>
   </data>
   <data name="BatteryState_RapidCharge" xml:space="preserve">
-    <value>Hızlı Şarj</value>
+    <value>Быстрая зарядка</value>
   </data>
   <data name="GPUController_PoweredOff" xml:space="preserve">
-    <value>Kapatıldı</value>
+    <value>Отключен</value>
   </data>
   <data name="GPUController_PoweredOn" xml:space="preserve">
-    <value>Açık</value>
+    <value>Задействован</value>
   </data>
   <data name="HybridModeState_Off" xml:space="preserve">
-    <value>dGPU</value>
+    <value>Дискретная видеокарта</value>
   </data>
   <data name="HybridModeState_On" xml:space="preserve">
-    <value>Hibrit</value>
+    <value>Гибридный режим</value>
   </data>
   <data name="HybridModeState_OnAuto" xml:space="preserve">
-    <value>Hibrit-Oto</value>
+    <value>Hybrid-Auto</value>
   </data>
   <data name="HybridModeState_OnIGPUOnly" xml:space="preserve">
-    <value>Hibrit-iGPU</value>
+    <value>Hybrid-iGPU</value>
   </data>
   <data name="PowerModeState_Balance" xml:space="preserve">
-    <value>Denge</value>
+    <value>Сбалансированный</value>
   </data>
   <data name="PowerModeState_GodMode" xml:space="preserve">
-    <value>Özel</value>
+    <value>Пользовательский</value>
   </data>
   <data name="PowerModeState_Performance" xml:space="preserve">
-    <value>Performans</value>
+    <value>Макс. производительность</value>
   </data>
   <data name="PowerModeState_Quiet" xml:space="preserve">
-    <value>Sessiz</value>
+    <value>Тихий режим</value>
   </data>
   <data name="RBGKeyboardSpeed_Fast" xml:space="preserve">
-    <value>Hızlı</value>
+    <value>Быстро</value>
   </data>
   <data name="RBGKeyboardSpeed_Fastest" xml:space="preserve">
-    <value>En Hızlı</value>
+    <value>Самая быстрая</value>
   </data>
   <data name="RBGKeyboardSpeed_Slow" xml:space="preserve">
-    <value>Yavaş</value>
+    <value>Медленно</value>
   </data>
   <data name="RBGKeyboardSpeed_Slowest" xml:space="preserve">
-    <value>En yavaş</value>
+    <value>Самая медленная</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_Off" xml:space="preserve">
-    <value>Kapalı</value>
+    <value>Откл.</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_One" xml:space="preserve">
-    <value>1. Hazır Ayar</value>
+    <value>Пресет 1</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_Three" xml:space="preserve">
-    <value>3. Hazır Ayar</value>
+    <value>Пресет 2</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_Two" xml:space="preserve">
-    <value>2. Hazır Ayar</value>
+    <value>Пресет 3</value>
   </data>
   <data name="RGBKeyboardBrightness_High" xml:space="preserve">
-    <value>Yüksek</value>
+    <value>Высокая</value>
   </data>
   <data name="RGBKeyboardBrightness_Low" xml:space="preserve">
-    <value>Düşük</value>
+    <value>Низкая</value>
   </data>
   <data name="RGBKeyboardEffect_Breath" xml:space="preserve">
-    <value>Nefes</value>
+    <value>Дыхание</value>
   </data>
   <data name="RGBKeyboardEffect_Smooth" xml:space="preserve">
-    <value>Akıcı</value>
+    <value>Плавный</value>
   </data>
   <data name="RGBKeyboardEffect_Static" xml:space="preserve">
-    <value>Sabit</value>
+    <value>Статичный</value>
   </data>
   <data name="RGBKeyboardEffect_WaveLTR" xml:space="preserve">
-    <value>Soldan Dalga</value>
+    <value>Волна (влево)</value>
   </data>
   <data name="RGBKeyboardEffect_WaveRTL" xml:space="preserve">
-    <value>Sağdan Dalga</value>
+    <value>Волна (вправо)</value>
   </data>
   <data name="Theme_Dark" xml:space="preserve">
-    <value>Koyu</value>
+    <value>Темная</value>
   </data>
   <data name="Theme_Light" xml:space="preserve">
-    <value>Açık</value>
+    <value>Светлая</value>
   </data>
   <data name="Theme_System" xml:space="preserve">
-    <value>Sistem</value>
+    <value>Системная тема</value>
   </data>
   <data name="WhiteKeyboardBacklightState_High" xml:space="preserve">
-    <value>Yüksek</value>
+    <value>Высокая</value>
   </data>
   <data name="WhiteKeyboardBacklightState_Low" xml:space="preserve">
-    <value>Düşük</value>
+    <value>Низкая</value>
   </data>
   <data name="WhiteKeyboardBacklightState_Off" xml:space="preserve">
-    <value>Kapalı</value>
+    <value>Откл.</value>
   </data>
 </root>
