@@ -40,6 +40,14 @@
 		<None Remove="inpoutx64.dll" />
 		<None Remove="libryzenadj.dll" />
 		<None Remove="Resources\Intel\KX\KX.exe" />
+		<None Remove="Resources\Intel\MSR\msr-cmd.exe" />
+		<None Remove="Resources\Intel\MSR\winio-drv.exe" />
+		<None Remove="Resources\Intel\MSR\WinIo32.dll" />
+		<None Remove="Resources\Intel\MSR\WinIo32.sys" />
+		<None Remove="Resources\Intel\MSR\WinIo64.dll" />
+		<None Remove="Resources\Intel\MSR\WinIo64.sys" />
+		<None Remove="Resources\Intel\MSR\WinRing0x64.dll" />
+		<None Remove="Resources\Intel\MSR\WinRing0x64.sys" />
 		<None Remove="WinRing0x64.dll" />
 		<None Remove="WinRing0x64.sys" />
 	</ItemGroup>
@@ -51,6 +59,30 @@
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content>
 	  <Content Include="Resources\Intel\KX\KX.exe">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Resources\Intel\MSR\msr-cmd.exe">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Resources\Intel\MSR\winio-drv.exe">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Resources\Intel\MSR\WinIo32.dll">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Resources\Intel\MSR\WinIo32.sys">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Resources\Intel\MSR\WinIo64.dll">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Resources\Intel\MSR\WinIo64.sys">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Resources\Intel\MSR\WinRing0x64.dll">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Resources\Intel\MSR\WinRing0x64.sys">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content>
 	  <Content Include="WinRing0x64.dll">

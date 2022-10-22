@@ -9,9 +9,15 @@ namespace LenovoLegionToolkit.Lib.System
     public class KX
     {
         private ProcessStartInfo startInfo;
-        private string path;
+        private ProcessStartInfo msrcmdStartInfo;
 
+        private string path;
+        private string msrcmdPath;
+
+        private string cpuType;
         private string mchbar;
+
+        private bool isKX;
 
         // Package Power Limit (PACKAGE_RAPL_LIMIT_0_0_0_MCHBAR_PCU) — Offset 59A0h
         private const string pnt_limit = "59";
@@ -20,17 +26,35 @@ namespace LenovoLegionToolkit.Lib.System
         public KX()
         {
             path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Intel", "KX", "KX.exe");
+            msrcmdPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Intel", "MSR", "msr-cmd.exe");
 
             if (!File.Exists(path))
             {
                 if (Log.Instance.IsTraceEnabled)
                 {
-                    Log.Instance.Trace($"KX.exe is missing. Power Manager won't work.");
+                    Log.Instance.Trace($"KX.exe is missing. We may not be able to change MMIO and MSR power limits.");
+                    return;
+                }
+            }
+
+            if (!File.Exists(msrcmdPath))
+            {
+                if (Log.Instance.IsTraceEnabled)
+                {
+                    Log.Instance.Trace($"msr-cmd.exe is missing. We may not be able to change MSR power limits.");
                     return;
                 }
             }
 
             startInfo = new ProcessStartInfo(path)
+            {
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                CreateNoWindow = true
+            };
+
+            msrcmdStartInfo = new ProcessStartInfo(msrcmdPath)
             {
                 UseShellExecute = false,
                 RedirectStandardOutput = true,
@@ -62,13 +86,64 @@ namespace LenovoLegionToolkit.Lib.System
                     mchbar = output;
 
                     ProcessOutput.Close();
+                    isKX = true;
                     return true;
                 }
                 ProcessOutput.Close();
             }
 
+            isKX = false;
+
+            determineCPU();
+            if (mchbar != "")
+                return true;
+
             return false;
         }
+
+        void determineCPU()
+        {
+            try
+            {
+                if (cpuType != "Intel" && cpuType != "AMD")
+                {
+                    //Get the processor name to determine intel vs AMD
+                    object processorNameRegistry = Microsoft.Win32.Registry.GetValue("HKEY_LOCAL_MACHINE\\hardware\\description\\system\\centralprocessor\\0", "ProcessorNameString", null);
+                    string processorName = null;
+                    if (processorNameRegistry != null)
+                    {
+                        //If not null, find intel or AMD string and clarify type. For Intel determine MCHBAR for rw.exe
+                        processorName = processorNameRegistry.ToString();
+                        if (processorName.IndexOf("Intel") >= 0) { cpuType = "Intel"; }
+                    }
+                }
+                if (cpuType == "Intel" && mchbar == "")
+                {
+                    determineIntelMCHBAR();
+                }
+            }
+            catch (Exception)
+            { }
+        }
+
+        void determineIntelMCHBAR()
+        {
+            try
+            {
+                //Get the processor model to determine MCHBAR, INTEL ONLY
+                object processorModelRegistry = Microsoft.Win32.Registry.GetValue("HKEY_LOCAL_MACHINE\\hardware\\description\\system\\centralprocessor\\0", "Identifier", null);
+                string processorModel = null;
+                if (processorModelRegistry != null)
+                {
+                    //If not null, convert to string and determine MCHBAR for rw.exe
+                    processorModel = processorModelRegistry.ToString();
+                    if (processorModel.IndexOf("Model 140") >= 0) { mchbar = "0xFEDC59"; } else { mchbar = "0xFED159"; };
+                }
+            }
+            catch (Exception)
+            { }
+        }
+
 
         internal int get_short_limit(bool msr)
         {
@@ -76,7 +151,10 @@ namespace LenovoLegionToolkit.Lib.System
             {
                 default:
                 case false:
-                    return get_limit("a4");
+                    if (isKX)
+                        return get_limit("a4");
+                    else
+                        return 0;
                 case true:
                     return get_msr_limit(0);
             }
@@ -88,7 +166,10 @@ namespace LenovoLegionToolkit.Lib.System
             {
                 default:
                 case false:
-                    return get_limit("a0");
+                    if (isKX)
+                        return get_limit("a0");
+                    else 
+                        return 0;
                 case true:
                     return get_msr_limit(1);
             }
@@ -126,34 +207,66 @@ namespace LenovoLegionToolkit.Lib.System
 
         internal int get_msr_limit(int pointer)
         {
-            startInfo.Arguments = $"/rdmsr 0x610";
-            using (var ProcessOutput = Process.Start(startInfo))
+            if (isKX)
             {
-                try
+                startInfo.Arguments = $"/rdmsr 0x610";
+                using (var ProcessOutput = Process.Start(startInfo))
                 {
-                    while (!ProcessOutput.StandardOutput.EndOfStream)
+                    try
                     {
-                        string line = ProcessOutput.StandardOutput.ReadLine();
+                        while (!ProcessOutput.StandardOutput.EndOfStream)
+                        {
+                            string line = ProcessOutput.StandardOutput.ReadLine();
 
-                        if (!line.Contains("Msr Data"))
-                            continue;
+                            if (!line.Contains("Msr Data"))
+                                continue;
 
-                        // parse result
-                        line = StringExtensions.Between(line, "Msr Data     : ");
+                            // parse result
+                            line = StringExtensions.Between(line, "Msr Data     : ");
 
-                        var values = line.Split(" ");
-                        var hex = values[pointer];
-                        hex = values[pointer].Substring(hex.Length - 3);
-                        var output = Convert.ToInt32(hex, 16) / 8;
+                            var values = line.Split(" ");
+                            var hex = values[pointer];
+                            hex = values[pointer].Substring(hex.Length - 3);
+                            var output = Convert.ToInt32(hex, 16) / 8;
 
-                        ProcessOutput.Close();
-                        return (int)output;
+                            ProcessOutput.Close();
+                            return (int)output;
+                        }
                     }
+                    catch (Exception) { }
+                    ProcessOutput.Close();
                 }
-                catch (Exception) { }
-                ProcessOutput.Close();
             }
+            else
+            {
+                msrcmdStartInfo.Arguments = $"read 0x610";
+                using (var ProcessOutput = Process.Start(msrcmdStartInfo))
+                {
+                    try
+                    {
+                        while (!ProcessOutput.StandardOutput.EndOfStream)
+                        {
+                            string line = ProcessOutput.StandardOutput.ReadLine();
 
+                            if (!line.Contains("0        0x00000610 "))
+                                continue;
+
+                            // parse result
+                            line = StringExtensions.Between(line, "0        0x00000610 ");
+
+                            var values = line.Split(" ");
+                            var hex = values[pointer];
+                            hex = values[pointer].Substring(hex.Length - 3);
+                            var output = Convert.ToInt32(hex, 16) / 8;
+
+                            ProcessOutput.Close();
+                            return (int)output;
+                        }
+                    }
+                    catch (Exception) { }
+                    ProcessOutput.Close();
+                }
+            }
             return -1; // failed
         }
 
@@ -173,7 +286,10 @@ namespace LenovoLegionToolkit.Lib.System
             {
                 default:
                 case false:
-                    return set_limit("a4", limit);
+                    if (isKX)
+                        return set_limit("a4", limit);
+                    else
+                        return -1;
                 case true:
                     return set_msr_limit("438", limit);
             }
@@ -185,7 +301,10 @@ namespace LenovoLegionToolkit.Lib.System
             {
                 default:
                 case false:
-                    return set_limit("a0", limit);
+                    if (isKX)
+                        return set_limit("a0", limit);
+                    else
+                        return -1;
                 case true:
                     return set_msr_limit("DD8", limit);
             }
@@ -211,15 +330,41 @@ namespace LenovoLegionToolkit.Lib.System
             string hexPL1 = TDPToHex(PL1);
             string hexPL2 = TDPToHex(PL2);
 
-            // register command
-            startInfo.Arguments = $"/wrmsr 0x610 0x00438{hexPL2} 00DD8{hexPL1}";
-            using (var ProcessOutput = Process.Start(startInfo))
+            if (isKX)
             {
-                ProcessOutput.StandardOutput.ReadToEnd();
-                ProcessOutput.Close();
+                // register command
+                startInfo.Arguments = $"/wrmsr 0x610 0x00438{hexPL2} 00DD8{hexPL1}";
+                using (var ProcessOutput = Process.Start(startInfo))
+                {
+                    try
+                    {
+                        ProcessOutput.StandardOutput.ReadToEnd();
+                        ProcessOutput.Close();
+                        return 0;
+                    }
+                    catch (Exception)
+                    { }
+                    ProcessOutput.Close();
+                }
             }
-
-            return 0; // implement error code support
+            else
+            {
+                // register command
+                msrcmdStartInfo.Arguments = $"-s write 0x610 0x00DD8{hexPL2} 00DD8{hexPL1}";
+                using (var ProcessOutput = Process.Start(msrcmdStartInfo))
+                {
+                    try
+                    {
+                        ProcessOutput.StandardOutput.ReadToEnd();
+                        ProcessOutput.Close();
+                        return 0;
+                    }
+                    catch (Exception)
+                    { }
+                    ProcessOutput.Close();
+                }
+            }
+            return -1; // implement error code support
         }
         
         internal int set_msr_limit(string pointer, int limit)
@@ -227,14 +372,22 @@ namespace LenovoLegionToolkit.Lib.System
             string hex = TDPToHex(limit);
 
             // register command
+  
             startInfo.Arguments = $"/wrmsr 0x610 0x00{pointer}{hex}";
             using (var ProcessOutput = Process.Start(startInfo))
             {
-                ProcessOutput.StandardOutput.ReadToEnd();
+                try
+                {
+                    ProcessOutput.StandardOutput.ReadToEnd();
+                    ProcessOutput.Close();
+                    return 0;
+                }
+                catch (Exception)
+                { }
                 ProcessOutput.Close();
             }
 
-            return 0; // implement error code support
+            return -1; // implement error code support
         }
 
         private string TDPToHex(int decValue)
