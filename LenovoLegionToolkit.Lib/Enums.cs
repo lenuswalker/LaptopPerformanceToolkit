@@ -155,6 +155,8 @@ namespace LenovoLegionToolkit.Lib
     {
         [Display(ResourceType = typeof(Resource), Name = "PowerModeState_Quiet")]
         Quiet,
+        [Display(ResourceType = typeof(Resource), Name = "PowerModeState_Efficiency")]
+        Efficiency,
         [Display(ResourceType = typeof(Resource), Name = "PowerModeState_Balance")]
         Balance,
         [Display(ResourceType = typeof(Resource), Name = "PowerModeState_Performance")]

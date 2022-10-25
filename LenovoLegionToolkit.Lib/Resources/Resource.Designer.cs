@@ -205,6 +205,15 @@ namespace LenovoLegionToolkit.Lib.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Efficiency.
+        /// </summary>
+        public static string PowerModeState_Efficiency {
+            get {
+                return ResourceManager.GetString("PowerModeState_Efficiency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Custom.
         /// </summary>
         public static string PowerModeState_GodMode {

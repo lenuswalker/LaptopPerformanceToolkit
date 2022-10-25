@@ -11,8 +11,6 @@ namespace LenovoLegionToolkit.WPF
             builder.Register<ThemeManager>();
             builder.Register<SystemAccentColorHelper>();
 
-            //builder.Register<ProcessorManager>();
-
             builder.Register<NotificationsManager>().AutoActivate();
         }
     }

@@ -17,9 +17,9 @@ namespace LenovoLegionToolkit.Lib.Features
 
         private static readonly Dictionary<PowerModeState, string> defaultGenericPowerModes = new()
         {
-            { PowerModeState.Quiet , "961cc777-2547-4f9d-8174-7d86181b8a7a"},
-            { PowerModeState.Balance , "00000000-0000-0000-0000-000000000000"},
-            { PowerModeState.Performance , "ded574b5-45a0-4f42-8737-46345c09c238"},
+            { PowerModeState.Efficiency , "961cc777-2547-4f9d-8174-7d86181b8a7a" },
+            { PowerModeState.Balance , "00000000-0000-0000-0000-000000000000" },
+            { PowerModeState.Performance , "ded574b5-45a0-4f42-8737-46345c09c238" },
         };
 
         public PowerModeFeature(AIModeController aiModeController, PowerModeListener listener)
@@ -35,16 +35,18 @@ namespace LenovoLegionToolkit.Lib.Features
             if (mi.Properties.SupportsGodMode)
                 return new[] { PowerModeState.Quiet, PowerModeState.Balance, PowerModeState.Performance, PowerModeState.GodMode };
 
-            return new[] { PowerModeState.Quiet, PowerModeState.Balance, PowerModeState.Performance };
+            var compatibility = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
+            if (compatibility.isCompatible)
+                return new[] { PowerModeState.Quiet, PowerModeState.Balance, PowerModeState.Performance };
+            else
+                return new[] { PowerModeState.Efficiency, PowerModeState.Balance, PowerModeState.Performance };
         }
 
         public override async Task<PowerModeState> GetStateAsync()
         {
             var compatibility = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
             if (compatibility.isCompatible)
-            {
                 return base.GetStateAsync().Result;
-            }
             else
             {
                 PowerModeState state = PowerModeState.Balance;
@@ -52,7 +54,7 @@ namespace LenovoLegionToolkit.Lib.Features
                 switch (currentMode.ToString())
                 {
                     case "961cc777-2547-4f9d-8174-7d86181b8a7a":
-                        state = PowerModeState.Quiet;
+                        state = PowerModeState.Efficiency;
                         break;
                     case "00000000-0000-0000-0000-000000000000":
                         state = PowerModeState.Balance;
