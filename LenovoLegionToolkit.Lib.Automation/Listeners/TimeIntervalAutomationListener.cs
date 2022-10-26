@@ -13,7 +13,7 @@ namespace LenovoLegionToolkit.Lib.Automation.Listeners
         
         public TimeIntervalAutomationListener()
         {
-            _timer = new Timer(5_000);
+            _timer = new Timer(60_000);
             _timer.Elapsed += Timer_Elapsed;
             _timer.AutoReset = true;
         }
@@ -46,7 +46,7 @@ namespace LenovoLegionToolkit.Lib.Automation.Listeners
 
         private void Timer_Elapsed(object? sender, ElapsedEventArgs e)
         {
-            Changed?.Invoke(this, 5_000);
+            Changed?.Invoke(this, (int)_timer.Interval);
         }
     }
 }
