@@ -148,9 +148,11 @@ namespace LenovoLegionToolkit.Lib.Controllers
         {
             lock (base.IsBusy)
             {
-                Dictionary<PowerType, int> limits = new Dictionary<PowerType, int>();
-                limits.Add(PowerType.Fast, (int)platform.get_short_limit(true));
-                limits.Add(PowerType.Slow, (int)platform.get_long_limit(true));
+                Dictionary<PowerType, int> limits = new Dictionary<PowerType, int>
+                {
+                    { PowerType.Fast, platform.get_short_limit(true) },
+                    { PowerType.Slow, platform.get_long_limit(true) }
+                };
                 return limits;
             }
         }

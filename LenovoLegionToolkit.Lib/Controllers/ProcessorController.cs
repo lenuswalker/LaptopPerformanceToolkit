@@ -1,7 +1,5 @@
-﻿using LenovoLegionToolkit.Lib.Settings;
-using LenovoLegionToolkit.Lib.System;
+﻿using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Timers;
@@ -50,8 +48,6 @@ namespace LenovoLegionToolkit.Lib.Controllers
         public delegate void StatusChangedHandler(bool CanChangeTDP, bool CanChangeGPU);
         #endregion
 
-        //private readonly ProcessorSettings _settings;
-
         public ProcessorController GetCurrent()
         {
             if (_controller != null)
@@ -75,18 +71,6 @@ namespace LenovoLegionToolkit.Lib.Controllers
         private Task<string> GetProcessorDetailsAsync(string property) => WMI.CallAsync(@"root\cimv2",
             $"SELECT * FROM Win32_Processor",
             $"{property}");
-
-        //public ProcessorController()
-        //{
-        //    _settings = new();
-        //    Name = GetProcessorDetailsAsync("Name").Result.ToString();
-        //    ProcessorID = GetProcessorDetailsAsync("ProcessorId").Result.ToString();
-
-        //    // write default miscs
-        //    m_Misc["gfx_clk"] = m_PrevMisc["gfx_clk"] = 0;
-
-        //    //LimitChanged += Processor_LimitChanged;
-        //}
 
         public ProcessorController()
         {
@@ -112,51 +96,6 @@ namespace LenovoLegionToolkit.Lib.Controllers
             // update value read by timer
             StoredTDP[idx] = value;
         }
-
-        //public async Task<List<Dictionary<TDPMode, TDPLimits>>> GetSettingsAsync()
-        //{
-        //    if (Log.Instance.IsTraceEnabled)
-        //        Log.Instance.Trace($"Getting perfboostmode settings...");
-
-        //    if (Log.Instance.IsTraceEnabled)
-        //        Log.Instance.Trace($"Getting power plans...");
-
-
-        //    var result = new List<Dictionary<TDPMode, TDPLimits>>();
-        //    foreach (TDPMode mode in Enum.GetValues(typeof(TDPMode)))
-        //    {
-        //        try
-        //        {
-        //            if (Log.Instance.IsTraceEnabled)
-        //                Log.Instance.Trace($"Getting RyzenAdjMode from settings file for {mode}...");
-
-        //            Dictionary<TDPMode, TDPLimits> settings = new();
-
-        //            settings.Add(mode, _settings.Store.State.Mode[mode]);
-
-        //            if (mode != TDPMode.PreGameMode)
-        //                result.Add(settings);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            if (Log.Instance.IsTraceEnabled)
-        //                Log.Instance.Trace($"Failed to load settings for {mode}.", ex);
-        //        }
-        //    }
-
-        //    if (Log.Instance.IsTraceEnabled)
-        //        Log.Instance.Trace($"RyzenAdj settings retrieved.");
-
-        //    await Task.CompletedTask;
-        //    return result;
-        //}
-
-        //public async Task SetSettingsAsync(TDPMode mode, TDPLimits limits)
-        //{
-        //    _settings.Store.State.Mode[mode] = limits;
-        //    _settings.SynchronizeStore();
-        //    await Task.CompletedTask;
-        //}
 
         public virtual void Initialize()
         {
