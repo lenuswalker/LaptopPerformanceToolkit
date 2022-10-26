@@ -382,16 +382,5 @@ namespace LenovoLegionToolkit.WPF.Pages
             };
             window.ShowDialog();
         }
-
-        private void ProcessorTDPModes_Click(object sender, RoutedEventArgs e)
-        {
-            var window = new ProcessorTDPModesWindow
-            {
-                Owner = Window.GetWindow(this),
-                WindowStartupLocation = WindowStartupLocation.CenterOwner,
-                ShowInTaskbar = false,
-            };
-            window.ShowDialog();
-        }
     }
 }

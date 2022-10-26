@@ -239,18 +239,6 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
                 }
             }
 
-            if (AutomationPipeline.Trigger is ITimeIntervalAutomationPipelineTrigger tit)
-            {
-                if (tit.ACInterval is not null)
-                {
-                    result += $" | every {tit.ACInterval} sec when Plugged In";
-                }
-                if (tit.DCInterval is not null)
-                {
-                    result += $" | every {tit.DCInterval} sec on Battery";
-                }
-            }
-
             return result;
         }
 
@@ -343,37 +331,6 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
                 };
                 return button;
             }
-
-            if (AutomationPipeline.Trigger is ITimeIntervalAutomationPipelineTrigger tit)
-            {
-
-                var button = new Button
-                {
-                    Content = "Configure",
-                    Margin = new(16, 0, 16, 0),
-                    Width = 120,
-                };
-                button.Click += (s, e) =>
-                {
-                    var window = new TimeIntervalWindow(tit.ACInterval ?? 0, tit.DCInterval ?? 0)
-                    {
-                        Owner = Window.GetWindow(this),
-                        WindowStartupLocation = WindowStartupLocation.CenterOwner,
-                        ShowInTaskbar = false,
-                    };
-                    window.OnSave += (s, e) =>
-                    {
-                        AutomationPipeline.Trigger = tit.DeepCopy(e.Item1, e.Item2);
-                        _cardHeaderControl.Subtitle = GenerateSubtitle();
-                        _cardHeaderControl.Accessory = GenerateAccessory();
-                        _cardHeaderControl.SubtitleToolTip = _cardHeaderControl.Subtitle;
-                        OnChanged?.Invoke(this, EventArgs.Empty);
-                    };
-                    window.ShowDialog();
-                };
-                return button;
-            }
-
             return null;
         }
 

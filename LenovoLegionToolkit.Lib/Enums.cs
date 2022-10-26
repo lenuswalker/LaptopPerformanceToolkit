@@ -301,19 +301,6 @@ namespace LenovoLegionToolkit.Lib
         FAM_END
     };
 
-    public enum TDPMode
-    {
-        Off = -1,
-        [Display(Name = "AC")]
-        AC = 0,
-        [Display(Name = "DC")]
-        DC = 1,
-        [Display(Name = "Game Mode")]
-        GameMode = 2,
-        [Display(Name = "Pre Game Mode")]
-        PreGameMode = 3,
-    }
-
     public enum ProcessState
     {
         [Display(ResourceType = typeof(Resource), Name = "Stop")]

@@ -8,8 +8,7 @@ namespace LenovoLegionToolkit.Lib.Automation.Steps
     public class ProcessorTDPAutomationStep : IAutomationStep
     {
         private readonly ProcessorController _controller = IoCContainer.Resolve<ProcessorController>();
-        
-        private ProcessorManager? _manager;
+        private readonly ProcessorManager _manager = IoCContainer.Resolve<ProcessorManager>();
 
         public ProcessorTDPState State { get; }
 
@@ -21,7 +20,6 @@ namespace LenovoLegionToolkit.Lib.Automation.Steps
         public async Task RunAsync()
         {
             ProcessorController processor = _controller.GetCurrent();
-            _manager = IoCContainer.Resolve<ProcessorManager>();
 
             if (State.Stapm != 0)
                 processor.SetTDPLimit(PowerType.Stapm, State.Stapm);
@@ -30,20 +28,12 @@ namespace LenovoLegionToolkit.Lib.Automation.Steps
             if (State.Slow != 0)
                 processor.SetTDPLimit(PowerType.Slow, State.Slow);
             if (State.UseMSR)
-            {
                 if (processor.GetType() == typeof(IntelProcessorController))
-                {
                     ((IntelProcessorController)processor).SetMSRLimits(State.Slow, State.Fast);
-                }
-            }
             if (State.MaintainTDP)
-            {
                 await _manager.StartAsync(State.Stapm, State.Fast, State.Slow, State.UseMSR, State.Interval).ConfigureAwait(false);
-            }
             else
-            {
                 await _manager.StopAsync().ConfigureAwait(false);
-            }
         }
 
         IAutomationStep IAutomationStep.DeepCopy() => new ProcessorTDPAutomationStep(State);

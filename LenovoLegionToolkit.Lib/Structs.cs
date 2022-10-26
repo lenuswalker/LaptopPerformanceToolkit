@@ -569,35 +569,6 @@ namespace LenovoLegionToolkit.Lib
         }
     }
 
-    public struct TDPLimits
-    {
-        public double Stapm { get; set; }
-        public double Fast { get; set; }
-        public double Slow { get; set; }
-
-        [JsonConstructor]
-        public TDPLimits(
-            double stapm,
-            double fast,
-            double slow)
-        {
-            Stapm = stapm;
-            Fast = fast;
-            Slow = slow;
-        }
-    }
-
-    public struct TDPState
-    {
-        public Dictionary<TDPMode, TDPLimits> Mode { get; set; }
-
-        [JsonConstructor]
-        public TDPState(Dictionary<TDPMode, TDPLimits> mode)
-        {
-            Mode = mode;
-        }
-    }
-
     public struct ProcessorTDPState
     {
         public double Stapm { get; set; }
