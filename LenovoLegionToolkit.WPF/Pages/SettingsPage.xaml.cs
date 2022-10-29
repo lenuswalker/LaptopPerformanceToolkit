@@ -79,8 +79,8 @@ namespace LenovoLegionToolkit.WPF.Pages
             _fnKeysCard.Visibility = fnKeysStatus != SoftwareStatus.NotFound ? Visibility.Visible : Visibility.Collapsed;
             _fnKeysToggle.IsChecked = fnKeysStatus == SoftwareStatus.Disabled;
 
-            _notificationsCard.Visibility = fnKeysStatus == SoftwareStatus.Disabled ? Visibility.Visible : Visibility.Collapsed;
-            _excludeRefreshRatesCard.Visibility = fnKeysStatus == SoftwareStatus.Disabled ? Visibility.Visible : Visibility.Collapsed;
+            _notificationsCard.Visibility = fnKeysStatus != SoftwareStatus.Enabled ? Visibility.Visible : Visibility.Collapsed;
+            _excludeRefreshRatesCard.Visibility = fnKeysStatus != SoftwareStatus.Enabled ? Visibility.Visible : Visibility.Collapsed;
 
             await loadingTask;
 
@@ -91,7 +91,6 @@ namespace LenovoLegionToolkit.WPF.Pages
             _vantageToggle.Visibility = Visibility.Visible;
             _legionZoneToggle.Visibility = Visibility.Visible;
             _fnKeysToggle.Visibility = Visibility.Visible;
-            _notificationsCard.Visibility = Visibility.Visible;
 
             _isRefreshing = false;
         }
