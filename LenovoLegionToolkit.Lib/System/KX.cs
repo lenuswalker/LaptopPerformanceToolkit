@@ -350,7 +350,7 @@ namespace LenovoLegionToolkit.Lib.System
             else
             {
                 // register command
-                msrcmdStartInfo.Arguments = $"-s write 0x610 0x00DD8{hexPL2} 00DD8{hexPL1}";
+                msrcmdStartInfo.Arguments = $"-s write 0x610 0x00438{hexPL2} 00DD8{hexPL1}";
                 using (var ProcessOutput = Process.Start(msrcmdStartInfo))
                 {
                     try

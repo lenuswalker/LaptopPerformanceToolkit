@@ -1,13 +1,11 @@
 ﻿using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Automation.Utils;
-using LenovoLegionToolkit.Lib.Controllers;
 using Newtonsoft.Json;
 
 namespace LenovoLegionToolkit.Lib.Automation.Steps
 {
     public class ProcessorTDPAutomationStep : IAutomationStep
     {
-        private readonly ProcessorController _controller = IoCContainer.Resolve<ProcessorController>();
         private readonly ProcessorManager _manager = IoCContainer.Resolve<ProcessorManager>();
 
         public ProcessorTDPState State { get; }
@@ -19,17 +17,16 @@ namespace LenovoLegionToolkit.Lib.Automation.Steps
 
         public async Task RunAsync()
         {
-            ProcessorController processor = _controller.GetCurrent();
+            await _manager.InitializeAsync();
 
             if (State.Stapm != 0)
-                processor.SetTDPLimit(PowerType.Stapm, State.Stapm);
+                _manager.SetTDPLimit(PowerType.Stapm, State.Stapm);
             if (State.Fast != 0)
-                processor.SetTDPLimit(PowerType.Fast, State.Fast);
+                _manager.SetTDPLimit(PowerType.Fast, State.Fast);
             if (State.Slow != 0)
-                processor.SetTDPLimit(PowerType.Slow, State.Slow);
+                _manager.SetTDPLimit(PowerType.Slow, State.Slow);
             if (State.UseMSR)
-                if (processor.GetType() == typeof(IntelProcessorController))
-                    ((IntelProcessorController)processor).SetMSRLimits(State.Slow, State.Fast);
+                _manager.SetMSRLimits(State.Slow, State.Fast);
             if (State.MaintainTDP)
                 await _manager.StartAsync(State.Stapm, State.Fast, State.Slow, State.UseMSR, State.Interval).ConfigureAwait(false);
             else

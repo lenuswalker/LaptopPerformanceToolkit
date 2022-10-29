@@ -22,6 +22,11 @@ namespace LenovoLegionToolkit.Lib.Automation.Listeners
         {
             if (!_timer.Enabled)
                 _timer.Enabled = true;
+            else
+            {
+                _timer.Enabled = false;
+                _timer.Enabled = true;
+            }
 
             return Task.CompletedTask;
         }
@@ -30,6 +35,12 @@ namespace LenovoLegionToolkit.Lib.Automation.Listeners
         {
             if (!_timer.Enabled)
             {
+                _timer.Interval = interval;
+                _timer.Enabled = true;
+            }
+            else
+            {
+                _timer.Enabled = false;
                 _timer.Interval = interval;
                 _timer.Enabled = true;
             }

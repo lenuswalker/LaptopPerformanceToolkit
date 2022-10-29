@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Automation.Listeners;
+using NeoSmart.AsyncLock;
+using LenovoLegionToolkit.Lib.Utils;
+using System.Diagnostics;
 
 namespace LenovoLegionToolkit.Lib.Automation.Utils
 {
@@ -11,6 +14,8 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils
     {
         private readonly ProcessorController _controller = IoCContainer.Resolve<ProcessorController>();
         private readonly TimeIntervalAutomationListener _timeIntervalListener;
+
+        private readonly AsyncLock _ioLock = new();
 
         // CPU limits
         private Dictionary<PowerType, int> currentLimits = new();
@@ -27,8 +32,6 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils
             _timeIntervalListener = timeIntervalListener ?? throw new ArgumentNullException(nameof(timeIntervalListener));
             // initialize processor
             _controller = _controller.GetCurrent();
-
-            _timeIntervalListener.Changed += TimeIntervalListener_Changed;
         }
 
         public bool IsSupported()
@@ -37,24 +40,61 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils
             return true;
         }
 
+        public async Task InitializeAsync()
+        {
+            using (await _ioLock.LockAsync().ConfigureAwait(false))
+            {
+                _timeIntervalListener.Changed += TimeIntervalListener_Changed;
+
+                await StopAsync().ConfigureAwait(false);
+            }
+        }
+
         public Task StartAsync(double stapm, double fast, double slow, bool useMSR, int interval)
         {
             _stapm = stapm;
             _fast = fast;
             _slow = slow;
             _useMSR = useMSR;
+
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Starting time interval listener...");
+
             _timeIntervalListener.StartAsync(interval*1000);
+
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Stopped time interval listener...");
+
             return Task.CompletedTask;
         }
 
         public Task StopAsync()
         {
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Stopping time interval listener...");
+
             _timeIntervalListener.StopAsync();
+
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Stopped time interval listener...");
+
             _stapm = 0;
             _fast = 0;
             _slow = 0;
             _useMSR = false;
+
             return Task.CompletedTask;
+        }
+
+        public void SetTDPLimit(PowerType type, double limit)
+        {
+            _controller.SetTDPLimit(type, limit);
+        }
+
+        public void SetMSRLimits(double slow, double fast)
+        {
+            if (_controller.GetType() == typeof(IntelProcessorController))
+                ((IntelProcessorController)_controller).SetMSRLimits(slow, fast);
         }
 
         public Task MaintainTDP(double stapm, double fast, double slow, bool useMSR)
