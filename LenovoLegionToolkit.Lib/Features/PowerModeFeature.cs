@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Listeners;
@@ -29,6 +28,30 @@ namespace LenovoLegionToolkit.Lib.Features
             _listener = listener ?? throw new ArgumentNullException(nameof(listener));
         }
 
+        public override async Task<bool> IsSupportedAsync()
+        {
+            try
+            {
+                if (_supportMethodName is null)
+                    return true;
+
+                var value = await WMI.CallAsync(Scope,
+                    Query,
+                    _supportMethodName,
+                    new(),
+                    pdc => Convert.ToInt32(pdc[_outParameterName].Value)).ConfigureAwait(false);
+                return value > _supportOffset;
+            }
+            catch
+            {
+                uint result = Power.PowerGetEffectiveOverlayScheme(out Guid currentMode);
+                if (result == 0)
+                    return true;
+                else                
+                    return false;
+            }
+        }
+
         public override async Task<PowerModeState[]> GetAllStatesAsync()
         {
             var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
@@ -50,7 +73,7 @@ namespace LenovoLegionToolkit.Lib.Features
             else
             {
                 PowerModeState state = PowerModeState.Balance;
-                uint result = PowerGetEffectiveOverlayScheme(out Guid currentMode);
+                uint result = Power.PowerGetEffectiveOverlayScheme(out Guid currentMode);
                 switch (currentMode.ToString())
                 {
                     case "961cc777-2547-4f9d-8174-7d86181b8a7a":
@@ -89,7 +112,7 @@ namespace LenovoLegionToolkit.Lib.Features
             }
             else
             {
-                PowerSetActiveOverlayScheme(new Guid(defaultGenericPowerModes[state]));
+                Power.PowerSetActiveOverlayScheme(new Guid(defaultGenericPowerModes[state]));
             }
 
             await _listener.NotifyAsync(state).ConfigureAwait(false);
@@ -124,21 +147,5 @@ namespace LenovoLegionToolkit.Lib.Features
                 await _aiModeController.StopAsync(state).ConfigureAwait(false);
             }
         }
-
-        /// <summary>
-        /// Retrieves the active overlay power scheme and returns a GUID that identifies the scheme.
-        /// </summary>
-        /// <param name="EffectiveOverlayPolicyGuid">A pointer to a GUID structure.</param>
-        /// <returns>Returns zero if the call was successful, and a nonzero value if the call failed.</returns>
-        [DllImportAttribute("powrprof.dll", EntryPoint = "PowerGetEffectiveOverlayScheme")]
-        private static extern uint PowerGetEffectiveOverlayScheme(out Guid EffectiveOverlayPolicyGuid);
-
-        /// <summary>
-        /// Sets the active power overlay power scheme.
-        /// </summary>
-        /// <param name="OverlaySchemeGuid">The identifier of the overlay power scheme.</param>
-        /// <returns>Returns zero if the call was successful, and a nonzero value if the call failed.</returns>
-        [DllImportAttribute("powrprof.dll", EntryPoint = "PowerSetActiveOverlayScheme")]
-        private static extern uint PowerSetActiveOverlayScheme(Guid OverlaySchemeGuid);
     }
 }

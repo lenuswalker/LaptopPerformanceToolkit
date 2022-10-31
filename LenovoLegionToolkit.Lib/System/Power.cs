@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.Utils;
@@ -200,5 +201,21 @@ namespace LenovoLegionToolkit.Lib.System
 
             throw new InvalidOperationException("Unknown state");
         }
+
+        /// <summary>
+        /// Retrieves the active overlay power scheme and returns a GUID that identifies the scheme.
+        /// </summary>
+        /// <param name="EffectiveOverlayPolicyGuid">A pointer to a GUID structure.</param>
+        /// <returns>Returns zero if the call was successful, and a nonzero value if the call failed.</returns>
+        [DllImportAttribute("powrprof.dll", EntryPoint = "PowerGetEffectiveOverlayScheme")]
+        public static extern uint PowerGetEffectiveOverlayScheme(out Guid EffectiveOverlayPolicyGuid);
+
+        /// <summary>
+        /// Sets the active power overlay power scheme.
+        /// </summary>
+        /// <param name="OverlaySchemeGuid">The identifier of the overlay power scheme.</param>
+        /// <returns>Returns zero if the call was successful, and a nonzero value if the call failed.</returns>
+        [DllImportAttribute("powrprof.dll", EntryPoint = "PowerSetActiveOverlayScheme")]
+        public static extern uint PowerSetActiveOverlayScheme(Guid OverlaySchemeGuid);
     }
 }

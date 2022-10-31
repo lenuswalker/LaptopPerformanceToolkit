@@ -27,13 +27,15 @@ namespace LenovoLegionToolkit.Lib.Listeners
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Power plan changed...");
 
-            if (!await _feature.IsSupportedAsync().ConfigureAwait(false))
-            {
-                if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Power modes not supported.");
+            uint result = Power.PowerGetEffectiveOverlayScheme(out Guid currentMode);
+            if (result != 0)
+                if (!await _feature.IsSupportedAsync().ConfigureAwait(false))
+                {
+                    if (Log.Instance.IsTraceEnabled)
+                        Log.Instance.Trace($"Power modes not supported.");
 
-                return;
-            }
+                    return;
+                }
 
             var vantageStatus = await _vantage.GetStatusAsync().ConfigureAwait(false);
             var activateWhenVantageEnabled = _settings.Store.ActivatePowerProfilesWithVantageEnabled;
