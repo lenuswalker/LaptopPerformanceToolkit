@@ -51,7 +51,7 @@ namespace LenovoLegionToolkit.WPF
 
             if (!ShouldByPassCompatibilityCheck(args))
             {
-                await CheckBasicCompatibilityAsync();
+                //await CheckBasicCompatibilityAsync();
                 await CheckCompatibilityAsync();
             }
 
