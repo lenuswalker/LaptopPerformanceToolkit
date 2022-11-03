@@ -129,6 +129,7 @@ namespace LenovoLegionToolkit.Lib.Controllers
                         error = RyzenAdj.set_stapm_limit(ry, (uint)limit);
                         break;
                 }
+                
                 base.SetTDPLimit(type, limit, error);
             }
         }
