@@ -294,7 +294,7 @@ namespace LenovoLegionToolkit.WPF.Windows
             Task.Run(Compatibility.GetMachineInformationAsync)
                 .ContinueWith(mi =>
                 {
-                    _deviceInfoIndicator.Content = mi.Result.Model;
+                    _deviceInfoIndicator.Content = mi.Result.MachineType;
                     _deviceInfoIndicator.Visibility = Visibility.Visible;
                 }, TaskScheduler.FromCurrentSynchronizationContext());
         }
