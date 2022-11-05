@@ -35,7 +35,7 @@ namespace LenovoLegionToolkit.Lib.Utils
                         Log.Instance.Trace($"Checking...");
 
                     var githubClient = new GitHubClient(new ProductHeaderValue("LenovoLegionToolkit-UpdateChecker"));
-                    var releases = await githubClient.Repository.Release.GetAll("BartoszCichecki", "LenovoLegionToolkit", new ApiOptions { PageSize = 5 }).ConfigureAwait(false);
+                    var releases = await githubClient.Repository.Release.GetAll("lenuswalker", "LaptopPerformanceToolkit", new ApiOptions { PageSize = 5 }).ConfigureAwait(false);
 
                     var thisReleaseVersion = Assembly.GetEntryAssembly()?.GetName().Version;
                     var thisBuildDate = Assembly.GetEntryAssembly()?.GetBuildDateTime() ?? new DateTime(2000, 1, 1);
