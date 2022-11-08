@@ -266,6 +266,11 @@ namespace LenovoLegionToolkit.Lib
         F
     }
 
+    public enum ThermalModeState
+    {
+        IrrelevantAndBuggy
+    }
+
     public enum TouchpadLockState
     {
         Off,
