@@ -26,6 +26,10 @@ namespace LenovoLegionToolkit.Lib.Features
         {
             try
             {
+                var compatibility = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
+                if (!compatibility.isCompatible)
+                    return false;
+
                 _ = await GetStateAsync().ConfigureAwait(false);
                 return true;
             }
