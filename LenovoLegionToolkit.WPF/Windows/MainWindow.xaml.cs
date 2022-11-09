@@ -195,7 +195,7 @@ namespace LenovoLegionToolkit.WPF.Windows
             if (!await KeyboardBacklightPage.IsSupportedAsync())
                 _navigationStore.Items.Remove(_keyboardItem);
 
-            if (App.Current.IsCompatible)
+            if (!App.Current.IsCompatible)
             {
                 _navigationStore.Items.Remove(_batteryItem);
                 _navigationStore.Items.Remove(_packageItem);
