@@ -95,22 +95,22 @@ namespace LenovoLegionToolkit.Lib.System
 
             var currentUser = WindowsIdentity.GetCurrent().Name;
 
+            var taskActionParameters = "--minimized";
+
+            Task.Run(Compatibility.IsCompatibleAsync)
+                .ContinueWith(compatibility =>
+                {
+                    if (!compatibility.Result.isCompatible)
+                        taskActionParameters = "--minimized --skip-compat-check";
+                });
+
             var ts = TaskService.Instance;
             var td = ts.NewTask();
             td.Data = fileVersion;
             td.Principal.UserId = currentUser;
             td.Principal.RunLevel = TaskRunLevel.Highest;
             td.Triggers.Add(new LogonTrigger { UserId = currentUser, Delay = new TimeSpan(0, 0, delayed ? 30 : 0) });
-
-            Task.Run(Compatibility.IsCompatibleAsync)
-                .ContinueWith(compatibility =>
-                {
-                    if (compatibility.Result.isCompatible)
-                        td.Actions.Add($"\"{filename}\"", "--minimized");
-                    else
-                        td.Actions.Add($"\"{filename}\"", "--minimized --skip-compat-check");
-                });
-
+            td.Actions.Add($"\"{filename}\"", taskActionParameters);
             td.Settings.DisallowStartIfOnBatteries = false;
             td.Settings.StopIfGoingOnBatteries = false;
             ts.RootFolder.RegisterTaskDefinition(TaskName, td);
