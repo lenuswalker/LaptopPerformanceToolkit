@@ -37,8 +37,10 @@ namespace LenovoLegionToolkit.WPF
 
         private Mutex? _mutex;
         private EventWaitHandle? _eventWaitHandle;
+        private bool _isCompatible;
 
         public new static App Current => (App)Application.Current;
+        public bool IsCompatible { get { return _isCompatible; } }
 
         private async void Application_Startup(object sender, StartupEventArgs e)
         {
@@ -69,7 +71,7 @@ namespace LenovoLegionToolkit.WPF
                 new IoCModule()
                 );
 
-            if (ShouldForceDisableRGBKeyboardSupport(args))
+            if (ShouldForceDisableRGBKeyboardSupport(args) || !_isCompatible)
                 IoCContainer.Resolve<RGBKeyboardBacklightController>().ForceDisable = true;
 
             await InitAutomationProcessor();
@@ -173,7 +175,8 @@ namespace LenovoLegionToolkit.WPF
         private async Task CheckCompatibilityAsync()
         {
             var (isCompatible, mi) = await Compatibility.IsCompatibleAsync();
-            if (isCompatible)
+            _isCompatible = isCompatible;
+            if (_isCompatible)
             {
                 if (Log.Instance.IsTraceEnabled)
                     Log.Instance.Trace($"Compatibility check passed. [Vendor={mi.Vendor}, Model={mi.Model}, MachineType={mi.MachineType}, BIOS={mi.BIOSVersion}]");
@@ -189,7 +192,7 @@ namespace LenovoLegionToolkit.WPF
             var result = await unsupportedWindow.ShouldContinue;
             if (result)
             {
-                Log.Instance.IsTraceEnabled = true;
+                //Log.Instance.IsTraceEnabled = true;
 
                 if (Log.Instance.IsTraceEnabled)
                     Log.Instance.Trace($"Compatibility check OVERRIDE. [Vendor={mi.Vendor}, Model={mi.Model}, MachineType={mi.MachineType}, version={Assembly.GetEntryAssembly()?.GetName().Version}, build={Assembly.GetEntryAssembly()?.GetBuildDateTime()?.ToString("yyyyMMddHHmmss") ?? ""}]");
@@ -281,14 +284,6 @@ namespace LenovoLegionToolkit.WPF
 
         private static async Task InitRGBKeyboardController()
         {
-            var (isCompatible, mi) = await Compatibility.IsCompatibleAsync();
-            if (!isCompatible)
-            {
-                if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Incompatible system detected. RGB keyboard is not supported.");
-                return;
-            }
-
             try
             {
                 var controller = IoCContainer.Resolve<RGBKeyboardBacklightController>();

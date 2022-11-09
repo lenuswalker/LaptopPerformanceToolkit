@@ -68,12 +68,8 @@ namespace LenovoLegionToolkit.WPF.Windows
                 _openLogIndicator.Visibility = Visibility.Visible;
             }
 
-            Task.Run(Compatibility.IsCompatibleAsync)
-                .ContinueWith(compatibility =>
-                { 
-                    if (compatibility.Result.isCompatible)
-                        _specialKeyListener.Changed += SpecialKeyListener_Changed;
-                });
+            if (App.Current.IsCompatible)
+                _specialKeyListener.Changed += SpecialKeyListener_Changed;
         }
 
         private void InitializeTray()
@@ -199,8 +195,7 @@ namespace LenovoLegionToolkit.WPF.Windows
             if (!await KeyboardBacklightPage.IsSupportedAsync())
                 _navigationStore.Items.Remove(_keyboardItem);
 
-            var compatibility = await Compatibility.IsCompatibleAsync();
-            if (!compatibility.isCompatible)
+            if (App.Current.IsCompatible)
             {
                 _navigationStore.Items.Remove(_batteryItem);
                 _navigationStore.Items.Remove(_packageItem);
