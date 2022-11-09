@@ -126,10 +126,16 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils
                 }
 
                 int limit = _controller.GetTDPLimit(type);
-                if (currentLimits.ContainsKey(type))
-                    currentLimits[type] = limit;
+
+                if (limit == 0)
+                    continue;
                 else
-                    currentLimits.Add(type, limit);
+                {
+                    if (currentLimits.ContainsKey(type))
+                        currentLimits[type] = limit;
+                    else
+                        currentLimits.Add(type, limit);
+                }
             }
 
             // search for limit changes
@@ -168,11 +174,6 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils
                     }
                 }
             }
-
-            savedLimits.Clear();
-            currentLimits.Clear();
-            currentMSRLimits.Clear();
-
             return Task.CompletedTask;
         }
 

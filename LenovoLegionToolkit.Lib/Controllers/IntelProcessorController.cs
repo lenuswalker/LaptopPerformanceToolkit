@@ -141,7 +141,21 @@ namespace LenovoLegionToolkit.Lib.Controllers
 
         public void SetMSRLimits(double PL1, double PL2)
         {
-            platform.set_msr_limits((int)PL1, (int)PL2);
+            if (PL1 == 0)
+                return;
+
+            if (PL2 == 0)
+                return;
+
+            lock (base.IsBusy)
+            {
+                var error = 0;
+
+                error = platform.set_msr_limits((int)PL1, (int)PL2);
+
+                if (Log.Instance.IsTraceEnabled)
+                    Log.Instance.Trace($"User requested MSR limits PL1: {PL1} & PL2: {PL2}, error code: {error}");
+            }
         }
         
         public Dictionary<PowerType, int> GetMSRLimits()
