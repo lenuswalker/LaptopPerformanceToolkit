@@ -281,6 +281,14 @@ namespace LenovoLegionToolkit.WPF
 
         private static async Task InitRGBKeyboardController()
         {
+            var (isCompatible, mi) = await Compatibility.IsCompatibleAsync();
+            if (!isCompatible)
+            {
+                if (Log.Instance.IsTraceEnabled)
+                    Log.Instance.Trace($"Incompatible system detected. RGB keyboard is not supported.");
+                return;
+            }
+
             try
             {
                 var controller = IoCContainer.Resolve<RGBKeyboardBacklightController>();
