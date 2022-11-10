@@ -27,6 +27,7 @@ namespace LenovoLegionToolkit.Lib
 
             builder.Register<AlwaysOnUSBFeature>();
             builder.Register<BatteryFeature>();
+            builder.Register<DisplayBrightnessFeature>();
             builder.Register<FlipToStartFeature>();
             builder.Register<FnLockFeature>();
             builder.Register<HybridModeFeature>();
@@ -74,7 +75,6 @@ namespace LenovoLegionToolkit.Lib
             builder.Register<CPUBoostModeController>();
             builder.Register<RGBKeyboardBacklightController>();
             builder.Register<GodModeController>();
-            builder.Register<DisplayBrightnessController>();
             builder.Register<ProcessorController>();
             builder.Register<IntelProcessorController>();
             builder.Register<AMDProcessorController>();

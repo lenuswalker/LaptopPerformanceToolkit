@@ -1377,6 +1377,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Slider to manually adjust display brightness..
+        /// </summary>
+        public static string DisplayBrightnessControl_Message {
+            get {
+                return ResourceManager.GetString("DisplayBrightnessControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display Brightness.
+        /// </summary>
+        public static string DisplayBrightnessControl_Title {
+            get {
+                return ResourceManager.GetString("DisplayBrightnessControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Donate with.
         /// </summary>
         public static string DonatePage_DonateWith {

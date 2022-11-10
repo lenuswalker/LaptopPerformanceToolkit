@@ -10,6 +10,9 @@ namespace LenovoLegionToolkit.WPF.Pages
             InitializeComponent();
 
             SizeChanged += DashboardPage_SizeChanged;
+
+            if (!App.Current.IsCompatible)
+                _otherStackPanel.Visibility = Visibility.Collapsed;
         }
 
         private void DashboardPage_SizeChanged(object sender, SizeChangedEventArgs e)

@@ -38,6 +38,7 @@
             <controls:PowerModeControl />
             <controls:BatteryModeControl />
             <controls:AlwaysOnUSBControl />
+            <controls:DisplayBrightnessControl />
         </StackPanel>
 
         <StackPanel
