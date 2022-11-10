@@ -42,7 +42,6 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps
 
         protected override Task RefreshAsync()
         {
-            //_brightness.Value = AutomationStep.Brightness;
             _brightness.Value = AutomationStep.State;
             return Task.CompletedTask;
         }
