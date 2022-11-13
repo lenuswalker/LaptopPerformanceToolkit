@@ -70,6 +70,12 @@ namespace LenovoLegionToolkit.Lib
         Off
     }
 
+    public enum HDRState
+    {
+        Off,
+        On
+    }
+
     public enum HybridModeState
     {
         [Display(ResourceType = typeof(Resource), Name = "HybridModeState_On")]
@@ -135,7 +141,9 @@ namespace LenovoLegionToolkit.Lib
         RGBKeyboardPresetOff,
         TouchpadOn,
         TouchpadOff,
-        WhiteKeyboardBacklight
+        WhiteKeyboardBacklight,
+        SmartKeySinglePress,
+        SmartKeyDoublePress
     }
 
     public enum OS

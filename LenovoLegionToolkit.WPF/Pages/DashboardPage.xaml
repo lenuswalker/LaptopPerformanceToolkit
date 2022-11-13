@@ -53,6 +53,7 @@
                 Text="{x:Static resources:Resource.DashboardPage_Graphics_Title}" />
             <controls:HybridModeControl />
             <controls:RefreshRateControl />
+            <controls:HDRControl />
             <controls:DiscreteGPUControl />
 
         </StackPanel>
