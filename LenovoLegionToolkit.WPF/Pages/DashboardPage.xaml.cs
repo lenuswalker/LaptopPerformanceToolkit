@@ -1,18 +1,37 @@
-﻿using System.Windows;
+﻿using LenovoLegionToolkit.Lib.Features;
+using LenovoLegionToolkit.Lib;
+using System.Windows;
 using System.Windows.Controls;
+using LenovoLegionToolkit.Lib.Controllers;
 
 namespace LenovoLegionToolkit.WPF.Pages
 {
     public partial class DashboardPage
     {
+        protected readonly GPUController _gpuController = IoCContainer.Resolve<GPUController>();
+        protected readonly HDRFeature _hDRFeature = IoCContainer.Resolve<HDRFeature>();
+        protected readonly HybridModeFeature _hybridModeFeature = IoCContainer.Resolve<HybridModeFeature>();
+        protected readonly RefreshRateFeature _refreshRateFeature = IoCContainer.Resolve<RefreshRateFeature>();
+
         public DashboardPage()
         {
             InitializeComponent();
 
-            SizeChanged += DashboardPage_SizeChanged;
+            Init();
+        }
+
+        private async void Init()
+        {
+            _graphicsStackPanel.Visibility = Visibility.Collapsed;
 
             if (!App.Current.IsCompatible)
                 _otherStackPanel.Visibility = Visibility.Collapsed;
+
+            if (_gpuController.IsSupported() || await _hDRFeature.IsSupportedAsync() ||
+                await _hybridModeFeature.IsSupportedAsync() || await _refreshRateFeature.IsSupportedAsync())
+                _graphicsStackPanel.Visibility = Visibility.Visible;
+
+            SizeChanged += DashboardPage_SizeChanged;
         }
 
         private void DashboardPage_SizeChanged(object sender, SizeChangedEventArgs e)
