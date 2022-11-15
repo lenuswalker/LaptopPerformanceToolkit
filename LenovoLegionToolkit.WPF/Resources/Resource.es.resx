@@ -100,13 +100,13 @@ Esta opción está pensada sólo para dispositivos que no vienen con múltiples 
     <value>Activar siempre el plan de energía de Windows</value>
   </data>
   <data name="AlwaysOnUSBControl_Message" xml:space="preserve">
-    <value>Cargar dispositivos USB, cuando el equipo esté apagado o en modo de suspensión o hibernación.</value>
+    <value>Cargar dispositivos USB, cuando el equipo esté apagado o en modo de suspensión/ hibernación.</value>
   </data>
   <data name="AlwaysOnUSBControl_Title" xml:space="preserve">
     <value>USB siempre encendido</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
-    <value>Cargar dispositivos USB, cuando el equipo esté apagado o en modo de suspensión o hibernación.</value>
+    <value>Cargar dispositivos USB, cuando el equipo esté apagado o en modo de suspensión/ hibernación.</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Title" xml:space="preserve">
     <value>USB siempre encendido</value>
@@ -245,7 +245,7 @@ Sólo se ejecutarán las acciones que coincidan con el estado actual.</value>
     <value>Elegir como se carga la batería.</value>
   </data>
   <data name="BatteryModeControl_Title" xml:space="preserve">
-    <value>Modo batería</value>
+    <value>Modo de batería</value>
   </data>
   <data name="BatteryPage_ACAdapterConnectedAndCharging" xml:space="preserve">
     <value>Conectada, cargando...</value>
@@ -272,7 +272,7 @@ Sólo se ejecutarán las acciones que coincidan con el estado actual.</value>
     <value>Contador de ciclos</value>
   </data>
   <data name="BatteryPage_DesignCapacity_Message" xml:space="preserve">
-    <value>Capacidad de la batería según diseño.</value>
+    <value>Capacidad de la batería según el diseño.</value>
   </data>
   <data name="BatteryPage_DesignCapacity_Title" xml:space="preserve">
     <value>Capacidad del diseño</value>
@@ -351,6 +351,15 @@ Esta hora puede no ser correcta si el portátil se ha cargado mientras estaba su
     <value>Verde</value>
   </data>
   <data name="ColorCardControl_Red" xml:space="preserve">
+    <value>Rojo</value>
+  </data>
+  <data name="Color_Blue" xml:space="preserve">
+    <value>Azul</value>
+  </data>
+  <data name="Color_Green" xml:space="preserve">
+    <value>Verde</value>
+  </data>
+  <data name="Color_Red" xml:space="preserve">
     <value>Rojo</value>
   </data>
   <data name="ComboBoxHybridModeControl_Message" xml:space="preserve">
@@ -505,6 +514,9 @@ AVISO: Esta acción no se ejecutará correctamente, si la pantalla interna está
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
     <value>Brillo de pantalla</value>
   </data>
+  <data name="DonatePage_DonateWith" xml:space="preserve">
+    <value>Donar con</value>
+  </data>
   <data name="DonatePage_Message" xml:space="preserve">
     <value>El desarrollo y mantenimiento de Lenovo Legion Toolkit lleva mucho tiempo. Si le gusta este programa, puede apoyar su futuro, donando la cantidad que desee.
 
@@ -515,6 +527,9 @@ Haga clic en el logotipo de PayPal que aparece a continuación o escanee el cód
   <data name="DonatePage_Title" xml:space="preserve">
     <value>Donar</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
   <data name="ExcludeRefreshRatesWindow_NoRefreshRatesFound_Message" xml:space="preserve">
     <value>Asegúrese de que la pantalla del portátil está encendida. Lenovo Legion Toolkit no puede cargar las tasas de refresco de una pantalla que no está encendida.</value>
   </data>
@@ -522,7 +537,7 @@ Haga clic en el logotipo de PayPal que aparece a continuación o escanee el cód
     <value>No se han encontrado tasas de refresco</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Title" xml:space="preserve">
-    <value>Excluir las tarifas de refresco</value>
+    <value>Excluir tasas de refresco</value>
   </data>
   <data name="Exit" xml:space="preserve">
     <value>Salir</value>
@@ -573,7 +588,7 @@ Haga clic en el logotipo de PayPal que aparece a continuación o escanee el cód
     <value>Velocidad del ventilador</value>
   </data>
   <data name="FanCurveControl_GPU" xml:space="preserve">
-    <value>Unidad de procesamiento gráfico</value>
+    <value>GPU</value>
   </data>
   <data name="FanCurveControl_RPM" xml:space="preserve">
     <value>Revoluciones por minuto</value>
@@ -582,19 +597,19 @@ Haga clic en el logotipo de PayPal que aparece a continuación o escanee el cód
     <value>Encender el portátil al abrir la tapa.</value>
   </data>
   <data name="FlipToStartAutomationStepControl_Title" xml:space="preserve">
-    <value>Voltear al inicio</value>
+    <value>Voltear para iniciar</value>
   </data>
   <data name="FlipToStartControl_Message" xml:space="preserve">
     <value>Encender el portátil al abrir la tapa.</value>
   </data>
   <data name="FlipToStartControl_Title" xml:space="preserve">
-    <value>Voltear al inicio</value>
+    <value>Voltear para iniciar</value>
   </data>
   <data name="FnLockAutomationStepControl_Message" xml:space="preserve">
     <value>Utilizar las funciones secundarias de las teclas F1-F12 sin pulsar la tecla Fn.</value>
   </data>
   <data name="FnLockAutomationStepControl_Title" xml:space="preserve">
-    <value>Bloqueo Fn</value>
+    <value>Bloqueo de la tecla Fn</value>
   </data>
   <data name="FnLockControl_Message" xml:space="preserve">
     <value>Utilizar las funciones secundarias de las teclas F1-F12 sin pulsar la tecla Fn.</value>
@@ -657,7 +672,7 @@ En serio, ¡tenga cuidado con esta opción!</value>
     <value>Potencia gráfica total configurable</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost" xml:space="preserve">
-    <value>Mejora dinámica</value>
+    <value>Dynamic Boost</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit" xml:space="preserve">
     <value>Límite de temperatura de la GPU</value>
@@ -667,6 +682,23 @@ En serio, ¡tenga cuidado con esta opción!</value>
   </data>
   <data name="GodModeSettingsWindow_Title" xml:space="preserve">
     <value>Ajustes del modo personalizado</value>
+  </data>
+  <data name="HDRAutomationStepControl_Message" xml:space="preserve">
+    <value>Activar el rango dinámico alto (HDR) en la pantalla interna.
+
+AVISO: Esta acción no se ejecutará correctamente si la pantalla interna está apagada.</value>
+  </data>
+  <data name="HDRAutomationStepControl_Title" xml:space="preserve">
+    <value>HDR</value>
+  </data>
+  <data name="HDRControl_Message" xml:space="preserve">
+    <value>Activar el rango dinámico alto (HDR) en la pantalla interna.</value>
+  </data>
+  <data name="HDRControl_Title" xml:space="preserve">
+    <value>HDR</value>
+  </data>
+  <data name="HDRControl_Warning" xml:space="preserve">
+    <value>El uso del HDR está bloqueado por la configuración de Windows.</value>
   </data>
   <data name="IncompatibleDevice_Message" xml:space="preserve">
     <value>Este dispositivo no es compatible con Lenovo Legion Toolkit.</value>
@@ -679,6 +711,12 @@ En serio, ¡tenga cuidado con esta opción!</value>
   </data>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>Retroiluminación del teclado</value>
+  </data>
+  <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
+    <value>La retroiluminación del teclado no puede ser controlada aquí, si Vantage o sus servicios están funcionando.</value>
+  </data>
+  <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
+    <value>Lenovo Vantage parece estar activado</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
     <value>Acerca de</value>
@@ -759,10 +797,10 @@ En serio, ¡tenga cuidado con esta opción!</value>
     <value>Bloqueo numérico activado</value>
   </data>
   <data name="Notification_TouchpadOff" xml:space="preserve">
-    <value>Teclado táctil apagado</value>
+    <value>Táctil apagado</value>
   </data>
   <data name="Notification_TouchpadOn" xml:space="preserve">
-    <value>Teclado táctil encendido</value>
+    <value>Táctil encendido</value>
   </data>
   <data name="Notification_WhiteKeyboardBacklight" xml:space="preserve">
     <value>Retroiluminación {0}</value>
@@ -798,6 +836,9 @@ Activar esta opción si tiene conflictos con las aplicaciones en pantalla comple
   <data name="NotificationsSettingsWindow_RefreshRate" xml:space="preserve">
     <value>Tasa de refresco</value>
   </data>
+  <data name="NotificationsSettingsWindow_SmartKey" xml:space="preserve">
+    <value>Tecla inteligente</value>
+  </data>
   <data name="NotificationsSettingsWindow_Title" xml:space="preserve">
     <value>Notificaciones</value>
   </data>
@@ -814,13 +855,13 @@ Activar esta opción si tiene conflictos con las aplicaciones en pantalla comple
     <value>Mejorar el tiempo de respuesta de la pantalla integrada.</value>
   </data>
   <data name="OverDriveAutomationStepControl_Title" xml:space="preserve">
-    <value>A toda velocidad</value>
+    <value>OverDrive</value>
   </data>
   <data name="OverDriveControl_Message" xml:space="preserve">
     <value>Mejorar el tiempo de respuesta de la pantalla integrada.</value>
   </data>
   <data name="OverDriveControl_Title" xml:space="preserve">
-    <value>A toda velocidad</value>
+    <value>OverDrive</value>
   </data>
   <data name="PackageControl_DownloadComplete_Message" xml:space="preserve">
     <value>{0} descargado(s)</value>
@@ -932,6 +973,9 @@ Puede cambiar de modo con Fn+Q.</value>
   <data name="PowerModeControl_Title" xml:space="preserve">
     <value>Modo de alimentación</value>
   </data>
+  <data name="PowerModeControl_Warning" xml:space="preserve">
+    <value>El modo de alimentación seleccionado puede no funcionar correctamente sin el adaptador de corriente alterna conectado.</value>
+  </data>
   <data name="PowerModeWindow_Title" xml:space="preserve">
     <value>Modo de alimentación</value>
   </data>
@@ -948,10 +992,10 @@ Puede cambiar de modo con Fn+Q.</value>
     <value>Modo personalizado</value>
   </data>
   <data name="PowerPlansWindow_PerformanceMode" xml:space="preserve">
-    <value>Modo de rendiemiento</value>
+    <value>Modo rendimiento</value>
   </data>
   <data name="PowerPlansWindow_QuietMode" xml:space="preserve">
-    <value>Modo tranquilo</value>
+    <value>Modo Silencioso</value>
   </data>
   <data name="PowerPlansWindow_Title" xml:space="preserve">
     <value>Planes de energía</value>
@@ -961,6 +1005,9 @@ Puede cambiar de modo con Fn+Q.</value>
   </data>
   <data name="RGBKeyboardBacklightAutomationStepControl_Title" xml:space="preserve">
     <value>Retroiluminación  del teclado</value>
+  </data>
+  <data name="RGBKeyboardBacklightBrightnessCardControl_Brightness" xml:space="preserve">
+    <value>Brillo</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Preset1" xml:space="preserve">
     <value>Predefinido 1</value>
@@ -974,12 +1021,6 @@ Puede cambiar de modo con Fn+Q.</value>
   <data name="RGBKeyboardBacklightControl_PresetOff" xml:space="preserve">
     <value>Apagado</value>
   </data>
-  <data name="RGBKeyboardBacklightControl_VantageEnabled_Message" xml:space="preserve">
-    <value>La retroiluminación del teclado no puede ser controlada aquí, si Vantage o sus servicios están funcionando.</value>
-  </data>
-  <data name="RGBKeyboardBacklightControl_VantageEnabled_Title" xml:space="preserve">
-    <value>Lenovo Vantage parece estar activado</value>
-  </data>
   <data name="RGBKeyboardBacklightControl_Zone1" xml:space="preserve">
     <value>Zona 1</value>
   </data>
@@ -992,13 +1033,10 @@ Puede cambiar de modo con Fn+Q.</value>
   <data name="RGBKeyboardBacklightControl_Zone4" xml:space="preserve">
     <value>Zona 4</value>
   </data>
-  <data name="RGBKeyboardBrightnessCardControl_Brightness" xml:space="preserve">
-    <value>Brillo</value>
-  </data>
-  <data name="RGBKeyboardEffectCardControl_Title" xml:space="preserve">
+  <data name="RGBKeyboardBacklightEffectCardControl_Title" xml:space="preserve">
     <value>Efecto</value>
   </data>
-  <data name="RGBKeyboardSpeedCardControl_Title" xml:space="preserve">
+  <data name="RGBKeyboardBacklightSpeedCardControl_Title" xml:space="preserve">
     <value>Velocidad</value>
   </data>
   <data name="ReadmeWindow_Title" xml:space="preserve">
@@ -1052,6 +1090,15 @@ Asegúrese primero de que su script se ejecuta correctamente.</value>
   <data name="Saving" xml:space="preserve">
     <value>Guardando...</value>
   </data>
+  <data name="SelectSmartKeyPipelinesWindow_List_Description" xml:space="preserve">
+    <value>Elija una o varias acciones rápidas para desplazarse por ellas.</value>
+  </data>
+  <data name="SelectSmartKeyPipelinesWindow_List_Empty" xml:space="preserve">
+    <value>Ninguna acción rápida definida.</value>
+  </data>
+  <data name="SelectSmartKeyPipelinesWindow_ShowThisApp" xml:space="preserve">
+    <value>Mostrar está aplicacion</value>
+  </data>
   <data name="SettingsPage_AccentColor_Description" xml:space="preserve">
     <value>Cambiar el color característico de la aplicación.</value>
   </data>
@@ -1094,7 +1141,7 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
     <value>Desactivar las teclas de acceso rápido de Lenovo y su servicio, sin desinstalarlo.
-Si se desactiva, esta aplicación controlará los accesos directos Fn
+Si se desactiva, esta aplicación controlará los accesos directos Fn.
 Se recomienda reiniciar después de cambiar esta opción.</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
@@ -1159,20 +1206,17 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
   <data name="SettingsPage_PowerPlans_Title" xml:space="preserve">
     <value>Planes de energía</value>
   </data>
-	<data name="SettingsPage_SmartKeyDoublePressAction_Message" xml:space="preserve">
+  <data name="SettingsPage_SmartKeyDoublePressAction_Message" xml:space="preserve">
     <value>Asignar acción rápida al presionar Fn+F9 dos veces.</value>
   </data>
   <data name="SettingsPage_SmartKeyDoublePressAction_Title" xml:space="preserve">
-    <value>Acción secundaria de la llave inteligente</value>
+    <value>Acción secundaria de la tecla inteligente</value>
   </data>
   <data name="SettingsPage_SmartKeySinglePressAction_Message" xml:space="preserve">
     <value>Asignar acción rápida al presionar Fn+F9 una vez.</value>
   </data>
-  <data name="SelectSmartKeyPipelinesWindow_ShowThisApp" xml:space="preserve">
-    <value>Mostrar está aplicacion</value>
-  </data>
   <data name="SettingsPage_SmartKeySinglePressAction_Title" xml:space="preserve">
-    <value>Acción de la llave inteligente</value>
+    <value>Acción de la tecla inteligente</value>
   </data>
   <data name="SettingsPage_Theme_Description" xml:space="preserve">
     <value>Establecer un tema claro, un tema oscuro o seguir con la configuración del sistema.</value>
@@ -1182,6 +1226,87 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
   </data>
   <data name="SettingsPage_Title" xml:space="preserve">
     <value>Ajustes</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Message" xml:space="preserve">
+    <value>Ajustar el brillo de la retroiluminación del teclado.</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Off" xml:space="preserve">
+    <value>Apagado</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Title" xml:space="preserve">
+    <value>Brillo de la retroiluminación del teclado</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightControl_AddEffect" xml:space="preserve">
+    <value>Añadir efecto</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightControl_ApplyProfileError_Title" xml:space="preserve">
+    <value>No se ha podido aplicar el perfil</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightControl_ApplyProfileError_Title_Message" xml:space="preserve">
+    <value>No se ha podido aplicar el perfil de iluminación.</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightControl_AuroraSyncNotSupported_Message" xml:space="preserve">
+    <value>El efecto de sincronización Aurora no es compatible actualmente.</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightControl_AuroraSyncNotSupported_Title" xml:space="preserve">
+    <value>Sincronización Aurora no es compatible.</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightControl_Brightness_Title" xml:space="preserve">
+    <value>Brillo</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightControl_DeselectAll_ToolTip" xml:space="preserve">
+    <value>Desmarcar todas las zonas</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightControl_Effects" xml:space="preserve">
+    <value>Efectos</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightControl_NoEffects_Text" xml:space="preserve">
+    <value>Ningún efecto añadido.</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightControl_SelectAll_ToolTip" xml:space="preserve">
+    <value>Seleccionar todas las zonas</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightControl_SwitchKeyboardLayout_ToolTip" xml:space="preserve">
+    <value>Cambiar la disposición del teclado</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEditEffectWindow_ClockwiseDirection_Title" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEditEffectWindow_Color_Title" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEditEffectWindow_Colors_Title" xml:space="preserve">
+    <value>Colores</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEditEffectWindow_Direction_Title" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEditEffectWindow_Effect_Title" xml:space="preserve">
+    <value>Efecto</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEditEffectWindow_Effect_Warning" xml:space="preserve">
+    <value>Este efecto se aplicará a todo el teclado y sustituirá a todos los demás efectos.</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEditEffectWindow_Speed_Title" xml:space="preserve">
+    <value>Velocidad</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEditEffectWindow_Title_Add" xml:space="preserve">
+    <value>Añadir efecto</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEditEffectWindow_Title_Edit" xml:space="preserve">
+    <value>Editar efecto</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightProfileAutomationStepControl_Message" xml:space="preserve">
+    <value>Ajustar el perfil de retroiluminación del teclado.</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightProfileAutomationStepControl_Title" xml:space="preserve">
+    <value>Perfil de retroiluminación del teclado</value>
+  </data>
+  <data name="SpectrumKeyboardEffectControl_Description_AllZones" xml:space="preserve">
+    <value>Cualquier tecla</value>
+  </data>
+  <data name="SpectrumKeyboardEffectControl_Description_Zones" xml:space="preserve">
+    <value>{0} zonas</value>
   </data>
   <data name="TimeWindow_Sunrise" xml:space="preserve">
     <value>Al amanecer</value>
@@ -1209,16 +1334,16 @@ Requiere un reinicio.</value>
     <value>Modo híbrido</value>
   </data>
   <data name="TouchpadLockAutomationStepControl_Message" xml:space="preserve">
-    <value>Desactivar el teclado táctil.</value>
+    <value>Desactivar táctil.</value>
   </data>
   <data name="TouchpadLockAutomationStepControl_Title" xml:space="preserve">
     <value>Bloqueo del teclado táctil</value>
   </data>
   <data name="TouchpadLockControl_Message" xml:space="preserve">
-    <value>Desactivar el teclado táctil.</value>
+    <value>Desactivar táctil.</value>
   </data>
   <data name="TouchpadLockControl_Title" xml:space="preserve">
-    <value>Bloqueo del teclado táctil</value>
+    <value>Bloqueo táctil</value>
   </data>
   <data name="TryAgain" xml:space="preserve">
     <value>Intentar de nuevo</value>
