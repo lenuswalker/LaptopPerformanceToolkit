@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using Humanizer;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Automation;
@@ -71,7 +72,6 @@ namespace LenovoLegionToolkit.WPF.Pages
 
             _themeComboBox.SetItems(Enum.GetValues<Theme>(), _settings.Store.Theme, t => t.GetDisplayName());
             _accentColorPicker.SelectedColor = (_settings.Store.AccentColor ?? _themeManager.DefaultAccentColor).ToColor();
-            _accentColor.SetColor(_settings.Store.AccentColor ?? _themeManager.DefaultAccentColor);
             _systemAccentColorToggle.IsChecked = _settings.Store.SystemAccentColor;
             _autorunComboBox.SetItems(Enum.GetValues<AutorunState>(), Autorun.State, t => t.GetDisplayName());
             _minimizeOnCloseToggle.IsChecked = _settings.Store.MinimizeOnClose;
@@ -141,8 +141,7 @@ namespace LenovoLegionToolkit.WPF.Pages
             if (_isRefreshing)
                 return;
 
-            _settings.Store.AccentColor = _accentColorPicker.SelectedColor.ToRGBColor();
-            bool isSystemAccentColor = RGBColor.Equals(_accentColor.GetColor(), _systemAccentColorHelper.SystemAccentColor);
+            bool isSystemAccentColor = RGBColor.Equals(_accentColorPicker.SelectedColor.ToRGBColor(), _systemAccentColorHelper.SystemAccentColor);
             if (isSystemAccentColor)
             {
                 _settings.Store.SystemAccentColor = true;
@@ -154,7 +153,7 @@ namespace LenovoLegionToolkit.WPF.Pages
 
             _systemAccentColorToggle.IsChecked = _settings.Store.SystemAccentColor;
 
-            _settings.Store.AccentColor = _accentColor.GetColor();
+            _settings.Store.AccentColor = _accentColorPicker.SelectedColor.ToRGBColor();
             _settings.SynchronizeStore();
             
             _themeManager.Apply();
@@ -171,13 +170,17 @@ namespace LenovoLegionToolkit.WPF.Pages
 
             if (state.Value)
             {
-                _accentColor.SetColor(_systemAccentColorHelper.SystemAccentColor);
+                _accentColorPicker.SelectedColor = Color.FromRgb(_systemAccentColorHelper.SystemAccentColor.R,
+                                                                    _systemAccentColorHelper.SystemAccentColor.G,
+                                                                    _systemAccentColorHelper.SystemAccentColor.B);
                 _settings.Store.SystemAccentColor = state.Value;
                 _settings.SynchronizeStore();
             }
             else
             {
-                _accentColor.SetColor(_themeManager.DefaultAccentColor);
+                _accentColorPicker.SelectedColor = Color.FromRgb(_themeManager.DefaultAccentColor.R,
+                                                                    _themeManager.DefaultAccentColor.G,
+                                                                    _themeManager.DefaultAccentColor.B);
                 _settings.Store.SystemAccentColor = state.Value;
                 _settings.SynchronizeStore();
             }
