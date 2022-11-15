@@ -9,7 +9,22 @@ namespace LenovoLegionToolkit.Lib.Features
 {
     public class RefreshRateFeature : IFeature<RefreshRate>
     {
-        public Task<bool> IsSupportedAsync() => Task.FromResult(true);
+        public async Task<bool> IsSupportedAsync()
+        {
+            var result = await GetAllStatesAsync();
+            if (result.Length <= 1)
+            {
+                if (Log.Instance.IsTraceEnabled)
+                    Log.Instance.Trace($"Only one display Refresh Rate found. Refresh Rate Feature is not supported.");
+
+                return false;
+            }
+
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Refresh Rate Feature is supported.");
+
+            return true;
+        }
 
         public async Task<RefreshRate[]> GetAllStatesAsync()
         {
