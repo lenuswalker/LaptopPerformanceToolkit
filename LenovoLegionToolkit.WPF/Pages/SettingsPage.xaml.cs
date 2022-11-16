@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using Humanizer;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Automation;
@@ -32,7 +31,6 @@ namespace LenovoLegionToolkit.WPF.Pages
         private readonly RGBKeyboardBacklightController _rgbKeyboardBacklightController = IoCContainer.Resolve<RGBKeyboardBacklightController>();
         private readonly AutomationProcessor _automationProcessor = IoCContainer.Resolve<AutomationProcessor>();
         private readonly ThemeManager _themeManager = IoCContainer.Resolve<ThemeManager>();
-        private readonly SystemAccentColorHelper _systemAccentColorHelper = IoCContainer.Resolve<SystemAccentColorHelper>();
 
         private bool _isRefreshing;
 
@@ -42,6 +40,8 @@ namespace LenovoLegionToolkit.WPF.Pages
 
             Loaded += SettingsPage_Loaded;
             IsVisibleChanged += SettingsPage_IsVisibleChanged;
+
+            _themeManager.ThemeApplied += ThemeManager_ThemeApplied;
         }
 
         private async void SettingsPage_Loaded(object sender, RoutedEventArgs e) => await RefreshAsync();
@@ -50,6 +50,12 @@ namespace LenovoLegionToolkit.WPF.Pages
         {
             if (IsLoaded && IsVisible)
                 await RefreshAsync();
+        }
+
+        private void ThemeManager_ThemeApplied(object? sender, EventArgs e)
+        {
+            if (!_isRefreshing)
+                UpdateAccentColorPicker();
         }
 
         private async Task RefreshAsync()
@@ -71,8 +77,10 @@ namespace LenovoLegionToolkit.WPF.Pages
             }
 
             _themeComboBox.SetItems(Enum.GetValues<Theme>(), _settings.Store.Theme, t => t.GetDisplayName());
-            _accentColorPicker.SelectedColor = (_settings.Store.AccentColor ?? _themeManager.DefaultAccentColor).ToColor();
-            _systemAccentColorToggle.IsChecked = _settings.Store.SystemAccentColor;
+
+            UpdateAccentColorPicker();
+            _accentColorSourceComboBox.SetItems(Enum.GetValues<AccentColorSource>(), _settings.Store.AccentColorSource, t => t.GetDisplayName());
+
             _autorunComboBox.SetItems(Enum.GetValues<AutorunState>(), Autorun.State, t => t.GetDisplayName());
             _minimizeOnCloseToggle.IsChecked = _settings.Store.MinimizeOnClose;
 
@@ -99,7 +107,6 @@ namespace LenovoLegionToolkit.WPF.Pages
             await loadingTask;
 
             _themeComboBox.Visibility = Visibility.Visible;
-            _systemAccentColorToggle.Visibility = Visibility.Visible;
             _autorunComboBox.Visibility = Visibility.Visible;
             _minimizeOnCloseToggle.Visibility = Visibility.Visible;
             _vantageToggle.Visibility = Visibility.Visible;
@@ -141,49 +148,35 @@ namespace LenovoLegionToolkit.WPF.Pages
             if (_isRefreshing)
                 return;
 
-            bool isSystemAccentColor = RGBColor.Equals(_accentColorPicker.SelectedColor.ToRGBColor(), _systemAccentColorHelper.SystemAccentColor);
-            if (isSystemAccentColor)
-            {
-                _settings.Store.SystemAccentColor = true;
-            }
-            else
-            {
-                _settings.Store.SystemAccentColor = false;
-            }
-
-            _systemAccentColorToggle.IsChecked = _settings.Store.SystemAccentColor;
+            if (_settings.Store.AccentColorSource != AccentColorSource.Custom)
+                return;
 
             _settings.Store.AccentColor = _accentColorPicker.SelectedColor.ToRGBColor();
             _settings.SynchronizeStore();
-            
+
             _themeManager.Apply();
         }
 
-        private void SystemAccentColorToggle_Click(object sender, RoutedEventArgs e)
+        private void AccentColorSourceComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_isRefreshing)
                 return;
 
-            var state = _systemAccentColorToggle.IsChecked;
-            if (state is null)
+            if (!_accentColorSourceComboBox.TryGetSelectedItem(out AccentColorSource state))
                 return;
 
-            if (state.Value)
-            {
-                _accentColorPicker.SelectedColor = Color.FromRgb(_systemAccentColorHelper.SystemAccentColor.R,
-                                                                    _systemAccentColorHelper.SystemAccentColor.G,
-                                                                    _systemAccentColorHelper.SystemAccentColor.B);
-                _settings.Store.SystemAccentColor = state.Value;
-                _settings.SynchronizeStore();
-            }
-            else
-            {
-                _accentColorPicker.SelectedColor = Color.FromRgb(_themeManager.DefaultAccentColor.R,
-                                                                    _themeManager.DefaultAccentColor.G,
-                                                                    _themeManager.DefaultAccentColor.B);
-                _settings.Store.SystemAccentColor = state.Value;
-                _settings.SynchronizeStore();
-            }
+            _settings.Store.AccentColorSource = state;
+            _settings.SynchronizeStore();
+
+            UpdateAccentColorPicker();
+
+            _themeManager.Apply();
+        }
+
+        private void UpdateAccentColorPicker()
+        {
+            _accentColorPicker.Visibility = _settings.Store.AccentColorSource == AccentColorSource.Custom ? Visibility.Visible : Visibility.Collapsed;
+            _accentColorPicker.SelectedColor = _themeManager.AccentColor.ToColor();
         }
 
         private void AutorunComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
