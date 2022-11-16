@@ -2250,6 +2250,33 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Backlight {0}.
+        /// </summary>
+        public static string Notification_SpectrumKeyboardBacklight_Backlight {
+            get {
+                return ResourceManager.GetString("Notification_SpectrumKeyboardBacklight_Backlight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Brightness {0}.
+        /// </summary>
+        public static string Notification_SpectrumKeyboardBacklight_Brightness {
+            get {
+                return ResourceManager.GetString("Notification_SpectrumKeyboardBacklight_Brightness", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile {0}.
+        /// </summary>
+        public static string Notification_SpectrumKeyboardBacklight_Profile {
+            get {
+                return ResourceManager.GetString("Notification_SpectrumKeyboardBacklight_Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Touchpad off.
         /// </summary>
         public static string Notification_TouchpadOff {
@@ -3624,6 +3651,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string SpectrumKeyboardBacklightControl_NoEffects_Text {
             get {
                 return ResourceManager.GetString("SpectrumKeyboardBacklightControl_NoEffects_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset to default.
+        /// </summary>
+        public static string SpectrumKeyboardBacklightControl_ResetToDefault_Tooltip {
+            get {
+                return ResourceManager.GetString("SpectrumKeyboardBacklightControl_ResetToDefault_Tooltip", resourceCulture);
             }
         }
         
