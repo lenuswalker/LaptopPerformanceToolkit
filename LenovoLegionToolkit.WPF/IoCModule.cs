@@ -9,7 +9,6 @@ namespace LenovoLegionToolkit.WPF
         protected override void Load(ContainerBuilder builder)
         {
             builder.Register<ThemeManager>();
-            builder.Register<SystemAccentColorHelper>();
 
             builder.Register<NotificationsManager>().AutoActivate();
         }
