@@ -107,7 +107,8 @@ namespace LenovoLegionToolkit.WPF.Windows
 
             ContextMenuHelper.Instance.SetNavigationItems(_navigationStore);
 
-            SmartKeyHelper.Instance.BringToForeground = () => Dispatcher.Invoke(BringToForeground);
+            if (App.Current.IsCompatible)
+                SmartKeyHelper.Instance.BringToForeground = () => Dispatcher.Invoke(BringToForeground);
 
             await loadingTask;
 
