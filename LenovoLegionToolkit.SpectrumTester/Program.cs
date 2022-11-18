@@ -9,18 +9,16 @@ Console.WriteLine(@"How to use:
   2. Set the keyboard brightness to maximum.
 
 When ready, press any key to continue...");
-Console.ReadLine();
+Console.ReadKey();
 
-var extHandle = Devices.GetExtendedSpectrumRGBKeyboard();
-var handle = Devices.GetSpectrumRGBKeyboard();
-var device = extHandle ?? handle;
+var device = Devices.GetSpectrumRGBKeyboard();
 
 Console.WriteLine("Finding Spectrum keyboard...");
 
 if (device is null)
 {
     Console.WriteLine("Spectrum not supported");
-    Console.ReadLine();
+    Console.ReadKey();
     return;
 }
 
@@ -74,6 +72,7 @@ for (var i = 0; i < 10; i++)
 }
 
 Console.WriteLine(resD1.Bytes[4] == 0 ? "Keyboard is RGB." : "Keyboard is white only.");
+Console.WriteLine(resC47.Bytes[5] == 0x9 && resC47.Bytes[6] == 0x16 ? "Keyboard is extended." : "Keyboard is is not extended.");
 Console.WriteLine();
 
 Console.WriteLine(@"Reading config complete.
@@ -86,9 +85,9 @@ How to find a keycode for a specific key:
   5. Set the keyboard brightness to maximum
 
 When ready, press any key to continue...");
-Console.ReadLine();
+Console.ReadKey();
 
-Console.WriteLine($"Reading white key keycodes... [ext={extHandle is not null}]");
+Console.WriteLine("Reading white key keycodes...]");
 Console.WriteLine();
 
 const int Iterations = 5;
