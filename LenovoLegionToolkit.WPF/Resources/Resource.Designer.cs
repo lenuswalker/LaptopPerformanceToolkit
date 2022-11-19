@@ -1028,6 +1028,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Display.
+        /// </summary>
+        public static string DashboardPage_Display_Title {
+            get {
+                return ResourceManager.GetString("DashboardPage_Display_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Graphics.
         /// </summary>
         public static string DashboardPage_Graphics_Title {
@@ -2852,6 +2861,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string PowerPlansWindow_CustomMode {
             get {
                 return ResourceManager.GetString("PowerPlansWindow_CustomMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default.
+        /// </summary>
+        public static string PowerPlansWindow_DefaultPowerPlan {
+            get {
+                return ResourceManager.GetString("PowerPlansWindow_DefaultPowerPlan", resourceCulture);
             }
         }
         

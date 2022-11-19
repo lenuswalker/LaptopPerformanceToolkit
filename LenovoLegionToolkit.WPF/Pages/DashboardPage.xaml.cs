@@ -8,14 +8,44 @@ namespace LenovoLegionToolkit.WPF.Pages
 {
     public partial class DashboardPage
     {
+        private const int WIDTH_BREAKPOINT = 1000;
+
+        private readonly StackPanel[] _collapsedPanels;
+
+        private readonly StackPanel[][] _expandedPanels;
+
+        protected readonly DisplayBrightnessFeature _displayBrightnessFeature = IoCContainer.Resolve<DisplayBrightnessFeature>();
         protected readonly GPUController _gpuController = IoCContainer.Resolve<GPUController>();
         protected readonly HDRFeature _hDRFeature = IoCContainer.Resolve<HDRFeature>();
         protected readonly HybridModeFeature _hybridModeFeature = IoCContainer.Resolve<HybridModeFeature>();
+        protected readonly OverDriveFeature _overDriveFeature = IoCContainer.Resolve<OverDriveFeature>();
         protected readonly RefreshRateFeature _refreshRateFeature = IoCContainer.Resolve<RefreshRateFeature>();
 
         public DashboardPage()
         {
             InitializeComponent();
+
+            _collapsedPanels = new[]
+            {
+                _powerStackPanel,
+                _graphicsStackPanel,
+                _displayStackPanel,
+                _otherStackPanel
+            };
+
+            _expandedPanels = new[]
+            {
+                new[]
+                {
+                    _powerStackPanel,
+                    _graphicsStackPanel
+                },
+                new []
+                {
+                    _displayStackPanel,
+                    _otherStackPanel
+                }
+            };
 
             Init();
         }
@@ -23,15 +53,21 @@ namespace LenovoLegionToolkit.WPF.Pages
         private async void Init()
         {
             _graphicsStackPanel.Visibility = Visibility.Collapsed;
+            _displayStackPanel.Visibility = Visibility.Collapsed;
+            _otherStackPanel.Visibility = Visibility.Collapsed;
 
-            if (!App.Current.IsCompatible)
-                _otherStackPanel.Visibility = Visibility.Collapsed;
+            if (App.Current.IsCompatible)
+                _otherStackPanel.Visibility = Visibility.Visible;
 
-            if (_gpuController.IsSupported() || await _hDRFeature.IsSupportedAsync() ||
-                await _hybridModeFeature.IsSupportedAsync() || await _refreshRateFeature.IsSupportedAsync())
+            if (_gpuController.IsSupported() || 
+                await _hybridModeFeature.IsSupportedAsync())
                 _graphicsStackPanel.Visibility = Visibility.Visible;
 
-            SizeChanged += DashboardPage_SizeChanged;
+            if (await _displayBrightnessFeature.IsSupportedAsync() || 
+                await _refreshRateFeature.IsSupportedAsync() ||
+                await _hDRFeature.IsSupportedAsync() || 
+                await _overDriveFeature.IsSupportedAsync())
+                _displayStackPanel.Visibility = Visibility.Visible;
         }
 
         private void DashboardPage_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -39,7 +75,7 @@ namespace LenovoLegionToolkit.WPF.Pages
             if (!e.WidthChanged)
                 return;
 
-            if (e.NewSize.Width > 1000)
+            if (e.NewSize.Width > WIDTH_BREAKPOINT)
                 Expand();
             else
                 Collapse();
@@ -47,44 +83,27 @@ namespace LenovoLegionToolkit.WPF.Pages
 
         private void Expand()
         {
+            for (var row = 0; row < _expandedPanels.Length; row++)
+                for (var column = 0; column < _expandedPanels[row].Length; column++)
+                {
+                    var panel = _expandedPanels[row][column];
+                    Grid.SetRow(panel, row);
+                    Grid.SetColumn(panel, column);
+                }
+
             _column1.Width = new(1, GridUnitType.Star);
-            _otherInnerColumn1.Width = new(1, GridUnitType.Star);
-
-            Grid.SetRow(_powerStackPanel, 0);
-            Grid.SetColumn(_powerStackPanel, 0);
-
-            Grid.SetRow(_graphicsStackPanel, 0);
-            Grid.SetColumn(_graphicsStackPanel, 1);
-
-            Grid.SetRow(_otherStackPanel, 1);
-            Grid.SetColumn(_otherStackPanel, 0);
-
-            Grid.SetRow(_otherInnerLeftStackPanel, 0);
-            Grid.SetColumn(_otherInnerLeftStackPanel, 0);
-
-            Grid.SetRow(_otherInnerRightStackPanel, 0);
-            Grid.SetColumn(_otherInnerRightStackPanel, 1);
         }
 
         private void Collapse()
         {
+            for (var row = 0; row < _collapsedPanels.Length; row++)
+            {
+                var panel = _collapsedPanels[row];
+                Grid.SetRow(panel, row);
+                Grid.SetColumn(panel, 0);
+            }
+
             _column1.Width = new(0, GridUnitType.Pixel);
-            _otherInnerColumn1.Width = new(0, GridUnitType.Pixel);
-
-            Grid.SetRow(_powerStackPanel, 0);
-            Grid.SetColumn(_powerStackPanel, 0);
-
-            Grid.SetRow(_graphicsStackPanel, 1);
-            Grid.SetColumn(_graphicsStackPanel, 0);
-
-            Grid.SetRow(_otherStackPanel, 2);
-            Grid.SetColumn(_otherStackPanel, 0);
-
-            Grid.SetRow(_otherInnerLeftStackPanel, 0);
-            Grid.SetColumn(_otherInnerLeftStackPanel, 0);
-
-            Grid.SetRow(_otherInnerRightStackPanel, 1);
-            Grid.SetColumn(_otherInnerRightStackPanel, 0);
         }
     }
 }

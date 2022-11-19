@@ -443,6 +443,9 @@ Switching modes may require restart.</value>
   <data name="CopyAll" xml:space="preserve">
     <value>Copy all</value>
   </data>
+  <data name="DashboardPage_Display_Title" xml:space="preserve">
+		<value>Display</value>
+	</data>
   <data name="DashboardPage_Graphics_Title" xml:space="preserve">
     <value>Graphics</value>
   </data>
@@ -1059,6 +1062,9 @@ You can switch mode with Fn+Q.</value>
   <data name="PowerPlansWindow_CustomMode" xml:space="preserve">
     <value>Custom mode</value>
   </data>
+  <data name="PowerPlansWindow_DefaultPowerPlan" xml:space="preserve">
+		<value>Default</value>
+	</data>
   <data name="PowerPlansWindow_PerformanceMode" xml:space="preserve">
     <value>Performance mode</value>
   </data>
