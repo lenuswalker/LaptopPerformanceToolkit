@@ -80,6 +80,7 @@ namespace LenovoLegionToolkit.WPF
             await InitAutomationProcessor();
             await InitPowerModeFeature();
             await InitRGBKeyboardController();
+            await InitSpectrumKeyboardController();
 
 #if !DEBUG
             Autorun.Validate();
@@ -134,6 +135,13 @@ namespace LenovoLegionToolkit.WPF
         {
             try
             {
+                if (IoCContainer.TryResolve<PowerModeFeature>() is { } powerModeFeature)
+                    await powerModeFeature.EnsureAIModeIsOffAsync();
+            }
+            catch { }
+
+            try
+            {
                 if (IoCContainer.TryResolve<RGBKeyboardBacklightController>() is { } rgbKeyboardBacklightController)
                 {
                     if (rgbKeyboardBacklightController.IsSupported())
@@ -144,8 +152,11 @@ namespace LenovoLegionToolkit.WPF
 
             try
             {
-                if (IoCContainer.TryResolve<PowerModeFeature>() is { } powerModeFeature)
-                    await powerModeFeature.EnsureAIModeIsOffAsync();
+                if (IoCContainer.TryResolve<SpectrumKeyboardBacklightController>() is { } spectrumKeyboardBacklightController)
+                {
+                    if (spectrumKeyboardBacklightController.IsSupported())
+                        await spectrumKeyboardBacklightController.StopAuroraIfNeededAsync();
+                }
             }
             catch { }
 
@@ -307,6 +318,41 @@ namespace LenovoLegionToolkit.WPF
             {
                 if (Log.Instance.IsTraceEnabled)
                     Log.Instance.Trace($"Couldn't set light control owner or current preset.", ex);
+            }
+        }
+
+        private static async Task InitSpectrumKeyboardController()
+        {
+            try
+            {
+                var controller = IoCContainer.Resolve<SpectrumKeyboardBacklightController>();
+                if (controller.IsSupported())
+                {
+                    if (Log.Instance.IsTraceEnabled)
+                        Log.Instance.Trace($"Starting Aurora if needed...");
+
+                    var result = await controller.StartAuroraIfNeededAsync();
+                    if (result)
+                    {
+                        if (Log.Instance.IsTraceEnabled)
+                            Log.Instance.Trace($"Aurora started.");
+                    }
+                    else
+                    {
+                        if (Log.Instance.IsTraceEnabled)
+                            Log.Instance.Trace($"Aurora not needed.");
+                    }
+                }
+                else
+                {
+                    if (Log.Instance.IsTraceEnabled)
+                        Log.Instance.Trace($"Spectrum keyboard is not supported.");
+                }
+            }
+            catch (Exception ex)
+            {
+                if (Log.Instance.IsTraceEnabled)
+                    Log.Instance.Trace($"Couldn't start Aurora if needed.", ex);
             }
         }
 

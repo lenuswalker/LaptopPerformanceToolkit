@@ -1028,15 +1028,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Display.
-        /// </summary>
-        public static string DashboardPage_Display_Title {
-            get {
-                return ResourceManager.GetString("DashboardPage_Display_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Graphics.
         /// </summary>
         public static string DashboardPage_Graphics_Title {
@@ -3615,24 +3606,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string SpectrumKeyboardBacklightControl_ApplyProfileError_Title_Message {
             get {
                 return ResourceManager.GetString("SpectrumKeyboardBacklightControl_ApplyProfileError_Title_Message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Aurora Sync effect is not currently supported..
-        /// </summary>
-        public static string SpectrumKeyboardBacklightControl_AuroraSyncNotSupported_Message {
-            get {
-                return ResourceManager.GetString("SpectrumKeyboardBacklightControl_AuroraSyncNotSupported_Message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Aurora Sync is not supported.
-        /// </summary>
-        public static string SpectrumKeyboardBacklightControl_AuroraSyncNotSupported_Title {
-            get {
-                return ResourceManager.GetString("SpectrumKeyboardBacklightControl_AuroraSyncNotSupported_Title", resourceCulture);
             }
         }
         
