@@ -830,6 +830,9 @@ Activați această opțiune dacă aveți conflicte cu aplicațiile pe ecran comp
   <data name="NotificationsSettingsWindow_DontShowNotifications_Title" xml:space="preserve">
     <value>Nu afișa notificări</value>
   </data>
+  <data name="NotificationsSettingsWindow_NotificationPosition_Title" xml:space="preserve">
+    <value>Poziție</value>
+  </data>
   <data name="NotificationsSettingsWindow_FnLock" xml:space="preserve">
     <value>Blocare Fn</value>
   </data>
@@ -1000,6 +1003,9 @@ Puteți schimba modul apăsând Fn+Q.</value>
   <data name="PowerPlansWindow_CustomMode" xml:space="preserve">
     <value>Mod Personalizat</value>
   </data>
+  <data name="PowerPlansWindow_DefaultPowerPlan" xml:space="preserve">
+		<value>Implicit</value>
+	</data>
   <data name="PowerPlansWindow_PerformanceMode" xml:space="preserve">
     <value>Mod Performant</value>
   </data>
@@ -1252,12 +1258,6 @@ Se recomandă repornirea după modificarea acestei opțiuni.</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ApplyProfileError_Title_Message" xml:space="preserve">
     <value>Profilul de iluminare nu s-a putut aplica.</value>
-  </data>
-  <data name="SpectrumKeyboardBacklightControl_AuroraSyncNotSupported_Message" xml:space="preserve">
-    <value>Efectul Aurora Sync nu este suportat momentan.</value>
-  </data>
-  <data name="SpectrumKeyboardBacklightControl_AuroraSyncNotSupported_Title" xml:space="preserve">
-    <value>Aurora Sync nu este suportat</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_Brightness_Title" xml:space="preserve">
     <value>Luminozitate</value>

@@ -155,6 +155,28 @@ namespace LenovoLegionToolkit.Lib
         WhiteKeyboardBacklightOff
     }
 
+    public enum NotificationPosition
+    {
+        [Display(ResourceType = typeof(Resource), Name = "NotificationPosition_BottomRight")]
+        BottomRight,
+        [Display(ResourceType = typeof(Resource), Name = "NotificationPosition_BottomCenter")]
+        BottomCenter,
+        [Display(ResourceType = typeof(Resource), Name = "NotificationPosition_BottomLeft")]
+        BottomLeft,
+        [Display(ResourceType = typeof(Resource), Name = "NotificationPosition_CenterLeft")]
+        CenterLeft,
+        [Display(ResourceType = typeof(Resource), Name = "NotificationPosition_TopLeft")]
+        TopLeft,
+        [Display(ResourceType = typeof(Resource), Name = "NotificationPosition_TopCenter")]
+        TopCenter,
+        [Display(ResourceType = typeof(Resource), Name = "NotificationPosition_TopRight")]
+        TopRight,
+        [Display(ResourceType = typeof(Resource), Name = "NotificationPosition_CenterRight")]
+        CenterRight,
+        [Display(ResourceType = typeof(Resource), Name = "NotificationPosition_Center")]
+        Center
+    }
+
     public enum OS
     {
         [Display(Name = "Windows 11")]
@@ -257,14 +279,14 @@ namespace LenovoLegionToolkit.Lib
 
     public enum SpecialKey
     {
-        Fn_F9 = 1,
-        Fn_LockOn = 2,
-        Fn_LockOff = 3,
-        Fn_PrtSc = 4,
+        FnF9 = 1,
+        FnLockOn = 2,
+        FnLockOff = 3,
+        FnPrtSc = 4,
         CameraOn = 12,
         CameraOff = 13,
-        Fn_R = 16,
-        Fn_R_2 = 0x0041002A,
+        FnR = 16,
+        FnR2 = 0x0041002A,
         SpectrumBacklightOff = 24,
         SpectrumBacklight1 = 25,
         SpectrumBacklight2 = 26,
