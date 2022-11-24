@@ -148,7 +148,7 @@ namespace LenovoLegionToolkit.WPF
             {
                 if (IoCContainer.TryResolve<RGBKeyboardBacklightController>() is { } rgbKeyboardBacklightController)
                 {
-                    if (rgbKeyboardBacklightController.IsSupported())
+                    if (await rgbKeyboardBacklightController.IsSupportedAsync())
                         await rgbKeyboardBacklightController.SetLightControlOwnerAsync(false);
                 }
             }
@@ -158,7 +158,7 @@ namespace LenovoLegionToolkit.WPF
             {
                 if (IoCContainer.TryResolve<SpectrumKeyboardBacklightController>() is { } spectrumKeyboardBacklightController)
                 {
-                    if (spectrumKeyboardBacklightController.IsSupported())
+                    if (await spectrumKeyboardBacklightController.IsSupportedAsync())
                         await spectrumKeyboardBacklightController.StopAuroraIfNeededAsync();
                 }
             }
@@ -329,7 +329,7 @@ namespace LenovoLegionToolkit.WPF
             try
             {
                 var controller = IoCContainer.Resolve<RGBKeyboardBacklightController>();
-                if (controller.IsSupported())
+                if (await controller.IsSupportedAsync())
                 {
                     if (Log.Instance.IsTraceEnabled)
                         Log.Instance.Trace($"Setting light control owner and restoring preset...");
@@ -354,7 +354,7 @@ namespace LenovoLegionToolkit.WPF
             try
             {
                 var controller = IoCContainer.Resolve<SpectrumKeyboardBacklightController>();
-                if (controller.IsSupported())
+                if (await controller.IsSupportedAsync())
                 {
                     if (Log.Instance.IsTraceEnabled)
                         Log.Instance.Trace($"Starting Aurora if needed...");
