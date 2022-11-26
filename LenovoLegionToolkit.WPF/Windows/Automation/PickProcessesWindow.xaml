@@ -5,13 +5,17 @@
     xmlns:controls="clr-namespace:LenovoLegionToolkit.WPF.Controls"
     xmlns:local="clr-namespace:LenovoLegionToolkit.WPF.Windows"
     xmlns:resources="clr-namespace:LenovoLegionToolkit.WPF.Resources"
-    xmlns:resources1="clr-namespace:LenovoLegionToolkit.Lib.Automation.Resources;assembly=LenovoLegionToolkit.Lib.Automation"
     xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="{x:Static resources:Resource.PickProcessesWindow_Title}"
     Width="600"
     Height="500"
     MinWidth="500"
-    MinHeight="400">
+    MinHeight="400"
+    IsVisibleChanged="PickProcessesWindow_IsVisibleChanged"
+    Loaded="PickProcessesWindow_Loaded"
+    ResizeMode="CanMinimize"
+    ShowInTaskbar="False"
+    WindowStartupLocation="CenterOwner">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -21,7 +25,6 @@
         </Grid.RowDefinitions>
 
         <wpfui:TitleBar
-            x:Name="_titleBar"
             Grid.Row="0"
             CanMaximize="false"
             ShowMaximize="false"
@@ -38,7 +41,6 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock
-                x:Name="_title"
                 Grid.Column="0"
                 VerticalAlignment="Center"
                 FontSize="12"
@@ -83,7 +85,6 @@
                     </Grid.ColumnDefinitions>
 
                     <wpfui:Button
-                        x:Name="_addButton"
                         Grid.Column="0"
                         Click="AddButton_Click"
                         FontSize="18"
@@ -91,7 +92,6 @@
                         ToolTip="{x:Static resources:Resource.Add}" />
 
                     <wpfui:Button
-                        x:Name="_deleteAllButton"
                         Grid.Column="1"
                         Margin="8,0,0,0"
                         Click="DeleteAllButton_Click"
@@ -100,7 +100,6 @@
                         ToolTip="{x:Static resources:Resource.Delete}" />
 
                     <wpfui:Button
-                        x:Name="_copyButton"
                         Grid.Column="2"
                         Margin="8,0,0,0"
                         Click="CopyShortcut"
@@ -109,7 +108,6 @@
                         ToolTip="{x:Static resources:Resource.CopyAll}" />
 
                     <wpfui:Button
-                        x:Name="_pasteButton"
                         Grid.Column="3"
                         Margin="8,0,0,0"
                         Click="PasteShortcut"
@@ -118,7 +116,6 @@
                         ToolTip="{x:Static resources:Resource.Paste}" />
 
                     <wpfui:Button
-                        x:Name="_saveButton"
                         Grid.Column="5"
                         MinWidth="100"
                         Appearance="Primary"
@@ -126,12 +123,11 @@
                         Content="{x:Static resources:Resource.Save}" />
 
                     <wpfui:Button
-                        x:Name="_cancelButton"
                         Grid.Column="6"
                         MinWidth="100"
                         Margin="8,0,0,0"
                         Click="CancelButton_Click"
-                        Content="{x:Static resources1:Resource.Cancel}" />
+                        Content="{x:Static resources:Resource.Cancel}" />
 
                 </Grid>
 

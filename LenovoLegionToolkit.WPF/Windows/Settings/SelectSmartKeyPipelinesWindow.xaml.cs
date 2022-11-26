@@ -32,33 +32,17 @@ namespace LenovoLegionToolkit.WPF.Windows.Settings
             }
         }
 
-        private List<Guid> SettingsStoreList
-        {
-            get => _isDoublePress ? _settings.Store.SmartKeyDoublePressActionList : _settings.Store.SmartKeySinglePressActionList;
-            set
-            {
-                if (_isDoublePress)
-                    _settings.Store.SmartKeyDoublePressActionList = value;
-                else
-                    _settings.Store.SmartKeySinglePressActionList = value;
-            }
-        }
+        private List<Guid> SettingsStoreList => _isDoublePress ? _settings.Store.SmartKeyDoublePressActionList : _settings.Store.SmartKeySinglePressActionList;
 
         public SelectSmartKeyPipelinesWindow(bool isDoublePress = false)
         {
-            InitializeComponent();
-
             _isDoublePress = isDoublePress;
 
-            Title = _title.Text = isDoublePress ? Resource.SettingsPage_SmartKeyDoublePressAction_Title : Resource.SettingsPage_SmartKeySinglePressAction_Title;
+            InitializeComponent();
 
-            ResizeMode = ResizeMode.CanMinimize;
-
-            _titleBar.UseSnapLayout = false;
-            _titleBar.CanMaximize = false;
-
-            Loaded += SelectSmartKeyPipelinesWindow_Loaded;
-            IsVisibleChanged += SelectSmartKeyPipelinesWindow_IsVisibleChanged;
+            Title = _title.Text = isDoublePress
+                ? Resource.SettingsPage_SmartKeyDoublePressAction_Title
+                : Resource.SettingsPage_SmartKeySinglePressAction_Title;
         }
 
         private async void SelectSmartKeyPipelinesWindow_Loaded(object sender, RoutedEventArgs e) => await RefreshAsync();

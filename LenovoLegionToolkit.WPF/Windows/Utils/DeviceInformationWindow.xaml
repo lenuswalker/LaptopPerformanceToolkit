@@ -8,7 +8,12 @@
     xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="{x:Static resources:Resource.DeviceInformationWindow_Title}"
     Width="500"
-    SizeToContent="Height">
+    ExtendsContentIntoTitleBar="True"
+    Loaded="DeviceInformationWindow_Loaded"
+    ResizeMode="CanMinimize"
+    ShowInTaskbar="False"
+    SizeToContent="Height"
+    WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -17,7 +22,6 @@
         </Grid.RowDefinitions>
 
         <wpfui:TitleBar
-            x:Name="_titleBar"
             Grid.Row="0"
             CanMaximize="false"
             ShowMaximize="false"
@@ -34,7 +38,6 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock
-                x:Name="_title"
                 Grid.Column="0"
                 VerticalAlignment="Center"
                 FontSize="12"
