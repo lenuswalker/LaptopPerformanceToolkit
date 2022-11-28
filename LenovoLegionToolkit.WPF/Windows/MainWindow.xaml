@@ -13,7 +13,7 @@
     Height="750"
     MinWidth="650"
     MinHeight="600"
-    FlowDirection="{x:Static utils:FlowDirectionExtensions.Direction}">
+    FlowDirection="{x:Static utils:LocalizationHelper.Direction}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -33,7 +33,9 @@
             <TextBlock
                 x:Name="_title"
                 Grid.Column="0"
+                HorizontalAlignment="Left"
                 VerticalAlignment="Center"
+                FlowDirection="LeftToRight"
                 FontSize="12"
                 IsHitTestVisible="False"
                 Text="{x:Static resources:Resource.AppName}" />

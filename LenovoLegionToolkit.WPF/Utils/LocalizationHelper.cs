@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Windows.Utils;
@@ -18,7 +19,7 @@ namespace LenovoLegionToolkit.WPF.Utils
 
         public static readonly CultureInfo[] Languages = {
             DefaultLanguage,
-            //new("ar"),
+            new("ar"),
             new("cs"),
             new("de"),
             new("el"),
@@ -35,6 +36,17 @@ namespace LenovoLegionToolkit.WPF.Utils
             new("vi"),
             new("zh-hans"),
         };
+
+        public static FlowDirection Direction => Resource.Culture?.TextInfo.IsRightToLeft ?? false
+            ? FlowDirection.RightToLeft
+            : FlowDirection.LeftToRight;
+
+        public static string ForceLeftToRight(string str)
+        {
+            if (Resource.Culture?.TextInfo.IsRightToLeft ?? false)
+                return "\u200e" + str + "\u200e";
+            return str;
+        }
 
         public static async Task SetLanguageAsync(bool interactive = false)
         {
