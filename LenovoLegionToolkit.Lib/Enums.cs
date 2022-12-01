@@ -202,19 +202,19 @@ public enum PowerAdapterStatus
     Disconnected
 }
 
-    public enum PowerModeState
-    {
-        [Display(ResourceType = typeof(Resource), Name = "PowerModeState_Quiet")]
-        Quiet,
-        [Display(ResourceType = typeof(Resource), Name = "PowerModeState_Efficiency")]
-        Efficiency,
-        [Display(ResourceType = typeof(Resource), Name = "PowerModeState_Balance")]
-        Balance,
-        [Display(ResourceType = typeof(Resource), Name = "PowerModeState_Performance")]
-        Performance,
-        [Display(ResourceType = typeof(Resource), Name = "PowerModeState_GodMode")]
-        GodMode = 254
-    }
+public enum PowerModeState
+{
+    [Display(ResourceType = typeof(Resource), Name = "PowerModeState_Quiet")]
+    Quiet,
+    [Display(ResourceType = typeof(Resource), Name = "PowerModeState_Efficiency")]
+    Efficiency,
+    [Display(ResourceType = typeof(Resource), Name = "PowerModeState_Balance")]
+    Balance,
+    [Display(ResourceType = typeof(Resource), Name = "PowerModeState_Performance")]
+    Performance,
+    [Display(ResourceType = typeof(Resource), Name = "PowerModeState_GodMode")]
+    GodMode = 254
+}
 
 public enum ProcessEventInfoType
 {
