@@ -12,10 +12,10 @@ public abstract class AbstractLenovoGamezoneWmiFeature<T> : IFeature<T> where T 
 
     private readonly string _methodNameSuffix;
     private readonly int _offset;
-    private readonly string? _supportMethodName;
-    private readonly int _supportOffset;
+    public readonly string? _supportMethodName;
+    public readonly int _supportOffset;
     private readonly string _inParameterName;
-    private readonly string _outParameterName;
+    public readonly string _outParameterName;
 
     protected AbstractLenovoGamezoneWmiFeature(string methodNameSuffix,
         int offset,
@@ -32,7 +32,7 @@ public abstract class AbstractLenovoGamezoneWmiFeature<T> : IFeature<T> where T 
         _outParameterName = outParameterName;
     }
 
-    public async Task<bool> IsSupportedAsync()
+    public virtual async Task<bool> IsSupportedAsync()
     {
         try
         {

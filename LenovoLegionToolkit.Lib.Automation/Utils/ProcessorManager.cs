@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Automation.Listeners;
 using NeoSmart.AsyncLock;
 using LenovoLegionToolkit.Lib.Utils;
-using System.Diagnostics;
 
 namespace LenovoLegionToolkit.Lib.Automation.Utils
 {

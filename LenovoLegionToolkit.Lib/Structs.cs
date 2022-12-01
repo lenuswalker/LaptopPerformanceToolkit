@@ -667,3 +667,48 @@ public readonly struct WarrantyInfo
     public DateTime? End { get; init; }
     public Uri? Link { get; init; }
 }
+
+public struct ProcessorTDPState
+{
+    public double Stapm { get; set; }
+    public double Fast { get; set; }
+    public double Slow { get; set; }
+    public bool UseMSR { get; set; }
+    public bool MaintainTDP { get; set; }
+    public int Interval { get; set; }
+
+    [JsonConstructor]
+    public ProcessorTDPState(
+        double stapm,
+        double fast,
+        double slow,
+        bool useMSR,
+        bool maintainTDP,
+        int interval
+    )
+    {
+        Stapm = stapm;
+        Fast = fast;
+        Slow = slow;
+        UseMSR = useMSR;
+        MaintainTDP = maintainTDP;
+        Interval = interval;
+    }
+}
+
+public struct ProcessAutomationState
+{
+    public ProcessInfo[] Processes { get; set; }
+    public ProcessState State { get; set; }
+
+
+    [JsonConstructor]
+    public ProcessAutomationState(
+        ProcessInfo[] processes,
+        ProcessState state
+    )
+    {
+        Processes = processes;
+        State = state;
+    }
+}

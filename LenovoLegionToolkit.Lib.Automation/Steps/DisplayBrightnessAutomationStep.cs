@@ -7,5 +7,5 @@ public class DisplayBrightnessAutomationStep : AbstractFeatureAutomationStep<int
     [JsonConstructor]
     public DisplayBrightnessAutomationStep(int state) : base(state) { }
 
-    IAutomationStep IAutomationStep.DeepCopy() => new DisplayBrightnessAutomationStep(Brightness);
+    public override IAutomationStep DeepCopy() => new DisplayBrightnessAutomationStep(State);
 }

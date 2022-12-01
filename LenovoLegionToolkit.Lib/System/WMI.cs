@@ -119,6 +119,28 @@ public static class WMI
         }
     }
 
+    public static async Task<string> CallAsync(string scope, FormattableString query, string property)
+    {
+        var queryFormatted = query.ToString(WMIPropertyValueFormatter.Instance);
+
+        var mos = new ManagementObjectSearcher(scope, queryFormatted);
+        var managementObjects = await mos.GetAsync().ConfigureAwait(false);
+        var managementObject = managementObjects.FirstOrDefault();
+
+        if (managementObject is null)
+            throw new InvalidOperationException("No results in query");
+
+        var mo = (ManagementObject)managementObject;
+
+        var resultProperties = mo.Properties;
+
+        if (resultProperties is null)
+            return "Unknown";
+
+        var result = resultProperties[property].Value.ToString() ?? "Unknown";
+        return result;
+    }
+
     private class WMIPropertyValueFormatter : IFormatProvider, ICustomFormatter
     {
         public static readonly WMIPropertyValueFormatter Instance = new();
