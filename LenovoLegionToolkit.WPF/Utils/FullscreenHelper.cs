@@ -1,27 +1,54 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Diagnostics;
+using System.Windows.Forms;
+using LenovoLegionToolkit.Lib.Utils;
 using Windows.Win32;
 using Windows.Win32.Foundation;
 
-namespace LenovoLegionToolkit.WPF.Utils
+namespace LenovoLegionToolkit.WPF.Utils;
+
+public static class FullscreenHelper
 {
-    public static class FullscreenHelper
+    public static bool IsAnyApplicationFullscreen()
     {
-        public static bool IsAnyApplicationFullscreen()
+        try
         {
-            var hwndDesktop = PInvoke.GetDesktopWindow();
-            var hwndShell = PInvoke.GetShellWindow();
+            var desktopWindowHandle = PInvoke.GetDesktopWindow();
+            var shellWindowHandle = PInvoke.GetShellWindow();
 
-            var hwndForeground = PInvoke.GetForegroundWindow();
-            if (hwndForeground == HWND.Null || hwndForeground == hwndDesktop || hwndForeground == hwndShell)
+            var foregroundWindowHandle = PInvoke.GetForegroundWindow();
+            if (foregroundWindowHandle == HWND.Null)
+                return false;
+            if (foregroundWindowHandle == desktopWindowHandle)
+                return false;
+            if (foregroundWindowHandle == shellWindowHandle)
                 return false;
 
-            var result = PInvoke.GetWindowRect(hwndForeground, out var appBounds);
-            if (!result)
+            if (!PInvoke.GetWindowRect(foregroundWindowHandle, out var appBounds))
                 return false;
 
-            var screenBounds = Screen.FromHandle(hwndForeground.Value).Bounds;
+            var screenBounds = Screen.FromHandle(foregroundWindowHandle.Value).Bounds;
+            var coversFullScreen = appBounds.bottom - appBounds.top == screenBounds.Height && appBounds.right - appBounds.left == screenBounds.Width;
+            if (!coversFullScreen)
+                return false;
 
-            return appBounds.bottom - appBounds.top == screenBounds.Height && appBounds.right - appBounds.left == screenBounds.Width;
+            unsafe
+            {
+                var processId = 0u;
+                _ = PInvoke.GetWindowThreadProcessId(foregroundWindowHandle, &processId);
+                var process = Process.GetProcessById((int)processId);
+                if (process.ProcessName == "explorer")
+                    return false;
+            }
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Couldn't check if application is full screen.", ex);
+
+            return false;
         }
     }
 }
