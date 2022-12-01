@@ -2,175 +2,174 @@
 using System;
 using System.Timers;
 
-namespace LenovoLegionToolkit.Lib.Controllers
+namespace LenovoLegionToolkit.Lib.Controllers;
+
+public class AMDProcessorController : ProcessorController
 {
-    public class AMDProcessorController : ProcessorController
+    public IntPtr ry;
+    public RyzenFamily family;
+
+    public AMDProcessorController() : base()
     {
-        public IntPtr ry;
-        public RyzenFamily family;
+        ry = RyzenAdj.init_ryzenadj();
 
-        public AMDProcessorController() : base()
+        if (ry == IntPtr.Zero)
+            IsInitialized = false;
+        else
         {
-            ry = RyzenAdj.init_ryzenadj();
+            family = RyzenAdj.get_cpu_family(ry);
+            IsInitialized = true;
 
-            if (ry == IntPtr.Zero)
-                IsInitialized = false;
-            else
+            switch (family)
             {
-                family = RyzenAdj.get_cpu_family(ry);
-                IsInitialized = true;
+                default:
+                    CanChangeGPU = false;
+                    break;
 
-                switch (family)
-                {
-                    default:
-                        CanChangeGPU = false;
-                        break;
-
-                    case RyzenFamily.FAM_RENOIR:
-                    case RyzenFamily.FAM_LUCIENNE:
-                    case RyzenFamily.FAM_CEZANNE:
-                    case RyzenFamily.FAM_VANGOGH:
-                    case RyzenFamily.FAM_REMBRANDT:
-                        CanChangeGPU = true;
-                        break;
-                }
-
-                switch (family)
-                {
-                    default:
-                        CanChangeTDP = false;
-                        break;
-
-                    case RyzenFamily.FAM_RAVEN:
-                    case RyzenFamily.FAM_PICASSO:
-                    case RyzenFamily.FAM_DALI:
-                    case RyzenFamily.FAM_RENOIR:
-                    case RyzenFamily.FAM_LUCIENNE:
-                    case RyzenFamily.FAM_CEZANNE:
-                    case RyzenFamily.FAM_VANGOGH:
-                    case RyzenFamily.FAM_REMBRANDT:
-                        CanChangeTDP = true;
-                        break;
-                }
+                case RyzenFamily.FAM_RENOIR:
+                case RyzenFamily.FAM_LUCIENNE:
+                case RyzenFamily.FAM_CEZANNE:
+                case RyzenFamily.FAM_VANGOGH:
+                case RyzenFamily.FAM_REMBRANDT:
+                    CanChangeGPU = true;
+                    break;
             }
 
-            foreach (PowerType type in (PowerType[])Enum.GetValues(typeof(PowerType)))
+            switch (family)
             {
-                // write default limits
-                m_Limits[type] = 0;
-                m_PrevLimits[type] = 0;
+                default:
+                    CanChangeTDP = false;
+                    break;
+
+                case RyzenFamily.FAM_RAVEN:
+                case RyzenFamily.FAM_PICASSO:
+                case RyzenFamily.FAM_DALI:
+                case RyzenFamily.FAM_RENOIR:
+                case RyzenFamily.FAM_LUCIENNE:
+                case RyzenFamily.FAM_CEZANNE:
+                case RyzenFamily.FAM_VANGOGH:
+                case RyzenFamily.FAM_REMBRANDT:
+                    CanChangeTDP = true;
+                    break;
             }
         }
 
-        public override void Initialize()
+        foreach (PowerType type in (PowerType[])Enum.GetValues(typeof(PowerType)))
         {
-            updateTimer.Elapsed += UpdateTimer_Elapsed;
-            base.Initialize();
+            // write default limits
+            m_Limits[type] = 0;
+            m_PrevLimits[type] = 0;
         }
+    }
 
-        public override void Stop()
+    public override void Initialize()
+    {
+        updateTimer.Elapsed += UpdateTimer_Elapsed;
+        base.Initialize();
+    }
+
+    public override void Stop()
+    {
+        updateTimer.Elapsed -= UpdateTimer_Elapsed;
+        base.Stop();
+    }
+
+    protected override void UpdateTimer_Elapsed(object? sender, ElapsedEventArgs e)
+    {
+        lock (base.IsBusy)
         {
-            updateTimer.Elapsed -= UpdateTimer_Elapsed;
-            base.Stop();
+            RyzenAdj.get_table_values(ry);
+            RyzenAdj.refresh_table(ry);
+
+            // read limit(s)
+            int limit_fast = (int)RyzenAdj.get_fast_limit(ry);
+            int limit_slow = (int)RyzenAdj.get_slow_limit(ry);
+            int limit_stapm = (int)RyzenAdj.get_stapm_limit(ry);
+
+            if (limit_fast != 0)
+                base.m_Limits[PowerType.Fast] = limit_fast;
+            if (limit_slow != 0)
+                base.m_Limits[PowerType.Slow] = limit_slow;
+            if (limit_stapm != 0)
+                base.m_Limits[PowerType.Stapm] = limit_stapm;
+
+            // read gfx_clk
+            int gfx_clk = (int)RyzenAdj.get_gfx_clk(ry);
+            if (gfx_clk != 0)
+                base.m_Misc["gfx_clk"] = gfx_clk;
+
+            base.UpdateTimer_Elapsed(sender, e);
         }
+    }
 
-        protected override void UpdateTimer_Elapsed(object? sender, ElapsedEventArgs e)
+    public override void SetTDPLimit(PowerType type, double limit, int result)
+    {
+        if (ry == IntPtr.Zero)
+            return;
+
+        if (limit == 0)
+            return;
+
+        lock (base.IsBusy)
         {
-            lock (base.IsBusy)
+            // 15W : 15000
+            limit *= 1000;
+
+            var error = 0;
+
+            switch (type)
             {
-                RyzenAdj.get_table_values(ry);
-                RyzenAdj.refresh_table(ry);
-
-                // read limit(s)
-                int limit_fast = (int)RyzenAdj.get_fast_limit(ry);
-                int limit_slow = (int)RyzenAdj.get_slow_limit(ry);
-                int limit_stapm = (int)RyzenAdj.get_stapm_limit(ry);
-
-                if (limit_fast != 0)
-                    base.m_Limits[PowerType.Fast] = limit_fast;
-                if (limit_slow != 0)
-                    base.m_Limits[PowerType.Slow] = limit_slow;
-                if (limit_stapm != 0)
-                    base.m_Limits[PowerType.Stapm] = limit_stapm;
-
-                // read gfx_clk
-                int gfx_clk = (int)RyzenAdj.get_gfx_clk(ry);
-                if (gfx_clk != 0)
-                    base.m_Misc["gfx_clk"] = gfx_clk;
-
-                base.UpdateTimer_Elapsed(sender, e);
+                case PowerType.Fast:
+                    error = RyzenAdj.set_fast_limit(ry, (uint)limit);
+                    break;
+                case PowerType.Slow:
+                    error = RyzenAdj.set_slow_limit(ry, (uint)limit);
+                    break;
+                case PowerType.Stapm:
+                    error = RyzenAdj.set_stapm_limit(ry, (uint)limit);
+                    break;
             }
+            
+            base.SetTDPLimit(type, limit, error);
         }
+    }
 
-        public override void SetTDPLimit(PowerType type, double limit, int result)
+    public override int GetTDPLimit(PowerType type)
+    {
+        if (ry == IntPtr.Zero)
+            return 0;
+
+        lock (base.IsBusy)
         {
-            if (ry == IntPtr.Zero)
+            int limit = 0;
+
+            switch (type)
+            {
+                case PowerType.Fast:
+                    limit = (int)RyzenAdj.get_fast_limit(ry);
+                    break;
+                case PowerType.Slow:
+                    limit = (int)RyzenAdj.get_slow_limit(ry);
+                    break;
+                case PowerType.Stapm:
+                    limit = (int)RyzenAdj.get_stapm_limit(ry);
+                    break;
+            }
+            return limit;
+        }
+    }
+
+    public override void SetGPUClock(double clock, int result)
+    {
+        lock (base.IsBusy)
+        {
+            // reset default var
+            if (clock == 12750)
                 return;
 
-            if (limit == 0)
-                return;
+            var error = RyzenAdj.set_gfx_clk(ry, (uint)clock);
 
-            lock (base.IsBusy)
-            {
-                // 15W : 15000
-                limit *= 1000;
-
-                var error = 0;
-
-                switch (type)
-                {
-                    case PowerType.Fast:
-                        error = RyzenAdj.set_fast_limit(ry, (uint)limit);
-                        break;
-                    case PowerType.Slow:
-                        error = RyzenAdj.set_slow_limit(ry, (uint)limit);
-                        break;
-                    case PowerType.Stapm:
-                        error = RyzenAdj.set_stapm_limit(ry, (uint)limit);
-                        break;
-                }
-                
-                base.SetTDPLimit(type, limit, error);
-            }
-        }
-
-        public override int GetTDPLimit(PowerType type)
-        {
-            if (ry == IntPtr.Zero)
-                return 0;
-
-            lock (base.IsBusy)
-            {
-                int limit = 0;
-
-                switch (type)
-                {
-                    case PowerType.Fast:
-                        limit = (int)RyzenAdj.get_fast_limit(ry);
-                        break;
-                    case PowerType.Slow:
-                        limit = (int)RyzenAdj.get_slow_limit(ry);
-                        break;
-                    case PowerType.Stapm:
-                        limit = (int)RyzenAdj.get_stapm_limit(ry);
-                        break;
-                }
-                return limit;
-            }
-        }
-
-        public override void SetGPUClock(double clock, int result)
-        {
-            lock (base.IsBusy)
-            {
-                // reset default var
-                if (clock == 12750)
-                    return;
-
-                var error = RyzenAdj.set_gfx_clk(ry, (uint)clock);
-
-                base.SetGPUClock(clock, error);
-            }
+            base.SetGPUClock(clock, error);
         }
     }
 }

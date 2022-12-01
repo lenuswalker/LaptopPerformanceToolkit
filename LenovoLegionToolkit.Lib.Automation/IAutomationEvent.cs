@@ -21,7 +21,7 @@ public readonly struct TimeAutomationEvent : IAutomationEvent
     public Time Time { get; init; }
 }
 
-public struct TimeIntervalAutomationEvent : IAutomationEvent
+public readonly struct TimeIntervalAutomationEvent : IAutomationEvent
 {
     public int Interval { get; init; }
 }

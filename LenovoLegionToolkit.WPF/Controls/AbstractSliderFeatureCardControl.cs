@@ -8,91 +8,90 @@ using LenovoLegionToolkit.WPF.Extensions;
 using Wpf.Ui.Common;
 using Wpf.Ui.Controls;
 
-namespace LenovoLegionToolkit.WPF.Controls
+namespace LenovoLegionToolkit.WPF.Controls;
+
+public abstract class AbstractSliderFeatureCardControl<T> : AbstractRefreshingControl where T : struct
 {
-    public abstract class AbstractSliderFeatureCardControl<T> : AbstractRefreshingControl where T : struct
+    private readonly IFeature<T> _feature = IoCContainer.Resolve<IFeature<T>>();
+
+    private readonly CardControl _cardControl = new();
+
+    private readonly CardHeaderControl _cardHeaderControl = new();
+
+    private readonly Slider _slider = new();
+
+    protected SymbolRegular Icon
     {
-        private readonly IFeature<T> _feature = IoCContainer.Resolve<IFeature<T>>();
+        get => _cardControl.Icon;
+        set => _cardControl.Icon = value;
+    }
 
-        private readonly CardControl _cardControl = new();
+    protected string Title
+    {
+        get => _cardHeaderControl.Title;
+        set => _cardHeaderControl.Title = value;
+    }
 
-        private readonly CardHeaderControl _cardHeaderControl = new();
+    protected string Subtitle
+    {
+        get => _cardHeaderControl.Subtitle;
+        set => _cardHeaderControl.Subtitle = value;
+    }
 
-        private readonly Slider _slider = new();
+    protected abstract T Value { get; }
 
-        protected SymbolRegular Icon
-        {
-            get => _cardControl.Icon;
-            set => _cardControl.Icon = value;
-        }
+    protected virtual int Maximum => 100;
 
-        protected string Title
-        {
-            get => _cardHeaderControl.Title;
-            set => _cardHeaderControl.Title = value;
-        }
+    protected AbstractSliderFeatureCardControl()
+    {
+        InitializeComponent();
+    }
+    
+    private void InitializeComponent()
+    {
+        _slider.ValueChanged += Slider_ValueChanged;
+        _slider.Visibility = Visibility.Hidden;
+        _slider.Maximum = Maximum;
+        _slider.Margin = new(8, 0, 0, 0);
 
-        protected string Subtitle
-        {
-            get => _cardHeaderControl.Subtitle;
-            set => _cardHeaderControl.Subtitle = value;
-        }
+        _cardHeaderControl.Accessory = _slider;
+        _cardControl.Header = _cardHeaderControl;
+        _cardControl.Margin = new(0, 0, 0, 8);
 
-        protected abstract T Value { get; }
+        Content = _cardControl;
+    }
 
-        protected virtual int Maximum => 100;
+    private async void Slider_ValueChanged(object sender, RoutedEventArgs e) => await OnStateChange(_slider, _feature);
 
-        protected AbstractSliderFeatureCardControl()
-        {
-            InitializeComponent();
-        }
-        
-        private void InitializeComponent()
-        {
-            _slider.ValueChanged += Slider_ValueChanged;
-            _slider.Visibility = Visibility.Hidden;
-            _slider.Maximum = Maximum;
-            _slider.Margin = new(8, 0, 0, 0);
+    protected override async Task OnRefreshAsync()
+    {
+        if (!await _feature.IsSupportedAsync())
+            throw new NotSupportedException();
 
-            _cardHeaderControl.Accessory = _slider;
-            _cardControl.Header = _cardHeaderControl;
-            _cardControl.Margin = new(0, 0, 0, 8);
+        var value = await _feature.GetStateAsync();
 
-            Content = _cardControl;
-        }
+        if (int.TryParse(value.ToString(), out int intValue))
+            _slider.Value = intValue;
+        else
+            throw new NotSupportedException();
+    }
+    
+    protected override void OnFinishedLoading()
+    {
+        _slider.Visibility = Visibility.Visible;
 
-        private async void Slider_ValueChanged(object sender, RoutedEventArgs e) => await OnStateChange(_slider, _feature);
+        MessagingCenter.Subscribe<T>(this, () => Dispatcher.InvokeTask(RefreshAsync));
+    }
 
-        protected override async Task OnRefreshAsync()
-        {
-            if (!await _feature.IsSupportedAsync())
-                throw new NotSupportedException();
+    protected virtual async Task OnStateChange(Slider slider, IFeature<T> feature)
+    {
+        if (IsRefreshing)
+            return;
 
-            var value = await _feature.GetStateAsync();
+        var state = (int)slider.Value;
+        if (state.Equals(await feature.GetStateAsync()))
+            return;
 
-            if (int.TryParse(value.ToString(), out int intValue))
-                _slider.Value = intValue;
-            else
-                throw new NotSupportedException();
-        }
-        
-        protected override void OnFinishedLoading()
-        {
-            _slider.Visibility = Visibility.Visible;
-
-            MessagingCenter.Subscribe<T>(this, () => Dispatcher.InvokeTask(RefreshAsync));
-        }
-
-        protected virtual async Task OnStateChange(Slider slider, IFeature<T> feature)
-        {
-            if (IsRefreshing)
-                return;
-
-            var state = (int)slider.Value;
-            if (state.Equals(await feature.GetStateAsync()))
-                return;
-
-            await feature.SetStateAsync((T)Convert.ChangeType(state, typeof(T)));
-        }
+        await feature.SetStateAsync((T)Convert.ChangeType(state, typeof(T)));
     }
 }
