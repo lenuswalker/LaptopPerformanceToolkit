@@ -73,7 +73,7 @@ public partial class MainWindow
             _navigationStore.Items.Remove(_packageItem);
         }
 
-        ContextMenuHelper.Instance.SetNavigationItems(_navigationStore);
+        _contextMenuHelper.SetNavigationItems(_navigationStore);
 
         if (App.Current.IsCompatible)
             SmartKeyHelper.Instance.BringToForeground = () => Dispatcher.Invoke(BringToForeground);
