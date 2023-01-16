@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -70,6 +71,14 @@ public readonly struct DisplayAdvancedColorInfo
     }
 }
 
+public readonly struct DriverInfo
+{
+    public string DeviceId { get; init; }
+    public string HardwareId { get; init; }
+    public Version? Version { get; init; }
+    public DateTime? Date { get; init; }
+}
+
 public readonly struct FanTableData
 {
     public byte FanId { get; init; }
@@ -84,6 +93,11 @@ public readonly struct FanTableData
         (0, 0) => FanTableType.CPUSensor,
         _ => FanTableType.Unknown
     };
+
+    public override string ToString()
+    {
+        return $"{nameof(FanId)}: {FanId}, {nameof(SensorId)}: {SensorId}, {nameof(FanSpeeds)}: [{string.Join(",", FanSpeeds)}], {nameof(Temps)}: [{string.Join(",", Temps)}], {nameof(Type)}: {Type}";
+    }
 }
 
 public readonly struct FanTable
@@ -153,6 +167,11 @@ public readonly struct FanTable
         ms.Write(BitConverter.GetBytes(FSS9));
         return ms.ToArray();
     }
+
+    public override string ToString()
+    {
+        return $"{nameof(FSTM)}: {FSTM}, {nameof(FSID)}: {FSID}, {nameof(FSTL)}: {FSTL}, {nameof(FSS0)}: {FSS0}, {nameof(FSS1)}: {FSS1}, {nameof(FSS2)}: {FSS2}, {nameof(FSS3)}: {FSS3}, {nameof(FSS4)}: {FSS4}, {nameof(FSS5)}: {FSS5}, {nameof(FSS6)}: {FSS6}, {nameof(FSS7)}: {FSS7}, {nameof(FSS8)}: {FSS8}, {nameof(FSS9)}: {FSS9}";
+    }
 }
 
 public readonly struct FanTableInfo
@@ -165,92 +184,37 @@ public readonly struct FanTableInfo
         Data = data;
         Table = table;
     }
+
+    public override string ToString()
+    {
+        return $"{nameof(Data)}: [{string.Join(",", Data)}], {nameof(Table)}: {Table}";
+    }
+}
+
+public readonly struct GodModeState
+{
+    public StepperValue? CPULongTermPowerLimit { get; init; }
+    public StepperValue? CPUShortTermPowerLimit { get; init; }
+    public StepperValue? CPUCrossLoadingPowerLimit { get; init; }
+    public StepperValue? CPUTemperatureLimit { get; init; }
+    public StepperValue? GPUPowerBoost { get; init; }
+    public StepperValue? GPUConfigurableTGP { get; init; }
+    public StepperValue? GPUTemperatureLimit { get; init; }
+    public FanTableInfo? FanTableInfo { get; init; }
+    public bool FanFullSpeed { get; init; }
+    public int MaxValueOffset { get; init; }
+
+    public override string ToString()
+    {
+        return $"{nameof(CPULongTermPowerLimit)}: {CPULongTermPowerLimit}, {nameof(CPUShortTermPowerLimit)}: {CPUShortTermPowerLimit}, {nameof(CPUCrossLoadingPowerLimit)}: {CPUCrossLoadingPowerLimit}, {nameof(CPUTemperatureLimit)}: {CPUTemperatureLimit}, {nameof(GPUPowerBoost)}: {GPUPowerBoost}, {nameof(GPUConfigurableTGP)}: {GPUConfigurableTGP}, {nameof(GPUTemperatureLimit)}: {GPUTemperatureLimit}, {nameof(FanTableInfo)}: {FanTableInfo}, {nameof(FanFullSpeed)}: {FanFullSpeed}, {nameof(MaxValueOffset)}: {MaxValueOffset}";
+    }
 }
 
 public readonly struct HardwareId
 {
-    public string Vendor { get; private init; }
-    public string Device { get; private init; }
-    public string SubSystem { get; private init; }
-
-    public static HardwareId FromDGPUHWId(string? gpuHwId)
-    {
-        try
-        {
-            if (gpuHwId is null)
-                return default;
-
-            string? vendor = null;
-            string? device = null;
-            string? subsystem = null;
-
-            foreach (var subPath in gpuHwId.Split("&"))
-            {
-                var subSubPaths = subPath.Split("_");
-                var type = subSubPaths[0];
-                var value = subSubPaths[1].ToUpperInvariant();
-
-                if (type.Equals("pciven", StringComparison.InvariantCultureIgnoreCase))
-                    vendor = value;
-                if (type.Equals("dev", StringComparison.InvariantCultureIgnoreCase))
-                    device = value;
-                if (type.Equals("subsys", StringComparison.InvariantCultureIgnoreCase))
-                    subsystem = value;
-            }
-
-            if (vendor is null || device is null || subsystem is null)
-                return default;
-
-            return new HardwareId { Vendor = vendor, Device = device, SubSystem = subsystem };
-        }
-        catch
-        {
-            return default;
-        }
-    }
-
-    public static HardwareId FromDevicePath(string devicePath)
-    {
-        try
-        {
-            var path = devicePath;
-            path = path[(path.LastIndexOf("\\", StringComparison.InvariantCultureIgnoreCase) + 1)..];
-            path = path[..path.LastIndexOf("#", StringComparison.InvariantCultureIgnoreCase)];
-            path = path[..path.LastIndexOf("#", StringComparison.InvariantCultureIgnoreCase)];
-            path = path.Replace("#", "");
-
-            string? vendor = null;
-            string? device = null;
-            string? subsystem = null;
-
-            foreach (var subPath in path.Split("&"))
-            {
-                var subSubPaths = subPath.Split("_");
-
-                if (subSubPaths.Length != 2)
-                    continue;
-
-                var type = subSubPaths[0];
-                var value = subSubPaths[1].ToUpperInvariant();
-
-                if (type.Equals("pciven", StringComparison.InvariantCultureIgnoreCase))
-                    vendor = value;
-                if (type.Equals("dev", StringComparison.InvariantCultureIgnoreCase))
-                    device = value;
-                if (type.Equals("subsys", StringComparison.InvariantCultureIgnoreCase))
-                    subsystem = value;
-            }
-
-            if (vendor is null || device is null || subsystem is null)
-                return default;
-
-            return new HardwareId { Vendor = vendor, Device = device, SubSystem = subsystem };
-        }
-        catch
-        {
-            return default;
-        }
-    }
+    public string Vendor { get; init; }
+    public string Device { get; init; }
+    public string SubSystem { get; init; }
 
     public static bool operator ==(HardwareId left, HardwareId right) => left.Equals(right);
 
@@ -292,6 +256,7 @@ public struct Package
     public DateTime ReleaseDate { get; init; }
     public string? Readme { get; init; }
     public string FileLocation { get; init; }
+    public bool IsUpdate { get; init; }
 
     private string? _index;
 
@@ -370,6 +335,8 @@ public readonly struct Notification
         Duration = duration;
         Args = args;
     }
+
+    public override string ToString() => $"{nameof(Type)}: {Type}, {nameof(Duration)}: {Duration}, {nameof(Args)}: {string.Join(",", Args)}";
 }
 
 public readonly struct PowerPlan
@@ -546,6 +513,34 @@ public readonly struct RGBKeyboardBacklightState
     }
 }
 
+public readonly struct DpiScale : IDisplayName, IEquatable<DpiScale>
+{
+    public int Scale { get; }
+
+    [JsonIgnore]
+    public string DisplayName => $"{Scale}%";
+
+    [JsonConstructor]
+    public DpiScale(int scale)
+    {
+        Scale = scale;
+    }
+
+    #region Equality
+
+    public override bool Equals(object? obj) => obj is DpiScale rate && Equals(rate);
+
+    public bool Equals(DpiScale other) => Scale == other.Scale;
+
+    public override int GetHashCode() => HashCode.Combine(Scale);
+
+    public static bool operator ==(DpiScale left, DpiScale right) => left.Equals(right);
+
+    public static bool operator !=(DpiScale left, DpiScale right) => !(left == right);
+
+    #endregion
+}
+
 public readonly struct RefreshRate : IDisplayName, IEquatable<RefreshRate>
 {
     public int Frequency { get; }
@@ -558,6 +553,8 @@ public readonly struct RefreshRate : IDisplayName, IEquatable<RefreshRate>
     {
         Frequency = frequency;
     }
+
+    public override string ToString() => $"{Frequency}Hz";
 
     #region Equality
 
@@ -574,11 +571,63 @@ public readonly struct RefreshRate : IDisplayName, IEquatable<RefreshRate>
     #endregion
 }
 
+public readonly struct Resolution : IDisplayName, IEquatable<Resolution>, IComparable<Resolution>
+{
+    public int Width { get; }
+    public int Height { get; }
+
+    [JsonIgnore]
+    public string DisplayName => $"{Width} × {Height}";
+
+    [JsonConstructor]
+    public Resolution(int width, int height)
+    {
+        Width = width;
+        Height = height;
+    }
+
+    public Resolution(Size size) : this(size.Width, size.Height) { }
+
+    public override string ToString() => $"{Width}x{Height}";
+
+    public int CompareTo(Resolution other)
+    {
+        var widthComparison = Width.CompareTo(other.Width);
+        return widthComparison != 0
+            ? widthComparison
+            : Height.CompareTo(other.Height);
+    }
+
+    #region Conversion
+
+    public static explicit operator Resolution(Size value) => new(value);
+
+    public static implicit operator Size(Resolution data) => new(data.Width, data.Height);
+
+    #endregion
+
+    #region Equality
+
+    public override bool Equals(object? obj) => obj is Resolution other && Equals(other);
+
+    public bool Equals(Resolution other) => Width == other.Width && Height == other.Height;
+
+    public override int GetHashCode() => HashCode.Combine(Width, Height);
+
+    public static bool operator ==(Resolution left, Resolution right) => left.Equals(right);
+
+    public static bool operator !=(Resolution left, Resolution right) => !(left == right);
+
+    #endregion
+
+}
+
 public readonly struct SpectrumKeyboardBacklightKeys
 {
     public bool All { get; }
     public ushort[] KeyCodes { get; }
 
+    [JsonConstructor]
     private SpectrumKeyboardBacklightKeys(bool all, ushort[] keyCodes)
     {
         All = all;
@@ -630,6 +679,11 @@ public readonly struct StepperValue
     }
 
     public StepperValue WithValue(int value) => new(value, Min, Max, Step);
+
+    public override string ToString()
+    {
+        return $"{nameof(Value)}: {Value}, {nameof(Min)}: {Min}, {nameof(Max)}: {Max}, {nameof(Step)}: {Step}";
+    }
 }
 
 public readonly struct Time

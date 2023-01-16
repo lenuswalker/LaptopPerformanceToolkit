@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.System;
 
@@ -24,6 +25,7 @@ public static class Compatibility
         "15ACH",
         "15ARH",
         "15IAH",
+        "15IHU",
         "15IMH",
         "15ITH",
 
@@ -102,7 +104,7 @@ public static class Compatibility
         return _machineInformation.Value;
     }
 
-    private static bool GetSupportsGodMode(string biosVersion)
+    private static bool GetSupportsGodMode(string currentBiosVersionString)
     {
         (string, int)[] supportedBiosVersions =
         {
@@ -111,14 +113,25 @@ public static class Compatibility
             ("HACN", 31),
             ("HHCN", 23),
             ("K1CN", 31),
+            ("K9CN", 34),
+            ("KFCN", 32),
             ("J2CN", 40),
             ("JUCN", 51),
             ("JYCN", 39)
         };
 
-        foreach (var (biosPrefix, minimumVersion) in supportedBiosVersions)
+        var prefixRegex = new Regex("^[A-Z0-9]{4}");
+        var versionRegex = new Regex("[0-9]{2}");
+
+        var currentPrefix = prefixRegex.Match(currentBiosVersionString).Value;
+        var currentVersionString = versionRegex.Match(currentBiosVersionString).Value;
+
+        if (!int.TryParse(versionRegex.Match(currentVersionString).Value, out var currentVersion))
+            return false;
+
+        foreach (var (prefix, minimumVersion) in supportedBiosVersions)
         {
-            if (biosVersion.StartsWith(biosPrefix) && int.TryParse(biosVersion.Replace(biosPrefix, null).Replace("WW", null), out var rev) && rev >= minimumVersion)
+            if (currentPrefix.Equals(prefix, StringComparison.InvariantCultureIgnoreCase) && currentVersion >= minimumVersion)
                 return true;
         }
 

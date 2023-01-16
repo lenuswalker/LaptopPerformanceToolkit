@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Windows.Media;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.PackageDownloader;
@@ -20,11 +21,12 @@ using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
 using Wpf.Ui.Common;
 using Wpf.Ui.Controls;
+using HorizontalAlignment = System.Windows.HorizontalAlignment;
 using MenuItem = Wpf.Ui.Controls.MenuItem;
 
 namespace LenovoLegionToolkit.WPF.Pages;
 
-public partial class PackagesPage : Page, IProgress<float>
+public partial class PackagesPage : IProgress<float>
 {
     private readonly PackageDownloaderSettings _packageDownloaderSettings = IoCContainer.Resolve<PackageDownloaderSettings>();
     private readonly PackageDownloaderFactory _packageDownloaderFactory = IoCContainer.Resolve<PackageDownloaderFactory>();
@@ -48,13 +50,20 @@ public partial class PackagesPage : Page, IProgress<float>
     {
         _machineTypeTextBox.Text = (await Compatibility.GetMachineInformationAsync()).MachineType;
         _osComboBox.SetItems(Enum.GetValues<OS>(), OSExtensions.GetCurrent(), os => os.GetDisplayName());
-        _downloadToText.PlaceholderText = _downloadToText.Text = KnownFolders.GetPath(KnownFolder.Downloads);
+
+        var downloadsFolder = KnownFolders.GetPath(KnownFolder.Downloads);
+        _downloadToText.PlaceholderText = downloadsFolder;
+        _downloadToText.Text = Directory.Exists(_packageDownloaderSettings.Store.DownloadPath)
+            ? _packageDownloaderSettings.Store.DownloadPath
+            : downloadsFolder;
 
         _downloadPackagesButton.IsEnabled = true;
         _cancelDownloadPackagesButton.IsEnabled = true;
 
-        _sourcePrimaryRadio.Tag = PackageDownloaderFactory.Type.PCSupport;
-        _sourceSecondaryRadio.Tag = PackageDownloaderFactory.Type.Commercial;
+        _onlyShowUpdatesCheckBox.IsChecked = _packageDownloaderSettings.Store.OnlyShowUpdates;
+
+        _sourcePrimaryRadio.Tag = PackageDownloaderFactory.Type.Vantage;
+        _sourceSecondaryRadio.Tag = PackageDownloaderFactory.Type.PCSupport;
     }
 
     public void Report(float value) => Dispatcher.Invoke(() =>
@@ -62,6 +71,17 @@ public partial class PackagesPage : Page, IProgress<float>
         _loader.IsIndeterminate = !(value > 0);
         _loader.Progress = value;
     });
+
+    private void DownloadToText_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        var location = _downloadToText.Text;
+
+        if (!Directory.Exists(location))
+            return;
+
+        _packageDownloaderSettings.Store.DownloadPath = location;
+        _packageDownloaderSettings.SynchronizeStore();
+    }
 
     private void OpenDownloadToButton_Click(object sender, RoutedEventArgs e)
     {
@@ -81,7 +101,10 @@ public partial class PackagesPage : Page, IProgress<float>
         if (ofd.ShowDialog() != DialogResult.OK)
             return;
 
-        _downloadToText.Text = ofd.SelectedPath;
+        var selectedPath = ofd.SelectedPath;
+        _downloadToText.Text = selectedPath;
+        _packageDownloaderSettings.Store.DownloadPath = selectedPath;
+        _packageDownloaderSettings.SynchronizeStore();
     }
 
     private async void DownloadPackagesButton_Click(object sender, RoutedEventArgs e)
@@ -117,10 +140,8 @@ public partial class PackagesPage : Page, IProgress<float>
 
             var token = _getPackagesTokenSource.Token;
 
-            var packageDownloaderType = new[] {
-                    _sourcePrimaryRadio,
-                    _sourceSecondaryRadio,
-                }.Where(r => r.IsChecked == true)
+            var packageDownloaderType = new[] { _sourcePrimaryRadio, _sourceSecondaryRadio }
+                .Where(r => r.IsChecked == true)
                 .Select(r => (PackageDownloaderFactory.Type)r.Tag)
                 .First();
 
@@ -140,7 +161,7 @@ public partial class PackagesPage : Page, IProgress<float>
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Error occured when downloading packages.", ex);
 
-            SnackbarHelper.Show("Something went wrong", "Check if your internet connection is up and running.", true);
+            await SnackbarHelper.ShowAsync("Something went wrong", "Check if your internet connection is up and running.", true);
 
             errored = true;
         }
@@ -149,7 +170,7 @@ public partial class PackagesPage : Page, IProgress<float>
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Error occured when downloading packages.", ex);
 
-            SnackbarHelper.Show("Something went wrong", ex.Message, true);
+            await SnackbarHelper.ShowAsync("Something went wrong", ex.Message, true);
 
             errored = true;
         }
@@ -195,6 +216,23 @@ public partial class PackagesPage : Page, IProgress<float>
         catch (TaskCanceledException) { }
     }
 
+    private async void OnlyShowUpdatesCheckBox_OnChecked(object sender, RoutedEventArgs e)
+    {
+        if (!await ShouldInterruptDownloadsIfRunning())
+            return;
+
+        if (_packages is null)
+            return;
+
+        _packageDownloaderSettings.Store.OnlyShowUpdates = _onlyShowUpdatesCheckBox.IsChecked ?? false;
+        _packageDownloaderSettings.SynchronizeStore();
+
+        _packagesStackPanel.Children.Clear();
+        _scrollViewer.ScrollToHome();
+
+        Reload();
+    }
+
     private async void SortingComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (!await ShouldInterruptDownloadsIfRunning())
@@ -212,8 +250,16 @@ public partial class PackagesPage : Page, IProgress<float>
     private string GetDownloadLocation()
     {
         var location = _downloadToText.Text.Trim();
+
         if (!Directory.Exists(location))
-            return KnownFolders.GetPath(KnownFolder.Downloads);
+        {
+            var downloads = KnownFolders.GetPath(KnownFolder.Downloads);
+            location = downloads;
+            _downloadToText.Text = downloads;
+            _packageDownloaderSettings.Store.DownloadPath = downloads;
+            _packageDownloaderSettings.SynchronizeStore();
+        }
+
         return location;
     }
 
@@ -304,6 +350,18 @@ public partial class PackagesPage : Page, IProgress<float>
             };
             _packagesStackPanel.Children.Add(clearHidden);
         }
+
+        if (_packagesStackPanel.Children.Count < 1)
+        {
+            var tb = new TextBlock
+            {
+                Text = Resource.PackagesPage_NoMatchingDownloads,
+                Foreground = (SolidColorBrush)FindResource("TextFillColorSecondaryBrush"),
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Margin = new(0, 32, 0, 32)
+            };
+            _packagesStackPanel.Children.Add(tb);
+        }
     }
 
     private List<Package> SortAndFilter(List<Package> packages)
@@ -317,6 +375,9 @@ public partial class PackagesPage : Page, IProgress<float>
         };
 
         result = result.Where(p => !_packageDownloaderSettings.Store.HiddenPackages.Contains(p.Id));
+
+        // if (_onlyShowUpdatesCheckBox.IsChecked ?? false)
+        //     result = result.Where(p => p.IsUpdate);
 
         if (!string.IsNullOrWhiteSpace(_filterTextBox.Text))
             result = result.Where(p => p.Index.Contains(_filterTextBox.Text, StringComparison.InvariantCultureIgnoreCase));

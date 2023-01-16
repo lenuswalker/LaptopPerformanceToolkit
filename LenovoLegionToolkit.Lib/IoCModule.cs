@@ -29,19 +29,26 @@ public class IoCModule : Module
         builder.Register<AlwaysOnUSBFeature>();
         builder.Register<BatteryFeature>();
         builder.Register<DisplayBrightnessFeature>();
+        builder.Register<DpiScaleFeature>();
         builder.Register<FlipToStartFeature>();
         builder.Register<FnLockFeature>();
         builder.Register<HybridModeFeature>();
         builder.Register<GSyncFeature>();
         builder.Register<IGPUModeFeature>();
+        builder.Register<MicrophoneFeature>();
+        builder.Register<OneLevelWhiteKeyboardBacklightFeature>();
         builder.Register<OverDriveFeature>();
         builder.Register<PowerModeFeature>();
         builder.Register<RefreshRateFeature>();
+        builder.Register<ResolutionFeature>();
         builder.Register<HDRFeature>();
         builder.Register<TouchpadLockFeature>();
         builder.Register<WhiteKeyboardBacklightFeature>();
         builder.Register<WinKeyFeature>();
 
+        builder.Register<NativeWindowsMessageListener>()
+            .OnActivating(e => e.Instance.StartAsync().AsValueTask())
+            .AutoActivate();
         builder.Register<PowerStateListener>()
             .OnActivating(e => e.Instance.StartAsync().AsValueTask())
             .AutoActivate();
@@ -90,7 +97,7 @@ public class IoCModule : Module
         builder.Register<WarrantyChecker>();
 
         builder.Register<PCSupportPackageDownloader>();
-        builder.Register<CommercialPackageDownloader>();
+        builder.Register<VantagePackageDownloader>();
         builder.Register<PackageDownloaderFactory>();
 
         builder.Register<SunriseSunset>();

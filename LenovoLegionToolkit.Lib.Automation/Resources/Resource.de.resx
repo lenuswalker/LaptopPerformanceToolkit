@@ -86,7 +86,7 @@
     <value>Wenn Energiemodus geändert wird</value>
   </data>
   <data name="ProcessesAreRunningAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Wenn Anwendung ausgeführt wird</value>
+    <value>Wenn die App startet</value>
   </data>
   <data name="ProcessesStopRunningAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Wenn Anwendung geschlossen wird</value>
@@ -94,4 +94,10 @@
   <data name="TimeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Zur bestimmten Zeit</value>
   </data>
+  <data name="ExternalDisplayConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+		<value>Wenn ein externes Display angeschlossen ist</value>
+	</data>
+  <data name="ExternalDisplayDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+		<value>Wenn kein externes Display angeschlossen ist</value>
+	</data>
 </root>

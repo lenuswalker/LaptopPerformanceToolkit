@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using LenovoLegionToolkit.Lib;
-using LenovoLegionToolkit.Lib.Features;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Extensions;
@@ -16,8 +15,6 @@ using LenovoLegionToolkit.WPF.Utils;
 using LenovoLegionToolkit.WPF.Windows.Utils;
 using Wpf.Ui.Controls;
 
-#pragma warning disable IDE0052 // Remove unread private members
-
 namespace LenovoLegionToolkit.WPF.Windows;
 
 public partial class MainWindow
@@ -25,21 +22,18 @@ public partial class MainWindow
     private readonly ApplicationSettings _settings = IoCContainer.Resolve<ApplicationSettings>();
     private readonly UpdateChecker _updateChecker = IoCContainer.Resolve<UpdateChecker>();
 
+    private readonly ContextMenuHelper _contextMenuHelper = new();
+
     public bool SuppressClosingEventHandler { get; set; }
 
     public Snackbar Snackbar => _snackbar;
-
-    private SystemEventInterceptor? _systemEventInterceptor;
-    private NotifyIcon? _notifyIcon;
 
     public MainWindow()
     {
         InitializeComponent();
 
-        SourceInitialized += MainWindow_SourceInitialized;
         Loaded += MainWindow_Loaded;
         Closing += MainWindow_Closing;
-        Closed += MainWindow_Closed;
         IsVisibleChanged += MainWindow_IsVisibleChanged;
         StateChanged += MainWindow_StateChanged;
 
@@ -59,37 +53,11 @@ public partial class MainWindow
 
     private void InitializeTray()
     {
-        _notifyIcon?.Unregister();
+        _contextMenuHelper.BringToForeground = BringToForeground;
+        _contextMenuHelper.Close = App.Current.ShutdownAsync;
 
-        ContextMenuHelper.Instance.BringToForeground = BringToForeground;
-        ContextMenuHelper.Instance.Close = App.Current.ShutdownAsync;
-
-        var notifyIcon = new NotifyIcon
-        {
-            TooltipText = Resource.AboutPage_AppName,
-            Icon = ImageSourceExtensions.ApplicationIcon(),
-            FocusOnLeftClick = false,
-            MenuOnRightClick = true,
-            Menu = ContextMenuHelper.Instance.ContextMenu,
-        };
-        notifyIcon.LeftClick += NotifyIcon_LeftClick;
-        notifyIcon.Register();
-
-        _notifyIcon = notifyIcon;
-    }
-
-    private void MainWindow_SourceInitialized(object? sender, EventArgs args)
-    {
-        var systemEventInterceptor = new SystemEventInterceptor(this);
-        systemEventInterceptor.OnTaskbarCreated += (_, _) => InitializeTray();
-        systemEventInterceptor.OnDisplayDeviceArrival += (_, _) => Task.Run(IoCContainer.Resolve<IGPUModeFeature>().NotifyAsync);
-        systemEventInterceptor.OnResumed += (_, _) => Task.Run(async () =>
-        {
-            await Task.Delay(TimeSpan.FromSeconds(5)).ConfigureAwait(false);
-            await IoCContainer.Resolve<IGPUModeFeature>().NotifyAsync().ConfigureAwait(false);
-        });
-
-        _systemEventInterceptor = systemEventInterceptor;
+        _trayIcon.TrayLeftMouseUp += (s, e) => BringToForeground();
+        _trayIcon.ContextMenu = _contextMenuHelper.ContextMenu;
     }
 
     private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -123,7 +91,10 @@ public partial class MainWindow
     private async void MainWindow_Closing(object? sender, CancelEventArgs e)
     {
         if (SuppressClosingEventHandler)
+        {
+            _trayIcon.Dispose();
             return;
+        }
 
         if (_settings.Store.MinimizeOnClose)
         {
@@ -138,15 +109,8 @@ public partial class MainWindow
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Closing...");
 
-            _notifyIcon?.Unregister();
-
             await App.Current.ShutdownAsync();
         }
-    }
-
-    private void MainWindow_Closed(object? sender, EventArgs e)
-    {
-        _systemEventInterceptor = null;
     }
 
     private void MainWindow_StateChanged(object? sender, EventArgs e)

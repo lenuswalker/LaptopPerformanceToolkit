@@ -475,10 +475,13 @@ WARNING: This action will not run correctly, if internal display is off or Hybri
   <data name="DeviceInformationWindow_BiosVersion_Title" xml:space="preserve">
     <value>BIOS version</value>
   </data>
-  <data name="DeviceInformationWindow_Copied_Message" xml:space="preserve">
+  <data name="CopiedToClipboard_Message" xml:space="preserve">
+    <value>Text copied to clipboard.</value>
+  </data>
+  <data name="CopiedToClipboard_Message_WithParam" xml:space="preserve">
     <value>"{0}" copied to clipboard.</value>
   </data>
-  <data name="DeviceInformationWindow_Copied_Title" xml:space="preserve">
+  <data name="CopiedToClipboard_Title" xml:space="preserve">
     <value>Copied!</value>
   </data>
   <data name="DeviceInformationWindow_Device_Title" xml:space="preserve">
@@ -590,8 +593,8 @@ Thanks in advance!</value>
     <value>Edit</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Description" xml:space="preserve">
-		<value>Uncheck refresh rates that you do not want to use when Fn+R shortcut is used.</value>
-	</data>
+    <value>Uncheck refresh rates that you do not want to use when Fn+R shortcut is used.</value>
+  </data>
   <data name="ExcludeRefreshRatesWindow_NoRefreshRatesFound_Message" xml:space="preserve">
     <value>Make sure that laptop display is on. Lenovo Legion Toolkit can't load refresh rates for a display that is not on.</value>
   </data>
@@ -603,6 +606,9 @@ Thanks in advance!</value>
   </data>
   <data name="Exit" xml:space="preserve">
     <value>Exit</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Auto_Message" xml:space="preserve">
     <value>Use only integrated GPU when on battery and both integrated and discrete GPU when AC adapter is connected. When a non-standard adapter is connected, system switches to Hybrid-iGPU Only Mode.</value>
@@ -762,6 +768,9 @@ WARNING: This action will not run correctly if the internal display is off.</val
   <data name="HDRControl_Warning" xml:space="preserve">
     <value>HDR usage is blocked by Windows settings.</value>
   </data>
+  <data name="Import" xml:space="preserve">
+    <value>Import</value>
+  </data>
   <data name="IncompatibleDevice_Message" xml:space="preserve">
     <value>This device is not compatible with Lenovo Legion Toolkit.</value>
   </data>
@@ -799,7 +808,7 @@ WARNING: This action will not run correctly if the internal display is off.</val
     <value>Keyboard</value>
   </data>
   <data name="MainWindow_NavigationItem_Packages" xml:space="preserve">
-    <value>Packages</value>
+    <value>Downloads</value>
   </data>
   <data name="MainWindow_NavigationItem_Settings" xml:space="preserve">
     <value>Settings</value>
@@ -859,14 +868,14 @@ WARNING: This action will not run correctly if the internal display is off.</val
     <value>Num Lock on</value>
   </data>
   <data name="Notification_SpectrumKeyboardBacklight_Backlight" xml:space="preserve">
-		<value>Backlight {0}</value>
-	</data>
+    <value>Backlight {0}</value>
+  </data>
   <data name="Notification_SpectrumKeyboardBacklight_Brightness" xml:space="preserve">
-		<value>Brightness {0}</value>
-	</data>
+    <value>Brightness {0}</value>
+  </data>
   <data name="Notification_SpectrumKeyboardBacklight_Profile" xml:space="preserve">
-		<value>Profile {0}</value>
-	</data>
+    <value>Profile {0}</value>
+  </data>
   <data name="Notification_TouchpadOff" xml:space="preserve">
     <value>Touchpad off</value>
   </data>
@@ -958,6 +967,9 @@ Enable this option if you have conflicts with full screen applications.</value>
   <data name="PackageControl_HttpGeneralError_Title" xml:space="preserve">
     <value>Something went wrong</value>
   </data>
+  <data name="PackageControl_IsUpdateInfo" xml:space="preserve">
+    <value>Update available!</value>
+  </data>
   <data name="PackageControl_OldPackageWarning" xml:space="preserve">
     <value>This package is more than a year old.</value>
   </data>
@@ -999,13 +1011,13 @@ Always make sure that you are installing correct packages.</value>
     <value>Primary (Recommended)</value>
   </data>
   <data name="PackagesPage_PrimarySource_ToolTip" xml:space="preserve">
-    <value>Same as Lenovo PC Support</value>
+    <value>Same as Lenovo Vantage</value>
   </data>
   <data name="PackagesPage_SecondarySource" xml:space="preserve">
     <value>Secondary</value>
   </data>
   <data name="PackagesPage_SecondarySource_ToolTip" xml:space="preserve">
-    <value>Same as Lenovo DriverGrabber</value>
+    <value>Same as Lenovo PC Support webpage</value>
   </data>
   <data name="PackagesPage_Sort_Category" xml:space="preserve">
     <value>Category</value>
@@ -1066,8 +1078,8 @@ You can switch mode with Fn+Q.</value>
     <value>Custom mode</value>
   </data>
   <data name="PowerPlansWindow_DefaultPowerPlan" xml:space="preserve">
-		<value>Default</value>
-	</data>
+    <value>Default</value>
+  </data>
   <data name="PowerPlansWindow_PerformanceMode" xml:space="preserve">
     <value>Performance mode</value>
   </data>
@@ -1318,7 +1330,7 @@ Restart is recommended after changing this option.</value>
   <data name="SpectrumKeyboardBacklightControl_ApplyProfileError_Title" xml:space="preserve">
     <value>Couldn't apply profile</value>
   </data>
-  <data name="SpectrumKeyboardBacklightControl_ApplyProfileError_Title_Message" xml:space="preserve">
+  <data name="SpectrumKeyboardBacklightControl_ApplyProfileError_Message" xml:space="preserve">
     <value>Lighting profile couldn't be applied.</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_Brightness_Title" xml:space="preserve">
@@ -1330,12 +1342,24 @@ Restart is recommended after changing this option.</value>
   <data name="SpectrumKeyboardBacklightControl_Effects" xml:space="preserve">
     <value>Effects</value>
   </data>
+  <data name="SpectrumKeyboardBacklightControl_ExportProfileError_Message" xml:space="preserve">
+    <value>Profile couldn't be exported</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightControl_ExportProfileError_Title" xml:space="preserve">
+    <value>Couldn't export profile</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightControl_ImportProfileError_Message" xml:space="preserve">
+    <value>Profile couldn't be imported</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightControl_ImportProfileError_Title" xml:space="preserve">
+    <value>Couldn't import profile</value>
+  </data>
   <data name="SpectrumKeyboardBacklightControl_NoEffects_Text" xml:space="preserve">
     <value>No effects added.</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ResetToDefault_Tooltip" xml:space="preserve">
-		<value>Reset to default</value>
-	</data>
+    <value>Reset to default</value>
+  </data>
   <data name="SpectrumKeyboardBacklightControl_SelectAll_ToolTip" xml:space="preserve">
     <value>Select all zones</value>
   </data>
@@ -1491,6 +1515,67 @@ Logging will be enabled automatically, if you choose to continue.</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
+  </data>
+  <data name="MicrophoneControl_Title" xml:space="preserve">
+    <value>Microphone</value>
+  </data>
+  <data name="MicrophoneControl_Message" xml:space="preserve">
+    <value>When off, microphones will be muted.</value>
+  </data>
+  <data name="MicrophoneAutomationStepControl_Title" xml:space="preserve">
+    <value>Microphone</value>
+  </data>
+  <data name="MicrophoneAutomationStepControl_Message" xml:space="preserve">
+    <value>When off, microphones will be muted.</value>
+  </data>
+  <data name="ResolutionControl_Title" xml:space="preserve">
+    <value>Resolution</value>
+  </data>
+  <data name="ResolutionControl_Message" xml:space="preserve">
+    <value>Change resolution of the built-in display.</value>
+  </data>
+  <data name="ResolutionAutomationStepControl_Title" xml:space="preserve">
+    <value>Resolution</value>
+  </data>
+  <data name="ResolutionAutomationStepControl_Message" xml:space="preserve">
+    <value>Change resolution of the built-in display.
+
+WARNING: This action will not run correctly, if internal display is off.</value>
+  </data>
+  <data name="DpiScaleControl_Title" xml:space="preserve">
+    <value>DPI</value>
+  </data>
+  <data name="DpiScaleControl_Message" xml:space="preserve">
+    <value>Change scale of the built-in display.</value>
+  </data>
+  <data name="DpiScaleAutomationStepControl_Title" xml:space="preserve">
+    <value>DPI</value>
+  </data>
+  <data name="DpiScaleAutomationStepControl_Message" xml:space="preserve">
+    <value>Change scaling of the built-in display.
+
+WARNING: This action will not run correctly, if internal display is off.</value>
+  </data>
+  <data name="DashboardPage_Display_Title" xml:space="preserve">
+    <value>Display</value>
+  </data>
+  <data name="OneLevelWhiteKeyboardBacklightControl_Title" xml:space="preserve">
+    <value>Backlight</value>
+  </data>
+  <data name="OneLevelWhiteKeyboardBacklightControl_Message" xml:space="preserve">
+    <value>You can turn backlight on or off with Fn+Space.</value>
+  </data>
+  <data name="OneLevelWhiteKeyboardBacklightAutomationStepControl_Title" xml:space="preserve">
+    <value>Backlight</value>
+  </data>
+  <data name="OneLevelWhiteKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
+    <value>Turn backlight on or off.</value>
+  </data>
+  <data name="PackagesPage_NoMatchingDownloads" xml:space="preserve">
+    <value>No matching downloads found</value>
+  </data>
+  <data name="PackagesPage_OnlyShowUpdates" xml:space="preserve">
+	  <value>Show updates only</value>
   </data>
   <data name="DisplayBrightnessControl_Message" xml:space="preserve">
     <value>Slider to manually adjust display brightness.</value>

@@ -33,7 +33,7 @@
 
             <wpfui:CardControl
                 Grid.Row="1"
-                Margin="0,0,16,24"
+                Margin="0,0,16,8"
                 FocusVisualStyle="{DynamicResource DefaultControlFocusVisualStyle}">
                 <wpfui:CardControl.Header>
                     <Grid>
@@ -101,7 +101,10 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
-                            <wpfui:TextBox x:Name="_downloadToText" Grid.Column="0" />
+                            <wpfui:TextBox
+                                x:Name="_downloadToText"
+                                Grid.Column="0"
+                                TextChanged="DownloadToText_OnTextChanged" />
 
                             <wpfui:Button
                                 Grid.Column="1"
@@ -131,12 +134,14 @@
                                 Content="{x:Static resources:Resource.PackagesPage_PrimarySource}"
                                 GroupName="source"
                                 IsChecked="True"
-                                ToolTip="{x:Static resources:Resource.PackagesPage_PrimarySource_ToolTip}" />
+                                ToolTip="{x:Static resources:Resource.PackagesPage_PrimarySource_ToolTip}"
+                                ToolTipService.InitialShowDelay="0" />
                             <RadioButton
                                 x:Name="_sourceSecondaryRadio"
                                 Content="{x:Static resources:Resource.PackagesPage_SecondarySource}"
                                 GroupName="source"
-                                ToolTip="{x:Static resources:Resource.PackagesPage_SecondarySource_ToolTip}" />
+                                ToolTip="{x:Static resources:Resource.PackagesPage_SecondarySource_ToolTip}"
+                                ToolTipService.InitialShowDelay="0" />
 
                         </StackPanel>
 
@@ -175,24 +180,17 @@
 
                     <StackPanel>
 
-                        <wpfui:CardControl Margin="0,0,16,16" Icon="Info24">
-                            <wpfui:CardControl.Header>
-                                <StackPanel>
-                                    <TextBlock
-                                        Margin="0,0,0,4"
-                                        FontWeight="Medium"
-                                        Text="{x:Static resources:Resource.PackagesPage_Disclaimer_Title}" />
-                                    <TextBlock
-                                        FontSize="12"
-                                        Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                        Text="{x:Static resources:Resource.PackagesPage_Disclaimer_Message}" />
-                                </StackPanel>
-                            </wpfui:CardControl.Header>
-                        </wpfui:CardControl>
+                        <wpfui:InfoBar
+                            Title="{x:Static resources:Resource.PackagesPage_Disclaimer_Title}"
+                            Margin="0,0,16,8"
+                            IsOpen="True"
+                            Message="{x:Static resources:Resource.PackagesPage_Disclaimer_Message}"
+                            Severity="Warning" />
 
                         <Grid Margin="0,0,16,8">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="300" />
+                                <ColumnDefinition Width="250" />
+                                <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
@@ -205,9 +203,18 @@
                                 PlaceholderText="{x:Static resources:Resource.PackagesPage_Filter}"
                                 TextChanged="FilterTextBox_TextChanged" />
 
+                            <CheckBox
+                                x:Name="_onlyShowUpdatesCheckBox"
+                                Grid.Column="1"
+                                Margin="16,0,0,0"
+                                Checked="OnlyShowUpdatesCheckBox_OnChecked"
+                                Content="{x:Static resources:Resource.PackagesPage_OnlyShowUpdates}"
+                                Unchecked="OnlyShowUpdatesCheckBox_OnChecked"
+                                Visibility="Hidden" />
+
                             <ComboBox
                                 x:Name="_sortingComboBox"
-                                Grid.Column="2"
+                                Grid.Column="3"
                                 MaxDropDownHeight="Auto"
                                 SelectedIndex="2"
                                 SelectionChanged="SortingComboBox_SelectionChanged">

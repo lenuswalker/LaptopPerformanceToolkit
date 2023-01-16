@@ -5,6 +5,7 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Settings;
+using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Windows.Utils;
 using Wpf.Ui.Common;
@@ -29,11 +30,24 @@ public class NotificationsManager
 
     private void OnNotificationReceived(Notification notification) => Dispatcher.Invoke(() =>
     {
+        if (Log.Instance.IsTraceEnabled)
+            Log.Instance.Trace($"Notification {notification} received");
+
         if (_settings.Store.DontShowNotifications)
+        {
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Notifications are disabled.");
+
             return;
+        }
 
         if (FullscreenHelper.IsAnyApplicationFullscreen())
+        {
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Some application is in fullscreen.");
+
             return;
+        }
 
         var allow = notification.Type switch
         {
@@ -70,7 +84,12 @@ public class NotificationsManager
         };
 
         if (!allow)
+        {
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Notification type {notification.Type} is disabled.");
+
             return;
+        }
 
         var symbol = notification.Type switch
         {
@@ -91,7 +110,7 @@ public class NotificationsManager
             NotificationType.PowerModeBalance => SymbolRegular.Gauge24,
             NotificationType.PowerModePerformance => SymbolRegular.Gauge24,
             NotificationType.PowerModeGodMode => SymbolRegular.Gauge24,
-            NotificationType.RefreshRate => SymbolRegular.Desktop24,
+            NotificationType.RefreshRate => SymbolRegular.DesktopPulse24,
             NotificationType.RGBKeyboardBacklightOff => SymbolRegular.Lightbulb24,
             NotificationType.RGBKeyboardBacklightChanged => SymbolRegular.Lightbulb24,
             NotificationType.SmartKeyDoublePress => SymbolRegular.StarEmphasis24,
@@ -173,17 +192,25 @@ public class NotificationsManager
             symbolTransform = si => si.SetResourceReference(Control.ForegroundProperty, "TextFillColorTertiaryBrush");
 
         ShowNotification(symbol, overlaySymbol, symbolTransform, text, closeAfter);
+
+        if (Log.Instance.IsTraceEnabled)
+            Log.Instance.Trace($"Notification {notification} shown.");
     });
 
     private void ShowNotification(SymbolRegular symbol, SymbolRegular? overlaySymbol, Action<SymbolIcon>? symbolTransform, string text, int closeAfter)
     {
+        var mainWindow = Application.Current.MainWindow;
+
+        if (mainWindow is null)
+            return;
+
         if (_window is not null)
         {
             _window.WindowStyle = WindowStyle.None;
             _window.Close();
         }
 
-        var nw = new NotificationWindow(symbol, overlaySymbol, symbolTransform, text, _settings.Store.NotificationPosition) { Owner = Application.Current.MainWindow };
+        var nw = new NotificationWindow(symbol, overlaySymbol, symbolTransform, text, _settings.Store.NotificationPosition) { Owner = mainWindow };
         nw.Show(closeAfter);
         _window = nw;
     }

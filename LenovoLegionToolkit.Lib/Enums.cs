@@ -116,6 +116,19 @@ public enum LightingChangeState
     Ports = 1,
 }
 
+public enum MicrophoneState
+{
+    Off,
+    On
+}
+
+public enum NativeWindowsMessage
+{
+    MonitorConnected,
+    MonitorDisconnected,
+    OnDisplayDeviceArrival
+}
+
 public enum NotificationDuration
 {
     Short,
@@ -175,6 +188,12 @@ public enum NotificationPosition
     CenterRight,
     [Display(ResourceType = typeof(Resource), Name = "NotificationPosition_Center")]
     Center
+}
+
+public enum OneLevelWhiteKeyboardBacklightState
+{
+    Off,
+    On
 }
 
 public enum OS
@@ -400,7 +419,10 @@ public enum TemperatureUnit
 
 public enum ThermalModeState
 {
-    IrrelevantAndBuggy
+    Unknown,
+    Quiet,
+    Balanced,
+    Performance
 }
 
 public enum TouchpadLockState

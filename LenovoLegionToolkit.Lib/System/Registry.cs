@@ -40,6 +40,43 @@ public static class Registry
         return watcher;
     }
 
+    public static bool KeyExists(string hive, string path, string key)
+    {
+        try
+        {
+            var value = Microsoft.Win32.Registry.GetValue(@$"{hive}\{path}", key, null);
+            return value is not null;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public static bool KeyExists(string hive, string path)
+    {
+
+        try
+        {
+            var registryKey = hive switch
+            {
+                "HKLM" or "HKEY_LOCAL_MACHINE" => Microsoft.Win32.Registry.LocalMachine,
+                "HKCU" or "HKEY_CURRENT_USER" => Microsoft.Win32.Registry.CurrentUser,
+                "HKU" or "HKEY_USERS" => Microsoft.Win32.Registry.Users,
+                "HKCR" or "HKEY_CLASSES_ROOT " => Microsoft.Win32.Registry.ClassesRoot,
+                "HKCC" or "HKEY_CURRENT_CONFIG  " => Microsoft.Win32.Registry.CurrentConfig,
+                _ => throw new ArgumentException(null, nameof(hive))
+            };
+
+            var value = registryKey.OpenSubKey(path);
+            return value is not null;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
     public static T Read<T>(string hive, string path, string key, T defaultValue)
     {
         var result = Microsoft.Win32.Registry.GetValue(@$"{hive}\{path}", key, defaultValue);
@@ -48,7 +85,12 @@ public static class Registry
         return (T)result;
     }
 
-    public static void SetUWPStartup(string appPattern, string subKeyName, bool enabled)
+    public static void Write<T>(string hive, string path, string key, T value) where T : notnull
+    {
+        Microsoft.Win32.Registry.SetValue(@$"{hive}\{path}", key, value);
+    }
+
+    public static void SetUwpStartup(string appPattern, string subKeyName, bool enabled)
     {
         var currentUserHive = Microsoft.Win32.Registry.CurrentUser;
 

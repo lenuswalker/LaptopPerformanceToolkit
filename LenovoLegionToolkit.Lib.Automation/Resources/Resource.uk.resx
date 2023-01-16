@@ -86,7 +86,7 @@
     <value>Коли режим потужності змінений</value>
   </data>
   <data name="ProcessesAreRunningAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Коли застосунок запущений</value>
+    <value>При запуску застосунку</value>
   </data>
   <data name="ProcessesStopRunningAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Коли застосунок закрито</value>
@@ -94,4 +94,10 @@
   <data name="TimeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>У зазначений час</value>
   </data>
+  <data name="ExternalDisplayConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+		<value>Коли зовнішній дисплей підключений</value>
+	</data>
+  <data name="ExternalDisplayDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+		<value>Коли зовнішній дисплей відключений</value>
+	</data>
 </root>

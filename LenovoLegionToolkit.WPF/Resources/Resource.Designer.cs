@@ -974,6 +974,33 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Text copied to clipboard..
+        /// </summary>
+        public static string CopiedToClipboard_Message {
+            get {
+                return ResourceManager.GetString("CopiedToClipboard_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;{0}&quot; copied to clipboard..
+        /// </summary>
+        public static string CopiedToClipboard_Message_WithParam {
+            get {
+                return ResourceManager.GetString("CopiedToClipboard_Message_WithParam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copied!.
+        /// </summary>
+        public static string CopiedToClipboard_Title {
+            get {
+                return ResourceManager.GetString("CopiedToClipboard_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy all.
         /// </summary>
         public static string CopyAll {
@@ -1024,6 +1051,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string CPUBoostModesWindow_Title {
             get {
                 return ResourceManager.GetString("CPUBoostModesWindow_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display.
+        /// </summary>
+        public static string DashboardPage_Display_Title {
+            get {
+                return ResourceManager.GetString("DashboardPage_Display_Title", resourceCulture);
             }
         }
         
@@ -1116,24 +1152,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string DeviceInformationWindow_BiosVersion_Title {
             get {
                 return ResourceManager.GetString("DeviceInformationWindow_BiosVersion_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &quot;{0}&quot; copied to clipboard..
-        /// </summary>
-        public static string DeviceInformationWindow_Copied_Message {
-            get {
-                return ResourceManager.GetString("DeviceInformationWindow_Copied_Message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copied!.
-        /// </summary>
-        public static string DeviceInformationWindow_Copied_Title {
-            get {
-                return ResourceManager.GetString("DeviceInformationWindow_Copied_Title", resourceCulture);
             }
         }
         
@@ -1453,6 +1471,44 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change scaling of the built-in display.
+        ///
+        ///WARNING: This action will not run correctly, if internal display is off..
+        /// </summary>
+        public static string DpiScaleAutomationStepControl_Message {
+            get {
+                return ResourceManager.GetString("DpiScaleAutomationStepControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DPI.
+        /// </summary>
+        public static string DpiScaleAutomationStepControl_Title {
+            get {
+                return ResourceManager.GetString("DpiScaleAutomationStepControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change scale of the built-in display..
+        /// </summary>
+        public static string DpiScaleControl_Message {
+            get {
+                return ResourceManager.GetString("DpiScaleControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DPI.
+        /// </summary>
+        public static string DpiScaleControl_Title {
+            get {
+                return ResourceManager.GetString("DpiScaleControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
         public static string Edit {
@@ -1503,6 +1559,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string Exit {
             get {
                 return ResourceManager.GetString("Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export.
+        /// </summary>
+        public static string Export {
+            get {
+                return ResourceManager.GetString("Export", resourceCulture);
             }
         }
         
@@ -1971,6 +2036,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Import.
+        /// </summary>
+        public static string Import {
+            get {
+                return ResourceManager.GetString("Import", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This device is not compatible with Lenovo Legion Toolkit..
         /// </summary>
         public static string IncompatibleDevice_Message {
@@ -2079,7 +2153,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Packages.
+        ///   Looks up a localized string similar to Downloads.
         /// </summary>
         public static string MainWindow_NavigationItem_Packages {
             get {
@@ -2111,6 +2185,42 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string MainWindow_UpdateAvailableWithVersion {
             get {
                 return ResourceManager.GetString("MainWindow_UpdateAvailableWithVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When off, microphones will be muted..
+        /// </summary>
+        public static string MicrophoneAutomationStepControl_Message {
+            get {
+                return ResourceManager.GetString("MicrophoneAutomationStepControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Microphone.
+        /// </summary>
+        public static string MicrophoneAutomationStepControl_Title {
+            get {
+                return ResourceManager.GetString("MicrophoneAutomationStepControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When off, microphones will be muted..
+        /// </summary>
+        public static string MicrophoneControl_Message {
+            get {
+                return ResourceManager.GetString("MicrophoneControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Microphone.
+        /// </summary>
+        public static string MicrophoneControl_Title {
+            get {
+                return ResourceManager.GetString("MicrophoneControl_Title", resourceCulture);
             }
         }
         
@@ -2449,6 +2559,42 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Turn backlight on or off..
+        /// </summary>
+        public static string OneLevelWhiteKeyboardBacklightAutomationStepControl_Message {
+            get {
+                return ResourceManager.GetString("OneLevelWhiteKeyboardBacklightAutomationStepControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Backlight.
+        /// </summary>
+        public static string OneLevelWhiteKeyboardBacklightAutomationStepControl_Title {
+            get {
+                return ResourceManager.GetString("OneLevelWhiteKeyboardBacklightAutomationStepControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can turn backlight on or off with Fn+Space..
+        /// </summary>
+        public static string OneLevelWhiteKeyboardBacklightControl_Message {
+            get {
+                return ResourceManager.GetString("OneLevelWhiteKeyboardBacklightControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Backlight.
+        /// </summary>
+        public static string OneLevelWhiteKeyboardBacklightControl_Title {
+            get {
+                return ResourceManager.GetString("OneLevelWhiteKeyboardBacklightControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open.
         /// </summary>
         public static string Open {
@@ -2557,6 +2703,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update available!.
+        /// </summary>
+        public static string PackageControl_IsUpdateInfo {
+            get {
+                return ResourceManager.GetString("PackageControl_IsUpdateInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This package is more than a year old..
         /// </summary>
         public static string PackageControl_OldPackageWarning {
@@ -2657,6 +2812,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No matching downloads found.
+        /// </summary>
+        public static string PackagesPage_NoMatchingDownloads {
+            get {
+                return ResourceManager.GetString("PackagesPage_NoMatchingDownloads", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show updates only.
+        /// </summary>
+        public static string PackagesPage_OnlyShowUpdates {
+            get {
+                return ResourceManager.GetString("PackagesPage_OnlyShowUpdates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operating System.
         /// </summary>
         public static string PackagesPage_OperatingSystem {
@@ -2675,7 +2848,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Same as Lenovo PC Support.
+        ///   Looks up a localized string similar to Same as Lenovo Vantage.
         /// </summary>
         public static string PackagesPage_PrimarySource_ToolTip {
             get {
@@ -2693,7 +2866,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Same as Lenovo DriverGrabber.
+        ///   Looks up a localized string similar to Same as Lenovo PC Support webpage.
         /// </summary>
         public static string PackagesPage_SecondarySource_ToolTip {
             get {
@@ -2971,6 +3144,44 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string Rename {
             get {
                 return ResourceManager.GetString("Rename", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change resolution of the built-in display.
+        ///
+        ///WARNING: This action will not run correctly, if internal display is off..
+        /// </summary>
+        public static string ResolutionAutomationStepControl_Message {
+            get {
+                return ResourceManager.GetString("ResolutionAutomationStepControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resolution.
+        /// </summary>
+        public static string ResolutionAutomationStepControl_Title {
+            get {
+                return ResourceManager.GetString("ResolutionAutomationStepControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change resolution of the built-in display..
+        /// </summary>
+        public static string ResolutionControl_Message {
+            get {
+                return ResourceManager.GetString("ResolutionControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resolution.
+        /// </summary>
+        public static string ResolutionControl_Title {
+            get {
+                return ResourceManager.GetString("ResolutionControl_Title", resourceCulture);
             }
         }
         
@@ -3610,20 +3821,20 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lighting profile couldn&apos;t be applied..
+        /// </summary>
+        public static string SpectrumKeyboardBacklightControl_ApplyProfileError_Message {
+            get {
+                return ResourceManager.GetString("SpectrumKeyboardBacklightControl_ApplyProfileError_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Couldn&apos;t apply profile.
         /// </summary>
         public static string SpectrumKeyboardBacklightControl_ApplyProfileError_Title {
             get {
                 return ResourceManager.GetString("SpectrumKeyboardBacklightControl_ApplyProfileError_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lighting profile couldn&apos;t be applied..
-        /// </summary>
-        public static string SpectrumKeyboardBacklightControl_ApplyProfileError_Title_Message {
-            get {
-                return ResourceManager.GetString("SpectrumKeyboardBacklightControl_ApplyProfileError_Title_Message", resourceCulture);
             }
         }
         
@@ -3651,6 +3862,42 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string SpectrumKeyboardBacklightControl_Effects {
             get {
                 return ResourceManager.GetString("SpectrumKeyboardBacklightControl_Effects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile couldn&apos;t be exported.
+        /// </summary>
+        public static string SpectrumKeyboardBacklightControl_ExportProfileError_Message {
+            get {
+                return ResourceManager.GetString("SpectrumKeyboardBacklightControl_ExportProfileError_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Couldn&apos;t export profile.
+        /// </summary>
+        public static string SpectrumKeyboardBacklightControl_ExportProfileError_Title {
+            get {
+                return ResourceManager.GetString("SpectrumKeyboardBacklightControl_ExportProfileError_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile couldn&apos;t be imported.
+        /// </summary>
+        public static string SpectrumKeyboardBacklightControl_ImportProfileError_Message {
+            get {
+                return ResourceManager.GetString("SpectrumKeyboardBacklightControl_ImportProfileError_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Couldn&apos;t import profile.
+        /// </summary>
+        public static string SpectrumKeyboardBacklightControl_ImportProfileError_Title {
+            get {
+                return ResourceManager.GetString("SpectrumKeyboardBacklightControl_ImportProfileError_Title", resourceCulture);
             }
         }
         
