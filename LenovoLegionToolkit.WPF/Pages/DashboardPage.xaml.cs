@@ -19,14 +19,6 @@ namespace LenovoLegionToolkit.WPF.Pages;
 
 public partial class DashboardPage
 {
-    protected readonly GPUController _gpuController = IoCContainer.Resolve<GPUController>();
-    protected readonly HDRFeature _hDRFeature = IoCContainer.Resolve<HDRFeature>();
-    protected readonly HybridModeFeature _hybridModeFeature = IoCContainer.Resolve<HybridModeFeature>();
-    protected readonly RefreshRateFeature _refreshRateFeature = IoCContainer.Resolve<RefreshRateFeature>();
-
-    //public DashboardPage()
-    //{
-    //    InitializeComponent();
     private readonly DashboardSettings _dashboardSettings = IoCContainer.Resolve<DashboardSettings>();
 
     private readonly List<DashboardGroupControl> _dashboardGroupControls = new();
@@ -99,24 +91,6 @@ public partial class DashboardPage
 
         await Task.WhenAll(initializedTasks);
 
-    //    Init();
-    //}
-
-    //private async void Init()
-    //{
-    //    _graphicsStackPanel.Visibility = Visibility.Collapsed;
-    //    _otherStackPanel.Visibility = Visibility.Collapsed;
-
-    //    if (App.Current.IsCompatible)
-    //        _otherStackPanel.Visibility = Visibility.Visible;
-
-    //    if (_gpuController.IsSupported() ||
-    //        await _hybridModeFeature.IsSupportedAsync() ||
-    //        await _hDRFeature.IsSupportedAsync() ||
-    //        await _refreshRateFeature.IsSupportedAsync())
-    //        _graphicsStackPanel.Visibility = Visibility.Visible;
-
-    //    SizeChanged += DashboardPage_SizeChanged;
         _loader.IsLoading = false;
     }
 

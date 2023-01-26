@@ -18,6 +18,7 @@ public enum DashboardItem
     DiscreteGpu,
     Resolution,
     RefreshRate,
+    DisplayBrightness,
     DpiScale,
     Hdr,
     OverDrive,
