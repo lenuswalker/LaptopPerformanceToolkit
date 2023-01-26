@@ -807,6 +807,9 @@ ATENÇÃO: Está ação não irá executar corretamente se o ecrã interno estiv
   <data name="MainWindow_NavigationItem_Keyboard" xml:space="preserve">
     <value>Teclado</value>
   </data>
+  <data name="MainWindow_NavigationItem_Packages" xml:space="preserve">
+    <value>Pacotes</value>
+  </data>
   <data name="MainWindow_NavigationItem_Settings" xml:space="preserve">
     <value>Definições</value>
   </data>
@@ -964,6 +967,9 @@ Ativa esta opção se tiveres problemas de conflitos com apps em ecrã inteiro.<
   <data name="PackageControl_HttpGeneralError_Title" xml:space="preserve">
     <value>Algo deu errado</value>
   </data>
+  <data name="PackageControl_IsUpdateInfo" xml:space="preserve">
+    <value>Atualização disponível!</value>
+  </data>
   <data name="PackageControl_OldPackageWarning" xml:space="preserve">
     <value>Este pacote tem mais que um ano.</value>
   </data>
@@ -973,9 +979,6 @@ Ativa esta opção se tiveres problemas de conflitos com apps em ecrã inteiro.<
   <data name="PackagesPage_Disclaimer_Message" xml:space="preserve">
     <value>Abaixo está uma lista de software que foi marcado como compatível com o teu portátil.
 Confirma sempre que estás a instalar o pacotes corretos.</value>
-  </data>
-  <data name="PackagesPage_Disclaimer_Title" xml:space="preserve">
-    <value>Importante</value>
   </data>
   <data name="PackagesPage_DownloadFailed_Message" xml:space="preserve">
     <value>Confirma que o tipo de máquina e sistema operativo estão definidos corretamente.</value>
@@ -1004,14 +1007,14 @@ Confirma sempre que estás a instalar o pacotes corretos.</value>
   <data name="PackagesPage_PrimarySource" xml:space="preserve">
     <value>Primário (Recomendo)</value>
   </data>
-  <data name="PackagesPage_PrimarySource_ToolTip" xml:space="preserve">
-    <value>Mesmo que o Lenovo PC Support</value>
+  <data name="PackagesPage_PrimarySource_Message" xml:space="preserve">
+    <value>O mesmo que o Lenovo Vantage</value>
   </data>
   <data name="PackagesPage_SecondarySource" xml:space="preserve">
     <value>Secundário</value>
   </data>
-  <data name="PackagesPage_SecondarySource_ToolTip" xml:space="preserve">
-    <value>Mesmo que o Lenovo DriverGrabber</value>
+  <data name="PackagesPage_SecondarySource_Message" xml:space="preserve">
+    <value>O mesmo que o Lenovo PC Support</value>
   </data>
   <data name="PackagesPage_Sort_Category" xml:space="preserve">
     <value>Categoria</value>
@@ -1508,6 +1511,18 @@ Logs serão guardados automaticamente, se escolheres continuar.</value>
   <data name="Yes" xml:space="preserve">
     <value>Sim</value>
   </data>
+  <data name="MicrophoneControl_Title" xml:space="preserve">
+    <value>Microfone sem som</value>
+  </data>
+  <data name="MicrophoneControl_Message" xml:space="preserve">
+    <value>Tirar o som de todos os microfones disponíveis.</value>
+  </data>
+  <data name="MicrophoneAutomationStepControl_Title" xml:space="preserve">
+    <value>Microfone sem som</value>
+  </data>
+  <data name="MicrophoneAutomationStepControl_Message" xml:space="preserve">
+    <value>Tirar o som de todos os microfones disponíveis.</value>
+  </data>
   <data name="ResolutionControl_Title" xml:space="preserve">
     <value>Resolução</value>
   </data>
@@ -1538,5 +1553,23 @@ ATENÇÃO: Esta ação não irá executar corretamente se o ecrã interno estive
   </data>
   <data name="DashboardPage_Display_Title" xml:space="preserve">
     <value>Ecrã</value>
+  </data>
+  <data name="OneLevelWhiteKeyboardBacklightControl_Title" xml:space="preserve">
+    <value>Luz de fundo</value>
+  </data>
+  <data name="OneLevelWhiteKeyboardBacklightControl_Message" xml:space="preserve">
+    <value>Podes ligar ou desligar a luz de fundo com Fn+Espaço.</value>
+  </data>
+  <data name="OneLevelWhiteKeyboardBacklightAutomationStepControl_Title" xml:space="preserve">
+    <value>Luz de fundo</value>
+  </data>
+  <data name="OneLevelWhiteKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
+    <value>Liga ou desliga a luz de fundo.</value>
+  </data>
+  <data name="PackagesPage_NoMatchingDownloads" xml:space="preserve">
+    <value>Não foram encontradas transferências correspondentes</value>
+  </data>
+  <data name="PackagesPage_OnlyShowUpdates" xml:space="preserve">
+	  <value>Mostrar só atualizações</value>
   </data>
 </root>

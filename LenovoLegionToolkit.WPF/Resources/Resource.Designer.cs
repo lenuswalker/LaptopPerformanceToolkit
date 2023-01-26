@@ -1055,6 +1055,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customize.
+        /// </summary>
+        public static string DashboardPage_Customize {
+            get {
+                return ResourceManager.GetString("DashboardPage_Customize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Display.
         /// </summary>
         public static string DashboardPage_Display_Title {
@@ -1514,6 +1523,42 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string Edit {
             get {
                 return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string EditDashboardWindow_CreateGroup_Message {
+            get {
+                return ResourceManager.GetString("EditDashboardWindow_CreateGroup_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create group.
+        /// </summary>
+        public static string EditDashboardWindow_CreateGroup_Title {
+            get {
+                return ResourceManager.GetString("EditDashboardWindow_CreateGroup_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some features may not appear on the Dashboard depending on state and configuration of your device..
+        /// </summary>
+        public static string EditDashboardWindow_Disclaimer_Message {
+            get {
+                return ResourceManager.GetString("EditDashboardWindow_Disclaimer_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customize Dashboard.
+        /// </summary>
+        public static string EditDashboardWindow_Title {
+            get {
+                return ResourceManager.GetString("EditDashboardWindow_Title", resourceCulture);
             }
         }
         
@@ -2740,15 +2785,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Important.
-        /// </summary>
-        public static string PackagesPage_Disclaimer_Title {
-            get {
-                return ResourceManager.GetString("PackagesPage_Disclaimer_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Check if Machine Type and OS are set correctly..
         /// </summary>
         public static string PackagesPage_DownloadFailed_Message {
@@ -2850,9 +2886,9 @@ namespace LenovoLegionToolkit.WPF.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Same as Lenovo Vantage.
         /// </summary>
-        public static string PackagesPage_PrimarySource_ToolTip {
+        public static string PackagesPage_PrimarySource_Message {
             get {
-                return ResourceManager.GetString("PackagesPage_PrimarySource_ToolTip", resourceCulture);
+                return ResourceManager.GetString("PackagesPage_PrimarySource_Message", resourceCulture);
             }
         }
         
@@ -2866,11 +2902,11 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Same as Lenovo PC Support webpage.
+        ///   Looks up a localized string similar to Same as Lenovo PC Support.
         /// </summary>
-        public static string PackagesPage_SecondarySource_ToolTip {
+        public static string PackagesPage_SecondarySource_Message {
             get {
-                return ResourceManager.GetString("PackagesPage_SecondarySource_ToolTip", resourceCulture);
+                return ResourceManager.GetString("PackagesPage_SecondarySource_Message", resourceCulture);
             }
         }
         
@@ -3144,6 +3180,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string Rename {
             get {
                 return ResourceManager.GetString("Rename", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset.
+        /// </summary>
+        public static string Reset {
+            get {
+                return ResourceManager.GetString("Reset", resourceCulture);
             }
         }
         
@@ -4169,6 +4214,52 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string TryAgain {
             get {
                 return ResourceManager.GetString("TryAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turn off all available displays..
+        /// </summary>
+        public static string TurnOffMonitorsAutomationStepControl_Message {
+            get {
+                return ResourceManager.GetString("TurnOffMonitorsAutomationStepControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turn off displays.
+        /// </summary>
+        public static string TurnOffMonitorsAutomationStepControl_Title {
+            get {
+                return ResourceManager.GetString("TurnOffMonitorsAutomationStepControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turn off all available displays.
+        ///Moving the mouse or pressing the keyboard will wake displays up..
+        /// </summary>
+        public static string TurnOffMonitorsControl_Message {
+            get {
+                return ResourceManager.GetString("TurnOffMonitorsControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turn off displays.
+        /// </summary>
+        public static string TurnOffMonitorsControl_Title {
+            get {
+                return ResourceManager.GetString("TurnOffMonitorsControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turn off.
+        /// </summary>
+        public static string TurnOffMonitorsControl_TurnOff {
+            get {
+                return ResourceManager.GetString("TurnOffMonitorsControl_TurnOff", resourceCulture);
             }
         }
         

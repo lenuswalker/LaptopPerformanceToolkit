@@ -60,8 +60,6 @@ public partial class PackagesPage : IProgress<float>
         _downloadPackagesButton.IsEnabled = true;
         _cancelDownloadPackagesButton.IsEnabled = true;
 
-        _onlyShowUpdatesCheckBox.IsChecked = _packageDownloaderSettings.Store.OnlyShowUpdates;
-
         _sourcePrimaryRadio.Tag = PackageDownloaderFactory.Type.Vantage;
         _sourceSecondaryRadio.Tag = PackageDownloaderFactory.Type.PCSupport;
     }
@@ -107,6 +105,11 @@ public partial class PackagesPage : IProgress<float>
         _packageDownloaderSettings.SynchronizeStore();
     }
 
+    private void InfoBarDismissButton_Click(object sender, RoutedEventArgs e)
+    {
+        _infoBar.Visibility = Visibility.Collapsed;
+    }
+
     private async void DownloadPackagesButton_Click(object sender, RoutedEventArgs e)
     {
         if (!await ShouldInterruptDownloadsIfRunning())
@@ -144,6 +147,26 @@ public partial class PackagesPage : IProgress<float>
                 .Where(r => r.IsChecked == true)
                 .Select(r => (PackageDownloaderFactory.Type)r.Tag)
                 .First();
+
+            if (FeatureFlags.CheckUpdates)
+            {
+                switch (packageDownloaderType)
+                {
+                    case PackageDownloaderFactory.Type.Vantage:
+                        _onlyShowUpdatesCheckBox.Visibility = Visibility.Visible;
+                        _onlyShowUpdatesCheckBox.IsChecked = _packageDownloaderSettings.Store.OnlyShowUpdates;
+                        break;
+                    default:
+                        _onlyShowUpdatesCheckBox.Visibility = Visibility.Hidden;
+                        _onlyShowUpdatesCheckBox.IsChecked = false;
+                        break;
+                }
+            }
+            else
+            {
+                _onlyShowUpdatesCheckBox.Visibility = Visibility.Hidden;
+                _onlyShowUpdatesCheckBox.IsChecked = false;
+            }
 
             _packageDownloader = _packageDownloaderFactory.GetInstance(packageDownloaderType);
             var packages = await _packageDownloader.GetPackagesAsync(machineType, os, this, token);
@@ -333,6 +356,18 @@ public partial class PackagesPage : IProgress<float>
             _packagesStackPanel.Children.Add(control);
         }
 
+        if (packages.IsEmpty())
+        {
+            var tb = new TextBlock
+            {
+                Text = Resource.PackagesPage_NoMatchingDownloads,
+                Foreground = (SolidColorBrush)FindResource("TextFillColorSecondaryBrush"),
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Margin = new(0, 32, 0, 32)
+            };
+            _packagesStackPanel.Children.Add(tb);
+        }
+
         if (_packageDownloaderSettings.Store.HiddenPackages.Any())
         {
             var clearHidden = new Hyperlink
@@ -350,18 +385,6 @@ public partial class PackagesPage : IProgress<float>
             };
             _packagesStackPanel.Children.Add(clearHidden);
         }
-
-        if (_packagesStackPanel.Children.Count < 1)
-        {
-            var tb = new TextBlock
-            {
-                Text = Resource.PackagesPage_NoMatchingDownloads,
-                Foreground = (SolidColorBrush)FindResource("TextFillColorSecondaryBrush"),
-                HorizontalAlignment = HorizontalAlignment.Center,
-                Margin = new(0, 32, 0, 32)
-            };
-            _packagesStackPanel.Children.Add(tb);
-        }
     }
 
     private List<Package> SortAndFilter(List<Package> packages)
@@ -376,8 +399,12 @@ public partial class PackagesPage : IProgress<float>
 
         result = result.Where(p => !_packageDownloaderSettings.Store.HiddenPackages.Contains(p.Id));
 
-        // if (_onlyShowUpdatesCheckBox.IsChecked ?? false)
-        //     result = result.Where(p => p.IsUpdate);
+
+        if (FeatureFlags.CheckUpdates)
+        {
+            if (_onlyShowUpdatesCheckBox.IsChecked ?? false)
+                result = result.Where(p => p.IsUpdate);
+        }
 
         if (!string.IsNullOrWhiteSpace(_filterTextBox.Text))
             result = result.Where(p => p.Index.Contains(_filterTextBox.Text, StringComparison.InvariantCultureIgnoreCase));

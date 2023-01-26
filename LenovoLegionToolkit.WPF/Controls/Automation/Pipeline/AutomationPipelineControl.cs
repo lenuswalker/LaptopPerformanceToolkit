@@ -25,6 +25,8 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline;
 
 public class AutomationPipelineControl : UserControl
 {
+    private readonly TaskCompletionSource _initializedTaskCompletionSource = new();
+
     private readonly AutomationProcessor _automationProcessor = IoCContainer.Resolve<AutomationProcessor>();
 
     private readonly CardExpander _cardExpander = new()
@@ -83,6 +85,8 @@ public class AutomationPipelineControl : UserControl
 
     public event EventHandler? OnChanged;
     public event EventHandler? OnDelete;
+
+    public Task InitializedTask => _initializedTaskCompletionSource.Task;
 
     public AutomationPipelineControl(AutomationPipeline automationPipeline)
     {
@@ -166,6 +170,8 @@ public class AutomationPipelineControl : UserControl
         _cardExpander.Content = _stackPanel;
 
         Content = _cardExpander;
+
+        _initializedTaskCompletionSource.TrySetResult();
     }
 
     private async Task RunAsync()
@@ -345,6 +351,7 @@ public class AutomationPipelineControl : UserControl
             new SpectrumKeyboardBacklightBrightnessAutomationStep(0),
             new SpectrumKeyboardBacklightProfileAutomationStep(1),
             new TouchpadLockAutomationStep(default),
+            new TurnOffMonitorsAutomationStep(),
             new WhiteKeyboardBacklightAutomationStep(default),
             new WinKeyAutomationStep(default),
         };
@@ -399,6 +406,7 @@ public class AutomationPipelineControl : UserControl
             RunAutomationStep s => new RunAutomationStepControl(s),
             SpectrumKeyboardBacklightBrightnessAutomationStep s => new SpectrumKeyboardBacklightBrightnessAutomationStepControl(s),
             SpectrumKeyboardBacklightProfileAutomationStep s => new SpectrumKeyboardBacklightProfileAutomationStepControl(s),
+            TurnOffMonitorsAutomationStep s => new TurnOffMonitorsAutomationStepControl(s),
             TouchpadLockAutomationStep s => new TouchpadLockAutomationStepControl(s),
             WhiteKeyboardBacklightAutomationStep s => new WhiteKeyboardBacklightAutomationStepControl(s),
             WinKeyAutomationStep s => new WinKeyAutomationStepControl(s),

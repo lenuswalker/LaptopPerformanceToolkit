@@ -62,7 +62,7 @@ public partial class MainWindow
 
     private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
     {
-        var loadingTask = Task.Delay(500);
+        _contentGrid.Visibility = Visibility.Hidden;
 
         if (!await KeyboardBacklightPage.IsSupportedAsync())
             _navigationStore.Items.Remove(_keyboardItem);
@@ -78,9 +78,7 @@ public partial class MainWindow
         if (App.Current.IsCompatible)
             SmartKeyHelper.Instance.BringToForeground = () => Dispatcher.Invoke(BringToForeground);
 
-        await loadingTask;
-
-        _loader.IsLoading = false;
+        _contentGrid.Visibility = Visibility.Visible;
 
         LoadDeviceInfo();
         CheckForUpdates();

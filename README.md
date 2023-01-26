@@ -89,6 +89,10 @@ If you are getting an incompatible message on startup, you can check the *Contri
 
 Overall the recommendation is to disable or uninstall Vantage, Hotkeys and Legion Zone while using LLT. There are some functions that cause conflicts or may not work properly when LLT is working along side other Lenovo apps.
 
+### Other remarks
+
+LLT currently does not support installation for multiple users, so if you need to have multiple users on you laptop you might encounter issues. Same goes for accounts without Administrator rights - LLT needs an account with Administrator rights. If you install LLT on an account without such rights, LLT will not work properly.
+
 ## Features
 
 The app allows to:
@@ -111,6 +115,8 @@ Custom Mode is supported on following BIOS versions:
 * HACN31WW and higher
 * HHCN23WW and higher
 * K1CN31WW and higher
+* K9CN34WW and higher
+* KFCN32WW and higher
 * J2CN40WW and higher
 * JUCN51WW and higher
 * JYCN39WW and higher
@@ -167,24 +173,23 @@ Translations provided by:
 * Portuguese (Brasil) - Vernon
 * Russian - [Edward Johan](https://github.com/younyokel)
 * Turkish - Undervolt
-* Ukrainian -  [Владислав «vaidee» Придатько](https://github.com/va1dee)
+* Ukrainian -  [Vladyslav Prydatko](https://github.com/va1dee)
 * Vietnamese - Not_Nhan, Kuri
 
 Many thanks to everyone else, who monitors and corrects translations!
 
 ## FAQ
 
-#### Why doesn't LLT launch on startup even though Autorun option is enabled?
+#### Why is my antivirus reporting that the installer contains a virus/trojan/malware?
 
-LLT is started using Task Scheduler, so that it can launch with admin rights. Startup is delayed by 1 minutes (30 seconds in version 2.4.0 and up) to allow other components to start and be ready to use. If you don't see LLT in tray after a ~minute after seeing your desktop, create an issue.
+LLT makes us of many low-level Windows APIs that can be falsely flagged by antiviruses as suspicious, resulting in a false-positive. LLT is open source and can easily be audited by anyone who has any doubts as to what this software does. All installers are built directly on GitHub with GitHub Actions, so that there is no doubt what they contain. This problem could be solved by signing all code, but I can't afford spending hundreds of dollars per year for an Extended Validation certificate.
+
+If you downloaded the installer from this projects website, you shouldn't worry - the warning is a false-positive. That said, if you can help with resolving this issue, let's get in touch.
+
 
 #### My motherboard was replaced and now LLT gives me incompatible message. What do I do?
 
 Sometimes new motherboard does not contain correct model numbers and serial numbers. You should try [this tutorial](https://laptopwiki.eu/index.php/guides-and-tutorials/important-bios-related-guides/recover-original-model-sku-values/) to try and recover them. If that method does not succeed, you can workaround by going to `%LOCALAPPDATA%\LenovoLegionToolkit` and creating an `args.txt` file. Inside that file paste `--skip-compat-check`. This will disable all compatibility checks in LLT. Use this workaround only if correct model number, serial number etc. can't be restored.
-
-#### Which RGB types are supported?
-
-Currently only white-backlight, 4-zone RGB and Spectrum RGB keyboards are supported.
 
 #### Will iCue RGB keyboards be supported?
 

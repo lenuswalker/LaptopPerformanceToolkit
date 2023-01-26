@@ -50,6 +50,8 @@ public partial class App
 
         var args = e.Args.Concat(LoadExternalArgs()).ToArray();
 
+        CheckFeatureFlags(args);
+
         if (IsTraceEnabled(args))
             Log.Instance.IsTraceEnabled = true;
 
@@ -168,9 +170,9 @@ public partial class App
 
         try
         {
-            if (IoCContainer.TryResolve<NativeWindowsMessageListener>() is { } windowsMessageListener)
+            if (IoCContainer.TryResolve<NativeWindowsMessageListener>() is { } nativeMessageWindowListener)
             {
-                await windowsMessageListener.StopAsync();
+                await nativeMessageWindowListener.StopAsync();
             }
         }
         catch { }
@@ -478,6 +480,17 @@ public partial class App
         }
 
         return result;
+    }
+
+    private static void CheckFeatureFlags(IEnumerable<string> args)
+    {
+        FeatureFlags.CheckUpdates = args.Contains("--ff-check-updates");
+
+        if (Log.Instance.IsTraceEnabled)
+        {
+            Log.Instance.Trace($"Feature flags:");
+            Log.Instance.Trace($" - {nameof(FeatureFlags.CheckUpdates)}: {FeatureFlags.CheckUpdates}");
+        }
     }
 
     #endregion
