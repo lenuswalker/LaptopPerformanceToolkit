@@ -764,7 +764,6 @@ public readonly struct WindowSize
         Height = height;
     }
 }
-}
 
 public struct ProcessorTDPState
 {
