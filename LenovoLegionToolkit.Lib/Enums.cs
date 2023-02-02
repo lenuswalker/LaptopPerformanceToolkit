@@ -150,6 +150,10 @@ public enum NotificationType
     MicrophoneOn,
     NumLockOn,
     NumLockOff,
+    PanelLogoLightingOn,
+    PanelLogoLightingOff,
+    PortLightingOn,
+    PortLightingOff,
     PowerModeQuiet,
     PowerModeBalance,
     PowerModePerformance,
@@ -241,6 +245,15 @@ public enum ProcessEventInfoType
     Stopped
 }
 
+public enum RebootType
+{
+    NotRequired = 0,
+    Forced = 1,
+    Requested = 3,
+    ForcedPowerOff = 4,
+    Delayed = 5
+}
+
 public enum RGBKeyboardBacklightChanged { }
 
 public enum RGBKeyboardBacklightBrightness
@@ -306,6 +319,8 @@ public enum SpecialKey
     CameraOff = 13,
     FnR = 16,
     FnR2 = 0x0041002A,
+    PanelLogoLightingOn = 20,
+    PanelLogoLightingOff = 21,
     SpectrumBacklightOff = 24,
     SpectrumBacklight1 = 25,
     SpectrumBacklight2 = 26,

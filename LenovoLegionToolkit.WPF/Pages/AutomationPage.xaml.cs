@@ -9,8 +9,8 @@ using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Automation;
 using LenovoLegionToolkit.Lib.Automation.Pipeline;
 using LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
+using LenovoLegionToolkit.Lib.Automation.Steps;
 using LenovoLegionToolkit.Lib.Extensions;
-using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Controls.Automation.Pipeline;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
@@ -22,6 +22,8 @@ namespace LenovoLegionToolkit.WPF.Pages;
 public partial class AutomationPage
 {
     private readonly AutomationProcessor _automationProcessor = IoCContainer.Resolve<AutomationProcessor>();
+
+    private IAutomationStep[] _supportedAutomationSteps = Array.Empty<IAutomationStep>();
 
     public AutomationPage()
     {
@@ -104,15 +106,17 @@ public partial class AutomationPage
         _loaderAutomatic.IsLoading = true;
         _loaderManual.IsLoading = true;
 
-
         var initializedTasks = new List<Task> { Task.Delay(TimeSpan.FromMilliseconds(500)) };
-
-        var pipelines = await _automationProcessor.GetPipelinesAsync();
 
         _enableAutomaticPipelinesToggle.IsChecked = _automationProcessor.IsEnabled;
 
         _automaticPipelinesStackPanel.Children.Clear();
         _manualPipelinesStackPanel.Children.Clear();
+
+        var pipelines = await _automationProcessor.GetPipelinesAsync();
+
+        if (_supportedAutomationSteps.IsEmpty())
+            _supportedAutomationSteps = await GetSupportedAutomationStepsAsync();
 
         foreach (var pipeline in pipelines.Where(p => p.Trigger is not null))
         {
@@ -145,16 +149,54 @@ public partial class AutomationPage
         _loaderManual.IsLoading = false;
     }
 
+    private async Task<IAutomationStep[]> GetSupportedAutomationStepsAsync()
+    {
+        var steps = new IAutomationStep[]
+        {
+            new AlwaysOnUsbAutomationStep(default),
+            new BatteryAutomationStep(default),
+            new DeactivateGPUAutomationStep(default),
+            new DelayAutomationStep(default),
+            new DisplayBrightnessAutomationStep(50),
+            new DpiScaleAutomationStep(default),
+            new FlipToStartAutomationStep(default),
+            new FnLockAutomationStep(default),
+            new HDRAutomationStep(default),
+            new MicrophoneAutomationStep(default),
+            new OneLevelWhiteKeyboardBacklightAutomationStep(default),
+            new OverDriveAutomationStep(default),
+            new PowerModeAutomationStep(default),
+            new RefreshRateAutomationStep(default),
+            new ResolutionAutomationStep(default),
+            new RGBKeyboardBacklightAutomationStep(default),
+            new RunAutomationStep(default, default),
+            new SpectrumKeyboardBacklightBrightnessAutomationStep(0),
+            new SpectrumKeyboardBacklightProfileAutomationStep(1),
+            new TouchpadLockAutomationStep(default),
+            new TurnOffMonitorsAutomationStep(),
+            new WhiteKeyboardBacklightAutomationStep(default),
+            new WinKeyAutomationStep(default),
+        };
+
+        var supportedSteps = new List<IAutomationStep>();
+
+        foreach (var step in steps)
+            if (await step.IsSupportedAsync())
+                supportedSteps.Add(step);
+
+        return supportedSteps.ToArray();
+    }
+
     private AutomationPipelineControl GenerateControl(AutomationPipeline pipeline, StackPanel stackPanel)
     {
-        var control = new AutomationPipelineControl(pipeline);
-        control.MouseRightButtonUp += (s, e) =>
+        var control = new AutomationPipelineControl(pipeline, _supportedAutomationSteps);
+        control.MouseRightButtonUp += (_, e) =>
         {
             ShowPipelineContextMenu(control, stackPanel);
             e.Handled = true;
         };
-        control.OnChanged += (s, e) => PipelinesChanged();
-        control.OnDelete += async (s, e) =>
+        control.OnChanged += (_, _) => PipelinesChanged();
+        control.OnDelete += async (s, _) =>
         {
             if (s is AutomationPipelineControl c)
                 await DeletePipelineAsync(c, stackPanel);
@@ -176,24 +218,24 @@ public partial class AutomationPage
 
         var moveUpMenuItem = new MenuItem { SymbolIcon = SymbolRegular.ArrowUp24, Header = Resource.MoveUp };
         if (index > 0)
-            moveUpMenuItem.Click += (s, e) => MovePipeline(control, stackPanel, index - 1);
+            moveUpMenuItem.Click += (_, _) => MovePipeline(control, stackPanel, index - 1);
         else
             moveUpMenuItem.IsEnabled = false;
         menuItems.Add(moveUpMenuItem);
 
         var moveDownMenuItem = new MenuItem { SymbolIcon = SymbolRegular.ArrowDown24, Header = Resource.MoveDown };
         if (index < maxIndex)
-            moveDownMenuItem.Click += (s, e) => MovePipeline(control, stackPanel, index + 1);
+            moveDownMenuItem.Click += (_, _) => MovePipeline(control, stackPanel, index + 1);
         else
             moveDownMenuItem.IsEnabled = false;
         menuItems.Add(moveDownMenuItem);
 
         var renameMenuItem = new MenuItem { SymbolIcon = SymbolRegular.Edit24, Header = Resource.Rename };
-        renameMenuItem.Click += async (s, e) => await RenamePipelineAsync(control);
+        renameMenuItem.Click += async (_, _) => await RenamePipelineAsync(control);
         menuItems.Add(renameMenuItem);
 
         var deleteMenuItem = new MenuItem { SymbolIcon = SymbolRegular.Delete24, Header = Resource.Delete };
-        deleteMenuItem.Click += async (s, e) => await DeletePipelineAsync(control, stackPanel);
+        deleteMenuItem.Click += async (_, _) => await DeletePipelineAsync(control, stackPanel);
         menuItems.Add(deleteMenuItem);
 
         control.ContextMenu = new();
@@ -273,14 +315,8 @@ public partial class AutomationPage
     {
         var triggers = new List<IAutomationPipelineTrigger>
         {
-            new ACAdapterConnectedAutomationPipelineTrigger()
-        };
-
-        if ((await Compatibility.GetMachineInformationAsync()).Properties.SupportsACDetection)
-            triggers.Add(new LowWattageACAdapterConnectedAutomationPipelineTrigger());
-
-        triggers.AddRange(new IAutomationPipelineTrigger[]
-        {
+            new ACAdapterConnectedAutomationPipelineTrigger(),
+            new LowWattageACAdapterConnectedAutomationPipelineTrigger(),
             new ACAdapterDisconnectedAutomationPipelineTrigger(),
             new PowerModeAutomationPipelineTrigger(PowerModeState.Balance),
             new ProcessesAreRunningAutomationPipelineTrigger(Array.Empty<ProcessInfo>()),
@@ -289,7 +325,7 @@ public partial class AutomationPage
             new ExternalDisplayDisconnectedAutomationPipelineTrigger(),
             new TimeAutomationPipelineTrigger(false, false, null),
             new OnStartupAutomationPipelineTrigger()
-        });
+        };
 
         var menuItems = new List<MenuItem>();
 
@@ -301,7 +337,7 @@ public partial class AutomationPage
             };
 
             if (AllowDuplicates(trigger))
-                menuItem.Click += async (s, e) => await AddAutomaticPipelineAsync(trigger);
+                menuItem.Click += async (_, _) => await AddAutomaticPipelineAsync(trigger);
             else
                 menuItem.IsEnabled = false;
 

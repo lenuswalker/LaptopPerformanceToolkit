@@ -1529,6 +1529,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
+        public static string EditDashboardGroupControl_EditGroup_Message {
+            get {
+                return ResourceManager.GetString("EditDashboardGroupControl_EditGroup_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit group name.
+        /// </summary>
+        public static string EditDashboardGroupControl_EditGroup_Title {
+            get {
+                return ResourceManager.GetString("EditDashboardGroupControl_EditGroup_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
         public static string EditDashboardWindow_CreateGroup_Message {
             get {
                 return ResourceManager.GetString("EditDashboardWindow_CreateGroup_Message", resourceCulture);
@@ -2414,6 +2432,42 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Legion logo off.
+        /// </summary>
+        public static string Notification_PanelLogoLightingOff {
+            get {
+                return ResourceManager.GetString("Notification_PanelLogoLightingOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Legion logo on.
+        /// </summary>
+        public static string Notification_PanelLogoLightingOn {
+            get {
+                return ResourceManager.GetString("Notification_PanelLogoLightingOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ports backlight off.
+        /// </summary>
+        public static string Notification_PortLightingOff {
+            get {
+                return ResourceManager.GetString("Notification_PortLightingOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ports backlight on.
+        /// </summary>
+        public static string Notification_PortLightingOn {
+            get {
+                return ResourceManager.GetString("Notification_PortLightingOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Backlight {0}.
         /// </summary>
         public static string Notification_SpectrumKeyboardBacklight_Backlight {
@@ -2613,7 +2667,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Backlight.
+        ///   Looks up a localized string similar to Keyboard backlight.
         /// </summary>
         public static string OneLevelWhiteKeyboardBacklightAutomationStepControl_Title {
             get {
@@ -2631,7 +2685,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Backlight.
+        ///   Looks up a localized string similar to Keyboard backlight.
         /// </summary>
         public static string OneLevelWhiteKeyboardBacklightControl_Title {
             get {
@@ -2762,6 +2816,33 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string PackageControl_OldPackageWarning {
             get {
                 return ResourceManager.GetString("PackageControl_OldPackageWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restart recommended.
+        /// </summary>
+        public static string PackageControl_RebootRecommended {
+            get {
+                return ResourceManager.GetString("PackageControl_RebootRecommended", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restart required.
+        /// </summary>
+        public static string PackageControl_RebootRequired {
+            get {
+                return ResourceManager.GetString("PackageControl_RebootRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shutdown required.
+        /// </summary>
+        public static string PackageControl_ShutdownRequired {
+            get {
+                return ResourceManager.GetString("PackageControl_ShutdownRequired", resourceCulture);
             }
         }
         
@@ -4413,7 +4494,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Brightness.
+        ///   Looks up a localized string similar to Keyboard backlight.
         /// </summary>
         public static string WhiteKeyboardBacklightControl_Title {
             get {

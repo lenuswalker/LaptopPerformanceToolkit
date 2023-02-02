@@ -1496,7 +1496,7 @@
     <value>Вы можете изменить яркость с помощью Fn+Пробел</value>
   </data>
   <data name="WhiteKeyboardBacklightControl_Title" xml:space="preserve">
-    <value>Яркость</value>
+    <value>Подсветка клавиатуры</value>
   </data>
   <data name="WinKeyAutomationStepControl_Message" xml:space="preserve">
     <value>Включить или отключить клавишу Windows.</value>
@@ -1572,24 +1572,67 @@
     <value>Подходящих пакетов не найдено</value>
   </data>
   <data name="PackagesPage_OnlyShowUpdates" xml:space="preserve">
-	  <value>Показывать только обновления</value>
+    <value>Показывать только обновления</value>
   </data>
   <data name="EditDashboardWindow_Title" xml:space="preserve">
-	  <value>Настроить домашнюю страницу</value>
+    <value>Настроить домашнюю страницу</value>
   </data>
   <data name="Reset" xml:space="preserve">
-	  <value>Сброс</value>
+    <value>Сброс</value>
   </data>
   <data name="EditDashboardWindow_CreateGroup_Title" xml:space="preserve">
-	  <value>Создать группу</value>
+    <value>Создать группу</value>
   </data>
   <data name="EditDashboardWindow_CreateGroup_Message" xml:space="preserve">
-	  <value>Имя</value>
+    <value>Имя</value>
   </data>
   <data name="EditDashboardWindow_Disclaimer_Message" xml:space="preserve">
-	  <value>Некоторые функции могут не отображаться на вкладке "Обзор" в зависимости от состояния и конфигурации вашего устройства.</value>
+    <value>Некоторые функции могут не отображаться на вкладке "Обзор" в зависимости от состояния и конфигурации вашего устройства.</value>
   </data>
   <data name="DashboardPage_Customize" xml:space="preserve">
-	  <value>Настроить</value>
+    <value>Настроить</value>
+  </data>
+  <data name="TurnOffMonitorsControl_Title" xml:space="preserve">
+    <value>Выключить дисплеи</value>
+  </data>
+  <data name="TurnOffMonitorsControl_Message" xml:space="preserve">
+    <value>Выключить все доступные дисплеи.
+Движение мыши или нажатие клавиш клавиатуры приведет к пробуждению дисплеев.</value>
+  </data>
+  <data name="TurnOffMonitorsControl_TurnOff" xml:space="preserve">
+    <value>Отключить</value>
+  </data>
+  <data name="TurnOffMonitorsAutomationStepControl_Title" xml:space="preserve">
+    <value>Выключить дисплеи</value>
+  </data>
+  <data name="TurnOffMonitorsAutomationStepControl_Message" xml:space="preserve">
+    <value>Выключить все доступные дисплеи.</value>
+  </data>
+  <data name="EditDashboardGroupControl_EditGroup_Title" xml:space="preserve">
+    <value>Изменить имя группы</value>
+  </data>
+  <data name="EditDashboardGroupControl_EditGroup_Message" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="Notification_PanelLogoLightingOn" xml:space="preserve">
+    <value>Логотип Legion включен</value>
+  </data>
+  <data name="Notification_PanelLogoLightingOff" xml:space="preserve">
+    <value>Логотип Legion выключен</value>
+  </data>
+  <data name="Notification_PortLightingOn" xml:space="preserve">
+    <value>Подсветка портов включена</value>
+  </data>
+  <data name="Notification_PortLightingOff" xml:space="preserve">
+    <value>Подсветка портов отключена</value>
+  </data>
+  <data name="PackageControl_RebootRequired" xml:space="preserve">
+    <value>Требуется перезапуск</value>
+  </data>
+  <data name="PackageControl_ShutdownRequired" xml:space="preserve">
+    <value>Требуется выключение системы</value>
+  </data>
+  <data name="PackageControl_RebootRecommended" xml:space="preserve">
+    <value>Рекомендуется перезапуск системы</value>
   </data>
 </root>

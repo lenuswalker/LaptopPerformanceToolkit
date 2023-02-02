@@ -917,7 +917,7 @@ Povol tuto možnost, pokud máš konflikty s aplikacemi na celou obrazovku.</val
     <value>Režim výkonu</value>
   </data>
   <data name="NotificationsSettingsWindow_RefreshRate" xml:space="preserve">
-    <value>Frekvence obnovení</value>
+    <value>Obnovovací frekvence</value>
   </data>
   <data name="NotificationsSettingsWindow_SmartKey" xml:space="preserve">
     <value>Chytré tlačitko</value>
@@ -1137,13 +1137,13 @@ Režim můžeš přepínat pomocí Fn+Q.</value>
 VAROVÁNÍ: Tato akce neproběhne správně, pokud je interní displej vypnutý.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
-    <value>Frekvence obnovení</value>
+    <value>Obnovovací frekvence</value>
   </data>
   <data name="RefreshRateControl_Message" xml:space="preserve">
     <value>Změnit obnovovací frekvenci displeje notebooku.</value>
   </data>
   <data name="RefreshRateControl_Title" xml:space="preserve">
-    <value>Frekvence obnovení</value>
+    <value>Obnovovací frekvence</value>
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Přejmenovat</value>
@@ -1496,7 +1496,7 @@ Pokud se rozhodneš pokračovat, protokolování bude automaticky povoleno.</val
     <value>Můžeš nastavit podsvícení pomocí Fn+Mezerníku</value>
   </data>
   <data name="WhiteKeyboardBacklightControl_Title" xml:space="preserve">
-    <value>Jas</value>
+    <value>Podsvícení klávesnice</value>
   </data>
   <data name="WinKeyAutomationStepControl_Message" xml:space="preserve">
     <value>Povolit nebo zakázat tlačitko Windows.</value>
@@ -1557,13 +1557,13 @@ VAROVÁNÍ: Tato akce neproběhne správně, pokud je interní displej vypnutý.
     <value>Displej</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightControl_Title" xml:space="preserve">
-    <value>Podsvícení</value>
+    <value>Podsvícení klávesnice</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightControl_Message" xml:space="preserve">
     <value>Můžeš přepínat podsvícení pomocí Fn+Mezerník.</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>Podsvícení</value>
+    <value>Podsvícení klávesnice</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
     <value>Přepnout podsvícení.</value>
@@ -1572,39 +1572,67 @@ VAROVÁNÍ: Tato akce neproběhne správně, pokud je interní displej vypnutý.
     <value>Nebyl nalezen žadný odpovídající obsah</value>
   </data>
   <data name="PackagesPage_OnlyShowUpdates" xml:space="preserve">
-	  <value>Zobrazit pouze aktualizace</value>
+    <value>Zobrazit pouze aktualizace</value>
   </data>
   <data name="EditDashboardWindow_Title" xml:space="preserve">
-	  <value>Přizpůsobit přehled</value>
+    <value>Přizpůsobit přehled</value>
   </data>
   <data name="Reset" xml:space="preserve">
-	  <value>Resetovat</value>
+    <value>Resetovat</value>
   </data>
   <data name="EditDashboardWindow_CreateGroup_Title" xml:space="preserve">
-	  <value>Vytvořit skupinu</value>
+    <value>Vytvořit skupinu</value>
   </data>
   <data name="EditDashboardWindow_CreateGroup_Message" xml:space="preserve">
-	  <value>Název</value>
+    <value>Název</value>
   </data>
   <data name="EditDashboardWindow_Disclaimer_Message" xml:space="preserve">
-	  <value>Některé funkce se nemusí objevit na přehledu kvůli stavu a konfiguraci tvého zařízení.</value>
+    <value>Některé funkce se nemusí objevit na přehledu kvůli stavu a konfiguraci tvého zařízení.</value>
   </data>
   <data name="DashboardPage_Customize" xml:space="preserve">
-	  <value>Přizpůsobit</value>
+    <value>Přizpůsobit</value>
   </data>
   <data name="TurnOffMonitorsControl_Title" xml:space="preserve">
-	  <value>Vypnout monitory</value>
+    <value>Vypnout monitory</value>
   </data>
   <data name="TurnOffMonitorsControl_Message" xml:space="preserve">
-	  <value>Vypnout všechny dostupné monitory.</value>
+    <value>Vypnout všechny dostupné monitory.
+Pohybem myši, nebo stiskem klávesnice se znovu zapnou.</value>
   </data>
   <data name="TurnOffMonitorsControl_TurnOff" xml:space="preserve">
-	  <value>Vypnout</value>
+    <value>Vypnout</value>
   </data>
   <data name="TurnOffMonitorsAutomationStepControl_Title" xml:space="preserve">
-	  <value>Vypnout monitory</value>
+    <value>Vypnout monitory</value>
   </data>
   <data name="TurnOffMonitorsAutomationStepControl_Message" xml:space="preserve">
-	  <value>Vypnout všechny dostupné monitory.</value>
+    <value>Vypnout všechny dostupné monitory.</value>
+  </data>
+  <data name="EditDashboardGroupControl_EditGroup_Title" xml:space="preserve">
+    <value>Upravit název skupiny</value>
+  </data>
+  <data name="EditDashboardGroupControl_EditGroup_Message" xml:space="preserve">
+    <value>Název</value>
+  </data>
+  <data name="Notification_PanelLogoLightingOn" xml:space="preserve">
+    <value>Logo Legion zapnuto</value>
+  </data>
+  <data name="Notification_PanelLogoLightingOff" xml:space="preserve">
+    <value>Logo Legion vypnuto</value>
+  </data>
+  <data name="Notification_PortLightingOn" xml:space="preserve">
+    <value>Podsvícení portů zapnuto</value>
+  </data>
+  <data name="Notification_PortLightingOff" xml:space="preserve">
+    <value>Podsvícení portů vypnuto</value>
+  </data>
+  <data name="PackageControl_RebootRequired" xml:space="preserve">
+    <value>Vyžadován restart</value>
+  </data>
+  <data name="PackageControl_ShutdownRequired" xml:space="preserve">
+    <value>Vyžadováno vypnutí</value>
+  </data>
+  <data name="PackageControl_RebootRecommended" xml:space="preserve">
+    <value>Doporučený restart</value>
   </data>
 </root>

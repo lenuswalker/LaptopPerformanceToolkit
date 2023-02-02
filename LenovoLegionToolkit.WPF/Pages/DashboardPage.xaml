@@ -8,14 +8,14 @@
     xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="{x:Static resources:Resource.DashboardPage_Title}"
     FlowDirection="{x:Static utils:LocalizationHelper.Direction}"
-    Loaded="DashboardPage_Loaded"
+    Initialized="DashboardPage_Initialized"
     Scrollable="True"
     SizeChanged="DashboardPage_SizeChanged">
 
     <controls:LoadableControl
         x:Name="_loader"
         Margin="0,0,0,12"
-        InidicatorMargin="0,128,0,0">
+        InidicatorMargin="0,64,0,0">
         <Grid x:Name="_content" />
     </controls:LoadableControl>
 

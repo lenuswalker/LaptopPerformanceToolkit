@@ -102,6 +102,9 @@ public readonly struct FanTableData
 
 public readonly struct FanTable
 {
+    public static readonly FanTable Minimum = new(new ushort[] { 0, 0, 0, 0, 0, 0, 1, 3, 5, 7 });
+    public static readonly FanTable Default = new(new ushort[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
+
     // ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
     // ReSharper disable MemberCanBePrivate.Global
 
@@ -127,8 +130,9 @@ public readonly struct FanTable
         if (fanTable.Length != 10)
             throw new ArgumentException("Length must be 10.", nameof(fanTable));
 
+        var minimum = Minimum.GetTable();
         for (var i = 0; i < fanTable.Length; i++)
-            fanTable[i] = Math.Clamp(fanTable[i], (ushort)1, (ushort)10u);
+            fanTable[i] = Math.Clamp(fanTable[i], minimum[i], (ushort)10u);
 
         FSTM = 1;
         FSID = 0;
@@ -147,7 +151,11 @@ public readonly struct FanTable
 
     public ushort[] GetTable() => new[] { FSS0, FSS1, FSS2, FSS3, FSS4, FSS5, FSS6, FSS7, FSS8, FSS9 };
 
-    public bool IsValid() => GetTable().All(t => t > 0);
+    public bool IsValid()
+    {
+        var minimum = Minimum.GetTable();
+        return GetTable().Where((t, i) => t < minimum[i] || t > 10u).IsEmpty();
+    }
 
     public byte[] GetBytes()
     {
@@ -245,7 +253,6 @@ public readonly struct MachineInformation
     public readonly struct CompatibilityProperties
     {
         public bool SupportsGodMode { get; init; }
-        public bool SupportsACDetection { get; init; }
         public bool SupportsExtendedHybridMode { get; init; }
         public bool SupportsIntelligentSubMode { get; init; }
         public bool HasPerformanceModeSwitchingBug { get; init; }
@@ -255,7 +262,7 @@ public readonly struct MachineInformation
     public string MachineType { get; init; }
     public string Model { get; init; }
     public string SerialNumber { get; init; }
-    public string BIOSVersion { get; init; }
+    public string BiosVersion { get; init; }
     public CompatibilityProperties Properties { get; init; }
 }
 
@@ -272,6 +279,7 @@ public struct Package
     public string? Readme { get; init; }
     public string FileLocation { get; init; }
     public bool IsUpdate { get; init; }
+    public RebootType Reboot { get; init; }
 
     private string? _index;
 
@@ -743,6 +751,19 @@ public readonly struct WarrantyInfo
     public DateTime? Start { get; init; }
     public DateTime? End { get; init; }
     public Uri? Link { get; init; }
+}
+
+public readonly struct WindowSize
+{
+    public double Width { get; }
+    public double Height { get; }
+
+    public WindowSize(double width, double height)
+    {
+        Width = width;
+        Height = height;
+    }
+}
 }
 
 public struct ProcessorTDPState

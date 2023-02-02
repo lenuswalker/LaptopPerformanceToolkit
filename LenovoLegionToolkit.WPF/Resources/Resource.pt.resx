@@ -1494,7 +1494,7 @@ Logs serão guardados automaticamente, se escolheres continuar.</value>
     <value>Podes alterar a luminosidade com Fn+Space</value>
   </data>
   <data name="WhiteKeyboardBacklightControl_Title" xml:space="preserve">
-    <value>Luminosidade</value>
+    <value>Luz do teclado</value>
   </data>
   <data name="WinKeyAutomationStepControl_Message" xml:space="preserve">
     <value>Ativa ou desativa a tecla Windows.</value>
@@ -1512,7 +1512,7 @@ Logs serão guardados automaticamente, se escolheres continuar.</value>
     <value>Sim</value>
   </data>
   <data name="MicrophoneControl_Title" xml:space="preserve">
-    <value>Microfone sem som</value>
+    <value>Microfone</value>
   </data>
   <data name="MicrophoneControl_Message" xml:space="preserve">
     <value>Tirar o som de todos os microfones disponíveis.</value>
@@ -1555,13 +1555,13 @@ ATENÇÃO: Esta ação não irá executar corretamente se o ecrã interno estive
     <value>Ecrã</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightControl_Title" xml:space="preserve">
-    <value>Luz de fundo</value>
+    <value>Luz do teclado</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightControl_Message" xml:space="preserve">
     <value>Podes ligar ou desligar a luz de fundo com Fn+Espaço.</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>Luz de fundo</value>
+    <value>Luz do teclado</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
     <value>Liga ou desliga a luz de fundo.</value>
@@ -1570,6 +1570,67 @@ ATENÇÃO: Esta ação não irá executar corretamente se o ecrã interno estive
     <value>Não foram encontradas transferências correspondentes</value>
   </data>
   <data name="PackagesPage_OnlyShowUpdates" xml:space="preserve">
-	  <value>Mostrar só atualizações</value>
+    <value>Mostrar só atualizações</value>
+  </data>
+  <data name="EditDashboardWindow_Title" xml:space="preserve">
+    <value>Personalizar Dashboard</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reiniciar</value>
+  </data>
+  <data name="EditDashboardWindow_CreateGroup_Title" xml:space="preserve">
+    <value>Criar grupo</value>
+  </data>
+  <data name="EditDashboardWindow_CreateGroup_Message" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="EditDashboardWindow_Disclaimer_Message" xml:space="preserve">
+    <value>Algumas funções podem não aparecer na Dashboard dependendo do estado e da configuração do teu dispositivo.</value>
+  </data>
+  <data name="DashboardPage_Customize" xml:space="preserve">
+    <value>Personalizar</value>
+  </data>
+  <data name="TurnOffMonitorsControl_Title" xml:space="preserve">
+    <value>Desligar ecrãs</value>
+  </data>
+  <data name="TurnOffMonitorsControl_Message" xml:space="preserve">
+    <value>Desligar todos os ecrãs disponíveis.
+Mover o rato ou clicar no teclado vai ligar os ecrãs.</value>
+  </data>
+  <data name="TurnOffMonitorsControl_TurnOff" xml:space="preserve">
+    <value>Desligar</value>
+  </data>
+  <data name="TurnOffMonitorsAutomationStepControl_Title" xml:space="preserve">
+    <value>Ligar</value>
+  </data>
+  <data name="TurnOffMonitorsAutomationStepControl_Message" xml:space="preserve">
+    <value>Desligar todos os ecrãs disponíveis.</value>
+  </data>
+  <data name="EditDashboardGroupControl_EditGroup_Title" xml:space="preserve">
+    <value>Editar o nome do grupo</value>
+  </data>
+  <data name="EditDashboardGroupControl_EditGroup_Message" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="Notification_PanelLogoLightingOn" xml:space="preserve">
+    <value>Logótipo Legion ligado</value>
+  </data>
+  <data name="Notification_PanelLogoLightingOff" xml:space="preserve">
+    <value>Logótipo Legion desligado</value>
+  </data>
+  <data name="Notification_PortLightingOn" xml:space="preserve">
+    <value>Luz das portas ligada</value>
+  </data>
+  <data name="Notification_PortLightingOff" xml:space="preserve">
+    <value>Luz das portas desligada</value>
+  </data>
+  <data name="PackageControl_RebootRequired" xml:space="preserve">
+    <value>É necessário reiniciar</value>
+  </data>
+  <data name="PackageControl_ShutdownRequired" xml:space="preserve">
+    <value>É necessário encerrar</value>
+  </data>
+  <data name="PackageControl_RebootRecommended" xml:space="preserve">
+    <value>É recomendado reiniciar</value>
   </data>
 </root>

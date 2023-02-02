@@ -23,17 +23,10 @@ public partial class DashboardPage
 
     private readonly List<DashboardGroupControl> _dashboardGroupControls = new();
 
-    private bool _refreshOnce;
-
     public DashboardPage() => InitializeComponent();
 
-    private async void DashboardPage_Loaded(object sender, RoutedEventArgs e)
+    private async void DashboardPage_Initialized(object? sender, EventArgs e)
     {
-        if (_refreshOnce)
-            return;
-
-        _refreshOnce = true;
-
         await RefreshAsync();
     }
 
@@ -43,7 +36,7 @@ public partial class DashboardPage
 
         var initializedTasks = new List<Task> { Task.Delay(TimeSpan.FromMilliseconds(500)) };
 
-        ScrollHost.ScrollToTop();
+        ScrollHost?.ScrollToTop();
 
         _dashboardGroupControls.Clear();
         _content.ColumnDefinitions.Clear();

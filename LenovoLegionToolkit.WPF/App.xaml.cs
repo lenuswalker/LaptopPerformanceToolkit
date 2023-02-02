@@ -50,8 +50,6 @@ public partial class App
 
         var args = e.Args.Concat(LoadExternalArgs()).ToArray();
 
-        CheckFeatureFlags(args);
-
         if (IsTraceEnabled(args))
             Log.Instance.IsTraceEnabled = true;
 
@@ -211,12 +209,12 @@ public partial class App
         if (_isCompatible)
         {
             if (Log.Instance.IsTraceEnabled)
-                Log.Instance.Trace($"Compatibility check passed. [Vendor={mi.Vendor}, Model={mi.Model}, MachineType={mi.MachineType}, BIOS={mi.BIOSVersion}]");
+                Log.Instance.Trace($"Compatibility check passed. [Vendor={mi.Vendor}, Model={mi.Model}, MachineType={mi.MachineType}, BIOS={mi.BiosVersion}]");
             return;
         }
 
         if (Log.Instance.IsTraceEnabled)
-            Log.Instance.Trace($"Incompatible system detected. [Vendor={mi.Vendor}, Model={mi.Model}, MachineType={mi.MachineType}, BIOS={mi.BIOSVersion}]");
+            Log.Instance.Trace($"Incompatible system detected. [Vendor={mi.Vendor}, Model={mi.Model}, MachineType={mi.MachineType}, BIOS={mi.BiosVersion}]");
 
         var unsupportedWindow = new UnsupportedWindow(mi);
         unsupportedWindow.Show();
@@ -480,17 +478,6 @@ public partial class App
         }
 
         return result;
-    }
-
-    private static void CheckFeatureFlags(IEnumerable<string> args)
-    {
-        FeatureFlags.CheckUpdates = args.Contains("--ff-check-updates");
-
-        if (Log.Instance.IsTraceEnabled)
-        {
-            Log.Instance.Trace($"Feature flags:");
-            Log.Instance.Trace($" - {nameof(FeatureFlags.CheckUpdates)}: {FeatureFlags.CheckUpdates}");
-        }
     }
 
     #endregion

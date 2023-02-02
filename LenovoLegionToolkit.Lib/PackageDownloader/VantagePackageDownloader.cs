@@ -38,8 +38,7 @@ public class VantagePackageDownloader : AbstractPackageDownloader
         var packageDefinitions = await GetPackageDefinitionsAsync(httpClient, $"{_catalogBaseUrl}/{machineType}_{osString}.xml", token).ConfigureAwait(false);
 
         var updateDetector = new VantagePackageUpdateDetector();
-        if (FeatureFlags.CheckUpdates)
-            await updateDetector.BuildDriverInfoCache().ConfigureAwait(false);
+        await updateDetector.BuildDriverInfoCache().ConfigureAwait(false);
 
         var count = 0;
         var totalCount = packageDefinitions.Count;
@@ -88,7 +87,7 @@ public class VantagePackageDownloader : AbstractPackageDownloader
     private async Task<Package> GetPackage(HttpClient httpClient, VantagePackageUpdateDetector updateDetector, PackageDefinition packageDefinition, CancellationToken token)
     {
         var location = packageDefinition.Location;
-        var baseLocation = location.Remove(location.LastIndexOf("/"));
+        var baseLocation = location.Remove(location.LastIndexOf("/", StringComparison.InvariantCultureIgnoreCase));
 
         var packageString = await httpClient.GetStringAsync(location, token).ConfigureAwait(false);
 
@@ -106,21 +105,20 @@ public class VantagePackageDownloader : AbstractPackageDownloader
         var readmeName = document.SelectSingleNode("/Package/Files/Readme/File/Name")?.InnerText;
         var readme = await GetReadmeAsync(httpClient, $"{baseLocation}/{readmeName}", token).ConfigureAwait(false);
         var fileLocation = $"{baseLocation}/{fileName}";
+        var rebootString = document.SelectSingleNode("/Package/Reboot/@type")!.InnerText;
+        var reboot = int.TryParse(rebootString, out var rebootInt) ? (RebootType)rebootInt : RebootType.NotRequired;
 
         var isUpdate = false;
-        if (FeatureFlags.CheckUpdates)
+        try
         {
-            try
-            {
-                isUpdate = await updateDetector.DetectAsync(httpClient, document, baseLocation, token)
-                    .ConfigureAwait(false);
-            }
-            catch (Exception ex)
-            {
-                if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Couldn't detect update for package {id}. [title={title}, location={location}]",
-                        ex);
-            }
+            isUpdate = await updateDetector.DetectAsync(httpClient, document, baseLocation, token)
+                .ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Couldn't detect update for package {id}. [title={title}, location={location}]",
+                    ex);
         }
 
         return new()
@@ -135,7 +133,8 @@ public class VantagePackageDownloader : AbstractPackageDownloader
             ReleaseDate = releaseDate,
             Readme = readme,
             FileLocation = fileLocation,
-            IsUpdate = isUpdate
+            IsUpdate = isUpdate,
+            Reboot = reboot
         };
     }
 }
