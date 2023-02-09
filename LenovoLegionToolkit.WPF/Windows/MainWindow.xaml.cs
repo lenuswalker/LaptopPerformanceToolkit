@@ -125,7 +125,7 @@ public partial class MainWindow
         }
     }
 
-    private void MainWindow_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+    private void MainWindow_IsVisibleChanged(object _1, DependencyPropertyChangedEventArgs _2)
     {
         if (!IsVisible)
             return;
@@ -193,6 +193,11 @@ public partial class MainWindow
 
         Width = _applicationSettings.Store.WindowSize.Value.Width;
         Height = _applicationSettings.Store.WindowSize.Value.Height;
+
+        var desktopWorkingArea = ScreenHelper.GetPrimaryDesktopWorkingArea();
+
+        Left = (desktopWorkingArea.Width - Width) / 2 + desktopWorkingArea.Left;
+        Top = (desktopWorkingArea.Height - Height) / 2 + desktopWorkingArea.Top;
     }
 
     private void SaveSize()

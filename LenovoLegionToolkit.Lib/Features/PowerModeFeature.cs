@@ -105,10 +105,9 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
 
             await _aiModeController.StopAsync(currentState).ConfigureAwait(false);
 
-            // Workaround: Performance mode doesn't update the dGPU temp limit (and possibly other properties) on some Gen 7 devices.
-            var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
-            if (mi.Properties.HasPerformanceModeSwitchingBug && currentState == PowerModeState.Quiet && state == PowerModeState.Performance)
-                await base.SetStateAsync(PowerModeState.Balance).ConfigureAwait(false);
+        var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
+        if (mi.Properties.HasPerformanceModeSwitchingBug && currentState == PowerModeState.Quiet && state == PowerModeState.Performance)
+            await base.SetStateAsync(PowerModeState.Balance).ConfigureAwait(false);
 
             await base.SetStateAsync(state).ConfigureAwait(false);
         }
@@ -133,7 +132,16 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
         }
     }
 
-    public async Task EnsureAIModeIsSetAsync()
+    public async Task EnsureGodModeStateIsAppliedAsync()
+    {
+        var state = await GetStateAsync().ConfigureAwait(false);
+        if (state != PowerModeState.GodMode)
+            return;
+
+        await _godModeController.ApplyStateAsync().ConfigureAwait(false);
+    }
+
+    public async Task EnsureAiModeIsSetAsync()
     {
         var compatibility = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
         if (compatibility.isCompatible)
@@ -143,7 +151,7 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
         }
     }
 
-    public async Task EnsureAIModeIsOffAsync()
+    public async Task EnsureAiModeIsOffAsync()
     {
         var compatibility = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
         if (compatibility.isCompatible)
