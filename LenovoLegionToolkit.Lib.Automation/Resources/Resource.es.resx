@@ -101,4 +101,16 @@
   <data name="ExternalDisplayDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
 		<value>Cuando se desconecta una pantalla externa</value>
 	</data>
+  <data name="DisplayOnAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+		<value>Al encender las pantallas</value>
+	</data>
+  <data name="DisplayOffAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+		<value>Al apagar las pantallas</value>
+	</data>
+  <data name="LidOpenedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+		<value>Tapa abierta</value>
+	</data>
+  <data name="LidClosedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+		<value>Tapa cerrada</value>
+	</data>
 </root>

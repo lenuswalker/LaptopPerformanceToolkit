@@ -61,6 +61,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Application Folders.
+        /// </summary>
+        public static string AboutPage_ApplicationFolders {
+            get {
+                return ResourceManager.GetString("AboutPage_ApplicationFolders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lenovo Legion Toolkit.
         /// </summary>
         public static string AboutPage_AppName {
@@ -75,6 +84,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string AboutPage_Build {
             get {
                 return ResourceManager.GetString("AboutPage_Build", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data.
+        /// </summary>
+        public static string AboutPage_Data {
+            get {
+                return ResourceManager.GetString("AboutPage_Data", resourceCulture);
             }
         }
         
@@ -102,6 +120,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string AboutPage_ProjectWebsiteOnGitHub {
             get {
                 return ResourceManager.GetString("AboutPage_ProjectWebsiteOnGitHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temp.
+        /// </summary>
+        public static string AboutPage_Temp {
+            get {
+                return ResourceManager.GetString("AboutPage_Temp", resourceCulture);
             }
         }
         
@@ -147,6 +174,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string Add {
             get {
                 return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add step.
+        /// </summary>
+        public static string AddAutomationStepWindow_Title {
+            get {
+                return ResourceManager.GetString("AddAutomationStepWindow_Title", resourceCulture);
             }
         }
         
@@ -1055,6 +1091,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create.
+        /// </summary>
+        public static string Create {
+            get {
+                return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Action.
+        /// </summary>
+        public static string CreateAutomationPipelineWindow_Title {
+            get {
+                return ResourceManager.GetString("CreateAutomationPipelineWindow_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customize.
         /// </summary>
         public static string DashboardPage_Customize {
@@ -1440,7 +1494,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Development and maintenance of Lenovo Legion Toolkit takes a lot of time. If you like using this software you can support it&apos;s future by donating an amount of your choice.
+        ///   Looks up a localized string similar to Development and maintenance of Lenovo Legion Toolkit takes a lot of time. If you like using this software you can support its future by donating an amount of your choice.
         ///
         ///Click the PayPal logo below or scan the QR code to donate with PayPal.
         ///
@@ -1662,7 +1716,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Both integrated and discrete GPU are enabled. System will automatically switch between them based on it&apos;s needs..
+        ///   Looks up a localized string similar to Both integrated and discrete GPU are enabled. System will automatically switch between them based on its needs..
         /// </summary>
         public static string ExtendedHybridModeInfoWindow_Hybrid_Message {
             get {
@@ -1842,6 +1896,34 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Activate Custom Mode preset.
+        ///This settings takes effect only when Custom Mode is enabled..
+        /// </summary>
+        public static string GodModePresetAutomationStepControl_Message {
+            get {
+                return ResourceManager.GetString("GodModePresetAutomationStepControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom Mode preset.
+        /// </summary>
+        public static string GodModePresetAutomationStepControl_Title {
+            get {
+                return ResourceManager.GetString("GodModePresetAutomationStepControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Active preset.
+        /// </summary>
+        public static string GodModeSettingsWindow_ActivePreset_Title {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_ActivePreset_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to WARNING!
         ///Some laptops may accept higher power limits than they indicate, but be careful. This option may result in unpredictable behavior, so if you are not sure what are you doing, leave this at 0..
         /// </summary>
@@ -1879,11 +1961,38 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to APU sPPT Power Limit.
+        /// </summary>
+        public static string GodModeSettingsWindow_CPU_APUsPPT_PL {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_CPU_APUsPPT_PL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The peak power consumption that can be reached by the CPU with a minor delay..
+        /// </summary>
+        public static string GodModeSettingsWindow_CPU_APUsPPT_PL_Description {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_CPU_APUsPPT_PL_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Long Term Power Limit (Cross Loading).
         /// </summary>
         public static string GodModeSettingsWindow_CPU_CrossLoading {
             get {
                 return ResourceManager.GetString("GodModeSettingsWindow_CPU_CrossLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The maximum power consumption that can be reached by the CPU when both CPU and GPU are fully utilized..
+        /// </summary>
+        public static string GodModeSettingsWindow_CPU_CrossLoading_Description {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_CPU_CrossLoading_Description", resourceCulture);
             }
         }
         
@@ -1897,11 +2006,47 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The continuous power consumption that can be reached by the CPU..
+        /// </summary>
+        public static string GodModeSettingsWindow_CPU_LongTermPL_Description {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_CPU_LongTermPL_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Peak Power Limit.
+        /// </summary>
+        public static string GodModeSettingsWindow_CPU_PeakPL {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_CPU_PeakPL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The maximum instantaneous power consumption that can be reached by the CPU..
+        /// </summary>
+        public static string GodModeSettingsWindow_CPU_PeakPL_Description {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_CPU_PeakPL_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Short Term Power Limit.
         /// </summary>
         public static string GodModeSettingsWindow_CPU_ShortTermPL {
             get {
                 return ResourceManager.GetString("GodModeSettingsWindow_CPU_ShortTermPL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The peak power consumption that can be reached by the CPU within a short amount time..
+        /// </summary>
+        public static string GodModeSettingsWindow_CPU_ShortTermPL_Description {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_CPU_ShortTermPL_Description", resourceCulture);
             }
         }
         
@@ -1915,11 +2060,38 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The maximum temperature that can be reached by the CPU before frequency and power is reduced..
+        /// </summary>
+        public static string GodModeSettingsWindow_CPU_TempLimit_Description {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_CPU_TempLimit_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CPU.
         /// </summary>
         public static string GodModeSettingsWindow_CPU_Title {
             get {
                 return ResourceManager.GetString("GodModeSettingsWindow_CPU_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string GodModeSettingsWindow_EditPreset_Message {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_EditPreset_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preset name.
+        /// </summary>
+        public static string GodModeSettingsWindow_EditPreset_Title {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_EditPreset_Title", resourceCulture);
             }
         }
         
@@ -1998,6 +2170,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The additional amount of power that can be allocated to the GPU on top of base power consumption..
+        /// </summary>
+        public static string GodModeSettingsWindow_GPU_CTGP_Description {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_GPU_CTGP_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dynamic Boost.
         /// </summary>
         public static string GodModeSettingsWindow_GPU_DynamicBoost {
@@ -2007,11 +2188,29 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The additional maximum power that can be allocated to the GPU based on the power consumption of the CPU..
+        /// </summary>
+        public static string GodModeSettingsWindow_GPU_DynamicBoost_Description {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_GPU_DynamicBoost_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GPU Temperature Limit.
         /// </summary>
         public static string GodModeSettingsWindow_GPU_TempLimit {
             get {
                 return ResourceManager.GetString("GodModeSettingsWindow_GPU_TempLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The maximum temperature that can be reached by the GPU before frequency and power is reduced..
+        /// </summary>
+        public static string GodModeSettingsWindow_GPU_TempLimit_Description {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_GPU_TempLimit_Description", resourceCulture);
             }
         }
         
@@ -2108,7 +2307,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Keyboard backlight cannot be controlled in here when Vantage or it&apos;s services are running..
+        ///   Looks up a localized string similar to Keyboard backlight cannot be controlled in here when Vantage or its services are running..
         /// </summary>
         public static string Keyboard_VantageEnabledWarning_Message {
             get {
@@ -2491,6 +2690,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string Notification_TouchpadOn {
             get {
                 return ResourceManager.GetString("Notification_TouchpadOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update {0} available!.
+        /// </summary>
+        public static string Notification_UpdateAvailable {
+            get {
+                return ResourceManager.GetString("Notification_UpdateAvailable", resourceCulture);
             }
         }
         
@@ -3484,6 +3692,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save &amp; Close.
+        /// </summary>
+        public static string SaveAndClose {
+            get {
+                return ResourceManager.GetString("SaveAndClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Saving....
         /// </summary>
         public static string Saving {
@@ -3601,7 +3818,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Disable Legion Zone and it&apos;s service without uninstalling it.
+        ///   Looks up a localized string similar to Disable Legion Zone and its service without uninstalling it.
         ///Restart is recommended after changing this option..
         /// </summary>
         public static string SettingsPage_DisableLegionZone_Message {
@@ -3638,7 +3855,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Disable Lenovo Hotkeys and it&apos;s service without uninstalling it.
+        ///   Looks up a localized string similar to Disable Lenovo Hotkeys and its service without uninstalling it.
         ///If disabled, this app will handle Fn shortcuts.
         ///Restart is recommended after changing this option..
         /// </summary>
@@ -3676,7 +3893,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Disable Lenovo Vantage and it&apos;s service without uninstalling it.
+        ///   Looks up a localized string similar to Disable Lenovo Vantage and its service without uninstalling it.
         ///Restart is recommended after changing this option..
         /// </summary>
         public static string SettingsPage_DisableVantage_Message {
@@ -3862,6 +4079,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string SettingsPage_SmartKeySinglePressAction_Title {
             get {
                 return ResourceManager.GetString("SettingsPage_SmartKeySinglePressAction_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When on, same brightness level will be applied to all Windows power plans whenever you change it..
+        /// </summary>
+        public static string SettingsPage_SynchronizeBrightnessToAllPowerPlans_Message {
+            get {
+                return ResourceManager.GetString("SettingsPage_SynchronizeBrightnessToAllPowerPlans_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Single Display Brightness.
+        /// </summary>
+        public static string SettingsPage_SynchronizeBrightnessToAllPowerPlans_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_SynchronizeBrightnessToAllPowerPlans_Title", resourceCulture);
             }
         }
         

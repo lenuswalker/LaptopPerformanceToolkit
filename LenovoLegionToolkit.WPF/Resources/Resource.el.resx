@@ -604,9 +604,6 @@
   <data name="ExtendedHybridModeInfoWindow_DGPU_Title" xml:space="preserve">
     <value>Κατάσταση dGPU</value>
   </data>
-  <data name="ExtendedHybridModeInfoWindow_Hybrid_Message" xml:space="preserve">
-    <value>Τόσο η ενσωματωμένη όσο και η διακριτή GPU είναι ενεργοποιημένες. Το σύστημα θα εναλλάσσεται αυτόματα μεταξύ τους ανάλογα με τις ανάγκες του.</value>
-  </data>
   <data name="ExtendedHybridModeInfoWindow_Hybrid_Title" xml:space="preserve">
     <value>Υβριδική Λειτουργία</value>
   </data>
@@ -1123,10 +1120,6 @@
   <data name="SettingsPage_DisableLegionZone_Error_Title" xml:space="preserve">
     <value>Δεν ήταν δυνατή η απενεργοποίηση του Legion Zone</value>
   </data>
-  <data name="SettingsPage_DisableLegionZone_Message" xml:space="preserve">
-    <value>Απενεργοποιήστε το Legion Zone και τη διεργασία τους χωρίς να το απεγκαταστήσετε.
-Συνιστάται επανεκκίνηση αφού αλλάξετε αυτήν τη επιλογή.</value>
-  </data>
   <data name="SettingsPage_DisableLegionZone_Title" xml:space="preserve">
     <value>Απενεργοποίηση Legion Zone</value>
   </data>
@@ -1144,10 +1137,6 @@
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
     <value>Δεν ήταν δυνατή η απενεργοποίηση του Vantage</value>
-  </data>
-  <data name="SettingsPage_DisableVantage_Message" xml:space="preserve">
-    <value>Απενεργοποιήστε το Lenovo Vantage και τη διεργασία τους χωρίς να το απεγκαταστήσετε.
-Συνιστάται επανεκκίνηση αφού αλλάξετε αυτήν τη επιλογή.</value>
   </data>
   <data name="SettingsPage_DisableVantage_Title" xml:space="preserve">
     <value>Απενεργοποίηση του Lenovo Vantage</value>
@@ -1325,5 +1314,8 @@
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Ναι</value>
+  </data>
+  <data name="AddAutomationStepWindow_Title" xml:space="preserve">
+	  <value>Προσθήκη βήματος</value>
   </data>
 </root>

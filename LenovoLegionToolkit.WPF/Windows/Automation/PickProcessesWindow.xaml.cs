@@ -125,12 +125,8 @@ public partial class PickProcessesWindow
         }
     }
 
-    private async Task RefreshAsync()
+    private Task RefreshAsync()
     {
-        _loader.IsLoading = true;
-
-        var loadingTask = Task.Delay(500);
-
         var processes = Processes;
 
         _list.Items.Clear();
@@ -141,9 +137,7 @@ public partial class PickProcessesWindow
             _list.Items.Add(item);
         }
 
-        await loadingTask;
-
-        _loader.IsLoading = false;
+        return Task.CompletedTask;
     }
 
     private class ListItem : UserControl
@@ -208,7 +202,7 @@ public partial class PickProcessesWindow
 
             ToolTipService.SetToolTip(_pathTextBox, Process.ExecutablePath);
 
-            _pathTextBox.SetResourceReference(ForegroundProperty, "TextFillColorTertiaryBrush");
+            _pathTextBox.SetResourceReference(ForegroundProperty, "TextFillColorSecondaryBrush");
 
             _deleteButton.Click += (_, _) => OnDelete?.Invoke(this, EventArgs.Empty);
 

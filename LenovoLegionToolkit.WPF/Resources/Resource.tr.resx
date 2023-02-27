@@ -601,9 +601,6 @@ PayPal ile bağış yapmak için aşağıdaki PayPal logosuna tıklayın veya QR
   <data name="ExtendedHybridModeInfoWindow_DGPU_Title" xml:space="preserve">
     <value>dGPU Modu</value>
   </data>
-  <data name="ExtendedHybridModeInfoWindow_Hybrid_Message" xml:space="preserve">
-    <value>Hem tümleşik hem de ayrı GPU etkinleştirilmiştir. Sistem, ihtiyaçlarına göre bunlar arasında otomatik olarak geçiş yapacaktır.</value>
-  </data>
   <data name="ExtendedHybridModeInfoWindow_Hybrid_Title" xml:space="preserve">
     <value>Hibrit Kipi</value>
   </data>
@@ -739,9 +736,6 @@ Cidden, bu seçeneğe dikkat edin!</value>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>Klavye Işığı</value>
   </data>
-  <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>Vantage veya servisleri çalışırken klavye arka ışığı burada kontrol edilemez.</value>
-  </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
     <value>Lenovo Vantage açık görünüyor</value>
   </data>
@@ -762,6 +756,9 @@ Cidden, bu seçeneğe dikkat edin!</value>
   </data>
   <data name="MainWindow_NavigationItem_Keyboard" xml:space="preserve">
     <value>Klavye</value>
+  </data>
+  <data name="MainWindow_NavigationItem_Packages" xml:space="preserve">
+    <value>İndirilenler</value>
   </data>
   <data name="MainWindow_NavigationItem_Settings" xml:space="preserve">
     <value>Ayarlar</value>
@@ -1045,10 +1042,6 @@ UYARI: Yerleşik ekran kapalıysa bu eylem düzgün çalışmayacaktır.</value>
   <data name="SettingsPage_DisableLegionZone_Error_Title" xml:space="preserve">
     <value>Legion Zone devre dışı bırakılamadı</value>
   </data>
-  <data name="SettingsPage_DisableLegionZone_Message" xml:space="preserve">
-    <value>Legion Zone'u ve hizmetini kaldırmadan devre dışı bırakın.
-Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
-  </data>
   <data name="SettingsPage_DisableLegionZone_Title" xml:space="preserve">
     <value>Legion Zone'u devre dışı bırak</value>
   </data>
@@ -1066,10 +1059,6 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
     <value>Vantage devre dışı bırakılamadı</value>
-  </data>
-  <data name="SettingsPage_DisableVantage_Message" xml:space="preserve">
-    <value>Lenovo Vantage'ı ve hizmetini kaldırmadan devre dışı bırakın.
-Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
   </data>
   <data name="SettingsPage_DisableVantage_Title" xml:space="preserve">
     <value>Lenovo Vantage'ı devre dışı bırakın</value>
@@ -1229,5 +1218,8 @@ Devam etmeyi seçerseniz, kayıt etme otomatik olarak etkinleştirilecektir.</va
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Evet</value>
+  </data>
+  <data name="AddAutomationStepWindow_Title" xml:space="preserve">
+	  <value>Adım ekle</value>
   </data>
 </root>

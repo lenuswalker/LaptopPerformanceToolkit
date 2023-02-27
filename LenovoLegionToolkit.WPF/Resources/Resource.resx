@@ -580,7 +580,7 @@ WARNING: This action will not run correctly, if internal display is off.</value>
     <value>Donate with</value>
   </data>
   <data name="DonatePage_Message" xml:space="preserve">
-    <value>Development and maintenance of Lenovo Legion Toolkit takes a lot of time. If you like using this software you can support it's future by donating an amount of your choice.
+    <value>Development and maintenance of Lenovo Legion Toolkit takes a lot of time. If you like using this software you can support its future by donating an amount of your choice.
 
 Click the PayPal logo below or scan the QR code to donate with PayPal.
 
@@ -626,7 +626,7 @@ Thanks in advance!</value>
     <value>dGPU Mode</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Hybrid_Message" xml:space="preserve">
-    <value>Both integrated and discrete GPU are enabled. System will automatically switch between them based on it's needs.</value>
+    <value>Both integrated and discrete GPU are enabled. System will automatically switch between them based on its needs.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Hybrid_Title" xml:space="preserve">
     <value>Hybrid Mode</value>
@@ -784,7 +784,7 @@ WARNING: This action will not run correctly if the internal display is off.</val
     <value>Keyboard Backlight</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>Keyboard backlight cannot be controlled in here when Vantage or it's services are running.</value>
+    <value>Keyboard backlight cannot be controlled in here when Vantage or its services are running.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
     <value>Lenovo Vantage seems to be enabled</value>
@@ -1213,7 +1213,7 @@ Make sure that your script runs correctly first.</value>
     <value>Couldn't disable Legion Zone</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Message" xml:space="preserve">
-    <value>Disable Legion Zone and it's service without uninstalling it.
+    <value>Disable Legion Zone and its service without uninstalling it.
 Restart is recommended after changing this option.</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Title" xml:space="preserve">
@@ -1226,7 +1226,7 @@ Restart is recommended after changing this option.</value>
     <value>Couldn't disable Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
-    <value>Disable Lenovo Hotkeys and it's service without uninstalling it.
+    <value>Disable Lenovo Hotkeys and its service without uninstalling it.
 If disabled, this app will handle Fn shortcuts.
 Restart is recommended after changing this option.</value>
   </data>
@@ -1240,7 +1240,7 @@ Restart is recommended after changing this option.</value>
     <value>Couldn't disable Vantage</value>
   </data>
   <data name="SettingsPage_DisableVantage_Message" xml:space="preserve">
-    <value>Disable Lenovo Vantage and it's service without uninstalling it.
+    <value>Disable Lenovo Vantage and its service without uninstalling it.
 Restart is recommended after changing this option.</value>
   </data>
   <data name="SettingsPage_DisableVantage_Title" xml:space="preserve">
@@ -1634,5 +1634,84 @@ Moving the mouse or pressing the keyboard will wake displays up.</value>
   </data>
   <data name="PackageControl_RebootRecommended" xml:space="preserve">
     <value>Restart recommended</value>
+  </data>
+  <data name="SaveAndClose" xml:space="preserve">
+    <value>Save &amp; Close</value>
+  </data>
+  <data name="GodModePresetAutomationStepControl_Title" xml:space="preserve">
+    <value>Custom Mode preset</value>
+  </data>
+  <data name="GodModePresetAutomationStepControl_Message" xml:space="preserve">
+    <value>Activate Custom Mode preset.
+This settings takes effect only when Custom Mode is enabled.</value>
+  </data>
+  <data name="GodModeSettingsWindow_EditPreset_Title" xml:space="preserve">
+    <value>Preset name</value>
+  </data>
+  <data name="GodModeSettingsWindow_EditPreset_Message" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="GodModeSettingsWindow_ActivePreset_Title" xml:space="preserve">
+    <value>Active preset</value>
+  </data>
+  <data name="AboutPage_ApplicationFolders" xml:space="preserve">
+    <value>Application Folders</value>
+  </data>
+  <data name="AboutPage_Data" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="AboutPage_Temp" xml:space="preserve">
+    <value>Temp</value>
+  </data>
+  <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Title" xml:space="preserve">
+    <value>Single Display Brightness</value>
+  </data>
+  <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Message" xml:space="preserve">
+    <value>When on, same brightness level will be applied to all Windows power plans whenever you change it.</value>
+  </data>
+  <data name="Notification_UpdateAvailable" xml:space="preserve">
+    <value>Update {0} available!</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_PeakPL" xml:space="preserve">
+    <value>Peak Power Limit</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_APUsPPT_PL" xml:space="preserve">
+    <value>APU sPPT Power Limit</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_LongTermPL_Description" xml:space="preserve">
+    <value>The continuous power consumption that can be reached by the CPU.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_ShortTermPL_Description" xml:space="preserve">
+    <value>The peak power consumption that can be reached by the CPU within a short amount time.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_PeakPL_Description" xml:space="preserve">
+    <value>The maximum instantaneous power consumption that can be reached by the CPU.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_CrossLoading_Description" xml:space="preserve">
+    <value>The maximum power consumption that can be reached by the CPU when both CPU and GPU are fully utilized.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_APUsPPT_PL_Description" xml:space="preserve">
+    <value>The peak power consumption that can be reached by the CPU with a minor delay.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_TempLimit_Description" xml:space="preserve">
+    <value>The maximum temperature that can be reached by the CPU before frequency and power is reduced.</value>
+  </data>
+  <data name="GodModeSettingsWindow_GPU_DynamicBoost_Description" xml:space="preserve">
+    <value>The additional maximum power that can be allocated to the GPU based on the power consumption of the CPU.</value>
+  </data>
+  <data name="GodModeSettingsWindow_GPU_CTGP_Description" xml:space="preserve">
+    <value>The additional amount of power that can be allocated to the GPU on top of base power consumption.</value>
+  </data>
+  <data name="GodModeSettingsWindow_GPU_TempLimit_Description" xml:space="preserve">
+    <value>The maximum temperature that can be reached by the GPU before frequency and power is reduced.</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+	  <value>Create</value>
+  </data>
+  <data name="AddAutomationStepWindow_Title" xml:space="preserve">
+	  <value>Add step</value>
+  </data>
+  <data name="CreateAutomationPipelineWindow_Title" xml:space="preserve">
+	  <value>Create Action</value>
   </data>
 </root>
