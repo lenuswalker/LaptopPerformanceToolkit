@@ -1641,7 +1641,6 @@ Moving the mouse or pressing the keyboard will wake displays up.</value>
   <data name="DisplayBrightnessControl_Title" xml:space="preserve">
     <value>Display Brightness</value>
   </data>
-</root>
   <data name="SaveAndClose" xml:space="preserve">
     <value>Save &amp; Close</value>
   </data>
