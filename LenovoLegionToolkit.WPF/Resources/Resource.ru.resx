@@ -1635,4 +1635,83 @@
   <data name="PackageControl_RebootRecommended" xml:space="preserve">
     <value>Рекомендуется перезапуск системы</value>
   </data>
+  <data name="SaveAndClose" xml:space="preserve">
+    <value>Сохранить и закрыть</value>
+  </data>
+  <data name="GodModePresetAutomationStepControl_Title" xml:space="preserve">
+    <value>Пресет Пользовательского режима</value>
+  </data>
+  <data name="GodModePresetAutomationStepControl_Message" xml:space="preserve">
+    <value>Активирует пресет Пользовательского режима.
+Эта настройка действует только при включенном Пользовательском режиме.</value>
+  </data>
+  <data name="GodModeSettingsWindow_EditPreset_Title" xml:space="preserve">
+    <value>Название пресета</value>
+  </data>
+  <data name="GodModeSettingsWindow_EditPreset_Message" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="GodModeSettingsWindow_ActivePreset_Title" xml:space="preserve">
+    <value>Активный пресет</value>
+  </data>
+  <data name="AboutPage_ApplicationFolders" xml:space="preserve">
+    <value>Папки приложения</value>
+  </data>
+  <data name="AboutPage_Data" xml:space="preserve">
+    <value>Данные</value>
+  </data>
+  <data name="AboutPage_Temp" xml:space="preserve">
+    <value>Временные файлы</value>
+  </data>
+  <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Title" xml:space="preserve">
+    <value>Яркость одного дисплея</value>
+  </data>
+  <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Message" xml:space="preserve">
+    <value>При включении этого параметра один и тот же уровень яркости будет применяться ко всем планам питания Windows при каждом его изменении.</value>
+  </data>
+  <data name="Notification_UpdateAvailable" xml:space="preserve">
+    <value>Доступно обновление {0}!</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_PeakPL" xml:space="preserve">
+    <value>Предельная пиковая мощность</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_APUsPPT_PL" xml:space="preserve">
+    <value>Предельная мощность APU sPPT</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_LongTermPL_Description" xml:space="preserve">
+    <value>Непрерывное потребление энергии, которое может быть достигнуто процессором.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_ShortTermPL_Description" xml:space="preserve">
+    <value>Пиковая потребляемая мощность, которая может быть достигнута процессором за короткое время.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_PeakPL_Description" xml:space="preserve">
+    <value>Максимальное значение потребляемой мощности, которое может быть достигнуто процессором.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_CrossLoading_Description" xml:space="preserve">
+    <value>Максимальное энергопотребление, которое может быть достигнуто CPU при полной загрузке CPU и GPU.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_APUsPPT_PL_Description" xml:space="preserve">
+    <value>Пиковая потребляемая мощность, которая может быть достигнута процессором при незначительной задержке.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_TempLimit_Description" xml:space="preserve">
+    <value>Максимальная температура, которая может быть достигнута процессором до снижения частоты и мощности.</value>
+  </data>
+  <data name="GodModeSettingsWindow_GPU_DynamicBoost_Description" xml:space="preserve">
+    <value>Дополнительная максимальная мощность, которая может быть выделена GPU на основе энергопотребления CPU.</value>
+  </data>
+  <data name="GodModeSettingsWindow_GPU_CTGP_Description" xml:space="preserve">
+    <value>Дополнительное количество энергии, которое может быть выделено на GPU сверх базового энергопотребления.</value>
+  </data>
+  <data name="GodModeSettingsWindow_GPU_TempLimit_Description" xml:space="preserve">
+    <value>Максимальная температура, которая может быть достигнута графическим процессором до снижения частоты и мощности.</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+	  <value>Создать</value>
+  </data>
+  <data name="AddAutomationStepWindow_Title" xml:space="preserve">
+	  <value>Добавить шаг</value>
+  </data>
+  <data name="CreateAutomationPipelineWindow_Title" xml:space="preserve">
+	  <value>Создать действие</value>
+  </data>
 </root>

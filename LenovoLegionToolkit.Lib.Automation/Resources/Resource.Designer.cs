@@ -115,6 +115,24 @@ namespace LenovoLegionToolkit.Lib.Automation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to When displays turn off.
+        /// </summary>
+        public static string DisplayOffAutomationPipelineTrigger_DisplayName {
+            get {
+                return ResourceManager.GetString("DisplayOffAutomationPipelineTrigger_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When displays turn on.
+        /// </summary>
+        public static string DisplayOnAutomationPipelineTrigger_DisplayName {
+            get {
+                return ResourceManager.GetString("DisplayOnAutomationPipelineTrigger_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to When external display is connected.
         /// </summary>
         public static string ExternalDisplayConnectedAutomationPipelineTrigger_DisplayName {
@@ -129,6 +147,24 @@ namespace LenovoLegionToolkit.Lib.Automation.Resources {
         public static string ExternalDisplayDisconnectedAutomationPipelineTrigger_DisplayName {
             get {
                 return ResourceManager.GetString("ExternalDisplayDisconnectedAutomationPipelineTrigger_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lid closed.
+        /// </summary>
+        public static string LidClosedAutomationPipelineTrigger_DisplayName {
+            get {
+                return ResourceManager.GetString("LidClosedAutomationPipelineTrigger_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lid opened.
+        /// </summary>
+        public static string LidOpenedAutomationPipelineTrigger_DisplayName {
+            get {
+                return ResourceManager.GetString("LidOpenedAutomationPipelineTrigger_DisplayName", resourceCulture);
             }
         }
         

@@ -625,9 +625,6 @@ Xin chân thành cảm ơn!</value>
   <data name="ExtendedHybridModeInfoWindow_DGPU_Title" xml:space="preserve">
     <value>GPU rời</value>
   </data>
-  <data name="ExtendedHybridModeInfoWindow_Hybrid_Message" xml:space="preserve">
-    <value>Cả hai GPU sẽ được kích hoạt. Hệ thống sẽ tự đổi giữa hai GPU tùy vào sử dụng.</value>
-  </data>
   <data name="ExtendedHybridModeInfoWindow_Hybrid_Title" xml:space="preserve">
     <value>Hybrid</value>
   </data>
@@ -782,9 +779,6 @@ CẢNH BÁO: Hành động sẽ không chạy nếu màn hình laptop tắt.</va
   </data>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>Đèn nền bàn phím</value>
-  </data>
-  <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>Đèn nền bàn phím không thể được tùy chỉnh nếu Lenovo vantage hoặc các chương trình con của nó đang chạy.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
     <value>Dường như Lenovo Vantage đang chạy</value>
@@ -1212,10 +1206,6 @@ Hãy đảm bảo chương trình hoặc script của bạn chạy đúng trư�
   <data name="SettingsPage_DisableLegionZone_Error_Title" xml:space="preserve">
     <value>Không thể ngắt kích hoạt Legion Zone</value>
   </data>
-  <data name="SettingsPage_DisableLegionZone_Message" xml:space="preserve">
-    <value>Ngắt kích hoạt Legion Zone và các dịch vụ con mà không cần gỡ cài đặt.
-Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
-  </data>
   <data name="SettingsPage_DisableLegionZone_Title" xml:space="preserve">
     <value>Ngắt kích hoạt Legion Zone</value>
   </data>
@@ -1225,11 +1215,6 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>Không thể ngắt kích hoạt Lenovo Hotkeys</value>
   </data>
-  <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
-    <value>Ngắt kích hoạt Lenovo Hotkeys và các dịch vụ con mà không cần gỡ cài đặt.
-Nếu ngắt kích hoạt, Legion Toolkit sẽ xử lý các phím tắt Fn.
-Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
-  </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
     <value>Ngắt kích hoạt Lenovo Hotkeys</value>
   </data>
@@ -1238,10 +1223,6 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
     <value>Không thể ngắt kích hoạt Lenovo Vantage</value>
-  </data>
-  <data name="SettingsPage_DisableVantage_Message" xml:space="preserve">
-    <value>Ngắt kích hoạt Lenovo Vantage và các dịch vụ con mà không cần gỡ cài đặt.
-Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
   </data>
   <data name="SettingsPage_DisableVantage_Title" xml:space="preserve">
     <value>Ngắt kích hoạt Lenovo Vantage</value>
@@ -1634,5 +1615,8 @@ Di chuyển chuột hoặc bấm phím bất kỳ trên bàn phím để bật m
   </data>
   <data name="PackageControl_RebootRecommended" xml:space="preserve">
     <value>Khuyến nghị khởi động lại</value>
+  </data>
+  <data name="AddAutomationStepWindow_Title" xml:space="preserve">
+	  <value>Thêm hành động</value>
   </data>
 </root>

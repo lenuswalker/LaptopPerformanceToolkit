@@ -20,6 +20,8 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
 
     private unsafe void* _displayArrivalHandle;
     private unsafe void* _devInterfaceMonitorHandle;
+    private HPOWERNOTIFY _consoleDisplayStateNotificationHandle;
+    private HPOWERNOTIFY _lidSwitchStateChangeNotificationHandle;
     private HHOOK _kbHook;
 
     public event EventHandler<NativeWindowsMessage>? Changed;
@@ -49,6 +51,8 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
 
         _displayArrivalHandle = RegisterDeviceNotification(Handle, PInvoke.GUID_DISPLAY_DEVICE_ARRIVAL);
         _devInterfaceMonitorHandle = RegisterDeviceNotification(Handle, PInvoke.GUID_DEVINTERFACE_MONITOR);
+        _consoleDisplayStateNotificationHandle = RegisterPowerNotification(PInvoke.GUID_CONSOLE_DISPLAY_STATE);
+        _lidSwitchStateChangeNotificationHandle = RegisterPowerNotification(PInvoke.GUID_LIDSWITCH_STATE_CHANGE);
 
         return Task.CompletedTask;
     }
@@ -59,10 +63,13 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
 
         PInvoke.UnregisterDeviceNotification(_displayArrivalHandle);
         PInvoke.UnregisterDeviceNotification(_devInterfaceMonitorHandle);
+        PInvoke.UnregisterPowerSettingNotification(_consoleDisplayStateNotificationHandle);
+        PInvoke.UnregisterPowerSettingNotification(_lidSwitchStateChangeNotificationHandle);
 
         _kbHook = HHOOK.Null;
         _displayArrivalHandle = null;
         _devInterfaceMonitorHandle = null;
+        _consoleDisplayStateNotificationHandle = HPOWERNOTIFY.Null;
 
         ReleaseHandle();
 
@@ -93,7 +100,55 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
             }
         }
 
+        if (m.Msg == PInvoke.WM_POWERBROADCAST && m.WParam == (IntPtr)PInvoke.PBT_POWERSETTINGCHANGE && m.LParam != IntPtr.Zero)
+        {
+            var str = Marshal.PtrToStructure<POWERBROADCAST_SETTING>(m.LParam);
+
+            if (str.PowerSetting == PInvoke.GUID_CONSOLE_DISPLAY_STATE)
+            {
+                var state = (PInvokeExtensions.CONSOLE_DISPLAY_STATE)str.Data[0];
+                switch (state)
+                {
+                    case PInvokeExtensions.CONSOLE_DISPLAY_STATE.On:
+                        OnMonitorOn();
+                        break;
+                    case PInvokeExtensions.CONSOLE_DISPLAY_STATE.Off:
+                        OnMonitorOff();
+                        break;
+                }
+            }
+
+            if (str.PowerSetting == PInvoke.GUID_LIDSWITCH_STATE_CHANGE)
+            {
+                var isOpened = str.Data[0] != 0;
+                if (isOpened)
+                    OnLidOpened();
+                else
+                    OnLidClosed();
+            }
+        }
+
         base.WndProc(ref m);
+    }
+
+    private void OnMonitorOn()
+    {
+        Changed?.Invoke(this, NativeWindowsMessage.MonitorOn);
+    }
+
+    private void OnMonitorOff()
+    {
+        Changed?.Invoke(this, NativeWindowsMessage.MonitorOff);
+    }
+
+    private void OnLidOpened()
+    {
+        Changed?.Invoke(this, NativeWindowsMessage.LidOpened);
+    }
+
+    private void OnLidClosed()
+    {
+        Changed?.Invoke(this, NativeWindowsMessage.LidClosed);
     }
 
     private void OnMonitorConnected()
@@ -156,5 +211,10 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
         {
             Marshal.FreeHGlobal(ptr);
         }
+    }
+
+    private unsafe HPOWERNOTIFY RegisterPowerNotification(Guid guid)
+    {
+        return PInvoke.RegisterPowerSettingNotification(new HANDLE(Handle), &guid, 0);
     }
 }
