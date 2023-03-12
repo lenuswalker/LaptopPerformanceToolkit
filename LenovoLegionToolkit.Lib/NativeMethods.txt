@@ -110,4 +110,8 @@ MonitorFromPoint
 GetMonitorInfoW
 GetDpiForMonitor
 
+RegNotifyChangeKeyValue
+
 SendMessage
+
+K32GetModuleFileNameExW

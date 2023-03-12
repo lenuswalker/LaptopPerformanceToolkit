@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
 
-public class ProcessesAreRunningAutomationPipelineTrigger : IAutomationPipelineTrigger, IProcessesAutomationPipelineTrigger
+public class ProcessesAreRunningAutomationPipelineTrigger : IProcessesAutomationPipelineTrigger
 {
     public string DisplayName => Resource.ProcessesAreRunningAutomationPipelineTrigger_DisplayName;
 
@@ -23,7 +23,7 @@ public class ProcessesAreRunningAutomationPipelineTrigger : IAutomationPipelineT
             return Task.FromResult(false);
 
         if (Log.Instance.IsTraceEnabled)
-            Log.Instance.Trace($"Checking for {pae.ProcessEventInfo.Process.Name}... [processes={string.Join(",", Processes.Select(p => p.Name))}]");
+            Log.Instance.Trace($"Checking for {pae.ProcessEventInfo.Process.Name}... [processes={string.Join(", ", Processes.Select(p => p.Name))}]");
 
         if (!Processes.Contains(pae.ProcessEventInfo.Process) && !Processes.Select(p => p.Name).Contains(pae.ProcessEventInfo.Process.Name))
         {
@@ -51,4 +51,6 @@ public class ProcessesAreRunningAutomationPipelineTrigger : IAutomationPipelineT
     }
 
     public override int GetHashCode() => HashCode.Combine(Processes);
+
+    public override string ToString() => $"{nameof(Processes)}: {string.Join(", ", Processes)}";
 }
