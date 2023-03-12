@@ -510,7 +510,7 @@ DIQQAT: Eger ishki displey óshirilgen yamasa gibrid rejim aktiv emes bolsa, bul
   <data name="DeviceInformationWindow_Warranty_Title" xml:space="preserve">
     <value>Kepillik</value>
   </data>
-  <data name="DiscreteGPUControl_Active" xml:space="preserve">
+  <data name="Active" xml:space="preserve">
     <value>Aktiv</value>
   </data>
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
@@ -519,7 +519,7 @@ DIQQAT: Eger ishki displey óshirilgen yamasa gibrid rejim aktiv emes bolsa, bul
   <data name="DiscreteGPUControl_GPUIsNotActive" xml:space="preserve">
     <value>nVidia grafikalıq processorı aktiv emes.</value>
   </data>
-  <data name="DiscreteGPUControl_Inactive" xml:space="preserve">
+  <data name="Inactive" xml:space="preserve">
     <value>Aktiv emes</value>
   </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
@@ -841,11 +841,11 @@ DIQQAT: Eger ishki displey óshirilgen bolsa, bul háreket durıs orınlanbaydı
     <value>Caps Lock hám Num Lock</value>
   </data>
   <data name="NotificationsSettingsWindow_DontShowNotifications_Message" xml:space="preserve">
-    <value>Fn túymesiniń mikrofon dawısın óshiriw sıyaqlı háreketleri haqqındaǵı xabarnamalardı óshiredi
+    <value>Fn túymesiniń mikrofon dawısın óshiriw sıyaqlı háreketleri haqqındaǵı xabarlamalardı óshiredi
 Eger de tolıq ekranlı baǵdarlamalar menen mashqalalar bolsa, bul varianttı qosıń.</value>
   </data>
   <data name="NotificationsSettingsWindow_DontShowNotifications_Title" xml:space="preserve">
-    <value>Xabarnamalardı kórsetpew</value>
+    <value>Xabarlamalardı kórsetpew</value>
   </data>
   <data name="NotificationsSettingsWindow_FnLock" xml:space="preserve">
     <value>Fn Lock</value>
@@ -869,7 +869,7 @@ Eger de tolıq ekranlı baǵdarlamalar menen mashqalalar bolsa, bul varianttı q
     <value>Aqıllı túyme</value>
   </data>
   <data name="NotificationsSettingsWindow_Title" xml:space="preserve">
-    <value>Xabarnamalar</value>
+    <value>Xabarlamalar</value>
   </data>
   <data name="NotificationsSettingsWindow_TouchpadLock" xml:space="preserve">
     <value>Sensorlı panel bloklanıwı</value>
@@ -935,7 +935,7 @@ Durıs paketlerdi ornatıp atırǵanıńızǵa isenim kámil etiń.</value>
   <data name="PackagesPage_DownloadTo" xml:space="preserve">
     <value>Júklew ornı</value>
   </data>
-  <data name="PackagesPage_Filter" xml:space="preserve">
+  <data name="Filter" xml:space="preserve">
     <value>Filtr...</value>
   </data>
   <data name="PackagesPage_MachineType" xml:space="preserve">
@@ -979,9 +979,6 @@ Durıs paketlerdi ornatıp atırǵanıńızǵa isenim kámil etiń.</value>
   </data>
   <data name="PowerModeAutomationStepControl_Title" xml:space="preserve">
     <value>Quwatlılıq rejimi</value>
-  </data>
-  <data name="PowerModeControl_ChangeError" xml:space="preserve">
-    <value>Quwatlılıq rejimin ózgertiw ámelge aspadı</value>
   </data>
   <data name="PowerModeControl_Message" xml:space="preserve">
     <value>Islew rejimin saylań.
@@ -1184,10 +1181,10 @@ Bul varianttı ózgertkennen keyin, qayta iske túsiriw usınıs etiledi.</value
     <value>Til</value>
   </data>
   <data name="SettingsPage_Notifications_Message" xml:space="preserve">
-    <value>Qanday xabarnamalar kórsetiliwin sazlań.</value>
+    <value>Qanday xabarlamalar kórsetiliwin sazlań.</value>
   </data>
   <data name="SettingsPage_Notifications_Title" xml:space="preserve">
-    <value>Xabarnamalar</value>
+    <value>Xabarlamalar</value>
   </data>
   <data name="SettingsPage_PowerPlans_Title" xml:space="preserve">
     <value>Quwatlıq jobaları</value>
@@ -1444,7 +1441,7 @@ ESLETPE: Eger ishki displey óshirilgen bolsa, bul ámel durıs orınlanbaydı.<
     <value>Arqa jaqtılıqtı qosıw yamasa óshiriw.</value>
   </data>
   <data name="PackagesPage_NoMatchingDownloads" xml:space="preserve">
-    <value>Mas júklemeler tabılmadı</value>
+    <value>Sáykes júklemeler tabılmadı</value>
   </data>
   <data name="PackagesPage_OnlyShowUpdates" xml:space="preserve">
     <value>Tek jańalanıwlardı kórsetiw</value>
@@ -1452,8 +1449,8 @@ ESLETPE: Eger ishki displey óshirilgen bolsa, bul ámel durıs orınlanbaydı.<
   <data name="EditDashboardWindow_Title" xml:space="preserve">
     <value>Bas betti sazlaw</value>
   </data>
-  <data name="Reset" xml:space="preserve">
-    <value>Qayta ornatıw</value>
+  <data name="Load" xml:space="preserve">
+    <value>Júklew</value>
   </data>
   <data name="EditDashboardWindow_CreateGroup_Title" xml:space="preserve">
     <value>Topar jaratıw</value>
@@ -1534,13 +1531,40 @@ Tıshqanshanı qozǵaw yamasa klaviaturanı basıw displeydi iske túsiredi.</va
   <data name="GodModeSettingsWindow_CPU_PeakPL" xml:space="preserve">
     <value>Quwatlılıqtıń eń joqarǵı shegarası</value>
   </data>
+  <data name="GodModeSettingsWindow_CPU_LongTermPL_Description" xml:space="preserve">
+    <value>Processor tárepinen úzliksiz paydalanıw múmkin bolǵan quwatlılıq.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_ShortTermPL_Description" xml:space="preserve">
+    <value>Qısqa waqıt ishinde processor tárepinen paydalanıw múmkin bolǵan eń joqarǵı quwatlılıq.</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>Aldınnan ornatılǵan</value>
+  </data>
   <data name="Create" xml:space="preserve">
-	  <value>Jaratıw</value>
+    <value>Jaratıw</value>
   </data>
   <data name="AddAutomationStepWindow_Title" xml:space="preserve">
-	  <value>Adım qosıw</value>
+    <value>Adım qosıw</value>
   </data>
   <data name="CreateAutomationPipelineWindow_Title" xml:space="preserve">
-	  <value>Xáreket jaratıw</value>
+    <value>Xáreket jaratıw</value>
+  </data>
+  <data name="StatusTrayPopup_PowerMode" xml:space="preserve">
+    <value>Quwatlılıq rejimi</value>
+  </data>
+  <data name="StatusTrayPopup_DiscreteGPU" xml:space="preserve">
+    <value>Bólekli grafikalıq processor</value>
+  </data>
+  <data name="StatusTrayPopup_PowerState" xml:space="preserve">
+    <value>Quwatlılıq jaǵdayı</value>
+  </data>
+  <data name="StatusTrayPopup_Battery" xml:space="preserve">
+    <value>Batareya</value>
+  </data>
+  <data name="StatusTrayPopup_Mode" xml:space="preserve">
+    <value>Rejim</value>
+  </data>
+  <data name="StatusTrayPopup_UpdateAvailable" xml:space="preserve">
+    <value>Jańalanıw bar!</value>
   </data>
 </root>

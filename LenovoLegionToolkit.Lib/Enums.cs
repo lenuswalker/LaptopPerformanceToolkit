@@ -413,6 +413,13 @@ public enum SpectrumKeyboardBacklightSpeed
     Speed3
 }
 
+public enum SpectrumLayout
+{
+    KeyboardOnly,
+    KeyboardAndFront,
+    Full
+}
+
 public enum Theme
 {
     [Display(ResourceType = typeof(Resource), Name = "Theme_System")]
@@ -441,8 +448,9 @@ public enum ThermalModeState
 {
     Unknown,
     Quiet,
-    Balanced,
-    Performance
+    Balance,
+    Performance,
+    GodMode = 255
 }
 
 public enum TouchpadLockState

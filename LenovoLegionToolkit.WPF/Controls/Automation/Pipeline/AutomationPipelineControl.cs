@@ -12,6 +12,7 @@ using LenovoLegionToolkit.Lib.Automation.Steps;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Controls.Automation.Steps;
+using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
 using LenovoLegionToolkit.WPF.Windows.Automation;
@@ -99,6 +100,7 @@ public class AutomationPipelineControl : UserControl
 
     public AutomationPipeline CreateAutomationPipeline() => new()
     {
+        IconName = AutomationPipeline.IconName,
         Name = AutomationPipeline.Name,
         Trigger = AutomationPipeline.Trigger,
         Steps = _stepsStackPanel.Children.ToArray()
@@ -116,6 +118,14 @@ public class AutomationPipelineControl : UserControl
         _cardHeaderControl.Title = GenerateHeader();
         _cardHeaderControl.Subtitle = GenerateSubtitle();
         _cardHeaderControl.SubtitleToolTip = _cardHeaderControl.Subtitle;
+
+        OnChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void SetIcon(SymbolRegular? icon)
+    {
+        AutomationPipeline.IconName = icon.HasValue ? Enum.GetName(icon.Value) : null;
+        _cardExpander.Icon = GenerateIcon();
 
         OnChanged?.Invoke(this, EventArgs.Empty);
     }
@@ -203,7 +213,10 @@ public class AutomationPipelineControl : UserControl
 
     private SymbolRegular GenerateIcon()
     {
-        return AutomationPipeline.Trigger is not null ? SymbolRegular.Flow20 : SymbolRegular.Play24;
+        if (AutomationPipeline.Trigger is not null)
+            return SymbolRegular.Flow20;
+
+        return Enum.TryParse<SymbolRegular>(AutomationPipeline.IconName, out var icon) ? icon : SymbolRegular.Play24;
     }
 
     private string GenerateHeader()

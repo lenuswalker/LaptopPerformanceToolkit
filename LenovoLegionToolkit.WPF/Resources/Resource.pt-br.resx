@@ -286,7 +286,7 @@ Somente ações que correspondem com o estado atual serão executadas.</value>
     <value>Sem nome</value>
   </data>
   <data name="BalanceModeSettingsWindow_AIEngine_Message" xml:space="preserve">
-    <value>Detecta automaticamente quando certos jogos estão sendo executados e configura o desempenho da CPU e GPU. As temperaturas e os níveis de ruído das coolers podem aumentar.</value>
+    <value>Detecta automaticamente quando certos jogos estão sendo executados e configura o desempenho da CPU e GPU. As temperaturas e os níveis de ruído dos coolers podem aumentar.</value>
   </data>
   <data name="BalanceModeSettingsWindow_AIEngine_Title" xml:space="preserve">
     <value>Ativar mecanismo de IA</value>
@@ -523,7 +523,7 @@ AVISO: Esta ação não será executada corretamente se o display interno estive
   <data name="DeviceInformationWindow_Warranty_Title" xml:space="preserve">
     <value>Garantia</value>
   </data>
-  <data name="DiscreteGPUControl_Active" xml:space="preserve">
+  <data name="Active" xml:space="preserve">
     <value>Ativa</value>
   </data>
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
@@ -537,7 +537,7 @@ Lembre-se, alguns programas podem apresentar problemas se você fizer isso.</val
   <data name="DiscreteGPUControl_GPUIsNotActive" xml:space="preserve">
     <value>A GPU nVidia não está ativa.</value>
   </data>
-  <data name="DiscreteGPUControl_Inactive" xml:space="preserve">
+  <data name="Inactive" xml:space="preserve">
     <value>Inativa</value>
   </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
@@ -995,9 +995,6 @@ Sempre certifique-se de estar instalando os pacotes corretos.</value>
   <data name="PackagesPage_DownloadTo" xml:space="preserve">
     <value>Salvar em</value>
   </data>
-  <data name="PackagesPage_Filter" xml:space="preserve">
-    <value>Filtro...</value>
-  </data>
   <data name="PackagesPage_MachineType" xml:space="preserve">
     <value>Tipo de máquina</value>
   </data>
@@ -1042,9 +1039,6 @@ Sempre certifique-se de estar instalando os pacotes corretos.</value>
   </data>
   <data name="PowerModeAutomationStepControl_Title" xml:space="preserve">
     <value>Plano de Energia</value>
-  </data>
-  <data name="PowerModeControl_ChangeError" xml:space="preserve">
-    <value>Não foi possível alterar o plano de energia</value>
   </data>
   <data name="PowerModeControl_Message" xml:space="preserve">
     <value>Selecione o modo de desempenho.
@@ -1577,7 +1571,7 @@ AVISO: Esta ação não será executada corretamente se a tela integrada estiver
   <data name="EditDashboardWindow_Title" xml:space="preserve">
     <value>Personalizar painel</value>
   </data>
-  <data name="Reset" xml:space="preserve">
+  <data name="Load" xml:space="preserve">
     <value>Redefinir</value>
   </data>
   <data name="EditDashboardWindow_CreateGroup_Title" xml:space="preserve">
@@ -1699,16 +1693,37 @@ Esta configuração somente terá efeito se o Modo Personalizado estiver ativo.<
   <data name="GodModeSettingsWindow_GPU_DynamicBoost_Description" xml:space="preserve">
     <value>A potência máxima adicional que pode ser alocada para a GPU com base no consumo de energia da CPU.</value>
   </data>
+  <data name="GodModeSettingsWindow_GPU_CTGP_Description" xml:space="preserve">
+    <value>A potência máxima adicional que pode ser alocada para a GPU com base no consumo de energia.</value>
+  </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Description" xml:space="preserve">
     <value>A temperatura máxima que pode ser alcançada pela GPU antes que a frequência e a potência sejam reduzidas.</value>
   </data>
+  <data name="Default" xml:space="preserve">
+    <value>Padrão</value>
+  </data>
   <data name="Create" xml:space="preserve">
-	  <value>Criar</value>
+    <value>Criar</value>
   </data>
   <data name="AddAutomationStepWindow_Title" xml:space="preserve">
-	  <value>Adicionar passo</value>
+    <value>Adicionar passo</value>
   </data>
   <data name="CreateAutomationPipelineWindow_Title" xml:space="preserve">
-	  <value>Criar Ação</value>
+    <value>Criar Ação</value>
+  </data>
+  <data name="StatusTrayPopup_PowerMode" xml:space="preserve">
+    <value>Plano de Energia</value>
+  </data>
+  <data name="StatusTrayPopup_DiscreteGPU" xml:space="preserve">
+    <value>GPU dedicada</value>
+  </data>
+  <data name="StatusTrayPopup_Battery" xml:space="preserve">
+    <value>Bateria</value>
+  </data>
+  <data name="StatusTrayPopup_DischargeRate" xml:space="preserve">
+    <value>Taxa de descarga</value>
+  </data>
+  <data name="StatusTrayPopup_UpdateAvailable" xml:space="preserve">
+    <value>Atualização disponível!</value>
   </data>
 </root>

@@ -6,8 +6,6 @@ namespace LenovoLegionToolkit.Lib.Utils;
 
 public class ThrottleLastDispatcher
 {
-    private readonly object _lock = new();
-
     private readonly TimeSpan _interval;
     private readonly string? _tag;
 
@@ -38,6 +36,34 @@ public class ThrottleLastDispatcher
                         Log.Instance.Trace($"Allowing... [tag={_tag}]");
 
                     await task();
+                }, token);
+        }
+        catch (TaskCanceledException)
+        {
+            if (_tag is not null && Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Throttling... [tag={_tag}]");
+        }
+    }
+
+    public void Dispatch(Action task)
+    {
+        try
+        {
+            _cancellationTokenSource?.Cancel();
+            _cancellationTokenSource = new();
+
+            var token = _cancellationTokenSource.Token;
+
+            Task.Delay(_interval, token)
+                .ContinueWith(t =>
+                {
+                    if (!t.IsCompletedSuccessfully)
+                        return;
+
+                    if (_tag is not null && Log.Instance.IsTraceEnabled)
+                        Log.Instance.Trace($"Allowing... [tag={_tag}]");
+
+                    task();
                 }, token);
         }
         catch (TaskCanceledException)

@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using LenovoLegionToolkit.Lib.Controllers;
+using LenovoLegionToolkit.Lib.Controllers.GodMode;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Features;
 using LenovoLegionToolkit.Lib.Listeners;
@@ -91,6 +92,9 @@ public class IoCModule : Module
         builder.Register<SpectrumKeyboardBacklightController>();
         builder.Register<RGBKeyboardBacklightController>();
         builder.Register<GodModeController>();
+        builder.Register<GodModeControllerV1>();
+        builder.Register<GodModeControllerV2>();
+        builder.Register<DisplayBrightnessController>();
         builder.Register<ProcessorController>();
         builder.Register<IntelProcessorController>();
         builder.Register<AMDProcessorController>();

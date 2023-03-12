@@ -428,14 +428,8 @@ Ovo vrijeme možda neće biti tačno ako je laptop bio napunjen dok je spavao il
   <data name="DeviceInformationWindow_Warranty_Title" xml:space="preserve">
     <value>Garancija</value>
   </data>
-  <data name="DiscreteGPUControl_Active" xml:space="preserve">
-    <value>Aktivna</value>
-  </data>
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
     <value>Deaktiviraj</value>
-  </data>
-  <data name="DiscreteGPUControl_Inactive" xml:space="preserve">
-    <value>Neaktivna</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
     <value>Monitor je spojen na nVidia grafičku.</value>
@@ -595,9 +589,6 @@ Uvijek provjerite da li instalirate ispravne pakete.</value>
   <data name="PackagesPage_DownloadTo" xml:space="preserve">
     <value>Preuzmite na</value>
   </data>
-  <data name="PackagesPage_Filter" xml:space="preserve">
-    <value>Filtriraj...</value>
-  </data>
   <data name="PackagesPage_MachineType" xml:space="preserve">
     <value>Tip uređaja</value>
   </data>
@@ -633,9 +624,6 @@ Uvijek provjerite da li instalirate ispravne pakete.</value>
   </data>
   <data name="PowerModeAutomationStepControl_Title" xml:space="preserve">
     <value>Režim rada</value>
-  </data>
-  <data name="PowerModeControl_ChangeError" xml:space="preserve">
-    <value>Nije moguće promijeniti režim rada</value>
   </data>
   <data name="PowerModeControl_Settings" xml:space="preserve">
     <value>Postavke</value>
@@ -900,6 +888,6 @@ Logiranje će biti automatski omogućeno, ukoliko izaberete da nastavite.</value
     <value>Da</value>
   </data>
   <data name="AddAutomationStepWindow_Title" xml:space="preserve">
-	  <value>Dodaj korak</value>
+    <value>Dodaj korak</value>
   </data>
 </root>

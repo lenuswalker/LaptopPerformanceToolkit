@@ -523,7 +523,7 @@ CẢNH BÁO: Hành động sẽ không chạy đúng nếu màn hình laptop kh�
   <data name="DeviceInformationWindow_Warranty_Title" xml:space="preserve">
     <value>Bảo hành</value>
   </data>
-  <data name="DiscreteGPUControl_Active" xml:space="preserve">
+  <data name="Active" xml:space="preserve">
     <value>Kích hoạt</value>
   </data>
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
@@ -537,7 +537,7 @@ Một số ứng dụng có thể dừng đột ngột nếu thực hiện.</val
   <data name="DiscreteGPUControl_GPUIsNotActive" xml:space="preserve">
     <value>GPU rời không hoạt động.</value>
   </data>
-  <data name="DiscreteGPUControl_Inactive" xml:space="preserve">
+  <data name="Inactive" xml:space="preserve">
     <value>Không hoạt động</value>
   </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
@@ -989,9 +989,6 @@ Luôn kiểm tra rằng bạn cài đặt đúng gói cài đặt mong muốn.</
   <data name="PackagesPage_DownloadTo" xml:space="preserve">
     <value>Vị trí tải về</value>
   </data>
-  <data name="PackagesPage_Filter" xml:space="preserve">
-    <value>Lọc...</value>
-  </data>
   <data name="PackagesPage_MachineType" xml:space="preserve">
     <value>Mã máy</value>
   </data>
@@ -1036,9 +1033,6 @@ Luôn kiểm tra rằng bạn cài đặt đúng gói cài đặt mong muốn.</
   </data>
   <data name="PowerModeAutomationStepControl_Title" xml:space="preserve">
     <value>Chế độ</value>
-  </data>
-  <data name="PowerModeControl_ChangeError" xml:space="preserve">
-    <value>Không thể đổi Chế độ</value>
   </data>
   <data name="PowerModeControl_Message" xml:space="preserve">
     <value>Chuyển đổi các Chế độ hiệu năng.
@@ -1558,8 +1552,8 @@ CẢNH BÁO! Hành động sẽ không chạy nếu màn hình laptop tắt.</va
   <data name="EditDashboardWindow_Title" xml:space="preserve">
     <value>Tùy biến trang chủ</value>
   </data>
-  <data name="Reset" xml:space="preserve">
-    <value>Đặt lại</value>
+  <data name="Load" xml:space="preserve">
+    <value>Tải</value>
   </data>
   <data name="EditDashboardWindow_CreateGroup_Title" xml:space="preserve">
     <value>Tạo nhóm</value>
@@ -1617,6 +1611,21 @@ Di chuyển chuột hoặc bấm phím bất kỳ trên bàn phím để bật m
     <value>Khuyến nghị khởi động lại</value>
   </data>
   <data name="AddAutomationStepWindow_Title" xml:space="preserve">
-	  <value>Thêm hành động</value>
+    <value>Thêm hành động</value>
+  </data>
+  <data name="StatusTrayPopup_PowerMode" xml:space="preserve">
+    <value>Chế độ</value>
+  </data>
+  <data name="StatusTrayPopup_DiscreteGPU" xml:space="preserve">
+    <value>GPU rời</value>
+  </data>
+  <data name="StatusTrayPopup_Battery" xml:space="preserve">
+    <value>Pin</value>
+  </data>
+  <data name="StatusTrayPopup_DischargeRate" xml:space="preserve">
+    <value>Tốc độ sạc/xả</value>
+  </data>
+  <data name="StatusTrayPopup_UpdateAvailable" xml:space="preserve">
+    <value>Có cập nhật mới!</value>
   </data>
 </root>

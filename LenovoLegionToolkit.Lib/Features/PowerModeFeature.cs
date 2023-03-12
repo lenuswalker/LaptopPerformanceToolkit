@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Controllers;
+using LenovoLegionToolkit.Lib.Controllers.GodMode;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
@@ -101,13 +102,16 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
         var compatibility = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
         if (compatibility.isCompatible)
         {
+            if (state is PowerModeState.Performance or PowerModeState.GodMode && await Power.IsPowerAdapterConnectedAsync() is PowerAdapterStatus.Disconnected)
+                throw new InvalidOperationException($"Can't switch to {state} power mode on battery."); ;
+
             var currentState = await GetStateAsync().ConfigureAwait(false);
 
             await _aiModeController.StopAsync(currentState).ConfigureAwait(false);
 
-        var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
-        if (mi.Properties.HasPerformanceModeSwitchingBug && currentState == PowerModeState.Quiet && state == PowerModeState.Performance)
-            await base.SetStateAsync(PowerModeState.Balance).ConfigureAwait(false);
+            var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
+            if (mi.Properties.HasPerformanceModeSwitchingBug && currentState == PowerModeState.Quiet && state == PowerModeState.Performance)
+                await base.SetStateAsync(PowerModeState.Balance).ConfigureAwait(false);
 
             await base.SetStateAsync(state).ConfigureAwait(false);
         }
