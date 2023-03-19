@@ -13,23 +13,33 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
 {
     private readonly AIModeController _aiModeController;
     private readonly GodModeController _godModeController;
-    private readonly PowerModeListener _listener;
+    private readonly PowerPlanController _powerPlanController;
+    private readonly ThermalModeListener _thermalModeListener;
+    private readonly PowerModeListener _powerModeListener;
 
-    public PowerModeFeature(AIModeController aiModeController, GodModeController godModeController, PowerModeListener listener)
-        : base("SmartFanMode", 1, "IsSupportSmartFan")
+    public bool AllowAllPowerModesOnBattery { get; set; }
+
+    public PowerModeFeature(
+        AIModeController aiModeController,
+        GodModeController godModeController,
+        PowerPlanController powerPlanController,
+        ThermalModeListener thermalModeListener,
+        PowerModeListener powerModeListener
+        ) : base("SmartFanMode", 1, "IsSupportSmartFan")
     {
         _aiModeController = aiModeController ?? throw new ArgumentNullException(nameof(aiModeController));
         _godModeController = godModeController ?? throw new ArgumentNullException(nameof(godModeController));
-        _listener = listener ?? throw new ArgumentNullException(nameof(listener));
+        _powerPlanController = powerPlanController ?? throw new ArgumentNullException(nameof(powerPlanController));
+        _thermalModeListener = thermalModeListener ?? throw new ArgumentNullException(nameof(thermalModeListener));
+        _powerModeListener = powerModeListener ?? throw new ArgumentNullException(nameof(powerModeListener));
     }
 
     public override async Task<PowerModeState[]> GetAllStatesAsync()
     {
         var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
-        if (mi.Properties.SupportsGodMode)
-            return new[] { PowerModeState.Quiet, PowerModeState.Balance, PowerModeState.Performance, PowerModeState.GodMode };
-
-        return new[] { PowerModeState.Quiet, PowerModeState.Balance, PowerModeState.Performance };
+        return mi.Properties.SupportsGodMode
+            ? new[] { PowerModeState.Quiet, PowerModeState.Balance, PowerModeState.Performance, PowerModeState.GodMode }
+            : new[] { PowerModeState.Quiet, PowerModeState.Balance, PowerModeState.Performance };
     }
 
     public override async Task SetStateAsync(PowerModeState state)
@@ -38,7 +48,9 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
         if (!allStates.Contains(state))
             throw new InvalidOperationException($"Unsupported power mode {state}.");
 
-        if (state is PowerModeState.Performance or PowerModeState.GodMode && await Power.IsPowerAdapterConnectedAsync() is PowerAdapterStatus.Disconnected)
+        if (state is PowerModeState.Performance or PowerModeState.GodMode
+            && !AllowAllPowerModesOnBattery
+            && await Power.IsPowerAdapterConnectedAsync() is PowerAdapterStatus.Disconnected)
             throw new InvalidOperationException($"Can't switch to {state} power mode on battery."); ;
 
         var currentState = await GetStateAsync().ConfigureAwait(false);
@@ -47,11 +59,15 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
 
         var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
         if (mi.Properties.HasPerformanceModeSwitchingBug && currentState == PowerModeState.Quiet && state == PowerModeState.Performance)
+        {
+            _thermalModeListener.SuppressNext();
             await base.SetStateAsync(PowerModeState.Balance).ConfigureAwait(false);
+        }
 
+        _thermalModeListener.SuppressNext();
         await base.SetStateAsync(state).ConfigureAwait(false);
 
-        await _listener.NotifyAsync(state).ConfigureAwait(false);
+        await _powerModeListener.NotifyAsync(state).ConfigureAwait(false);
 
         if (state == PowerModeState.GodMode)
             await _godModeController.ApplyStateAsync().ConfigureAwait(false);
@@ -60,7 +76,7 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
     public async Task EnsureCorrectPowerPlanIsSetAsync()
     {
         var state = await GetStateAsync().ConfigureAwait(false);
-        await Power.ActivatePowerPlanAsync(state, true).ConfigureAwait(false);
+        await _powerPlanController.ActivatePowerPlanAsync(state, true).ConfigureAwait(false);
     }
 
     public async Task EnsureGodModeStateIsAppliedAsync()
