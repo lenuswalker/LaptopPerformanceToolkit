@@ -61,10 +61,20 @@ public partial class StatusTrayPopup
 
     private void Refresh(CancellationToken token)
     {
-        RefreshPowerMode(token);
-        RefreshDiscreteGpu(token);
-        RefreshBattery(token);
-        RefreshUpdate(token);
+        var compatibility = Compatibility.IsCompatibleAsync().Result;
+        if (compatibility.isCompatible) 
+        {
+            RefreshPowerMode(token);
+            RefreshDiscreteGpu(token);
+            RefreshBattery(token);
+            RefreshUpdate(token);
+        }
+        else 
+        {
+            RefreshPowerMode(token);
+            RefreshDiscreteGpu(token);
+            RefreshUpdate(token);
+        }
     }
 
     private void Clear()

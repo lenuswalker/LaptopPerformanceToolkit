@@ -14,7 +14,11 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
 {
     private readonly AIModeController _aiModeController;
     private readonly GodModeController _godModeController;
-    private readonly PowerModeListener _listener;
+    private readonly PowerPlanController _powerPlanController;
+    private readonly ThermalModeListener _thermalModeListener;
+    private readonly PowerModeListener _powerModeListener;
+
+    public bool AllowAllPowerModesOnBattery { get; set; }
 
     private static readonly Dictionary<PowerModeState, string> defaultGenericPowerModes = new()
     {
@@ -23,12 +27,19 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
         { PowerModeState.Performance , "ded574b5-45a0-4f42-8737-46345c09c238" },
     };
 
-    public PowerModeFeature(AIModeController aiModeController, GodModeController godModeController, PowerModeListener listener)
-        : base("SmartFanMode", 1, "IsSupportSmartFan")
+    public PowerModeFeature(
+        AIModeController aiModeController,
+        GodModeController godModeController,
+        PowerPlanController powerPlanController,
+        ThermalModeListener thermalModeListener,
+        PowerModeListener powerModeListener
+        ) : base("SmartFanMode", 1, "IsSupportSmartFan")
     {
         _aiModeController = aiModeController ?? throw new ArgumentNullException(nameof(aiModeController));
         _godModeController = godModeController ?? throw new ArgumentNullException(nameof(godModeController));
-        _listener = listener ?? throw new ArgumentNullException(nameof(listener));
+        _powerPlanController = powerPlanController ?? throw new ArgumentNullException(nameof(powerPlanController));
+        _thermalModeListener = thermalModeListener ?? throw new ArgumentNullException(nameof(thermalModeListener));
+        _powerModeListener = powerModeListener ?? throw new ArgumentNullException(nameof(powerModeListener));
     }
 
     public override async Task<bool> IsSupportedAsync()
@@ -57,13 +68,13 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
 
     public override async Task<PowerModeState[]> GetAllStatesAsync()
     {
-        var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
-        if (mi.Properties.SupportsGodMode)
-            return new[] { PowerModeState.Quiet, PowerModeState.Balance, PowerModeState.Performance, PowerModeState.GodMode };
-
         var compatibility = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
+        var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
+
         if (compatibility.isCompatible)
-            return new[] { PowerModeState.Quiet, PowerModeState.Balance, PowerModeState.Performance };
+            return mi.Properties.SupportsGodMode
+                ? new[] { PowerModeState.Quiet, PowerModeState.Balance, PowerModeState.Performance, PowerModeState.GodMode }
+                : new[] { PowerModeState.Quiet, PowerModeState.Balance, PowerModeState.Performance };
         else
             return new[] { PowerModeState.Efficiency, PowerModeState.Balance, PowerModeState.Performance };
     }
@@ -102,8 +113,10 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
         var compatibility = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
         if (compatibility.isCompatible)
         {
-            if (state is PowerModeState.Performance or PowerModeState.GodMode && await Power.IsPowerAdapterConnectedAsync() is PowerAdapterStatus.Disconnected)
-                throw new InvalidOperationException($"Can't switch to {state} power mode on battery."); ;
+            if (state is PowerModeState.Performance or PowerModeState.GodMode
+                && !AllowAllPowerModesOnBattery
+                && await Power.IsPowerAdapterConnectedAsync() is PowerAdapterStatus.Disconnected)
+                throw new InvalidOperationException($"Can't switch to {state} power mode on battery.");
 
             var currentState = await GetStateAsync().ConfigureAwait(false);
 
@@ -111,8 +124,12 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
 
             var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
             if (mi.Properties.HasPerformanceModeSwitchingBug && currentState == PowerModeState.Quiet && state == PowerModeState.Performance)
+            {
+                _thermalModeListener.SuppressNext();
                 await base.SetStateAsync(PowerModeState.Balance).ConfigureAwait(false);
+            }
 
+            _thermalModeListener.SuppressNext();
             await base.SetStateAsync(state).ConfigureAwait(false);
         }
         else
@@ -120,7 +137,7 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
             Power.PowerSetActiveOverlayScheme(new Guid(defaultGenericPowerModes[state]));
         }
 
-        await _listener.NotifyAsync(state).ConfigureAwait(false);
+        await _powerModeListener.NotifyAsync(state).ConfigureAwait(false);
 
         if (state == PowerModeState.GodMode)
             await _godModeController.ApplyStateAsync().ConfigureAwait(false);
@@ -129,10 +146,9 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
     public async Task EnsureCorrectPowerPlanIsSetAsync()
     {
         var compatibility = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
-        if (compatibility.isCompatible)
-        {
+        if (compatibility.isCompatible) {
             var state = await GetStateAsync().ConfigureAwait(false);
-            await Power.ActivatePowerPlanAsync(state, true).ConfigureAwait(false);
+            await _powerPlanController.ActivatePowerPlanAsync(state, true).ConfigureAwait(false);
         }
     }
 

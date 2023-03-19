@@ -79,6 +79,18 @@ Or install using [winget](https://github.com/microsoft/winget-cli):
 
 `winget install BartoszCichecki.LenovoLegionToolkit`
 
+#### Problems with .NET?
+
+If for whatever reason LLT installer did not setup .NET properly:
+1. Go to https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+2. Find section ".NET Desktop Runtime"
+3. Download x64 Windows installer
+4. Run the installer
+
+#### Want to help with testing?
+
+Join the [Legion Series Discord](https://discord.com/invite/legionseries) and head to `#legion-toolkit` channel. Beta versions of future releases are posted there frequently!
+
 ## Compatibility
 
 Lenovo Legion Toolkit is made for Lenovo Legion laptops released in 2020 or later.
@@ -102,7 +114,7 @@ LLT currently does not support installation for multiple users, so if you need t
 The app allows to:
 
 - Change settings like power mode, battery charging mode, etc. that are available only through Vantage.
-- Access to Custom Mode available only in Legion Zone, including Fan Control on 2022 models.
+- Access to Custom Mode available only in Legion Zone, including Fan Control on 2022 and newer models.
 - Spectrum RGB and White backlight keyboards support.
 - Change display refresh rate (built-in display only).
 - Deactivate discrete GPU (nVidia only).
@@ -121,6 +133,7 @@ Custom Mode is supported on following BIOS versions:
 * K1CN31WW and higher
 * K9CN34WW and higher
 * KFCN32WW and higher
+* KWCN28WW and higher
 * J2CN40WW and higher
 * JUCN51WW and higher
 * JYCN39WW and higher
@@ -196,6 +209,18 @@ If you downloaded the installer from this projects website, you shouldn't worry 
 
 Sometimes new motherboard does not contain correct model numbers and serial numbers. You should try [this tutorial](https://laptopwiki.eu/index.php/guides-and-tutorials/important-bios-related-guides/recover-original-model-sku-values/) to try and recover them. If that method does not succeed, you can workaround by going to `%LOCALAPPDATA%\LenovoLegionToolkit` and creating an `args.txt` file. Inside that file paste `--skip-compat-check`. This will disable all compatibility checks in LLT. Use this workaround only if correct model number, serial number etc. can't be restored.
 
+#### Why I can't switch to Performance or Custom Power Mode on battery?
+
+Starting with version 2.11.0, LLT's behavior was aligned with Vantage and Legion Zone and it does not allow using them without an appropriate power source.
+
+If for whatever reason you want to use these modes on battery anyway, you can use `--allow-all-power-modes-on-battery` argument. Note that Power Limits and other settings are not applied correctly on most devices when laptop is not connected to full power AC adapter and unpredictable and weird behavior is expected.
+
+You have been warned, but here are the steps to allow all power modes without AC adapter:
+1. Go to `%LOCALAPPDATA%\LenovoLegionToolkit`
+2. Create `args.txt` file in there (if you already have it edit)
+3. Paste `--allow-all-power-modes-on-battery`
+4. Start LLT
+
 #### Will iCue RGB keyboards be supported?
 
 No. Check out [OpenRGB](https://openrgb.org/) project.
@@ -216,7 +241,7 @@ To disable RGB:
 
 #### Can you add fan control to other models?
 
-If you have a 2022 Legion that does not support it make a ticket and we'll try to add suport for it. Older models will not be supported due to technical limitations.
+If you have a 2022 or newer Legion that does not support it make a ticket and we'll try to add suport for it. Older models will not be supported due to technical limitations.
 
 #### Why is my Fn lock is flipped?
 
@@ -226,10 +251,19 @@ Some devices experience this issue and frankly, I have no idea why. It is known 
 
 It seems that some BIOS versions indeed have a weird issue when using Fn+Q. Only hope is to wait for Lenovo to fix it.
 
+#### Why isn't a game detected, even though Actions are configured properly?
+
+Game detection feature is built on top of Windows' game detection, meaning LLT will react to EXE files that Windows considers "a game". That also means that if you nuked Xbox Game Bar from your installation, there is 99.9% chance this feature will not work.
+
+Windows probably doesn't recognize all games properly, but you can mark any program as game in Xbox Game Bar settings (Win+G). You can find list of recognized games in registry: `HKEY_CURRENT_USER\System\GameConfigStore\Children`.
+
+#### Why don't I see the custom tooltip when I hover LLT icon in tray?
+
+In Windows 10 and 11, Microsoft did plenty of changes to the tray, breaking a lot of things on the way. As a results custom tooltips not always work properly. Solution? Update your Windows and keep fingers crossed.
+
 ## How to collect logs?
 
 In some cases it will be super useful if you can provide logs that this app can create. This helps with debugging and other issue solving.
-
 
 To collect logs:
 
@@ -240,15 +274,6 @@ To collect logs:
 5. Close LLT (also make sure it's gone from tray area)
 6. Again, in `Run` (Win+R) type `"%LOCALAPPDATA%\LenovoLegionToolkit\log"`
 7. You should see at least one file. Theses are the logs you should attach to the issue.
-
-
-On version 2.6.0 or higher, you can also enable logs in a quicker way:
-
-1. Make sure that Lenovo Legion Toolkit is not running (also gone from tray area).
-2. Hold down Left Ctrl and Left Shift
-3. Double click Lenovo Legion Toolkit icon
-4. LLT will start and in the title bar you should see: `[LOGGING ENABLED]` you will also see an orange link to open the log file.
-
 
 ## Contribution
 

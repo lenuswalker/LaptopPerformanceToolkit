@@ -1510,16 +1510,16 @@ Die Protokollierung wird automatisch aktiviert, wenn Sie fortfahren möchten.</v
     <value>Ja</value>
   </data>
   <data name="MicrophoneControl_Title" xml:space="preserve">
-    <value>Mikrofon-Stummschaltung</value>
+    <value>Mikrofon</value>
   </data>
   <data name="MicrophoneControl_Message" xml:space="preserve">
-    <value>Alle verfügbaren Mikrofone stumm schalten.</value>
+    <value>Wenn ausgeschaltet, werden Mikrofone stummgeschaltet.</value>
   </data>
   <data name="MicrophoneAutomationStepControl_Title" xml:space="preserve">
-    <value>Mikrofon-Stummschaltung</value>
+    <value>Mikrofon</value>
   </data>
   <data name="MicrophoneAutomationStepControl_Message" xml:space="preserve">
-    <value>Alle verfügbaren Mikrofone stumm schalten.</value>
+    <value>Wenn ausgeschaltet, werden Mikrofone stummgeschaltet.</value>
   </data>
   <data name="ResolutionControl_Title" xml:space="preserve">
     <value>Auflösung</value>
@@ -1550,7 +1550,7 @@ WARNUNG: Diese Aktion wird nicht korrekt ausgeführt, wenn der interne Bildschir
 WARNUNG: Diese Aktion wird nicht korrekt ausgeführt, wenn der interne Bildschirm ausgeschaltet ist.</value>
   </data>
   <data name="DashboardPage_Display_Title" xml:space="preserve">
-    <value>Display</value>
+    <value>Bildschirm</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightControl_Title" xml:space="preserve">
     <value>Tastaturbeleuchtung</value>
@@ -1757,5 +1757,11 @@ Diese Einstellung wird nur wirksam, wenn der benutzerdefinierte Modus aktiviert 
   </data>
   <data name="BatteryPage_LowLevel" xml:space="preserve">
     <value>Akkustand niedrig</value>
+  </data>
+  <data name="PowerPlansWindow_AoAcWarning_Title" xml:space="preserve">
+	  <value>S0 Low Power Idle-Modell erkannt</value>
+  </data>
+  <data name="PowerPlansWindow_AoAcWarning_Message" xml:space="preserve">
+	  <value>Windows meldet, dass dieses Gerät den modernen Standby-Modus unterstützt. Die Verwendung anderer Energiesparpläne als "Ausbalanciert" kann zu unerwartetem Verhalten führen.</value>
   </data>
 </root>

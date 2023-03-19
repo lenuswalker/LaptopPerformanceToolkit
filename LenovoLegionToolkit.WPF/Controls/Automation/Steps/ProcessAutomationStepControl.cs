@@ -1,13 +1,14 @@
-﻿using LenovoLegionToolkit.Lib.Automation.Steps;
-using LenovoLegionToolkit.Lib;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using Wpf.Ui.Common;
-using System.Threading.Tasks;
-using LenovoLegionToolkit.WPF.Windows.Automation;
-using System;
+using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib.Automation.Steps;
 using LenovoLegionToolkit.Lib.Extensions;
-using System.Linq;
+using LenovoLegionToolkit.WPF.Extensions;
+using LenovoLegionToolkit.WPF.Windows.Automation;
 
 namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps;
 
