@@ -61,20 +61,10 @@ public partial class StatusTrayPopup
 
     private void Refresh(CancellationToken token)
     {
-        var compatibility = Compatibility.IsCompatibleAsync().Result;
-        if (compatibility.isCompatible) 
-        {
-            RefreshPowerMode(token);
-            RefreshDiscreteGpu(token);
-            RefreshBattery(token);
-            RefreshUpdate(token);
-        }
-        else 
-        {
-            RefreshPowerMode(token);
-            RefreshDiscreteGpu(token);
-            RefreshUpdate(token);
-        }
+        RefreshPowerMode(token);
+        RefreshDiscreteGpu(token);
+        RefreshBattery(token);
+        RefreshUpdate(token);
     }
 
     private void Clear()
@@ -176,7 +166,7 @@ public partial class StatusTrayPopup
             if (token.IsCancellationRequested)
                 return;
 
-            if (!t.IsCompletedSuccessfully)
+            if (!batteryInformationTask.IsCompletedSuccessfully)
             {
                 if (Log.Instance.IsTraceEnabled)
                     Log.Instance.Trace($"Failed to refresh battery.", t.Exception?.InnerException);
@@ -184,7 +174,11 @@ public partial class StatusTrayPopup
             }
 
             var batteryInfo = batteryInformationTask.Result;
-            var batteryState = batteryStateTask.Result;
+            BatteryState batteryState;
+            if (batteryStateTask.IsCompletedSuccessfully) 
+                batteryState = batteryStateTask.Result;
+            else 
+                batteryState = BatteryState.Normal;
 
             var symbol = (int)Math.Round(batteryInfo.BatteryPercentage / 10.0) switch
             {

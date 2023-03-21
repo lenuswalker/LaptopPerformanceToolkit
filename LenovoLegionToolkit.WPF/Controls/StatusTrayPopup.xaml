@@ -13,9 +13,9 @@
     IsVisibleChanged="StatusTrayPopup_IsVisibleChanged"
     mc:Ignorable="d">
     <UserControl.Resources>
-        <system:Double x:Key="SymbolFontSize">24</system:Double>
-        <system:Double x:Key="PrimaryFontSize">14</system:Double>
-        <system:Double x:Key="SecondaryFontSize">14</system:Double>
+        <system:Double x:Key="SymbolFontSize">16</system:Double>
+        <system:Double x:Key="PrimaryFontSize">12</system:Double>
+        <system:Double x:Key="SecondaryFontSize">11</system:Double>
         <system:Double x:Key="TertiaryFontSize">12</system:Double>
     </UserControl.Resources>
 
@@ -24,7 +24,8 @@
         BorderBrush="{DynamicResource MenuBorderColorDefaultBrush}"
         BorderThickness="0.5"
         CornerRadius="8">
-        <StackPanel>
+        <StackPanel
+            Margin="0,0,0,16">
 
             <TextBlock
                 x:Name="_title"
@@ -188,7 +189,7 @@
                     Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
             </Grid>
 
-            <Grid Margin="16,16,16,16">
+            <Grid x:Name="_batteryGrid" Margin="16,16,16,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
