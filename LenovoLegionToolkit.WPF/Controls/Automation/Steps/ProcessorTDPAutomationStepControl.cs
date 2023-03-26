@@ -152,9 +152,7 @@ public class ProcessorTDPAutomationStepControl : AbstractAutomationStepControl<P
         return _stackPanel;
     }
 
-    protected override async Task RefreshAsync() {
-        var state = await AutomationStep.GetAllStatesAsync();
-
+    protected override Task RefreshAsync() {
         _stapm.Value = AutomationStep.State.Stapm;
         _fast.Value = AutomationStep.State.Fast;
         _slow.Value = AutomationStep.State.Slow;
@@ -166,6 +164,8 @@ public class ProcessorTDPAutomationStepControl : AbstractAutomationStepControl<P
             _interval.IsEnabled = true;
         else
             _interval.IsEnabled = false;
+
+        return Task.CompletedTask;
     }
 
     protected override void OnFinishedLoading() { }
