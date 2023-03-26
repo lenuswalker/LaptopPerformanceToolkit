@@ -8,12 +8,19 @@ public interface IAutomationPipelineTrigger
     [JsonIgnore]
     string DisplayName { get; }
 
-    Task<bool> IsSatisfiedAsync(IAutomationEvent automationEvent);
+    Task<bool> IsMatchingEvent(IAutomationEvent automationEvent);
+
+    Task<bool> IsMatchingState();
 
     IAutomationPipelineTrigger DeepCopy();
 }
 
 public interface IDisallowDuplicatesAutomationPipelineTrigger : IAutomationPipelineTrigger { }
+
+public interface ICompositeAutomationPipelineTrigger : IAutomationPipelineTrigger
+{
+    public IAutomationPipelineTrigger[] Triggers { get; }
+}
 
 public interface INativeWindowsMessagePipelineTrigger : IDisallowDuplicatesAutomationPipelineTrigger { }
 
@@ -25,7 +32,7 @@ public interface IPowerModeAutomationPipelineTrigger : IAutomationPipelineTrigge
 {
     PowerModeState PowerModeState { get; }
 
-    IAutomationPipelineTrigger DeepCopy(PowerModeState powerModeState);
+    IPowerModeAutomationPipelineTrigger DeepCopy(PowerModeState powerModeState);
 }
 
 public interface IGameAutomationPipelineTrigger : IDisallowDuplicatesAutomationPipelineTrigger { }
@@ -34,7 +41,7 @@ public interface IProcessesAutomationPipelineTrigger : IAutomationPipelineTrigge
 {
     ProcessInfo[] Processes { get; }
 
-    IAutomationPipelineTrigger DeepCopy(ProcessInfo[] processes);
+    IProcessesAutomationPipelineTrigger DeepCopy(ProcessInfo[] processes);
 }
 
 public interface ITimeAutomationPipelineTrigger : IAutomationPipelineTrigger
@@ -42,12 +49,14 @@ public interface ITimeAutomationPipelineTrigger : IAutomationPipelineTrigger
     bool IsSunrise { get; }
     bool IsSunset { get; }
     Time? Time { get; }
-    IAutomationPipelineTrigger DeepCopy(bool isSunrise, bool isSunset, Time? time);
+
+    ITimeAutomationPipelineTrigger DeepCopy(bool isSunrise, bool isSunset, Time? time);
 }
 
-public interface ITimeIntervalAutomationPipelineTrigger
+public interface ITimeIntervalAutomationPipelineTrigger : IAutomationPipelineTrigger
 {
     int? ACInterval { get; }
     int? DCInterval { get; }
-    IAutomationPipelineTrigger DeepCopy(int? acInterval, int? dcInterval);
+
+    ITimeIntervalAutomationPipelineTrigger DeepCopy(int? acInterval, int? dcInterval);
 }

@@ -110,6 +110,10 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
         if (!allStates.Contains(state))
             throw new InvalidOperationException($"Unsupported power mode {state}.");
 
+        var currentState = await GetStateAsync().ConfigureAwait(false);
+
+        var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
+
         var compatibility = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
         if (compatibility.isCompatible)
         {
@@ -118,12 +122,9 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
                 && await Power.IsPowerAdapterConnectedAsync() is PowerAdapterStatus.Disconnected)
                 throw new InvalidOperationException($"Can't switch to {state} power mode on battery.");
 
-            var currentState = await GetStateAsync().ConfigureAwait(false);
-
             await _aiModeController.StopAsync(currentState).ConfigureAwait(false);
 
-            var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
-            if (mi.Properties.HasPerformanceModeSwitchingBug && currentState == PowerModeState.Quiet && state == PowerModeState.Performance)
+            if (mi.Properties.HasQuietToPerformanceModeSwitchingBug && currentState == PowerModeState.Quiet && state == PowerModeState.Performance)
             {
                 _thermalModeListener.SuppressNext();
                 await base.SetStateAsync(PowerModeState.Balance).ConfigureAwait(false);
@@ -138,6 +139,9 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
         }
 
         await _powerModeListener.NotifyAsync(state).ConfigureAwait(false);
+
+        if (mi.Properties.HasPowerLimitRestoreBug && currentState == PowerModeState.GodMode)
+            await _godModeController.RestoreDefaultsInOtherPowerModeAsync(state).ConfigureAwait(false);
 
         if (state == PowerModeState.GodMode)
             await _godModeController.ApplyStateAsync().ConfigureAwait(false);

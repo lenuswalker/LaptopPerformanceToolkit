@@ -62,7 +62,6 @@ public class IoCModule : Module
         builder.Register<WinKeyListener>().AutoActivateListener();
 
         builder.Register<AIModeController>();
-        builder.Register<CPUBoostModeController>();
         builder.Register<GodModeController>();
         builder.Register<GodModeControllerV1>();
         builder.Register<GodModeControllerV2>();
@@ -77,9 +76,9 @@ public class IoCModule : Module
         builder.Register<UpdateChecker>();
         builder.Register<WarrantyChecker>();
 
+        builder.Register<PackageDownloaderFactory>();
         builder.Register<PCSupportPackageDownloader>();
         builder.Register<VantagePackageDownloader>();
-        builder.Register<PackageDownloaderFactory>();
 
         builder.Register<SunriseSunset>();
     }

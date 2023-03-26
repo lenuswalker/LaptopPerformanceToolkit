@@ -34,7 +34,7 @@ public partial class DashboardPage
     {
         _loader.IsLoading = true;
 
-        var initializedTasks = new List<Task> { Task.Delay(TimeSpan.FromMilliseconds(500)) };
+        var initializedTasks = new List<Task> { Task.Delay(TimeSpan.FromSeconds(1)) };
 
         ScrollHost?.ScrollToTop();
 

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
 
-public class TimeIntervalAutomationPipelineTrigger : IAutomationPipelineTrigger
+public class TimeIntervalAutomationPipelineTrigger : ITimeIntervalAutomationPipelineTrigger
 {
     public int? ACInterval { get; }
     public int? DCInterval { get; }
@@ -19,28 +19,37 @@ public class TimeIntervalAutomationPipelineTrigger : IAutomationPipelineTrigger
         DCInterval = dcInterval;
     }
 
-    public async Task<bool> IsSatisfiedAsync(IAutomationEvent automationEvent)
+    public async Task<bool> IsMatchingEvent(IAutomationEvent automationEvent) 
     {
+        if (automationEvent is not TimeIntervalAutomationEvent e)
+            return false;
+
         PowerAdapterStatus powerAdapterStatus = await Power.IsPowerAdapterConnectedAsync().ConfigureAwait(false);
 
-        if (automationEvent is StartupAutomationEvent)
-            return false;
-
-        if (automationEvent is not TimeIntervalAutomationEvent timeIntervalAutomationEvent)
-            return false;
-
-        if (powerAdapterStatus == PowerAdapterStatus.Connected && ACInterval == timeIntervalAutomationEvent.Interval)
+        if (powerAdapterStatus == PowerAdapterStatus.Connected && ACInterval == e.Interval)
             return true;
 
-        if (powerAdapterStatus == PowerAdapterStatus.Disconnected && DCInterval == timeIntervalAutomationEvent.Interval)
+        if (powerAdapterStatus == PowerAdapterStatus.Disconnected && DCInterval == e.Interval)
+            return true;
+
+
+        return false;
+    }
+
+    public async Task<bool> IsMatchingState() 
+    {
+        if (ACInterval is int && (int) ACInterval > 0) 
+            return true;
+
+        if (ACInterval is int && (int)ACInterval > 0) 
             return true;
 
         return false;
     }
 
-    public IAutomationPipelineTrigger DeepCopy(int? acInterval, int? dcInterval) => new TimeIntervalAutomationPipelineTrigger(acInterval, dcInterval);
-
     public IAutomationPipelineTrigger DeepCopy() => new TimeIntervalAutomationPipelineTrigger(ACInterval, DCInterval);
+
+    public ITimeIntervalAutomationPipelineTrigger DeepCopy(int? acInterval, int? dcInterval) => new TimeIntervalAutomationPipelineTrigger(ACInterval, DCInterval);
     
     public override bool Equals(object? obj)
     {
@@ -50,4 +59,6 @@ public class TimeIntervalAutomationPipelineTrigger : IAutomationPipelineTrigger
     }
 
     public override int GetHashCode() => HashCode.Combine(ACInterval, DCInterval);
+
+    public override string ToString() => $"{nameof(ACInterval)}: {ACInterval}, {nameof(DCInterval)}: {DCInterval}";
 }

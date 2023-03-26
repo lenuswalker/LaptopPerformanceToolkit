@@ -9,6 +9,8 @@ using LenovoLegionToolkit.Lib.Automation.Steps;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Windows.Automation;
+using LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
+using System.Collections.Generic;
 
 namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps;
 
@@ -49,7 +51,14 @@ public class ProcessAutomationStepControl : AbstractAutomationStepControl<Proces
             else
                 processes = new ProcessInfo[] { };
 
-            var window = new PickProcessesWindow(processes)
+            List<IProcessesAutomationPipelineTrigger> triggers = new();
+
+            if (_state.State == ProcessState.Start) 
+                triggers.Add(new ProcessesAreRunningAutomationPipelineTrigger(processes));
+            else 
+                triggers.Add(new ProcessesStopRunningAutomationPipelineTrigger(processes));
+
+            var window = new AutomationPipelineTriggerConfigurationWindow(triggers)
             {
                 Owner = Window.GetWindow(this),
                 WindowStartupLocation = WindowStartupLocation.CenterOwner,
@@ -57,7 +66,14 @@ public class ProcessAutomationStepControl : AbstractAutomationStepControl<Proces
             };
             window.OnSave += (s, e) =>
             {
-                _state.Processes = e;
+                IProcessesAutomationPipelineTrigger triggers;
+
+                if (_state.State == ProcessState.Start)
+                    triggers = (ProcessesAreRunningAutomationPipelineTrigger)e;
+                else
+                    triggers = (ProcessesStopRunningAutomationPipelineTrigger)e;
+
+                _state.Processes = triggers.Processes;
                 RaiseChanged();
             };
             window.ShowDialog();
