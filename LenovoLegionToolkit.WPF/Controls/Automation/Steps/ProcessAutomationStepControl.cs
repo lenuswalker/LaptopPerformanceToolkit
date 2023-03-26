@@ -98,26 +98,23 @@ public class ProcessAutomationStepControl : AbstractAutomationStepControl<Proces
         RaiseChanged();
     }
 
-    protected override void OnFinishedLoading() => _comboBoxState.Visibility = Visibility.Visible;
-
-    protected override Task RefreshAsync()
+    protected override async Task RefreshAsync() 
     {
-        var items = AutomationStep.GetAllStatesAsync();
+        var state = await AutomationStep.GetAllStatesAsync();
         var selectedItem = AutomationStep.State.State;
 
-        static string displayName(ProcessState value)
-        {
+        static string displayName(ProcessState value) {
             if (value is Enum e)
                 return e.GetDisplayName();
             return value.ToString() ?? throw new InvalidOperationException("Unsupported type");
         }
 
         _state.State = selectedItem;
-        _comboBoxState.SetItems(items.Result, selectedItem, displayName);
-        _comboBoxState.IsEnabled = items.Result.Any();
+        _comboBoxState.SetItems(state, selectedItem, displayName);
+        _comboBoxState.IsEnabled = state.Any();
 
         _state.Processes = AutomationStep.State.Processes;
-
-        return Task.CompletedTask;
     }
+
+    protected override void OnFinishedLoading() => _comboBoxState.Visibility = Visibility.Visible;
 }

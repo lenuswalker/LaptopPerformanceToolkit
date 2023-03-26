@@ -22,6 +22,7 @@ public class AutomationProcessor
     private readonly GameAutomationListener _gameAutomationListener;
     private readonly ProcessAutomationListener _processListener;
     private readonly TimeAutomationListener _timeListener;
+    private readonly TimeIntervalAutomationListener _timeIntervalListener;
 
     private readonly AsyncLock _ioLock = new();
     private readonly AsyncLock _runLock = new();
@@ -39,7 +40,8 @@ public class AutomationProcessor
         PowerModeListener powerModeListener,
         GameAutomationListener gameAutomationListener,
         ProcessAutomationListener processListener,
-        TimeAutomationListener timeListener)
+        TimeAutomationListener timeListener,
+        TimeIntervalAutomationListener timeIntervalListener)
     {
         _settings = settings ?? throw new ArgumentNullException(nameof(settings));
         _nativeWindowsMessageListener = nativeWindowsMessageListener ?? throw new ArgumentNullException(nameof(nativeWindowsMessageListener));
@@ -48,6 +50,7 @@ public class AutomationProcessor
         _gameAutomationListener = gameAutomationListener ?? throw new ArgumentNullException(nameof(gameAutomationListener));
         _processListener = processListener ?? throw new ArgumentNullException(nameof(processListener));
         _timeListener = timeListener ?? throw new ArgumentNullException(nameof(timeListener));
+        _timeIntervalListener = timeIntervalListener ?? throw new ArgumentNullException(nameof(timeIntervalListener));
     }
 
     #region Initialization / pipeline reloading
@@ -62,6 +65,7 @@ public class AutomationProcessor
             _gameAutomationListener.Changed += GameAutomationListener_Changed;
             _processListener.Changed += ProcessListener_Changed;
             _timeListener.Changed += TimeListener_Changed;
+            _timeIntervalListener.Changed += TimeIntervalListener_Changed;
 
             _pipelines = _settings.Store.Pipelines.ToList();
 
@@ -278,6 +282,11 @@ public class AutomationProcessor
         await ProcessEvent(e).ConfigureAwait(false);
     }
 
+    private async void TimeIntervalListener_Changed(object? sender, int interval) {
+        var e = new TimeIntervalAutomationEvent { Interval = interval };
+        await ProcessEvent(e).ConfigureAwait(false);
+    }
+
     #endregion
 
     #region Event processing
@@ -311,6 +320,7 @@ public class AutomationProcessor
         await _gameAutomationListener.StopAsync().ConfigureAwait(false);
         await _processListener.StopAsync().ConfigureAwait(false);
         await _timeListener.StopAsync().ConfigureAwait(false);
+        await _timeIntervalListener.StopAsync().ConfigureAwait(false);
 
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Stopped listeners...");
@@ -349,6 +359,13 @@ public class AutomationProcessor
                 Log.Instance.Trace($"Starting time listener...");
 
             await _timeListener.StartAsync().ConfigureAwait(false);
+        }
+
+        if (triggers.OfType<TimeIntervalAutomationPipelineTrigger>().Any()) {
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Starting time listener...");
+
+            await _timeIntervalListener.StartAsync().ConfigureAwait(false);
         }
 
         if (Log.Instance.IsTraceEnabled)

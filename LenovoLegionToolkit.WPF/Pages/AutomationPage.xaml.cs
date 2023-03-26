@@ -170,6 +170,8 @@ public partial class AutomationPage
             new OneLevelWhiteKeyboardBacklightAutomationStep(default),
             new OverDriveAutomationStep(default),
             new PowerModeAutomationStep(default),
+            new ProcessAutomationStep(default),
+            new ProcessorTDPAutomationStep(default),
             new RefreshRateAutomationStep(default),
             new ResolutionAutomationStep(default),
             new RGBKeyboardBacklightAutomationStep(default),

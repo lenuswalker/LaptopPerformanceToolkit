@@ -40,5 +40,5 @@ public class ProcessAutomationStep : IAutomationStep
         }
     }
 
-    IAutomationStep IAutomationStep.DeepCopy() => new ProcessAutomationStep(State);
+    public IAutomationStep DeepCopy() => new ProcessAutomationStep(State);
 }

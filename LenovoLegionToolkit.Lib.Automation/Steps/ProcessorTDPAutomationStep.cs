@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Automation.Utils;
 using Newtonsoft.Json;
 
@@ -12,7 +13,9 @@ public class ProcessorTDPAutomationStep : IAutomationStep
 
     [JsonConstructor]
     public ProcessorTDPAutomationStep(ProcessorTDPState state) => State = state;
-    
+
+    public Task<ProcessState[]> GetAllStatesAsync() => Task.FromResult(Enum.GetValues<ProcessState>());
+
     public Task<bool> IsSupportedAsync() => Task.FromResult(true);
 
     public async Task RunAsync()
@@ -33,5 +36,5 @@ public class ProcessorTDPAutomationStep : IAutomationStep
             await _manager.StopAsync().ConfigureAwait(false);
     }
 
-    IAutomationStep IAutomationStep.DeepCopy() => new ProcessorTDPAutomationStep(State);
+    public IAutomationStep DeepCopy() => new ProcessorTDPAutomationStep(State);
 }
