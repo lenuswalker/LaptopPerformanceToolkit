@@ -52,20 +52,32 @@ public partial class MainWindow
         _contextMenuHelper.BringToForeground = BringToForeground;
         _contextMenuHelper.Close = App.Current.ShutdownAsync;
 
-        _trayIcon.TrayToolTip = new StatusTrayPopup();
-        _trayIcon.TrayToolTipResolved.Style = null;
-        _trayIcon.TrayToolTipResolved.VerticalOffset = -8;
-
         _trayIcon.ToolTipText = Resource.AppName;
 
-        _trayIcon.ContextMenu = _contextMenuHelper.ContextMenu;
-        _trayIcon.TrayContextMenuOpen += (_, _) =>
+        _trayIcon.PreviewTrayToolTipOpen += (_, _) =>
         {
-            if (_trayIcon.TrayToolTipResolved is { } tooltip)
-                tooltip.IsOpen = false;
+            _trayIcon.TrayToolTip ??= new StatusTrayPopup();
+            _trayIcon.TrayToolTipResolved.Style = null;
+            _trayIcon.TrayToolTipResolved.VerticalOffset = -8;
         };
 
-        _trayIcon.TrayLeftMouseUp += (_, _) => BringToForeground();
+        _trayIcon.PreviewTrayContextMenuOpen += (_, _) =>
+        {
+            if (_trayIcon.TrayToolTipResolved is { IsOpen: true } tooltip)
+                tooltip.IsOpen = false;
+
+            _trayIcon.ContextMenu ??= _contextMenuHelper.ContextMenu;
+        };
+
+        _trayIcon.TrayLeftMouseUp += (_, _) =>
+        {
+            if (_trayIcon.TrayToolTipResolved is { IsOpen: true } tooltip)
+                tooltip.IsOpen = false;
+
+            BringToForeground();
+        };
+
+        _trayIcon.NoLeftClickDelay = true;
     }
 
     private void MainWindow_SourceInitialized(object? sender, EventArgs e) => RestoreSize();
