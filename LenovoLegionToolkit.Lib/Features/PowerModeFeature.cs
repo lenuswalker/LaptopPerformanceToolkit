@@ -63,6 +63,28 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
         {
             _thermalModeListener.SuppressNext();
             await base.SetStateAsync(PowerModeState.Balance).ConfigureAwait(false);
+            await Task.Delay(TimeSpan.FromMilliseconds(500)).ConfigureAwait(false);
+        }
+
+        if (mi.Properties.HasGodModeToOtherModeSwitchingBug && currentState == PowerModeState.GodMode && state != PowerModeState.GodMode)
+        {
+            _thermalModeListener.SuppressNext();
+
+            switch (state)
+            {
+                case PowerModeState.Quiet:
+                    await base.SetStateAsync(PowerModeState.Performance).ConfigureAwait(false);
+                    break;
+                case PowerModeState.Balance:
+                    await base.SetStateAsync(PowerModeState.Quiet).ConfigureAwait(false);
+                    break;
+                case PowerModeState.Performance:
+                    await base.SetStateAsync(PowerModeState.Balance).ConfigureAwait(false);
+                    break;
+            }
+
+            await Task.Delay(TimeSpan.FromMilliseconds(500)).ConfigureAwait(false);
+
         }
 
         _thermalModeListener.SuppressNext();
@@ -70,8 +92,6 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
 
         await _powerModeListener.NotifyAsync(state).ConfigureAwait(false);
 
-        if (mi.Properties.HasPowerLimitRestoreBug && currentState == PowerModeState.GodMode)
-            await _godModeController.RestoreDefaultsInOtherPowerModeAsync(state).ConfigureAwait(false);
 
         if (state == PowerModeState.GodMode)
             await _godModeController.ApplyStateAsync().ConfigureAwait(false);
