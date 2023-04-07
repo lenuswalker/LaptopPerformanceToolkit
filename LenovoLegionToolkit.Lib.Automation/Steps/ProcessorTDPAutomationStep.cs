@@ -14,7 +14,7 @@ public class ProcessorTDPAutomationStep : IAutomationStep
     [JsonConstructor]
     public ProcessorTDPAutomationStep(ProcessorTDPState state) => State = state;
 
-    public Task<ProcessState[]> GetAllStatesAsync() => Task.FromResult(Enum.GetValues<ProcessState>());
+    public Task<PowerType[]> GetAllStatesAsync() => Task.FromResult(Enum.GetValues<PowerType>());
 
     public Task<bool> IsSupportedAsync() => Task.FromResult(true);
 
