@@ -19,6 +19,7 @@ namespace LenovoLegionToolkit.WPF.Controls;
 public partial class StatusTrayPopup
 {
     private readonly PowerModeFeature _powerModeFeature = IoCContainer.Resolve<PowerModeFeature>();
+    private readonly ProcessorController _processorController = IoCContainer.Resolve<ProcessorController>();
     private readonly BatteryFeature _batteryFeature = IoCContainer.Resolve<BatteryFeature>();
     private readonly GodModeController _godModeController = IoCContainer.Resolve<GodModeController>();
     private readonly GPUController _gpuController = IoCContainer.Resolve<GPUController>();
@@ -64,6 +65,7 @@ public partial class StatusTrayPopup
         try
         {
             RefreshPowerMode(token);
+            RefreshProcessorTDP(token);
             RefreshDiscreteGpu(token);
             RefreshBattery(token);
             RefreshUpdate(token);
@@ -82,6 +84,11 @@ public partial class StatusTrayPopup
         _powerModeValueIndicator.Fill = null;
         _powerModePresetLabel.Visibility = Visibility.Collapsed;
         _powerModePresetValueLabel.Visibility = Visibility.Collapsed;
+
+        _processorTDPFastLabel.Content = null;
+        _processorTDPSlowLabel.Content = null;
+        _processorTDPFastValueLabel.Visibility = Visibility.Collapsed;
+        _processorTDPSlowValueLabel.Visibility = Visibility.Collapsed;
 
         _gpuPowerStateValueLabel.Content = null;
         _gpuActive.Visibility = Visibility.Collapsed;
@@ -141,6 +148,62 @@ public partial class StatusTrayPopup
                     Log.Instance.Trace($"Error continuing on power mode refresh.", ex);
             }
         }, TaskScheduler.FromCurrentSynchronizationContext());
+    }
+
+    private void RefreshProcessorTDP(CancellationToken token) 
+    {
+
+        if (!_processorController.IsSupported())
+        {
+            _processorTDPGrid.Visibility = Visibility.Collapsed;
+            return;
+        }
+
+        if (_processorController.GetType() == typeof(IntelProcessorController))
+        {
+            _processorTDPFastLabel.Content = "PL1";
+            _processorTDPSlowLabel.Content = "PL2";
+        }
+        else
+        {
+            _processorTDPFastLabel.Content = "Fast";
+            _processorTDPSlowLabel.Content = "Slow";
+        }
+
+        var _controller = _processorController.GetCurrent();
+
+        _controller.GetTDPLimitsAsync().ContinueWith(t =>
+        {
+            try
+            {
+                if (token.IsCancellationRequested)
+                    return;
+
+                if (!t.IsCompletedSuccessfully)
+                {
+                    if (Log.Instance.IsTraceEnabled)
+                        Log.Instance.Trace($"Failed to refresh Processor TDP.", t.Exception?.InnerException);
+                    return;
+                }
+
+                var limits = t.Result;
+
+                _processorTDPFastValueLabel.Content = limits[PowerType.Fast] + " W";
+                _processorTDPSlowValueLabel.Content = limits[PowerType.Slow] + " W";
+
+                _processorTDPFastValueLabel.Visibility = Visibility.Visible;
+                _processorTDPSlowValueLabel.Visibility = Visibility.Visible;
+
+                _processorTDPGrid.Visibility = Visibility.Visible;
+            }
+            catch (TaskCanceledException) { }
+            catch (Exception ex)
+            {
+                if (Log.Instance.IsTraceEnabled)
+                    Log.Instance.Trace($"Error continuing on Processor TDP refresh.", ex);
+            }
+        }, TaskScheduler.FromCurrentSynchronizationContext());
+
     }
 
     private void RefreshDiscreteGpu(CancellationToken token)

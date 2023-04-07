@@ -101,6 +101,74 @@
                     Visibility="Collapsed" />
             </Grid>
 
+            <Grid x:Name="_processorTDPGrid" Margin="16,16,16,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <wpfui:SymbolIcon
+                    Grid.Column="0"
+                    FontSize="{StaticResource SymbolFontSize}"
+                    Symbol="DeveloperBoardLightning20" />
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="8,0,0,0"
+                    VerticalContentAlignment="Center"
+                    Content="{x:Static resources:Resource.StatusTrayPopup_ProcessorTDP}"
+                    FontSize="{StaticResource PrimaryFontSize}"
+                    FontWeight="Medium"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+
+                <Label
+                    x:Name="_processorTDPFastLabel"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="8,4,0,0"
+                    VerticalContentAlignment="Center"
+                    Content="{x:Static resources:Resource.StatusTrayPopup_Mode}"
+                    FontSize="{StaticResource SecondaryFontSize}"
+                    FontWeight="Medium"
+                    Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                <Label
+                    x:Name="_processorTDPFastValueLabel"
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    Margin="16,4,0,0"
+                    HorizontalAlignment="Right"
+                    FontSize="{StaticResource SecondaryFontSize}"
+                    Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+
+
+                <Label
+                    x:Name="_processorTDPSlowLabel"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Margin="8,4,0,0"
+                    VerticalContentAlignment="Center"
+                    Content="{x:Static resources:Resource.StatusTrayPopup_Mode}"
+                    FontSize="{StaticResource SecondaryFontSize}"
+                    FontWeight="Medium"
+                    Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                <Label
+                    x:Name="_processorTDPSlowValueLabel"
+                    Grid.Row="2"
+                    Grid.Column="3"
+                    Margin="16,4,0,0"
+                    HorizontalAlignment="Right"
+                    FontSize="{StaticResource SecondaryFontSize}"
+                    Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+
+            </Grid>
+
             <Grid x:Name="_gpuGrid" Margin="16,16,16,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />

@@ -4499,6 +4499,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Processor TDP.
+        /// </summary>
+        public static string StatusTrayPopup_ProcessorTDP {
+            get {
+                return ResourceManager.GetString("StatusTrayPopup_ProcessorTDP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update available!.
         /// </summary>
         public static string StatusTrayPopup_UpdateAvailable {

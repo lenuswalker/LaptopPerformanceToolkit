@@ -124,6 +124,20 @@ public class ProcessorController
         return 0;
     }
 
+    public virtual Task<int> GetTDPLimitAsync(PowerType type)
+    {
+        if (Log.Instance.IsTraceEnabled)
+            Log.Instance.Trace($"User requested {type} TDP limit.");
+        return Task.FromResult(0);
+    }
+
+    public virtual Task<Dictionary<PowerType, int>> GetTDPLimitsAsync()
+    {
+        if (Log.Instance.IsTraceEnabled)
+            Log.Instance.Trace($"User requested TDP limits.");
+        return Task.FromResult(new Dictionary<PowerType, int>());
+    }
+
     public virtual void SetGPUClock(double clock, int result = 0)
     {
         /*

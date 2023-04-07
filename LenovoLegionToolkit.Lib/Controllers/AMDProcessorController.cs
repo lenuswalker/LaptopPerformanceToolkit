@@ -1,5 +1,9 @@
 ﻿using LenovoLegionToolkit.Lib.System;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Threading.Tasks;
 using System.Timers;
 
 namespace LenovoLegionToolkit.Lib.Controllers;
@@ -157,6 +161,138 @@ public class AMDProcessorController : ProcessorController
             }
             return limit;
         }
+    }
+
+    public override Task<int> GetTDPLimitAsync(PowerType type)
+    {
+        if (ry == IntPtr.Zero)
+            return Task.FromResult(0);
+
+        lock (base.IsBusy)
+        {
+            int limit = 0;
+
+            switch (type)
+            {
+                case PowerType.Fast:
+                    limit = (int)RyzenAdj.get_fast_limit(ry);
+                    break;
+                case PowerType.Slow:
+                    limit = (int)RyzenAdj.get_slow_limit(ry);
+                    break;
+                case PowerType.Stapm:
+                    limit = (int)RyzenAdj.get_stapm_limit(ry);
+                    break;
+            }
+            return Task.FromResult(limit);
+        }
+    }
+
+    public override Task<Dictionary<PowerType, int>> GetTDPLimitsAsync()
+    {
+        if (ry == IntPtr.Zero)
+            return Task.FromResult(new Dictionary<PowerType, int>());
+
+        lock (base.IsBusy)
+        {
+            Dictionary<PowerType, int> limits = getSensorValuesRAdj();
+
+            return Task.FromResult(limits);
+        }
+    }
+
+    public static decimal getSensorValueRAdj(string SensorName)
+    {
+        using (Process process = new Process())
+        {
+            int i = 0;
+
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "AMD", "ryzenadj.exe");
+            process.StartInfo.FileName = path;
+            process.StartInfo.Arguments = "-i";
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.CreateNoWindow = true;
+            process.Start();
+
+            // Synchronously read the standard output of the spawned process.
+            StreamReader reader = process.StandardOutput;
+            string output = reader.ReadToEnd();
+
+            string[] lines = output.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+
+            if (lines != null || lines.Length != 0)
+            {
+                do { i++; } while (!lines[i].Contains(SensorName));
+
+                if (lines[i].Contains(SensorName))
+                {
+                    lines[i] = lines[i].Substring(25);
+                    lines[i] = lines[i].Remove(lines[i].Length - 21);
+                    lines[i] = lines[i].Replace("|", null);
+                    lines[i] = lines[i].Replace(" ", null);
+
+                    return Convert.ToDecimal(lines[i].ToString());
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            process.WaitForExit();
+        }
+
+        return 0;
+    }
+
+    public static Dictionary<PowerType, int> getSensorValuesRAdj()
+    {
+        Dictionary<PowerType, int> limits = new();
+        using (Process process = new Process())
+        {
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "AMD", "ryzenadj.exe");
+            process.StartInfo.FileName = path;
+            process.StartInfo.Arguments = "-i";
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.CreateNoWindow = true;
+            process.Start();
+
+            // Synchronously read the standard output of the spawned process.
+            StreamReader reader = process.StandardOutput;
+            string output = reader.ReadToEnd();
+
+            string[] lines = output.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+
+            if (lines != null || lines.Length != 0)
+            {
+                foreach (string line in lines)
+                {
+                    if (line.Contains("PPT LIMIT FAST"))
+                    {
+                        string result = line;
+                        result = result.Substring(25);
+                        result = result.Remove(result.Length - 21);
+                        result = result.Replace("|", null);
+                        result = result.Replace(" ", null);
+
+                        limits.Add(PowerType.Fast, (int)Convert.ToDecimal(result.ToString()));
+                    }
+                    if (line.Contains("PPT LIMIT SLOW"))
+                    {
+                        string result = line;
+                        result = result.Substring(25);
+                        result = result.Remove(result.Length - 21);
+                        result = result.Replace("|", null);
+                        result = result.Replace(" ", null);
+
+                        limits.Add(PowerType.Slow, (int)Convert.ToDecimal(result.ToString()));
+                    }
+                }
+            }
+        }
+
+        return limits;
     }
 
     public override void SetGPUClock(double clock, int result)

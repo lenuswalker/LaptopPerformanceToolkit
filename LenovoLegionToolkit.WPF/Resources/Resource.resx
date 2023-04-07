@@ -1750,4 +1750,7 @@ This settings takes effect only when Custom Mode is enabled.</value>
   <data name="PoweredOff" xml:space="preserve">
     <value>Powered Off</value>
   </data>
+  <data name="StatusTrayPopup_ProcessorTDP" xml:space="preserve">
+    <value>Processor TDP</value>
+  </data>
 </root>

@@ -2,6 +2,7 @@
 using LenovoLegionToolkit.Lib.Utils;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Timers;
 
 namespace LenovoLegionToolkit.Lib.Controllers;
@@ -136,6 +137,44 @@ public class IntelProcessorController : ProcessorController
                     break;
             }
             return limit;
+        }
+    }
+
+    public override Task<int> GetTDPLimitAsync(PowerType type)
+    {
+
+        lock (base.IsBusy)
+        {
+            int limit = 0;
+
+            switch (type)
+            {
+                case PowerType.Fast:
+                    limit = (int)platform.get_short_limit(false);
+                    break;
+                case PowerType.Slow:
+                    limit = (int)platform.get_long_limit(false);
+                    break;
+            }
+            return Task.FromResult(limit);
+        }
+    }
+
+    public override Task<Dictionary<PowerType, int>> GetTDPLimitsAsync()
+    {
+
+        lock (base.IsBusy)
+        {
+            Dictionary<PowerType, int> limits = new();
+            int limit = 0;
+
+            limit = platform.get_short_limit(false);
+            limits.Add(PowerType.Fast, limit);
+
+            limit = platform.get_long_limit(false);
+            limits.Add(PowerType.Slow, limit);
+            
+            return Task.FromResult(limits);
         }
     }
 
