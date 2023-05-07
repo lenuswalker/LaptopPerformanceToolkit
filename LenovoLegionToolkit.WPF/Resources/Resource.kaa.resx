@@ -665,12 +665,9 @@ Aldınnan raxmet!</value>
   <data name="FnLockControl_Title" xml:space="preserve">
     <value>Fn Lock</value>
   </data>
-  <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
+  <data name="GodModeSettingsWindow_Advanced_MinOffset_Message" xml:space="preserve">
     <value>DIQQAT!
-Abaylı bolıń, ayrım noutbuklar kórsetkinen de joqarılaw quwatlılıq shegine jetiwi múmkin. Bul variant kutilmegen háreketke alıp keliwi múmkin, sonlıqtan, ne qılıp atırǵanıńızdı bilmeseńiz, 0 mánisin qaldırıń.</value>
-  </data>
-  <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
-    <value>Maksimal quwatlılıq sheginiń jıljıwı</value>
+Ayrim noutbuklar o'zleri ko'rsetken quwatliliqtan to'menlewin qabillawi mu'mkin, biraq abayli bolin'. Bul tan'law ku'tilmegen na'tiyje beriwi mu'mkin, sonliqtan eger ne islep atirg'anin'izdi bilmesen'iz, buni 0 de qaldirin'.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
     <value>Eger ne islep atırǵanıńızdı bilmeseńiz, tómendegi variantlardı ózgertpeń.</value>
@@ -933,7 +930,7 @@ Eger de tolıq ekranlı baǵdarlamalar menen mashqalalar bolsa, bul varianttı q
     <value>Júklew juwmaqlandı</value>
   </data>
   <data name="PackageControl_GeneralError_Title" xml:space="preserve">
-    <value>Qanday da bir qátelik boldı</value>
+    <value>Qátelik júz berdi</value>
   </data>
   <data name="PackageControl_Http404Error_Message" xml:space="preserve">
     <value>Server 404 qátelik kodın qaytardı.</value>
@@ -945,7 +942,7 @@ Eger de tolıq ekranlı baǵdarlamalar menen mashqalalar bolsa, bul varianttı q
     <value>Internet baylanısı islep turǵanın tekseriń.</value>
   </data>
   <data name="PackageControl_HttpGeneralError_Title" xml:space="preserve">
-    <value>Qanday da bir qátelik boldı</value>
+    <value>Qátelik júz berdi</value>
   </data>
   <data name="PackageControl_IsUpdateInfo" xml:space="preserve">
     <value>Jańalanıw bar!</value>
@@ -964,7 +961,7 @@ Durıs paketlerdi ornatıp atırǵanıńızǵa isenim kámil etiń.</value>
     <value>Qurılma modeliniń túri hám OS durıs kórsetilgenin tekseriń.</value>
   </data>
   <data name="PackagesPage_DownloadFailed_Title" xml:space="preserve">
-    <value>Qanday da bir qátelik boldı</value>
+    <value>Qátelik júz berdi</value>
   </data>
   <data name="PackagesPage_DownloadInProgress_Message" xml:space="preserve">
     <value>Sortlawdı ózgertiw, nátiyjelerdi filtrlew, paketlerdi jasırıw yamasa dizimdi jańalaw júklep alıwdı toqtatadı. Dawam etiwdi qáleysiz be?</value>

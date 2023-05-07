@@ -178,6 +178,7 @@ public partial class AutomationPage
             new RunAutomationStep(default, default),
             new SpectrumKeyboardBacklightBrightnessAutomationStep(0),
             new SpectrumKeyboardBacklightProfileAutomationStep(1),
+            new SpectrumKeyboardBacklightImportProfileAutomationStep(default),
             new TouchpadLockAutomationStep(default),
             new TurnOffMonitorsAutomationStep(),
             new WhiteKeyboardBacklightAutomationStep(default),
