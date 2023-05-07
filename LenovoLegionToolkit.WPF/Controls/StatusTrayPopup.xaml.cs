@@ -160,7 +160,9 @@ public partial class StatusTrayPopup
             return;
         }
 
-        if (_processorController.GetType() == typeof(IntelProcessorController))
+        var _controller = _processorController.GetCurrent();
+
+        if (_controller.GetType() == typeof(IntelProcessorController))
         {
             _processorTDPFastLabel.Content = "PL1";
             _processorTDPSlowLabel.Content = "PL2";
@@ -170,8 +172,6 @@ public partial class StatusTrayPopup
             _processorTDPFastLabel.Content = "Fast";
             _processorTDPSlowLabel.Content = "Slow";
         }
-
-        var _controller = _processorController.GetCurrent();
 
         _controller.GetTDPLimitsAsync().ContinueWith(t =>
         {

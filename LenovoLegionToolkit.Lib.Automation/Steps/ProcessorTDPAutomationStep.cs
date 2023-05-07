@@ -22,14 +22,20 @@ public class ProcessorTDPAutomationStep : IAutomationStep
     {
         await _manager.InitializeAsync();
 
-        if (State.Stapm != 0)
-            _manager.SetTDPLimit(PowerType.Stapm, State.Stapm);
-        if (State.Fast != 0)
-            _manager.SetTDPLimit(PowerType.Fast, State.Fast);
-        if (State.Slow != 0)
-            _manager.SetTDPLimit(PowerType.Slow, State.Slow);
-        if (State.UseMSR)
-            _manager.SetMSRLimits(State.Slow, State.Fast);
+        switch (State.UseMSR)
+        {
+            case true:
+                if (State.Fast != 0 && State.Slow != 0)
+                    _manager.SetMSRLimits(State.Slow, State.Fast);
+                break;
+            case false:
+                if (State.Fast != 0)
+                    _manager.SetTDPLimit(PowerType.Fast, State.Fast);
+                if (State.Slow != 0)
+                    _manager.SetTDPLimit(PowerType.Slow, State.Slow);
+                break;
+        }
+            
         if (State.MaintainTDP)
             await _manager.StartAsync(State.Stapm, State.Fast, State.Slow, State.UseMSR, State.Interval).ConfigureAwait(false);
         else
