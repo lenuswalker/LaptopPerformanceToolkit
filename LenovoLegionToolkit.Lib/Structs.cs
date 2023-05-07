@@ -238,6 +238,7 @@ public readonly struct GodModePreset
     public StepperValue? GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline { get; init; }
     public FanTableInfo? FanTableInfo { get; init; }
     public bool? FanFullSpeed { get; init; }
+    public int? MinValueOffset { get; init; }
     public int? MaxValueOffset { get; init; }
 
     public override string ToString() =>
@@ -255,6 +256,7 @@ public readonly struct GodModePreset
         $" {nameof(GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline)}: {GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline}," +
         $" {nameof(FanTableInfo)}: {FanTableInfo}," +
         $" {nameof(FanFullSpeed)}: {FanFullSpeed}," +
+        $" {nameof(MinValueOffset)}: {MinValueOffset}," +
         $" {nameof(MaxValueOffset)}: {MaxValueOffset}";
 }
 
@@ -468,6 +470,8 @@ public readonly struct RGBColor
     public static bool operator ==(RGBColor left, RGBColor right) => left.Equals(right);
 
     public static bool operator !=(RGBColor left, RGBColor right) => !left.Equals(right);
+
+    public override string ToString() => $"{nameof(R)}: {R}, {nameof(G)}: {G}, {nameof(B)}: {B}";
 }
 
 public readonly struct RGBKeyboardBacklightBacklightPresetDescription
@@ -527,6 +531,14 @@ public readonly struct RGBKeyboardBacklightBacklightPresetDescription
 
     #endregion
 
+    public override string ToString() =>
+        $"{nameof(Effect)}: {Effect}," +
+        $" {nameof(Speed)}: {Speed}," +
+        $" {nameof(Brightness)}: {Brightness}," +
+        $" {nameof(Zone1)}: {Zone1}," +
+        $" {nameof(Zone2)}: {Zone2}," +
+        $" {nameof(Zone3)}: {Zone3}," +
+        $" {nameof(Zone4)}: {Zone4}";
 }
 
 public readonly struct RGBKeyboardBacklightState
@@ -651,22 +663,6 @@ public readonly struct Resolution : IDisplayName, IEquatable<Resolution>, ICompa
 
 }
 
-public readonly struct SpectrumKeyboardBacklightKeys
-{
-    public bool All { get; }
-    public ushort[] KeyCodes { get; }
-
-    [JsonConstructor]
-    private SpectrumKeyboardBacklightKeys(bool all, ushort[] keyCodes)
-    {
-        All = all;
-        KeyCodes = keyCodes;
-    }
-
-    public static SpectrumKeyboardBacklightKeys AllKeys() => new(true, Array.Empty<ushort>());
-    public static SpectrumKeyboardBacklightKeys SomeKeys(ushort[] keyCodes) => new(false, keyCodes);
-}
-
 public readonly struct SpectrumKeyboardBacklightEffect
 {
     public SpectrumKeyboardBacklightEffectType Type { get; }
@@ -674,21 +670,21 @@ public readonly struct SpectrumKeyboardBacklightEffect
     public SpectrumKeyboardBacklightDirection Direction { get; }
     public SpectrumKeyboardBacklightClockwiseDirection ClockwiseDirection { get; }
     public RGBColor[] Colors { get; }
-    public SpectrumKeyboardBacklightKeys Keys { get; }
+    public ushort[] Keys { get; }
 
     public SpectrumKeyboardBacklightEffect(SpectrumKeyboardBacklightEffectType type,
         SpectrumKeyboardBacklightSpeed speed,
         SpectrumKeyboardBacklightDirection direction,
         SpectrumKeyboardBacklightClockwiseDirection clockwiseDirection,
         RGBColor[] colors,
-        SpectrumKeyboardBacklightKeys keys)
+        ushort[] keys)
     {
         Type = type;
         Speed = speed;
         Direction = direction;
         ClockwiseDirection = clockwiseDirection;
         Colors = colors;
-        Keys = keys;
+        Keys = type.IsAllLightsEffect() ? Array.Empty<ushort>() : keys;
     }
 }
 

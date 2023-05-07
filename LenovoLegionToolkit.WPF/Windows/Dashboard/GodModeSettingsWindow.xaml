@@ -60,22 +60,20 @@
 
                     <wpfui:CardControl
                         x:Name="_vantageRunningWarningInfoBar"
-                        Margin="0,0,0,16"
+                        Margin="0,16,0,0"
                         Icon="Warning24">
                         <wpfui:CardControl.Header>
                             <TextBlock Text="Custom Mode settings will not be applied correctly when Lenovo Vantage is running." TextWrapping="Wrap" />
                         </wpfui:CardControl.Header>
-                        <wpfui:Button Click="VantageRunningWarningInfoBarDismissButton_Click" Icon="Dismiss24" />
                     </wpfui:CardControl>
 
                     <wpfui:CardControl
                         x:Name="_legionZoneRunningWarningInfoBar"
-                        Margin="0,0,0,16"
+                        Margin="0,16,0,0"
                         Icon="Warning24">
                         <wpfui:CardControl.Header>
                             <TextBlock Text="Custom Mode settings will not be applied correctly when LegionZone is running." TextWrapping="Wrap" />
                         </wpfui:CardControl.Header>
-                        <wpfui:Button Click="LegionZoneRunningWarningInfoBarDismissButton_Click" Icon="Dismiss24" />
                     </wpfui:CardControl>
 
                     <TextBlock
@@ -276,6 +274,20 @@
                             IntegersOnly="True"
                             Max="100"
                             Min="0" />
+                    </wpfui:CardControl>
+
+                    <wpfui:CardControl x:Name="_minValueOffsetCardControl" Margin="0,0,0,8">
+                        <wpfui:CardControl.Header>
+                            <controls:CardHeaderControl Title="{x:Static resources:Resource.GodModeSettingsWindow_Advanced_MinOffset_Title}" Subtitle="{x:Static resources:Resource.GodModeSettingsWindow_Advanced_MinOffset_Message}" />
+                        </wpfui:CardControl.Header>
+                        <wpfui:NumberBox
+                            x:Name="_minValueOffsetNumberBox"
+                            Width="120"
+                            Margin="32,0,0,0"
+                            ClearButtonEnabled="False"
+                            IntegersOnly="True"
+                            Max="0"
+                            Min="-100" />
                     </wpfui:CardControl>
 
                 </StackPanel>
