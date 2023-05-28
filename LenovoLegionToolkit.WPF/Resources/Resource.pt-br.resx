@@ -1386,9 +1386,6 @@ A reinicialização é recomendada após alterar esta opção.</value>
     <value>Permite alternar entre as GPU's integrada e dedicada.
 Requer reinicialização.</value>
   </data>
-  <data name="ToggleHybridModeControl_RestartRequired_Message" xml:space="preserve">
-    <value>Mudar o modo hibrido requer uma reinicialização. Deseja reiniciar o computador agora?</value>
-  </data>
   <data name="ToggleHybridModeControl_RestartRequired_Title" xml:space="preserve">
     <value>Reinicialização necessária</value>
   </data>
@@ -1752,12 +1749,12 @@ Esta configuração somente terá efeito se o Modo Personalizado estiver ativo.<
     <value>Desligado</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Title" xml:space="preserve">
-	  <value>Importar perfil de iluminação do teclado</value>
+    <value>Importar perfil de iluminação do teclado</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Message" xml:space="preserve">
-	  <value>Importar e aplicar iluminação do teclado no perfil atual.</value>
+    <value>Importar e aplicar iluminação do teclado no perfil atual.</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Path" xml:space="preserve">
-	  <value>Caminho</value>
+    <value>Caminho</value>
   </data>
 </root>

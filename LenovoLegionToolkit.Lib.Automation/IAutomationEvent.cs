@@ -1,4 +1,6 @@
-﻿namespace LenovoLegionToolkit.Lib.Automation;
+﻿using System;
+
+namespace LenovoLegionToolkit.Lib.Automation;
 
 public interface IAutomationEvent { }
 
@@ -29,4 +31,11 @@ public readonly struct ProcessAutomationEvent : IAutomationEvent
 public readonly struct TimeAutomationEvent : IAutomationEvent
 {
     public Time Time { get; init; }
+    public DayOfWeek Day { get; init; }
+}
+
+public readonly struct UserInactivityAutomationEvent : IAutomationEvent
+{
+    public TimeSpan InactivityTimeSpan { get; init; }
+    public TimeSpan ResolutionTimeSpan { get; init; }
 }

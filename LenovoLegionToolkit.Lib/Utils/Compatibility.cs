@@ -15,6 +15,7 @@ public static class Compatibility
     private static readonly string _allowedVendor = "LENOVO";
 
     private static readonly string[] _allowedModelsPrefix = {
+        // Worldwide variants
         "17ACH",
         "17ARH",
         "17ITH",
@@ -22,6 +23,7 @@ public static class Compatibility
 
         "16ACH",
         "16ARH",
+        "16ARX",
         "16IAH",
         "16IAX",
         "16IRX",
@@ -34,6 +36,8 @@ public static class Compatibility
         "15IMH",
         "15ITH",
 
+        // Chinese variants
+        "IRH8",
         "R9000",
         "R7000",
         "Y9000",
@@ -154,7 +158,8 @@ public static class Compatibility
         (string, int?)[] supportedBiosVersions =
         {
             ("KWCN", 28),
-            ("LPCN", 27)
+            ("LPCN", 27),
+            ("M3CN", 32)
         };
 
         return IsBiosVersionMatch(currentBiosVersionString, supportedBiosVersions);
