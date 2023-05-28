@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using Humanizer;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Automation;
 using LenovoLegionToolkit.Lib.Automation.Pipeline;
@@ -256,9 +257,20 @@ public class AutomationPipelineControl : UserControl
             if (tt.Time is not null)
             {
                 var local = DateTimeExtensions.UtcFrom(tt.Time.Value.Hour, tt.Time.Value.Minute).ToLocalTime();
-                result += $" | {string.Format(Resource.AutomationPipelineControl_SubtitlePart_AtTime, local.Hour, local.Minute)}";
+                if (tt.Days.Any())
+                {
+                    var localizedDayStrings = tt.Days.Select(day => Resource.Culture.DateTimeFormat.GetDayName(day));
+                    result += $" | {string.Join(", ", localizedDayStrings)} {string.Format(Resource.AutomationPipelineControl_SubtitlePart_AtTime.ToLower(Resource.Culture), local.Hour, local.Minute)}";
+                }
+                else
+                {
+                    result += $" | {string.Format(Resource.AutomationPipelineControl_SubtitlePart_AtTime, local.Hour, local.Minute)}";
+                }
             }
         }
+
+        if (AutomationPipeline.Trigger is IUserInactivityPipelineTrigger ut && ut.InactivityTimeSpan > TimeSpan.Zero)
+            result += $" | {string.Format(Resource.AutomationPipelineControl_SubtitlePart_After, ut.InactivityTimeSpan.Humanize(culture: Resource.Culture))}";
 
         return result;
     }

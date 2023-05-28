@@ -95,6 +95,7 @@ public partial class AutomationPipelineTriggerConfigurationWindow
     {
         IPowerModeAutomationPipelineTrigger => true,
         IProcessesAutomationPipelineTrigger => true,
+        IUserInactivityPipelineTrigger ut when ut.InactivityTimeSpan > TimeSpan.Zero => true,
         ITimeAutomationPipelineTrigger => true,
         ITimeIntervalAutomationPipelineTrigger => true,
         _ => false
@@ -104,6 +105,7 @@ public partial class AutomationPipelineTriggerConfigurationWindow
     {
         IPowerModeAutomationPipelineTrigger pmt => new PowerModeAutomationPipelineTriggerTabItemContent(pmt),
         IProcessesAutomationPipelineTrigger pt => new ProcessAutomationPipelineTriggerTabItemControl(pt),
+        IUserInactivityPipelineTrigger ut when ut.InactivityTimeSpan > TimeSpan.Zero => new UserInactivityPipelineTriggerTabItemContent(ut),
         ITimeAutomationPipelineTrigger tt => new TimeAutomationPipelineTriggerTabItemContent(tt),
         ITimeIntervalAutomationPipelineTrigger ti => new TimeIntervalAutomationPipelineTriggerTabItemContent(ti),
         _ => null

@@ -16,6 +16,7 @@ public class IoCModule : Module
         builder.Register<ProcessAutomationListener>(true);
         builder.Register<TimeAutomationListener>(true);
         builder.Register<TimeIntervalAutomationListener>(true);
+        builder.Register<UserInactivityListener>(true);
 
         builder.Register<AutomationProcessor>();
     }

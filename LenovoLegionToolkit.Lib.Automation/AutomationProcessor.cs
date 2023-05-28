@@ -23,6 +23,7 @@ public class AutomationProcessor
     private readonly ProcessAutomationListener _processListener;
     private readonly TimeAutomationListener _timeListener;
     private readonly TimeIntervalAutomationListener _timeIntervalListener;
+    private readonly UserInactivityListener _userInactivityListener;
 
     private readonly AsyncLock _ioLock = new();
     private readonly AsyncLock _runLock = new();
@@ -41,7 +42,8 @@ public class AutomationProcessor
         GameAutomationListener gameAutomationListener,
         ProcessAutomationListener processListener,
         TimeAutomationListener timeListener,
-        TimeIntervalAutomationListener timeIntervalListener)
+        TimeIntervalAutomationListener timeIntervalListener,
+        UserInactivityListener userInactivityListener)
     {
         _settings = settings ?? throw new ArgumentNullException(nameof(settings));
         _nativeWindowsMessageListener = nativeWindowsMessageListener ?? throw new ArgumentNullException(nameof(nativeWindowsMessageListener));
@@ -51,6 +53,7 @@ public class AutomationProcessor
         _processListener = processListener ?? throw new ArgumentNullException(nameof(processListener));
         _timeListener = timeListener ?? throw new ArgumentNullException(nameof(timeListener));
         _timeIntervalListener = timeIntervalListener ?? throw new ArgumentNullException(nameof(timeIntervalListener));
+        _userInactivityListener = userInactivityListener ?? throw new ArgumentNullException(nameof(userInactivityListener));
     }
 
     #region Initialization / pipeline reloading
@@ -66,6 +69,7 @@ public class AutomationProcessor
             _processListener.Changed += ProcessListener_Changed;
             _timeListener.Changed += TimeListener_Changed;
             _timeIntervalListener.Changed += TimeIntervalListener_Changed;
+            _userInactivityListener.Changed += UserInactivityListener_Changed;
 
             _pipelines = _settings.Store.Pipelines.ToList();
 
@@ -276,9 +280,19 @@ public class AutomationProcessor
         await ProcessEvent(e).ConfigureAwait(false);
     }
 
-    private async void TimeListener_Changed(object? sender, Time time)
+    private async void TimeListener_Changed(object? sender, (Time time, DayOfWeek day) timeDay)
     {
-        var e = new TimeAutomationEvent { Time = time };
+        var e = new TimeAutomationEvent { Time = timeDay.time, Day = timeDay.day };
+        await ProcessEvent(e).ConfigureAwait(false);
+    }
+
+    private async void UserInactivityListener_Changed(object? sender, (TimeSpan resolution, uint tickCount) inactivityInfo)
+    {
+        var e = new UserInactivityAutomationEvent
+        {
+            InactivityTimeSpan = inactivityInfo.resolution * inactivityInfo.tickCount,
+            ResolutionTimeSpan = inactivityInfo.resolution
+        };
         await ProcessEvent(e).ConfigureAwait(false);
     }
 
@@ -321,6 +335,7 @@ public class AutomationProcessor
         await _processListener.StopAsync().ConfigureAwait(false);
         await _timeListener.StopAsync().ConfigureAwait(false);
         await _timeIntervalListener.StopAsync().ConfigureAwait(false);
+        await _userInactivityListener.StopAsync().ConfigureAwait(false);
 
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Stopped listeners...");
@@ -353,7 +368,7 @@ public class AutomationProcessor
             await _processListener.StartAsync().ConfigureAwait(false);
         }
 
-        if (triggers.OfType<TimeAutomationPipelineTrigger>().Any())
+        if (triggers.OfType<ITimeAutomationPipelineTrigger>().Any())
         {
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Starting time listener...");
@@ -366,6 +381,14 @@ public class AutomationProcessor
                 Log.Instance.Trace($"Starting time listener...");
 
             await _timeIntervalListener.StartAsync().ConfigureAwait(false);
+        }
+
+        if (triggers.OfType<IUserInactivityPipelineTrigger>().Any())
+        {
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Starting user inactivity listener...");
+
+            await _userInactivityListener.StartAsync().ConfigureAwait(false);
         }
 
         if (Log.Instance.IsTraceEnabled)

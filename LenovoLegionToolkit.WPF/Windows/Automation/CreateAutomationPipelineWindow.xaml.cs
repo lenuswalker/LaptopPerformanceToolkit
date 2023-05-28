@@ -26,13 +26,15 @@ public partial class CreateAutomationPipelineWindow
         new GamesStopAutomationPipelineTrigger(),
         new ProcessesAreRunningAutomationPipelineTrigger(Array.Empty<ProcessInfo>()),
         new ProcessesStopRunningAutomationPipelineTrigger(Array.Empty<ProcessInfo>()),
+        new UserInactivityAutomationPipelineTrigger(TimeSpan.Zero),
+        new UserInactivityAutomationPipelineTrigger(TimeSpan.FromMinutes(1)),
         new LidOpenedAutomationPipelineTrigger(),
         new LidClosedAutomationPipelineTrigger(),
         new DisplayOnAutomationPipelineTrigger(),
         new DisplayOffAutomationPipelineTrigger(),
         new ExternalDisplayConnectedAutomationPipelineTrigger(),
         new ExternalDisplayDisconnectedAutomationPipelineTrigger(),
-        new TimeAutomationPipelineTrigger(false, false, null),
+        new TimeAutomationPipelineTrigger(false, false, null, Array.Empty<DayOfWeek>()),
         new TimeIntervalAutomationPipelineTrigger(null, null),
         new OnStartupAutomationPipelineTrigger()
     };
