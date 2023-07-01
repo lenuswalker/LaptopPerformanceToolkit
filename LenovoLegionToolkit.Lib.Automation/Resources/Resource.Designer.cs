@@ -97,6 +97,15 @@ namespace LenovoLegionToolkit.Lib.Automation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deactivate GPU.
+        /// </summary>
+        public static string DeactivateGpuQuickAction_Title {
+            get {
+                return ResourceManager.GetString("DeactivateGpuQuickAction_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} second.
         /// </summary>
         public static string Delay_Second {
@@ -196,11 +205,38 @@ namespace LenovoLegionToolkit.Lib.Automation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updates.
+        /// </summary>
+        public static string NotificationsSettingsWindow_Updates_Title {
+            get {
+                return ResourceManager.GetString("NotificationsSettingsWindow_Updates_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to On startup.
         /// </summary>
         public static string OnStartupAutomationPipelineTrigger_DisplayName {
             get {
                 return ResourceManager.GetString("OnStartupAutomationPipelineTrigger_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        public static string OverclockDiscreteGPUAutomationStepState_Off {
+            get {
+                return ResourceManager.GetString("OverclockDiscreteGPUAutomationStepState_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On.
+        /// </summary>
+        public static string OverclockDiscreteGPUAutomationStepState_On {
+            get {
+                return ResourceManager.GetString("OverclockDiscreteGPUAutomationStepState_On", resourceCulture);
             }
         }
         

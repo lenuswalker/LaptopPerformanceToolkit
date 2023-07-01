@@ -28,9 +28,45 @@ public readonly struct BatteryInformation
     public DateTime? FirstUseDate { get; init; }
 }
 
+public readonly struct BiosVersion
+{
+    public string Prefix { get; }
+    public int? Version { get; }
+
+    public BiosVersion(string prefix, int? version)
+    {
+        Prefix = prefix;
+        Version = version;
+    }
+
+    public bool IsHigherOrEqualThan(BiosVersion other)
+    {
+        if (!Prefix.Equals(other.Prefix, StringComparison.InvariantCultureIgnoreCase))
+            return false;
+
+        if (Version is null || other.Version is null)
+            return true;
+
+        return Version >= other.Version;
+    }
+
+    public bool IsLowerThan(BiosVersion other)
+    {
+        if (!Prefix.Equals(other.Prefix, StringComparison.InvariantCultureIgnoreCase))
+            return false;
+
+        if (Version is null || other.Version is null)
+            return true;
+
+        return Version < other.Version;
+    }
+
+    public override string ToString() => $"{nameof(Prefix)}: {Prefix}, {nameof(Version)}: {Version}";
+}
+
 public readonly struct Brightness
 {
-    public byte Value { get; init; }
+    public byte Value { get; private init; }
 
     public static implicit operator Brightness(byte value) => new() { Value = value };
 }
@@ -80,6 +116,8 @@ public readonly struct FanTable
 {
     // ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
     // ReSharper disable MemberCanBePrivate.Global
+    // ReSharper disable IdentifierTypo
+    // ReSharper disable InconsistentNaming
 
     public byte FSTM { get; init; }
     public byte FSID { get; init; }
@@ -97,11 +135,14 @@ public readonly struct FanTable
 
     // ReSharper restore AutoPropertyCanBeMadeGetOnly.Global
     // ReSharper restore MemberCanBePrivate.Global
+    // ReSharper restore IdentifierTypo
+    // ReSharper restore InconsistentNaming
 
     public FanTable(ushort[] fanTable)
     {
         if (fanTable.Length != 10)
-            throw new ArgumentException("Length must be 10.", nameof(fanTable));
+            // ReSharper disable once LocalizableElement
+            throw new ArgumentException("Fan table length must be 10.", nameof(fanTable));
 
         FSTM = 1;
         FSID = 0;
@@ -169,6 +210,36 @@ public readonly struct FanTableInfo
     public override string ToString() =>
         $"{nameof(Data)}: [{string.Join(", ", Data)}]," +
         $" {nameof(Table)}: {Table}";
+}
+
+public readonly struct GPUOverclockInfo
+{
+    public static readonly GPUOverclockInfo Zero = new();
+
+    public int CoreDeltaMhz { get; init; }
+    public int MemoryDeltaMhz { get; init; }
+
+
+    #region Equality
+
+    public override bool Equals(object? obj)
+    {
+        return obj is GPUOverclockInfo other && Equals(other);
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(CoreDeltaMhz, MemoryDeltaMhz);
+    }
+
+    public static bool operator ==(GPUOverclockInfo left, GPUOverclockInfo right) => left.Equals(right);
+
+    public static bool operator !=(GPUOverclockInfo left, GPUOverclockInfo right) => !left.Equals(right);
+
+    #endregion
+
+    public override string ToString() => $"{nameof(CoreDeltaMhz)}: {CoreDeltaMhz}, {nameof(MemoryDeltaMhz)}: {MemoryDeltaMhz}";
+
 }
 
 public readonly struct GodModeDefaults
@@ -253,9 +324,7 @@ public readonly struct HardwareId
     public string Device { get; init; }
     public string SubSystem { get; init; }
 
-    public static bool operator ==(HardwareId left, HardwareId right) => left.Equals(right);
-
-    public static bool operator !=(HardwareId left, HardwareId right) => !left.Equals(right);
+    #region Equality
 
     public override bool Equals(object? obj)
     {
@@ -275,29 +344,61 @@ public readonly struct HardwareId
     }
 
     public override int GetHashCode() => HashCode.Combine(Vendor, Device, SubSystem);
+
+    public static bool operator ==(HardwareId left, HardwareId right) => left.Equals(right);
+
+    public static bool operator !=(HardwareId left, HardwareId right) => !left.Equals(right);
+
+    #endregion
 }
 
 public readonly struct MachineInformation
 {
-    public readonly struct CompatibilityProperties
+    public readonly struct FeatureData
+    {
+        public static readonly FeatureData Unknown = new() { Source = SourceType.Unknown };
+
+        public enum SourceType
+        {
+            Unknown,
+            Flags,
+            CapabilityData
+        }
+
+        public SourceType Source { get; init; }
+        public bool IGPUMode { get; init; }
+        public bool NvidiaGPUDynamicDisplaySwitching { get; init; }
+        public bool InstantBootAc { get; init; }
+        public bool InstantBootUsbPowerDelivery { get; init; }
+        public bool AMDSmartShiftMode { get; init; }
+        public bool AMDSkinTemperatureTracking { get; init; }
+    }
+
+    public readonly struct PropertyData
     {
         public bool SupportsGodMode => SupportsGodModeV1 || SupportsGodModeV2;
 
         public (bool status, bool connectivity) SupportsAlwaysOnAc { get; init; }
         public bool SupportsGodModeV1 { get; init; }
         public bool SupportsGodModeV2 { get; init; }
-        public bool SupportsExtendedHybridMode { get; init; }
+        public bool SupportsIGPUMode { get; init; }
         public bool SupportsIntelligentSubMode { get; init; }
         public bool HasQuietToPerformanceModeSwitchingBug { get; init; }
         public bool HasGodModeToOtherModeSwitchingBug { get; init; }
+        public bool IsExcludedFromLenovoLighting { get; init; }
+        public bool IsExcludedFromPanelLogoLenovoLighting { get; init; }
     }
 
     public string Vendor { get; init; }
     public string MachineType { get; init; }
     public string Model { get; init; }
     public string SerialNumber { get; init; }
-    public string BiosVersion { get; init; }
-    public CompatibilityProperties Properties { get; init; }
+    public BiosVersion? BiosVersion { get; init; }
+    public string? BiosVersionRaw { get; init; }
+    public int SmartFanVersion { get; init; }
+    public int LegionZoneVersion { get; init; }
+    public FeatureData Features { get; init; }
+    public PropertyData Properties { get; init; }
 }
 
 public struct Package
@@ -309,6 +410,7 @@ public struct Package
     public string Category { get; init; }
     public string FileName { get; init; }
     public string FileSize { get; init; }
+    public string? FileCrc { get; init; }
     public DateTime ReleaseDate { get; init; }
     public string? Readme { get; init; }
     public string FileLocation { get; init; }
@@ -447,6 +549,8 @@ public readonly struct RGBColor
         B = b;
     }
 
+    #region Equality
+
     public override bool Equals(object? obj)
     {
         return obj is RGBColor color && R == color.R && G == color.G && B == color.B;
@@ -458,13 +562,15 @@ public readonly struct RGBColor
 
     public static bool operator !=(RGBColor left, RGBColor right) => !left.Equals(right);
 
+    #endregion
+
     public override string ToString() => $"{nameof(R)}: {R}, {nameof(G)}: {G}, {nameof(B)}: {B}";
 }
 
 public readonly struct RGBKeyboardBacklightBacklightPresetDescription
 {
     public RGBKeyboardBacklightEffect Effect { get; } = RGBKeyboardBacklightEffect.Static;
-    public RBGKeyboardBacklightSpeed Speed { get; } = RBGKeyboardBacklightSpeed.Slowest;
+    public RGBKeyboardBacklightSpeed Speed { get; } = RGBKeyboardBacklightSpeed.Slowest;
     public RGBKeyboardBacklightBrightness Brightness { get; } = RGBKeyboardBacklightBrightness.Low;
     public RGBColor Zone1 { get; } = RGBColor.White;
     public RGBColor Zone2 { get; } = RGBColor.White;
@@ -474,7 +580,7 @@ public readonly struct RGBKeyboardBacklightBacklightPresetDescription
     [JsonConstructor]
     public RGBKeyboardBacklightBacklightPresetDescription(
         RGBKeyboardBacklightEffect effect,
-        RBGKeyboardBacklightSpeed speed,
+        RGBKeyboardBacklightSpeed speed,
         RGBKeyboardBacklightBrightness brightness,
         RGBColor zone1,
         RGBColor zone2,
@@ -541,6 +647,49 @@ public readonly struct RGBKeyboardBacklightState
     }
 }
 
+public readonly struct SensorData
+{
+    public static readonly SensorData Empty = new()
+    {
+        Utilization = -1,
+        CoreClock = -1,
+        MaxCoreClock = -1,
+        MemoryClock = -1,
+        MaxMemoryClock = -1,
+        Temperature = -1,
+        MaxTemperature = -1,
+        FanSpeed = -1,
+        MaxFanSpeed = -1
+    };
+
+    public int Utilization { get; init; }
+    public int MaxUtilization { get; init; }
+    public int CoreClock { get; init; }
+    public int MaxCoreClock { get; init; }
+    public int MemoryClock { get; init; }
+    public int MaxMemoryClock { get; init; }
+    public int Temperature { get; init; }
+    public int MaxTemperature { get; init; }
+    public int FanSpeed { get; init; }
+    public int MaxFanSpeed { get; init; }
+}
+
+public readonly struct SensorsData
+{
+    public static readonly SensorsData Empty = new() { CPU = SensorData.Empty, GPU = SensorData.Empty };
+
+    public SensorData CPU { get; init; }
+    public SensorData GPU { get; init; }
+}
+
+public readonly struct SensorSettings
+{
+    public int CPUSensorID { get; init; }
+    public int GPUSensorID { get; init; }
+    public int CPUFanID { get; init; }
+    public int GPUFanID { get; init; }
+}
+
 public readonly struct DpiScale : IDisplayName, IEquatable<DpiScale>
 {
     public int Scale { get; }
@@ -601,8 +750,8 @@ public readonly struct RefreshRate : IDisplayName, IEquatable<RefreshRate>
 
 public readonly struct Resolution : IDisplayName, IEquatable<Resolution>, IComparable<Resolution>
 {
-    public int Width { get; }
-    public int Height { get; }
+    private int Width { get; }
+    private int Height { get; }
 
     [JsonIgnore]
     public string DisplayName => $"{Width} × {Height}";
@@ -743,7 +892,6 @@ public readonly struct Update
 
 public readonly struct WarrantyInfo
 {
-    public string? Status { get; init; }
     public DateTime? Start { get; init; }
     public DateTime? End { get; init; }
     public Uri? Link { get; init; }

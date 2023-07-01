@@ -183,6 +183,7 @@ public class AIModeController
                 $"SELECT * FROM LENOVO_INTELLIGENT_OP_LIST",
                 pdc =>
                 {
+                    // ReSharper disable once StringLiteralTypo
                     var processName = pdc["processname"].Value.ToString();
                     var mode = Convert.ToInt32(pdc["mode"].Value);
                     return (processName, mode);
@@ -237,7 +238,7 @@ public class AIModeController
         }
     }
 
-    private async Task SetIntelligentSubModeAsync(int subMode)
+    private static async Task SetIntelligentSubModeAsync(int subMode)
     {
         try
         {
@@ -256,7 +257,7 @@ public class AIModeController
         }
     }
 
-    private async Task<int> GetIntelligentSubModeAsync()
+    private static async Task<int> GetIntelligentSubModeAsync()
     {
         try
         {

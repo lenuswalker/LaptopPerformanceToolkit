@@ -6,7 +6,9 @@ public class DashboardSettings : AbstractSettings<DashboardSettings.DashboardSet
 {
     public class DashboardSettingsStore
     {
-        public DashboardGroup[] Groups { get; set; } = DashboardGroup.DefaultGroups;
+        public bool ShowSensors { get; set; } = true;
+        public int SensorsRefreshIntervalSeconds { get; set; } = 2;
+        public DashboardGroup[]? Groups { get; set; }
     }
 
     protected override DashboardSettingsStore Default => new();

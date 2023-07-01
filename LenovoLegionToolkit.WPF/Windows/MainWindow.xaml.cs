@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -14,7 +15,12 @@ using LenovoLegionToolkit.WPF.Pages;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
 using LenovoLegionToolkit.WPF.Windows.Utils;
+using Microsoft.Xaml.Behaviors.Core;
 using Wpf.Ui.Controls;
+#if !DEBUG
+using System.Reflection;
+using LenovoLegionToolkit.Lib.Extensions;
+#endif
 
 namespace LenovoLegionToolkit.WPF.Windows;
 
@@ -35,11 +41,17 @@ public partial class MainWindow
     {
         InitializeComponent();
 
+        Closing += MainWindow_Closing;
+        IsVisibleChanged += MainWindow_IsVisibleChanged;
+        Loaded += MainWindow_Loaded;
+        SourceInitialized += MainWindow_SourceInitialized;
+        StateChanged += MainWindow_StateChanged;
+
 #if DEBUG
-        _title.Text += " [DEBUG]";
+        _title.Text += Debugger.IsAttached ? " [DEBUG ATTACHED]" : " [DEBUG]";
 #else
-        var version = System.Reflection.Assembly.GetEntryAssembly()?.GetName().Version;
-        if (version == new Version(0, 0, 1, 0) || version?.Build == 99)
+        var version = Assembly.GetEntryAssembly()?.GetName().Version;
+        if (version is not null && version.IsBeta())
             _title.Text += " [BETA]";
 #endif
 
@@ -62,8 +74,11 @@ public partial class MainWindow
         {
             _trayIcon.PreviewTrayToolTipOpen += (_, _) =>
             {
-                _trayIcon.TrayToolTip ??= new StatusTrayPopup();
-                _trayIcon.TrayToolTipResolved.Style = null;
+                if (_trayIcon.TrayToolTip is not null)
+                    return;
+
+                _trayIcon.TrayToolTip = new StatusTrayPopup();
+                _trayIcon.TrayToolTipResolved.Style = Application.Current.Resources["PlainTooltip"] as Style;
                 _trayIcon.TrayToolTipResolved.VerticalOffset = -8;
             };
         }
@@ -92,6 +107,13 @@ public partial class MainWindow
         CheckForUpdates();
 
         InitializeTray();
+
+        InputBindings.Add(new KeyBinding(new ActionCommand(_navigationStore.NavigateToNext), Key.Tab, ModifierKeys.Control));
+        InputBindings.Add(new KeyBinding(new ActionCommand(_navigationStore.NavigateToPrevious), Key.Tab, ModifierKeys.Control | ModifierKeys.Shift));
+
+        var key = (int)Key.D1;
+        foreach (var item in _navigationStore.Items.OfType<NavigationItem>())
+            InputBindings.Add(new KeyBinding(new ActionCommand(() => _navigationStore.Navigate(item.PageTag)), (Key)key++, ModifierKeys.Control));
     }
 
     private async void MainWindow_Closing(object? sender, CancelEventArgs e)
@@ -137,7 +159,7 @@ public partial class MainWindow
         }
     }
 
-    private void MainWindow_IsVisibleChanged(object _1, DependencyPropertyChangedEventArgs _2)
+    private void MainWindow_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
     {
         if (!IsVisible)
             return;

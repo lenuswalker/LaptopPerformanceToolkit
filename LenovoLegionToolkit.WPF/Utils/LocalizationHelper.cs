@@ -31,6 +31,7 @@ public static class LocalizationHelper
         new("es"),
         new("fr"),
         new("it"),
+        new("lv"),
         new("nl-nl"),
         new("pt"),
         new("pt-br"),
@@ -41,6 +42,7 @@ public static class LocalizationHelper
         new("uk"),
         new("vi"),
         new("zh-hans"),
+        new("zh-hant"),
         // HACK: Karakalpak is not a recognized culture by msbuild, so we use this one as workaround instead.
         new("uz-latn-uz")
     };
@@ -49,7 +51,7 @@ public static class LocalizationHelper
         ? FlowDirection.RightToLeft
         : FlowDirection.LeftToRight;
 
-    private static string? _dateFormat = null;
+    private static string? _dateFormat;
 
     public static string ShortDateFormat
     {

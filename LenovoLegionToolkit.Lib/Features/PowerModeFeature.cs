@@ -24,8 +24,7 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
         GodModeController godModeController,
         PowerPlanController powerPlanController,
         ThermalModeListener thermalModeListener,
-        PowerModeListener powerModeListener
-        ) : base("SmartFanMode", 1, "IsSupportSmartFan")
+        PowerModeListener powerModeListener) : base("SmartFanMode", 1, "IsSupportSmartFan")
     {
         _aiModeController = aiModeController ?? throw new ArgumentNullException(nameof(aiModeController));
         _godModeController = godModeController ?? throw new ArgumentNullException(nameof(godModeController));
@@ -51,7 +50,7 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
         if (state is PowerModeState.Performance or PowerModeState.GodMode
             && !AllowAllPowerModesOnBattery
             && await Power.IsPowerAdapterConnectedAsync() is PowerAdapterStatus.Disconnected)
-            throw new InvalidOperationException($"Can't switch to {state} power mode on battery."); ;
+            throw new InvalidOperationException($"Can't switch to {state} power mode on battery.");
 
         var currentState = await GetStateAsync().ConfigureAwait(false);
 
@@ -90,11 +89,10 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
         _thermalModeListener.SuppressNext();
         await base.SetStateAsync(state).ConfigureAwait(false);
 
-        await _powerModeListener.NotifyAsync(state).ConfigureAwait(false);
-
-
         if (state == PowerModeState.GodMode)
             await _godModeController.ApplyStateAsync().ConfigureAwait(false);
+
+        await _powerModeListener.NotifyAsync(state).ConfigureAwait(false);
     }
 
     public async Task EnsureCorrectPowerPlanIsSetAsync()

@@ -2,6 +2,8 @@
 using LenovoLegionToolkit.Lib.System;
 #endif
 using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,6 +17,7 @@ using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Features;
 using LenovoLegionToolkit.Lib.Listeners;
+using LenovoLegionToolkit.Lib.SoftwareDisabler;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Resources;
@@ -38,11 +41,27 @@ public partial class App
 
     private async void Application_Startup(object sender, StartupEventArgs e)
     {
+#if DEBUG
+        if (Debugger.IsAttached)
+        {
+            Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName)
+                .Where(p => p.Id != Environment.ProcessId)
+                .ForEach(p =>
+                {
+                    p.Kill();
+                    p.WaitForExit();
+                });
+        }
+#endif
+
         var flags = new Flags(e.Args);
 
         Log.Instance.IsTraceEnabled = flags.IsTraceEnabled;
 
         AppDomain.CurrentDomain.UnhandledException += AppDomain_UnhandledException;
+
+        if (Log.Instance.IsTraceEnabled)
+            Log.Instance.Trace($"Flags: {flags}");
 
         EnsureSingleInstance();
 
@@ -55,7 +74,7 @@ public partial class App
         }
 
         if (Log.Instance.IsTraceEnabled)
-            Log.Instance.Trace($"Starting... [version={Assembly.GetEntryAssembly()?.GetName().Version}, build={Assembly.GetEntryAssembly()?.GetBuildDateTime()?.ToString("yyyyMMddHHmmss")}, os={Environment.OSVersion}, dotnet={Environment.Version}]");
+            Log.Instance.Trace($"Starting... [version={Assembly.GetEntryAssembly()?.GetName().Version}, build={Assembly.GetEntryAssembly()?.GetBuildDateTimeString()}, os={Environment.OSVersion}, dotnet={Environment.Version}]");
 
         WinFormsApp.SetHighDpiMode(WinFormsHighDpiMode.PerMonitorV2);
         RenderOptions.ProcessRenderMode = RenderMode.SoftwareOnly;
@@ -69,11 +88,16 @@ public partial class App
         IoCContainer.Resolve<PowerModeFeature>().AllowAllPowerModesOnBattery = flags.AllowAllPowerModesOnBattery;
         IoCContainer.Resolve<RGBKeyboardBacklightController>().ForceDisable = flags.ForceDisableRgbKeyboardSupport;
         IoCContainer.Resolve<SpectrumKeyboardBacklightController>().ForceDisable = flags.ForceDisableSpectrumKeyboardSupport;
+        IoCContainer.Resolve<WhiteKeyboardLenovoLightingBacklightFeature>().ForceDisable = flags.ForceDisableLenovoLighting;
+        IoCContainer.Resolve<PanelLogoLenovoLightingBacklightFeature>().ForceDisable = flags.ForceDisableLenovoLighting;
+        IoCContainer.Resolve<PortsBacklightFeature>().ForceDisable = flags.ForceDisableLenovoLighting;
 
+        await LogSoftwareStatusAsync();
         await InitPowerModeFeatureAsync();
         await InitBatteryFeatureAsync();
-        await InitRGBKeyboardControllerAsync();
+        await InitRgbKeyboardControllerAsync();
         await InitSpectrumKeyboardControllerAsync();
+        await InitGpuOverclockControllerAsync();
         await InitAutomationProcessorAsync();
 
 #if !DEBUG
@@ -138,7 +162,7 @@ public partial class App
             if (IoCContainer.TryResolve<PowerModeFeature>() is { } powerModeFeature)
                 await powerModeFeature.EnsureAiModeIsOffAsync();
         }
-        catch { }
+        catch {  /* Ignored. */ }
 
         try
         {
@@ -148,7 +172,7 @@ public partial class App
                     await rgbKeyboardBacklightController.SetLightControlOwnerAsync(false);
             }
         }
-        catch { }
+        catch {  /* Ignored. */ }
 
         try
         {
@@ -158,7 +182,7 @@ public partial class App
                     await spectrumKeyboardBacklightController.StopAuroraIfNeededAsync();
             }
         }
-        catch { }
+        catch {  /* Ignored. */ }
 
         try
         {
@@ -167,7 +191,7 @@ public partial class App
                 await nativeMessageWindowListener.StopAsync();
             }
         }
-        catch { }
+        catch {  /* Ignored. */ }
 
 
         Shutdown();
@@ -232,7 +256,7 @@ public partial class App
             Log.Instance.IsTraceEnabled = true;
 
             if (Log.Instance.IsTraceEnabled)
-                Log.Instance.Trace($"Compatibility check OVERRIDE. [Vendor={mi.Vendor}, Model={mi.Model}, MachineType={mi.MachineType}, version={Assembly.GetEntryAssembly()?.GetName().Version}, build={Assembly.GetEntryAssembly()?.GetBuildDateTime()?.ToString("yyyyMMddHHmmss") ?? ""}]");
+                Log.Instance.Trace($"Compatibility check OVERRIDE. [Vendor={mi.Vendor}, Model={mi.Model}, MachineType={mi.MachineType}, version={Assembly.GetEntryAssembly()?.GetName().Version}, build={Assembly.GetEntryAssembly()?.GetBuildDateTimeString() ?? string.Empty}]");
             return;
         }
 
@@ -286,6 +310,21 @@ public partial class App
         {
             IsBackground = true
         }.Start();
+    }
+
+    private static async Task LogSoftwareStatusAsync()
+    {
+        if (!Log.Instance.IsTraceEnabled)
+            return;
+
+        var vantageStatus = await IoCContainer.Resolve<VantageDisabler>().GetStatusAsync();
+        Log.Instance.Trace($"Vantage status: {vantageStatus}");
+
+        var legionZoneStatus = await IoCContainer.Resolve<LegionZoneDisabler>().GetStatusAsync();
+        Log.Instance.Trace($"LegionZone status: {legionZoneStatus}");
+
+        var fnKeysStatus = await IoCContainer.Resolve<FnKeysDisabler>().GetStatusAsync();
+        Log.Instance.Trace($"FnKeys status: {fnKeysStatus}");
     }
 
     private static async Task InitAutomationProcessorAsync()
@@ -380,7 +419,7 @@ public partial class App
         }
     }
 
-    private static async Task InitRGBKeyboardControllerAsync()
+    private static async Task InitRgbKeyboardControllerAsync()
     {
         try
         {
@@ -437,6 +476,41 @@ public partial class App
         {
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Couldn't start Aurora if needed.", ex);
+        }
+    }
+
+    private static async Task InitGpuOverclockControllerAsync()
+    {
+        try
+        {
+            var controller = IoCContainer.Resolve<GPUOverclockController>();
+            if (await controller.IsSupportedAsync())
+            {
+                if (Log.Instance.IsTraceEnabled)
+                    Log.Instance.Trace($"Ensuring GPU overclock is applied...");
+
+                var result = await controller.EnsureOverclockIsAppliedAsync().ConfigureAwait(false);
+                if (result)
+                {
+                    if (Log.Instance.IsTraceEnabled)
+                        Log.Instance.Trace($"GPU overclock applied.");
+                }
+                else
+                {
+                    if (Log.Instance.IsTraceEnabled)
+                        Log.Instance.Trace($"GPU overclock not needed.");
+                }
+            }
+            else
+            {
+                if (Log.Instance.IsTraceEnabled)
+                    Log.Instance.Trace($"GPU overclock is not supported.");
+            }
+        }
+        catch (Exception ex)
+        {
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Couldn't overclock GPU.", ex);
         }
     }
 }

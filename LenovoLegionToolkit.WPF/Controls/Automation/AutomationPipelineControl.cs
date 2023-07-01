@@ -101,6 +101,7 @@ public class AutomationPipelineControl : UserControl
 
     public AutomationPipeline CreateAutomationPipeline() => new()
     {
+        Id = AutomationPipeline.Id,
         IconName = AutomationPipeline.IconName,
         Name = AutomationPipeline.Name,
         Trigger = AutomationPipeline.Trigger,
@@ -257,14 +258,14 @@ public class AutomationPipelineControl : UserControl
             if (tt.Time is not null)
             {
                 var local = DateTimeExtensions.UtcFrom(tt.Time.Value.Hour, tt.Time.Value.Minute).ToLocalTime();
-                if (tt.Days.Any())
+                if (tt.Days.IsEmpty() || tt.Days.OrderBy(x => x).SequenceEqual(Enum.GetValues<DayOfWeek>()))
                 {
-                    var localizedDayStrings = tt.Days.Select(day => Resource.Culture.DateTimeFormat.GetDayName(day));
-                    result += $" | {string.Join(", ", localizedDayStrings)} {string.Format(Resource.AutomationPipelineControl_SubtitlePart_AtTime.ToLower(Resource.Culture), local.Hour, local.Minute)}";
+                    result += $" | {string.Format(Resource.AutomationPipelineControl_SubtitlePart_AtTime, local.Hour, local.Minute)}";
                 }
                 else
                 {
-                    result += $" | {string.Format(Resource.AutomationPipelineControl_SubtitlePart_AtTime, local.Hour, local.Minute)}";
+                    var localizedDayStrings = tt.Days.Select(day => Resource.Culture.DateTimeFormat.GetDayName(day));
+                    result += $" | {string.Join(", ", localizedDayStrings)} {string.Format(Resource.AutomationPipelineControl_SubtitlePart_AtTime.ToLower(Resource.Culture), local.Hour, local.Minute)}";
                 }
             }
         }
@@ -319,9 +320,13 @@ public class AutomationPipelineControl : UserControl
             FnLockAutomationStep s => new FnLockAutomationStepControl(s),
             GodModePresetAutomationStep s => new GodModePresetAutomationStepControl(s),
             HDRAutomationStep s => new HDRAutomationStepControl(s),
+            InstantBootAutomationStep s => new InstantBootAutomationStepControl(s),
             MicrophoneAutomationStep s => new MicrophoneAutomationStepControl(s),
             OneLevelWhiteKeyboardBacklightAutomationStep s => new OneLevelWhiteKeyboardBacklightAutomationStepControl(s),
             OverDriveAutomationStep s => new OverDriveAutomationStepControl(s),
+            OverclockDiscreteGPUAutomationStep s => new OverclockDiscreteGPUAutomationStepControl(s),
+            PanelLogoBacklightAutomationStep s => new PanelLogoBacklightAutomationStepControl(s),
+            PortsBacklightAutomationStep s => new PortsBacklightAutomationStepControl(s),
             PowerModeAutomationStep s => new PowerModeAutomationStepControl(s),
             RefreshRateAutomationStep s => new RefreshRateAutomationStepControl(s),
             ResolutionAutomationStep s => new ResolutionAutomationStepControl(s),
@@ -353,7 +358,7 @@ public class AutomationPipelineControl : UserControl
         return control;
     }
 
-    private void ShowContextMenu(Control control)
+    private void ShowContextMenu(FrameworkElement control)
     {
         var menuItems = new List<MenuItem>();
 
@@ -388,7 +393,7 @@ public class AutomationPipelineControl : UserControl
         control.ContextMenu.IsOpen = true;
     }
 
-    private void MoveStep(Control control, int index)
+    private void MoveStep(UIElement control, int index)
     {
         _stepsStackPanel.Children.Remove(control);
         _stepsStackPanel.Children.Insert(index, control);
@@ -405,7 +410,7 @@ public class AutomationPipelineControl : UserControl
         OnChanged?.Invoke(this, EventArgs.Empty);
     }
 
-    private void DeleteStep(Control control)
+    private void DeleteStep(UIElement control)
     {
         _stepsStackPanel.Children.Remove(control);
         _cardHeaderControl.Subtitle = GenerateSubtitle();

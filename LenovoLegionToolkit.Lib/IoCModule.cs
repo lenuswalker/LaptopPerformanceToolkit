@@ -1,12 +1,13 @@
 ﻿using Autofac;
 using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Controllers.GodMode;
+using LenovoLegionToolkit.Lib.Controllers.Sensors;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Features;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.PackageDownloader;
 using LenovoLegionToolkit.Lib.Settings;
-using LenovoLegionToolkit.Lib.System;
+using LenovoLegionToolkit.Lib.SoftwareDisabler;
 using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.Lib;
@@ -15,13 +16,14 @@ public class IoCModule : Module
 {
     protected override void Load(ContainerBuilder builder)
     {
-        builder.Register<FnKeys>();
-        builder.Register<LegionZone>();
-        builder.Register<Vantage>();
+        builder.Register<FnKeysDisabler>();
+        builder.Register<LegionZoneDisabler>();
+        builder.Register<VantageDisabler>();
 
         builder.Register<ApplicationSettings>();
         builder.Register<BalanceModeSettings>();
         builder.Register<GodModeSettings>();
+        builder.Register<GPUOverclockSettings>();
         builder.Register<PackageDownloaderSettings>();
         builder.Register<RGBKeyboardSettings>();
         builder.Register<SpectrumKeyboardSettings>();
@@ -36,14 +38,23 @@ public class IoCModule : Module
         builder.Register<HDRFeature>();
         builder.Register<HybridModeFeature>();
         builder.Register<IGPUModeFeature>();
+        builder.Register<InstantBootFeature>();
+        builder.Register<InstantBootFeatureFlagsFeature>(true);
+        builder.Register<InstantBootCapabilityFeature>(true);
         builder.Register<MicrophoneFeature>();
         builder.Register<OneLevelWhiteKeyboardBacklightFeature>();
         builder.Register<OverDriveFeature>();
+        builder.Register<PanelLogoBacklightFeature>();
+        builder.Register<PanelLogoSpectrumBacklightFeature>(true);
+        builder.Register<PanelLogoLenovoLightingBacklightFeature>(true);
+        builder.Register<PortsBacklightFeature>();
         builder.Register<PowerModeFeature>();
         builder.Register<RefreshRateFeature>();
         builder.Register<ResolutionFeature>();
         builder.Register<TouchpadLockFeature>();
         builder.Register<WhiteKeyboardBacklightFeature>();
+        builder.Register<WhiteKeyboardDriverBacklightFeature>(true);
+        builder.Register<WhiteKeyboardLenovoLightingBacklightFeature>(true);
         builder.Register<WinKeyFeature>();
 
         builder.Register<DisplayBrightnessListener>().AutoActivateListener();
@@ -63,11 +74,16 @@ public class IoCModule : Module
         builder.Register<AIModeController>();
         builder.Register<DisplayBrightnessController>();
         builder.Register<GodModeController>();
-        builder.Register<GodModeControllerV1>();
-        builder.Register<GodModeControllerV2>();
+        builder.Register<GodModeControllerV1>(true);
+        builder.Register<GodModeControllerV2>(true);
         builder.Register<GPUController>();
+        builder.Register<GPUOverclockController>();
         builder.Register<PowerPlanController>();
         builder.Register<RGBKeyboardBacklightController>();
+        builder.Register<SensorsController>();
+        builder.Register<SensorsControllerV1>(true);
+        builder.Register<SensorsControllerV2>(true);
+        builder.Register<SensorsControllerV3>(true);
         builder.Register<SpectrumKeyboardBacklightController>();
 
         builder.Register<UpdateChecker>();

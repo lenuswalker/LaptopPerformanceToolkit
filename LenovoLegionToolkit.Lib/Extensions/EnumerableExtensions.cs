@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace LenovoLegionToolkit.Lib.Extensions;
@@ -12,10 +13,17 @@ public static class EnumerableExtensions
         return !source.Any();
     }
 
+    public static void ForEach<T>(this IEnumerable<T> enumeration, Action<T> action)
+    {
+        foreach (var item in enumeration)
+            action(item);
+    }
+
     public static IEnumerable<IEnumerable<T>> Split<T>(this IEnumerable<T> source, int size)
     {
-        return source
-            .Select((_, i) => source.Skip(i * size).Take(size))
+        var enumerable = source as T[] ?? source.ToArray();
+        return enumerable
+            .Select((_, i) => enumerable.Skip(i * size).Take(size))
             .Where(a => a.Any());
     }
 }

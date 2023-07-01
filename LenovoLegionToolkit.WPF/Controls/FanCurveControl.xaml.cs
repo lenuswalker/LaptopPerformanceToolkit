@@ -144,7 +144,7 @@ public partial class FanCurveControl
         DrawGraph();
     }
 
-    private CustomPopupPlacement[] ToolTipCustomPopupPlacementCallback(Size size, Size targetSize, Point _)
+    private static CustomPopupPlacement[] ToolTipCustomPopupPlacementCallback(Size size, Size targetSize, Point _)
     {
         return new CustomPopupPlacement[]
         {
@@ -330,7 +330,7 @@ public partial class FanCurveControl
         private static string GetDescription(FanTableData tableData, int index, int value)
         {
             var rpm = value < 0 ? 0 : tableData.FanSpeeds[value];
-            return $"{tableData.Temps[index]}{Resource.Celsius} @ {rpm} {Resource.FanCurveControl_RPM}";
+            return $"{tableData.Temps[index]}{Resource.Celsius} @ {rpm} {Resource.RPM}";
         }
     }
 }

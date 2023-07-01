@@ -166,9 +166,13 @@ public partial class AutomationPage
             new FnLockAutomationStep(default),
             new GodModePresetAutomationStep(default),
             new HDRAutomationStep(default),
+            new InstantBootAutomationStep(default),
             new MicrophoneAutomationStep(default),
             new OneLevelWhiteKeyboardBacklightAutomationStep(default),
+            new OverclockDiscreteGPUAutomationStep(default),
             new OverDriveAutomationStep(default),
+            new PanelLogoBacklightAutomationStep(default),
+            new PortsBacklightAutomationStep(default),
             new PowerModeAutomationStep(default),
             new RefreshRateAutomationStep(default),
             new ResolutionAutomationStep(default),
@@ -192,7 +196,7 @@ public partial class AutomationPage
         return supportedSteps.ToArray();
     }
 
-    private AutomationPipelineControl GenerateControl(AutomationPipeline pipeline, StackPanel stackPanel)
+    private AutomationPipelineControl GenerateControl(AutomationPipeline pipeline, Panel stackPanel)
     {
         var control = new AutomationPipelineControl(pipeline, _supportedAutomationSteps);
         control.MouseRightButtonUp += (_, e) =>
@@ -214,7 +218,7 @@ public partial class AutomationPage
         _saveRevertStackPanel.Visibility = Visibility.Visible;
     }
 
-    private void ShowPipelineContextMenu(AutomationPipelineControl control, StackPanel stackPanel)
+    private void ShowPipelineContextMenu(AutomationPipelineControl control, Panel stackPanel)
     {
         var menuItems = new List<MenuItem>();
 
@@ -255,7 +259,7 @@ public partial class AutomationPage
         control.ContextMenu.IsOpen = true;
     }
 
-    private void MovePipeline(AutomationPipelineControl control, StackPanel stackPanel, int index)
+    private void MovePipeline(UIElement control, Panel stackPanel, int index)
     {
         stackPanel.Children.Remove(control);
         stackPanel.Children.Insert(index, control);
@@ -323,7 +327,7 @@ public partial class AutomationPage
         catch (TaskCanceledException) { }
     }
 
-    private void DeletePipeline(AutomationPipelineControl control, StackPanel stackPanel)
+    private void DeletePipeline(UIElement control, Panel stackPanel)
     {
         stackPanel.Children.Remove(control);
 
