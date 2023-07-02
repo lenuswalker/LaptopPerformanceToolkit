@@ -14,7 +14,7 @@ public static class Drivers
     public const uint IOCTL_KEY_WAIT_HANDLE = 0x831020D8;
     public const uint IOCTL_KEY_VALUE = 0x831020CC;
 
-    private static readonly object _locker = new();
+    private static readonly object Lock = new();
 
     private static SafeFileHandle? _energy;
 
@@ -23,13 +23,13 @@ public static class Drivers
         if (_energy is not null)
             return _energy;
 
-        lock (_locker)
+        lock (Lock)
         {
             if (_energy is not null)
                 return _energy;
 
             var handle = PInvoke.CreateFile(@"\\.\EnergyDrv",
-                FILE_ACCESS_FLAGS.FILE_READ_DATA | FILE_ACCESS_FLAGS.FILE_WRITE_DATA,
+                (uint)FILE_ACCESS_RIGHTS.FILE_READ_DATA | (uint)FILE_ACCESS_RIGHTS.FILE_WRITE_DATA,
                 FILE_SHARE_MODE.FILE_SHARE_READ | FILE_SHARE_MODE.FILE_SHARE_WRITE,
                 null,
                 FILE_CREATION_DISPOSITION.OPEN_EXISTING,

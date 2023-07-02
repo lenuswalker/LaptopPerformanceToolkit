@@ -471,9 +471,6 @@ VAROVANIE: Táto akcia neprebehne správne, ak je displej notebooku vypnutý, al
   <data name="DeviceInformationWindow_Device_Title" xml:space="preserve">
     <value>Zariadenie</value>
   </data>
-  <data name="DeviceInformationWindow_InWarranty" xml:space="preserve">
-    <value>V záruke</value>
-  </data>
   <data name="DeviceInformationWindow_LenovoSupport" xml:space="preserve">
     <value>Lenovo Podpora</value>
   </data>
@@ -486,9 +483,6 @@ VAROVANIE: Táto akcia neprebehne správne, ak je displej notebooku vypnutý, al
   <data name="DeviceInformationWindow_Model_Title" xml:space="preserve">
     <value>Model</value>
   </data>
-  <data name="DeviceInformationWindow_OutOfWarranty" xml:space="preserve">
-    <value>Expirovaná</value>
-  </data>
   <data name="DeviceInformationWindow_SerialNumber_Title" xml:space="preserve">
     <value>Sériové číslo</value>
   </data>
@@ -500,9 +494,6 @@ VAROVANIE: Táto akcia neprebehne správne, ak je displej notebooku vypnutý, al
   </data>
   <data name="DeviceInformationWindow_WarrantyStartDate_Title" xml:space="preserve">
     <value>Dátum začiatku</value>
-  </data>
-  <data name="DeviceInformationWindow_WarrantyStatus_Title" xml:space="preserve">
-    <value>Stav</value>
   </data>
   <data name="DeviceInformationWindow_Warranty_Title" xml:space="preserve">
     <value>Záruka</value>
@@ -638,9 +629,6 @@ Vopred vďaka!</value>
   </data>
   <data name="FanCurveControl_GPU" xml:space="preserve">
     <value>GPU</value>
-  </data>
-  <data name="FanCurveControl_RPM" xml:space="preserve">
-    <value>Ot/min</value>
   </data>
   <data name="FlipToStartAutomationStepControl_Message" xml:space="preserve">
     <value>Zapnúť notebook pri otvorení krytu.</value>
@@ -1204,17 +1192,17 @@ Po zmene tejto možnosti sa odporúča reštart.</value>
     <value>Zakázať Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>Vantage možno nebol zakázaný správne</value>
+    <value>Vantage a/alebo ImController možno nebol zakázaný správne</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
-    <value>Nepodarilo sa zakázať Vantage</value>
+    <value>Nepodarilo sa zakázať Vantage a/alebo ImController</value>
   </data>
   <data name="SettingsPage_DisableVantage_Message" xml:space="preserve">
-    <value>Zakázať Vantage a jeho služby bez odinštalovania.
+    <value>Zakázať Lenovo Vantage a ImController bez ich odinštalovania.
 Po zmene tejto možnosti sa odporúča reštart.</value>
   </data>
   <data name="SettingsPage_DisableVantage_Title" xml:space="preserve">
-    <value>Zakázať Lenovo Vantage</value>
+    <value>Zakázať Lenovo Vantage a ImController</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
     <value>Legion Zone možno nebol povolený správne</value>
@@ -1748,7 +1736,7 @@ Nastavenia sú účinne len keď je povolený vlastný režim.</value>
     <value>Možnosti plánu napájanie v ovládacom paneli Windows</value>
   </data>
   <data name="PoweredOff" xml:space="preserve">
-    <value>Vypnutý</value>
+    <value>Vypnutá</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Title" xml:space="preserve">
     <value>Importovať profily podsvietenia klávesnice</value>
@@ -1758,5 +1746,59 @@ Nastavenia sú účinne len keď je povolený vlastný režim.</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Path" xml:space="preserve">
     <value>Cesta</value>
+  </data>
+  <data name="AutomationPipelineControl_SubtitlePart_After" xml:space="preserve">
+    <value>Po {0}</value>
+  </data>
+  <data name="MultipleTriggersAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Viaceré spúšťače...</value>
+    <comment>Allows the user to merge multiple triggers for the execution of selected actions.</comment>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_Title" xml:space="preserve">
+    <value>Nastavenia pretaktovania GPU</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title" xml:space="preserve">
+    <value>Posun frekvencie jadra</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title" xml:space="preserve">
+    <value>Posun frekvencie pamäte</value>
+  </data>
+  <data name="OverclockDiscreteGPUControl_Title" xml:space="preserve">
+    <value>Pretaktovať GPU</value>
+  </data>
+  <data name="OverclockDiscreteGPUControl_Message" xml:space="preserve">
+    <value>Zvýšiť výkon pretaktovaním dedikovanej GPU.</value>
+  </data>
+  <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
+    <value>Pretaktovať GPU</value>
+  </data>
+  <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
+    <value>Zvýšiť výkon pretaktovaním dedikovanej GPU.
+
+VAROVANIE: Táto akcia neprebehne správne, ak je dedikovaná GPU nedostupná.</value>
+  </data>
+  <data name="PortsBacklightControl_Title" xml:space="preserve">
+    <value>Podsvietenie portov</value>
+  </data>
+  <data name="PortsBacklightControl_Message" xml:space="preserve">
+    <value>Vypne alebo zapne podsvietenie portov na zadnej strane notebooku.</value>
+  </data>
+  <data name="PortsBacklightAutomationStepControl_Title" xml:space="preserve">
+    <value>Podsvietenie portov</value>
+  </data>
+  <data name="PortsBacklightAutomationStepControl_Message" xml:space="preserve">
+    <value>Vypne alebo zapne podsvietenie portov na zadnej strane notebooku.</value>
+  </data>
+  <data name="PanelLogoBacklightControl_Title" xml:space="preserve">
+    <value>Podsvietenie panelu loga</value>
+  </data>
+  <data name="PanelLogoBacklightControl_Message" xml:space="preserve">
+    <value>Vypnúť alebo zapnúť podsvietenie na kryte notebooku.</value>
+  </data>
+  <data name="PanelLogoBacklightAutomationStepControl_Title" xml:space="preserve">
+    <value>Podsvietenie panelu loga</value>
+  </data>
+  <data name="PanelLogoBacklightAutomationStepControl_Message" xml:space="preserve">
+    <value>Vypnúť alebo zapnúť podsvietenie na kryte notebooku.</value>
   </data>
 </root>

@@ -177,7 +177,7 @@ Esta opção destina-se apenas a dispositivos que não possuem vários planos de
     <value>Aplicar</value>
   </data>
   <data name="ApplyAndClose" xml:space="preserve">
-    <value>Aplicar ao fechar</value>
+    <value>Aplicar e Fechar</value>
   </data>
   <data name="AutomationPage_ActionsEnable_Message" xml:space="preserve">
     <value>O Lenovo Legion Toolkit deve estar sendo executado para rodar tarefas automatizadas.</value>
@@ -472,9 +472,6 @@ AVISO: Esta ação não será executada corretamente se o display interno estive
   <data name="DeviceInformationWindow_Device_Title" xml:space="preserve">
     <value>Dispositivo</value>
   </data>
-  <data name="DeviceInformationWindow_InWarranty" xml:space="preserve">
-    <value>Em garantia</value>
-  </data>
   <data name="DeviceInformationWindow_LenovoSupport" xml:space="preserve">
     <value>Suporte Lenovo</value>
   </data>
@@ -487,9 +484,6 @@ AVISO: Esta ação não será executada corretamente se o display interno estive
   <data name="DeviceInformationWindow_Model_Title" xml:space="preserve">
     <value>Modelo</value>
   </data>
-  <data name="DeviceInformationWindow_OutOfWarranty" xml:space="preserve">
-    <value>Fora da Garantia</value>
-  </data>
   <data name="DeviceInformationWindow_SerialNumber_Title" xml:space="preserve">
     <value>Número de série</value>
   </data>
@@ -501,9 +495,6 @@ AVISO: Esta ação não será executada corretamente se o display interno estive
   </data>
   <data name="DeviceInformationWindow_WarrantyStartDate_Title" xml:space="preserve">
     <value>Data de Início</value>
-  </data>
-  <data name="DeviceInformationWindow_WarrantyStatus_Title" xml:space="preserve">
-    <value>Situação</value>
   </data>
   <data name="DeviceInformationWindow_Warranty_Title" xml:space="preserve">
     <value>Garantia</value>
@@ -640,7 +631,7 @@ Desde já, obrigado!</value>
   <data name="FanCurveControl_GPU" xml:space="preserve">
     <value>GPU</value>
   </data>
-  <data name="FanCurveControl_RPM" xml:space="preserve">
+  <data name="RPM" xml:space="preserve">
     <value>RPM</value>
   </data>
   <data name="FlipToStartAutomationStepControl_Message" xml:space="preserve">
@@ -1205,17 +1196,17 @@ A reinicialização é recomendada após alterar esta opção.</value>
     <value>Desativar o Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>O Vantage pode não ter sido desativado corretamente</value>
+    <value>Vantage e/ou ImController podem não ter sido desabilitados corretamente</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
-    <value>Não foi possível desativar o Vantage</value>
+    <value>Não foi possível desativar o Vantage e/ou ImController</value>
   </data>
   <data name="SettingsPage_DisableVantage_Message" xml:space="preserve">
-    <value>Desativar o Lenovo Vantage e seu serviço sem desinstalá-lo.
-A reinicialização é recomendada após alterar esta opção.</value>
+    <value>Desative o Lenovo Vantage e o ImController sem desinstalá-los.
+Uma reinicialização é recomendada após alterar esta opção.</value>
   </data>
   <data name="SettingsPage_DisableVantage_Title" xml:space="preserve">
-    <value>Desativar o Lenovo Vantage</value>
+    <value>Desativar Lenovo Vantage e ImController</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
     <value>O Legion Zone pode não ter sido ativado corretamente</value>
@@ -1756,5 +1747,92 @@ Esta configuração somente terá efeito se o Modo Personalizado estiver ativo.<
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Path" xml:space="preserve">
     <value>Caminho</value>
+  </data>
+  <data name="AutomationPipelineControl_SubtitlePart_After" xml:space="preserve">
+    <value>Após {0}</value>
+  </data>
+  <data name="MultipleTriggersAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Gatilhos múltiplos...</value>
+    <comment>Allows the user to merge multiple triggers for the execution of selected actions.</comment>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_Title" xml:space="preserve">
+    <value>Configurações de Overclock da GPU</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title" xml:space="preserve">
+    <value>Compensação de Frequência de Core</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title" xml:space="preserve">
+    <value>Compensação de Frequência de Memória</value>
+  </data>
+  <data name="OverclockDiscreteGPUControl_Title" xml:space="preserve">
+    <value>Overclock da GPU</value>
+  </data>
+  <data name="OverclockDiscreteGPUControl_Message" xml:space="preserve">
+    <value>Aumentar performance overclocando a GPU dedicada.</value>
+  </data>
+  <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
+    <value>Overclock da GPU</value>
+  </data>
+  <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
+    <value>Aumentar performance overclocando a GPU dedicada.
+
+AVISO: Esta ação não será executada corretamente caso a GPU dedicada não esteja disponível.</value>
+  </data>
+  <data name="PortsBacklightControl_Title" xml:space="preserve">
+    <value>Iluminação das portas traseiras</value>
+  </data>
+  <data name="PortsBacklightControl_Message" xml:space="preserve">
+    <value>Liga ou desliga a luz de fundo das portas na parte de trás do laptop.</value>
+  </data>
+  <data name="PortsBacklightAutomationStepControl_Title" xml:space="preserve">
+    <value>Iluminação das portas traseiras</value>
+  </data>
+  <data name="PortsBacklightAutomationStepControl_Message" xml:space="preserve">
+    <value>Liga ou desliga a luz de fundo das portas na parte de trás do laptop.</value>
+  </data>
+  <data name="PanelLogoBacklightControl_Title" xml:space="preserve">
+    <value>Iluminação do logo da tampa</value>
+  </data>
+  <data name="PanelLogoBacklightControl_Message" xml:space="preserve">
+    <value>Liga ou desliga a luz de fundo do logo da tampa do notebook.</value>
+  </data>
+  <data name="PanelLogoBacklightAutomationStepControl_Title" xml:space="preserve">
+    <value>Iluminação do logo da tampa</value>
+  </data>
+  <data name="PanelLogoBacklightAutomationStepControl_Message" xml:space="preserve">
+    <value>Liga ou desliga a luz de fundo do lolo da tampa do laptop.</value>
+  </data>
+  <data name="GHz" xml:space="preserve">
+    <value>GHz</value>
+  </data>
+  <data name="MHz" xml:space="preserve">
+    <value>MHz</value>
+  </data>
+  <data name="SensorsControl_Maximum" xml:space="preserve">
+	  <value>Máximo:{0}</value>
+  </data>
+  <data name="SensorsControl_CPU_Title" xml:space="preserve">
+	  <value>CPU</value>
+  </data>
+  <data name="SensorsControl_Utilisation_Title" xml:space="preserve">
+	  <value>Utilização</value>
+  </data>
+  <data name="SensorsControl_Temperature_Title" xml:space="preserve">
+	  <value>Temperatura</value>
+  </data>
+  <data name="SensorsControl_Fan_Title" xml:space="preserve">
+	  <value>Cooler</value>
+  </data>
+  <data name="SensorsControl_GPU_Title" xml:space="preserve">
+	  <value>GPU</value>
+  </data>
+  <data name="SensorsControl_MemoryClock_Title" xml:space="preserve">
+	  <value>Clock da Memória</value>
+  </data>
+  <data name="SensorsControl_RefreshInterval" xml:space="preserve">
+	  <value>Intervalo de atualização</value>
+  </data>
+  <data name="InstantBootControl_Title" xml:space="preserve">
+	  <value>Reserva Instantânea</value>
   </data>
 </root>

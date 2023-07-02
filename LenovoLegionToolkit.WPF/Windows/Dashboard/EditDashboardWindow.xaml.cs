@@ -16,18 +16,20 @@ public partial class EditDashboardWindow
 {
     private readonly DashboardSettings _dashboardSettings = IoCContainer.Resolve<DashboardSettings>();
 
-    private DashboardGroup[] _groups;
+    private readonly DashboardGroup[] _groups;
 
     public event EventHandler? Apply;
 
     public EditDashboardWindow()
     {
-        _groups = _dashboardSettings.Store.Groups;
+        _groups = _dashboardSettings.Store.Groups ?? DashboardGroup.DefaultGroups;
 
         InitializeComponent();
+
+        IsVisibleChanged += EditDashboardWindow_IsVisibleChanged;
     }
 
-    private async void EditDashboardWindow_IsVisibleChanged(object _1, DependencyPropertyChangedEventArgs _2)
+    private async void EditDashboardWindow_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
     {
         if (IsVisible)
             await RefreshAsync();
@@ -45,6 +47,8 @@ public partial class EditDashboardWindow
 
         _groupsScrollViewer.ScrollToTop();
         _groupsStackPanel.Children.Clear();
+
+        _sensorsSwitch.IsChecked = _dashboardSettings.Store.ShowSensors;
 
         foreach (var group in groups)
             _groupsStackPanel.Children.Add(CreateGroupControl(group));
@@ -70,21 +74,10 @@ public partial class EditDashboardWindow
         _groupsStackPanel.Children.Add(CreateGroupControl(new(DashboardGroupType.Custom, result)));
     }
 
-    private async void DefaultButton_Click(object sender, RoutedEventArgs e)
+    private void DefaultButton_Click(object sender, RoutedEventArgs e)
     {
-        _groups = DashboardGroup.DefaultGroups;
-
-        await RefreshAsync();
-    }
-
-    private void ApplyButton_Click(object sender, RoutedEventArgs e)
-    {
-        var groups = _groupsStackPanel.Children
-            .OfType<EditDashboardGroupControl>()
-            .Select(c => c.GetDashboardGroup())
-            .ToArray();
-
-        _dashboardSettings.Store.Groups = groups;
+        _dashboardSettings.Store.ShowSensors = true;
+        _dashboardSettings.Store.Groups = null;
         _dashboardSettings.SynchronizeStore();
 
         Close();
@@ -92,10 +85,21 @@ public partial class EditDashboardWindow
         Apply?.Invoke(this, EventArgs.Empty);
     }
 
-    private void CancelButton_Click(object sender, RoutedEventArgs e)
+    private void ApplyButton_Click(object sender, RoutedEventArgs e)
     {
+        _dashboardSettings.Store.ShowSensors = _sensorsSwitch.IsChecked ?? true;
+        _dashboardSettings.Store.Groups = _groupsStackPanel.Children
+            .OfType<EditDashboardGroupControl>()
+            .Select(c => c.GetDashboardGroup())
+            .ToArray();
+        _dashboardSettings.SynchronizeStore();
+
         Close();
+
+        Apply?.Invoke(this, EventArgs.Empty);
     }
+
+    private void CancelButton_Click(object sender, RoutedEventArgs e) => Close();
 
     private IEnumerable<DashboardItem> GetAllItems() =>
         _groupsStackPanel.Children
@@ -111,7 +115,7 @@ public partial class EditDashboardWindow
         return control;
     }
 
-    private void MoveGroupUp(Control control)
+    private void MoveGroupUp(UIElement control)
     {
         var index = _groupsStackPanel.Children.IndexOf(control);
         index--;
@@ -123,7 +127,7 @@ public partial class EditDashboardWindow
         _groupsStackPanel.Children.Insert(index, control);
     }
 
-    private void MoveGroupDown(Control control)
+    private void MoveGroupDown(UIElement control)
     {
         var index = _groupsStackPanel.Children.IndexOf(control);
         index++;
@@ -135,7 +139,7 @@ public partial class EditDashboardWindow
         _groupsStackPanel.Children.Insert(index, control);
     }
 
-    private void DeleteGroup(Control control)
+    private void DeleteGroup(UIElement control)
     {
         _groupsStackPanel.Children.Remove(control);
     }

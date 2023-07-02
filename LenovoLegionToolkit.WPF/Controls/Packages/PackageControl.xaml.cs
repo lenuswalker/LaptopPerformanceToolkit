@@ -19,10 +19,9 @@ public partial class PackageControl : IProgress<float>
 {
     private readonly IPackageDownloader _packageDownloader;
     private readonly Package _package;
+    private readonly Func<string> _getDownloadPath;
 
     private CancellationTokenSource? _downloadPackageTokenSource;
-
-    public Func<string> _getDownloadPath;
 
     public bool IsDownloading { get; private set; }
 
@@ -131,14 +130,14 @@ public partial class PackageControl : IProgress<float>
         catch (HttpRequestException ex)
         {
             if (Log.Instance.IsTraceEnabled)
-                Log.Instance.Trace($"Error occured when downloading package file.", ex);
+                Log.Instance.Trace($"Error occurred when downloading package file.", ex);
 
             await SnackbarHelper.ShowAsync(Resource.PackageControl_HttpGeneralError_Title, Resource.PackageControl_HttpGeneralError_Message, true);
         }
         catch (Exception ex)
         {
             if (Log.Instance.IsTraceEnabled)
-                Log.Instance.Trace($"Error occured when downloading package file.", ex);
+                Log.Instance.Trace($"Error occurred when downloading package file.", ex);
 
             await SnackbarHelper.ShowAsync(Resource.PackageControl_GeneralError_Title, ex.Message, true);
         }

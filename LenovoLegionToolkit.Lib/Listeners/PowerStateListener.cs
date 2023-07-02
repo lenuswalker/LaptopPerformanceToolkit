@@ -2,7 +2,6 @@
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Controllers;
-using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Features;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
@@ -10,6 +9,7 @@ using Microsoft.Win32;
 using Windows.Win32;
 using Windows.Win32.Foundation;
 using Windows.Win32.System.Power;
+using Windows.Win32.UI.WindowsAndMessaging;
 
 namespace LenovoLegionToolkit.Lib.Listeners;
 
@@ -24,6 +24,7 @@ public class PowerStateListener : IListener<EventArgs>
     }
 
     private readonly SafeHandle _recipientHandle;
+    // ReSharper disable once PrivateFieldCanBeConvertedToLocalVariable
     private readonly PDEVICE_NOTIFY_CALLBACK_ROUTINE _callback;
 
     private readonly PowerModeFeature _powerModeFeature;
@@ -192,7 +193,7 @@ public class PowerStateListener : IListener<EventArgs>
 
     private unsafe void RegisterSuspendResumeNotification()
     {
-        _handle = PInvoke.PowerRegisterSuspendResumeNotification(PInvokeExtensions.DEVICE_NOTIFY_CALLBACK, _recipientHandle, out var handle) == WIN32_ERROR.ERROR_SUCCESS
+        _handle = PInvoke.PowerRegisterSuspendResumeNotification(REGISTER_NOTIFICATION_FLAGS.DEVICE_NOTIFY_CALLBACK, _recipientHandle, out var handle) == WIN32_ERROR.ERROR_SUCCESS
             ? new HPOWERNOTIFY(new IntPtr(handle))
             : HPOWERNOTIFY.Null;
     }

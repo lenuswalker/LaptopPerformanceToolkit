@@ -32,8 +32,7 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
         GodModeController godModeController,
         PowerPlanController powerPlanController,
         ThermalModeListener thermalModeListener,
-        PowerModeListener powerModeListener
-        ) : base("SmartFanMode", 1, "IsSupportSmartFan")
+        PowerModeListener powerModeListener) : base("SmartFanMode", 1, "IsSupportSmartFan")
     {
         _aiModeController = aiModeController ?? throw new ArgumentNullException(nameof(aiModeController));
         _godModeController = godModeController ?? throw new ArgumentNullException(nameof(godModeController));
@@ -49,7 +48,7 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
             if (_supportMethodName is null)
                 return true;
 
-            var value = await WMI.CallAsync(Scope,
+            var value = await WMI.CallAsync(SCOPE,
                 Query,
                 _supportMethodName,
                 new(),
@@ -161,11 +160,10 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
             Power.PowerSetActiveOverlayScheme(new Guid(defaultGenericPowerModes[state]));
         }
 
-        await _powerModeListener.NotifyAsync(state).ConfigureAwait(false);
-
-
         if (state == PowerModeState.GodMode)
             await _godModeController.ApplyStateAsync().ConfigureAwait(false);
+
+        await _powerModeListener.NotifyAsync(state).ConfigureAwait(false);
     }
 
     public async Task EnsureCorrectPowerPlanIsSetAsync()

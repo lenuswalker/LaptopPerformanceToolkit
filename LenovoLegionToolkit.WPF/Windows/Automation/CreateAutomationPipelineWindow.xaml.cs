@@ -9,6 +9,7 @@ using LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.WPF.Controls;
 using LenovoLegionToolkit.WPF.Extensions;
+using LenovoLegionToolkit.WPF.Resources;
 using Wpf.Ui.Common;
 using Wpf.Ui.Controls;
 
@@ -34,7 +35,7 @@ public partial class CreateAutomationPipelineWindow
         new DisplayOffAutomationPipelineTrigger(),
         new ExternalDisplayConnectedAutomationPipelineTrigger(),
         new ExternalDisplayDisconnectedAutomationPipelineTrigger(),
-        new TimeAutomationPipelineTrigger(false, false, null, Array.Empty<DayOfWeek>()),
+        new TimeAutomationPipelineTrigger(false, false, TimeExtensions.UtcNow, Enum.GetValues<DayOfWeek>()),
         new TimeIntervalAutomationPipelineTrigger(null, null),
         new OnStartupAutomationPipelineTrigger()
     };
@@ -51,9 +52,11 @@ public partial class CreateAutomationPipelineWindow
         _createPipeline = createPipeline;
 
         InitializeComponent();
+
+        IsVisibleChanged += CreateAutomationPipelineWindow_IsVisibleChanged;
     }
 
-    private async void CreateAutomationPipelineWindow_IsVisibleChanged(object _1, DependencyPropertyChangedEventArgs _2)
+    private async void CreateAutomationPipelineWindow_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
     {
         if (IsVisible)
             await RefreshAsync();
@@ -106,7 +109,7 @@ public partial class CreateAutomationPipelineWindow
             Icon = SymbolRegular.SquareMultiple24,
             Header = new CardHeaderControl
             {
-                Title = "Multiple triggers...",
+                Title = Resource.MultipleTriggersAutomationPipelineTrigger_DisplayName,
                 Accessory = new SymbolIcon { Symbol = SymbolRegular.ChevronRight24 }
             },
             Margin = new(0, 8, 0, 0),

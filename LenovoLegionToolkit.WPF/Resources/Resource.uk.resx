@@ -471,9 +471,6 @@
   <data name="DeviceInformationWindow_Device_Title" xml:space="preserve">
     <value>Пристрій</value>
   </data>
-  <data name="DeviceInformationWindow_InWarranty" xml:space="preserve">
-    <value>На гарантії</value>
-  </data>
   <data name="DeviceInformationWindow_LenovoSupport" xml:space="preserve">
     <value>Підтримка Lenovo</value>
   </data>
@@ -486,9 +483,6 @@
   <data name="DeviceInformationWindow_Model_Title" xml:space="preserve">
     <value>Модель</value>
   </data>
-  <data name="DeviceInformationWindow_OutOfWarranty" xml:space="preserve">
-    <value>Поза гарантією</value>
-  </data>
   <data name="DeviceInformationWindow_SerialNumber_Title" xml:space="preserve">
     <value>Серійний номер</value>
   </data>
@@ -500,9 +494,6 @@
   </data>
   <data name="DeviceInformationWindow_WarrantyStartDate_Title" xml:space="preserve">
     <value>Дата початку</value>
-  </data>
-  <data name="DeviceInformationWindow_WarrantyStatus_Title" xml:space="preserve">
-    <value>Стан</value>
   </data>
   <data name="DeviceInformationWindow_Warranty_Title" xml:space="preserve">
     <value>Гарантія</value>
@@ -636,9 +627,6 @@
   </data>
   <data name="FanCurveControl_GPU" xml:space="preserve">
     <value>ГП</value>
-  </data>
-  <data name="FanCurveControl_RPM" xml:space="preserve">
-    <value>Об/хв</value>
   </data>
   <data name="FlipToStartAutomationStepControl_Message" xml:space="preserve">
     <value>Вмикати ноутбук коли ви підіймаєте кришку.</value>
@@ -1186,19 +1174,6 @@
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
     <value>Вимкнути гарячі клавіші Lenovo</value>
-  </data>
-  <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>Vantage міг бути вимкнений неправильно</value>
-  </data>
-  <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
-    <value>Не вдалося вимкнути Vantage</value>
-  </data>
-  <data name="SettingsPage_DisableVantage_Message" xml:space="preserve">
-    <value>Вимкнути зони Legion та їх сервіси без деінсталяції.
-Перезавантаження рекомендоване після зміни цієї опції.</value>
-  </data>
-  <data name="SettingsPage_DisableVantage_Title" xml:space="preserve">
-    <value>Вимкнути Lenovo Vantage</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
     <value>Зони Legion могли бути увімкнені неправильно</value>

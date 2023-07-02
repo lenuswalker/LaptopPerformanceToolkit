@@ -50,13 +50,15 @@ public class VantagePackageDownloader : AbstractPackageDownloader
             packages.Add(package);
 
             count++;
+
+            // ReSharper disable once PossibleLossOfFraction
             progress?.Report(count * 100 / totalCount);
         }
 
         return packages;
     }
 
-    private async Task<List<PackageDefinition>> GetPackageDefinitionsAsync(HttpClient httpClient, string location, CancellationToken token)
+    private static async Task<List<PackageDefinition>> GetPackageDefinitionsAsync(HttpClient httpClient, string location, CancellationToken token)
     {
         var catalogString = await httpClient.GetStringAsync(location, token).ConfigureAwait(false);
 
@@ -98,6 +100,7 @@ public class VantagePackageDownloader : AbstractPackageDownloader
         var title = document.SelectSingleNode("/Package/Title/Desc")!.InnerText;
         var version = document.SelectSingleNode("/Package/@version")!.InnerText;
         var fileName = document.SelectSingleNode("/Package/Files/Installer/File/Name")!.InnerText;
+        var fileCrc = document.SelectSingleNode("/Package/Files/Installer/File/CRC")?.InnerText;
         var fileSizeBytes = int.Parse(document.SelectSingleNode("/Package/Files/Installer/File/Size")!.InnerText);
         var fileSize = $"{fileSizeBytes / 1024.0 / 1024.0:0.00} MB";
         var releaseDateString = document.SelectSingleNode("/Package/ReleaseDate")!.InnerText;
@@ -130,6 +133,7 @@ public class VantagePackageDownloader : AbstractPackageDownloader
             Category = packageDefinition.Category,
             FileName = fileName,
             FileSize = fileSize,
+            FileCrc = fileCrc,
             ReleaseDate = releaseDate,
             Readme = readme,
             FileLocation = fileLocation,

@@ -269,7 +269,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Apply &amp; close.
+        ///   Looks up a localized string similar to Apply &amp; Close.
         /// </summary>
         public static string ApplyAndClose {
             get {
@@ -1237,15 +1237,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In Warranty.
-        /// </summary>
-        public static string DeviceInformationWindow_InWarranty {
-            get {
-                return ResourceManager.GetString("DeviceInformationWindow_InWarranty", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Lenovo Support.
         /// </summary>
         public static string DeviceInformationWindow_LenovoSupport {
@@ -1278,15 +1269,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string DeviceInformationWindow_Model_Title {
             get {
                 return ResourceManager.GetString("DeviceInformationWindow_Model_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Out of Warranty.
-        /// </summary>
-        public static string DeviceInformationWindow_OutOfWarranty {
-            get {
-                return ResourceManager.GetString("DeviceInformationWindow_OutOfWarranty", resourceCulture);
             }
         }
         
@@ -1332,15 +1314,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string DeviceInformationWindow_WarrantyStartDate_Title {
             get {
                 return ResourceManager.GetString("DeviceInformationWindow_WarrantyStartDate_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Status.
-        /// </summary>
-        public static string DeviceInformationWindow_WarrantyStatus_Title {
-            get {
-                return ResourceManager.GetString("DeviceInformationWindow_WarrantyStatus_Title", resourceCulture);
             }
         }
         
@@ -1815,15 +1788,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RPM.
-        /// </summary>
-        public static string FanCurveControl_RPM {
-            get {
-                return ResourceManager.GetString("FanCurveControl_RPM", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Filter....
         /// </summary>
         public static string Filter {
@@ -1901,6 +1865,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string FnLockControl_Title {
             get {
                 return ResourceManager.GetString("FnLockControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GHz.
+        /// </summary>
+        public static string GHz {
+            get {
+                return ResourceManager.GetString("GHz", resourceCulture);
             }
         }
         
@@ -2382,6 +2355,42 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Automatically power on when a charger is connected..
+        /// </summary>
+        public static string InstantBootAutomationStepControl_Message {
+            get {
+                return ResourceManager.GetString("InstantBootAutomationStepControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instant Boot.
+        /// </summary>
+        public static string InstantBootAutomationStepControl_Title {
+            get {
+                return ResourceManager.GetString("InstantBootAutomationStepControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automatically power on when a charger is connected..
+        /// </summary>
+        public static string InstantBootControl_Message {
+            get {
+                return ResourceManager.GetString("InstantBootControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instant Boot.
+        /// </summary>
+        public static string InstantBootControl_Title {
+            get {
+                return ResourceManager.GetString("InstantBootControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Keyboard backlight cannot be controlled in here when Vantage or its services are running..
         /// </summary>
         public static string Keyboard_VantageEnabledWarning_Message {
@@ -2517,6 +2526,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MHz.
+        /// </summary>
+        public static string MHz {
+            get {
+                return ResourceManager.GetString("MHz", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to When off, microphones will be muted..
         /// </summary>
         public static string MicrophoneAutomationStepControl_Message {
@@ -2567,6 +2585,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string MoveUp {
             get {
                 return ResourceManager.GetString("MoveUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multiple triggers....
+        /// </summary>
+        public static string MultipleTriggersAutomationPipelineTrigger_DisplayName {
+            get {
+                return ResourceManager.GetString("MultipleTriggersAutomationPipelineTrigger_DisplayName", resourceCulture);
             }
         }
         
@@ -2977,6 +3004,71 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Increase performance by overclocking discrete GPU.
+        ///
+        ///WARNING: This action will not run correctly, if discrete GPU is not available..
+        /// </summary>
+        public static string OverclockDiscreteGPUAutomationStepControl_Message {
+            get {
+                return ResourceManager.GetString("OverclockDiscreteGPUAutomationStepControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overclock GPU.
+        /// </summary>
+        public static string OverclockDiscreteGPUAutomationStepControl_Title {
+            get {
+                return ResourceManager.GetString("OverclockDiscreteGPUAutomationStepControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Increase performance by overclocking discrete GPU..
+        /// </summary>
+        public static string OverclockDiscreteGPUControl_Message {
+            get {
+                return ResourceManager.GetString("OverclockDiscreteGPUControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overclock GPU.
+        /// </summary>
+        public static string OverclockDiscreteGPUControl_Title {
+            get {
+                return ResourceManager.GetString("OverclockDiscreteGPUControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Core Frequency Offset.
+        /// </summary>
+        public static string OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title {
+            get {
+                return ResourceManager.GetString("OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Memory Frequency Offset.
+        /// </summary>
+        public static string OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title {
+            get {
+                return ResourceManager.GetString("OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overclock GPU Settings.
+        /// </summary>
+        public static string OverclockDiscreteGPUSettingsWindow_Title {
+            get {
+                return ResourceManager.GetString("OverclockDiscreteGPUSettingsWindow_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Improve response time of the built-in display..
         /// </summary>
         public static string OverDriveAutomationStepControl_Message {
@@ -3302,11 +3394,83 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Turn on or off the backlight on the lid of the laptop..
+        /// </summary>
+        public static string PanelLogoBacklightAutomationStepControl_Message {
+            get {
+                return ResourceManager.GetString("PanelLogoBacklightAutomationStepControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Panel logo backlight.
+        /// </summary>
+        public static string PanelLogoBacklightAutomationStepControl_Title {
+            get {
+                return ResourceManager.GetString("PanelLogoBacklightAutomationStepControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turn on or off the backlight on the lid of the laptop..
+        /// </summary>
+        public static string PanelLogoBacklightControl_Message {
+            get {
+                return ResourceManager.GetString("PanelLogoBacklightControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Panel logo backlight.
+        /// </summary>
+        public static string PanelLogoBacklightControl_Title {
+            get {
+                return ResourceManager.GetString("PanelLogoBacklightControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Paste.
         /// </summary>
         public static string Paste {
             get {
                 return ResourceManager.GetString("Paste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turn on or off the backlight of the ports on the back of the laptop..
+        /// </summary>
+        public static string PortsBacklightAutomationStepControl_Message {
+            get {
+                return ResourceManager.GetString("PortsBacklightAutomationStepControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ports backlight.
+        /// </summary>
+        public static string PortsBacklightAutomationStepControl_Title {
+            get {
+                return ResourceManager.GetString("PortsBacklightAutomationStepControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turn on or off backlight of the ports on the back of the laptop..
+        /// </summary>
+        public static string PortsBacklightControl_Message {
+            get {
+                return ResourceManager.GetString("PortsBacklightControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ports backlight.
+        /// </summary>
+        public static string PortsBacklightControl_Title {
+            get {
+                return ResourceManager.GetString("PortsBacklightControl_Title", resourceCulture);
             }
         }
         
@@ -3712,6 +3876,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to RPM.
+        /// </summary>
+        public static string RPM {
+            get {
+                return ResourceManager.GetString("RPM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Arguments.
         /// </summary>
         public static string RunAutomationStepControl_ExeArguments {
@@ -3799,6 +3972,87 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string SelectSmartKeyPipelinesWindow_ShowThisApp {
             get {
                 return ResourceManager.GetString("SelectSmartKeyPipelinesWindow_ShowThisApp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Core Clock.
+        /// </summary>
+        public static string SensorsControl_CoreClock_Title {
+            get {
+                return ResourceManager.GetString("SensorsControl_CoreClock_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CPU.
+        /// </summary>
+        public static string SensorsControl_CPU_Title {
+            get {
+                return ResourceManager.GetString("SensorsControl_CPU_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fan.
+        /// </summary>
+        public static string SensorsControl_Fan_Title {
+            get {
+                return ResourceManager.GetString("SensorsControl_Fan_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPU.
+        /// </summary>
+        public static string SensorsControl_GPU_Title {
+            get {
+                return ResourceManager.GetString("SensorsControl_GPU_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum: {0}.
+        /// </summary>
+        public static string SensorsControl_Maximum {
+            get {
+                return ResourceManager.GetString("SensorsControl_Maximum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Memory Clock.
+        /// </summary>
+        public static string SensorsControl_MemoryClock_Title {
+            get {
+                return ResourceManager.GetString("SensorsControl_MemoryClock_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refresh interval.
+        /// </summary>
+        public static string SensorsControl_RefreshInterval {
+            get {
+                return ResourceManager.GetString("SensorsControl_RefreshInterval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temperature.
+        /// </summary>
+        public static string SensorsControl_Temperature_Title {
+            get {
+                return ResourceManager.GetString("SensorsControl_Temperature_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Utilisation.
+        /// </summary>
+        public static string SensorsControl_Utilisation_Title {
+            get {
+                return ResourceManager.GetString("SensorsControl_Utilisation_Title", resourceCulture);
             }
         }
         
@@ -3914,7 +4168,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vantage may have not been disabled correctly.
+        ///   Looks up a localized string similar to Vantage and/or ImController may have not been disabled correctly.
         /// </summary>
         public static string SettingsPage_DisableVantage_Error_Message {
             get {
@@ -3923,7 +4177,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Couldn&apos;t disable Vantage.
+        ///   Looks up a localized string similar to Couldn&apos;t disable Vantage and/or ImController.
         /// </summary>
         public static string SettingsPage_DisableVantage_Error_Title {
             get {
@@ -3932,7 +4186,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Disable Lenovo Vantage and its service without uninstalling it.
+        ///   Looks up a localized string similar to Disable Lenovo Vantage and ImController without uninstalling them.
         ///Restart is recommended after changing this option..
         /// </summary>
         public static string SettingsPage_DisableVantage_Message {
@@ -3942,7 +4196,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Disable Lenovo Vantage.
+        ///   Looks up a localized string similar to Disable Lenovo Vantage and ImController.
         /// </summary>
         public static string SettingsPage_DisableVantage_Title {
             get {
@@ -4577,15 +4831,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string SymbolRegularPicker_Title {
             get {
                 return ResourceManager.GetString("SymbolRegularPicker_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Day.
-        /// </summary>
-        public static string TimeAutomationPipelineTriggerTabItemContent_Day {
-            get {
-                return ResourceManager.GetString("TimeAutomationPipelineTriggerTabItemContent_Day", resourceCulture);
             }
         }
         

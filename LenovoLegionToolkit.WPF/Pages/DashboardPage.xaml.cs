@@ -7,6 +7,7 @@ using LenovoLegionToolkit.Lib;
 using System.Windows;
 using System.Windows.Controls;
 using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Controls.Dashboard;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Settings;
@@ -38,12 +39,21 @@ public partial class DashboardPage
 
         ScrollHost?.ScrollToTop();
 
+        _sensors.Visibility = _dashboardSettings.Store.ShowSensors ? Visibility.Visible : Visibility.Collapsed;
+
         _dashboardGroupControls.Clear();
         _content.ColumnDefinitions.Clear();
         _content.RowDefinitions.Clear();
         _content.Children.Clear();
 
-        var groups = _dashboardSettings.Store.Groups;
+        var groups = _dashboardSettings.Store.Groups ?? DashboardGroup.DefaultGroups;
+
+        if (Log.Instance.IsTraceEnabled)
+        {
+            Log.Instance.Trace($"Groups:");
+            foreach (var group in groups)
+                Log.Instance.Trace($" - {group}");
+        }
 
         _content.ColumnDefinitions.Add(new ColumnDefinition { Width = new(1, GridUnitType.Star) });
         _content.ColumnDefinitions.Add(new ColumnDefinition { Width = new(1, GridUnitType.Star) });

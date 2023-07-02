@@ -1,16 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using LenovoLegionToolkit.Lib.System;
 
-namespace LenovoLegionToolkit.Lib.System;
+namespace LenovoLegionToolkit.Lib.SoftwareDisabler;
 
-public class FnKeys : SoftwareDisabler
+public class FnKeysDisabler : AbstractSoftwareDisabler
 {
-    protected override string[] ScheduledTasksPaths => Array.Empty<string>();
-    protected override string[] ServiceNames => new[] { "LenovoFnAndFunctionKeys" };
-    protected override string[] ProcessNames => new[] { "LenovoUtilityUI", "LenovoUtilityService", "LenovoSmartKey" };
+    protected override IEnumerable<string> ScheduledTasksPaths => Array.Empty<string>();
+    protected override IEnumerable<string> ServiceNames => new[] { "LenovoFnAndFunctionKeys" };
+    protected override IEnumerable<string> ProcessNames => new[] { "LenovoUtilityUI", "LenovoUtilityService", "LenovoSmartKey" };
 
     public override async Task EnableAsync()
     {
@@ -24,12 +26,9 @@ public class FnKeys : SoftwareDisabler
         SetUwpStartup("LenovoUtility", "LenovoUtilityID", false);
     }
 
-    protected override bool AreProcessesRunning()
+    protected override IEnumerable<string> RunningProcesses()
     {
-        var result = base.AreProcessesRunning();
-
-        if (result)
-            return true;
+        var result = base.RunningProcesses().ToList();
 
         try
         {
@@ -40,14 +39,12 @@ public class FnKeys : SoftwareDisabler
                     continue;
 
                 if (description.Equals("Lenovo Hotkeys", StringComparison.InvariantCultureIgnoreCase))
-                    return true;
+                    result.Add(process.ProcessName);
             }
         }
-        catch
-        {
-        }
+        catch {  /* Ignored. */ }
 
-        return false;
+        return result;
     }
 
     protected override async Task KillProcessesAsync()
@@ -69,9 +66,7 @@ public class FnKeys : SoftwareDisabler
                 await process.WaitForExitAsync().ConfigureAwait(false);
             }
         }
-        catch
-        {
-        }
+        catch {  /* Ignored. */ }
     }
 
     private static void SetUwpStartup(string appPattern, string subKeyName, bool enabled)

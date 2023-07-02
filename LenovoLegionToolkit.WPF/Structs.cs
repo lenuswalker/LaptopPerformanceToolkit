@@ -7,10 +7,32 @@ public readonly struct DashboardGroup
 {
     public static readonly DashboardGroup[] DefaultGroups =
     {
-        new(DashboardGroupType.Power, null, DashboardItem.PowerMode, DashboardItem.BatteryMode, DashboardItem.AlwaysOnUsb),
-        new(DashboardGroupType.Graphics, null, DashboardItem.HybridMode, DashboardItem.DiscreteGpu),
-        new(DashboardGroupType.Display, null, DashboardItem.Resolution, DashboardItem.RefreshRate, DashboardItem.DisplayBrightness, DashboardItem.DpiScale, DashboardItem.Hdr, DashboardItem.OverDrive, DashboardItem.TurnOffMonitors),
-        new(DashboardGroupType.Other, null, DashboardItem.Microphone, DashboardItem.WhiteKeyboardBacklight, DashboardItem.FlipToStart, DashboardItem.TouchpadLock, DashboardItem.FnLock, DashboardItem.WinKeyLock)
+        new(DashboardGroupType.Power, null,
+            DashboardItem.PowerMode,
+            DashboardItem.BatteryMode,
+            DashboardItem.AlwaysOnUsb,
+            DashboardItem.InstantBoot),
+        new(DashboardGroupType.Graphics, null,
+            DashboardItem.HybridMode,
+            DashboardItem.DiscreteGpu,
+            DashboardItem.OverclockDiscreteGpu),
+        new(DashboardGroupType.Display, null,
+            DashboardItem.Resolution,
+            DashboardItem.RefreshRate,
+            DashboardItem.DisplayBrightness,
+            DashboardItem.DpiScale,
+            DashboardItem.Hdr,
+            DashboardItem.OverDrive,
+            DashboardItem.TurnOffMonitors),
+        new(DashboardGroupType.Other, null,
+            DashboardItem.Microphone,
+            DashboardItem.WhiteKeyboardBacklight,
+            DashboardItem.PanelLogoBacklight,
+            DashboardItem.PortsBacklight,
+            DashboardItem.FlipToStart,
+            DashboardItem.TouchpadLock,
+            DashboardItem.FnLock,
+            DashboardItem.WinKeyLock)
     };
 
     public DashboardGroupType Type { get; }
@@ -35,4 +57,6 @@ public readonly struct DashboardGroup
         DashboardGroupType.Custom => CustomName ?? string.Empty,
         _ => throw new InvalidOperationException($"Invalid type {Type}"),
     };
+
+    public override string ToString() => $"{nameof(Type)}: {Type}, {nameof(CustomName)}: {CustomName}, {nameof(Items)}: {string.Join(",", Items)}";
 }

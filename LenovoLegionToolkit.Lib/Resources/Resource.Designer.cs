@@ -160,6 +160,42 @@ namespace LenovoLegionToolkit.Lib.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        public static string FlipToStartState_Off {
+            get {
+                return ResourceManager.GetString("FlipToStartState_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On.
+        /// </summary>
+        public static string FlipToStartState_On {
+            get {
+                return ResourceManager.GetString("FlipToStartState_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        public static string FnLockState_Off {
+            get {
+                return ResourceManager.GetString("FnLockState_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On.
+        /// </summary>
+        public static string FnLockState_On {
+            get {
+                return ResourceManager.GetString("FnLockState_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Powered Off.
         /// </summary>
         public static string GPUController_PoweredOff {
@@ -174,6 +210,42 @@ namespace LenovoLegionToolkit.Lib.Resources {
         public static string GPUController_PoweredOn {
             get {
                 return ResourceManager.GetString("GPUController_PoweredOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        public static string GSyncState_Off {
+            get {
+                return ResourceManager.GetString("GSyncState_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On.
+        /// </summary>
+        public static string GSyncState_On {
+            get {
+                return ResourceManager.GetString("GSyncState_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        public static string HDRState_Off {
+            get {
+                return ResourceManager.GetString("HDRState_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On.
+        /// </summary>
+        public static string HDRState_On {
+            get {
+                return ResourceManager.GetString("HDRState_On", resourceCulture);
             }
         }
         
@@ -210,6 +282,60 @@ namespace LenovoLegionToolkit.Lib.Resources {
         public static string HybridModeState_OnIGPUOnly {
             get {
                 return ResourceManager.GetString("HybridModeState_OnIGPUOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AC Adapter.
+        /// </summary>
+        public static string InstantBootState_AcAdapter {
+            get {
+                return ResourceManager.GetString("InstantBootState_AcAdapter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AC and USB PD.
+        /// </summary>
+        public static string InstantBootState_AcAdapterAndUsbPowerDelivery {
+            get {
+                return ResourceManager.GetString("InstantBootState_AcAdapterAndUsbPowerDelivery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        public static string InstantBootState_Off {
+            get {
+                return ResourceManager.GetString("InstantBootState_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to USB Power Delivery.
+        /// </summary>
+        public static string InstantBootState_UsbPowerDelivery {
+            get {
+                return ResourceManager.GetString("InstantBootState_UsbPowerDelivery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        public static string MicrophoneState_Off {
+            get {
+                return ResourceManager.GetString("MicrophoneState_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On.
+        /// </summary>
+        public static string MicrophoneState_On {
+            get {
+                return ResourceManager.GetString("MicrophoneState_On", resourceCulture);
             }
         }
         
@@ -295,6 +421,78 @@ namespace LenovoLegionToolkit.Lib.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        public static string OneLevelWhiteKeyboardBacklightState_Off {
+            get {
+                return ResourceManager.GetString("OneLevelWhiteKeyboardBacklightState_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On.
+        /// </summary>
+        public static string OneLevelWhiteKeyboardBacklightState_On {
+            get {
+                return ResourceManager.GetString("OneLevelWhiteKeyboardBacklightState_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        public static string OverdriveState_Off {
+            get {
+                return ResourceManager.GetString("OverdriveState_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On.
+        /// </summary>
+        public static string OverdriveState_On {
+            get {
+                return ResourceManager.GetString("OverdriveState_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        public static string PanelLogoBacklightState_Off {
+            get {
+                return ResourceManager.GetString("PanelLogoBacklightState_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On.
+        /// </summary>
+        public static string PanelLogoBacklightState_On {
+            get {
+                return ResourceManager.GetString("PanelLogoBacklightState_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        public static string PortsBacklightState_Off {
+            get {
+                return ResourceManager.GetString("PortsBacklightState_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On.
+        /// </summary>
+        public static string PortsBacklightState_On {
+            get {
+                return ResourceManager.GetString("PortsBacklightState_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Balance.
         /// </summary>
         public static string PowerModeState_Balance {
@@ -336,42 +534,6 @@ namespace LenovoLegionToolkit.Lib.Resources {
         public static string PowerModeState_Quiet {
             get {
                 return ResourceManager.GetString("PowerModeState_Quiet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fast.
-        /// </summary>
-        public static string RBGKeyboardBacklightSpeed_Fast {
-            get {
-                return ResourceManager.GetString("RBGKeyboardBacklightSpeed_Fast", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fastest.
-        /// </summary>
-        public static string RBGKeyboardBacklightSpeed_Fastest {
-            get {
-                return ResourceManager.GetString("RBGKeyboardBacklightSpeed_Fastest", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Slow.
-        /// </summary>
-        public static string RBGKeyboardBacklightSpeed_Slow {
-            get {
-                return ResourceManager.GetString("RBGKeyboardBacklightSpeed_Slow", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Slowest.
-        /// </summary>
-        public static string RBGKeyboardBacklightSpeed_Slowest {
-            get {
-                return ResourceManager.GetString("RBGKeyboardBacklightSpeed_Slowest", resourceCulture);
             }
         }
         
@@ -471,6 +633,42 @@ namespace LenovoLegionToolkit.Lib.Resources {
         public static string RGBKeyboardBacklightPreset_Two {
             get {
                 return ResourceManager.GetString("RGBKeyboardBacklightPreset_Two", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fast.
+        /// </summary>
+        public static string RGBKeyboardBacklightSpeed_Fast {
+            get {
+                return ResourceManager.GetString("RGBKeyboardBacklightSpeed_Fast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fastest.
+        /// </summary>
+        public static string RGBKeyboardBacklightSpeed_Fastest {
+            get {
+                return ResourceManager.GetString("RGBKeyboardBacklightSpeed_Fastest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slow.
+        /// </summary>
+        public static string RGBKeyboardBacklightSpeed_Slow {
+            get {
+                return ResourceManager.GetString("RGBKeyboardBacklightSpeed_Slow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slowest.
+        /// </summary>
+        public static string RGBKeyboardBacklightSpeed_Slowest {
+            get {
+                return ResourceManager.GetString("RGBKeyboardBacklightSpeed_Slowest", resourceCulture);
             }
         }
         
@@ -736,6 +934,24 @@ namespace LenovoLegionToolkit.Lib.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        public static string TouchpadLockState_Off {
+            get {
+                return ResourceManager.GetString("TouchpadLockState_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On.
+        /// </summary>
+        public static string TouchpadLockState_On {
+            get {
+                return ResourceManager.GetString("TouchpadLockState_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to High.
         /// </summary>
         public static string WhiteKeyboardBacklightState_High {
@@ -759,6 +975,24 @@ namespace LenovoLegionToolkit.Lib.Resources {
         public static string WhiteKeyboardBacklightState_Off {
             get {
                 return ResourceManager.GetString("WhiteKeyboardBacklightState_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        public static string WinKeyState_Off {
+            get {
+                return ResourceManager.GetString("WinKeyState_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On.
+        /// </summary>
+        public static string WinKeyState_On {
+            get {
+                return ResourceManager.GetString("WinKeyState_On", resourceCulture);
             }
         }
     }

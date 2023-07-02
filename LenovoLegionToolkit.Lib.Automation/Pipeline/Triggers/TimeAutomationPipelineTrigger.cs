@@ -23,12 +23,12 @@ public class TimeAutomationPipelineTrigger : ITimeAutomationPipelineTrigger
     private readonly SunriseSunset _sunriseSunset = IoCContainer.Resolve<SunriseSunset>();
 
     [JsonConstructor]
-    public TimeAutomationPipelineTrigger(bool isSunrise, bool isSunset, Time? time, DayOfWeek[] days)
+    public TimeAutomationPipelineTrigger(bool isSunrise, bool isSunset, Time? time, DayOfWeek[]? days)
     {
         IsSunrise = isSunrise;
         IsSunset = isSunset;
         Time = time;
-        Days = days;
+        Days = days ?? Array.Empty<DayOfWeek>();
     }
 
     public async Task<bool> IsMatchingEvent(IAutomationEvent automationEvent)
@@ -46,6 +46,14 @@ public class TimeAutomationPipelineTrigger : ITimeAutomationPipelineTrigger
         var day = now.DayOfWeek;
 
         return await IsMatching(time, day).ConfigureAwait(false);
+    }
+
+    public void UpdateEnvironment(ref AutomationEnvironment environment)
+    {
+        environment.IsSunset = IsSunset;
+        environment.IsSunrise = IsSunrise;
+        environment.Time = Time;
+        environment.Days = Days;
     }
 
     private async Task<bool> IsMatching(Time time, DayOfWeek dayOfWeek)

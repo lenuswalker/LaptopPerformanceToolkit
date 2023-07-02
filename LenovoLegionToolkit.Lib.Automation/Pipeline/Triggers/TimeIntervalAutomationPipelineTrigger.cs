@@ -38,13 +38,19 @@ public class TimeIntervalAutomationPipelineTrigger : ITimeIntervalAutomationPipe
 
     public async Task<bool> IsMatchingState() 
     {
-        if (ACInterval is int && (int) ACInterval > 0) 
-            return true;
-
         if (ACInterval is int && (int)ACInterval > 0) 
             return true;
 
+        if (DCInterval is int && (int)DCInterval > 0) 
+            return true;
+
         return false;
+    }
+
+    public void UpdateEnvironment(ref AutomationEnvironment environment)
+    {
+        environment.ACInterval = ACInterval;
+        environment.DCInterval = DCInterval;
     }
 
     public IAutomationPipelineTrigger DeepCopy() => new TimeIntervalAutomationPipelineTrigger(ACInterval, DCInterval);

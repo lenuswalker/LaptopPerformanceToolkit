@@ -141,7 +141,7 @@ public static class WMI
         public string Format(string? format, object? arg, IFormatProvider? formatProvider)
         {
             var stringArg = arg?.ToString()?.Replace("\\", "\\\\");
-            return stringArg ?? "";
+            return stringArg ?? string.Empty;
         }
     }
 }

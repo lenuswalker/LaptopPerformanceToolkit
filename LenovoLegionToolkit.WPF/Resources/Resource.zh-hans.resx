@@ -473,9 +473,6 @@
   <data name="DeviceInformationWindow_Device_Title" xml:space="preserve">
     <value>设备信息</value>
   </data>
-  <data name="DeviceInformationWindow_InWarranty" xml:space="preserve">
-    <value>在保</value>
-  </data>
   <data name="DeviceInformationWindow_LenovoSupport" xml:space="preserve">
     <value>点击访问联想服务网站查看详细保修信息</value>
   </data>
@@ -488,9 +485,6 @@
   <data name="DeviceInformationWindow_Model_Title" xml:space="preserve">
     <value>设备型号</value>
   </data>
-  <data name="DeviceInformationWindow_OutOfWarranty" xml:space="preserve">
-    <value>过保</value>
-  </data>
   <data name="DeviceInformationWindow_SerialNumber_Title" xml:space="preserve">
     <value>序列号</value>
   </data>
@@ -502,9 +496,6 @@
   </data>
   <data name="DeviceInformationWindow_WarrantyStartDate_Title" xml:space="preserve">
     <value>开始时间</value>
-  </data>
-  <data name="DeviceInformationWindow_WarrantyStatus_Title" xml:space="preserve">
-    <value>状态</value>
   </data>
   <data name="DeviceInformationWindow_Warranty_Title" xml:space="preserve">
     <value>保修信息</value>
@@ -641,9 +632,6 @@
   </data>
   <data name="FanCurveControl_GPU" xml:space="preserve">
     <value>GPU</value>
-  </data>
-  <data name="FanCurveControl_RPM" xml:space="preserve">
-    <value>转/分钟 (RPM)</value>
   </data>
   <data name="FlipToStartAutomationStepControl_Message" xml:space="preserve">
     <value>打开盖子时将自动开启笔记本。</value>
@@ -1212,17 +1200,17 @@
     <value>禁用 Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>Lenovo Vantage 可能没有被正确禁用。</value>
+    <value>Lenovo Vantage 与 ImController 可能没有被正确禁用。</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
-    <value>无法禁用 Lenovo Vantage</value>
+    <value>无法禁用 Lenovo Vantage 与 ImController</value>
   </data>
   <data name="SettingsPage_DisableVantage_Message" xml:space="preserve">
-    <value>禁用 Lenovo Vantage 及其服务且无需卸载。
+    <value>禁用 Lenovo Vantage 与 ImController 且无需卸载。
 修改此项后推荐重启电脑。</value>
   </data>
   <data name="SettingsPage_DisableVantage_Title" xml:space="preserve">
-    <value>禁用 Lenovo Vantage</value>
+    <value>禁用 Lenovo Vantage 与 ImController</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
     <value>Legion Zone 可能没有被正确启用。</value>
@@ -1767,5 +1755,59 @@
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Path" xml:space="preserve">
     <value>路径</value>
+  </data>
+  <data name="AutomationPipelineControl_SubtitlePart_After" xml:space="preserve">
+    <value>在 {0} 之后</value>
+  </data>
+  <data name="MultipleTriggersAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>多个触发器...</value>
+    <comment>Allows the user to merge multiple triggers for the execution of selected actions.</comment>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_Title" xml:space="preserve">
+    <value>独立显卡超频设置</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title" xml:space="preserve">
+    <value>核心频率偏移量</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title" xml:space="preserve">
+    <value>显存频率偏移量</value>
+  </data>
+  <data name="OverclockDiscreteGPUControl_Title" xml:space="preserve">
+    <value>超频独立显卡</value>
+  </data>
+  <data name="OverclockDiscreteGPUControl_Message" xml:space="preserve">
+    <value>超频独立显卡以提升性能。</value>
+  </data>
+  <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
+    <value>超频独立显卡</value>
+  </data>
+  <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
+    <value>超频独立显卡以提升性能。
+
+警告：当独立显卡弹出后此操作将不起作用。</value>
+  </data>
+  <data name="PortsBacklightControl_Title" xml:space="preserve">
+    <value>接口指示灯</value>
+  </data>
+  <data name="PortsBacklightControl_Message" xml:space="preserve">
+    <value>打开或关闭位于设备后方的接口指示灯。</value>
+  </data>
+  <data name="PortsBacklightAutomationStepControl_Title" xml:space="preserve">
+    <value>接口指示灯</value>
+  </data>
+  <data name="PortsBacklightAutomationStepControl_Message" xml:space="preserve">
+    <value>打开或关闭位于设备后方的接口指示灯。</value>
+  </data>
+  <data name="PanelLogoBacklightControl_Title" xml:space="preserve">
+    <value>拯救者 LOGO 灯</value>
+  </data>
+  <data name="PanelLogoBacklightControl_Message" xml:space="preserve">
+    <value>打开或关闭位于设备后方的拯救者 LOGO 灯。</value>
+  </data>
+  <data name="PanelLogoBacklightAutomationStepControl_Title" xml:space="preserve">
+    <value>拯救者 LOGO 灯</value>
+  </data>
+  <data name="PanelLogoBacklightAutomationStepControl_Message" xml:space="preserve">
+    <value>打开或关闭位于设备后方的拯救者 LOGO 灯。</value>
   </data>
 </root>

@@ -468,9 +468,6 @@
   <data name="DeviceInformationWindow_Device_Title" xml:space="preserve">
     <value>الجهاز</value>
   </data>
-  <data name="DeviceInformationWindow_InWarranty" xml:space="preserve">
-    <value>ضمن الضمان</value>
-  </data>
   <data name="DeviceInformationWindow_LenovoSupport" xml:space="preserve">
     <value>خدمة Lenovo</value>
   </data>
@@ -483,9 +480,6 @@
   <data name="DeviceInformationWindow_Model_Title" xml:space="preserve">
     <value>الطراز</value>
   </data>
-  <data name="DeviceInformationWindow_OutOfWarranty" xml:space="preserve">
-    <value>خارج الضمان</value>
-  </data>
   <data name="DeviceInformationWindow_SerialNumber_Title" xml:space="preserve">
     <value>الرقم المسلسل</value>
   </data>
@@ -497,9 +491,6 @@
   </data>
   <data name="DeviceInformationWindow_WarrantyStartDate_Title" xml:space="preserve">
     <value>تاريخ البدء</value>
-  </data>
-  <data name="DeviceInformationWindow_WarrantyStatus_Title" xml:space="preserve">
-    <value>الحالة</value>
   </data>
   <data name="DeviceInformationWindow_Warranty_Title" xml:space="preserve">
     <value>الضمان</value>
@@ -626,9 +617,6 @@
   </data>
   <data name="FanCurveControl_GPU" xml:space="preserve">
     <value>كرت الشاشة</value>
-  </data>
-  <data name="FanCurveControl_RPM" xml:space="preserve">
-    <value>لفة فى الدقيقة</value>
   </data>
   <data name="FlipToStartAutomationStepControl_Message" xml:space="preserve">
     <value>تشغيل اللاب توب عند رفع الشاشة.</value>
@@ -1417,8 +1405,14 @@
   <data name="EditDashboardWindow_CreateGroup_Message" xml:space="preserve">
     <value>الاسم</value>
   </data>
+  <data name="Notification_UpdateAvailable" xml:space="preserve">
+    <value>يتوفر تحديث!</value>
+  </data>
   <data name="AddAutomationStepWindow_Title" xml:space="preserve">
     <value>إضافة خطوة</value>
+  </data>
+  <data name="StatusTrayPopup_UpdateAvailable" xml:space="preserve">
+    <value>يتوفر تحديث!</value>
   </data>
   <data name="PoweredOff" xml:space="preserve">
     <value>مغلق</value>

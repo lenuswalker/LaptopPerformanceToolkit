@@ -3,18 +3,21 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.System;
 using Windows.Win32;
 using Windows.Win32.Foundation;
 using Windows.Win32.System.Power;
 
+// ReSharper disable StringLiteralTypo
+
 namespace LenovoLegionToolkit.Lib.Utils;
 
 public static class Compatibility
 {
-    private static readonly string _allowedVendor = "LENOVO";
+    private const string ALLOWED_VENDOR = "LENOVO";
 
-    private static readonly string[] _allowedModelsPrefix = {
+    private static readonly string[] AllowedModelsPrefix = {
         // Worldwide variants
         "17ACH",
         "17ARH",
@@ -22,22 +25,28 @@ public static class Compatibility
         "17IMH",
 
         "16ACH",
+        "16APH",
         "16ARH",
         "16ARX",
         "16IAH",
         "16IAX",
+        "16IRH",
         "16IRX",
         "16ITH",
 
         "15ACH",
+        "15APH",
         "15ARH",
         "15IAH",
         "15IHU",
         "15IMH",
+        "15IRH",
         "15ITH",
 
+        "14IRP",
+
         // Chinese variants
-        "IRH8",
+        "G5000",
         "R9000",
         "R7000",
         "Y9000",
@@ -46,7 +55,7 @@ public static class Compatibility
         // Limited compatibility
         "17IR",
         "15IR",
-        "15ICH"
+        "15IC"
     };
 
     private static MachineInformation? _machineInformation;
@@ -60,10 +69,10 @@ public static class Compatibility
         if (!await CheckBasicCompatibilityAsync().ConfigureAwait(false))
             return (false, mi);
 
-        if (!mi.Vendor.Equals(_allowedVendor, StringComparison.InvariantCultureIgnoreCase))
+        if (!mi.Vendor.Equals(ALLOWED_VENDOR, StringComparison.InvariantCultureIgnoreCase))
             return (false, mi);
 
-        foreach (var allowedModel in _allowedModelsPrefix)
+        foreach (var allowedModel in AllowedModelsPrefix)
             if (mi.Model.Contains(allowedModel, StringComparison.InvariantCultureIgnoreCase))
                 return (true, mi);
 
@@ -72,50 +81,193 @@ public static class Compatibility
 
     public static async Task<MachineInformation> GetMachineInformationAsync()
     {
-        if (!_machineInformation.HasValue)
+        if (_machineInformation.HasValue)
+            return _machineInformation.Value;
+
+        var (vendor, machineType, model, serialNumber) = await GetModelDataAsync().ConfigureAwait(false);
+        var (biosVersion, biosVersionRaw) = await GetBIOSVersionAsync().ConfigureAwait(false);
+        var smartFanVersion = await GetSmartFanVersionAsync().ConfigureAwait(false);
+        var legionZoneVersion = await GetLegionZoneVersionAsync().ConfigureAwait(false);
+        var features = await GetFeaturesAsync().ConfigureAwait(false);
+
+        var machineInformation = new MachineInformation
         {
-            var (vendor, machineType, model, serialNumber) = await GetModelDataAsync().ConfigureAwait(false);
-            var biosVersion = await GetBIOSVersionAsync().ConfigureAwait(false);
-
-            var machineInformation = new MachineInformation
+            Vendor = vendor,
+            MachineType = machineType,
+            Model = model,
+            SerialNumber = serialNumber,
+            BiosVersion = biosVersion,
+            BiosVersionRaw = biosVersionRaw,
+            SmartFanVersion = smartFanVersion,
+            LegionZoneVersion = legionZoneVersion,
+            Features = features,
+            Properties = new()
             {
-                Vendor = vendor,
-                MachineType = machineType,
-                Model = model,
-                SerialNumber = serialNumber,
-                BiosVersion = biosVersion,
-                Properties = new()
-                {
-                    SupportsAlwaysOnAc = GetAlwaysOnAcStatus(),
-                    SupportsGodModeV1 = GetSupportsGodModeV1(biosVersion),
-                    SupportsGodModeV2 = GetSupportsGodModeV2(biosVersion),
-                    SupportsExtendedHybridMode = await GetSupportsExtendedHybridModeAsync().ConfigureAwait(false),
-                    SupportsIntelligentSubMode = await GetSupportsIntelligentSubModeAsync().ConfigureAwait(false),
-                    HasQuietToPerformanceModeSwitchingBug = GetHasQuietToPerformanceModeSwitchingBug(biosVersion),
-                    HasGodModeToOtherModeSwitchingBug = GetHasGodModeToOtherModeSwitchingBug(biosVersion),
-                }
-            };
-
-            if (Log.Instance.IsTraceEnabled)
-            {
-                Log.Instance.Trace($"Retrieved machine information:");
-                Log.Instance.Trace($" * Vendor: '{machineInformation.Vendor}'");
-                Log.Instance.Trace($" * Machine Type: '{machineInformation.MachineType}'");
-                Log.Instance.Trace($" * Model: '{machineInformation.Model}'");
-                Log.Instance.Trace($" * BIOS: '{machineInformation.BiosVersion}'");
-                Log.Instance.Trace($" * Properties.SupportsAlwaysOnAc: '{machineInformation.Properties.SupportsAlwaysOnAc.status}, {machineInformation.Properties.SupportsAlwaysOnAc.connectivity}'");
-                Log.Instance.Trace($" * Properties.SupportsGodModeV1: '{machineInformation.Properties.SupportsGodModeV1}'");
-                Log.Instance.Trace($" * Properties.SupportsGodModeV2: '{machineInformation.Properties.SupportsGodModeV2}'");
-                Log.Instance.Trace($" * Properties.SupportsExtendedHybridMode: '{machineInformation.Properties.SupportsExtendedHybridMode}'");
-                Log.Instance.Trace($" * Properties.SupportsIntelligentSubMode: '{machineInformation.Properties.SupportsIntelligentSubMode}'");
-                Log.Instance.Trace($" * Properties.HasQuietToPerformanceModeSwitchingBug: '{machineInformation.Properties.HasQuietToPerformanceModeSwitchingBug}'");
-                Log.Instance.Trace($" * Properties.HasGodModeToOtherModeSwitchingBug: '{machineInformation.Properties.HasGodModeToOtherModeSwitchingBug}'");
+                SupportsAlwaysOnAc = GetAlwaysOnAcStatus(),
+                SupportsGodModeV1 = GetSupportsGodModeV1(smartFanVersion, legionZoneVersion, biosVersion),
+                SupportsGodModeV2 = GetSupportsGodModeV2(smartFanVersion, legionZoneVersion),
+                SupportsIGPUMode = await GetSupportsIGPUModeAsync().ConfigureAwait(false),
+                SupportsIntelligentSubMode = await GetSupportsIntelligentSubModeAsync().ConfigureAwait(false),
+                HasQuietToPerformanceModeSwitchingBug = GetHasQuietToPerformanceModeSwitchingBug(biosVersion),
+                HasGodModeToOtherModeSwitchingBug = GetHasGodModeToOtherModeSwitchingBug(biosVersion),
+                IsExcludedFromLenovoLighting = GetIsExcludedFromLenovoLighting(biosVersion),
+                IsExcludedFromPanelLogoLenovoLighting = GetIsExcludedFromPanelLenovoLighting(machineType, model)
             }
+        };
 
-            _machineInformation = machineInformation;
+        if (Log.Instance.IsTraceEnabled)
+        {
+            Log.Instance.Trace($"Retrieved machine information:");
+            Log.Instance.Trace($" * Vendor: '{machineInformation.Vendor}'");
+            Log.Instance.Trace($" * Machine Type: '{machineInformation.MachineType}'");
+            Log.Instance.Trace($" * Model: '{machineInformation.Model}'");
+            Log.Instance.Trace($" * BIOS: '{machineInformation.BiosVersion}' [{machineInformation.BiosVersionRaw}]");
+            Log.Instance.Trace($" * SmartFanVersion: '{machineInformation.SmartFanVersion}'");
+            Log.Instance.Trace($" * LegionZoneVersion: '{machineInformation.LegionZoneVersion}'");
+            Log.Instance.Trace($" * Features:");
+            Log.Instance.Trace($"     * Source: '{machineInformation.Features.Source}'");
+            Log.Instance.Trace($"     * IGPUMode: '{machineInformation.Features.IGPUMode}'");
+            Log.Instance.Trace($"     * NvidiaGPUDynamicDisplaySwitching: '{machineInformation.Features.NvidiaGPUDynamicDisplaySwitching}'");
+            Log.Instance.Trace($"     * InstantBootAc: '{machineInformation.Features.InstantBootAc}'");
+            Log.Instance.Trace($"     * InstantBootUsbPowerDelivery: '{machineInformation.Features.InstantBootUsbPowerDelivery}'");
+            Log.Instance.Trace($"     * AMDSmartShiftMode: '{machineInformation.Features.AMDSmartShiftMode}'");
+            Log.Instance.Trace($"     * AMDSkinTemperatureTracking: '{machineInformation.Features.AMDSkinTemperatureTracking}'");
+            Log.Instance.Trace($" * Properties:");
+            Log.Instance.Trace($"     * SupportsAlwaysOnAc: '{machineInformation.Properties.SupportsAlwaysOnAc.status}, {machineInformation.Properties.SupportsAlwaysOnAc.connectivity}'");
+            Log.Instance.Trace($"     * SupportsGodModeV1: '{machineInformation.Properties.SupportsGodModeV1}'");
+            Log.Instance.Trace($"     * SupportsGodModeV2: '{machineInformation.Properties.SupportsGodModeV2}'");
+            Log.Instance.Trace($"     * SupportsIGPUMode: '{machineInformation.Properties.SupportsIGPUMode}'");
+            Log.Instance.Trace($"     * SupportsIntelligentSubMode: '{machineInformation.Properties.SupportsIntelligentSubMode}'");
+            Log.Instance.Trace($"     * HasQuietToPerformanceModeSwitchingBug: '{machineInformation.Properties.HasQuietToPerformanceModeSwitchingBug}'");
+            Log.Instance.Trace($"     * HasGodModeToOtherModeSwitchingBug: '{machineInformation.Properties.HasGodModeToOtherModeSwitchingBug}'");
+            Log.Instance.Trace($"     * IsExcludedFromLenovoLighting: '{machineInformation.Properties.IsExcludedFromLenovoLighting}'");
+            Log.Instance.Trace($"     * IsExcludedFromPanelLogoLenovoLighting: '{machineInformation.Properties.IsExcludedFromPanelLogoLenovoLighting}'");
         }
 
-        return _machineInformation.Value;
+        return (_machineInformation = machineInformation).Value;
+    }
+
+    private static async Task<(string, string, string, string)> GetModelDataAsync()
+    {
+        var result = await WMI.ReadAsync("root\\CIMV2",
+            $"SELECT * FROM Win32_ComputerSystemProduct",
+            pdc =>
+            {
+                var machineType = (string)pdc["Name"].Value;
+                var vendor = (string)pdc["Vendor"].Value;
+                var model = (string)pdc["Version"].Value;
+                var serialNumber = (string)pdc["IdentifyingNumber"].Value;
+                return (vendor, machineType, model, serialNumber);
+            }).ConfigureAwait(false);
+        return result.First();
+    }
+
+    private static async Task<(BiosVersion?, string?)> GetBIOSVersionAsync()
+    {
+        var result = await WMI.ReadAsync("root\\CIMV2",
+            $"SELECT * FROM Win32_BIOS",
+            pdc => (string)pdc["Name"].Value).ConfigureAwait(false);
+        var biosString = result.First();
+
+        var prefixRegex = new Regex("^[A-Z0-9]{4}");
+        var versionRegex = new Regex("[0-9]{2}");
+
+        var prefix = prefixRegex.Match(biosString).Value;
+        var versionString = versionRegex.Match(biosString).Value;
+
+        if (!int.TryParse(versionRegex.Match(versionString).Value, out var version))
+            return (null, null);
+
+        return (new(prefix, version), biosString);
+    }
+
+    private static async Task<MachineInformation.FeatureData> GetFeaturesAsync()
+    {
+        try
+        {
+            var capabilities = await WMI.ReadAsync("root\\WMI",
+                $"SELECT * FROM LENOVO_CAPABILITY_DATA_00",
+                pdc => (CapabilityID)Convert.ToInt32(pdc["IDs"].Value)).ConfigureAwait(false);
+            capabilities = capabilities.ToArray();
+
+            return new()
+            {
+                Source = MachineInformation.FeatureData.SourceType.CapabilityData,
+                IGPUMode = capabilities.Contains(CapabilityID.IGPUModeSupport),
+                NvidiaGPUDynamicDisplaySwitching = capabilities.Contains(CapabilityID.NvidiaGPUDynamicDisplaySwitching),
+                InstantBootAc = capabilities.Contains(CapabilityID.InstantBootAc),
+                InstantBootUsbPowerDelivery = capabilities.Contains(CapabilityID.InstantBootUsbPowerDelivery),
+                AMDSmartShiftMode = capabilities.Contains(CapabilityID.AMDSmartShiftMode),
+                AMDSkinTemperatureTracking = capabilities.Contains(CapabilityID.AMDSkinTemperatureTracking),
+            };
+        }
+        catch { /* Ignored. */ }
+
+        try
+        {
+            var featureFlags = await WMI.CallAsync("root\\WMI",
+            $"SELECT * FROM LENOVO_OTHER_METHOD",
+            "Get_Legion_Device_Support_Feature",
+            new(),
+            pdc => Convert.ToInt32(pdc["Status"].Value)).ConfigureAwait(false);
+
+            return new()
+            {
+                Source = MachineInformation.FeatureData.SourceType.Flags,
+                IGPUMode = featureFlags.IsBitSet(0),
+                NvidiaGPUDynamicDisplaySwitching = featureFlags.IsBitSet(4),
+                InstantBootAc = featureFlags.IsBitSet(5),
+                InstantBootUsbPowerDelivery = featureFlags.IsBitSet(6),
+                AMDSmartShiftMode = featureFlags.IsBitSet(7),
+                AMDSkinTemperatureTracking = featureFlags.IsBitSet(8)
+            };
+        }
+        catch { /* Ignored. */ }
+
+        return MachineInformation.FeatureData.Unknown;
+    }
+
+    private static async Task<int> GetSmartFanVersionAsync()
+    {
+        try
+        {
+            var result = await WMI.CallAsync("root\\WMI",
+                $"SELECT * FROM LENOVO_GAMEZONE_DATA",
+                "IsSupportSmartFan",
+                new(),
+                pdc => Convert.ToInt32(pdc["Data"].Value)).ConfigureAwait(false);
+            return result;
+        }
+        catch { /* Ignored. */ }
+
+        return 0;
+    }
+
+    private static async Task<int> GetLegionZoneVersionAsync()
+    {
+        try
+        {
+            var result = await WMI.CallAsync("root\\WMI",
+                $"SELECT * FROM LENOVO_OTHER_METHOD",
+                "GetFeatureValue",
+                new() { { "IDs", CapabilityID.LegionZoneSupportVersion } },
+                pdc => Convert.ToInt32(pdc["Value"].Value)).ConfigureAwait(false);
+            return result;
+        }
+        catch { /* Ignored. */ }
+
+        try
+        {
+            var result = await WMI.CallAsync("root\\WMI",
+                $"SELECT * FROM LENOVO_OTHER_METHOD",
+                "Get_Support_LegionZone_Version",
+                new(),
+                pdc => Convert.ToInt32(pdc["Version"].Value)).ConfigureAwait(false);
+            return result;
+        }
+        catch { /* Ignored. */ }
+
+        return 0;
     }
 
     private static unsafe (bool status, bool connectivity) GetAlwaysOnAcStatus()
@@ -133,39 +285,26 @@ public static class Compatibility
         return (capabilities.AoAc, capabilities.AoAcConnectivitySupported);
     }
 
-    private static bool GetSupportsGodModeV1(string currentBiosVersionString)
+    private static bool GetSupportsGodModeV1(int smartFanVersion, int legionZoneVersion, BiosVersion? biosVersion)
     {
-        (string, int?)[] supportedBiosVersions =
+        var affectedBiosVersions = new BiosVersion[]
         {
-            ("GKCN", 49),
-            ("G9CN", 30),
-            ("H1CN", 49),
-            ("HACN", 31),
-            ("HHCN", 23),
-            ("K1CN", 31),
-            ("K9CN", 34),
-            ("KFCN", 32),
-            ("J2CN", 40),
-            ("JUCN", 51),
-            ("JYCN", 39)
+            new("G9CN", 24),
+            new("GKCN", 46),
+            new("H1CN", 39),
+            new("HACN", 31),
+            new("HHCN", 20),
         };
 
-        return IsBiosVersionMatch(currentBiosVersionString, supportedBiosVersions);
+        if (affectedBiosVersions.Any(bv => biosVersion?.IsLowerThan(bv) ?? false))
+            return false;
+
+        return smartFanVersion is 4 or 5 || legionZoneVersion is 1 or 2;
     }
 
-    private static bool GetSupportsGodModeV2(string currentBiosVersionString)
-    {
-        (string, int?)[] supportedBiosVersions =
-        {
-            ("KWCN", 28),
-            ("LPCN", 27),
-            ("M3CN", 32)
-        };
+    private static bool GetSupportsGodModeV2(int smartFanVersion, int legionZoneVersion) => smartFanVersion is 6 || legionZoneVersion is 3;
 
-        return IsBiosVersionMatch(currentBiosVersionString, supportedBiosVersions);
-    }
-
-    private static async Task<bool> GetSupportsExtendedHybridModeAsync()
+    private static async Task<bool> GetSupportsIGPUModeAsync()
     {
         try
         {
@@ -199,66 +338,58 @@ public static class Compatibility
         }
     }
 
-    private static async Task<(string, string, string, string)> GetModelDataAsync()
+    private static bool GetHasQuietToPerformanceModeSwitchingBug(BiosVersion? biosVersion)
     {
-        var result = await WMI.ReadAsync("root\\CIMV2",
-            $"SELECT * FROM Win32_ComputerSystemProduct",
-            pdc =>
-            {
-                var machineType = (string)pdc["Name"].Value;
-                var vendor = (string)pdc["Vendor"].Value;
-                var model = (string)pdc["Version"].Value;
-                var serialNumber = (string)pdc["IdentifyingNumber"].Value;
-                return (vendor, machineType, model, serialNumber);
-            }).ConfigureAwait(false);
-        return result.First();
-    }
-
-    private static async Task<string> GetBIOSVersionAsync()
-    {
-        var result = await WMI.ReadAsync("root\\CIMV2",
-            $"SELECT * FROM Win32_BIOS",
-            pdc => (string)pdc["Name"].Value).ConfigureAwait(false);
-        return result.First();
-    }
-
-    private static bool GetHasQuietToPerformanceModeSwitchingBug(string biosVersion)
-    {
-        (string, int?)[] affectedBiosList =
+        var affectedBiosVersions = new BiosVersion[]
         {
-            ("J2CN", null)
+            new("J2CN", null)
         };
 
-        return IsBiosVersionMatch(biosVersion, affectedBiosList);
+        return affectedBiosVersions.Any(bv => biosVersion?.IsHigherOrEqualThan(bv) ?? false);
     }
 
-    private static bool GetHasGodModeToOtherModeSwitchingBug(string biosVersion)
+    private static bool GetHasGodModeToOtherModeSwitchingBug(BiosVersion? biosVersion)
     {
-        (string, int?)[] affectedBiosList =
+        var affectedBiosVersions = new BiosVersion[]
         {
-            ("K1CN", null)
+            new("K1CN", null)
         };
 
-        return IsBiosVersionMatch(biosVersion, affectedBiosList);
+        return affectedBiosVersions.Any(bv => biosVersion?.IsHigherOrEqualThan(bv) ?? false);
     }
 
-    private static bool IsBiosVersionMatch(string currentBiosVersionString, (string, int?)[] biosVersions)
+    private static bool GetIsExcludedFromLenovoLighting(BiosVersion? biosVersion)
     {
-        var prefixRegex = new Regex("^[A-Z0-9]{4}");
-        var versionRegex = new Regex("[0-9]{2}");
-
-        var currentPrefix = prefixRegex.Match(currentBiosVersionString).Value;
-        var currentVersionString = versionRegex.Match(currentBiosVersionString).Value;
-
-        if (!int.TryParse(versionRegex.Match(currentVersionString).Value, out var currentVersion))
-            return false;
-
-        foreach (var (prefix, minimumVersion) in biosVersions)
+        var affectedBiosVersions = new BiosVersion[]
         {
-            if (currentPrefix.Equals(prefix, StringComparison.InvariantCultureIgnoreCase) && currentVersion >= (minimumVersion ?? 0))
-                return true;
-        }
+            new("GKCN", 54)
+        };
 
-        return false;
+        return affectedBiosVersions.Any(bv => biosVersion?.IsLowerThan(bv) ?? false);
+    }
+
+    private static bool GetIsExcludedFromPanelLenovoLighting(string machineType, string model)
+    {
+        (string machineType, string model)[] excludedModels =
+        {
+            ("82JH", "15ITH6H"),
+            ("82JK", "15ITH6"),
+            ("82JM", "17ITH6H"),
+            ("82JN", "17ITH6"),
+            ("82JU", "15ACH6H"),
+            ("82JW", "15ACH6"),
+            ("82JY", "17ACH6H"),
+            ("82K0", "17ACH6"),
+            ("82K1", "15IHU6"),
+            ("82K2", "15ACH6"),
+            ("82NW", "15ACH6A")
+        };
+
+        return excludedModels.Where(m =>
+        {
+            var result = machineType.Contains(m.machineType);
+            result &= model.Contains(m.model);
+            return result;
+        }).Any();
     }
 }

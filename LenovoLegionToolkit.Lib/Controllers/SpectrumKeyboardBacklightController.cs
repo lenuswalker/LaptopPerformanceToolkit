@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Listeners;
+using LenovoLegionToolkit.Lib.SoftwareDisabler;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using Microsoft.Win32.SafeHandles;
@@ -48,7 +49,7 @@ public class SpectrumKeyboardBacklightController
     private readonly TimeSpan _auroraRefreshInterval = TimeSpan.FromMilliseconds(60);
 
     private readonly SpecialKeyListener _listener;
-    private readonly Vantage _vantage;
+    private readonly VantageDisabler _vantageDisabler;
     private readonly IScreenCapture _screenCapture;
 
     private SafeFileHandle? _deviceHandle;
@@ -60,10 +61,10 @@ public class SpectrumKeyboardBacklightController
 
     public bool ForceDisable { get; set; }
 
-    public SpectrumKeyboardBacklightController(SpecialKeyListener listener, Vantage vantage, IScreenCapture screenCapture)
+    public SpectrumKeyboardBacklightController(SpecialKeyListener listener, VantageDisabler vantageDisabler, IScreenCapture screenCapture)
     {
         _listener = listener ?? throw new ArgumentNullException(nameof(listener));
-        _vantage = vantage ?? throw new ArgumentNullException(nameof(vantage));
+        _vantageDisabler = vantageDisabler ?? throw new ArgumentNullException(nameof(vantageDisabler));
         _screenCapture = screenCapture ?? throw new ArgumentNullException(nameof(screenCapture));
 
         _jsonSerializerSettings = new()
@@ -85,7 +86,7 @@ public class SpectrumKeyboardBacklightController
         if (!await IsSupportedAsync().ConfigureAwait(false))
             return;
 
-        if (await _vantage.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
+        if (await _vantageDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
             return;
 
         switch (e)
@@ -139,7 +140,7 @@ public class SpectrumKeyboardBacklightController
             Log.Instance.Trace($"Getting keyboard brightness...");
 
         var input = new LENOVO_SPECTRUM_GET_BRIGHTNESS_REQUEST();
-        SetAndGetFeature(handle, input, out LENOVO_SPECTRUM_GET_BRIGTHNESS_RESPONSE output);
+        SetAndGetFeature(handle, input, out LENOVO_SPECTRUM_GET_BRIGHTNESS_RESPONSE output);
         var result = output.Brightness;
 
         if (Log.Instance.IsTraceEnabled)
@@ -159,11 +160,50 @@ public class SpectrumKeyboardBacklightController
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Setting keyboard brightness to: {brightness}.");
 
-        var input = new LENOVO_SPECTRUM_SET_BRIGHTHNESS_REQUEST((byte)brightness);
+        var input = new LENOVO_SPECTRUM_SET_BRIGHTNESS_REQUEST((byte)brightness);
         SetFeature(handle, input);
 
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Keyboard brightness set.");
+    }
+
+    public async Task<bool> GetLogoStatusAsync()
+    {
+        await ThrowIfVantageEnabled().ConfigureAwait(false);
+
+        var handle = await GetDeviceHandleAsync().ConfigureAwait(false);
+        if (handle is null)
+            throw new InvalidOperationException(nameof(handle));
+
+        if (Log.Instance.IsTraceEnabled)
+            Log.Instance.Trace($"Getting logo status...");
+
+        var input = new LENOVO_SPECTRUM_GET_LOGO_STATUS();
+        SetAndGetFeature(handle, input, out LENOVO_SPECTRUM_GET_LOGO_STATUS_RESPONSE output);
+        var result = output.IsOn;
+
+        if (Log.Instance.IsTraceEnabled)
+            Log.Instance.Trace($"Logo status is {result}.");
+
+        return result;
+    }
+
+    public async Task SetLogoStatusAsync(bool isOn)
+    {
+        await ThrowIfVantageEnabled().ConfigureAwait(false);
+
+        var handle = await GetDeviceHandleAsync().ConfigureAwait(false);
+        if (handle is null)
+            throw new InvalidOperationException(nameof(handle));
+
+        if (Log.Instance.IsTraceEnabled)
+            Log.Instance.Trace($"Setting logo status to: {isOn}.");
+
+        var input = new LENOVO_SPECTRUM_SET_LOGO_STATUS_REQUEST(isOn);
+        SetFeature(handle, input);
+
+        if (Log.Instance.IsTraceEnabled)
+            Log.Instance.Trace($"Logo status set.");
     }
 
     public async Task<int> GetProfileAsync()
@@ -358,7 +398,7 @@ public class SpectrumKeyboardBacklightController
 
     private async Task ThrowIfVantageEnabled()
     {
-        var vantageStatus = await _vantage.GetStatusAsync().ConfigureAwait(false);
+        var vantageStatus = await _vantageDisabler.GetStatusAsync().ConfigureAwait(false);
         if (vantageStatus == SoftwareStatus.Enabled)
             throw new InvalidOperationException("Can't manage Spectrum keyboard with Vantage enabled.");
     }
@@ -388,8 +428,8 @@ public class SpectrumKeyboardBacklightController
                 return KeyMap.Empty;
 
             SetAndGetFeature(handle,
-                new LENOVO_SPECTRUM_GET_KEYCOUNT_REQUEST(),
-                out LENOVO_SPECTRUM_GET_KEYCOUNT_RESPONSE keyCountResponse);
+                new LENOVO_SPECTRUM_GET_KEY_COUNT_REQUEST(),
+                out LENOVO_SPECTRUM_GET_KEY_COUNT_RESPONSE keyCountResponse);
 
             var width = keyCountResponse.KeysPerIndex;
             var height = keyCountResponse.Indexes;
@@ -400,16 +440,16 @@ public class SpectrumKeyboardBacklightController
             for (var y = 0; y < height; y++)
             {
                 SetAndGetFeature(handle,
-                    new LENOVO_SPECTRUM_GET_KEYPAGE_REQUEST((byte)y),
-                    out LENOVO_SPECTRUM_GET_KEYPAGE_RESPONSE keyPageResponse);
+                    new LENOVO_SPECTRUM_GET_KEY_PAGE_REQUEST((byte)y),
+                    out LENOVO_SPECTRUM_GET_KEY_PAGE_RESPONSE keyPageResponse);
 
                 for (var x = 0; x < width; x++)
                     keyCodes[x, y] = keyPageResponse.Items[x].KeyCode;
             }
 
             SetAndGetFeature(handle,
-                new LENOVO_SPECTRUM_GET_KEYPAGE_REQUEST(0, true),
-                out LENOVO_SPECTRUM_GET_KEYPAGE_RESPONSE secondaryKeyPageResponse);
+                new LENOVO_SPECTRUM_GET_KEY_PAGE_REQUEST(0, true),
+                out LENOVO_SPECTRUM_GET_KEY_PAGE_RESPONSE secondaryKeyPageResponse);
 
             for (var x = 0; x < width; x++)
                 additionalKeyCodes[x] = secondaryKeyPageResponse.Items[x].KeyCode;
@@ -440,7 +480,7 @@ public class SpectrumKeyboardBacklightController
             var height = keyMap.Height;
             var colorBuffer = new RGBColor[width, height];
 
-            SetFeature(handle, new LENOVO_SPECTRUM_AURORA_STARTSTOP_REQUEST(true, (byte)profile));
+            SetFeature(handle, new LENOVO_SPECTRUM_AURORA_START_STOP_REQUEST(true, (byte)profile));
 
             while (!token.IsCancellationRequested)
             {
@@ -504,7 +544,7 @@ public class SpectrumKeyboardBacklightController
             if (handle is not null)
             {
                 var currentProfile = await GetProfileAsync();
-                SetFeature(handle, new LENOVO_SPECTRUM_AURORA_STARTSTOP_REQUEST(false, (byte)currentProfile));
+                SetFeature(handle, new LENOVO_SPECTRUM_AURORA_START_STOP_REQUEST(false, (byte)currentProfile));
             }
 
             if (Log.Instance.IsTraceEnabled)
@@ -577,7 +617,7 @@ public class SpectrumKeyboardBacklightController
         }
     }
 
-    private bool IsReady(SafeFileHandle handle)
+    private static bool IsReady(SafeHandle handle)
     {
         try
         {
@@ -595,7 +635,7 @@ public class SpectrumKeyboardBacklightController
         }
     }
 
-    private void SetAndGetFeature<TIn, TOut>(SafeFileHandle handle, TIn input, out TOut output) where TIn : notnull where TOut : struct
+    private static void SetAndGetFeature<TIn, TOut>(SafeHandle handle, TIn input, out TOut output) where TIn : notnull where TOut : struct
     {
         lock (IoLock)
         {
@@ -604,7 +644,7 @@ public class SpectrumKeyboardBacklightController
         }
     }
 
-    private void SetAndGetFeature<TIn>(SafeFileHandle handle, TIn input, out byte[] output, int size) where TIn : notnull
+    private static void SetAndGetFeature<TIn>(SafeHandle handle, TIn input, out byte[] output, int size) where TIn : notnull
     {
         lock (IoLock)
         {
@@ -613,7 +653,7 @@ public class SpectrumKeyboardBacklightController
         }
     }
 
-    private unsafe void SetFeature<T>(SafeFileHandle handle, T str) where T : notnull
+    private static unsafe void SetFeature<T>(SafeHandle handle, T str) where T : notnull
     {
         lock (IoLock)
         {
@@ -645,7 +685,7 @@ public class SpectrumKeyboardBacklightController
         }
     }
 
-    private unsafe void GetFeature<T>(SafeFileHandle handle, out T str) where T : struct
+    private static unsafe void GetFeature<T>(SafeHandle handle, out T str) where T : struct
     {
         lock (IoLock)
         {
@@ -669,7 +709,7 @@ public class SpectrumKeyboardBacklightController
         }
     }
 
-    private unsafe void GetFeature(SafeFileHandle handle, out byte[] bytes, int size)
+    private static unsafe void GetFeature(SafeHandle handle, out byte[] bytes, int size)
     {
         lock (IoLock)
         {

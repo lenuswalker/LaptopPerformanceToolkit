@@ -27,12 +27,12 @@ public static class InternalDisplay
         public static implicit operator Display?(DisplayHolder s) => s._display;
     }
 
-    private static readonly object _lock = new();
+    private static readonly object Lock = new();
     private static DisplayHolder? _displayHolder;
 
     public static void SetNeedsRefresh()
     {
-        lock (_lock)
+        lock (Lock)
         {
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Resetting holder...");
@@ -43,7 +43,7 @@ public static class InternalDisplay
 
     public static Display? Get()
     {
-        lock (_lock)
+        lock (Lock)
         {
             if (_displayHolder is not null)
                 return _displayHolder;
@@ -88,13 +88,13 @@ public static class InternalDisplay
 
         var exDpDisplay = exDpDisplays[0];
         var exDpPathDisplayTarget = exDpDisplay.ToPathDisplayTarget();
-        var exDpPortDisplayEDID = exDpPathDisplayTarget.EDIDManufactureId;
+        var exDpPortDisplayEdid = exDpPathDisplayTarget.EDIDManufactureId;
 
         var sameDeviceIsOnAnotherAdapter = DisplayAdapter.GetDisplayAdapters()
             .Where(da => da.DevicePath != exDpDisplay.Adapter.DevicePath)
             .SelectMany(da => da.GetDisplayDevices())
             .Select(dd => dd.ToPathDisplayTarget())
-            .Any(pdt => pdt.EDIDManufactureId == exDpPortDisplayEDID && pdt.GetVideoOutputTechnology().IsInternalOutput());
+            .Any(pdt => pdt.EDIDManufactureId == exDpPortDisplayEdid && pdt.GetVideoOutputTechnology().IsInternalOutput());
 
         return sameDeviceIsOnAnotherAdapter ? exDpDisplay : null;
     }

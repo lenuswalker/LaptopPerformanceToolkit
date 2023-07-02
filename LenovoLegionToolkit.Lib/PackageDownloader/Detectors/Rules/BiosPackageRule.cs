@@ -13,8 +13,8 @@ namespace LenovoLegionToolkit.Lib.PackageDownloader.Detectors.Rules;
 
 internal readonly struct BiosPackageRule : IPackageRule
 {
-    private static readonly Regex _prefixRegex = new("^[A-Z0-9]{4}");
-    private static readonly Regex _versionRegex = new("[0-9]{2}");
+    private static readonly Regex PrefixRegex = new("^[A-Z0-9]{4}");
+    private static readonly Regex VersionRegex = new("[0-9]{2}");
 
     private string[] Levels { get; init; }
 
@@ -40,14 +40,11 @@ internal readonly struct BiosPackageRule : IPackageRule
         var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
         var currentBios = mi.BiosVersion;
 
-        var currentBiosPrefix = _prefixRegex.Match(currentBios).Value;
-        var currentBiosVersion = int.Parse(_versionRegex.Match(currentBios).Value);
-
         var result = Levels.Any(level =>
         {
-            var levelPrefix = _prefixRegex.Match(level).Value;
-            var levelVersion = int.Parse(_versionRegex.Match(level).Value);
-            return levelPrefix == currentBiosPrefix && levelVersion == currentBiosVersion;
+            var levelPrefix = PrefixRegex.Match(level).Value;
+            var levelVersion = int.Parse(VersionRegex.Match(level).Value);
+            return levelPrefix == currentBios?.Prefix && levelVersion == currentBios?.Version;
         });
 
         return result;
@@ -58,14 +55,11 @@ internal readonly struct BiosPackageRule : IPackageRule
         var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
         var currentBios = mi.BiosVersion;
 
-        var currentBiosPrefix = _prefixRegex.Match(currentBios).Value;
-        var currentBiosVersion = int.Parse(_versionRegex.Match(currentBios).Value);
-
         var result = Levels.All(level =>
         {
-            var levelPrefix = _prefixRegex.Match(level).Value;
-            var levelVersion = int.Parse(_versionRegex.Match(level).Value);
-            return levelPrefix == currentBiosPrefix && levelVersion > currentBiosVersion;
+            var levelPrefix = PrefixRegex.Match(level).Value;
+            var levelVersion = int.Parse(VersionRegex.Match(level).Value);
+            return levelPrefix == currentBios?.Prefix && levelVersion > currentBios?.Version;
         });
 
         return result;

@@ -5,7 +5,7 @@ using System.Management;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Features;
 using LenovoLegionToolkit.Lib.Settings;
-using LenovoLegionToolkit.Lib.System;
+using LenovoLegionToolkit.Lib.SoftwareDisabler;
 using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.Lib.Listeners;
@@ -15,13 +15,13 @@ public class SpecialKeyListener : AbstractWMIListener<SpecialKey>
     private readonly ThrottleFirstDispatcher _refreshRateDispatcher = new(TimeSpan.FromSeconds(2), nameof(SpecialKeyListener));
 
     private readonly ApplicationSettings _settings;
-    private readonly FnKeys _fnKeys;
+    private readonly FnKeysDisabler _fnKeysDisabler;
     private readonly RefreshRateFeature _refreshRateFeature;
 
-    public SpecialKeyListener(ApplicationSettings settings, FnKeys fnKeys, RefreshRateFeature feature) : base("ROOT\\WMI", "LENOVO_UTILITY_EVENT")
+    public SpecialKeyListener(ApplicationSettings settings, FnKeysDisabler fnKeysDisabler, RefreshRateFeature feature) : base("ROOT\\WMI", "LENOVO_UTILITY_EVENT")
     {
         _settings = settings ?? throw new ArgumentNullException(nameof(settings));
-        _fnKeys = fnKeys ?? throw new ArgumentNullException(nameof(fnKeys));
+        _fnKeysDisabler = fnKeysDisabler ?? throw new ArgumentNullException(nameof(fnKeysDisabler));
         _refreshRateFeature = feature ?? throw new ArgumentNullException(nameof(feature));
     }
 
@@ -43,7 +43,6 @@ public class SpecialKeyListener : AbstractWMIListener<SpecialKey>
         SpecialKey.FnLockOn or SpecialKey.FnLockOff => NotifyFnLockState(value),
         SpecialKey.FnR or SpecialKey.FnR2 => ToggleRefreshRateAsync(),
         SpecialKey.FnPrtSc => OpenSnippingTool(),
-        SpecialKey.PanelLogoLightingOn or SpecialKey.PanelLogoLightingOff => NotifyPanelLogoLighting(value),
         SpecialKey.SpectrumBacklightOff => NotifySpectrumBacklight(0),
         SpecialKey.SpectrumBacklight1 => NotifySpectrumBacklight(1),
         SpecialKey.SpectrumBacklight2 => NotifySpectrumBacklight(2),
@@ -61,7 +60,7 @@ public class SpecialKeyListener : AbstractWMIListener<SpecialKey>
     {
         try
         {
-            if (await _fnKeys.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
+            if (await _fnKeysDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
             {
                 if (Log.Instance.IsTraceEnabled)
                     Log.Instance.Trace($"Ignoring, FnKeys are enabled.");
@@ -75,14 +74,14 @@ public class SpecialKeyListener : AbstractWMIListener<SpecialKey>
             if (value == SpecialKey.CameraOff)
                 MessagingCenter.Publish(new Notification(NotificationType.CameraOff, NotificationDuration.Short));
         }
-        catch { }
+        catch { /* Ignored. */ }
     }
 
     private async Task NotifyFnLockState(SpecialKey value)
     {
         try
         {
-            if (await _fnKeys.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
+            if (await _fnKeysDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
             {
                 if (Log.Instance.IsTraceEnabled)
                     Log.Instance.Trace($"Ignoring, FnKeys are enabled.");
@@ -96,14 +95,14 @@ public class SpecialKeyListener : AbstractWMIListener<SpecialKey>
             if (value == SpecialKey.FnLockOff)
                 MessagingCenter.Publish(new Notification(NotificationType.FnLockOff, NotificationDuration.Short));
         }
-        catch { }
+        catch { /* Ignored. */ }
     }
 
     private Task ToggleRefreshRateAsync() => _refreshRateDispatcher.DispatchAsync(async () =>
     {
         try
         {
-            if (await _fnKeys.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
+            if (await _fnKeysDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
             {
                 if (Log.Instance.IsTraceEnabled)
                     Log.Instance.Trace($"Ignoring, FnKeys are enabled.");
@@ -169,7 +168,7 @@ public class SpecialKeyListener : AbstractWMIListener<SpecialKey>
     {
         try
         {
-            if (await _fnKeys.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
+            if (await _fnKeysDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
             {
                 if (Log.Instance.IsTraceEnabled)
                     Log.Instance.Trace($"Ignoring, FnKeys are enabled.");
@@ -182,35 +181,14 @@ public class SpecialKeyListener : AbstractWMIListener<SpecialKey>
 
             Process.Start("explorer", "ms-screenclip:");
         }
-        catch { }
-    }
-
-    private async Task NotifyPanelLogoLighting(SpecialKey value)
-    {
-        try
-        {
-            if (await _fnKeys.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
-            {
-                if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Ignoring, FnKeys are enabled.");
-
-                return;
-            }
-
-            if (value == SpecialKey.PanelLogoLightingOn)
-                MessagingCenter.Publish(new Notification(NotificationType.PanelLogoLightingOn, NotificationDuration.Short));
-
-            if (value == SpecialKey.PanelLogoLightingOff)
-                MessagingCenter.Publish(new Notification(NotificationType.PanelLogoLightingOff, NotificationDuration.Short));
-        }
-        catch { }
+        catch { /* Ignored. */ }
     }
 
     private async Task NotifySpectrumBacklight(int value)
     {
         try
         {
-            if (await _fnKeys.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
+            if (await _fnKeysDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
             {
                 if (Log.Instance.IsTraceEnabled)
                     Log.Instance.Trace($"Ignoring, FnKeys are enabled.");
@@ -234,14 +212,14 @@ public class SpecialKeyListener : AbstractWMIListener<SpecialKey>
                     break;
             }
         }
-        catch { }
+        catch { /* Ignored. */ }
     }
 
     private async Task NotifySpectrumPreset(int value)
     {
         try
         {
-            if (await _fnKeys.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
+            if (await _fnKeysDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
             {
                 if (Log.Instance.IsTraceEnabled)
                     Log.Instance.Trace($"Ignoring, FnKeys are enabled.");
@@ -251,6 +229,6 @@ public class SpecialKeyListener : AbstractWMIListener<SpecialKey>
 
             MessagingCenter.Publish(new Notification(NotificationType.SpectrumBacklightPresetChanged, NotificationDuration.Short, value));
         }
-        catch { }
+        catch { /* Ignored. */ }
     }
 }

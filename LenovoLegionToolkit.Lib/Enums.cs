@@ -34,13 +34,42 @@ public enum BatteryState
     RapidCharge
 }
 
+public enum CapabilityID : uint
+{
+    IGPUModeSupport = 0x0010000,
+    NvidiaGPUDynamicDisplaySwitching = 0x0040000,
+    AMDSmartShiftMode = 0x0050001,
+    AMDSkinTemperatureTracking = 0x0050002,
+    LegionZoneSupportVersion = 0x00900000,
+    // IGPUModeChangeStatus = 0x00F0000,
+    CPUShortTermPowerLimit = 0x0101FF00,
+    CPULongTermPowerLimit = 0x0102FF00,
+    CPUPeakPowerLimit = 0x0103FF00,
+    CPUTemperatureLimit = 0x0104FF00,
+    APUsPPTPowerLimit = 0x0105FF00,
+    CPUCrossLoadingPowerLimit = 0x0106FF00,
+    CPUPL1Tau = 0x0107FF00,
+    GPUPowerBoost = 0x0201FF00,
+    GPUConfigurableTGP = 0x0202FF00,
+    GPUTemperatureLimit = 0x0203FF00,
+    GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline = 0x0204FF00,
+    InstantBootAc = 0x3010001,
+    InstantBootUsbPowerDelivery = 0x3010002,
+    // FanTable = 0x4010000,
+    FanFullSpeed = 0x4020000,
+    CpuCurrentFanSpeed = 0x4030001,
+    GpuCurrentFanSpeed = 0x4030002,
+    CpuCurrentTemperature = 0x5040000,
+    GpuCurrentTemperature = 0x5050000,
+}
+
 [Flags]
 public enum DriverKey
 {
-    Fn_F10 = 32,
-    Fn_F4 = 256,
-    Fn_F8 = 8192,
-    Fn_Space = 4096,
+    FnF10 = 32,
+    FnF4 = 256,
+    FnF8 = 8192,
+    FnSpace = 4096,
 }
 
 public enum FanTableType
@@ -53,25 +82,33 @@ public enum FanTableType
 
 public enum FlipToStartState
 {
+    [Display(ResourceType = typeof(Resource), Name = "FlipToStartState_Off")]
     Off,
+    [Display(ResourceType = typeof(Resource), Name = "FlipToStartState_On")]
     On
 }
 
 public enum FnLockState
 {
+    [Display(ResourceType = typeof(Resource), Name = "FnLockState_Off")]
     Off,
+    [Display(ResourceType = typeof(Resource), Name = "FnLockState_On")]
     On
 }
 
 public enum GSyncState
 {
+    [Display(ResourceType = typeof(Resource), Name = "GSyncState_On")]
     On,
+    [Display(ResourceType = typeof(Resource), Name = "GSyncState_Off")]
     Off
 }
 
 public enum HDRState
 {
+    [Display(ResourceType = typeof(Resource), Name = "HDRState_Off")]
     Off,
+    [Display(ResourceType = typeof(Resource), Name = "HDRState_On")]
     On
 }
 
@@ -92,6 +129,18 @@ public enum IGPUModeState
     Default,
     IGPUOnly,
     Auto
+}
+
+public enum InstantBootState
+{
+    [Display(ResourceType = typeof(Resource), Name = "InstantBootState_Off")]
+    Off,
+    [Display(ResourceType = typeof(Resource), Name = "InstantBootState_AcAdapter")]
+    AcAdapter,
+    [Display(ResourceType = typeof(Resource), Name = "InstantBootState_UsbPowerDelivery")]
+    UsbPowerDelivery,
+    [Display(ResourceType = typeof(Resource), Name = "InstantBootState_AcAdapterAndUsbPowerDelivery")]
+    AcAdapterAndUsbPowerDelivery
 }
 
 public enum KeyboardLayout
@@ -118,7 +167,9 @@ public enum LightingChangeState
 
 public enum MicrophoneState
 {
+    [Display(ResourceType = typeof(Resource), Name = "MicrophoneState_Off")]
     Off,
+    [Display(ResourceType = typeof(Resource), Name = "MicrophoneState_On")]
     On
 }
 
@@ -201,7 +252,9 @@ public enum NotificationPosition
 
 public enum OneLevelWhiteKeyboardBacklightState
 {
+    [Display(ResourceType = typeof(Resource), Name = "OneLevelWhiteKeyboardBacklightState_Off")]
     Off,
+    [Display(ResourceType = typeof(Resource), Name = "OneLevelWhiteKeyboardBacklightState_On")]
     On
 }
 
@@ -219,7 +272,25 @@ public enum OS
 
 public enum OverDriveState
 {
+    [Display(ResourceType = typeof(Resource), Name = "OverdriveState_Off")]
     Off,
+    [Display(ResourceType = typeof(Resource), Name = "OverdriveState_On")]
+    On
+}
+
+public enum PanelLogoBacklightState
+{
+    [Display(ResourceType = typeof(Resource), Name = "PanelLogoBacklightState_Off")]
+    Off,
+    [Display(ResourceType = typeof(Resource), Name = "PanelLogoBacklightState_On")]
+    On
+}
+
+public enum PortsBacklightState
+{
+    [Display(ResourceType = typeof(Resource), Name = "PortsBacklightState_Off")]
+    Off,
+    [Display(ResourceType = typeof(Resource), Name = "PortsBacklightState_On")]
     On
 }
 
@@ -295,15 +366,15 @@ public enum RGBKeyboardBacklightPreset
     Three = 2
 }
 
-public enum RBGKeyboardBacklightSpeed
+public enum RGBKeyboardBacklightSpeed
 {
-    [Display(ResourceType = typeof(Resource), Name = "RBGKeyboardBacklightSpeed_Slowest")]
+    [Display(ResourceType = typeof(Resource), Name = "RGBKeyboardBacklightSpeed_Slowest")]
     Slowest,
-    [Display(ResourceType = typeof(Resource), Name = "RBGKeyboardBacklightSpeed_Slow")]
+    [Display(ResourceType = typeof(Resource), Name = "RGBKeyboardBacklightSpeed_Slow")]
     Slow,
-    [Display(ResourceType = typeof(Resource), Name = "RBGKeyboardBacklightSpeed_Fast")]
+    [Display(ResourceType = typeof(Resource), Name = "RGBKeyboardBacklightSpeed_Fast")]
     Fast,
-    [Display(ResourceType = typeof(Resource), Name = "RBGKeyboardBacklightSpeed_Fastest")]
+    [Display(ResourceType = typeof(Resource), Name = "RGBKeyboardBacklightSpeed_Fastest")]
     Fastest
 }
 
@@ -324,8 +395,6 @@ public enum SpecialKey
     CameraOff = 13,
     FnR = 16,
     FnR2 = 0x0041002A,
-    PanelLogoLightingOn = 20,
-    PanelLogoLightingOff = 21,
     SpectrumBacklightOff = 24,
     SpectrumBacklight1 = 25,
     SpectrumBacklight2 = 26,
@@ -455,7 +524,9 @@ public enum ThermalModeState
 
 public enum TouchpadLockState
 {
+    [Display(ResourceType = typeof(Resource), Name = "TouchpadLockState_Off")]
     Off,
+    [Display(ResourceType = typeof(Resource), Name = "TouchpadLockState_On")]
     On
 }
 
@@ -471,7 +542,9 @@ public enum WhiteKeyboardBacklightState
 
 public enum WinKeyState
 {
+    [Display(ResourceType = typeof(Resource), Name = "WinKeyState_Off")]
     Off,
+    [Display(ResourceType = typeof(Resource), Name = "WinKeyState_On")]
     On
 }
 

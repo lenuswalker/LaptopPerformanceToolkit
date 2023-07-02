@@ -4,21 +4,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Settings;
+using LenovoLegionToolkit.Lib.SoftwareDisabler;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
+
+// ReSharper disable StringLiteralTypo
 
 namespace LenovoLegionToolkit.Lib.Controllers.GodMode;
 
 public class GodModeControllerV1 : AbstractGodModeController
 {
-    public GodModeControllerV1(GodModeSettings settings, Vantage vantage, LegionZone legionZone) : base(settings, vantage, legionZone) { }
+    public GodModeControllerV1(GodModeSettings settings, VantageDisabler vantageDisabler, LegionZoneDisabler legionZoneDisabler) : base(settings, vantageDisabler, legionZoneDisabler) { }
 
     public override Task<bool> NeedsVantageDisabledAsync() => Task.FromResult(false);
     public override Task<bool> NeedsLegionZoneDisabledAsync() => Task.FromResult(true);
 
     public override async Task ApplyStateAsync()
     {
-        if (await LegionZone.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
+        if (await LegionZoneDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
         {
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Can't correctly apply state when Legion Zone is running.");
@@ -462,15 +465,15 @@ public class GodModeControllerV1 : AbstractGodModeController
         var preset = new GodModePreset
         {
             Name = "Default",
-            CPULongTermPowerLimit = await GetCPULongTermPowerLimitAsync().OrNull().ConfigureAwait(false),
-            CPUShortTermPowerLimit = await GetCPUShortTermPowerLimitAsync().OrNull().ConfigureAwait(false),
-            CPUPeakPowerLimit = await GetCPUPeakPowerLimitAsync().OrNull().ConfigureAwait(false),
-            CPUCrossLoadingPowerLimit = await GetCPUCrossLoadingPowerLimitAsync().OrNull().ConfigureAwait(false),
-            APUsPPTPowerLimit = await GetAPUSPPTPowerLimitAsync().OrNull().ConfigureAwait(false),
-            CPUTemperatureLimit = await GetCPUTemperatureLimitAsync().OrNull().ConfigureAwait(false),
-            GPUPowerBoost = await GetGPUPowerBoost().OrNull().ConfigureAwait(false),
-            GPUConfigurableTGP = await GetGPUConfigurableTGPAsync().OrNull().ConfigureAwait(false),
-            GPUTemperatureLimit = await GetGPUTemperatureLimitAsync().OrNull().ConfigureAwait(false),
+            CPULongTermPowerLimit = await GetCPULongTermPowerLimitAsync().ConfigureAwait(false).OrNullIfException(),
+            CPUShortTermPowerLimit = await GetCPUShortTermPowerLimitAsync().ConfigureAwait(false).OrNullIfException(),
+            CPUPeakPowerLimit = await GetCPUPeakPowerLimitAsync().ConfigureAwait(false).OrNullIfException(),
+            CPUCrossLoadingPowerLimit = await GetCPUCrossLoadingPowerLimitAsync().ConfigureAwait(false).OrNullIfException(),
+            APUsPPTPowerLimit = await GetAPUSPPTPowerLimitAsync().ConfigureAwait(false).OrNullIfException(),
+            CPUTemperatureLimit = await GetCPUTemperatureLimitAsync().ConfigureAwait(false).OrNullIfException(),
+            GPUPowerBoost = await GetGPUPowerBoost().ConfigureAwait(false).OrNullIfException(),
+            GPUConfigurableTGP = await GetGPUConfigurableTGPAsync().ConfigureAwait(false).OrNullIfException(),
+            GPUTemperatureLimit = await GetGPUTemperatureLimitAsync().ConfigureAwait(false).OrNullIfException(),
             FanTableInfo = fanTableData is null ? null : new FanTableInfo(fanTableData, await GetDefaultFanTableAsync().ConfigureAwait(false)),
             FanFullSpeed = await GetFanFullSpeedAsync().ConfigureAwait(false),
             MinValueOffset = 0,
@@ -491,7 +494,7 @@ public class GodModeControllerV1 : AbstractGodModeController
             $"SELECT * FROM LENOVO_CPU_METHOD",
             "CPU_Get_Default_PowerLimit",
             new(),
-            pdc => Convert.ToInt32(pdc["DefaultLongTermPowerlimit"].Value)).OrNull().ConfigureAwait(false);
+            pdc => Convert.ToInt32(pdc["DefaultLongTermPowerlimit"].Value)).ConfigureAwait(false).OrNullIfException();
 
         var stepperValue = await WMI.CallAsync("root\\WMI",
             $"SELECT * FROM LENOVO_CPU_METHOD",
@@ -525,7 +528,7 @@ public class GodModeControllerV1 : AbstractGodModeController
             $"SELECT * FROM LENOVO_CPU_METHOD",
             "CPU_Get_Default_PowerLimit",
             new(),
-            pdc => Convert.ToInt32(pdc["DefaultShortTermPowerlimit"].Value)).OrNull().ConfigureAwait(false);
+            pdc => Convert.ToInt32(pdc["DefaultShortTermPowerlimit"].Value)).ConfigureAwait(false).OrNullIfException();
 
         var stepperValue = await WMI.CallAsync("root\\WMI",
             $"SELECT * FROM LENOVO_CPU_METHOD",
@@ -655,7 +658,7 @@ public class GodModeControllerV1 : AbstractGodModeController
             $"SELECT * FROM LENOVO_GPU_METHOD",
             "GPU_Get_Default_PPAB_cTGP_PowerLimit",
             new(),
-            pdc => Convert.ToInt32(pdc["Default_cTGP_Powerlimit"].Value)).OrNull().ConfigureAwait(false);
+            pdc => Convert.ToInt32(pdc["Default_cTGP_Powerlimit"].Value)).ConfigureAwait(false).OrNullIfException();
 
         var stepperValue = await WMI.CallAsync("root\\WMI",
             $"SELECT * FROM LENOVO_GPU_METHOD",
@@ -689,7 +692,7 @@ public class GodModeControllerV1 : AbstractGodModeController
             $"SELECT * FROM LENOVO_GPU_METHOD",
             "GPU_Get_Default_PPAB_cTGP_PowerLimit",
             new(),
-            pdc => Convert.ToInt32(pdc["Default_PPAB_Powerlimit"].Value)).OrNull().ConfigureAwait(false);
+            pdc => Convert.ToInt32(pdc["Default_PPAB_Powerlimit"].Value)).ConfigureAwait(false).OrNullIfException();
 
         var stepperValue = await WMI.CallAsync("root\\WMI",
             $"SELECT * FROM LENOVO_GPU_METHOD",
@@ -741,7 +744,7 @@ public class GodModeControllerV1 : AbstractGodModeController
 
     #region Fan Table
 
-    protected static async Task<FanTableData[]?> GetFanTableDataAsync()
+    private static async Task<FanTableData[]?> GetFanTableDataAsync()
     {
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Reading fan table data...");
@@ -805,7 +808,7 @@ public class GodModeControllerV1 : AbstractGodModeController
         return fanTableData;
     }
 
-    protected static Task SetFanTable(FanTable fanTable) => WMI.CallAsync("root\\WMI",
+    private static Task SetFanTable(FanTable fanTable) => WMI.CallAsync("root\\WMI",
         $"SELECT * FROM LENOVO_FAN_METHOD",
         "Fan_Set_Table",
         new() { { "FanTable", fanTable.GetBytes() } });
@@ -814,13 +817,13 @@ public class GodModeControllerV1 : AbstractGodModeController
 
     #region Fan Full Speed
 
-    protected static Task<bool> GetFanFullSpeedAsync() => WMI.CallAsync("root\\WMI",
+    private static Task<bool> GetFanFullSpeedAsync() => WMI.CallAsync("root\\WMI",
         $"SELECT * FROM LENOVO_FAN_METHOD",
         "Fan_Get_FullSpeed",
         new(),
         pdc => (bool)pdc["Status"].Value);
 
-    protected static Task SetFanFullSpeedAsync(bool enabled) => WMI.CallAsync("root\\WMI",
+    private static Task SetFanFullSpeedAsync(bool enabled) => WMI.CallAsync("root\\WMI",
         $"SELECT * FROM LENOVO_FAN_METHOD",
         "Fan_Set_FullSpeed",
         new() { { "Status", enabled } });

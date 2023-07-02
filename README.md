@@ -15,10 +15,7 @@
 
 ![Ukrainian Flag](assets/ukraine_flag_bar.png)
 
-Support the Armed Forces of Ukraine and People Affected by Russia’s Aggression:
-
-* Humanitarian Aid: https://bank.gov.ua/en/about/humanitarian-aid-to-ukraine
-* Support Armed Forces of Ukraine: https://bank.gov.ua/en/about/support-the-armed-forces
+Support the Armed Forces of Ukraine and People Affected by Russia’s Aggression on UNITED24, the official fundraising platform of Ukraine: https://u24.gov.ua.
 
 **Слава Україні!**
 
@@ -32,7 +29,13 @@ Lenovo Legion Toolkit (LLT) is a utility created for Lenovo Legion series laptop
 
 It runs no background services, uses less memory, uses virtually no CPU, and contains no telemetry. Just like Lenovo Vantage, this application is Windows only.
 
-Join the Legion Series Discord: https://discord.com/invite/legionseries!
+&nbsp;
+
+_Join the Legion Series Discord: https://discord.com/invite/legionseries!_
+
+_If you are looking for a Vantage alternative that was made for Linux, check [LenovoLegionLinux](https://github.com/johnfanv2/LenovoLegionLinux) project._
+
+&nbsp;
 
 <img src="assets/screenshot_main.png" width="700" />
 
@@ -152,10 +155,11 @@ Custom Mode is supported on following BIOS versions:
 * JUCN51WW and higher
 * JYCN39WW and higher
 * M3CN32WW and higher
+* M0CN27WW and higher
 
 Not all features of Custom Mode are supported by all devices.
 
-##### Deactivate discrete GPU
+##### Deactivate discrete nVidia GPU
 
 Sometimes discrete GPU stays active even when it should not. This can happen for example, if you work with an external screen and you disconnect it - some processes will keep running on discrete GPU keeping it alive and shortening battery life.
 
@@ -167,6 +171,14 @@ There are two ways to help the GPU deactivate:
 Deactivate button will be enabled when dGPU is active, you have Hybrid mode enabled and there are no screens connected to dGPU. If you hover over the button, you will see the current P state of dGPU and the list of processes running on it.
 
 Keep in mind that some apps may not like this feature and crash when you deactivate dGPU.
+
+#### Overclock discrete nVidia GPUs
+
+The overclock option is intended for simple overclocking, similar to the one available in Vantage. It is not intended to replace tools like Afterburner. Here are some points to keep in mind:
+* Make sure GPU overclocking is enabled in BIOS, if your laptop has such option.
+* Overclocking does not work with Vantage or LegionZone running in the background.
+* It is not recommended to use the option while using other tools like Afterburner.
+* If you edited your Dashboard, you might need to add the control manually.
 
 ##### Windows Power Plans
 
@@ -204,7 +216,8 @@ Special thanks to:
 
 Translations provided by:
 * Bulgarian - [Ekscentricitet](https://github.com/Ekscentricitet)
-* Chinese - [凌卡Karl](https://github.com/KarlLee830)
+* Chinese (Simplified) - [凌卡Karl](https://github.com/KarlLee830)
+* Chinese (Traditional) - [flandretw](https://github.com/flandretw)
 * Czech - J0sef
 * Dutch - Melm, [JarneStaalPXL](https://github.com/JarneStaalPXL)
 * French - EliotAku, [Georges de Massol](https://github.com/jojo2massol), Rigbone, ZeroDegree
@@ -300,6 +313,25 @@ I also recommend other apps that make it very easy to manage settings across mul
 #### Can I customize hotkeys?
 
 You can customize Fn+F9 hotkey in LLT settings. Other hotkeys can't be customized.
+
+#### What if I overclocked my GPU too much?
+
+If you end up in a situation where your GPU is not stable and you can't boot into Windows, there are two things you can do:
+
+1. Go into BIOS and try to find and option similar to "Enabled GPU Overclocking" and disable it, start Windows, and toggle the BIOS option again to Enabled.
+2. Start Windows in Safe Mode, and delete `gpu_oc.json` file under LLT settings, which are located in `"%LOCALAPPDATA%\LenovoLegionToolkit`.
+
+#### Why do I get a message that Vantage is still running, even though I uninstalled it?
+
+Starting from version 2.14.0, LLT is much more strict about detecting leftover processes related to Vantage. Vantage installs 3 components:
+
+1. Lenovo Vantage app
+2. Lenovo Vantage Service
+3. System Interface Foundation V2 Device
+
+The easiest solution is to go into LLT settings and selection options to disable Lenovo Vantage, LegionZone and Hotkeys (only still installed ones are shown).
+
+If you want to remove them instead, make sure that you uninstall all 3, otherwise some options in LLT will not be available. You can check Task Manager for any processes containing "Vantage" or "ImController". You can also check this guide for more info: [Uninstalling System Interface Foundation V2 Device](https://support.lenovo.com/us/en/solutions/HT506070), if you have troubles getting rid of "ImController" processes.
 
 ## How to collect logs?
 

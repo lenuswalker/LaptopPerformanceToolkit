@@ -5,7 +5,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
 using LenovoLegionToolkit.Lib.Automation.Steps;
+using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Utils;
+using Newtonsoft.Json;
 
 namespace LenovoLegionToolkit.Lib.Automation.Pipeline;
 
@@ -23,6 +25,7 @@ public class AutomationPipeline
 
     public bool IsExclusive { get; set; } = true;
 
+    [JsonIgnore]
     public IEnumerable<IAutomationPipelineTrigger> AllTriggers
     {
         get
@@ -62,12 +65,15 @@ public class AutomationPipeline
                 break;
             }
 
+            var environment = new AutomationEnvironment();
+            AllTriggers.ForEach(t => t.UpdateEnvironment(ref environment));
+
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Running step... [type={step.GetType().Name}]");
 
             try
             {
-                await step.RunAsync().ConfigureAwait(false);
+                await step.RunAsync(environment).ConfigureAwait(false);
             }
             catch (Exception ex)
             {

@@ -4,22 +4,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Settings;
-using LenovoLegionToolkit.Lib.System;
+using LenovoLegionToolkit.Lib.SoftwareDisabler;
 using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.Lib.Controllers.GodMode;
 
 public abstract class AbstractGodModeController : IGodModeController
 {
-    protected readonly GodModeSettings Settings;
-    protected readonly Vantage Vantage;
-    protected readonly LegionZone LegionZone;
+    private readonly GodModeSettings _settings;
 
-    protected AbstractGodModeController(GodModeSettings settings, Vantage vantage, LegionZone legionZone)
+    protected readonly VantageDisabler VantageDisabler;
+    protected readonly LegionZoneDisabler LegionZoneDisabler;
+
+    protected AbstractGodModeController(GodModeSettings settings, VantageDisabler vantageDisabler, LegionZoneDisabler legionZoneDisabler)
     {
-        Settings = settings ?? throw new ArgumentNullException(nameof(settings));
-        Vantage = vantage ?? throw new ArgumentNullException(nameof(vantage));
-        LegionZone = legionZone ?? throw new ArgumentNullException(nameof(legionZone));
+        _settings = settings ?? throw new ArgumentNullException(nameof(settings));
+        VantageDisabler = vantageDisabler ?? throw new ArgumentNullException(nameof(vantageDisabler));
+        LegionZoneDisabler = legionZoneDisabler ?? throw new ArgumentNullException(nameof(legionZoneDisabler));
     }
 
     public abstract Task<bool> NeedsVantageDisabledAsync();
@@ -28,7 +29,7 @@ public abstract class AbstractGodModeController : IGodModeController
 
     public Task<string?> GetActivePresetNameAsync()
     {
-        var store = Settings.Store;
+        var store = _settings.Store;
         var name = store.Presets
             .Where(p => p.Key == store.ActivePresetId)
             .Select(p => p.Value.Name)
@@ -41,7 +42,7 @@ public abstract class AbstractGodModeController : IGodModeController
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Getting state...");
 
-        var store = Settings.Store;
+        var store = _settings.Store;
         var defaultState = await GetDefaultStateAsync().ConfigureAwait(false);
 
         if (!IsValidStore(store))
@@ -94,9 +95,9 @@ public abstract class AbstractGodModeController : IGodModeController
             });
         }
 
-        Settings.Store.ActivePresetId = activePresetId;
-        Settings.Store.Presets = presets;
-        Settings.SynchronizeStore();
+        _settings.Store.ActivePresetId = activePresetId;
+        _settings.Store.Presets = presets;
+        _settings.SynchronizeStore();
 
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"State saved.");
@@ -122,7 +123,7 @@ public abstract class AbstractGodModeController : IGodModeController
 
     protected async Task<GodModeSettings.GodModeSettingsStore.Preset> GetActivePresetAsync()
     {
-        if (!IsValidStore(Settings.Store))
+        if (!IsValidStore(_settings.Store))
         {
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Invalid store, generating default one.");
@@ -131,8 +132,8 @@ public abstract class AbstractGodModeController : IGodModeController
             await SetStateAsync(state).ConfigureAwait(false);
         }
 
-        var activePresetId = Settings.Store.ActivePresetId;
-        var presets = Settings.Store.Presets;
+        var activePresetId = _settings.Store.ActivePresetId;
+        var presets = _settings.Store.Presets;
 
         if (presets.TryGetValue(activePresetId, out var activePreset))
             return activePreset;
@@ -147,7 +148,7 @@ public abstract class AbstractGodModeController : IGodModeController
         return fanTable.GetTable().Where((t, i) => t < minimum[i] || t > 10u).IsEmpty();
     }
 
-    private bool IsValidStore(GodModeSettings.GodModeSettingsStore store) => store.Presets.Any() && store.Presets.ContainsKey(store.ActivePresetId);
+    private static bool IsValidStore(GodModeSettings.GodModeSettingsStore store) => store.Presets.Any() && store.Presets.ContainsKey(store.ActivePresetId);
 
     private async Task<GodModeState> LoadStateFromStoreAsync(GodModeSettings.GodModeSettingsStore store, GodModePreset defaultState)
     {

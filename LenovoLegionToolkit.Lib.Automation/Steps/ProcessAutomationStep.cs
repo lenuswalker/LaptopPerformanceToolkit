@@ -17,7 +17,7 @@ public class ProcessAutomationStep : IAutomationStep
 
     public Task<bool> IsSupportedAsync() => Task.FromResult(true);
 
-    public async Task RunAsync()
+    public async Task RunAsync(AutomationEnvironment _)
     {
 
         if (State.Processes == null)
