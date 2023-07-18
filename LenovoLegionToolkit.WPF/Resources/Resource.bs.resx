@@ -329,7 +329,7 @@
     <value>Datum proizvodnje</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Message" xml:space="preserve">
-    <value>Vrijeme od posljednjeg povezivanja laptopa na punjač.
+	  <value>Vrijeme od posljednjeg povezivanja laptopa na punjač.
 Ovo vrijeme možda neće biti tačno ako je laptop bio napunjen dok je spavao ili isključen.</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Title" xml:space="preserve">
@@ -346,15 +346,6 @@ Ovo vrijeme možda neće biti tačno ako je laptop bio napunjen dok je spavao il
   </data>
   <data name="Close" xml:space="preserve">
     <value>Zatvori</value>
-  </data>
-  <data name="ColorCardControl_Blue" xml:space="preserve">
-    <value>Plava</value>
-  </data>
-  <data name="ColorCardControl_Green" xml:space="preserve">
-    <value>Zelena</value>
-  </data>
-  <data name="ColorCardControl_Red" xml:space="preserve">
-    <value>Crvena</value>
   </data>
   <data name="ComboBoxHybridModeControl_RestartRequired_Message" xml:space="preserve">
     <value>Promjena na {0} zahtijeva ponovno pokretanje. Da li želite restartovati sada?</value>
@@ -733,12 +724,6 @@ Startup is delayed by 30 seconds for compatibility reasons.</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>Nije moguće omogućiti Lenovo Hotkeys</value>
-  </data>
-  <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Vantage možda nije ispravno omogućeno</value>
-  </data>
-  <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
-    <value>Nije moguće omogućiti Vantage</value>
   </data>
   <data name="SettingsPage_Language_Message" xml:space="preserve">
     <value>Izaberi jezik.</value>

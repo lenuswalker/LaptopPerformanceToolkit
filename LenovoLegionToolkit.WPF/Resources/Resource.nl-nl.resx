@@ -151,20 +151,17 @@
   <data name="AddNew" xml:space="preserve">
     <value>Nieuwe Toevoegen</value>
   </data>
-  <data name="AlwaysActivatePowerPlans_Message" xml:space="preserve">
-    <value>Activeer energiebeheerschema zelfs wanneer Vantage is ingeschakeld.</value>
-  </data>
   <data name="AlwaysActivatePowerPlans_Title" xml:space="preserve">
     <value>Activeer altijd de Windows Energiebeheerschema</value>
   </data>
   <data name="AlwaysOnUSBControl_Message" xml:space="preserve">
-    <value>Laad USB-apparaten op wanneer de computer is uitgeschakeld of in de slaap- of sluimerstand staat.</value>
+	  <value>Laad USB-apparaten op wanneer de computer is uitgeschakeld of in de slaap- of sluimerstand staat.</value>
   </data>
   <data name="AlwaysOnUSBControl_Title" xml:space="preserve">
     <value>USB Altijd Aan</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
-    <value>Laad USB-apparaten op wanneer de computer is uitgeschakeld of in de slaap- of sluimerstand staat.</value>
+	  <value>Laad USB-apparaten op wanneer de computer is uitgeschakeld of in de slaap- of sluimerstand staat.</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Title" xml:space="preserve">
     <value>USB Altijd Aan</value>
@@ -188,7 +185,7 @@
     <value>Geen acties gedefinieerd. Klik op "Nieuwe toevoegen" om een nieuwe actie te maken.</value>
   </data>
   <data name="AutomationPage_Actions_Message" xml:space="preserve">
-    <value>Indien ingeschakeld, wordt deze actie automatisch uitgevoerd. Wanneer de status verandert, worden alle acties van boven naar beneden geëvalueerd.
+	  <value>Indien ingeschakeld, wordt deze actie automatisch uitgevoerd. Wanneer de status verandert, worden alle acties van boven naar beneden geëvalueerd.
 Alleen acties die overeenkomen met de huidige status worden uitgevoerd.</value>
   </data>
   <data name="AutomationPage_Actions_Title" xml:space="preserve">
@@ -369,7 +366,7 @@ Alleen acties die overeenkomen met de huidige status worden uitgevoerd.</value>
     <value>Productiedatum</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Message" xml:space="preserve">
-    <value>Tijd sinds de laptop voor het laatst is aangesloten op de netvoeding.
+	  <value>Tijd sinds de laptop voor het laatst is aangesloten op de netvoeding.
 Deze tijd is mogelijk niet nauwkeurig als de laptop is opgeladen tijdens het slapen of uit.</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Title" xml:space="preserve">
@@ -386,15 +383,6 @@ Deze tijd is mogelijk niet nauwkeurig als de laptop is opgeladen tijdens het sla
   </data>
   <data name="Close" xml:space="preserve">
     <value>Sluiten</value>
-  </data>
-  <data name="ColorCardControl_Blue" xml:space="preserve">
-    <value>Blauw</value>
-  </data>
-  <data name="ColorCardControl_Green" xml:space="preserve">
-    <value>Groen</value>
-  </data>
-  <data name="ColorCardControl_Red" xml:space="preserve">
-    <value>Rood</value>
   </data>
   <data name="Color_Blue" xml:space="preserve">
     <value>Blauw</value>
@@ -505,7 +493,7 @@ WAARSCHUWING: Deze actie wordt niet correct uitgevoerd als het interne display i
     <value>Deactiveren</value>
   </data>
   <data name="DiscreteGPUControl_DisablePossible" xml:space="preserve">
-    <value>nVidia GPU kan worden uitgeschakeld.
+	  <value>nVidia GPU kan worden uitgeschakeld.
 
 Houd er rekening mee dat sommige programma's kunnen crashen als u dit doet.</value>
   </data>
@@ -516,7 +504,7 @@ Houd er rekening mee dat sommige programma's kunnen crashen als u dit doet.</val
     <value>Apps stoppen</value>
   </data>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
-    <value>Schakel discrete GPU uit als deze onnodig actief is.</value>
+	  <value>Schakel discrete GPU uit als deze onnodig actief is.</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
     <value>Een scherm is connecteerd met de nVidia GPU.</value>
@@ -540,7 +528,7 @@ Houd er rekening mee dat sommige programma's kunnen crashen als u dit doet.</val
     <value>Discrete GPU</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Wijzig de helderheid van het ingebouwde display.
+	  <value>Wijzig de helderheid van het ingebouwde display.
 Energiemodi veranderen de helderheid op sommige apparaten. Zorg ervoor dat u deze stap als laatste zet, als iets niet goed werkt.
 
 WAARSCHUWING: Deze actie wordt niet correct uitgevoerd als het interne display is uitgeschakeld.</value>
@@ -741,9 +729,6 @@ WAARSCHUWING: Deze actie wordt niet correct uitgevoerd als het interne display i
   </data>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>Toetsenbordverlichting</value>
-  </data>
-  <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Lenovo Vantage lijkt te zijn ingeschakeld</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
     <value>Over</value>
@@ -991,13 +976,13 @@ Zorg er altijd voor dat u de juiste pakketten installeert.</value>
     <value>Plakken</value>
   </data>
   <data name="PowerModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Selecteer prestatiemodus.</value>
+	  <value>Selecteer prestatiemodus.</value>
   </data>
   <data name="PowerModeAutomationStepControl_Title" xml:space="preserve">
     <value>Energiemodus</value>
   </data>
   <data name="PowerModeControl_Message" xml:space="preserve">
-    <value>Selecteer prestatiemodus.
+	  <value>Selecteer prestatiemodus.
 U kunt van modus wisselen met Fn+Q.</value>
   </data>
   <data name="PowerModeControl_Settings" xml:space="preserve">
@@ -1008,9 +993,6 @@ U kunt van modus wisselen met Fn+Q.</value>
   </data>
   <data name="PowerModeControl_Warning" xml:space="preserve">
     <value>De geselecteerde energiemodus werkt mogelijk niet correct als de netadapter niet is aangesloten.</value>
-  </data>
-  <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Message" xml:space="preserve">
-    <value>Als u deze optie inschakelt wanneer Lenovo Vantage actief is en het energiebeheerschema op uw laptop verandert, kan dit leiden tot onverwacht gedrag.</value>
   </data>
   <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Title" xml:space="preserve">
     <value>Weet je het zeker?</value>
@@ -1174,12 +1156,6 @@ Zorg ervoor dat uw script eerst correct wordt uitgevoerd.</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>Kan Lenovo Hotkeys niet uitschakelen</value>
-  </data>
-  <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Vantage is mogelijk niet correct ingeschakeld</value>
-  </data>
-  <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
-    <value>Kan Vantage niet inschakelen</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>U kunt verversingssnelheid uitsluiten om de Fn+R-snelkoppeling nuttiger te maken.</value>
@@ -1501,7 +1477,7 @@ WAARSCHUWING: Deze actie wordt niet correct uitgevoerd als het interne beeldsche
     <value>Naam</value>
   </data>
   <data name="EditDashboardWindow_Disclaimer_Message" xml:space="preserve">
-    <value>Sommige functies verschijnen mogelijk niet op het dashboard, afhankelijk van de status en configuratie van uw apparaat.</value>
+	  <value>Sommige functies verschijnen mogelijk niet op het dashboard, afhankelijk van de status en configuratie van uw apparaat.</value>
   </data>
   <data name="DashboardPage_Customize" xml:space="preserve">
     <value>Aanpassen</value>

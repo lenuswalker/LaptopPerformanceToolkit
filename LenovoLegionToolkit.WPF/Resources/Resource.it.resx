@@ -151,21 +151,17 @@
   <data name="AddNew" xml:space="preserve">
     <value>Aggiungi Evento</value>
   </data>
-  <data name="AlwaysActivatePowerPlans_Message" xml:space="preserve">
-    <value>Utilizza i piani energetici di windows anche quando Vantage è in esecuzione.
-Questa opzione è serve solo ai dispositivi che non possiedono modalità energetiche alternative.</value>
-  </data>
   <data name="AlwaysActivatePowerPlans_Title" xml:space="preserve">
     <value>Utilizza i piani energetici di Windows</value>
   </data>
   <data name="AlwaysOnUSBControl_Message" xml:space="preserve">
-    <value>Alimenta i dispositivi connessi alle porte USB, quando il computer è spento, in standby o in ibernazione.</value>
+	  <value>Alimenta i dispositivi connessi alle porte USB, quando il computer è spento, in standby o in ibernazione.</value>
   </data>
   <data name="AlwaysOnUSBControl_Title" xml:space="preserve">
     <value>USB sempre attive</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
-    <value>Alimenta i dispositivi connessi alle porte USB, quando il computer è spento, in standby o in ibernazione.</value>
+	  <value>Alimenta i dispositivi connessi alle porte USB, quando il computer è spento, in standby o in ibernazione.</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Title" xml:space="preserve">
     <value>USB sempre attive</value>
@@ -189,7 +185,7 @@ Questa opzione è serve solo ai dispositivi che non possiedono modalità energet
     <value>Nessuna azione configurata. clicca su "Aggiungi nuova" per configurare una nuova azione.</value>
   </data>
   <data name="AutomationPage_Actions_Message" xml:space="preserve">
-    <value>Se attive, queste azioni verranno eseguite automaticamente secondo gli eventi configurati. La priorità delle azioni è dall'alto verso il basso.</value>
+	  <value>Se attive, queste azioni verranno eseguite automaticamente secondo gli eventi configurati. La priorità delle azioni è dall'alto verso il basso.</value>
   </data>
   <data name="AutomationPage_Actions_Title" xml:space="preserve">
     <value>Azioni automatizzate</value>
@@ -369,7 +365,7 @@ Questa opzione è serve solo ai dispositivi che non possiedono modalità energet
     <value>Data di produzione</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Message" xml:space="preserve">
-    <value>Tempo trascorso dall'ultimo collegamento dell'alimentatore.
+	  <value>Tempo trascorso dall'ultimo collegamento dell'alimentatore.
 l'orario indicato potrebbe non essere corretto se il laptop è stato caricato mentre era in standby o spento.</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Title" xml:space="preserve">
@@ -386,15 +382,6 @@ l'orario indicato potrebbe non essere corretto se il laptop è stato caricato me
   </data>
   <data name="Close" xml:space="preserve">
     <value>Chiudi</value>
-  </data>
-  <data name="ColorCardControl_Blue" xml:space="preserve">
-    <value>Blu</value>
-  </data>
-  <data name="ColorCardControl_Green" xml:space="preserve">
-    <value>Verde</value>
-  </data>
-  <data name="ColorCardControl_Red" xml:space="preserve">
-    <value>Rosso</value>
   </data>
   <data name="Color_Blue" xml:space="preserve">
     <value>Blu</value>
@@ -505,7 +492,7 @@ Attenzione: Questa azione non funzionerà correttamente se il display è spento 
     <value>Disattiva</value>
   </data>
   <data name="DiscreteGPUControl_DisablePossible" xml:space="preserve">
-    <value>La GPU Nvidia può essere disattivata.
+	  <value>La GPU Nvidia può essere disattivata.
 
 Ricorda, alcuni programmi potrebbero crashare se la disattivi.</value>
   </data>
@@ -516,7 +503,7 @@ Ricorda, alcuni programmi potrebbero crashare se la disattivi.</value>
     <value>Chiudi applicazioni</value>
   </data>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
-    <value>Disattiva la GPU dedicata se inutilmente attiva.</value>
+	  <value>Disattiva la GPU dedicata se inutilmente attiva.</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
     <value>Un monitor è collegato alla GPU Nvidia.</value>
@@ -540,7 +527,7 @@ Ricorda, alcuni programmi potrebbero crashare se la disattivi.</value>
     <value>GPU dedicata</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Cambia la luminosità del display integrato.
+	  <value>Cambia la luminosità del display integrato.
 Alcune opzioni energetiche potrebbero cambiare la luminosità su alcuni dispositivi. Lascia per ultimo questa azione, se le cose non funzionano correttamente.
 
 ATTENZIONE: questa azione non verrà eseguita correttamente se il display interno è spento.</value>
@@ -627,6 +614,9 @@ Clicca il logo PayPal qui sotto oppure scansiona il QR code per donare con PayPa
   </data>
   <data name="FanCurveControl_GPU" xml:space="preserve">
     <value>GPU</value>
+  </data>
+  <data name="RPM" xml:space="preserve">
+    <value>Giri/min</value>
   </data>
   <data name="FlipToStartAutomationStepControl_Message" xml:space="preserve">
     <value>Accende il laptop quando apri il coperchio.</value>
@@ -743,9 +733,6 @@ ATTENZIONE: questa azione non verrà eseguita correttamente se il display intern
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>La retroilluminazione della tastiera non può essere controllata qua mentre Vantage o i suoi servizi sono in esecuzione.</value>
-  </data>
-  <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Lenovo Vantage sembra essere abilitato</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
     <value>Informazioni su</value>
@@ -993,13 +980,13 @@ Assicurati sempre di installare i pacchetti corretti.</value>
     <value>Incolla</value>
   </data>
   <data name="PowerModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Cambia la modalità energetica.</value>
+	  <value>Cambia la modalità energetica.</value>
   </data>
   <data name="PowerModeAutomationStepControl_Title" xml:space="preserve">
     <value>Modalità energetica</value>
   </data>
   <data name="PowerModeControl_Message" xml:space="preserve">
-    <value>Cambia la modalità energetica.
+	  <value>Cambia la modalità energetica.
 Puoi anche usare la scorciatoia Fn+Q.</value>
   </data>
   <data name="PowerModeControl_Settings" xml:space="preserve">
@@ -1010,9 +997,6 @@ Puoi anche usare la scorciatoia Fn+Q.</value>
   </data>
   <data name="PowerModeControl_Warning" xml:space="preserve">
     <value>La modalità di alimentazione selezionata potrebbe non funzionare correttamente senza un alimentatore collegato.</value>
-  </data>
-  <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Message" xml:space="preserve">
-    <value>L'abilitazione di questa opzione quando Lenovo Vantage è in esecuzione e cambia i piani di alimentazione sul laptop potrebbe causare un comportamento imprevisto.</value>
   </data>
   <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Title" xml:space="preserve">
     <value>Sei sicuro/a?</value>
@@ -1197,12 +1181,6 @@ Il riavvio è consigliabile dopo aver cambiato questa impostazione.</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>Impossibile abilitare Lenovo Hotkeys</value>
-  </data>
-  <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Vantage potrebbe non essere abilitato correttamente</value>
-  </data>
-  <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
-    <value>Impossibile abilitare Vantage</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>Puoi escludere le frequenze di aggiornamento per rendere più comoda la scorciatoia Fn+R.</value>
@@ -1524,7 +1502,7 @@ ATTENZIONE: questa azione non verrà eseguita correttamente se il display intern
     <value>Nome</value>
   </data>
   <data name="EditDashboardWindow_Disclaimer_Message" xml:space="preserve">
-    <value>Alcune opzioni potrebbero non apparire nella Dashboard in base allo stato e configurazione del tuo dispositivo.</value>
+	  <value>Alcune opzioni potrebbero non apparire nella Dashboard in base allo stato e configurazione del tuo dispositivo.</value>
   </data>
   <data name="DashboardPage_Customize" xml:space="preserve">
     <value>Personalizza</value>

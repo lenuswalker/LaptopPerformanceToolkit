@@ -166,15 +166,6 @@
 
 <img src="LenovoLegionToolkit.WPF/Assets/Donate/paypal_qr.png" width="200" alt="PayPal QR code" />
 
-
-#### 中国用户赞助
-
-如果你居住在中国，可以使用Stripe来赞助。（支持支付宝与银联）
-
-[使用Stripe赞助](https://donate.stripe.com/14k8yM94I980f3q7ss)
-
-<img src="LenovoLegionToolkit.WPF/Assets/Donate/stripe_cny_qr.png" width="200" alt="Stripe (CNY) QR code" />
-
 ## 贡献者
 
 特别感谢：
@@ -214,7 +205,7 @@
 
 #### 更换主板后提示不兼容？
 
-有时新主板内的机型和序列号信息出错，你可以尝试 [这篇教程](https://laptopwiki.eu/index.php/guides-and-tutorials/important-bios-related-guides/recover-original-model-sku-values/) 来恢复。如果这不起作用你可以尝试打开 `%LOCALAPPDATA%\LenovoLegionToolkit` 并创建一个名为 `args.txt` 的文件并打开文件后呼入 `--skip-compat-check` ，这会禁用拯救者工具箱的兼容性检查。我们建议你在无法正确恢复型号、序列号等信息的情况下再使用这个办法。
+有时新主板内的机型和序列号信息出错，你可以尝试 [这篇教程](https://laptopwiki.eu/laptopwiki/guides/lenovo/legion_bios_lvarrecovery) 来恢复。如果这不起作用你可以尝试打开 `%LOCALAPPDATA%\LenovoLegionToolkit` 并创建一个名为 `args.txt` 的文件并打开文件后呼入 `--skip-compat-check` ，这会禁用拯救者工具箱的兼容性检查。我们建议你在无法正确恢复型号、序列号等信息的情况下再使用这个办法。
 
 
 #### 为什么我无法在使用电池供电时切换到野兽与自定义模式？

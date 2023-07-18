@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.System;
+using LenovoLegionToolkit.Lib.Utils;
 using NvAPIWrapper.Native;
 using NvAPIWrapper.Native.GPU;
 using Windows.Win32;
@@ -26,8 +26,8 @@ public abstract class AbstractSensorsController : ISensorsController
         public int MaxTemperature { get; init; }
     }
 
-    private readonly PerformanceCounter _percentProcessorPerformanceCounter = new("Processor Information", "% Processor Performance", "_Total");
-    private readonly PerformanceCounter _percentProcessorUtilityCounter = new("Processor Information", "% Processor Utility", "_Total");
+    private readonly SafePerformanceCounter _percentProcessorPerformanceCounter = new("Processor Information", "% Processor Performance", "_Total");
+    private readonly SafePerformanceCounter _percentProcessorUtilityCounter = new("Processor Information", "% Processor Utility", "_Total");
 
     private readonly GPUController _gpuController;
 
@@ -61,7 +61,7 @@ public abstract class AbstractSensorsController : ISensorsController
         var gpuCurrentFanSpeed = await GetGpuCurrentFanSpeedAsync().ConfigureAwait(false);
         var gpuMaxFanSpeed = _gpuMaxFanSpeedCache ??= await GetGpuMaxFanSpeedAsync().ConfigureAwait(false);
 
-        return new()
+        var result = new SensorsData
         {
             CPU = new()
             {
@@ -77,7 +77,7 @@ public abstract class AbstractSensorsController : ISensorsController
             GPU = new()
             {
                 Utilization = gpuInfo.Utilization,
-                MaxUtilization = genericMaxTemperature,
+                MaxUtilization = genericMaxUtilization,
                 CoreClock = gpuInfo.CoreClock,
                 MaxCoreClock = gpuInfo.MaxCoreClock,
                 MemoryClock = gpuInfo.MemoryClock,
@@ -88,6 +88,11 @@ public abstract class AbstractSensorsController : ISensorsController
                 MaxFanSpeed = gpuMaxFanSpeed,
             }
         };
+
+        if (Log.Instance.IsTraceEnabled)
+            Log.Instance.Trace($"Current data: {result} [type={GetType().Name}]");
+
+        return result;
     }
 
     protected abstract Task<int> GetCpuCurrentTemperatureAsync();
@@ -105,7 +110,7 @@ public abstract class AbstractSensorsController : ISensorsController
     private int GetCpuUtilization()
     {
         var result = _percentProcessorUtilityCounter.NextValue();
-        return result == 0.0 ? -1 : (int)result;
+        return Math.Min(100, result == 0.0 ? -1 : (int)result);
     }
 
     private int GetCpuCoreClock()
@@ -149,18 +154,17 @@ public abstract class AbstractSensorsController : ISensorsController
         }
     }
 
-    private static Task<int> GetCpuMaxCoreClockAsync() =>
-        WMI.CallAsync("root\\WMI",
-            $"SELECT * FROM LENOVO_GAMEZONE_DATA",
-            "GetCPUFrequency",
-            new(),
-            pdc =>
-            {
-                var value = Convert.ToInt32(pdc["Data"].Value);
-                var low = value & 0xFFFF;
-                var high = value >> 16;
-                return Math.Max(low, high);
-            });
+    private static Task<int> GetCpuMaxCoreClockAsync() => WMI.CallAsync("root\\WMI",
+        $"SELECT * FROM LENOVO_GAMEZONE_DATA",
+        "GetCPUFrequency",
+        new(),
+        pdc =>
+        {
+            var value = Convert.ToInt32(pdc["Data"].Value);
+            var low = value & 0xFFFF;
+            var high = value >> 16;
+            return Math.Max(low, high);
+        });
 
     private GPUInfo GetGPUInfo()
     {
@@ -175,7 +179,7 @@ public abstract class AbstractSensorsController : ISensorsController
             if (gpu is null)
                 return GPUInfo.Empty;
 
-            var utilization = Math.Max(gpu.UsageInformation.GPU.Percentage, gpu.UsageInformation.VideoEngine.Percentage);
+            var utilization = Math.Min(100, Math.Max(gpu.UsageInformation.GPU.Percentage, gpu.UsageInformation.VideoEngine.Percentage));
 
             var currentCoreClock = (int)gpu.CurrentClockFrequencies.GraphicsClock.Frequency / 1000;
             var currentMemoryClock = (int)gpu.CurrentClockFrequencies.MemoryClock.Frequency / 1000;

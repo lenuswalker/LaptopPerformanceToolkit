@@ -117,7 +117,7 @@ public class DisplayBrightnessFeature : IFeature<int>
         await WMI.CallAsync(@"root\WMI",
             $"SELECT * FROM WmiMonitorBrightnessMethods",
             "WmiSetBrightness",
-            new() { { "Timeout", (uint)1 }, { "Brightness", (byte)brightness } });
+            new() { { "Timeout", 1 }, { "Brightness", brightness } });
     }
 
     private static async Task<Display?> GetBuiltInDisplayAsync()

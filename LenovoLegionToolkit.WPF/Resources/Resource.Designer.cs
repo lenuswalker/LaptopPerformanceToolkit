@@ -205,7 +205,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Activate Power Plan even when Vantage is enabled.
+        ///   Looks up a localized string similar to Activate Power Plan even when Vantage or its services are enabled.
         ///This option is intended only for devices that didn&apos;t come with multiple power plans..
         /// </summary>
         public static string AlwaysActivatePowerPlans_Message {
@@ -224,7 +224,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Charge USB devices, when the computer is off or in sleep or hibernation mode..
+        ///   Looks up a localized string similar to Charge USB devices, when the laptop is off, sleeping or hibernated..
         /// </summary>
         public static string AlwaysOnUsbAutomationStepControl_Message {
             get {
@@ -242,7 +242,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Charge USB devices, when the computer is off or in sleep or hibernation mode..
+        ///   Looks up a localized string similar to Charge USB devices, when the laptop is off, sleeping or hibernated..
         /// </summary>
         public static string AlwaysOnUSBControl_Message {
             get {
@@ -296,7 +296,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If enabled these action will run automatically. Whenever state changes, all actions will be evaluated from top to bottom.
+        ///   Looks up a localized string similar to If enabled, these action will run automatically. Whenever state changes, all actions will be evaluated from top to bottom.
         ///Only actions that match current state will run..
         /// </summary>
         public static string AutomationPage_Actions_Message {
@@ -892,7 +892,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to Time since laptop was last connected to AC power.
-        ///This time might not be accurate if laptop was charged when sleeping or off..
+        ///This time might not be accurate, if laptop was charged when sleeping or off..
         /// </summary>
         public static string BatteryPage_OnBatterySince_Message {
             get {
@@ -969,33 +969,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string Color_Red {
             get {
                 return ResourceManager.GetString("Color_Red", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Blue.
-        /// </summary>
-        public static string ColorCardControl_Blue {
-            get {
-                return ResourceManager.GetString("ColorCardControl_Blue", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Green.
-        /// </summary>
-        public static string ColorCardControl_Green {
-            get {
-                return ResourceManager.GetString("ColorCardControl_Green", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Red.
-        /// </summary>
-        public static string ColorCardControl_Red {
-            get {
-                return ResourceManager.GetString("ColorCardControl_Red", resourceCulture);
             }
         }
         
@@ -1318,6 +1291,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DGPU connected.
+        /// </summary>
+        public static string DGPU_Connected_Title {
+            get {
+                return ResourceManager.GetString("DGPU_Connected_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DGPU disconnected.
+        /// </summary>
+        public static string DGPU_Disconnected_Title {
+            get {
+                return ResourceManager.GetString("DGPU_Disconnected_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deactivate.
         /// </summary>
         public static string DiscreteGPUControl_Deactivate {
@@ -1329,7 +1320,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         /// <summary>
         ///   Looks up a localized string similar to nVidia GPU can be disabled.
         ///
-        ///Remember, that some programs might crash if you do it..
+        ///Remember, that some programs might crash, if you do it..
         /// </summary>
         public static string DiscreteGPUControl_DisablePossible {
             get {
@@ -1347,7 +1338,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Disable discrete GPU if it is active unnecessarily..
+        ///   Looks up a localized string similar to Disable discrete GPU, if it is active unnecessarily..
         /// </summary>
         public static string DiscreteGPUControl_Message {
             get {
@@ -1420,7 +1411,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to Change display brightness of the built-in display.
-        ///Power modes change brightness on some devices. Make sure to put this step last, if something doesn&apos;t work just right.
         ///
         ///WARNING: This action will not run correctly, if internal display is off..
         /// </summary>
@@ -1572,11 +1562,20 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Some features may not appear on the Dashboard depending on state and configuration of your device..
+        ///   Looks up a localized string similar to Some features may not appear on the Dashboard depending on state and configuration of your laptop..
         /// </summary>
         public static string EditDashboardWindow_Disclaimer_Message {
             get {
                 return ResourceManager.GetString("EditDashboardWindow_Disclaimer_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sensors.
+        /// </summary>
+        public static string EditDashboardWindow_Sensors {
+            get {
+                return ResourceManager.GetString("EditDashboardWindow_Sensors", resourceCulture);
             }
         }
         
@@ -1907,7 +1906,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to WARNING!
-        ///Some laptops may accept higher values than they indicate, but be careful. This option may result in unpredictable behavior, so if you are not sure what are you doing, leave this at 0..
+        ///Some laptops may accept higher values than they indicate, but be careful. This option may result in unpredictable behavior. If you are not sure what are you doing, leave this at 0..
         /// </summary>
         public static string GodModeSettingsWindow_Advanced_MaxOffset_Message {
             get {
@@ -1935,7 +1934,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to WARNING!
-        ///Some laptops may accept lower values than they indicate, but be careful. This option may result in unpredictable behavior, so if you are not sure what are you doing, leave this at 0..
+        ///Some laptops may accept lower values than they indicate, but be careful. This option may result in unpredictable behavior. If you are not sure what are you doing, leave this at 0..
         /// </summary>
         public static string GodModeSettingsWindow_Advanced_MinOffset_Message {
             get {
@@ -2263,11 +2262,29 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Custom Mode settings will not be applied correctly when LegionZone or it&apos;s services are running..
+        /// </summary>
+        public static string GodModeSettingsWindow_LegionZoneWarning_Title {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_LegionZoneWarning_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Custom Mode Settings.
         /// </summary>
         public static string GodModeSettingsWindow_Title {
             get {
                 return ResourceManager.GetString("GodModeSettingsWindow_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom Mode settings will not be applied correctly when Lenovo Vantage or it&apos;s services are running..
+        /// </summary>
+        public static string GodModeSettingsWindow_VantageWarning_Title {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_VantageWarning_Title", resourceCulture);
             }
         }
         
@@ -2319,6 +2336,61 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Try changing the mode again in a couple of seconds, if you do not see expected result.
+        ///If dGPU does not respond at all, please restart your laptop..
+        /// </summary>
+        public static string IGPUModeChangeException_Message {
+            get {
+                return ResourceManager.GetString("IGPUModeChangeException_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to dGPU will disconnect automatically when not in use and laptop is on battery power..
+        /// </summary>
+        public static string IGPUModeChangeException_Message_Auto {
+            get {
+                return ResourceManager.GetString("IGPUModeChangeException_Message_Auto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to dGPU will disconnect automatically when not in use..
+        /// </summary>
+        public static string IGPUModeChangeException_Message_IGPUOnly {
+            get {
+                return ResourceManager.GetString("IGPUModeChangeException_Message_IGPUOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not change GPU Working Mode.
+        /// </summary>
+        public static string IGPUModeChangeException_Title {
+            get {
+                return ResourceManager.GetString("IGPUModeChangeException_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to dGPU is currently in use or laptop is not on battery power.
+        /// </summary>
+        public static string IGPUModeChangeException_Title_Auto {
+            get {
+                return ResourceManager.GetString("IGPUModeChangeException_Title_Auto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to dGPU is currently in use.
+        /// </summary>
+        public static string IGPUModeChangeException_Title_IGPUOnly {
+            get {
+                return ResourceManager.GetString("IGPUModeChangeException_Title_IGPUOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Import.
         /// </summary>
         public static string Import {
@@ -2355,7 +2427,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatically power on when a charger is connected..
+        ///   Looks up a localized string similar to Turn on the laptop when a charger is connected..
         /// </summary>
         public static string InstantBootAutomationStepControl_Message {
             get {
@@ -2373,7 +2445,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatically power on when a charger is connected..
+        ///   Looks up a localized string similar to Turn on the laptop when a charger is connected..
         /// </summary>
         public static string InstantBootControl_Message {
             get {
@@ -2400,7 +2472,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lenovo Vantage seems to be enabled.
+        ///   Looks up a localized string similar to Lenovo Vantage or its services are running.
         /// </summary>
         public static string Keyboard_VantageEnabledWarning_Title {
             get {
@@ -3484,7 +3556,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select performance mode..
+        ///   Looks up a localized string similar to Change performance mode..
         /// </summary>
         public static string PowerModeAutomationStepControl_Message {
             get {
@@ -3502,8 +3574,8 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select performance mode.
-        ///You can switch mode with Fn+Q..
+        ///   Looks up a localized string similar to Change performance mode.
+        ///Performance mode can also be changed with Fn+Q..
         /// </summary>
         public static string PowerModeControl_Message {
             get {
@@ -3539,7 +3611,25 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enabling this option when Lenovo Vantage is running and it changes power plans on your laptop might result in unexpected behavior..
+        ///   Looks up a localized string similar to {0} power mode is not available without AC power..
+        /// </summary>
+        public static string PowerModeUnavailableWithoutACException_Message {
+            get {
+                return ResourceManager.GetString("PowerModeUnavailableWithoutACException_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot change Power Mode.
+        /// </summary>
+        public static string PowerModeUnavailableWithoutACException_Title {
+            get {
+                return ResourceManager.GetString("PowerModeUnavailableWithoutACException_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabling this option when Lenovo Vantage or its services are running and it changes power plans on your laptop might result in unexpected behavior..
         /// </summary>
         public static string PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Message {
             get {
@@ -3557,7 +3647,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Windows reports that this device supports Modern Standby. Using power plans other than Balanced may cause unexpected behavior..
+        ///   Looks up a localized string similar to Windows reports that this laptop supports Modern Standby. Using power plans other than Balanced may cause unexpected behavior..
         /// </summary>
         public static string PowerPlansWindow_AoAcWarning_Message {
             get {
@@ -4048,11 +4138,11 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Utilisation.
+        ///   Looks up a localized string similar to Utilization.
         /// </summary>
-        public static string SensorsControl_Utilisation_Title {
+        public static string SensorsControl_Utilization_Title {
             get {
-                return ResourceManager.GetString("SensorsControl_Utilisation_Title", resourceCulture);
+                return ResourceManager.GetString("SensorsControl_Utilization_Title", resourceCulture);
             }
         }
         
@@ -4241,7 +4331,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vantage may have not been enabled correctly.
+        ///   Looks up a localized string similar to Vantage and/or ImController may have not been enabled correctly.
         /// </summary>
         public static string SettingsPage_EnableVantage_Error_Message {
             get {
@@ -4250,7 +4340,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Couldn&apos;t enable Vantage.
+        ///   Looks up a localized string similar to Couldn&apos;t enable Vantage and/or ImController.
         /// </summary>
         public static string SettingsPage_EnableVantage_Error_Title {
             get {

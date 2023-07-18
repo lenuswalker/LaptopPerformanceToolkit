@@ -152,20 +152,20 @@
     <value>Neu hinzufügen</value>
   </data>
   <data name="AlwaysActivatePowerPlans_Message" xml:space="preserve">
-    <value>Aktiviere den Energiesparplan, auch wenn Vantage aktiviert ist.
+	  <value>Aktiviere den Energiesparplan, auch wenn Vantage oder dazugehörige Dienste aktiviert sind.
 Diese Option ist nur für Geräte gedacht, die nicht mit mehreren Energiesparplänen ausgestattet sind.</value>
   </data>
   <data name="AlwaysActivatePowerPlans_Title" xml:space="preserve">
     <value>Aktiviere immer Windows Energiesparplan</value>
   </data>
   <data name="AlwaysOnUSBControl_Message" xml:space="preserve">
-    <value>Lade USB Geräte, wenn der Computer ausgeschaltet ist oder sich im Schlaf- oder Ruhezustand befindet.</value>
+	  <value>Lade USB Geräte, wenn der Computer ausgeschaltet ist oder sich im Schlaf- oder Ruhezustand befindet.</value>
   </data>
   <data name="AlwaysOnUSBControl_Title" xml:space="preserve">
     <value>Always on USB</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
-    <value>Lade USB Geräte, wenn der Computer ausgeschaltet ist oder sich im Schlaf- oder Ruhezustand befindet.</value>
+	  <value>Lade USB Geräte, wenn der Computer ausgeschaltet ist oder sich im Schlaf- oder Ruhezustand befindet.</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Title" xml:space="preserve">
     <value>Always on USB</value>
@@ -189,7 +189,7 @@ Diese Option ist nur für Geräte gedacht, die nicht mit mehreren Energiesparpl�
     <value>Keine Aktionen definiert. Klicke auf "Neu hinzufügen", um eine neue Aktion zu erstellen.</value>
   </data>
   <data name="AutomationPage_Actions_Message" xml:space="preserve">
-    <value>Wenn eingeschaltet, werden diese Aktionen automatisch ausgeführt. Wenn sich der Zustand ändert, werden alle Aktionen von oben nach unten ausgewertet. Nur Aktionen, die dem aktuellen Zustand entsprechen, werden ausgeführt.</value>
+	  <value>Wenn eingeschaltet, werden diese Aktionen automatisch ausgeführt. Wenn sich der Zustand ändert, werden alle Aktionen von oben nach unten ausgewertet. Nur Aktionen, die dem aktuellen Zustand entsprechen, werden ausgeführt.</value>
   </data>
   <data name="AutomationPage_Actions_Title" xml:space="preserve">
     <value>Aktionen</value>
@@ -369,7 +369,7 @@ Diese Option ist nur für Geräte gedacht, die nicht mit mehreren Energiesparpl�
     <value>Herstellungsdatum</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Message" xml:space="preserve">
-    <value>Zeit seit dem letzten Anschluss des Laptops an das Stromnetz.
+	  <value>Zeit seit dem letzten Anschluss des Laptops an das Stromnetz.
 Diese Zeit ist möglicherweise nicht genau, wenn der Laptop im Schlaf oder im ausgeschalteten Zustand aufgeladen wurde.</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Title" xml:space="preserve">
@@ -386,15 +386,6 @@ Diese Zeit ist möglicherweise nicht genau, wenn der Laptop im Schlaf oder im au
   </data>
   <data name="Close" xml:space="preserve">
     <value>Beenden</value>
-  </data>
-  <data name="ColorCardControl_Blue" xml:space="preserve">
-    <value>Blau</value>
-  </data>
-  <data name="ColorCardControl_Green" xml:space="preserve">
-    <value>Grün</value>
-  </data>
-  <data name="ColorCardControl_Red" xml:space="preserve">
-    <value>Rot</value>
   </data>
   <data name="Color_Blue" xml:space="preserve">
     <value>Blau</value>
@@ -505,7 +496,7 @@ WARNUNG: Diese Aktion wird nicht korrekt ausgeführt, wenn das interne Display a
     <value>Deaktivieren</value>
   </data>
   <data name="DiscreteGPUControl_DisablePossible" xml:space="preserve">
-    <value>nVidia GPU kann deaktiviert werden.
+	  <value>nVidia GPU kann deaktiviert werden.
 
 Beachten Sie, dass einige Programme dabei abstürzen könnten.</value>
   </data>
@@ -516,7 +507,7 @@ Beachten Sie, dass einige Programme dabei abstürzen könnten.</value>
     <value>Anwendungen schließen</value>
   </data>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
-    <value>Deaktiviere die diskrete GPU, wenn sie unnötigerweise aktiv ist.</value>
+	  <value>Deaktiviere die diskrete GPU, wenn sie unnötigerweise aktiv ist.</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
     <value>Ein Monitor ist an die nVidia GPU angeschlossen.</value>
@@ -540,7 +531,7 @@ Beachten Sie, dass einige Programme dabei abstürzen könnten.</value>
     <value>Diskrete GPU</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Ändert die Display-Helligkeit des integrierten Bildschirms.
+	  <value>Ändert die Display-Helligkeit des integrierten Bildschirms.
 Bei einigen Geräten ändert der Energiemodus die Helligkeit. Stellen Sie sicher, dass dieser Schritt zuletzt ausgeführt wird, wenn etwas nicht richtig funktioniert.
 
 WARNUNG: Diese Aktion wird nicht korrekt ausgeführt, wenn der interne Bildschirm ausgeschaltet ist.</value>
@@ -630,6 +621,9 @@ Vielen Dank im Voraus!</value>
   <data name="FanCurveControl_GPU" xml:space="preserve">
     <value>GPU</value>
   </data>
+  <data name="RPM" xml:space="preserve">
+    <value>U/min</value>
+  </data>
   <data name="FlipToStartAutomationStepControl_Message" xml:space="preserve">
     <value>Schalte den Laptop ein, wenn der Bildschirm aufgeklappt wird.</value>
   </data>
@@ -655,14 +649,14 @@ Vielen Dank im Voraus!</value>
     <value>Fn Lock</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Message" xml:space="preserve">
-    <value>WARNUNG!
+	  <value>WARNUNG!
 Einige Laptops können niedrigere Werte akzeptieren, als sie angeben, aber seien Sie vorsichtig. Diese Option kann zu unvorhersehbarem Verhalten führen. Wenn Sie also nicht sicher sind, was Sie tun, lassen Sie diese Option auf 0.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Title" xml:space="preserve">
     <value>Minimaler Offset</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
-    <value>WARNUNG!
+	  <value>WARNUNG!
 Einige Laptops können höhere Werte akzeptieren, als sie angeben, aber seien Sie vorsichtig. Diese Option kann zu unvorhersehbarem Verhalten führen. Wenn Sie also nicht sicher sind, was Sie tun, lassen Sie diese Option auf 0.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
@@ -763,7 +757,7 @@ WARNUNG: Diese Aktion wird nicht korrekt ausgeführt, wenn der interne Bildschir
     <value>Die Tastaturbeleuchtung kann nicht gesteuert werden, wenn Vantage oder dessen Dienste ausgeführt werden.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Lenovo Vantage scheint aktiviert zu sein</value>
+	  <value>Lenovo Vantage oder dazugehörige Dienste werden ausgeführt</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
     <value>Über</value>
@@ -1011,13 +1005,13 @@ Stellen Sie immer sicher, dass Sie die richtigen Pakete installieren.</value>
     <value>Einfügen</value>
   </data>
   <data name="PowerModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Auswahl des Leistungsmodus.</value>
+	  <value>Auswahl des Leistungsmodus.</value>
   </data>
   <data name="PowerModeAutomationStepControl_Title" xml:space="preserve">
     <value>Leistungsmodus</value>
   </data>
   <data name="PowerModeControl_Message" xml:space="preserve">
-    <value>Auswahl des Leistungsmodus.
+	  <value>Auswahl des Leistungsmodus.
 Sie können den Modus mit Fn+Q wechseln.</value>
   </data>
   <data name="PowerModeControl_Settings" xml:space="preserve">
@@ -1030,7 +1024,7 @@ Sie können den Modus mit Fn+Q wechseln.</value>
     <value>Der gewählte Leistungsmodus funktioniert möglicherweise nicht richtig, wenn kein Netzteil angeschlossen ist.</value>
   </data>
   <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Message" xml:space="preserve">
-    <value>Aktivieren dieser Option, während Lenovo Vantage ausgeführt wird und den Energiesparplan Ihres Laptops ändert, kann zu unerwartetem Verhalten führen.</value>
+	  <value>Wenn Sie diese Option aktivieren, während Lenovo Vantage oder die zugehörigen Dienste ausgeführt werden und den Energiesparplan Ihres Laptops ändern, kann dies zu unerwartetem Verhalten führen.</value>
   </data>
   <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Title" xml:space="preserve">
     <value>Sind Sie sicher?</value>
@@ -1217,10 +1211,10 @@ Nach dem Ändern dieser Option wird ein Neustart empfohlen.</value>
     <value>Lenovo Hotkeys konnte nicht aktiviert werden</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Vantage wurde möglicherweise nicht korrekt aktiviert</value>
+	  <value>Vantage und/oder ImController wurden möglicherweise nicht korrekt aktiviert</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
-    <value>Vantage konnte nicht aktiviert werden</value>
+	  <value>Vantage und/oder ImController konnten nicht aktiviert werden</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>Sie können Bildwiederholraten ausschließen, um die Tastenkombination Fn+R nützlicher zu machen.</value>
@@ -1542,7 +1536,7 @@ WARNUNG: Diese Aktion wird nicht korrekt ausgeführt, wenn der interne Bildschir
     <value>Name</value>
   </data>
   <data name="EditDashboardWindow_Disclaimer_Message" xml:space="preserve">
-    <value>Je nach Zustand und Konfiguration Ihres Geräts werden einige Funktionen möglicherweise nicht in der Übersicht angezeigt.</value>
+	  <value>Je nach Zustand und Konfiguration Ihres Geräts werden einige Funktionen möglicherweise nicht in der Übersicht angezeigt.</value>
   </data>
   <data name="DashboardPage_Customize" xml:space="preserve">
     <value>Anpassen</value>
@@ -1724,7 +1718,7 @@ Diese Einstellung wird nur wirksam, wenn der benutzerdefinierte Modus aktiviert 
     <value>S0 Low Power Idle-Modell erkannt</value>
   </data>
   <data name="PowerPlansWindow_AoAcWarning_Message" xml:space="preserve">
-    <value>Windows meldet, dass dieses Gerät den modernen Standby-Modus unterstützt. Die Verwendung anderer Energiesparpläne als "Ausbalanciert" kann zu unerwartetem Verhalten führen.</value>
+	  <value>Windows meldet, dass dieses Gerät den modernen Standby-Modus unterstützt. Die Verwendung anderer Energiesparpläne als "Ausbalanciert" kann zu unerwartetem Verhalten führen.</value>
   </data>
   <data name="SettingsPage_PowerPlans_Message" xml:space="preserve">
     <value>Wählen Sie Windows-Energiepläne aus, die bei einer Änderung des Energiemodus angewendet werden sollen.</value>
@@ -1800,5 +1794,84 @@ WARNUNG: Diese Aktion wird nicht korrekt ausgeführt, wenn keine diskrete GPU ve
   </data>
   <data name="PanelLogoBacklightAutomationStepControl_Message" xml:space="preserve">
     <value>Schalten Sie die Hintergrundbeleuchtung auf dem Deckel des Laptops ein oder aus.</value>
+  </data>
+  <data name="GHz" xml:space="preserve">
+    <value>GHz</value>
+  </data>
+  <data name="MHz" xml:space="preserve">
+    <value>MHz</value>
+  </data>
+  <data name="SensorsControl_Maximum" xml:space="preserve">
+	  <value>Maximal: {0}</value>
+  </data>
+  <data name="SensorsControl_CPU_Title" xml:space="preserve">
+	  <value>CPU</value>
+  </data>
+  <data name="SensorsControl_Utilization_Title" xml:space="preserve">
+	  <value>Nutzung</value>
+  </data>
+  <data name="SensorsControl_CoreClock_Title" xml:space="preserve">
+	  <value>Kerntakt</value>
+  </data>
+  <data name="SensorsControl_Temperature_Title" xml:space="preserve">
+	  <value>Temperatur</value>
+  </data>
+  <data name="SensorsControl_Fan_Title" xml:space="preserve">
+	  <value>Lüfter</value>
+  </data>
+  <data name="SensorsControl_GPU_Title" xml:space="preserve">
+	  <value>GPU</value>
+  </data>
+  <data name="SensorsControl_MemoryClock_Title" xml:space="preserve">
+	  <value>Speichertakt</value>
+  </data>
+  <data name="SensorsControl_RefreshInterval" xml:space="preserve">
+	  <value>Aktualisierungsintervall</value>
+  </data>
+  <data name="InstantBootControl_Title" xml:space="preserve">
+	  <value>Instant Boot</value>
+  </data>
+  <data name="InstantBootControl_Message" xml:space="preserve">
+	  <value>Schalte den Laptop ein, wenn ein Netzadapter angeschlossen wird.</value>
+  </data>
+  <data name="InstantBootAutomationStepControl_Title" xml:space="preserve">
+	  <value>Instant Boot</value>
+  </data>
+  <data name="InstantBootAutomationStepControl_Message" xml:space="preserve">
+	  <value>Schalte den Laptop ein, wenn ein Netzadapter angeschlossen wird.</value>
+  </data>
+  <data name="PowerModeUnavailableWithoutACException_Title" xml:space="preserve">
+	  <value>Leistungsmodus kann nicht geändert werden</value>
+  </data>
+  <data name="PowerModeUnavailableWithoutACException_Message" xml:space="preserve">
+	  <value>Leistungsmodus {0} ist ohne Netzadapter nicht verfügbar.</value>
+	  <comment>For example: "{Performance} power mode is not available without AC power."</comment>
+  </data>
+  <data name="EditDashboardWindow_Sensors" xml:space="preserve">
+	  <value>Sensoren</value>
+  </data>
+  <data name="IGPUModeChangeException_Title" xml:space="preserve">
+	  <value>GPU-Betriebsmodus konnte nicht geändert werden</value>
+  </data>
+  <data name="IGPUModeChangeException_Message" xml:space="preserve">
+	  <value>Versuchen Sie, den Modus in ein paar Sekunden erneut zu ändern, wenn Sie nicht das erwartete Ergebnis sehen.&#x0a;Wenn dGPU überhaupt nicht reagiert, starten Sie bitte Ihren Laptop neu.</value>
+  </data>
+  <data name="IGPUModeChangeException_Title_IGPUOnly" xml:space="preserve">
+	  <value>dGPU wird derzeit verwendet</value>
+  </data>
+  <data name="IGPUModeChangeException_Message_IGPUOnly" xml:space="preserve">
+	  <value>dGPU wird automatisch getrennt, wenn sie nicht verwendet wird.</value>
+  </data>
+  <data name="IGPUModeChangeException_Title_Auto" xml:space="preserve">
+	  <value>dGPU wird gerade verwendet oder der Laptop ist nicht im Akkubetrieb</value>
+  </data>
+  <data name="IGPUModeChangeException_Message_Auto" xml:space="preserve">
+	  <value>dGPU wird automatisch getrennt, wenn sie nicht verwendet wird und der Laptop im Akkubetrieb ist.</value>
+  </data>
+  <data name="GodModeSettingsWindow_VantageWarning_Title" xml:space="preserve">
+	  <value>Die Einstellungen des benutzerdefinierten Modus werden nicht korrekt angewendet, wenn Lenovo Vantage oder dessen Dienste ausgeführt werden.</value>
+  </data>
+  <data name="GodModeSettingsWindow_LegionZoneWarning_Title" xml:space="preserve">
+	  <value>Die Einstellungen des benutzerdefinierten Modus werden nicht korrekt angewendet, wenn LegionZone oder dessen Dienste ausgeführt werden.</value>
   </data>
 </root>

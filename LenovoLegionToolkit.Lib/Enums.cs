@@ -34,14 +34,16 @@ public enum BatteryState
     RapidCharge
 }
 
-public enum CapabilityID : uint
+public enum CapabilityID
 {
-    IGPUModeSupport = 0x0010000,
-    NvidiaGPUDynamicDisplaySwitching = 0x0040000,
-    AMDSmartShiftMode = 0x0050001,
-    AMDSkinTemperatureTracking = 0x0050002,
-    LegionZoneSupportVersion = 0x00900000,
-    // IGPUModeChangeStatus = 0x00F0000,
+    IGPUMode = 0x00010000,
+    FlipToStart = 0x00030000,
+    NvidiaGPUDynamicDisplaySwitching = 0x00040000,
+    AMDSmartShiftMode = 0x00050001,
+    AMDSkinTemperatureTracking = 0x00050002,
+    SupportedPowerModes = 0x00070000,
+    LegionZoneSupportVersion = 0x00090000,
+    IGPUModeChangeStatus = 0x000F0000,
     CPUShortTermPowerLimit = 0x0101FF00,
     CPULongTermPowerLimit = 0x0102FF00,
     CPUPeakPowerLimit = 0x0103FF00,
@@ -53,14 +55,15 @@ public enum CapabilityID : uint
     GPUConfigurableTGP = 0x0202FF00,
     GPUTemperatureLimit = 0x0203FF00,
     GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline = 0x0204FF00,
-    InstantBootAc = 0x3010001,
-    InstantBootUsbPowerDelivery = 0x3010002,
-    // FanTable = 0x4010000,
-    FanFullSpeed = 0x4020000,
-    CpuCurrentFanSpeed = 0x4030001,
-    GpuCurrentFanSpeed = 0x4030002,
-    CpuCurrentTemperature = 0x5040000,
-    GpuCurrentTemperature = 0x5050000,
+    GPUStatus = 0x02070000,
+    GPUDidVid = 0x02090000,
+    InstantBootAc = 0x03010001,
+    InstantBootUsbPowerDelivery = 0x03010002,
+    FanFullSpeed = 0x04020000,
+    CpuCurrentFanSpeed = 0x04030001,
+    GpuCurrentFanSpeed = 0x04030002,
+    CpuCurrentTemperature = 0x05040000,
+    GpuCurrentTemperature = 0x05050000
 }
 
 [Flags]
@@ -391,6 +394,7 @@ public enum SpecialKey
     FnLockOn = 2,
     FnLockOff = 3,
     FnPrtSc = 4,
+    FnPrtSc2 = 45,
     CameraOn = 12,
     CameraOff = 13,
     FnR = 16,

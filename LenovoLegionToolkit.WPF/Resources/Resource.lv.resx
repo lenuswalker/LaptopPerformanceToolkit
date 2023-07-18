@@ -152,20 +152,20 @@
     <value>Pievienot jaunu</value>
   </data>
   <data name="AlwaysActivatePowerPlans_Message" xml:space="preserve">
-    <value>Aktivizēt Enerģijas Plānus pat tad, kad Vantage ir iespējots.
+	  <value>Aktivizēt Enerģijas Plānus pat tad, kad Vantage ir iespējots.
 Šī opcija ir paredzēta tikai ierīcēm, kurām nav pievienoti vairāki Enerģijas Plāni.</value>
   </data>
   <data name="AlwaysActivatePowerPlans_Title" xml:space="preserve">
     <value>Vienmēr aktivizēt Windows Enerģijas Plānus</value>
   </data>
   <data name="AlwaysOnUSBControl_Message" xml:space="preserve">
-    <value>Uzlādējiet USB ierīces, kad dators ir izslēgts vai atrodas miega vai hibernācijas režīmā.</value>
+	  <value>Uzlādējiet USB ierīces, kad dators ir izslēgts vai atrodas miega vai hibernācijas režīmā.</value>
   </data>
   <data name="AlwaysOnUSBControl_Title" xml:space="preserve">
     <value>Vienmēr ieslēgts USB</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
-    <value>Uzlādējiet USB ierīces, kad dators ir izslēgts vai atrodas miega vai hibernācijas režīmā.</value>
+	  <value>Uzlādējiet USB ierīces, kad dators ir izslēgts vai atrodas miega vai hibernācijas režīmā.</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Title" xml:space="preserve">
     <value>Vienmēr ieslēgts USB</value>
@@ -189,7 +189,7 @@
     <value>Nav definētas Darbības. Lai izveidotu jaunu Darbību, noklikšķiniet uz "Pievienot jaunu".</value>
   </data>
   <data name="AutomationPage_Actions_Message" xml:space="preserve">
-    <value>Ja šīs darbības ir iespējotas, tās tiks veiktas automātiski. Mainoties stāvoklim, visas darbības tiks izvērtētas no augšas uz leju.
+	  <value>Ja šīs darbības ir iespējotas, tās tiks veiktas automātiski. Mainoties stāvoklim, visas darbības tiks izvērtētas no augšas uz leju.
 Tiks izpildītas tikai tās darbības, kas atbilst pašreizējam stāvoklim.</value>
   </data>
   <data name="AutomationPage_Actions_Title" xml:space="preserve">
@@ -370,7 +370,7 @@ Tiks izpildītas tikai tās darbības, kas atbilst pašreizējam stāvoklim.</va
     <value>Ražošanas datums</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Message" xml:space="preserve">
-    <value>Laiks, kopš klēpjdators pēdējo reizi tika pievienots maiņstrāvas avotam.
+	  <value>Laiks, kopš klēpjdators pēdējo reizi tika pievienots maiņstrāvas avotam.
 Šis laiks var nebūt precīzs, ja klēpjdators ir uzlādēts miega vai izslēgšanas laikā.</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Title" xml:space="preserve">
@@ -387,15 +387,6 @@ Tiks izpildītas tikai tās darbības, kas atbilst pašreizējam stāvoklim.</va
   </data>
   <data name="Close" xml:space="preserve">
     <value>Aizvērt</value>
-  </data>
-  <data name="ColorCardControl_Blue" xml:space="preserve">
-    <value>Zils</value>
-  </data>
-  <data name="ColorCardControl_Green" xml:space="preserve">
-    <value>Zaļš</value>
-  </data>
-  <data name="ColorCardControl_Red" xml:space="preserve">
-    <value>Sarkans</value>
   </data>
   <data name="Color_Blue" xml:space="preserve">
     <value>Zils</value>
@@ -506,7 +497,7 @@ BRĪDINĀJUMS. Ja iekšējais displejs ir izslēgts vai hibrīda režīms nav ak
     <value>Deaktivizēt</value>
   </data>
   <data name="DiscreteGPUControl_DisablePossible" xml:space="preserve">
-    <value>nVidia GPU var atspējot.
+	  <value>nVidia GPU var atspējot.
 
 Atcerieties, ka dažas programmas var avarēt, ja to darīsiet.</value>
   </data>
@@ -517,7 +508,7 @@ Atcerieties, ka dažas programmas var avarēt, ja to darīsiet.</value>
     <value>Nokaut lietotnes</value>
   </data>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
-    <value>Atspējojiet diskrēto GPU, ja tas ir nevajadzīgi aktīvs.</value>
+	  <value>Atspējojiet diskrēto GPU, ja tas ir nevajadzīgi aktīvs.</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
     <value>Monitors ir pievienots nVidia GPU.</value>
@@ -541,7 +532,7 @@ Atcerieties, ka dažas programmas var avarēt, ja to darīsiet.</value>
     <value>Diskrētais GPU</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Mainiet iebūvētā ekrāna spilgtumu.
+	  <value>Mainiet iebūvētā ekrāna spilgtumu.
 Enerģijas režīmi maina spilgtumu dažās ierīcēs. Pārliecinies, ka šis solis ir pēdējais, ja kaut kas nesanāk vienkārši pareizi.
 
 BRĪDINĀJUMS. Ja iebūvētais ekrāns ir izslēgts, šī darbība nedarbosies pareizi.</value>
@@ -631,6 +622,9 @@ Paldies jau iepriekš!</value>
   <data name="FanCurveControl_GPU" xml:space="preserve">
     <value>GPU</value>
   </data>
+  <data name="RPM" xml:space="preserve">
+    <value>Apgr/min</value>
+  </data>
   <data name="FlipToStartAutomationStepControl_Message" xml:space="preserve">
     <value>Klēpjdatora ieslēgšana, atverot vāku.</value>
   </data>
@@ -656,14 +650,14 @@ Paldies jau iepriekš!</value>
     <value>Fn Bloķēšana</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Message" xml:space="preserve">
-    <value>Brīdinājums!
+	  <value>Brīdinājums!
 Daži klēpjdatori var pieņemt zemākas vērtības, nekā norādīts, taču esiet piesardzīgs. Šī opcija var izraisīt neprognozējamu rīcību, tāpēc, ja neesat pārliecināts, ko darāt, atstājiet 0.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Title" xml:space="preserve">
     <value>Minimālā nobīde</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
-    <value>Brīdinājums!
+	  <value>Brīdinājums!
 Daži klēpjdatori var pieņemt augstākas vērtības, nekā norādīts, taču esiet piesardzīgs. Šī opcija var izraisīt neprognozējamu rīcību, tāpēc, ja neesat pārliecināts, ko darāt, atstājiet 0.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
@@ -764,7 +758,7 @@ BRĪDINĀJUMS. Ja iebūvētais ekrāns ir izslēgts, šī darbība nedarbosies p
     <value>Tastatūras fona apgaismojumu šeit nevar kontrolēt, ja darbojas Vantage vai tā pakalpojumi.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Šķiet, ka Lenovo Vantage ir iespējots</value>
+	  <value>Lenovo Vantage vai tā servisi šobrīd ir ieslēgti</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
     <value>Par</value>
@@ -1012,13 +1006,13 @@ Vienmēr pārliecinieties, vai instalējat pareizas pakotnes.</value>
     <value>Ielīmēt</value>
   </data>
   <data name="PowerModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Izvēlēties veiktspējas režīmu.</value>
+	  <value>Izvēlēties veiktspējas režīmu.</value>
   </data>
   <data name="PowerModeAutomationStepControl_Title" xml:space="preserve">
     <value>Barošanas Režīms</value>
   </data>
   <data name="PowerModeControl_Message" xml:space="preserve">
-    <value>Izvēlēties veiktspējas režīmu.
+	  <value>Izvēlēties veiktspējas režīmu.
 Jūs varat režīmus mainīt ar Fn+Q.</value>
   </data>
   <data name="PowerModeControl_Settings" xml:space="preserve">
@@ -1031,7 +1025,7 @@ Jūs varat režīmus mainīt ar Fn+Q.</value>
     <value>Izvēlētais barošanas režīms var nedarboties pareizi, ja nav pievienots maiņstrāvas adapteris.</value>
   </data>
   <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Message" xml:space="preserve">
-    <value>Iespējojot šo opciju, ja darbojas Lenovo Vantage un tas maina barošanas plānus klēpjdatorā, var rasties neparedzēta darbība.</value>
+	  <value>Iespējojot šo opciju, ja darbojas Lenovo Vantage vai tā servisi un tie maina barošanas plānus klēpjdatorā, var rasties neparedzēta darbība.</value>
   </data>
   <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Title" xml:space="preserve">
     <value>Vai esat pārliecināts?</value>
@@ -1218,10 +1212,10 @@ Pēc šīs opcijas maiņas ieteicams restartēt datoru.</value>
     <value>Nevarēja iespējot Legion Hotkeys</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Iespējams, Vantage nav pareizi iespējots</value>
+	  <value>Iespējams, Vantage un/vai ImController nav pareizi iespējots</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
-    <value>Nevarēja iespējot Vantage</value>
+	  <value>Nevarēja iespējot Vantage un/vai ImController</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>Varat izslēgt atsvaidzināšanas ātrumus, lai padarītu Fn+R saīsni noderīgāku.</value>
@@ -1543,7 +1537,7 @@ BRĪDINĀJUMS. Ja iebūvētais ekrāns ir izslēgts, šī darbība nedarbosies p
     <value>Nosaukums</value>
   </data>
   <data name="EditDashboardWindow_Disclaimer_Message" xml:space="preserve">
-    <value>Dažas funkcijas informācijas panelī var neparādīties atkarībā no ierīces stāvokļa un konfigurācijas.</value>
+	  <value>Dažas funkcijas informācijas panelī var neparādīties atkarībā no ierīces stāvokļa un konfigurācijas.</value>
   </data>
   <data name="DashboardPage_Customize" xml:space="preserve">
     <value>Pielāgot</value>
@@ -1725,7 +1719,7 @@ Peles pārvietošana vai tastatūras nospiešana pamodinās ekrānus.</value>
     <value>Konstatēts S0 Mazjaudas Modelis</value>
   </data>
   <data name="PowerPlansWindow_AoAcWarning_Message" xml:space="preserve">
-    <value>Windows ziņo, ka šī ierīce atbalsta Moderno Gaidstāvi. Enerģijas plānu izmantošana, kas nav Līdzsvarots, var izraisīt negaidītu rīcību.</value>
+	  <value>Windows ziņo, ka šī ierīce atbalsta Moderno Gaidstāvi. Enerģijas plānu izmantošana, kas nav Līdzsvarots, var izraisīt negaidītu rīcību.</value>
   </data>
   <data name="SettingsPage_PowerPlans_Message" xml:space="preserve">
     <value>Atlasiet Windows Barošanas Plānus, kas jālieto, mainot Barošanas Režīmu.</value>
@@ -1801,5 +1795,75 @@ BRĪDINĀJUMS. Ja nav pieejams atsevišķs GPU, šī darbība nedarbosies pareiz
   </data>
   <data name="PanelLogoBacklightAutomationStepControl_Message" xml:space="preserve">
     <value>Ieslēgt vai izslēgt klēpjdatora vāka izgaismojumu.</value>
+  </data>
+  <data name="GHz" xml:space="preserve">
+    <value>GHz</value>
+  </data>
+  <data name="MHz" xml:space="preserve">
+    <value>MHz</value>
+  </data>
+  <data name="SensorsControl_Maximum" xml:space="preserve">
+	  <value>Maksimums: {0}</value>
+  </data>
+  <data name="SensorsControl_CPU_Title" xml:space="preserve">
+	  <value>CPU</value>
+  </data>
+  <data name="SensorsControl_Utilization_Title" xml:space="preserve">
+	  <value>Lietojums</value>
+  </data>
+  <data name="SensorsControl_CoreClock_Title" xml:space="preserve">
+	  <value>Kodola Takts Ātrums</value>
+  </data>
+  <data name="SensorsControl_Temperature_Title" xml:space="preserve">
+	  <value>Temperatūra</value>
+  </data>
+  <data name="SensorsControl_Fan_Title" xml:space="preserve">
+	  <value>Ventilators</value>
+  </data>
+  <data name="SensorsControl_GPU_Title" xml:space="preserve">
+	  <value>GPU</value>
+  </data>
+  <data name="SensorsControl_MemoryClock_Title" xml:space="preserve">
+	  <value>Atmiņas Takts Ātrums</value>
+  </data>
+  <data name="SensorsControl_RefreshInterval" xml:space="preserve">
+	  <value>Atjaunošanas intervāls</value>
+  </data>
+  <data name="InstantBootControl_Title" xml:space="preserve">
+	  <value>Tūlītēja Sāknēšana</value>
+  </data>
+  <data name="InstantBootControl_Message" xml:space="preserve">
+	  <value>Ieslēgt portatīvo datoru kad tiek pievienots lādētājs.</value>
+  </data>
+  <data name="InstantBootAutomationStepControl_Title" xml:space="preserve">
+	  <value>Tūlītēja Sāknēšana</value>
+  </data>
+  <data name="InstantBootAutomationStepControl_Message" xml:space="preserve">
+	  <value>Ieslēgt portatīvo datoru kad tiek pievienots lādētājs.</value>
+  </data>
+  <data name="PowerModeUnavailableWithoutACException_Title" xml:space="preserve">
+	  <value>Nevarēja nomainīt Jaudas Režīmu</value>
+  </data>
+  <data name="PowerModeUnavailableWithoutACException_Message" xml:space="preserve">
+	  <value>{0} jaudas režīms nav pieejams bez maiņstrāvas pieslēguma.</value>
+	  <comment>For example: "{Performance} power mode is not available without AC power."</comment>
+  </data>
+  <data name="EditDashboardWindow_Sensors" xml:space="preserve">
+	  <value>Sensori</value>
+  </data>
+  <data name="IGPUModeChangeException_Title" xml:space="preserve">
+	  <value>Nevarēja nomainīt GPU Darbošanās režīmu</value>
+  </data>
+  <data name="IGPUModeChangeException_Title_IGPUOnly" xml:space="preserve">
+	  <value>dGPU šobrīd tiek izmantots</value>
+  </data>
+  <data name="IGPUModeChangeException_Message_IGPUOnly" xml:space="preserve">
+	  <value>dGPU automātiski pats atvienosies kad tas netiks izmantots.</value>
+  </data>
+  <data name="IGPUModeChangeException_Title_Auto" xml:space="preserve">
+	  <value>dGPU šobrīd tiek izmantots vai arī portatīvais dators neizmanto akumulatoru</value>
+  </data>
+  <data name="IGPUModeChangeException_Message_Auto" xml:space="preserve">
+	  <value>dGPU tiks atvienots automātiski kad tas netiek izmantots vai portatīvais dators izmanto akumulatoru.</value>
   </data>
 </root>

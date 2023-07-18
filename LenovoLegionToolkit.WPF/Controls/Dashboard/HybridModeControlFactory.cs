@@ -1,9 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Features;
+using LenovoLegionToolkit.Lib.Features.Hybrid;
+using LenovoLegionToolkit.Lib.Features.Hybrid.Notify;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Resources;
@@ -27,6 +30,8 @@ public static class HybridModeControlFactory
 
     private class ComboBoxHybridModeControl : AbstractComboBoxFeatureCardControl<HybridModeState>
     {
+        private readonly DGPUNotify _dgpuNotify = IoCContainer.Resolve<DGPUNotify>();
+
         private readonly Button _infoButton = new()
         {
             Icon = SymbolRegular.Info24,
@@ -34,11 +39,15 @@ public static class HybridModeControlFactory
             Margin = new(8, 0, 0, 0),
         };
 
+        public override TimeSpan AdditionalStateChangeDelay => TimeSpan.FromSeconds(5);
+
         public ComboBoxHybridModeControl()
         {
             Icon = SymbolRegular.LeafOne24;
             Title = Resource.ComboBoxHybridModeControl_Title;
             Subtitle = Resource.ComboBoxHybridModeControl_Message;
+
+            _dgpuNotify.Notified += DGPUNotify_Notified;
         }
 
         protected override FrameworkElement GetAccessory(ComboBox comboBox)
@@ -62,26 +71,42 @@ public static class HybridModeControlFactory
             if (newValue is null || oldValue is null)
                 return;
 
+            var reboot = (newValue == HybridModeState.Off || oldValue == HybridModeState.Off) && await MessageBoxHelper.ShowAsync(this,
+                    Resource.ComboBoxHybridModeControl_RestartRequired_Title,
+                    string.Format(Resource.ComboBoxHybridModeControl_RestartRequired_Message, newValue.GetDisplayName()),
+                    Resource.RestartNow,
+                    Resource.RestartLater);
+
             await base.OnStateChange(comboBox, feature, newValue, oldValue);
 
-            if (newValue != HybridModeState.Off && oldValue != HybridModeState.Off)
+            if (reboot)
             {
-                await RefreshAsync();
+                await Power.RestartAsync();
                 return;
             }
 
-            var result = await MessageBoxHelper.ShowAsync(
-                this,
-                Resource.ComboBoxHybridModeControl_RestartRequired_Title,
-                string.Format(Resource.ComboBoxHybridModeControl_RestartRequired_Message, newValue.GetDisplayName()),
-                Resource.RestartNow,
-                Resource.RestartLater);
-
-            if (result)
-                await Power.RestartAsync();
-            else
-                await RefreshAsync();
+            await RefreshAsync();
         }
+
+        protected override void OnStateChangeException(Exception exception)
+        {
+            if (exception is IGPUModeChangeException ex1)
+            {
+                var (title, message) = ex1.IGPUMode switch
+                {
+                    IGPUModeState.IGPUOnly => (Resource.IGPUModeChangeException_Title_IGPUOnly, Resource.IGPUModeChangeException_Message_IGPUOnly),
+                    IGPUModeState.Auto => (Resource.IGPUModeChangeException_Title_Auto, Resource.IGPUModeChangeException_Message_Auto),
+                    _ => (Resource.IGPUModeChangeException_Title, Resource.IGPUModeChangeException_Message)
+                };
+
+                SnackbarHelper.Show(title, message, SnackbarType.Info);
+            }
+        }
+
+        private void DGPUNotify_Notified(object? sender, bool e) => Dispatcher.Invoke(() =>
+        {
+            SnackbarHelper.Show(e ? Resource.DGPU_Connected_Title : Resource.DGPU_Disconnected_Title);
+        });
 
         private void InfoButton_Click(object sender, RoutedEventArgs e)
         {
