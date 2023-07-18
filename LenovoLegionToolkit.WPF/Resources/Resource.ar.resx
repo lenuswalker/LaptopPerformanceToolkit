@@ -151,21 +151,17 @@
   <data name="AddNew" xml:space="preserve">
     <value>أضف جديد</value>
   </data>
-  <data name="AlwaysActivatePowerPlans_Message" xml:space="preserve">
-    <value>تشغيل وضع الطاقة حتى لو كان Vantage يعمل بالفعل.
-هذا الخيار موجه فقط للأجهزة التى لا تأتى مع اوضاع طاقة متعددة.</value>
-  </data>
   <data name="AlwaysActivatePowerPlans_Title" xml:space="preserve">
     <value>تشغيل وضع الطاقة الخاص بالويندوز</value>
   </data>
   <data name="AlwaysOnUSBControl_Message" xml:space="preserve">
-    <value>شحن الاجهزة عبر ال USB, حتى لو كان الحاسب مغلق او فى وضع النوم او السبات.</value>
+	  <value>شحن الاجهزة عبر ال USB, حتى لو كان الحاسب مغلق او فى وضع النوم او السبات.</value>
   </data>
   <data name="AlwaysOnUSBControl_Title" xml:space="preserve">
     <value>ال USB يعمل دائما</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
-    <value>شحن الاجهزة عبر ال USB, حتى لو كان الحاسب مغلق او فى وضع النوم او السبات.</value>
+	  <value>شحن الاجهزة عبر ال USB, حتى لو كان الحاسب مغلق او فى وضع النوم او السبات.</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Title" xml:space="preserve">
     <value>ال USB يعمل دائما</value>
@@ -189,7 +185,7 @@
     <value>لا يوجد أجراءات معرفة. اضعط على "اضافة جديد" لأنشاء أجراءات جديدة.</value>
   </data>
   <data name="AutomationPage_Actions_Message" xml:space="preserve">
-    <value>ان كانت مفعلة, هذه الأجراءات سوف تعمل تلقائيا. كلما تغيرت الحالة سوفت يقيم كل الأجراءات ابتداء من اعلى لأسفل. الأجراءات التى تطابق الحالة الحالية سوف تنفذ.</value>
+	  <value>ان كانت مفعلة, هذه الأجراءات سوف تعمل تلقائيا. كلما تغيرت الحالة سوفت يقيم كل الأجراءات ابتداء من اعلى لأسفل. الأجراءات التى تطابق الحالة الحالية سوف تنفذ.</value>
   </data>
   <data name="AutomationPage_Actions_Title" xml:space="preserve">
     <value>الأجراءات</value>
@@ -369,7 +365,7 @@
     <value>تاريخ التنصيع</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Message" xml:space="preserve">
-    <value>الوقت منذ توصيل كابل الشحن لأخر مرة.
+	  <value>الوقت منذ توصيل كابل الشحن لأخر مرة.
 هذا الوقت يمكن ان يكون غير دقيق لو الحاسب تم شحنه و هو فى وضع النوم او مغلق.</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Title" xml:space="preserve">
@@ -386,15 +382,6 @@
   </data>
   <data name="Close" xml:space="preserve">
     <value>إغلاق</value>
-  </data>
-  <data name="ColorCardControl_Blue" xml:space="preserve">
-    <value>أزرق</value>
-  </data>
-  <data name="ColorCardControl_Green" xml:space="preserve">
-    <value>أخضر</value>
-  </data>
-  <data name="ColorCardControl_Red" xml:space="preserve">
-    <value>أحمر</value>
   </data>
   <data name="Color_Blue" xml:space="preserve">
     <value>أزرق</value>
@@ -502,7 +489,7 @@
     <value>غير مفعل</value>
   </data>
   <data name="DiscreteGPUControl_DisablePossible" xml:space="preserve">
-    <value>بطاقة نفيديا يكمن أن تغلق.
+	  <value>بطاقة نفيديا يكمن أن تغلق.
 تذكر أن بعد البرامج ممكن أن تتوقف عن العمل لو قمت بهذا.</value>
   </data>
   <data name="Inactive" xml:space="preserve">
@@ -512,7 +499,7 @@
     <value>قتل التطبيقات</value>
   </data>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
-    <value>أغلاق بطاقة الشاشة الخارجية لو كانت تعمل دون الحاجة أليها.</value>
+	  <value>أغلاق بطاقة الشاشة الخارجية لو كانت تعمل دون الحاجة أليها.</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
     <value>يوجد شاشة خارجية متصلة ببطاقة نفيديا.</value>
@@ -536,7 +523,7 @@
     <value>كرت الشاشة الخارجى</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>تغيير سطوع الخاصة بشاشة اللاب توب.
+	  <value>تغيير سطوع الخاصة بشاشة اللاب توب.
 أوضاع الطاقة يكمن أن تغير سطوع في بعض الأجهزة. ضع فى الاعتبار انه يجب أن تجعل هذه الخطوة أخر خطوة لو حدثت أي مشكلة.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
@@ -617,6 +604,9 @@
   </data>
   <data name="FanCurveControl_GPU" xml:space="preserve">
     <value>كرت الشاشة</value>
+  </data>
+  <data name="RPM" xml:space="preserve">
+    <value>لفة فى الدقيقة</value>
   </data>
   <data name="FlipToStartAutomationStepControl_Message" xml:space="preserve">
     <value>تشغيل اللاب توب عند رفع الشاشة.</value>
@@ -730,9 +720,6 @@
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>الإضاءة الخلفية للوحة المفاتيح</value>
   </data>
-  <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>يبدو أن Lenovo Vantage مفعّل</value>
-  </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
     <value>حول البرنامج</value>
   </data>
@@ -761,7 +748,7 @@
     <value>يتوفر تحديث!</value>
   </data>
   <data name="MainWindow_UpdateAvailableWithVersion" xml:space="preserve">
-    <value>يتوفر تحديث!</value>
+    <value>يتوفر {0} تحديث!</value>
   </data>
   <data name="MoveDown" xml:space="preserve">
     <value>التحريك للأسفل</value>
@@ -979,13 +966,13 @@
     <value>لصق</value>
   </data>
   <data name="PowerModeAutomationStepControl_Message" xml:space="preserve">
-    <value>اختر وضع الأداء.</value>
+	  <value>اختر وضع الأداء.</value>
   </data>
   <data name="PowerModeAutomationStepControl_Title" xml:space="preserve">
     <value>وضع الطاقة</value>
   </data>
   <data name="PowerModeControl_Message" xml:space="preserve">
-    <value>حدد وضع الأداء.
+	  <value>حدد وضع الأداء.
 يمكنك تبديل الوضع باستخدام Fn + Q.</value>
   </data>
   <data name="PowerModeControl_Settings" xml:space="preserve">
@@ -996,9 +983,6 @@
   </data>
   <data name="PowerModeControl_Warning" xml:space="preserve">
     <value>قد لا يعمل وضع الطاقة المحدد بشكل صحيح بِدون توصيل محول التيار المتردد.</value>
-  </data>
-  <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Message" xml:space="preserve">
-    <value>قد يؤدي تمكين هذا الخِيار عند تشغيل Lenovo Vantage وتغييره لِخطط الطاقة على الكمبيوتر المحمول إلى سلوك غير متوقع.</value>
   </data>
   <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Title" xml:space="preserve">
     <value>هل أنت متأكد؟</value>
@@ -1161,12 +1145,6 @@
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>تعذر تعطيل مفاتيح مِيزة Lenovo Hotkeys أو مفاتيح مِيزة مفاتيح Lenovo الساخنة</value>
-  </data>
-  <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>ربما لم يتم تعطيل Vantage بشكل صحيح</value>
-  </data>
-  <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
-    <value>تعذر تعطيل "%s"</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>يمكنك استبعاد معدلات التحديث ، لجعل اختصار Fn + R أكثر فائدة.</value>
@@ -1406,7 +1384,7 @@
     <value>الاسم</value>
   </data>
   <data name="Notification_UpdateAvailable" xml:space="preserve">
-    <value>يتوفر تحديث!</value>
+    <value>يتوفر {0} تحديث!</value>
   </data>
   <data name="AddAutomationStepWindow_Title" xml:space="preserve">
     <value>إضافة خطوة</value>

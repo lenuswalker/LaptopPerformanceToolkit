@@ -3,25 +3,28 @@ using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Extensions;
-using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using Windows.Win32;
 using Windows.Win32.Devices.DeviceAndDriverInstallation;
 using Windows.Win32.Foundation;
 
-namespace LenovoLegionToolkit.Lib.Features;
+namespace LenovoLegionToolkit.Lib.Features.Hybrid.Notify;
 
-public class IGPUModeFeature : AbstractLenovoGamezoneWmiFeature<IGPUModeState>
+public abstract class AbstractDGPUNotify : IDGPUNotify
 {
-    public IGPUModeFeature() : base("IGPUModeStatus", 0, "IsSupportIGPUMode", inParameterName: "mode") { }
+    public event EventHandler<bool>? Notified;
+
+    public abstract Task<bool> IsSupportedAsync();
 
     public async Task NotifyAsync()
     {
         try
         {
-            var dgpuHardwareId = await GetDGPUHardwareId().ConfigureAwait(false);
+            var dgpuHardwareId = await GetDGPUHardwareIdAsync().ConfigureAwait(false);
             var isAvailable = IsDGPUAvailable(dgpuHardwareId);
             await NotifyDGPUStatusAsync(isAvailable).ConfigureAwait(false);
+
+            Notified?.Invoke(this, isAvailable);
 
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Notified: {isAvailable}");
@@ -33,34 +36,15 @@ public class IGPUModeFeature : AbstractLenovoGamezoneWmiFeature<IGPUModeState>
         }
     }
 
-    private Task NotifyDGPUStatusAsync(bool state) => WMI.CallAsync(SCOPE,
-        Query,
-        "NotifyDGPUStatus",
-        new() { { "Status", state ? "1" : "0" } });
+    protected abstract Task NotifyDGPUStatusAsync(bool state);
 
-    private async Task<HardwareId> GetDGPUHardwareId()
-    {
-        try
-        {
-            // ReSharper disable once StringLiteralTypo
-            return await WMI.CallAsync(SCOPE,
-                Query,
-                "GetDGPUHWId",
-                new(),
-                pdc =>
-                {
-                    var id = pdc["Data"].Value.ToString();
-                    return HardwareIdFromDGPUHardwareId(id);
-                }).ConfigureAwait(false);
-        }
-        catch (Exception)
-        {
-            return new();
-        }
-    }
+    protected abstract Task<HardwareId> GetDGPUHardwareIdAsync();
 
     private unsafe bool IsDGPUAvailable(HardwareId dgpuHardwareId)
     {
+        if (dgpuHardwareId == HardwareId.Empty)
+            return false;
+
         var guidDisplayDeviceArrival = PInvoke.GUID_DISPLAY_DEVICE_ARRIVAL;
         var deviceHandle = PInvoke.SetupDiGetClassDevs(guidDisplayDeviceArrival,
             null,
@@ -128,42 +112,18 @@ public class IGPUModeFeature : AbstractLenovoGamezoneWmiFeature<IGPUModeState>
         return false;
     }
 
-    private static HardwareId HardwareIdFromDGPUHardwareId(string? gpuHwId)
-    {
-        try
-        {
-            if (gpuHwId is null)
-                return default;
-
-            var matches = new Regex("PCIVEN_([0-9A-F]{4})|DEV_([0-9A-F]{4})|SUBSYS_([0-9A-F]*)").Matches(gpuHwId);
-            if (matches.Count != 3)
-                return default;
-
-            var vendor = matches[0].Groups[1].Value;
-            var device = matches[1].Groups[2].Value;
-            var subsystem = matches[2].Groups[3].Value;
-
-            return new HardwareId { Vendor = vendor, Device = device, SubSystem = subsystem };
-        }
-        catch
-        {
-            return default;
-        }
-    }
-
     private static HardwareId HardwareIdFromDevicePath(string devicePath)
     {
         try
         {
-            var matches = new Regex("pci#ven_([0-9A-Fa-f]{4})|dev_([0-9A-Fa-f]{4})|subsys_([0-9A-Fa-f]*)").Matches(devicePath);
-            if (matches.Count != 3)
+            var matches = new Regex("pci#ven_([0-9A-Fa-f]{4})|dev_([0-9A-Fa-f]{4})").Matches(devicePath);
+            if (matches.Count != 2)
                 return default;
 
             var vendor = matches[0].Groups[1].Value;
             var device = matches[1].Groups[2].Value;
-            var subsystem = matches[2].Groups[3].Value;
 
-            return new HardwareId { Vendor = vendor, Device = device, SubSystem = subsystem };
+            return new HardwareId { Vendor = vendor, Device = device };
         }
         catch
         {

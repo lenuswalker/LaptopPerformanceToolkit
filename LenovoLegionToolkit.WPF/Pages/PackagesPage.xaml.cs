@@ -115,11 +115,6 @@ public partial class PackagesPage : IProgress<float>
         _packageDownloaderSettings.SynchronizeStore();
     }
 
-    private void InfoBarDismissButton_Click(object sender, RoutedEventArgs e)
-    {
-        _infoBar.Visibility = Visibility.Collapsed;
-    }
-
     private async void DownloadPackagesButton_Click(object sender, RoutedEventArgs e)
     {
         if (!await ShouldInterruptDownloadsIfRunning())
@@ -186,7 +181,7 @@ public partial class PackagesPage : IProgress<float>
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Error occurred when downloading packages.", ex);
 
-            await SnackbarHelper.ShowAsync("Something went wrong", "Check if your internet connection is up and running.", true);
+            await SnackbarHelper.ShowAsync("Something went wrong", "Check if your internet connection is up and running.", SnackbarType.Error);
 
             errorOccurred = true;
         }
@@ -195,7 +190,7 @@ public partial class PackagesPage : IProgress<float>
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Error occurred when downloading packages.", ex);
 
-            await SnackbarHelper.ShowAsync("Something went wrong", ex.Message, true);
+            await SnackbarHelper.ShowAsync("Something went wrong", ex.Message, SnackbarType.Error);
 
             errorOccurred = true;
         }

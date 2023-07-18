@@ -151,21 +151,17 @@
   <data name="AddNew" xml:space="preserve">
     <value>Adăugați nou</value>
   </data>
-  <data name="AlwaysActivatePowerPlans_Message" xml:space="preserve">
-    <value>Activați planul de alimentare chiar și atunci când Vantage este activat.
-Această opțiune este destinată numai dispozitivelor care nu au mai multe planuri de alimentare.</value>
-  </data>
   <data name="AlwaysActivatePowerPlans_Title" xml:space="preserve">
     <value>Activați întotdeauna planul de alimentare Windows</value>
   </data>
   <data name="AlwaysOnUSBControl_Message" xml:space="preserve">
-    <value>Încărcați dispozitivele USB, când computerul este oprit sau în modul de repaus sau hibernare.</value>
+	  <value>Încărcați dispozitivele USB, când computerul este oprit sau în modul de repaus sau hibernare.</value>
   </data>
   <data name="AlwaysOnUSBControl_Title" xml:space="preserve">
     <value>USB mereu activ</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
-    <value>Încărcați dispozitivele USB, când computerul este oprit sau în modul de repaus sau hibernare.</value>
+	  <value>Încărcați dispozitivele USB, când computerul este oprit sau în modul de repaus sau hibernare.</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Title" xml:space="preserve">
     <value>USB mereu activ</value>
@@ -189,7 +185,7 @@ Această opțiune este destinată numai dispozitivelor care nu au mai multe plan
     <value>Nicio Acțiune definită. Apăsați pe "Adăugați nou" pentru a crea o nouă Acțiune.</value>
   </data>
   <data name="AutomationPage_Actions_Message" xml:space="preserve">
-    <value>Dacă setarea este activată, aceste acțiuni vor rula automat. Ori de câte ori starea se schimbă, toate acțiunile vor fi evaluate de sus până jos.
+	  <value>Dacă setarea este activată, aceste acțiuni vor rula automat. Ori de câte ori starea se schimbă, toate acțiunile vor fi evaluate de sus până jos.
 Se vor rula numai acțiunile care se potrivesc cu starea actuală.</value>
   </data>
   <data name="AutomationPage_Actions_Title" xml:space="preserve">
@@ -370,7 +366,7 @@ Se vor rula numai acțiunile care se potrivesc cu starea actuală.</value>
     <value>Dată fabricare</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Message" xml:space="preserve">
-    <value>Timp scurs de când laptopul a fost conectat ultima dată la alimentator.
+	  <value>Timp scurs de când laptopul a fost conectat ultima dată la alimentator.
 Este posibil ca acest timp să nu fie precis dacă laptopul a fost încărcat în mod repaus sau oprit.</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Title" xml:space="preserve">
@@ -387,15 +383,6 @@ Este posibil ca acest timp să nu fie precis dacă laptopul a fost încărcat î
   </data>
   <data name="Close" xml:space="preserve">
     <value>Închidere</value>
-  </data>
-  <data name="ColorCardControl_Blue" xml:space="preserve">
-    <value>Albastru</value>
-  </data>
-  <data name="ColorCardControl_Green" xml:space="preserve">
-    <value>Verde</value>
-  </data>
-  <data name="ColorCardControl_Red" xml:space="preserve">
-    <value>Roșu</value>
   </data>
   <data name="Color_Blue" xml:space="preserve">
     <value>Albastru</value>
@@ -506,7 +493,7 @@ ATENȚIE: Această acțiune nu va rula corect dacă afișajul intern este oprit 
     <value>Dezactivare</value>
   </data>
   <data name="DiscreteGPUControl_DisablePossible" xml:space="preserve">
-    <value>GPU-ul nVidia poate fi dezactivat.
+	  <value>GPU-ul nVidia poate fi dezactivat.
 
 Țineți cont că unele programe se pot bloca dacă o faceți.</value>
   </data>
@@ -517,7 +504,7 @@ ATENȚIE: Această acțiune nu va rula corect dacă afișajul intern este oprit 
     <value>Închidere aplicații</value>
   </data>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
-    <value>Dezactivați GPU-ul dedicat dacă este activ inutil.</value>
+	  <value>Dezactivați GPU-ul dedicat dacă este activ inutil.</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
     <value>Un monitor este conectat la GPU-ul nVidia.</value>
@@ -541,7 +528,7 @@ ATENȚIE: Această acțiune nu va rula corect dacă afișajul intern este oprit 
     <value>GPU dedicat</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Schimbați luminozitatea afișajului încorporat.
+	  <value>Schimbați luminozitatea afișajului încorporat.
 Modurile de putere modifică luminozitatea pe unele dispozitive. Asigurați-vă că puneți acest pas pe ultimul loc dacă ceva nu funcționează corect.
 
 ATENȚIE: Această acțiune nu va rula corect dacă afișajul intern este oprit.</value>
@@ -748,9 +735,6 @@ ATENȚIE: Această acțiune nu va rula corect dacă afișajul incorporat este op
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>Iluminarea tastaturii nu poate fi controlată aici când Vantage sau serviciile sale rulează.</value>
-  </data>
-  <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Lenovo Vantage pare să fie activat</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
     <value>Despre</value>
@@ -998,13 +982,13 @@ Asigurați-vă întotdeauna că instalați pachetele corecte.</value>
     <value>Lipire</value>
   </data>
   <data name="PowerModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Selectați modul de performanță.</value>
+	  <value>Selectați modul de performanță.</value>
   </data>
   <data name="PowerModeAutomationStepControl_Title" xml:space="preserve">
     <value>Mod putere</value>
   </data>
   <data name="PowerModeControl_Message" xml:space="preserve">
-    <value>Selectați modul de performanță.
+	  <value>Selectați modul de performanță.
 Puteți schimba modul apăsând Fn+Q.</value>
   </data>
   <data name="PowerModeControl_Settings" xml:space="preserve">
@@ -1015,9 +999,6 @@ Puteți schimba modul apăsând Fn+Q.</value>
   </data>
   <data name="PowerModeControl_Warning" xml:space="preserve">
     <value>Este posibil ca modul de putere selectat să nu funcționeze corect fără alimentator.</value>
-  </data>
-  <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Message" xml:space="preserve">
-    <value>Activarea acestei opțiuni atunci când Lenovo Vantage rulează și modifică planurile de alimentare de pe laptop poate duce la un comportament neașteptat.</value>
   </data>
   <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Title" xml:space="preserve">
     <value>Sunteți sigur(ă)?</value>
@@ -1189,12 +1170,6 @@ Se recomandă repornirea după modificarea acestei opțiuni.</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>Nu s-a putut activa Lenovo Hotkeys Keys</value>
-  </data>
-  <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Este posibil ca Vantage să nu fi fost activat corect</value>
-  </data>
-  <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
-    <value>Nu s-a putut activa Vantage</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>Puteți exclude rate de reîmprospătare pentru a face comanda rapidă Fn+R mai utilă.</value>
@@ -1516,7 +1491,7 @@ ATENȚIE: Această acțiune nu va rula corect dacă afișajul încorporat este o
     <value>Nume</value>
   </data>
   <data name="EditDashboardWindow_Disclaimer_Message" xml:space="preserve">
-    <value>Este posibil ca unele funcții să nu apară în tabloul de bord, în funcție de starea și configurația dispozitivului dvs.</value>
+	  <value>Este posibil ca unele funcții să nu apară în tabloul de bord, în funcție de starea și configurația dispozitivului dvs.</value>
   </data>
   <data name="DashboardPage_Customize" xml:space="preserve">
     <value>Personalizare</value>

@@ -151,21 +151,17 @@
   <data name="AddNew" xml:space="preserve">
     <value>Додати нову</value>
   </data>
-  <data name="AlwaysActivatePowerPlans_Message" xml:space="preserve">
-    <value>Активувати план живлення коли Vantage увімкнений.
-Ця опція призначена тільки для пристроїв, у яких немає декількох планів живлення.</value>
-  </data>
   <data name="AlwaysActivatePowerPlans_Title" xml:space="preserve">
     <value>Завжди активувати план живлення Windows</value>
   </data>
   <data name="AlwaysOnUSBControl_Message" xml:space="preserve">
-    <value>Заряджати USB-пристрої, коли комп'ютер вимкнений або знаходиться у режимах сну чи гібернації.</value>
+	  <value>Заряджати USB-пристрої, коли комп'ютер вимкнений або знаходиться у режимах сну чи гібернації.</value>
   </data>
   <data name="AlwaysOnUSBControl_Title" xml:space="preserve">
     <value>Завжди увімкнені USB</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
-    <value>Заряджати USB-пристрої, коли комп'ютер вимкнений або у режимі сну та режимі гібернації.</value>
+	  <value>Заряджати USB-пристрої, коли комп'ютер вимкнений або у режимі сну та режимі гібернації.</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Title" xml:space="preserve">
     <value>Завжди умімкнені USB</value>
@@ -189,7 +185,7 @@
     <value>Дії не визначено. Натисніть "Додати" щоб створити нову дію.</value>
   </data>
   <data name="AutomationPage_Actions_Message" xml:space="preserve">
-    <value>Якщо увімкнено ці функції будуть запускатися автоматично. При зміні стану всі дії будуть оцінюватися згори донизу. Тільки дії, які підходять під теперішній стан будуть запущені.</value>
+	  <value>Якщо увімкнено ці функції будуть запускатися автоматично. При зміні стану всі дії будуть оцінюватися згори донизу. Тільки дії, які підходять під теперішній стан будуть запущені.</value>
   </data>
   <data name="AutomationPage_Actions_Title" xml:space="preserve">
     <value>Дії</value>
@@ -369,7 +365,7 @@
     <value>Дата виготовлення</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Message" xml:space="preserve">
-    <value>Час, з моменту якого ноутбук востаннє був під'єднаний до мережі.
+	  <value>Час, з моменту якого ноутбук востаннє був під'єднаний до мережі.
 Цей час може бути неточним, якщо ноутбук заряджався вимкненим чи в режимі сну.</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Title" xml:space="preserve">
@@ -386,15 +382,6 @@
   </data>
   <data name="Close" xml:space="preserve">
     <value>Закрити</value>
-  </data>
-  <data name="ColorCardControl_Blue" xml:space="preserve">
-    <value>Синій</value>
-  </data>
-  <data name="ColorCardControl_Green" xml:space="preserve">
-    <value>Зелений</value>
-  </data>
-  <data name="ColorCardControl_Red" xml:space="preserve">
-    <value>Червоний</value>
   </data>
   <data name="Color_Blue" xml:space="preserve">
     <value>Синя</value>
@@ -505,7 +492,7 @@
     <value>Деактивовано</value>
   </data>
   <data name="DiscreteGPUControl_DisablePossible" xml:space="preserve">
-    <value>Відеокарта NVIDIA може бути вимкнена.
+	  <value>Відеокарта NVIDIA може бути вимкнена.
 
 Пам'ятайте, що деякі застосунки можуть зламатися, якщо ви це зробите.</value>
   </data>
@@ -516,7 +503,7 @@
     <value>Примусово закрити застосунки</value>
   </data>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
-    <value>Вимкнути дискретну відеокарту якщо вона працює без необхідності.</value>
+	  <value>Вимкнути дискретну відеокарту якщо вона працює без необхідності.</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
     <value>Дисплей під'єднаний до відеокарти nVidia</value>
@@ -540,7 +527,7 @@
     <value>Дискретна ГП</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Змінити яскравість вбудованого дисплея.
+	  <value>Змінити яскравість вбудованого дисплея.
 Режими живлення змінюють яскравість на деяких пристроях. Переконайтеся, що робите цей крок останнім, якщо щось не працює належним чином.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
@@ -627,6 +614,9 @@
   </data>
   <data name="FanCurveControl_GPU" xml:space="preserve">
     <value>ГП</value>
+  </data>
+  <data name="RPM" xml:space="preserve">
+    <value>Об/хв</value>
   </data>
   <data name="FlipToStartAutomationStepControl_Message" xml:space="preserve">
     <value>Вмикати ноутбук коли ви підіймаєте кришку.</value>
@@ -745,9 +735,6 @@
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>Неможливо керувати підсвіткою клавіатури, коли працює Vantage або його служби.</value>
-  </data>
-  <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Схоже Lenovo Vantage увімкнено</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
     <value>Про застосунок</value>
@@ -995,13 +982,13 @@
     <value>Вставити</value>
   </data>
   <data name="PowerModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Обрати режим потужності.</value>
+	  <value>Обрати режим потужності.</value>
   </data>
   <data name="PowerModeAutomationStepControl_Title" xml:space="preserve">
     <value>Режим живлення</value>
   </data>
   <data name="PowerModeControl_Message" xml:space="preserve">
-    <value>Оберіть режим потужності.
+	  <value>Оберіть режим потужності.
 Ви можете перемикатися між режимами використовуючи Fn+Q.</value>
   </data>
   <data name="PowerModeControl_Settings" xml:space="preserve">
@@ -1012,9 +999,6 @@
   </data>
   <data name="PowerModeControl_Warning" xml:space="preserve">
     <value>Обраний режим живлення може не працювати справно без підключеного блоку живлення.</value>
-  </data>
-  <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Message" xml:space="preserve">
-    <value>Увімкнення цієї опції під час роботи Lenovo Vantage і зміна планів енергоспоживання на ноутбуці може призвести до непередбачуваної поведінки.</value>
   </data>
   <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Title" xml:space="preserve">
     <value>Ви впевнені?</value>
@@ -1186,12 +1170,6 @@
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>Не вдалося увімкнути гарячі клавіші Lenovo</value>
-  </data>
-  <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Vantage міг бути запущений неправильно</value>
-  </data>
-  <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
-    <value>Не вдалося увімкнути Vantage</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>Ви можете виключити частоту оновлення, щоб зробити комбінацію клавіш Fn+R більш корисною.</value>
@@ -1513,7 +1491,7 @@
     <value>Назва</value>
   </data>
   <data name="EditDashboardWindow_Disclaimer_Message" xml:space="preserve">
-    <value>Деякі можливості можуть не з'явитися на панелі керування, залежачи від стану та конфігурації вашого пристрою.</value>
+	  <value>Деякі можливості можуть не з'явитися на панелі керування, залежачи від стану та конфігурації вашого пристрою.</value>
   </data>
   <data name="DashboardPage_Customize" xml:space="preserve">
     <value>Налаштувати</value>

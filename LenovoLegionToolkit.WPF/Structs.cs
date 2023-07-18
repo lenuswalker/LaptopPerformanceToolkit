@@ -11,7 +11,8 @@ public readonly struct DashboardGroup
             DashboardItem.PowerMode,
             DashboardItem.BatteryMode,
             DashboardItem.AlwaysOnUsb,
-            DashboardItem.InstantBoot),
+            DashboardItem.InstantBoot,
+            DashboardItem.FlipToStart),
         new(DashboardGroupType.Graphics, null,
             DashboardItem.HybridMode,
             DashboardItem.DiscreteGpu,
@@ -28,7 +29,6 @@ public readonly struct DashboardGroup
             DashboardItem.WhiteKeyboardBacklight,
             DashboardItem.PanelLogoBacklight,
             DashboardItem.PortsBacklight,
-            DashboardItem.FlipToStart,
             DashboardItem.TouchpadLock,
             DashboardItem.FnLock,
             DashboardItem.WinKeyLock)
@@ -57,5 +57,8 @@ public readonly struct DashboardGroup
         _ => throw new InvalidOperationException($"Invalid type {Type}"),
     };
 
-    public override string ToString() => $"{nameof(Type)}: {Type}, {nameof(CustomName)}: {CustomName}, {nameof(Items)}: {string.Join(",", Items)}";
+    public override string ToString() =>
+        $"{nameof(Type)}: {Type}," +
+        $" {nameof(CustomName)}: {CustomName}," +
+        $" {nameof(Items)}: {string.Join(",", Items)}";
 }

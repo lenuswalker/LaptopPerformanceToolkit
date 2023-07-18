@@ -4,6 +4,12 @@ using LenovoLegionToolkit.Lib.Controllers.GodMode;
 using LenovoLegionToolkit.Lib.Controllers.Sensors;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Features;
+using LenovoLegionToolkit.Lib.Features.FlipToStart;
+using LenovoLegionToolkit.Lib.Features.Hybrid;
+using LenovoLegionToolkit.Lib.Features.Hybrid.Notify;
+using LenovoLegionToolkit.Lib.Features.InstantBoot;
+using LenovoLegionToolkit.Lib.Features.PanelLogo;
+using LenovoLegionToolkit.Lib.Features.WhiteKeyboardBacklight;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.PackageDownloader;
 using LenovoLegionToolkit.Lib.Settings;
@@ -33,11 +39,16 @@ public class IoCModule : Module
         builder.Register<BatteryFeature>();
         builder.Register<DpiScaleFeature>();
         builder.Register<FlipToStartFeature>();
+        builder.Register<FlipToStartCapabilityFeature>(true);
+        builder.Register<FlipToStartUEFIFeature>(true);
         builder.Register<FnLockFeature>();
         builder.Register<GSyncFeature>();
         builder.Register<HDRFeature>();
         builder.Register<HybridModeFeature>();
         builder.Register<IGPUModeFeature>();
+        builder.Register<IGPUModeCapabilityFeature>(true);
+        builder.Register<IGPUModeFeatureFlagsFeature>(true);
+        builder.Register<IGPUModeGamezoneFeature>(true);
         builder.Register<InstantBootFeature>();
         builder.Register<InstantBootFeatureFlagsFeature>(true);
         builder.Register<InstantBootCapabilityFeature>(true);
@@ -56,6 +67,11 @@ public class IoCModule : Module
         builder.Register<WhiteKeyboardDriverBacklightFeature>(true);
         builder.Register<WhiteKeyboardLenovoLightingBacklightFeature>(true);
         builder.Register<WinKeyFeature>();
+
+        builder.Register<DGPUNotify>();
+        builder.Register<DGPUCapabilityNotify>(true);
+        builder.Register<DGPUFeatureFlagsNotify>(true);
+        builder.Register<DGPUGamezoneNotify>(true);
 
         builder.Register<DisplayBrightnessListener>().AutoActivateListener();
         builder.Register<DisplayConfigurationListener>().AutoActivateListener();

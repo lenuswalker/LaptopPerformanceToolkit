@@ -26,7 +26,7 @@
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
 		<NeutralLanguage>en</NeutralLanguage>
-		<SatelliteResourceLanguages>ar;bg;cs;de;en;el;es;fr;it;lv;nl;nl-nl;pt;pt-br;ro;ru;sk;ukr;tr;vi;zh;zh-hans;zh-hant</SatelliteResourceLanguages>
+		<SatelliteResourceLanguages>ar;bg;cs;de;en;el;es;fr;it;lv;nl;nl-nl;pt;pt-br;ro;ru;sk;uk;tr;vi;zh;zh-hans;zh-hant</SatelliteResourceLanguages>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 	  <DebugType>portable</DebugType>
@@ -49,20 +49,16 @@
 		<ProjectReference Include="..\LenovoLegionToolkit.Lib.Automation\LenovoLegionToolkit.Lib.Automation.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-		<None Remove="Assets\Donate\stripe_cny_qr.png" />
 		<None Remove="Assets\icon.ico" />
 		<None Remove="Assets\default_exe.png" />
 		<None Remove="Assets\Donate\paypal_logo.png" />
 		<None Remove="Assets\Donate\paypal_qr.png" />
-		<None Remove="Assets\Donate\stripe_logo.png" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="Assets\default_exe.png" />
 		<Resource Include="Assets\icon.ico" />
 		<Resource Include="Assets\Donate\paypal_logo.png" />
 		<Resource Include="Assets\Donate\paypal_qr.png" />
-		<Resource Include="Assets\Donate\stripe_logo.png" />
-		<Resource Include="Assets\Donate\stripe_cny_qr.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Compile Update="Resources\Resource.Designer.cs">

@@ -320,9 +320,10 @@ public readonly struct GodModePreset
 
 public readonly struct HardwareId
 {
+    public static readonly HardwareId Empty = new();
+
     public string Vendor { get; init; }
     public string Device { get; init; }
-    public string SubSystem { get; init; }
 
     #region Equality
 
@@ -337,13 +338,10 @@ public readonly struct HardwareId
         if (!Device.Equals(other.Device, StringComparison.InvariantCultureIgnoreCase))
             return false;
 
-        if (!SubSystem.Equals(other.SubSystem, StringComparison.InvariantCultureIgnoreCase))
-            return false;
-
         return true;
     }
 
-    public override int GetHashCode() => HashCode.Combine(Vendor, Device, SubSystem);
+    public override int GetHashCode() => HashCode.Combine(Vendor, Device);
 
     public static bool operator ==(HardwareId left, HardwareId right) => left.Equals(right);
 
@@ -367,6 +365,7 @@ public readonly struct MachineInformation
 
         public SourceType Source { get; init; }
         public bool IGPUMode { get; init; }
+        public bool FlipToStart { get; init; }
         public bool NvidiaGPUDynamicDisplaySwitching { get; init; }
         public bool InstantBootAc { get; init; }
         public bool InstantBootUsbPowerDelivery { get; init; }
@@ -395,6 +394,7 @@ public readonly struct MachineInformation
     public string SerialNumber { get; init; }
     public BiosVersion? BiosVersion { get; init; }
     public string? BiosVersionRaw { get; init; }
+    public PowerModeState[] SupportedPowerModes { get; init; }
     public int SmartFanVersion { get; init; }
     public int LegionZoneVersion { get; init; }
     public FeatureData Features { get; init; }
@@ -672,6 +672,18 @@ public readonly struct SensorData
     public int MaxTemperature { get; init; }
     public int FanSpeed { get; init; }
     public int MaxFanSpeed { get; init; }
+
+    public override string ToString() =>
+        $"{nameof(Utilization)}: {Utilization}," +
+        $" {nameof(MaxUtilization)}: {MaxUtilization}," +
+        $" {nameof(CoreClock)}: {CoreClock}," +
+        $" {nameof(MaxCoreClock)}: {MaxCoreClock}," +
+        $" {nameof(MemoryClock)}: {MemoryClock}," +
+        $" {nameof(MaxMemoryClock)}: {MaxMemoryClock}," +
+        $" {nameof(Temperature)}: {Temperature}," +
+        $" {nameof(MaxTemperature)}: {MaxTemperature}," +
+        $" {nameof(FanSpeed)}: {FanSpeed}," +
+        $" {nameof(MaxFanSpeed)}: {MaxFanSpeed}";
 }
 
 public readonly struct SensorsData
@@ -680,6 +692,8 @@ public readonly struct SensorsData
 
     public SensorData CPU { get; init; }
     public SensorData GPU { get; init; }
+
+    public override string ToString() => $"{nameof(CPU)}: {CPU}, {nameof(GPU)}: {GPU}";
 }
 
 public readonly struct SensorSettings

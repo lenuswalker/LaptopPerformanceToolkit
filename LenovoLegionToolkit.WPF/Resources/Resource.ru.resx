@@ -152,20 +152,20 @@
     <value>Добавить новое действие</value>
   </data>
   <data name="AlwaysActivatePowerPlans_Message" xml:space="preserve">
-    <value>Активировать схемы питания даже при работе Vantage.
-Этот параметр предназначен только для устройств, которые не поставляются с несколькими схемами питания.</value>
+	  <value>Активировать режим питания даже при работе Vantage.
+Этот параметр предназначен только для устройств, которые не поставляются с несколькими режимами питания.</value>
   </data>
   <data name="AlwaysActivatePowerPlans_Title" xml:space="preserve">
     <value>Всегда включать схемы питания Windows</value>
   </data>
   <data name="AlwaysOnUSBControl_Message" xml:space="preserve">
-    <value>Зарядка устройств через USB, когда компьютер выключен или находится в режиме сна или гибернации.</value>
+	  <value>Зарядка устройств через USB, когда компьютер выключен или находится в режиме сна или гибернации.</value>
   </data>
   <data name="AlwaysOnUSBControl_Title" xml:space="preserve">
     <value>Постоянное питание от USB</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
-    <value>Зарядка устройств через USB, когда компьютер выключен или находится в режиме сна или гибернации.</value>
+	  <value>Зарядка устройств через USB, когда компьютер выключен или находится в режиме сна или гибернации.</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Title" xml:space="preserve">
     <value>Постоянное питание от USB</value>
@@ -189,7 +189,7 @@
     <value>Действия не заданы. Нажмите "Добавить новое действие" для создания.</value>
   </data>
   <data name="AutomationPage_Actions_Message" xml:space="preserve">
-    <value>При активации эти действия будут выполняться автоматически. При изменении состояния все действия будут обрабатываться сверху вниз.
+	  <value>При активации эти действия будут выполняться автоматически. При изменении состояния все действия будут обрабатываться сверху вниз.
 Будут выполняться только те действия, которые соответствуют текущему состоянию.</value>
   </data>
   <data name="AutomationPage_Actions_Title" xml:space="preserve">
@@ -370,7 +370,7 @@
     <value>Дата изготовления</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Message" xml:space="preserve">
-    <value>Время с момента последнего подключения ноутбука к сети.
+	  <value>Время с момента последнего подключения ноутбука к сети.
 Это время может быть неточным, если ноутбук заряжался во время сна или был выключен.</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Title" xml:space="preserve">
@@ -387,15 +387,6 @@
   </data>
   <data name="Close" xml:space="preserve">
     <value>Закрыть</value>
-  </data>
-  <data name="ColorCardControl_Blue" xml:space="preserve">
-    <value>Синий</value>
-  </data>
-  <data name="ColorCardControl_Green" xml:space="preserve">
-    <value>Зеленый</value>
-  </data>
-  <data name="ColorCardControl_Red" xml:space="preserve">
-    <value>Красный</value>
   </data>
   <data name="Color_Blue" xml:space="preserve">
     <value>Синий</value>
@@ -506,7 +497,7 @@
     <value>Деактивировать</value>
   </data>
   <data name="DiscreteGPUControl_DisablePossible" xml:space="preserve">
-    <value>Графический процессор nVidia может быть отключен.
+	  <value>Графический процессор nVidia может быть отключен.
 
 Обратите внимание, что некоторые программы могут выйти из строя, если вы это сделаете.</value>
   </data>
@@ -517,7 +508,7 @@
     <value>Завершить процессы</value>
   </data>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
-    <value>Отключить дискретный графический процессор, если он активен без необходимости.</value>
+	  <value>Отключить дискретный графический процессор, если он активен без необходимости.</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
     <value>Монитор подключен к графическому процессору nVidia.</value>
@@ -541,7 +532,7 @@
     <value>Дискретный граф. процессор</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Изменить яркость встроенного дисплея.
+	  <value>Изменить яркость встроенного дисплея.
 На некоторых устройствах режимы питания изменяют яркость. Убедитесь, что этот шаг последний, если что-то работает не так, как нужно.
 
 ВНИМАНИЕ: Это действие не будет выполняться корректно, если внутренний дисплей выключен.</value>
@@ -631,6 +622,9 @@
   <data name="FanCurveControl_GPU" xml:space="preserve">
     <value>Граф. процессор</value>
   </data>
+  <data name="RPM" xml:space="preserve">
+    <value>об/мин</value>
+  </data>
   <data name="FlipToStartAutomationStepControl_Message" xml:space="preserve">
     <value>Включить ноутбук при открытии крышки.</value>
   </data>
@@ -656,14 +650,14 @@
     <value>Fn Lock</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Message" xml:space="preserve">
-    <value>ВНИМАНИЕ!
+	  <value>ВНИМАНИЕ!
 Некоторые ноутбуки могут допускать более низкие пределы мощности, чем они указывают, однако будьте осторожны. Этот параметр может привести к непредсказуемому поведению, поэтому, если вы не уверены в своих действиях, оставьте значение 0.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Title" xml:space="preserve">
     <value>Минимальное смещение</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
-    <value>ВНИМАНИЕ!
+	  <value>ВНИМАНИЕ!
 Некоторые ноутбуки могут допускать более высокие пределы мощности, чем они указывают, однако будьте осторожны. Этот параметр может привести к непредсказуемому поведению, поэтому, если вы не уверены в своих действиях, оставьте значение 0.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
@@ -764,7 +758,7 @@
     <value>Подсветкой клавиатуры нельзя управлять здесь, когда работает Vantage или его службы.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Похоже, что Lenovo Vantage включен</value>
+	  <value>Lenovo Vantage или его службы запущены</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
     <value>О ПО</value>
@@ -1012,13 +1006,13 @@
     <value>Вставить</value>
   </data>
   <data name="PowerModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Выбрать режим работы.</value>
+	  <value>Выбрать режим работы.</value>
   </data>
   <data name="PowerModeAutomationStepControl_Title" xml:space="preserve">
     <value>Режим питания</value>
   </data>
   <data name="PowerModeControl_Message" xml:space="preserve">
-    <value>Выберите режим работы.
+	  <value>Выберите режим работы.
 Переключение режима осуществляется с помощью Fn+Q. </value>
   </data>
   <data name="PowerModeControl_Settings" xml:space="preserve">
@@ -1031,7 +1025,7 @@
     <value>Выбранный режим питания может работать некорректно, если блок питания не подключен.</value>
   </data>
   <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Message" xml:space="preserve">
-    <value>Включение этой опции во время работы Lenovo Vantage и изменения планов электропитания на ноутбуке может привести к неожиданным последствиям.</value>
+	  <value>Включение этой опции во время работы Lenovo Vantage и изменения схем питания на ноутбуке может привести к неожиданным последствиям.</value>
   </data>
   <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Title" xml:space="preserve">
     <value>Вы уверены?</value>
@@ -1218,10 +1212,10 @@
     <value>Не удалось включить клавиши горячих клавиш Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Возможно, Vantage был неверно запущен</value>
+	  <value>Возможно, Vantage и/или ImController были включены неправильно</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
-    <value>Не удалось включить Vantage</value>
+	  <value>Не удалось включить Vantage и/или ImController</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>Вы можете исключить частоту обновления, чтобы сделать сочетание клавиш Fn+R более полезным.</value>
@@ -1543,7 +1537,7 @@
     <value>Имя</value>
   </data>
   <data name="EditDashboardWindow_Disclaimer_Message" xml:space="preserve">
-    <value>Некоторые функции могут не отображаться на вкладке "Обзор" в зависимости от состояния и конфигурации вашего устройства.</value>
+	  <value>Некоторые функции могут не отображаться на вкладке "Обзор" в зависимости от состояния и конфигурации вашего устройства.</value>
   </data>
   <data name="DashboardPage_Customize" xml:space="preserve">
     <value>Настроить</value>
@@ -1623,7 +1617,7 @@
     <value>Яркость одного дисплея</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Message" xml:space="preserve">
-    <value>При включении этого параметра один и тот же уровень яркости будет применяться ко всем планам питания Windows при каждом его изменении.</value>
+    <value>При включении этого параметра один и тот же уровень яркости будет применяться ко всем схемам питания Windows при каждом его изменении.</value>
   </data>
   <data name="Notification_UpdateAvailable" xml:space="preserve">
     <value>Доступно обновление {0}!</value>
@@ -1695,7 +1689,7 @@
     <value>Дискретный граф. процессор</value>
   </data>
   <data name="StatusTrayPopup_PowerState" xml:space="preserve">
-    <value>Состояние питания</value>
+    <value>Статус питания</value>
   </data>
   <data name="StatusTrayPopup_Battery" xml:space="preserve">
     <value>Батарея</value>
@@ -1725,16 +1719,16 @@
     <value>Обнаружена модель низкой мощности S0</value>
   </data>
   <data name="PowerPlansWindow_AoAcWarning_Message" xml:space="preserve">
-    <value>Windows сообщает, что это устройство поддерживает Modern Standby. Применение планов питания, отличных от сбалансированного, может привести к неожиданному поведению.</value>
+	  <value>Windows сообщает, что это устройство поддерживает Modern Standby. Применение планов питания, отличных от сбалансированного, может привести к неожиданному поведению.</value>
   </data>
   <data name="SettingsPage_PowerPlans_Message" xml:space="preserve">
-    <value>Выберите планы питания Windows, которые будут применяться при изменении режима питания.</value>
+    <value>Выберите схемы питания Windows, которые будут применяться при изменении режима питания.</value>
   </data>
   <data name="SettingsPage_Power_Title" xml:space="preserve">
     <value>Питание</value>
   </data>
   <data name="SettingsPage_PowerPlansControlPanel_Title" xml:space="preserve">
-    <value>Параметры плана электропитания в панели управления Windows</value>
+    <value>Параметры схемы питания в панели управления Windows</value>
   </data>
   <data name="PoweredOff" xml:space="preserve">
     <value>Отключен</value>
@@ -1801,5 +1795,75 @@
   </data>
   <data name="PanelLogoBacklightAutomationStepControl_Message" xml:space="preserve">
     <value>Включить или выключить подсветку на крышке ноутбука.</value>
+  </data>
+  <data name="GHz" xml:space="preserve">
+    <value>ГГц</value>
+  </data>
+  <data name="MHz" xml:space="preserve">
+    <value>МГц</value>
+  </data>
+  <data name="SensorsControl_Maximum" xml:space="preserve">
+	  <value>Максимум: {0}</value>
+  </data>
+  <data name="SensorsControl_CPU_Title" xml:space="preserve">
+	  <value>ЦП</value>
+  </data>
+  <data name="SensorsControl_Utilization_Title" xml:space="preserve">
+	  <value>Использование</value>
+  </data>
+  <data name="SensorsControl_CoreClock_Title" xml:space="preserve">
+	  <value>Тактовая частота ядра</value>
+  </data>
+  <data name="SensorsControl_Temperature_Title" xml:space="preserve">
+	  <value>Температура</value>
+  </data>
+  <data name="SensorsControl_Fan_Title" xml:space="preserve">
+	  <value>Вентилятор</value>
+  </data>
+  <data name="SensorsControl_GPU_Title" xml:space="preserve">
+	  <value>Граф. процессор</value>
+  </data>
+  <data name="SensorsControl_MemoryClock_Title" xml:space="preserve">
+	  <value>Частота памяти</value>
+  </data>
+  <data name="SensorsControl_RefreshInterval" xml:space="preserve">
+	  <value>Интервал обновления</value>
+  </data>
+  <data name="InstantBootControl_Title" xml:space="preserve">
+	  <value>Мгновенное включение</value>
+  </data>
+  <data name="InstantBootControl_Message" xml:space="preserve">
+	  <value>Включать ноутбук при подключении зарядного устройства.</value>
+  </data>
+  <data name="InstantBootAutomationStepControl_Title" xml:space="preserve">
+	  <value>Мгновенное включение</value>
+  </data>
+  <data name="InstantBootAutomationStepControl_Message" xml:space="preserve">
+	  <value>Включать ноутбук при подключении зарядного устройства.</value>
+  </data>
+  <data name="PowerModeUnavailableWithoutACException_Title" xml:space="preserve">
+	  <value>Не удалось изменить режим питания</value>
+  </data>
+  <data name="PowerModeUnavailableWithoutACException_Message" xml:space="preserve">
+	  <value>Режим питания {0} недоступна без питания от сети.</value>
+	  <comment>For example: "{Performance} power mode is not available without AC power."</comment>
+  </data>
+  <data name="EditDashboardWindow_Sensors" xml:space="preserve">
+	  <value>Датчики</value>
+  </data>
+  <data name="IGPUModeChangeException_Title" xml:space="preserve">
+	  <value>Не удалось изменить режим работы GPU</value>
+  </data>
+  <data name="IGPUModeChangeException_Title_IGPUOnly" xml:space="preserve">
+	  <value>Дискретная видеокарта уже используется</value>
+  </data>
+  <data name="IGPUModeChangeException_Message_IGPUOnly" xml:space="preserve">
+	  <value>Дискретная видеокарта будет автоматически отключаться, если она не используется.</value>
+  </data>
+  <data name="IGPUModeChangeException_Title_Auto" xml:space="preserve">
+	  <value>Дискретная видеокарта в настоящее время используется или ноутбук не работает от батареи</value>
+  </data>
+  <data name="IGPUModeChangeException_Message_Auto" xml:space="preserve">
+	  <value>Дискретная видеокарта будет автоматически отключаться, если ноутбук не используется и работает от батареи.</value>
   </data>
 </root>

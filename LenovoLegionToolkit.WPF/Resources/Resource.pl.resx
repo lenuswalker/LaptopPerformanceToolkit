@@ -148,18 +148,8 @@
   <data name="AddNew" xml:space="preserve">
     <value>Dodaj</value>
   </data>
-  <data name="AlwaysActivatePowerPlans_Message" xml:space="preserve">
-    <value>Aktywuj plan zasilania, nawet jeśli Vantage działa w tle.
-Ta opcja powinna być używana tylko na urządzeniach, które nie miały dodatkowych planów zasilania.</value>
-  </data>
   <data name="AlwaysActivatePowerPlans_Title" xml:space="preserve">
     <value>Zawsze aktywuj plan zasilania Windows</value>
-  </data>
-  <data name="AlwaysOnUSBControl_Message" xml:space="preserve">
-    <value>Ładuj urządzenia USB gdy komputer jest wyłączony, uśpiony lub zahibernowany.</value>
-  </data>
-  <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
-    <value>Ładuj urządzenia USB gdy komputer jest wyłączony, uśpiony lub zahibernowany.</value>
   </data>
   <data name="AppName" xml:space="preserve">
     <value>Lenovo Legion Toolkit</value>
@@ -214,15 +204,6 @@ Ta opcja powinna być używana tylko na urządzeniach, które nie miały dodatko
   </data>
   <data name="Close" xml:space="preserve">
     <value>Zamknij</value>
-  </data>
-  <data name="ColorCardControl_Blue" xml:space="preserve">
-    <value>Niebieski</value>
-  </data>
-  <data name="ColorCardControl_Green" xml:space="preserve">
-    <value>Zielony</value>
-  </data>
-  <data name="ColorCardControl_Red" xml:space="preserve">
-    <value>Czerwony</value>
   </data>
   <data name="Color_Blue" xml:space="preserve">
     <value>Niebieski</value>
