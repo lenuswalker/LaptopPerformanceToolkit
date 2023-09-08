@@ -5,7 +5,6 @@
     xmlns:local="clr-namespace:LenovoLegionToolkit.WPF.Windows"
     xmlns:pages="clr-namespace:LenovoLegionToolkit.WPF.Pages"
     xmlns:resources="clr-namespace:LenovoLegionToolkit.WPF.Resources"
-    xmlns:tb="http://www.hardcodet.net/taskbar"
     xmlns:utils="clr-namespace:LenovoLegionToolkit.WPF.Utils"
     xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="{x:Static resources:Resource.AppName}"
@@ -21,12 +20,6 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-
-        <tb:TaskbarIcon
-            x:Name="_trayIcon"
-            IconSource="/Assets/icon.ico"
-            MenuActivation="RightClick"
-            Visibility="Visible" />
 
         <wpfui:TitleBar Grid.Row="0" />
 
@@ -153,7 +146,6 @@
                     <!--  ReSharper disable once UnusedMember.Global  -->
                     <TextBlock
                         x:Name="_snackbarTitle"
-                        Margin="0,0,0,6"
                         VerticalAlignment="Center"
                         FontSize="16"
                         FontWeight="Medium"
@@ -162,6 +154,7 @@
                     <!--  ReSharper disable once UnusedMember.Global  -->
                     <TextBlock
                         x:Name="_snackbarMessage"
+                        Margin="0,6,0,0"
                         FontSize="14"
                         Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                         TextWrapping="WrapWithOverflow" />

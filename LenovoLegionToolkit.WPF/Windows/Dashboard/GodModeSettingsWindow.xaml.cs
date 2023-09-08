@@ -115,8 +115,8 @@ public partial class GodModeSettingsWindow
                 GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline = preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline?.WithValue(_gpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.Value),
                 FanTableInfo = preset.FanTableInfo is not null ? _fanCurveControl.GetFanTableInfo() : null,
                 FanFullSpeed = preset.FanFullSpeed is not null ? _fanFullSpeedToggle.IsChecked : null,
-                MaxValueOffset = preset.MaxValueOffset is not null ? (int)_maxValueOffsetNumberBox.Value : null,
-                MinValueOffset = preset.MinValueOffset is not null ? (int)_minValueOffsetNumberBox.Value : null
+                MaxValueOffset = preset.MaxValueOffset is not null ? (int?)_maxValueOffsetNumberBox.Value : null,
+                MinValueOffset = preset.MinValueOffset is not null ? (int?)_minValueOffsetNumberBox.Value : null
             };
 
             var newPresets = new Dictionary<Guid, GodModePreset>(presets)
@@ -197,13 +197,13 @@ public partial class GodModeSettingsWindow
 
         var maxValueOffset = preset.MaxValueOffset;
         if (maxValueOffset.HasValue)
-            _maxValueOffsetNumberBox.Text = $"{maxValueOffset}";
+            _maxValueOffsetNumberBox.Value = maxValueOffset;
         else
             _maxValueOffsetCardControl.Visibility = Visibility.Collapsed;
 
         var minValueOffset = preset.MinValueOffset;
         if (minValueOffset.HasValue)
-            _minValueOffsetNumberBox.Text = $"{minValueOffset}";
+            _minValueOffsetNumberBox.Value = minValueOffset;
         else
             _minValueOffsetCardControl.Visibility = Visibility.Collapsed;
 
@@ -298,10 +298,10 @@ public partial class GodModeSettingsWindow
             _fanFullSpeedToggle.IsChecked = fanFullSpeed;
 
         if (_maxValueOffsetCardControl.Visibility == Visibility.Visible)
-            _maxValueOffsetNumberBox.Text = $"{0}";
+            _maxValueOffsetNumberBox.Text = "0";
 
         if (_minValueOffsetCardControl.Visibility == Visibility.Visible)
-            _minValueOffsetNumberBox.Text = $"{0}";
+            _minValueOffsetNumberBox.Text = "0";
     }
 
     private async void PresetsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

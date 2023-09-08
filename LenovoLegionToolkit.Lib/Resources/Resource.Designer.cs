@@ -216,24 +216,6 @@ namespace LenovoLegionToolkit.Lib.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Off.
         /// </summary>
-        public static string GSyncState_Off {
-            get {
-                return ResourceManager.GetString("GSyncState_Off", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to On.
-        /// </summary>
-        public static string GSyncState_On {
-            get {
-                return ResourceManager.GetString("GSyncState_On", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Off.
-        /// </summary>
         public static string HDRState_Off {
             get {
                 return ResourceManager.GetString("HDRState_Off", resourceCulture);
@@ -336,6 +318,33 @@ namespace LenovoLegionToolkit.Lib.Resources {
         public static string MicrophoneState_On {
             get {
                 return ResourceManager.GetString("MicrophoneState_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Long.
+        /// </summary>
+        public static string NotificationDuration_Long {
+            get {
+                return ResourceManager.GetString("NotificationDuration_Long", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Normal.
+        /// </summary>
+        public static string NotificationDuration_Normal {
+            get {
+                return ResourceManager.GetString("NotificationDuration_Normal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Short.
+        /// </summary>
+        public static string NotificationDuration_Short {
+            get {
+                return ResourceManager.GetString("NotificationDuration_Short", resourceCulture);
             }
         }
         

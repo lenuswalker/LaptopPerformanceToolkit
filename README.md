@@ -23,9 +23,7 @@ Support the Armed Forces of Ukraine and People Affected by Russia’s Aggression
 
 <br />
 
-Lenovo Legion Toolkit (LLT) is a utility created for Lenovo Legion series laptops, that allows changing a couple of features that are only available in Lenovo Vantage or Legion Zone.
-
-**If your laptop is not part of Legion series, this software is not for you. Please do NOT open compatibility requests for other devices. Issues will be closed and not looked at!**
+Lenovo Legion Toolkit (LLT) is a utility created for Lenovo Legion (and similar) series laptops, that allows changing a couple of features that are only available in Lenovo Vantage or Legion Zone.
 
 It runs no background services, uses less memory, uses virtually no CPU, and contains no telemetry. Just like Lenovo Vantage, this application is Windows only.
 
@@ -122,7 +120,7 @@ Generations 6 (MY2021), 7 (MY2022) and 8 (MY2023) are supported, although some f
 
 If you are getting an incompatible message on startup, you can check the *Contribution* section down at the bottom, to see how can you help. Keep in mind, that not always I can make all options compatible with all hardware since I do not have access to it.
 
-**Support for other laptop that are not part of Legion series is not planned.**
+**Support for other laptops is not planned.**
 
 ### Lenovo's software
 
@@ -147,7 +145,7 @@ The app allows to:
 
 ### Custom Mode
 
-Custom Mode is available on all devices that support it. You can find it in the Power Mode dropdown as it basically is 4th power mode. Custom Mode can't be accessed with Fn+Q shortcut. Not all features of Custom Mode are supported by all devices.
+Custom Mode is available on all devices that support it. You can find it in the Power Mode dropdown as it basically is 4th power mode and it allows for adjusting power limits and fans. Custom Mode can't be accessed with Fn+Q shortcut. Not all features of Custom Mode are supported by all devices.
 
 If you have one of the following BIOSes:
 * G9CN (24 or higher)
@@ -183,9 +181,11 @@ On Gen 7 and 8 laptops, there are additional 2 settings for Hybrid mode:
 1. Hybrid iGPU-only - in this mode dGPU will be disconnected (think of it like ejecting USB drive), so there is no risk of it using power when you want to achieve best battery life
 2. Hybrid Auto - similar to the above, but tries to automate the process by automatically disconnecting dGPU on battery power and reconnecting it when you plug in AC adapter
 
-Discrete GPU may not disconnect, and in most cases will not disconnect, when it is used. That includes apps using dGPU, external monitor connected and probably some other cases that aren't specified by Lenovo.
+Discrete GPU may not disconnect, and in most cases will not disconnect, when it is used. That includes apps using dGPU, external monitor connected and probably some other cases that aren't specified by Lenovo. If you use the "Deactivate GPU" option in LLT, make sure that it reports dGPU Powered Off and no external screens are connected, before switching between Hybrid Modes in case you encounter problems.
 
-All above settings are using built in functions of the EC and how well they work relies on Lenovo's firmware implementation. From my observations, they are reliable, unless you start switching them every couple seconds. In this case it seems that at some point, something in firmware goes south and dGPU might not disconnect at all or not reconnect when needed. Restart usually resolves the issue.
+All above settings are using built in functions of the EC and how well they work relies on Lenovo's firmware implementation. From my observations, they are reliable, unless you start switching them frequently. Be patient, because changes to this methods are not instantanous. LLT also attempts to mitigate these issues, by disallowing frequent Hybrid Mode switching and additional attempts to wake dGPU if EC failed to do so. It may take up to 10 seconds for dGPU to reappear when switching to Hybrid Mode, in case EC failed to wake it.
+
+If you encounter issues, you might try to try alternative, experimental method of handling GPU Working Mode - see [Arguments](#arguments) section for more details.
 
 These options _are not_ Advanced Optimus and work separately from it.
 
@@ -264,7 +264,7 @@ Many thanks to everyone else, who monitors and corrects translations!
 * [Why do I get a message that Vantage is still running, even though I uninstalled it?](#vantage-running)
 * [Why is my antivirus reporting that the installer contains a virus/trojan/malware?](#virus)
 * [Can I customize hotkeys?](#faq-custom-hotkeys)
-* [Can I customize fans in Quiet, Balance or Performance modes?](far-fan-curves)
+* [Can I customize fans in Quiet, Balance or Performance modes?](#faq-fan-curves)
 * [Why can't I switch to Performance or Custom Power Mode on battery?](#faq-perf-custom-battery)
 * [Why does switching to Performance mode seem buggy, when AI Engine is enabled?](#faq-ai-fnq-bug)
 * [Why am I getting incompatible message after motherboard replacement?](#faq-incompatible)
@@ -274,6 +274,7 @@ Many thanks to everyone else, who monitors and corrects translations!
 * [Can I have more RGB effects?](#faq-more-rgb-effects)
 * [Can you add fan control to other models?](#faq-fan-control)
 * [Why don't I see the custom tooltip when I hover LLT icon in tray?](#faq-custom-tooltip)
+* [How can I OC/UV my CPU?](#faq-cpu-oc)
 * [What, if I overclocked my GPU too much?](#faq-gpu-oc)
 * [Which generation is my laptop?](#faq-which-gen)
 
@@ -287,7 +288,7 @@ Starting from version 2.14.0, LLT is much more strict about detecting leftover p
 2. Lenovo Vantage Service
 3. System Interface Foundation V2 Device
 
-The easiest solution is to go into LLT settings and selection options to disable Lenovo Vantage, LegionZone and Hotkeys (only still installed ones are shown).
+The easiest solution is to go into LLT settings and select options to disable Lenovo Vantage, LegionZone and Hotkeys (only still installed ones are shown).
 
 If you want to remove them instead, make sure that you uninstall all 3, otherwise some options in LLT will not be available. You can check Task Manager for any processes containing `Vantage` or `ImController`. You can also check this guide for more info: [Uninstalling System Interface Foundation V2 Device](https://support.lenovo.com/us/en/solutions/HT506070), if you have troubles getting rid of `ImController` processes.
 
@@ -301,7 +302,7 @@ If you downloaded the installer from this projects website, you shouldn't worry 
 
 You can customize Fn+F9 hotkey in LLT settings. Other hotkeys can't be customized.
 
-#### <a id="far-fan-curves" />Can I customize fans in Quiet, Balance or Performance modes?
+#### <a id="faq-fan-curves" />Can I customize fans in Quiet, Balance or Performance modes?
 
 No, it isn't possible to customize how the fan works in power modes other than Custom.
 
@@ -347,6 +348,10 @@ Fan control is available on Gen 7 and later models. Older models will not be sup
 
 In Windows 10 and 11, Microsoft did plenty of changes to the tray, breaking a lot of things on the way. As a results custom tooltips not always work properly. Solution? Update your Windows and keep fingers crossed.
 
+#### <a id="faq-cpu-oc" />How can I OC/UV my CPU?
+
+There are very good tools like [Intel XTU](https://www.intel.com/content/www/us/en/download/17881/intel-extreme-tuning-utility-intel-xtu.html) (which is used by Vantage) or [ThrottleStop](https://www.techpowerup.com/download/techpowerup-throttlestop/) made just for that.
+
 #### <a id="faq-gpu-oc" />What, if I overclocked my GPU too much?
 
 If you end up in a situation where your GPU is not stable and you can't boot into Windows, there are two things you can do:
@@ -364,13 +369,13 @@ Some, less frequently needed, features or options can be enabled by using additi
 
 * `--trace` - enables logging to `%LOCALAPPDATA%\LenovoLegionToolkit\log`
 * `--minimized` - starts LLT minimized to tray
-* `--skip-compat-check` - disables compatibility check on startup
+* `--skip-compat-check` - disables compatibility check on startup _(No support is provided when this argument is used)_
 * `--disable-tray-tooltip` - disables tray tooltip that is shown when you hover the cursors over tray icon
-* `--allow-all-power-modes-on-battery` - allows using all Power Modes without AC adapter
+* `--allow-all-power-modes-on-battery` - allows using all Power Modes without AC adapter _(No support is provided when this argument is used)_
 * `--force-disable-rgbkb` - disables all lighting features for 4-zone RGB keyboards
 * `--force-disable-spectrumkb` - disables all lighting features for Spectrum per-key RGB keyboards
 * `--force-disable-lenovolighting` - disables all lighting features related to panel logo, ports backlight and some white backlit keyboards
-* `--legacy-gpu-working-mode` - changes GPU Working Mode switch to use legacy, less reliable, method
+* `--experimental-gpu-working-mode` - changes GPU Working Mode switch to use experimental method, that is used by LegionZone _(No support is provided when this argument is used)_
 
 If you decide to use the arguments with `args.txt` file:
 1. Go to `%LOCALAPPDATA%\LenovoLegionToolkit`
@@ -413,7 +418,9 @@ It would be great to expand the list of compatible devices, but to do it your he
 
 If you are willing to check if this app works correctly on your device that is currently unsupported, click _Continue_ on the popup you saw on startup. Lenovo Legion Toolkit will start logging automatically so you can submit them if anything goes wrong.
 
-*Remember that some functions may not function properly, so keep this in mind.*
+**If your laptop is not part of Legion, IdeaPad Gaming or LOQ series, this software is not for you. Please do NOT open compatibility requests for other devices.**
+
+*Remember that some functions may not function properly.*
 
 I would appreciate it, if you create an issue here on GitHub with the results of your testing.
 

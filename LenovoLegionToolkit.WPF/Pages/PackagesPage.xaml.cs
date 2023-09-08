@@ -102,10 +102,9 @@ public partial class PackagesPage : IProgress<float>
 
     private void DownloadToButton_Click(object sender, RoutedEventArgs e)
     {
-        using var ofd = new FolderBrowserDialog
-        {
-            InitialDirectory = _downloadToText.Text,
-        };
+        using var ofd = new FolderBrowserDialog();
+        ofd.InitialDirectory = _downloadToText.Text;
+
         if (ofd.ShowDialog() != DialogResult.OK)
             return;
 
@@ -172,7 +171,7 @@ public partial class PackagesPage : IProgress<float>
 
             Reload();
         }
-        catch (TaskCanceledException)
+        catch (OperationCanceledException)
         {
             errorOccurred = true;
         }
@@ -233,7 +232,7 @@ public partial class PackagesPage : IProgress<float>
 
             Reload();
         }
-        catch (TaskCanceledException) { }
+        catch (OperationCanceledException) { }
     }
 
     private async void OnlyShowUpdatesCheckBox_OnChecked(object sender, RoutedEventArgs e)

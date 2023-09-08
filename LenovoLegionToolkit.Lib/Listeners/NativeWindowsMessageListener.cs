@@ -44,8 +44,12 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
 
     public async Task TurnOffMonitorAsync()
     {
-        await Task.Delay(TimeSpan.FromSeconds(1));
-        PInvoke.SendMessage(new HWND(Handle), PInvoke.WM_SYSCOMMAND, new WPARAM(PInvoke.SC_MONITORPOWER), new LPARAM(2));
+        await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(false);
+        await _mainThreadDispatcher.DispatchAsync(() =>
+        {
+            PInvoke.SendMessage(new HWND(Handle), PInvoke.WM_SYSCOMMAND, new WPARAM(PInvoke.SC_MONITORPOWER), new LPARAM(2));
+            return Task.CompletedTask;
+        }).ConfigureAwait(false);
     }
 
     public Task StartAsync() => _mainThreadDispatcher.DispatchAsync(() =>
@@ -258,14 +262,14 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
             {
                 var isOn = (PInvoke.GetKeyState((int)VIRTUAL_KEY.VK_CAPITAL) & 0x1) != 0;
                 var type = isOn ? NotificationType.CapsLockOn : NotificationType.CapsLockOff;
-                MessagingCenter.Publish(new Notification(type, NotificationDuration.Short));
+                MessagingCenter.Publish(new Notification(type));
             }
 
             if (kbStruct.vkCode == (ulong)VIRTUAL_KEY.VK_NUMLOCK)
             {
                 var isOn = (PInvoke.GetKeyState((int)VIRTUAL_KEY.VK_NUMLOCK) & 0x1) != 0;
                 var type = isOn ? NotificationType.NumLockOn : NotificationType.NumLockOff;
-                MessagingCenter.Publish(new Notification(type, NotificationDuration.Short));
+                MessagingCenter.Publish(new Notification(type));
             }
         }
 

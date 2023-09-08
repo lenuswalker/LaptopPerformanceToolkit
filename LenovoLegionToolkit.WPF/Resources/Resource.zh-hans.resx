@@ -497,11 +497,6 @@
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
     <value>强制休眠显卡</value>
   </data>
-  <data name="DiscreteGPUControl_DisablePossible" xml:space="preserve">
-	  <value>手动强制休眠英伟达显卡
-
-谨记，如果强制休眠可能导致一些应用崩溃。</value>
-  </data>
   <data name="Inactive" xml:space="preserve">
     <value>休眠中</value>
   </data>
@@ -1881,5 +1876,28 @@
   </data>
   <data name="GodModeSettingsWindow_LegionZoneWarning_Title" xml:space="preserve">
 	  <value>自定义设置在 Legion Zone 及其服务运行时将不会生效。</value>
+  </data>
+  <data name="DGPU_Connected_Title" xml:space="preserve">
+	  <value>独立显卡已连接</value>
+  </data>
+  <data name="DGPU_Disconnected_Title" xml:space="preserve">
+	  <value>独立显卡已断开连接</value>
+  </data>
+  <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
+	  <value>显卡工作模式</value>
+  </data>
+  <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
+	  <value>根据你的使用场景选择显卡工作模式。
+各混合模式与独显直连模式互相切换后需要重启生效。</value>
+  </data>
+  <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
+	  <value>混合模式</value>
+  </data>
+  <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
+	  <value>混合模式允许在核显与独显之间切换。
+关闭后即为独显直连模式，两者之间切换需要重启生效。</value>
+  </data>
+  <data name="NotificationsSettingsWindow_Updates_Title" xml:space="preserve">
+	  <value>新版本更新提醒</value>
   </data>
 </root>

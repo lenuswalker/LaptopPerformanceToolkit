@@ -147,9 +147,8 @@ public class PowerStateListener : IListener<EventArgs>
 
                 if (await _powerModeFeature.IsSupportedAsync().ConfigureAwait(false))
                 {
-                    await _powerModeFeature.EnsureAiModeIsSetAsync().ConfigureAwait(false);
-                    await _powerModeFeature.EnsureGodModeStateIsAppliedAsync().ConfigureAwait(false);
                     await _powerModeFeature.EnsureCorrectPowerPlanIsSetAsync().ConfigureAwait(false);
+                    await _powerModeFeature.EnsureGodModeStateIsAppliedAsync().ConfigureAwait(false);
                 }
 
                 if (await _dgpuNotify.IsSupportedAsync().ConfigureAwait(false))
@@ -166,6 +165,12 @@ public class PowerStateListener : IListener<EventArgs>
             {
                 if (await _powerModeFeature.IsSupportedAsync().ConfigureAwait(false))
                     await _powerModeFeature.EnsureGodModeStateIsAppliedAsync().ConfigureAwait(false);
+
+                if (await _dgpuNotify.IsSupportedAsync().ConfigureAwait(false))
+                {
+                    await Task.Delay(TimeSpan.FromSeconds(5)).ConfigureAwait(false);
+                    await _dgpuNotify.NotifyAsync().ConfigureAwait(false);
+                }
             });
         }
 
@@ -210,13 +215,13 @@ public class PowerStateListener : IListener<EventArgs>
         switch (newState)
         {
             case PowerAdapterStatus.Connected:
-                MessagingCenter.Publish(new Notification(NotificationType.ACAdapterConnected, NotificationDuration.Short));
+                MessagingCenter.Publish(new Notification(NotificationType.ACAdapterConnected));
                 break;
             case PowerAdapterStatus.ConnectedLowWattage:
-                MessagingCenter.Publish(new Notification(NotificationType.ACAdapterConnectedLowWattage, NotificationDuration.Short));
+                MessagingCenter.Publish(new Notification(NotificationType.ACAdapterConnectedLowWattage));
                 break;
             case PowerAdapterStatus.Disconnected:
-                MessagingCenter.Publish(new Notification(NotificationType.ACAdapterDisconnected, NotificationDuration.Short));
+                MessagingCenter.Publish(new Notification(NotificationType.ACAdapterDisconnected));
                 break;
         }
     }
