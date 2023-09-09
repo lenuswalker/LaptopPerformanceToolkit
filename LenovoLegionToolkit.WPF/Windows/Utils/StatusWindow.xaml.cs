@@ -288,8 +288,8 @@ public partial class StatusWindow
 
         if (_controller.GetType() == typeof(IntelProcessorController))
         {
-            _processorTDPFastLabel.Content = "PL1";
-            _processorTDPSlowLabel.Content = "PL2";
+            _processorTDPFastLabel.Content = "PL2";
+            _processorTDPSlowLabel.Content = "PL1";
         }
         else
         {

@@ -103,12 +103,22 @@ public partial class App
 
         AutomationPage.EnableHybridModeAutomation = flags.EnableHybridModeAutomation;
 
-        await LogSoftwareStatusAsync();
-        await InitPowerModeFeatureAsync();
-        await InitBatteryFeatureAsync();
-        await InitRgbKeyboardControllerAsync();
-        await InitSpectrumKeyboardControllerAsync();
-        await InitGpuOverclockControllerAsync();
+        _isCompatible = await Compatibility.CheckBasicCompatibilityAsync();
+        if (_isCompatible)
+        {
+            await LogSoftwareStatusAsync();
+            await InitPowerModeFeatureAsync();
+            await InitBatteryFeatureAsync();
+            await InitRgbKeyboardControllerAsync();
+            await InitSpectrumKeyboardControllerAsync();
+            await InitGpuOverclockControllerAsync();
+        }
+        //await LogSoftwareStatusAsync();
+        //await InitPowerModeFeatureAsync();
+        //await InitBatteryFeatureAsync();
+        //await InitRgbKeyboardControllerAsync();
+        //await InitSpectrumKeyboardControllerAsync();
+        //await InitGpuOverclockControllerAsync();
         await InitAutomationProcessorAsync();
 
         await IoCContainer.Resolve<AIController>().StartIfNeededAsync();
@@ -250,6 +260,7 @@ public partial class App
     private async Task CheckCompatibilityAsync()
     {
         var (isCompatible, mi) = await Compatibility.IsCompatibleAsync();
+        _isCompatible = isCompatible;
         if (isCompatible)
         {
             if (Log.Instance.IsTraceEnabled)
