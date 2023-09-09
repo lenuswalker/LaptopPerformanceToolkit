@@ -1,36 +1,33 @@
 ﻿using System;
-using System.Management;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Features;
 using LenovoLegionToolkit.Lib.Features.PanelLogo;
 using LenovoLegionToolkit.Lib.SoftwareDisabler;
+using LenovoLegionToolkit.Lib.System.Management;
 using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.Lib.Listeners;
 
-public class LightingChangeListener : AbstractWMIListener<LightingChangeState>
+public class LightingChangeListener : AbstractWMIListener<LightingChangeState, int>
 {
     private readonly PanelLogoBacklightFeature _panelLogoBacklightFeature;
     private readonly PortsBacklightFeature _portsBacklightFeature;
     private readonly FnKeysDisabler _fnKeysDisabler;
 
     public LightingChangeListener(PanelLogoBacklightFeature panelLogoBacklightFeature, PortsBacklightFeature portsBacklightFeature, FnKeysDisabler fnKeysDisabler)
-        : base("ROOT\\WMI", "LENOVO_LIGHTING_EVENT")
+        : base(WMI.LenovoLightingEvent.Listen)
     {
         _panelLogoBacklightFeature = panelLogoBacklightFeature ?? throw new ArgumentNullException(nameof(panelLogoBacklightFeature));
         _portsBacklightFeature = portsBacklightFeature ?? throw new ArgumentNullException(nameof(portsBacklightFeature));
         _fnKeysDisabler = fnKeysDisabler ?? throw new ArgumentNullException(nameof(fnKeysDisabler));
     }
 
-    protected override LightingChangeState GetValue(PropertyDataCollection properties)
+    protected override LightingChangeState GetValue(int value)
     {
-        var property = properties["Key_ID"];
-        var propertyValue = Convert.ToInt32(property.Value);
-
         if (Log.Instance.IsTraceEnabled)
-            Log.Instance.Trace($"Event received. [value={propertyValue}]");
+            Log.Instance.Trace($"Event received. [value={value}]");
 
-        var result = (LightingChangeState)propertyValue;
+        var result = (LightingChangeState)value;
         return result;
     }
 
@@ -54,7 +51,7 @@ public class LightingChangeListener : AbstractWMIListener<LightingChangeState>
                             ? NotificationType.PanelLogoLightingOn
                             : NotificationType.PanelLogoLightingOff;
 
-                        MessagingCenter.Publish(new Notification(type, NotificationDuration.Short));
+                        MessagingCenter.Publish(new Notification(type));
                         break;
                     }
                 case LightingChangeState.Ports when await _portsBacklightFeature.IsSupportedAsync().ConfigureAwait(false):
@@ -63,7 +60,7 @@ public class LightingChangeListener : AbstractWMIListener<LightingChangeState>
                             ? NotificationType.PortLightingOn
                             : NotificationType.PortLightingOff;
 
-                        MessagingCenter.Publish(new Notification(type, NotificationDuration.Short));
+                        MessagingCenter.Publish(new Notification(type));
                         break;
                     }
             }

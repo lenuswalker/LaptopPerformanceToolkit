@@ -1,4 +1,4 @@
-﻿using LenovoLegionToolkit.Lib.System;
+﻿using LenovoLegionToolkit.Lib.System.Management;
 using LenovoLegionToolkit.Lib.Utils;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -136,6 +136,24 @@ public class ProcessorController
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"User requested TDP limits.");
         return Task.FromResult(new Dictionary<PowerType, int>());
+    }
+
+    public async Task<ProcessorTDPState> GetProcessorTDPAsync()
+    {
+        if (Log.Instance.IsTraceEnabled)
+            Log.Instance.Trace($"User requested processor TDP state.");
+
+        var limits = await GetTDPLimitsAsync();
+
+        return new ProcessorTDPState()
+        {
+            Stapm = 0,
+            Fast = limits[PowerType.Fast],
+            Slow = limits[PowerType.Slow],
+            UseMSR = false,
+            MaintainTDP = false,
+            Interval = 0
+        };
     }
 
     public virtual void SetGPUClock(double clock, int result = 0)

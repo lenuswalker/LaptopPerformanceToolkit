@@ -6,6 +6,7 @@ using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Controllers.GodMode;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.System;
+using LenovoLegionToolkit.Lib.System.Management;
 using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.Lib.Features;
@@ -20,9 +21,8 @@ public class PowerModeUnavailableWithoutACException : Exception
     }
 }
 
-public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
+public class PowerModeFeature : AbstractWmiFeature<PowerModeState>
 {
-    private readonly AIModeController _aiModeController;
     private readonly GodModeController _godModeController;
     private readonly PowerPlanController _powerPlanController;
     private readonly ThermalModeListener _thermalModeListener;
@@ -37,14 +37,9 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
         { PowerModeState.Performance , "ded574b5-45a0-4f42-8737-46345c09c238" },
     };
 
-    public PowerModeFeature(
-        AIModeController aiModeController,
-        GodModeController godModeController,
-        PowerPlanController powerPlanController,
-        ThermalModeListener thermalModeListener,
-        PowerModeListener powerModeListener) : base("SmartFanMode", 1, "IsSupportSmartFan")
+    public PowerModeFeature(GodModeController godModeController, PowerPlanController powerPlanController, ThermalModeListener thermalModeListener, PowerModeListener powerModeListener)
+        : base(WMI.LenovoGameZoneData.GetSmartFanModeAsync, WMI.LenovoGameZoneData.SetSmartFanModeAsync, WMI.LenovoGameZoneData.IsSupportSmartFanAsync, 1)
     {
-        _aiModeController = aiModeController ?? throw new ArgumentNullException(nameof(aiModeController));
         _godModeController = godModeController ?? throw new ArgumentNullException(nameof(godModeController));
         _powerPlanController = powerPlanController ?? throw new ArgumentNullException(nameof(powerPlanController));
         _thermalModeListener = thermalModeListener ?? throw new ArgumentNullException(nameof(thermalModeListener));
@@ -55,15 +50,10 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
     {
         try
         {
-            if (_supportMethodName is null)
+            if (_isSupported is null)
                 return true;
 
-            var value = await WMI.CallAsync(SCOPE,
-                Query,
-                _supportMethodName,
-                new(),
-                pdc => Convert.ToInt32(pdc[_outParameterName].Value)).ConfigureAwait(false);
-            return value > _supportOffset;
+            return await _isSupported().ConfigureAwait(false) > 0;
         }
         catch
         {
@@ -131,7 +121,6 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
                 && await Power.IsPowerAdapterConnectedAsync().ConfigureAwait(false) is PowerAdapterStatus.Disconnected)
                 throw new PowerModeUnavailableWithoutACException(state);
 
-            await _aiModeController.StopAsync(currentState).ConfigureAwait(false);
 
             if (mi.Properties.HasQuietToPerformanceModeSwitchingBug && currentState == PowerModeState.Quiet && state == PowerModeState.Performance)
             {
@@ -192,25 +181,5 @@ public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
             return;
 
         await _godModeController.ApplyStateAsync().ConfigureAwait(false);
-    }
-
-    public async Task EnsureAiModeIsSetAsync()
-    {
-        var compatibility = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
-        if (compatibility.isCompatible)
-        {
-            var state = await GetStateAsync().ConfigureAwait(false);
-            await _aiModeController.StartAsync(state).ConfigureAwait(false);
-        }
-    }
-
-    public async Task EnsureAiModeIsOffAsync()
-    {
-        var compatibility = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
-        if (compatibility.isCompatible)
-        {
-            var state = await GetStateAsync().ConfigureAwait(false);
-            await _aiModeController.StopAsync(state).ConfigureAwait(false);
-        }
     }
 }

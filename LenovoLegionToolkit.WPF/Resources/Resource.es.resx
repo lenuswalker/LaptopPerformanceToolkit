@@ -352,7 +352,7 @@ Sólo se ejecutarán las acciones que coincidan con el estado actual.</value>
     <value>Fecha del primer uso</value>
   </data>
   <data name="BatteryPage_FirstUse_Message" xml:space="preserve">
-    <value>Al utilizar la batería por primera vez.</value>
+    <value>Cuando se utilizó la batería por primera vez.</value>
   </data>
   <data name="BatteryPage_FullChargeCapacity_Message" xml:space="preserve">
     <value>Capacidad de la batería con carga completa.</value>
@@ -496,11 +496,6 @@ AVISO: Esta acción no se ejecutará correctamente, si la pantalla interna está
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
     <value>Desactivada</value>
   </data>
-  <data name="DiscreteGPUControl_DisablePossible" xml:space="preserve">
-	  <value>Se puede desactivar la GPU nVidia.
-
-Recuerde que algunos programas pueden bloquearse si lo hace.</value>
-  </data>
   <data name="Inactive" xml:space="preserve">
     <value>Inactiva</value>
   </data>
@@ -575,7 +570,8 @@ Haga clic en el logotipo de PayPal que aparece a continuación, o escanee el có
     <value>Exportar</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Auto_Message" xml:space="preserve">
-    <value>Utilizar la GPU integrada sólo si está en modo batería; y la GPU integrada y externa si el adaptador de CA está conectado. Si se conecta un adaptador no estándar, el sistema cambiará sólo al modo híbrido-iGPU.</value>
+    <value>Utilizar la GPU integrada sólo si está en modo batería. 
+Utilizar la GPU integrada y externa si el adaptador de CA está conectado. Si se conecta un adaptador no estándar, el sistema cambiará sólo al modo híbrido-iGPU.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Auto_Title" xml:space="preserve">
     <value>Modo híbrido-automático</value>
@@ -1044,7 +1040,7 @@ Puede cambiar de modo con Fn+Q.</value>
     <value>Modo rendimiento</value>
   </data>
   <data name="PowerPlansWindow_QuietMode" xml:space="preserve">
-    <value>Modo Silencioso</value>
+    <value>Modo conservador</value>
   </data>
   <data name="PowerPlansWindow_Title" xml:space="preserve">
     <value>Planes de energía</value>
@@ -1882,5 +1878,25 @@ AVISO: Esta acción no se ejecutará correctamente si no se dispone de una GPU e
   </data>
   <data name="DGPU_Disconnected_Title" xml:space="preserve">
 	  <value>DGPU desconectada</value>
+  </data>
+  <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
+	  <value>Modo de trabajo de la GPU</value>
+  </data>
+  <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
+	  <value>Seleccionar el modo de funcionamiento de la GPU, según el uso y las condiciones de energía de su equipo.
+El cambio de modo puede requerir un reinicio.</value>
+  </data>
+  <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
+	  <value>Modo híbrido</value>
+  </data>
+  <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
+	  <value>Permitir cambiar entre la GPU integrada y la GPU externa.
+Requiere un reinicio.</value>
+  </data>
+  <data name="NotificationsSettingsWindow_NotificationDuration_Title" xml:space="preserve">
+	  <value>Duración</value>
+  </data>
+  <data name="NotificationsSettingsWindow_Updates_Title" xml:space="preserve">
+	  <value>Actualizaciones</value>
   </data>
 </root>

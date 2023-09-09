@@ -23,10 +23,9 @@
             <ui:NumberBox 
                 x:Name="_acTimeIntervalSeconds"
                 ClearButtonEnabled="False"
-                IntegersOnly="True"
-                Max="60"
-                Min="0"
-                Step="5" />
+                MaxDecimalPlaces="0"
+                Maximum="60"
+                Minimum="0" />
             <Label 
                 Margin="8,0,0,0"
                 VerticalContentAlignment="Center"
@@ -46,10 +45,9 @@
             <ui:NumberBox
                 x:Name="_dcTimeIntervalSeconds"
                 ClearButtonEnabled="False"
-                IntegersOnly="True"
-                Max="60"
-                Min="0"
-                Step="5" />
+                MaxDecimalPlaces="0"
+                Maximum="60"
+                Minimum="0" />
             <Label 
                 Margin="8,0,0,0"
                 VerticalContentAlignment="Center"

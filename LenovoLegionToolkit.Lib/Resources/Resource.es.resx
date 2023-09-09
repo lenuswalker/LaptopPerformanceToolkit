@@ -59,8 +59,8 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -171,14 +171,6 @@
   </data>
   <data name="GPUController_PoweredOn" xml:space="preserve">
     <value>Activado</value>
-  </data>
-  <data name="GSyncState_Off" xml:space="preserve">
-    <value>Apagado</value>
-    <comment>Informs the user that GSync is or will be turned off.</comment>
-  </data>
-  <data name="GSyncState_On" xml:space="preserve">
-    <value>Encendido</value>
-    <comment>Informs the user that GSync is or will be turned on.</comment>
   </data>
   <data name="HDRState_Off" xml:space="preserve">
     <value>Apagado</value>
@@ -424,27 +416,36 @@
     <comment>Informs the user that WinLock is or will be turned on.</comment>
   </data>
   <data name="PortsBacklightState_Off" xml:space="preserve">
-		<value>Apagado</value>
-	</data>
+    <value>Apagado</value>
+  </data>
   <data name="PortsBacklightState_On" xml:space="preserve">
-		<value>Encendido</value>
-	</data>
+    <value>Encendido</value>
+  </data>
   <data name="PanelLogoBacklightState_On" xml:space="preserve">
-		<value>Encendido</value>
-	</data>
+    <value>Encendido</value>
+  </data>
   <data name="PanelLogoBacklightState_Off" xml:space="preserve">
-		<value>Apagado</value>
-	</data>
+    <value>Apagado</value>
+  </data>
   <data name="InstantBootState_Off" xml:space="preserve">
-		<value>Apagado</value>
-	</data>
+    <value>Apagado</value>
+  </data>
   <data name="InstantBootState_AcAdapter" xml:space="preserve">
-		<value>Adaptador de corriente alterna</value>
-	</data>
+    <value>Adaptador de corriente alterna</value>
+  </data>
   <data name="InstantBootState_UsbPowerDelivery" xml:space="preserve">
-		<value>Salida de alimentación USB</value>
-	</data>
+    <value>Salida de alimentación USB</value>
+  </data>
   <data name="InstantBootState_AcAdapterAndUsbPowerDelivery" xml:space="preserve">
-		<value>DP de CA y USB</value>
-	</data>
+    <value>DP de CA y USB</value>
+  </data>
+  <data name="NotificationDuration_Long" xml:space="preserve">
+    <value>Larga</value>
+  </data>
+  <data name="NotificationDuration_Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="NotificationDuration_Short" xml:space="preserve">
+    <value>Corta</value>
+  </data>
 </root>

@@ -24,6 +24,7 @@ using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.SoftwareDisabler;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Extensions;
+using LenovoLegionToolkit.WPF.Pages;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
 using LenovoLegionToolkit.WPF.Windows;
@@ -100,6 +101,8 @@ public partial class App
         IoCContainer.Resolve<IGPUModeFeature>().ExperimentalGPUWorkingMode = flags.ExperimentalGPUWorkingMode;
         IoCContainer.Resolve<DGPUNotify>().ExperimentalGPUWorkingMode = flags.ExperimentalGPUWorkingMode;
 
+        AutomationPage.EnableHybridModeAutomation = flags.EnableHybridModeAutomation;
+
         await LogSoftwareStatusAsync();
         await InitPowerModeFeatureAsync();
         await InitBatteryFeatureAsync();
@@ -107,6 +110,8 @@ public partial class App
         await InitSpectrumKeyboardControllerAsync();
         await InitGpuOverclockControllerAsync();
         await InitAutomationProcessorAsync();
+
+        await IoCContainer.Resolve<AIController>().StartIfNeededAsync();
 
 #if !DEBUG
         Autorun.Validate();
@@ -167,8 +172,8 @@ public partial class App
     {
         try
         {
-            if (IoCContainer.TryResolve<PowerModeFeature>() is { } powerModeFeature)
-                await powerModeFeature.EnsureAiModeIsOffAsync();
+            if (IoCContainer.TryResolve<AIController>() is { } aiController)
+                await aiController.StopAsync();
         }
         catch {  /* Ignored. */ }
 
@@ -355,23 +360,6 @@ public partial class App
 
     private static async Task InitPowerModeFeatureAsync()
     {
-        try
-        {
-            var feature = IoCContainer.Resolve<PowerModeFeature>();
-            if (await feature.IsSupportedAsync())
-            {
-                if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Ensuring AI Mode is set...");
-
-                await feature.EnsureAiModeIsSetAsync();
-            }
-        }
-        catch (Exception ex)
-        {
-            if (Log.Instance.IsTraceEnabled)
-                Log.Instance.Trace($"Couldn't set AI Mode.", ex);
-        }
-
         try
         {
             var feature = IoCContainer.Resolve<PowerModeFeature>();

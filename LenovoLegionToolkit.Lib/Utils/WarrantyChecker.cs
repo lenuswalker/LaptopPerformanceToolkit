@@ -25,8 +25,8 @@ public class WarrantyChecker
 
         using var httpClient = new HttpClient();
 
-        var warrantyInfo = await GetStandardWarrantyInfo(httpClient, machineInformation, token);
-        warrantyInfo ??= await GetChineseWarrantyInfo(httpClient, machineInformation, token);
+        var warrantyInfo = await GetStandardWarrantyInfo(httpClient, machineInformation, token).ConfigureAwait(false);
+        warrantyInfo ??= await GetChineseWarrantyInfo(httpClient, machineInformation, token).ConfigureAwait(false);
 
         _settings.Store.WarrantyInfo = warrantyInfo;
         _settings.SynchronizeStore();
@@ -37,15 +37,15 @@ public class WarrantyChecker
     private static async Task<WarrantyInfo?> GetStandardWarrantyInfo(HttpClient httpClient, MachineInformation machineInformation, CancellationToken token)
     {
         var content = JsonContent.Create(new { serialNumber = machineInformation.SerialNumber, machineType = machineInformation.MachineType });
-        var response = await httpClient.PostAsync("https://pcsupport.lenovo.com/dk/en/api/v4/upsell/redport/getIbaseInfo", content, token);
+        var response = await httpClient.PostAsync("https://pcsupport.lenovo.com/dk/en/api/v4/upsell/redport/getIbaseInfo", content, token).ConfigureAwait(false);
         var responseContent = await response.Content.ReadAsStringAsync(token).ConfigureAwait(false);
         var node = JsonNode.Parse(responseContent);
 
-        if (node?["code"]?.GetValue<int>() != 0)
+        if (node is null || node["code"]?.GetValue<int>() != 0)
             return null;
 
-        var baseWarranties = node?["data"]?["baseWarranties"]?.AsArray() ?? new JsonArray();
-        var upgradeWarranties = node?["data"]?["upgradeWarranties"]?.AsArray() ?? new JsonArray();
+        var baseWarranties = node["data"]?["baseWarranties"]?.AsArray() ?? new JsonArray();
+        var upgradeWarranties = node["data"]?["upgradeWarranties"]?.AsArray() ?? new JsonArray();
 
         var startDate = baseWarranties.Concat(upgradeWarranties)
             .Select(n => n?["startDate"])
@@ -80,10 +80,10 @@ public class WarrantyChecker
 
         var node = JsonNode.Parse(warrantySummaryString);
 
-        if (node?["status_code"]?.GetValue<int>() != 200)
+        if (node is null || node["status_code"]?.GetValue<int>() != 200)
             return null;
 
-        var dataNode = node?["data"];
+        var dataNode = node["data"];
         var startDateString = dataNode?["warranty_start"]?.ToString();
         var endDateString = dataNode?["warranty_end"]?.ToString();
 

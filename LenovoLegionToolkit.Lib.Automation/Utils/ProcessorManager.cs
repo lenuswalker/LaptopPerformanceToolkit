@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using LenovoLegionToolkit.Lib.Automation.Listeners;
+using LenovoLegionToolkit.Lib.AutoListeners;
 using NeoSmart.AsyncLock;
 using LenovoLegionToolkit.Lib.Utils;
 
@@ -12,7 +12,7 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils;
 public class ProcessorManager
 {
     private readonly ProcessorController _controller = IoCContainer.Resolve<ProcessorController>();
-    private readonly TimeIntervalAutomationListener _timeIntervalListener;
+    private readonly TimeIntervalAutoListener _timeIntervalListener;
 
     private readonly AsyncLock _ioLock = new();
 
@@ -26,7 +26,7 @@ public class ProcessorManager
     private double _slow;
     private bool _useMSR;
 
-    public ProcessorManager(TimeIntervalAutomationListener timeIntervalListener)
+    public ProcessorManager(TimeIntervalAutoListener timeIntervalListener)
     {
         _timeIntervalListener = timeIntervalListener ?? throw new ArgumentNullException(nameof(timeIntervalListener));
         // initialize processor
@@ -43,7 +43,8 @@ public class ProcessorManager
     {
         using (await _ioLock.LockAsync().ConfigureAwait(false))
         {
-            _timeIntervalListener.Changed += TimeIntervalListener_Changed;
+            //_timeIntervalListener.Changed += TimeIntervalListener_Changed;
+            await _timeIntervalListener.SubscribeChangedAsync(TimeIntervalListener_Changed).ConfigureAwait(false);
 
             await StopAsync().ConfigureAwait(false);
         }
@@ -72,7 +73,7 @@ public class ProcessorManager
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Stopping time interval listener...");
 
-        _timeIntervalListener.StopAsync();
+        _timeIntervalListener.StopNowAsync();
 
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Stopped time interval listener...");

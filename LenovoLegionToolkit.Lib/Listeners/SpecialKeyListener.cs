@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
-using System.Management;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Features;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.SoftwareDisabler;
+using LenovoLegionToolkit.Lib.System.Management;
 using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.Lib.Listeners;
 
-public class SpecialKeyListener : AbstractWMIListener<SpecialKey>
+public class SpecialKeyListener : AbstractWMIListener<SpecialKey, int>
 {
     private readonly ThrottleFirstDispatcher _refreshRateDispatcher = new(TimeSpan.FromSeconds(2), nameof(SpecialKeyListener));
 
@@ -18,23 +18,20 @@ public class SpecialKeyListener : AbstractWMIListener<SpecialKey>
     private readonly FnKeysDisabler _fnKeysDisabler;
     private readonly RefreshRateFeature _refreshRateFeature;
 
-    public SpecialKeyListener(ApplicationSettings settings, FnKeysDisabler fnKeysDisabler, RefreshRateFeature feature) : base("ROOT\\WMI", "LENOVO_UTILITY_EVENT")
+    public SpecialKeyListener(ApplicationSettings settings, FnKeysDisabler fnKeysDisabler, RefreshRateFeature feature) : base(WMI.LenovoUtilityEvent.Listen)
     {
         _settings = settings ?? throw new ArgumentNullException(nameof(settings));
         _fnKeysDisabler = fnKeysDisabler ?? throw new ArgumentNullException(nameof(fnKeysDisabler));
         _refreshRateFeature = feature ?? throw new ArgumentNullException(nameof(feature));
     }
 
-    protected override SpecialKey GetValue(PropertyDataCollection properties)
+    protected override SpecialKey GetValue(int value)
     {
-        var property = properties["PressTypeDataVal"];
-        var propertyValue = Convert.ToInt32(property.Value);
-
         if (Log.Instance.IsTraceEnabled)
-            Log.Instance.Trace($"Event received. [value={propertyValue}]");
+            Log.Instance.Trace($"Event received. [value={value}]");
 
-        var value = (SpecialKey)propertyValue;
-        return value;
+        var result = (SpecialKey)value;
+        return result;
     }
 
     protected override Task OnChangedAsync(SpecialKey value) => value switch
@@ -69,10 +66,10 @@ public class SpecialKeyListener : AbstractWMIListener<SpecialKey>
             }
 
             if (value == SpecialKey.CameraOn)
-                MessagingCenter.Publish(new Notification(NotificationType.CameraOn, NotificationDuration.Short));
+                MessagingCenter.Publish(new Notification(NotificationType.CameraOn));
 
             if (value == SpecialKey.CameraOff)
-                MessagingCenter.Publish(new Notification(NotificationType.CameraOff, NotificationDuration.Short));
+                MessagingCenter.Publish(new Notification(NotificationType.CameraOff));
         }
         catch { /* Ignored. */ }
     }
@@ -90,10 +87,10 @@ public class SpecialKeyListener : AbstractWMIListener<SpecialKey>
             }
 
             if (value == SpecialKey.FnLockOn)
-                MessagingCenter.Publish(new Notification(NotificationType.FnLockOn, NotificationDuration.Short));
+                MessagingCenter.Publish(new Notification(NotificationType.FnLockOn));
 
             if (value == SpecialKey.FnLockOff)
-                MessagingCenter.Publish(new Notification(NotificationType.FnLockOff, NotificationDuration.Short));
+                MessagingCenter.Publish(new Notification(NotificationType.FnLockOff));
         }
         catch { /* Ignored. */ }
     }
@@ -151,7 +148,7 @@ public class SpecialKeyListener : AbstractWMIListener<SpecialKey>
 
             _ = Task.Delay(TimeSpan.FromSeconds(1)).ContinueWith(_ =>
             {
-                MessagingCenter.Publish(new Notification(NotificationType.RefreshRate, NotificationDuration.Long, next.DisplayName));
+                MessagingCenter.Publish(new Notification(NotificationType.RefreshRate, next.DisplayName));
             });
 
             if (Log.Instance.IsTraceEnabled)
@@ -199,16 +196,16 @@ public class SpecialKeyListener : AbstractWMIListener<SpecialKey>
             switch (value)
             {
                 case 0:
-                    MessagingCenter.Publish(new Notification(NotificationType.SpectrumBacklightOff, NotificationDuration.Short, SpectrumKeyboardBacklightBrightness.Off));
+                    MessagingCenter.Publish(new Notification(NotificationType.SpectrumBacklightOff, SpectrumKeyboardBacklightBrightness.Off));
                     break;
                 case 1:
-                    MessagingCenter.Publish(new Notification(NotificationType.SpectrumBacklightChanged, NotificationDuration.Short, SpectrumKeyboardBacklightBrightness.Low));
+                    MessagingCenter.Publish(new Notification(NotificationType.SpectrumBacklightChanged, SpectrumKeyboardBacklightBrightness.Low));
                     break;
                 case 2:
-                    MessagingCenter.Publish(new Notification(NotificationType.SpectrumBacklightChanged, NotificationDuration.Short, SpectrumKeyboardBacklightBrightness.Medium));
+                    MessagingCenter.Publish(new Notification(NotificationType.SpectrumBacklightChanged, SpectrumKeyboardBacklightBrightness.Medium));
                     break;
                 case 3:
-                    MessagingCenter.Publish(new Notification(NotificationType.SpectrumBacklightChanged, NotificationDuration.Short, SpectrumKeyboardBacklightBrightness.High));
+                    MessagingCenter.Publish(new Notification(NotificationType.SpectrumBacklightChanged, SpectrumKeyboardBacklightBrightness.High));
                     break;
             }
         }
@@ -227,7 +224,7 @@ public class SpecialKeyListener : AbstractWMIListener<SpecialKey>
                 return;
             }
 
-            MessagingCenter.Publish(new Notification(NotificationType.SpectrumBacklightPresetChanged, NotificationDuration.Short, value));
+            MessagingCenter.Publish(new Notification(NotificationType.SpectrumBacklightPresetChanged, value));
         }
         catch { /* Ignored. */ }
     }

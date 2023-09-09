@@ -496,11 +496,6 @@ BRĪDINĀJUMS. Ja iekšējais displejs ir izslēgts vai hibrīda režīms nav ak
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
     <value>Deaktivizēt</value>
   </data>
-  <data name="DiscreteGPUControl_DisablePossible" xml:space="preserve">
-	  <value>nVidia GPU var atspējot.
-
-Atcerieties, ka dažas programmas var avarēt, ja to darīsiet.</value>
-  </data>
   <data name="Inactive" xml:space="preserve">
     <value>Neaktīvs</value>
   </data>
@@ -1880,5 +1875,22 @@ BRĪDINĀJUMS. Ja nav pieejams atsevišķs GPU, šī darbība nedarbosies pareiz
   </data>
   <data name="DGPU_Disconnected_Title" xml:space="preserve">
 	  <value>DGPU atslēdzies</value>
+  </data>
+  <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
+	  <value>GPU Darbošanās režīms</value>
+  </data>
+  <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
+	  <value>Atlasiet GPU darbības režīmu atkarībā no datora lietojuma un barošanas apstākļiem.
+Pārslēdzot režīmus dators iespējams būs jārestartē.</value>
+  </data>
+  <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
+	  <value>Hibrīda Režīms</value>
+  </data>
+  <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
+	  <value>Atļaut pārslēgšanos starp integrēto un diskrēto GPU.
+Nepieciešama restartēšana.</value>
+  </data>
+  <data name="NotificationsSettingsWindow_Updates_Title" xml:space="preserve">
+	  <value>Atjauninājumi</value>
   </data>
 </root>

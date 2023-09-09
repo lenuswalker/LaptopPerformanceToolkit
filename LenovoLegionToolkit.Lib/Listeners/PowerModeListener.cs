@@ -1,28 +1,25 @@
 ﻿using System;
-using System.Management;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Extensions;
+using LenovoLegionToolkit.Lib.System.Management;
 
 namespace LenovoLegionToolkit.Lib.Listeners;
 
-public class PowerModeListener : AbstractWMIListener<PowerModeState>, INotifyingListener<PowerModeState>
+public class PowerModeListener : AbstractWMIListener<PowerModeState, int>, INotifyingListener<PowerModeState>
 {
-    private readonly AIModeController _aiModeController;
     private readonly PowerPlanController _powerPlanController;
 
-    public PowerModeListener(AIModeController aiModeController, PowerPlanController powerPlanController) : base("ROOT\\WMI", "LENOVO_GAMEZONE_SMART_FAN_MODE_EVENT")
+    public PowerModeListener(PowerPlanController powerPlanController)
+        : base(WMI.LenovoGameZoneSmartFanModeEvent.Listen)
     {
-        _aiModeController = aiModeController ?? throw new ArgumentNullException(nameof(aiModeController));
         _powerPlanController = powerPlanController ?? throw new ArgumentNullException(nameof(powerPlanController));
     }
 
-    protected override PowerModeState GetValue(PropertyDataCollection properties)
+    protected override PowerModeState GetValue(int value)
     {
-        var property = properties["mode"];
-        var propertyValue = Convert.ToInt32(property.Value);
-        var value = (PowerModeState)(object)(propertyValue - 1);
-        return value;
+        var result = (PowerModeState)(value - 1);
+        return result;
     }
 
     protected override async Task OnChangedAsync(PowerModeState value)
@@ -39,7 +36,6 @@ public class PowerModeListener : AbstractWMIListener<PowerModeState>, INotifying
 
     private async Task ChangeDependenciesAsync(PowerModeState value)
     {
-        await _aiModeController.StartAsync(value).ConfigureAwait(false);
         await _powerPlanController.ActivatePowerPlanAsync(value).ConfigureAwait(false);
     }
 
@@ -48,16 +44,16 @@ public class PowerModeListener : AbstractWMIListener<PowerModeState>, INotifying
         switch (value)
         {
             case PowerModeState.Quiet:
-                MessagingCenter.Publish(new Notification(NotificationType.PowerModeQuiet, NotificationDuration.Short, value.GetDisplayName()));
+                MessagingCenter.Publish(new Notification(NotificationType.PowerModeQuiet, value.GetDisplayName()));
                 break;
             case PowerModeState.Balance:
-                MessagingCenter.Publish(new Notification(NotificationType.PowerModeBalance, NotificationDuration.Short, value.GetDisplayName()));
+                MessagingCenter.Publish(new Notification(NotificationType.PowerModeBalance, value.GetDisplayName()));
                 break;
             case PowerModeState.Performance:
-                MessagingCenter.Publish(new Notification(NotificationType.PowerModePerformance, NotificationDuration.Short, value.GetDisplayName()));
+                MessagingCenter.Publish(new Notification(NotificationType.PowerModePerformance, value.GetDisplayName()));
                 break;
             case PowerModeState.GodMode:
-                MessagingCenter.Publish(new Notification(NotificationType.PowerModeGodMode, NotificationDuration.Short, value.GetDisplayName()));
+                MessagingCenter.Publish(new Notification(NotificationType.PowerModeGodMode, value.GetDisplayName()));
                 break;
         }
     }

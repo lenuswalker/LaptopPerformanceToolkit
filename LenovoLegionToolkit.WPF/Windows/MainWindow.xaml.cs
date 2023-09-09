@@ -9,7 +9,6 @@ using System.Windows.Input;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.Utils;
-using LenovoLegionToolkit.WPF.Controls;
 using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Pages;
 using LenovoLegionToolkit.WPF.Resources;
@@ -29,7 +28,7 @@ public partial class MainWindow
     private readonly ApplicationSettings _applicationSettings = IoCContainer.Resolve<ApplicationSettings>();
     private readonly UpdateChecker _updateChecker = IoCContainer.Resolve<UpdateChecker>();
 
-    private readonly ContextMenuHelper _contextMenuHelper = new();
+    private TrayHelper? _trayHelper;
 
     public bool TrayTooltipEnabled { get; init; } = true;
 
@@ -63,31 +62,6 @@ public partial class MainWindow
         }
     }
 
-    private void InitializeTray()
-    {
-        _contextMenuHelper.BringToForeground = BringToForeground;
-        _contextMenuHelper.Close = App.Current.ShutdownAsync;
-
-        _trayIcon.ToolTipText = Resource.AppName;
-
-        if (TrayTooltipEnabled)
-        {
-            _trayIcon.PreviewTrayToolTipOpen += (_, _) =>
-            {
-                if (_trayIcon.TrayToolTip is not null)
-                    return;
-
-                _trayIcon.TrayToolTip = new StatusTrayPopup();
-                _trayIcon.TrayToolTipResolved.Style = Application.Current.Resources["PlainTooltip"] as Style;
-                _trayIcon.TrayToolTipResolved.VerticalOffset = -8;
-            };
-        }
-
-        _trayIcon.PreviewTrayContextMenuOpen += (_, _) => _trayIcon.ContextMenu ??= _contextMenuHelper.ContextMenu;
-        _trayIcon.TrayLeftMouseUp += (_, _) => BringToForeground();
-        _trayIcon.NoLeftClickDelay = true;
-    }
-
     private void MainWindow_SourceInitialized(object? sender, EventArgs e) => RestoreSize();
 
     private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -103,8 +77,6 @@ public partial class MainWindow
             _navigationStore.Items.Remove(_packageItem);
         }
 
-        _contextMenuHelper.SetNavigationItems(_navigationStore);
-
         if (App.Current.IsCompatible)
             SmartKeyHelper.Instance.BringToForeground = () => Dispatcher.Invoke(BringToForeground);
 
@@ -113,14 +85,17 @@ public partial class MainWindow
         LoadDeviceInfo();
         CheckForUpdates();
 
-        InitializeTray();
-
         InputBindings.Add(new KeyBinding(new ActionCommand(_navigationStore.NavigateToNext), Key.Tab, ModifierKeys.Control));
         InputBindings.Add(new KeyBinding(new ActionCommand(_navigationStore.NavigateToPrevious), Key.Tab, ModifierKeys.Control | ModifierKeys.Shift));
 
         var key = (int)Key.D1;
         foreach (var item in _navigationStore.Items.OfType<NavigationItem>())
             InputBindings.Add(new KeyBinding(new ActionCommand(() => _navigationStore.Navigate(item.PageTag)), (Key)key++, ModifierKeys.Control));
+
+        var trayHelper = new TrayHelper(_navigationStore, BringToForeground, TrayTooltipEnabled);
+        await trayHelper.InitializeAsync();
+        trayHelper.MakeVisible();
+        _trayHelper = trayHelper;
     }
 
     private async void MainWindow_Closing(object? sender, CancelEventArgs e)
@@ -129,7 +104,8 @@ public partial class MainWindow
 
         if (SuppressClosingEventHandler)
         {
-            _trayIcon.Dispose();
+            _trayHelper?.Dispose();
+            _trayHelper = null;
             return;
         }
 
@@ -210,7 +186,7 @@ public partial class MainWindow
 
     private void CheckForUpdates()
     {
-        Task.Run(_updateChecker.Check)
+        Task.Run(_updateChecker.CheckAsync)
             .ContinueWith(updatesAvailable =>
             {
                 var result = updatesAvailable.Result;
@@ -226,7 +202,7 @@ public partial class MainWindow
                 _updateIndicator.Visibility = Visibility.Visible;
 
                 if (WindowState == WindowState.Minimized)
-                    MessagingCenter.Publish(new Notification(NotificationType.UpdateAvailable, NotificationDuration.Long, versionNumber));
+                    MessagingCenter.Publish(new Notification(NotificationType.UpdateAvailable, versionNumber));
             }, TaskScheduler.FromCurrentSynchronizationContext());
     }
 

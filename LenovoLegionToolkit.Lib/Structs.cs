@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -69,6 +70,18 @@ public readonly struct Brightness
     public byte Value { get; private init; }
 
     public static implicit operator Brightness(byte value) => new() { Value = value };
+}
+
+public readonly struct DiscreteCapability
+{
+    public CapabilityID Id { get; }
+    public int Value { get; }
+
+    public DiscreteCapability(CapabilityID id, int value)
+    {
+        Id = id;
+        Value = value;
+    }
 }
 
 public readonly struct DisplayAdvancedColorInfo
@@ -318,6 +331,21 @@ public readonly struct GodModePreset
         $" {nameof(MaxValueOffset)}: {MaxValueOffset}";
 }
 
+public readonly struct GPUStatus
+{
+    public GPUState State { get; }
+    public string? PerformanceState { get; }
+    public List<Process> Processes { get; }
+    public int ProcessCount => Processes.Count;
+
+    public GPUStatus(GPUState state, string? performanceState, List<Process> processes)
+    {
+        State = state;
+        PerformanceState = performanceState;
+        Processes = processes;
+    }
+}
+
 public readonly struct HardwareId
 {
     public static readonly HardwareId Empty = new();
@@ -365,6 +393,7 @@ public readonly struct MachineInformation
 
         public SourceType Source { get; init; }
         public bool IGPUMode { get; init; }
+        public bool AIChip { get; init; }
         public bool FlipToStart { get; init; }
         public bool NvidiaGPUDynamicDisplaySwitching { get; init; }
         public bool InstantBootAc { get; init; }
@@ -380,8 +409,9 @@ public readonly struct MachineInformation
         public (bool status, bool connectivity) SupportsAlwaysOnAc { get; init; }
         public bool SupportsGodModeV1 { get; init; }
         public bool SupportsGodModeV2 { get; init; }
+        public bool SupportsGSync { get; init; }
         public bool SupportsIGPUMode { get; init; }
-        public bool SupportsIntelligentSubMode { get; init; }
+        public bool SupportsAIMode { get; init; }
         public bool HasQuietToPerformanceModeSwitchingBug { get; init; }
         public bool HasGodModeToOtherModeSwitchingBug { get; init; }
         public bool IsExcludedFromLenovoLighting { get; init; }
@@ -484,21 +514,17 @@ public readonly struct Notification
 {
     public NotificationType Type { get; }
 
-    public NotificationDuration Duration { get; }
-
     public object[] Args { get; }
 
-    public Notification(NotificationType type, NotificationDuration duration, params object[] args)
+    public Notification(NotificationType type, params object[] args)
     {
         Type = type;
-        Duration = duration;
         Args = args;
     }
 
     public override string ToString()
     {
         return $"{nameof(Type)}: {Type}," +
-               $" {nameof(Duration)}: {Duration}," +
                $" {nameof(Args)}: [{string.Join(", ", Args)}]";
     }
 }
@@ -575,6 +601,24 @@ public readonly struct ProcessInfo : IComparable
     public static bool operator >=(ProcessInfo left, ProcessInfo right) => left.CompareTo(right) >= 0;
 
     #endregion
+}
+
+public readonly struct RangeCapability
+{
+    public CapabilityID Id { get; }
+    public int DefaultValue { get; }
+    public int Min { get; }
+    public int Max { get; }
+    public int Step { get; }
+
+    public RangeCapability(CapabilityID id, int defaultValue, int min, int max, int step)
+    {
+        Id = id;
+        DefaultValue = defaultValue;
+        Min = min;
+        Max = max;
+        Step = step;
+    }
 }
 
 public readonly struct RGBColor
@@ -809,7 +853,10 @@ public readonly struct RefreshRate : IDisplayName, IEquatable<RefreshRate>
 
 public readonly struct Resolution : IDisplayName, IEquatable<Resolution>, IComparable<Resolution>
 {
+    [JsonProperty]
     private int Width { get; }
+
+    [JsonProperty]
     private int Height { get; }
 
     [JsonIgnore]

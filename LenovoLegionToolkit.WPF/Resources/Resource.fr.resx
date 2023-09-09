@@ -497,11 +497,6 @@ ATTENTION : Cette action ne fonctionnera pas correctement, si l'écran intégré
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
     <value>Désactiver</value>
   </data>
-  <data name="DiscreteGPUControl_DisablePossible" xml:space="preserve">
-	  <value>Le GPU nVidia peut être désactivé.
-
-Certains programmes peuvent planter si vous le faites.</value>
-  </data>
   <data name="Inactive" xml:space="preserve">
     <value>Inactif</value>
   </data>
@@ -1855,6 +1850,9 @@ AVERTISSEMENT : Cette action ne fonctionnera pas correctement si le GPU dédié 
   <data name="IGPUModeChangeException_Title" xml:space="preserve">
 	  <value>Impossible de changer le mode de fonctionnement GPU</value>
   </data>
+  <data name="IGPUModeChangeException_Message" xml:space="preserve">
+	  <value>Essayez de changer à nouveau de mode dans quelques secondes, si vous n'obtenez pas le résultat escompté.&#x0a;Si le dGPU ne répond pas du tout, redémarrez votre ordinateur portable.</value>
+  </data>
   <data name="IGPUModeChangeException_Title_IGPUOnly" xml:space="preserve">
 	  <value>Le dGPU est actuellement utilisé</value>
   </data>
@@ -1866,5 +1864,37 @@ AVERTISSEMENT : Cette action ne fonctionnera pas correctement si le GPU dédié 
   </data>
   <data name="IGPUModeChangeException_Message_Auto" xml:space="preserve">
 	  <value>Le dGPU va se déconnecter automatiquement lorsqu'il ne sera plus utilisé et l'ordinateur alimenté sur batterie.</value>
+  </data>
+  <data name="GodModeSettingsWindow_VantageWarning_Title" xml:space="preserve">
+	  <value>Les paramètres du mode personnalisé ne seront pas appliqués correctement lorsque Lenovo Vantage ou ses services sont en cours d'exécution.</value>
+  </data>
+  <data name="GodModeSettingsWindow_LegionZoneWarning_Title" xml:space="preserve">
+	  <value>Les paramètres du mode personnalisé ne seront pas appliqués correctement lorsque LegionZone ou ses services sont en cours d'exécution.</value>
+  </data>
+  <data name="DGPU_Connected_Title" xml:space="preserve">
+	  <value>DGPU connecté</value>
+  </data>
+  <data name="DGPU_Disconnected_Title" xml:space="preserve">
+	  <value>DGPU déconnecté</value>
+  </data>
+  <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
+	  <value>Mode de fonctionnement du GPU</value>
+  </data>
+  <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
+	  <value>Sélectionne le mode de fonctionnement du GPU en fonction de l'utilisation et des conditions d'alimentation de votre ordinateur.
+Le changement de mode peut nécessiter un redémarrage.</value>
+  </data>
+  <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
+	  <value>Mode Hybride</value>
+  </data>
+  <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
+	  <value>Permet le changement entre le GPU intégré et dédié.
+Nécessite un redémarrage.</value>
+  </data>
+  <data name="NotificationsSettingsWindow_NotificationDuration_Title" xml:space="preserve">
+	  <value>Durée</value>
+  </data>
+  <data name="NotificationsSettingsWindow_Updates_Title" xml:space="preserve">
+	  <value>Mises à jour</value>
   </data>
 </root>

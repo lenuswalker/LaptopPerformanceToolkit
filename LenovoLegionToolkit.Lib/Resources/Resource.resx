@@ -172,14 +172,6 @@
   <data name="GPUController_PoweredOn" xml:space="preserve">
     <value>Powered On</value>
   </data>
-  <data name="GSyncState_Off" xml:space="preserve">
-    <value>Off</value>
-    <comment>Informs the user that GSync is or will be turned off.</comment>
-  </data>
-  <data name="GSyncState_On" xml:space="preserve">
-    <value>On</value>
-    <comment>Informs the user that GSync is or will be turned on.</comment>
-  </data>
   <data name="HDRState_Off" xml:space="preserve">
     <value>Off</value>
     <comment>Informs the user that HDR is or will be turned off.</comment>
@@ -423,28 +415,37 @@
     <value>On</value>
     <comment>Informs the user that WinLock is or will be turned on.</comment>
   </data>
-	<data name="PortsBacklightState_Off" xml:space="preserve">
-		<value>Off</value>
-	</data>
-	<data name="PortsBacklightState_On" xml:space="preserve">
-		<value>On</value>
-	</data>
-	<data name="PanelLogoBacklightState_On" xml:space="preserve">
-		<value>On</value>
-	</data>
-	<data name="PanelLogoBacklightState_Off" xml:space="preserve">
-		<value>Off</value>
-	</data>
-	<data name="InstantBootState_Off" xml:space="preserve">
-		<value>Off</value>
-	</data>
-	<data name="InstantBootState_AcAdapter" xml:space="preserve">
-		<value>AC Adapter</value>
-	</data>
-	<data name="InstantBootState_UsbPowerDelivery" xml:space="preserve">
-		<value>USB Power Delivery</value>
-	</data>
-	<data name="InstantBootState_AcAdapterAndUsbPowerDelivery" xml:space="preserve">
-		<value>AC and USB PD</value>
-	</data>
+  <data name="PortsBacklightState_Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="PortsBacklightState_On" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="PanelLogoBacklightState_On" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="PanelLogoBacklightState_Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="InstantBootState_Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="InstantBootState_AcAdapter" xml:space="preserve">
+    <value>AC Adapter</value>
+  </data>
+  <data name="InstantBootState_UsbPowerDelivery" xml:space="preserve">
+    <value>USB Power Delivery</value>
+  </data>
+  <data name="InstantBootState_AcAdapterAndUsbPowerDelivery" xml:space="preserve">
+    <value>AC and USB PD</value>
+  </data>
+  <data name="NotificationDuration_Long" xml:space="preserve">
+    <value>Long</value>
+  </data>
+  <data name="NotificationDuration_Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="NotificationDuration_Short" xml:space="preserve">
+    <value>Short</value>
+  </data>
 </root>

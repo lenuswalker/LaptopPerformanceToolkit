@@ -18,30 +18,27 @@ public class ProcessorTDPAutomationStepControl : AbstractAutomationStepControl<P
     {
         PlaceholderText = "Stapm limit",
         Width = 150,
-        Max = 120,
-        Min = 0,
-        DecimalPlaces = 0,
-        IntegersOnly = true
+        Maximum = 120,
+        Minimum = 0,
+        MaxDecimalPlaces = 0
     };
 
     private readonly NumberBox _fast = new()
     {
         PlaceholderText = "Fast limit",
         Width = 150,
-        Max = 120,
-        Min = 0,
-        DecimalPlaces = 0,
-        IntegersOnly = true
+        Maximum = 120,
+        Minimum = 0,
+        MaxDecimalPlaces = 0
     };
 
     private readonly NumberBox _slow = new()
     {
         PlaceholderText = "Slow limit",
         Width = 150,
-        Max = 120,
-        Min = 0,
-        DecimalPlaces = 0,
-        IntegersOnly = true
+        Maximum = 120,
+        Minimum = 0,
+        MaxDecimalPlaces = 0
     };
 
     private readonly CheckBox _useMSR = new()
@@ -62,10 +59,9 @@ public class ProcessorTDPAutomationStepControl : AbstractAutomationStepControl<P
     {
         PlaceholderText = "Interval",
         Width = 150,
-        Max = 120,
-        Min = 0,
-        DecimalPlaces = 0,
-        IntegersOnly = true
+        Maximum = 120,
+        Minimum = 0,
+        MaxDecimalPlaces = 0
     };
 
     private readonly StackPanel _stackPanel = new();
@@ -81,9 +77,9 @@ public class ProcessorTDPAutomationStepControl : AbstractAutomationStepControl<P
 
     public override IAutomationStep CreateAutomationStep()
     {
-        _state.Stapm = _stapm.Value;
-        _state.Fast = _fast.Value;
-        _state.Slow = _slow.Value;
+        _state.Stapm = (double)_stapm.Value;
+        _state.Fast = (double)_fast.Value;
+        _state.Slow = (double)_slow.Value;
         _state.UseMSR = _useMSR.IsChecked == null ? false : (bool)_useMSR.IsChecked;
         _state.MaintainTDP = _maintainTDP.IsChecked == null ? false : (bool)_maintainTDP.IsChecked;
         _state.Interval = (int)_interval.Value;
@@ -153,19 +149,12 @@ public class ProcessorTDPAutomationStepControl : AbstractAutomationStepControl<P
         var state = await AutomationStep.GetAllStatesAsync();
         var stateList = state.ToList();
 
-
         _stapm.Text = AutomationStep.State.Stapm.ToString();
         _fast.Text = AutomationStep.State.Fast.ToString();
         _slow.Text = AutomationStep.State.Slow.ToString();
         _useMSR.IsChecked = AutomationStep.State.UseMSR;
         _maintainTDP.IsChecked = AutomationStep.State.MaintainTDP;
         _interval.Text = AutomationStep.State.Interval.ToString();
-
-        //if ((bool)_maintainTDP.IsChecked)
-        //    _interval.IsEnabled = true;
-        //else
-        //    _interval.IsEnabled = false;
-
     }
 
     protected override void OnFinishedLoading() { }

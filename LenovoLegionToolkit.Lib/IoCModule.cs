@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using LenovoLegionToolkit.Lib.AutoListeners;
 using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Controllers.GodMode;
 using LenovoLegionToolkit.Lib.Controllers.Sensors;
@@ -88,7 +89,15 @@ public class IoCModule : Module
         builder.Register<ThermalModeListener>().AutoActivateListener();
         builder.Register<WinKeyListener>().AutoActivateListener();
 
-        builder.Register<AIModeController>();
+        builder.Register<GameAutoListener>();
+        builder.Register<InstanceStartedEventAutoAutoListener>();
+        builder.Register<InstanceStoppedEventAutoAutoListener>();
+        builder.Register<ProcessAutoListener>();
+        builder.Register<TimeAutoListener>();
+        builder.Register<TimeIntervalAutoListener>();
+        builder.Register<UserInactivityAutoListener>();
+
+        builder.Register<AIController>();
         builder.Register<GodModeController>();
         builder.Register<GodModeControllerV1>(true);
         builder.Register<GodModeControllerV2>(true);

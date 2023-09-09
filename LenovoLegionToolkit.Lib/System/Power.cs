@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using LenovoLegionToolkit.Lib.System.Management;
 using LenovoLegionToolkit.Lib.Utils;
 using Windows.Win32;
 
@@ -37,11 +38,7 @@ public static class Power
     {
         try
         {
-            var result = await WMI.CallAsync("root\\WMI",
-                $"SELECT * FROM LENOVO_GAMEZONE_DATA",
-                "IsACFitForOC",
-                new(),
-                pdc => (uint)pdc["Data"].Value).ConfigureAwait(false);
+            var result = await WMI.LenovoGameZoneData.IsACFitForOCAsync().ConfigureAwait(false);
 
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Mode = {result}");
@@ -58,11 +55,7 @@ public static class Power
     {
         try
         {
-            var result = await WMI.CallAsync("root\\WMI",
-                $"SELECT * FROM LENOVO_GAMEZONE_DATA",
-                "GetPowerChargeMode",
-                new(),
-                pdc => (uint)pdc["Data"].Value).ConfigureAwait(false);
+            var result = await WMI.LenovoGameZoneData.GetPowerChargeModeAsync().ConfigureAwait(false);
 
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Mode = {result}");
