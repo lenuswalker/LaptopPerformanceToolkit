@@ -39,13 +39,13 @@ public class DisplayBrightnessAutomationStepControl : AbstractAutomationStepCont
         _brightness.Width = newWidth;
     }
 
-    public override IAutomationStep CreateAutomationStep() => new DisplayBrightnessAutomationStep((int)_brightness.Value);
+    public override IAutomationStep CreateAutomationStep() => new DisplayBrightnessAutomationStep(_brightness.Value is null ? 0 : (int)_brightness.Value);
 
     protected override UIElement GetCustomControl()
     {
-        _brightness.TextChanged += (_, _) =>
+        _brightness.ValueChanged += (_, _) =>
         {
-            if (_brightness.Text != AutomationStep.State.ToString())
+            if (_brightness.Value != AutomationStep.State)
                 RaiseChanged();
         };
 
@@ -58,7 +58,7 @@ public class DisplayBrightnessAutomationStepControl : AbstractAutomationStepCont
 
     protected override Task RefreshAsync()
     {
-        _brightness.Text = AutomationStep.State.ToString();
+        _brightness.Value = AutomationStep.State;
         return Task.CompletedTask;
     }
 }

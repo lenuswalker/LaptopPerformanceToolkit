@@ -20,7 +20,9 @@ public class ProcessorTDPAutomationStepControl : AbstractAutomationStepControl<P
         Width = 150,
         Maximum = 120,
         Minimum = 0,
-        MaxDecimalPlaces = 0
+        MaxDecimalPlaces = 0,
+        SmallChange = 1,
+        LargeChange = 5
     };
 
     private readonly NumberBox _fast = new()
@@ -29,7 +31,9 @@ public class ProcessorTDPAutomationStepControl : AbstractAutomationStepControl<P
         Width = 150,
         Maximum = 120,
         Minimum = 0,
-        MaxDecimalPlaces = 0
+        MaxDecimalPlaces = 0,
+        SmallChange = 1,
+        LargeChange = 5
     };
 
     private readonly NumberBox _slow = new()
@@ -38,7 +42,9 @@ public class ProcessorTDPAutomationStepControl : AbstractAutomationStepControl<P
         Width = 150,
         Maximum = 120,
         Minimum = 0,
-        MaxDecimalPlaces = 0
+        MaxDecimalPlaces = 0,
+        SmallChange = 1,
+        LargeChange = 5
     };
 
     private readonly CheckBox _useMSR = new()
@@ -61,7 +67,9 @@ public class ProcessorTDPAutomationStepControl : AbstractAutomationStepControl<P
         Width = 150,
         Maximum = 120,
         Minimum = 0,
-        MaxDecimalPlaces = 0
+        MaxDecimalPlaces = 0,
+        SmallChange = 1,
+        LargeChange = 5
     };
 
     private readonly StackPanel _stackPanel = new();
@@ -77,12 +85,12 @@ public class ProcessorTDPAutomationStepControl : AbstractAutomationStepControl<P
 
     public override IAutomationStep CreateAutomationStep()
     {
-        _state.Stapm = (double)_stapm.Value;
-        _state.Fast = (double)_fast.Value;
-        _state.Slow = (double)_slow.Value;
+        _state.Stapm = _stapm.Value is null ? 0 : (int)_stapm.Value;
+        _state.Fast = _fast.Value is null ? 0 : (int)_fast.Value;
+        _state.Slow = _slow.Value is null ? 0 : (int)_slow.Value;
         _state.UseMSR = _useMSR.IsChecked == null ? false : (bool)_useMSR.IsChecked;
         _state.MaintainTDP = _maintainTDP.IsChecked == null ? false : (bool)_maintainTDP.IsChecked;
-        _state.Interval = (int)_interval.Value;
+        _state.Interval = _interval.Value is null ? 0 : (int)_interval.Value;
         return new ProcessorTDPAutomationStep(_state);
     }
 
@@ -91,30 +99,29 @@ public class ProcessorTDPAutomationStepControl : AbstractAutomationStepControl<P
         ProcessorController processor = _controller.GetCurrent();
         if (processor.GetType() == typeof(AMDProcessorController))
         {
-            _stapm.TextChanged += (_, _) =>
+            _stapm.ValueChanged += (_, _) =>
             {
-                if (_stapm.Text != AutomationStep.State.Stapm.ToString())
+                if (_stapm.Value != AutomationStep.State.Stapm)
                     RaiseChanged();
             };
 
             _stackPanel.Children.Add(_stapm);
         }
 
-        _fast.TextChanged += (_, _) =>
+        _fast.ValueChanged += (_, _) =>
         {
-            if (_fast.Text != AutomationStep.State.Fast.ToString())
+            if (_fast.Value != AutomationStep.State.Fast)
                 RaiseChanged();
         };
 
-        _slow.TextChanged += (_, _) =>
+        _slow.ValueChanged += (_, _) =>
         {
-            if (_slow.Text != AutomationStep.State.Slow.ToString())
+            if (_slow.Value != AutomationStep.State.Slow)
                 RaiseChanged();
         };
 
         if (processor.GetType() == typeof(IntelProcessorController))
         {
-            //_useMSR.IsChecked = false;
             _useMSR.Checked += (_, _) =>
             {
                 if (_useMSR.IsChecked != AutomationStep.State.UseMSR)
@@ -124,16 +131,15 @@ public class ProcessorTDPAutomationStepControl : AbstractAutomationStepControl<P
             _stackPanel.Children.Add(_useMSR);
         }
 
-        //_maintainTDP.IsChecked = false;
         _maintainTDP.Checked += (_, _) =>
         {
             if (_maintainTDP.IsChecked != AutomationStep.State.MaintainTDP)
                 RaiseChanged();
         };
 
-        _interval.TextChanged += (_, _) =>
+        _interval.ValueChanged += (_, _) =>
         {
-            if (_interval.Text != AutomationStep.State.Interval.ToString())
+            if (_interval.Value != AutomationStep.State.Interval)
                 RaiseChanged();
         };
 
@@ -149,12 +155,12 @@ public class ProcessorTDPAutomationStepControl : AbstractAutomationStepControl<P
         var state = await AutomationStep.GetAllStatesAsync();
         var stateList = state.ToList();
 
-        _stapm.Text = AutomationStep.State.Stapm.ToString();
-        _fast.Text = AutomationStep.State.Fast.ToString();
-        _slow.Text = AutomationStep.State.Slow.ToString();
+        _stapm.Value = AutomationStep.State.Stapm;
+        _fast.Value = AutomationStep.State.Fast;
+        _slow.Value = AutomationStep.State.Slow;
         _useMSR.IsChecked = AutomationStep.State.UseMSR;
         _maintainTDP.IsChecked = AutomationStep.State.MaintainTDP;
-        _interval.Text = AutomationStep.State.Interval.ToString();
+        _interval.Value = AutomationStep.State.Interval;
     }
 
     protected override void OnFinishedLoading() { }
