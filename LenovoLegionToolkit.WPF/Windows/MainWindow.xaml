@@ -99,6 +99,7 @@
                         PageTag="keyboardBacklight"
                         PageType="{x:Type pages:KeyboardBacklightPage}" />
                     <custom:NavigationItem
+                        x:Name="_batteryItem"
                         Content="{x:Static resources:Resource.MainWindow_NavigationItem_Battery}"
                         Icon="BatteryCheckmark24"
                         PageTag="battery"
@@ -109,6 +110,7 @@
                         PageTag="automation"
                         PageType="{x:Type pages:AutomationPage}" />
                     <custom:NavigationItem
+                        x:Name="_packageItem"
                         Content="{x:Static resources:Resource.MainWindow_NavigationItem_Packages}"
                         Icon="Box24"
                         PageTag="packages"
