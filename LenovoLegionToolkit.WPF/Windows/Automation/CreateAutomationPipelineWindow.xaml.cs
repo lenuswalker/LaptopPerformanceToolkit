@@ -12,6 +12,7 @@ using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Resources;
 using Wpf.Ui.Common;
 using Wpf.Ui.Controls;
+using CardControl = LenovoLegionToolkit.WPF.Controls.Custom.CardControl;
 
 namespace LenovoLegionToolkit.WPF.Windows.Automation;
 
@@ -23,6 +24,7 @@ public partial class CreateAutomationPipelineWindow
         new LowWattageACAdapterConnectedAutomationPipelineTrigger(),
         new ACAdapterDisconnectedAutomationPipelineTrigger(),
         new PowerModeAutomationPipelineTrigger(PowerModeState.Balance),
+        new GodModePresetChangedAutomationPipelineTrigger(Guid.Empty),
         new GamesAreRunningAutomationPipelineTrigger(),
         new GamesStopAutomationPipelineTrigger(),
         new ProcessesAreRunningAutomationPipelineTrigger(Array.Empty<ProcessInfo>()),
@@ -35,6 +37,8 @@ public partial class CreateAutomationPipelineWindow
         new DisplayOffAutomationPipelineTrigger(),
         new ExternalDisplayConnectedAutomationPipelineTrigger(),
         new ExternalDisplayDisconnectedAutomationPipelineTrigger(),
+        new WiFiConnectedAutomationPipelineTrigger(Array.Empty<string>()),
+        new WiFiDisconnectedAutomationPipelineTrigger(),
         new TimeAutomationPipelineTrigger(false, false, TimeExtensions.UtcNow, Enum.GetValues<DayOfWeek>()),
         new OnStartupAutomationPipelineTrigger()
     };

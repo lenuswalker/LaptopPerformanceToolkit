@@ -20,6 +20,7 @@ using LenovoLegionToolkit.Lib.Features.Hybrid;
 using LenovoLegionToolkit.Lib.Features.Hybrid.Notify;
 using LenovoLegionToolkit.Lib.Features.PanelLogo;
 using LenovoLegionToolkit.Lib.Features.WhiteKeyboardBacklight;
+using LenovoLegionToolkit.Lib.Integrations;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.SoftwareDisabler;
 using LenovoLegionToolkit.Lib.Utils;
@@ -90,6 +91,8 @@ public partial class App
             new IoCModule()
         );
 
+        IoCContainer.Resolve<HttpClientFactory>().SetProxy(flags.ProxyUrl, flags.ProxyUsername, flags.ProxyPassword, flags.ProxyAllowAllCerts);
+
         IoCContainer.Resolve<PowerModeFeature>().AllowAllPowerModesOnBattery = flags.AllowAllPowerModesOnBattery;
         IoCContainer.Resolve<RGBKeyboardBacklightController>().ForceDisable = flags.ForceDisableRgbKeyboardSupport;
         IoCContainer.Resolve<SpectrumKeyboardBacklightController>().ForceDisable = flags.ForceDisableSpectrumKeyboardSupport;
@@ -98,6 +101,7 @@ public partial class App
         IoCContainer.Resolve<PortsBacklightFeature>().ForceDisable = flags.ForceDisableLenovoLighting;
         IoCContainer.Resolve<IGPUModeFeature>().ExperimentalGPUWorkingMode = flags.ExperimentalGPUWorkingMode;
         IoCContainer.Resolve<DGPUNotify>().ExperimentalGPUWorkingMode = flags.ExperimentalGPUWorkingMode;
+        IoCContainer.Resolve<UpdateChecker>().Disable = flags.DisableUpdateChecker;
 
         AutomationPage.EnableHybridModeAutomation = flags.EnableHybridModeAutomation;
 
@@ -108,8 +112,10 @@ public partial class App
         await InitSpectrumKeyboardControllerAsync();
         await InitGpuOverclockControllerAsync();
         await InitAutomationProcessorAsync();
+        await InitHybridModeAsync();
 
         await IoCContainer.Resolve<AIController>().StartIfNeededAsync();
+        await IoCContainer.Resolve<HWiNFOIntegration>().StartStopIfNeededAsync();
 
 #if !DEBUG
         Autorun.Validate();
@@ -336,6 +342,23 @@ public partial class App
 
         var fnKeysStatus = await IoCContainer.Resolve<FnKeysDisabler>().GetStatusAsync();
         Log.Instance.Trace($"FnKeys status: {fnKeysStatus}");
+    }
+
+    private static async Task InitHybridModeAsync()
+    {
+        try
+        {
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Initializing hybrid mode...");
+
+            var feature = IoCContainer.Resolve<HybridModeFeature>();
+            await feature.EnsureDGPUEjectedIfNeededAsync();
+        }
+        catch (Exception ex)
+        {
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Couldn't initialize hybrid mode.", ex);
+        }
     }
 
     private static async Task InitAutomationProcessorAsync()

@@ -9,6 +9,7 @@ using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Features;
+using LenovoLegionToolkit.Lib.Integrations;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.SoftwareDisabler;
 using LenovoLegionToolkit.Lib.System;
@@ -23,6 +24,7 @@ namespace LenovoLegionToolkit.WPF.Pages;
 public partial class SettingsPage
 {
     private readonly ApplicationSettings _settings = IoCContainer.Resolve<ApplicationSettings>();
+    private readonly IntegrationsSettings _integrationsSettings = IoCContainer.Resolve<IntegrationsSettings>();
 
     private readonly VantageDisabler _vantageDisabler = IoCContainer.Resolve<VantageDisabler>();
     private readonly LegionZoneDisabler _legionZoneDisabler = IoCContainer.Resolve<LegionZoneDisabler>();
@@ -30,6 +32,7 @@ public partial class SettingsPage
     private readonly PowerModeFeature _powerModeFeature = IoCContainer.Resolve<PowerModeFeature>();
     private readonly RGBKeyboardBacklightController _rgbKeyboardBacklightController = IoCContainer.Resolve<RGBKeyboardBacklightController>();
     private readonly ThemeManager _themeManager = IoCContainer.Resolve<ThemeManager>();
+    private readonly HWiNFOIntegration _hwinfoIntegration = IoCContainer.Resolve<HWiNFOIntegration>();
 
     private bool _isRefreshing;
 
@@ -92,6 +95,10 @@ public partial class SettingsPage
         _fnKeysCard.Visibility = fnKeysStatus != SoftwareStatus.NotFound ? Visibility.Visible : Visibility.Collapsed;
         _fnKeysToggle.IsChecked = fnKeysStatus == SoftwareStatus.Disabled;
 
+        _smartFnLockComboBox.SetItems(new[] { (ModifierKey)0, ModifierKey.Alt, ModifierKey.Alt | ModifierKey.Ctrl | ModifierKey.Shift },
+            _settings.Store.SmartFnLockFlags,
+            m => m is 0 ? Resource.Off : m.GetFlagsDisplayName());
+
         _smartKeySinglePressActionCard.Visibility = fnKeysStatus != SoftwareStatus.Enabled ? Visibility.Visible : Visibility.Collapsed;
         _smartKeyDoublePressActionCard.Visibility = fnKeysStatus != SoftwareStatus.Enabled ? Visibility.Visible : Visibility.Collapsed;
 
@@ -99,7 +106,11 @@ public partial class SettingsPage
         _excludeRefreshRatesCard.Visibility = fnKeysStatus != SoftwareStatus.Enabled ? Visibility.Visible : Visibility.Collapsed;
         _synchronizeBrightnessToAllPowerPlansToggle.IsChecked = _settings.Store.SynchronizeBrightnessToAllPowerPlans;
 
+        _bootLogoCard.Visibility = await BootLogo.IsSupportedAsync() ? Visibility.Visible : Visibility.Collapsed;
+
         _powerPlansCard.Visibility = await _powerModeFeature.IsSupportedAsync() ? Visibility.Visible : Visibility.Collapsed;
+
+        _hwinfoIntegrationToggle.IsChecked = _integrationsSettings.Store.HWiNFO;
 
         await loadingTask;
 
@@ -109,7 +120,9 @@ public partial class SettingsPage
         _vantageToggle.Visibility = Visibility.Visible;
         _legionZoneToggle.Visibility = Visibility.Visible;
         _fnKeysToggle.Visibility = Visibility.Visible;
+        _smartFnLockComboBox.Visibility = Visibility.Visible;
         _synchronizeBrightnessToAllPowerPlansToggle.Visibility = Visibility.Visible;
+        _hwinfoIntegrationToggle.Visibility = Visibility.Visible;
 
         _isRefreshing = false;
     }
@@ -186,6 +199,18 @@ public partial class SettingsPage
             return;
 
         Autorun.Set(state);
+    }
+
+    private void SmartFnLockComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (_isRefreshing)
+            return;
+
+        if (!_smartFnLockComboBox.TryGetSelectedItem(out ModifierKey modifierKey))
+            return;
+
+        _settings.Store.SmartFnLockFlags = modifierKey;
+        _settings.SynchronizeStore();
     }
 
     private void SmartKeySinglePressActionCard_Click(object sender, RoutedEventArgs e)
@@ -448,6 +473,15 @@ public partial class SettingsPage
         _settings.SynchronizeStore();
     }
 
+    private void BootLogo_Click(object sender, RoutedEventArgs e)
+    {
+        if (_isRefreshing)
+            return;
+
+        var window = new BootLogoWindow { Owner = Window.GetWindow(this) };
+        window.ShowDialog();
+    }
+
     private void PowerPlans_Click(object sender, RoutedEventArgs e)
     {
         if (_isRefreshing)
@@ -460,5 +494,16 @@ public partial class SettingsPage
     private void PowerPlansControlPanel_Click(object sender, RoutedEventArgs e)
     {
         Process.Start("control", "/name Microsoft.PowerOptions");
+    }
+
+    private async void HWiNFOIntegrationToggle_Click(object sender, RoutedEventArgs e)
+    {
+        if (_isRefreshing)
+            return;
+
+        _integrationsSettings.Store.HWiNFO = _hwinfoIntegrationToggle.IsChecked ?? false;
+        _integrationsSettings.SynchronizeStore();
+
+        await _hwinfoIntegration.StartStopIfNeededAsync();
     }
 }

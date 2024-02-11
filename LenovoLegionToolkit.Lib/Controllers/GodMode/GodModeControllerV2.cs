@@ -36,7 +36,7 @@ public class GodModeControllerV2 : AbstractGodModeController
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Applying state...");
 
-        var preset = await GetActivePresetAsync().ConfigureAwait(false);
+        var (presetId, preset) = await GetActivePresetAsync().ConfigureAwait(false);
 
         var settings = new Dictionary<CapabilityID, StepperValue?>
         {
@@ -51,6 +51,7 @@ public class GodModeControllerV2 : AbstractGodModeController
             { CapabilityID.GPUConfigurableTGP, preset.GPUConfigurableTGP },
             { CapabilityID.GPUTemperatureLimit, preset.GPUTemperatureLimit },
             { CapabilityID.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline, preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline },
+            { CapabilityID.GPUToCPUDynamicBoost, preset.GPUToCPUDynamicBoost },
         };
 
         var fanTable = preset.FanTable ?? await GetDefaultFanTableAsync().ConfigureAwait(false);
@@ -94,7 +95,6 @@ public class GodModeControllerV2 : AbstractGodModeController
         }
         else
         {
-
             try
             {
                 if (Log.Instance.IsTraceEnabled)
@@ -132,8 +132,10 @@ public class GodModeControllerV2 : AbstractGodModeController
             }
         }
 
+        RaisePresetChanged(presetId);
+
         if (Log.Instance.IsTraceEnabled)
-            Log.Instance.Trace($"State applied.");
+            Log.Instance.Trace($"State applied. [name={preset.Name}, id={presetId}]");
     }
 
     public override Task<FanTable> GetMinimumFanTableAsync()
@@ -169,6 +171,7 @@ public class GodModeControllerV2 : AbstractGodModeController
                     GPUConfigurableTGP = GetDefaultCapabilityIdValueInPowerMode(allCapabilityData, CapabilityID.GPUConfigurableTGP, powerMode),
                     GPUTemperatureLimit = GetDefaultCapabilityIdValueInPowerMode(allCapabilityData, CapabilityID.GPUTemperatureLimit, powerMode),
                     GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline = GetDefaultCapabilityIdValueInPowerMode(allCapabilityData, CapabilityID.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline, powerMode),
+                    GPUToCPUDynamicBoost = GetDefaultCapabilityIdValueInPowerMode(allCapabilityData, CapabilityID.GPUToCPUDynamicBoost, powerMode),
                     FanTable = await GetDefaultFanTableAsync().ConfigureAwait(false),
                     FanFullSpeed = false
                 };
@@ -246,6 +249,7 @@ public class GodModeControllerV2 : AbstractGodModeController
             GPUConfigurableTGP = stepperValues.GetValueOrNull(CapabilityID.GPUConfigurableTGP),
             GPUTemperatureLimit = stepperValues.GetValueOrNull(CapabilityID.GPUTemperatureLimit),
             GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline = stepperValues.GetValueOrNull(CapabilityID.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline),
+            GPUToCPUDynamicBoost = stepperValues.GetValueOrNull(CapabilityID.GPUToCPUDynamicBoost),
             FanTableInfo = fanTableData is null ? null : new FanTableInfo(fanTableData, await GetDefaultFanTableAsync().ConfigureAwait(false)),
             FanFullSpeed = await GetFanFullSpeedAsync().ConfigureAwait(false),
             MinValueOffset = 0,

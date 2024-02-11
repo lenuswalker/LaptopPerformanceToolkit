@@ -11,6 +11,7 @@ using LenovoLegionToolkit.Lib.Features.Hybrid.Notify;
 using LenovoLegionToolkit.Lib.Features.InstantBoot;
 using LenovoLegionToolkit.Lib.Features.PanelLogo;
 using LenovoLegionToolkit.Lib.Features.WhiteKeyboardBacklight;
+using LenovoLegionToolkit.Lib.Integrations;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.PackageDownloader;
 using LenovoLegionToolkit.Lib.Settings;
@@ -23,6 +24,8 @@ public class IoCModule : Module
 {
     protected override void Load(ContainerBuilder builder)
     {
+        builder.Register<HttpClientFactory>();
+
         builder.Register<FnKeysDisabler>();
         builder.Register<LegionZoneDisabler>();
         builder.Register<VantageDisabler>();
@@ -31,6 +34,7 @@ public class IoCModule : Module
         builder.Register<BalanceModeSettings>();
         builder.Register<GodModeSettings>();
         builder.Register<GPUOverclockSettings>();
+        builder.Register<IntegrationsSettings>();
         builder.Register<PackageDownloaderSettings>();
         builder.Register<RGBKeyboardSettings>();
         builder.Register<SpectrumKeyboardSettings>();
@@ -38,6 +42,7 @@ public class IoCModule : Module
 
         builder.Register<AlwaysOnUSBFeature>();
         builder.Register<BatteryFeature>();
+        builder.Register<BatteryNightChargeFeature>();
         builder.Register<DpiScaleFeature>();
         builder.Register<FlipToStartFeature>();
         builder.Register<FlipToStartCapabilityFeature>(true);
@@ -94,6 +99,7 @@ public class IoCModule : Module
         builder.Register<ProcessAutoListener>();
         builder.Register<TimeAutoListener>();
         builder.Register<UserInactivityAutoListener>();
+        builder.Register<WiFiAutoListener>();
 
         builder.Register<AIController>();
         builder.Register<DisplayBrightnessController>();
@@ -108,6 +114,7 @@ public class IoCModule : Module
         builder.Register<SensorsControllerV1>(true);
         builder.Register<SensorsControllerV2>(true);
         builder.Register<SensorsControllerV3>(true);
+        builder.Register<SmartFnLockController>();
         builder.Register<SpectrumKeyboardBacklightController>();
 
         builder.Register<UpdateChecker>();
@@ -116,6 +123,8 @@ public class IoCModule : Module
         builder.Register<PackageDownloaderFactory>();
         builder.Register<PCSupportPackageDownloader>();
         builder.Register<VantagePackageDownloader>();
+
+        builder.Register<HWiNFOIntegration>();
 
         builder.Register<SunriseSunset>();
     }

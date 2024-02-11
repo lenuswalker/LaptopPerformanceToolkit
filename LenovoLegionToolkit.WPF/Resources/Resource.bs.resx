@@ -329,7 +329,7 @@
     <value>Datum proizvodnje</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Message" xml:space="preserve">
-	  <value>Vrijeme od posljednjeg povezivanja laptopa na punjač.
+    <value>Vrijeme od posljednjeg povezivanja laptopa na punjač.
 Ovo vrijeme možda neće biti tačno ako je laptop bio napunjen dok je spavao ili isključen.</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Title" xml:space="preserve">
@@ -570,9 +570,6 @@ Uvijek provjerite da li instalirate ispravne pakete.</value>
   </data>
   <data name="PackagesPage_DownloadInProgress_Title" xml:space="preserve">
     <value>Preuzimanje u toku</value>
-  </data>
-  <data name="PackagesPage_DownloadTo" xml:space="preserve">
-    <value>Preuzmite na</value>
   </data>
   <data name="Filter" xml:space="preserve">
     <value>Filtriraj...</value>

@@ -169,6 +169,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string AbstractAutomationStepControl_Delete {
+            get {
+                return ResourceManager.GetString("AbstractAutomationStepControl_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Active.
         /// </summary>
         public static string Active {
@@ -612,6 +621,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Preset.
+        /// </summary>
+        public static string AutomationPipelineControl_SubtitlePart_Preset {
+            get {
+                return ResourceManager.GetString("AutomationPipelineControl_SubtitlePart_Preset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unnamed.
         /// </summary>
         public static string AutomationPipelineControl_Unnamed {
@@ -689,6 +707,42 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string BatteryModeControl_Title {
             get {
                 return ResourceManager.GetString("BatteryModeControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When enabled, this device will charge to 80% when plugged in overnight and finish charging to 100% by the time you use this device in the morning..
+        /// </summary>
+        public static string BatteryNightChargeAutomationStepControl_Message {
+            get {
+                return ResourceManager.GetString("BatteryNightChargeAutomationStepControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overnight Battery Charging.
+        /// </summary>
+        public static string BatteryNightChargeAutomationStepControl_Title {
+            get {
+                return ResourceManager.GetString("BatteryNightChargeAutomationStepControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When enabled, this device will charge to 80% when plugged in overnight and finish charging to 100% by the time you use this device in the morning..
+        /// </summary>
+        public static string BatteryNightChargeModeControl_Message {
+            get {
+                return ResourceManager.GetString("BatteryNightChargeModeControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overnight Battery Charging.
+        /// </summary>
+        public static string BatteryNightChargeModeControl_Title {
+            get {
+                return ResourceManager.GetString("BatteryNightChargeModeControl_Title", resourceCulture);
             }
         }
         
@@ -915,6 +969,142 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string BatteryPage_Title {
             get {
                 return ResourceManager.GetString("BatteryPage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customize.
+        /// </summary>
+        public static string BootLogoWindow_Customize {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_Customize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom Boot Logo is set.
+        /// </summary>
+        public static string BootLogoWindow_CustomLogoSet {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_CustomLogoSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Boot Logo is set.
+        /// </summary>
+        public static string BootLogoWindow_DefaultLogoSet {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_DefaultLogoSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom boot logo must be exactly {0} pixels large.
+        ///Supported formats are: {1}..
+        /// </summary>
+        public static string BootLogoWindow_Description {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom logo could not be set: {0}.
+        /// </summary>
+        public static string BootLogoWindow_SetCustomFailed {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_SetCustomFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom boot logo set..
+        /// </summary>
+        public static string BootLogoWindow_SetCustomSuccess {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_SetCustomSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default logo could not be set: {0}.
+        /// </summary>
+        public static string BootLogoWindow_SetDefaultFailed {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_SetDefaultFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default boot logo set..
+        /// </summary>
+        public static string BootLogoWindow_SetDefaultSuccess {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_SetDefaultSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot mount EFI partition..
+        /// </summary>
+        public static string BootLogoWindow_SetError_Cannot_Mount_EFI_Partition {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_SetError_Cannot_Mount_EFI_Partition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot set UEFI privilege..
+        /// </summary>
+        public static string BootLogoWindow_SetError_Cannot_Set_UEFI_Privilege {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_SetError_Cannot_Set_UEFI_Privilege", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid image format..
+        /// </summary>
+        public static string BootLogoWindow_SetError_Invalid_Image_Format {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_SetError_Invalid_Image_Format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid image size..
+        /// </summary>
+        public static string BootLogoWindow_SetError_Invalid_Image_Size {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_SetError_Invalid_Image_Size", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not enough free space on EFI partition..
+        /// </summary>
+        public static string BootLogoWindow_SetError_Not_Enough_Free_Space_On_EFI_Partition {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_SetError_Not_Enough_Free_Space_On_EFI_Partition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string BootLogoWindow_Status {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Boot Logo.
+        /// </summary>
+        public static string BootLogoWindow_Title {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_Title", resourceCulture);
             }
         }
         
@@ -1261,6 +1451,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string DeviceInformationWindow_Model_Title {
             get {
                 return ResourceManager.GetString("DeviceInformationWindow_Model_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refresh.
+        /// </summary>
+        public static string DeviceInformationWindow_Refresh {
+            get {
+                return ResourceManager.GetString("DeviceInformationWindow_Refresh", resourceCulture);
             }
         }
         
@@ -2232,6 +2431,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GPU to CPU Dynamic Boost.
+        /// </summary>
+        public static string GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is the maximum additional power that can be allocated to the GPU from the CPU based on CPU usage. The higher the value, the better the performance of applications that use the GPU..
+        /// </summary>
+        public static string GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total Processor Power Target In AC.
         /// </summary>
         public static string GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl {
@@ -2413,6 +2630,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string IncompatibleDevice_Title {
             get {
                 return ResourceManager.GetString("IncompatibleDevice_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information.
+        /// </summary>
+        public static string Information {
+            get {
+                return ResourceManager.GetString("Information", resourceCulture);
             }
         }
         
@@ -2885,11 +3111,38 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Notification Text.
+        /// </summary>
+        public static string NotificationAutomationStepControl_NotificationText {
+            get {
+                return ResourceManager.GetString("NotificationAutomationStepControl_NotificationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show notification.
+        /// </summary>
+        public static string NotificationAutomationStepControl_Title {
+            get {
+                return ResourceManager.GetString("NotificationAutomationStepControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to AC Adapter.
         /// </summary>
         public static string NotificationsSettingsWindow_ACAdapter {
             get {
                 return ResourceManager.GetString("NotificationsSettingsWindow_ACAdapter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actions.
+        /// </summary>
+        public static string NotificationsSettingsWindow_Automation {
+            get {
+                return ResourceManager.GetString("NotificationsSettingsWindow_Automation", resourceCulture);
             }
         }
         
@@ -3026,6 +3279,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string NotificationsSettingsWindow_Updates_Title {
             get {
                 return ResourceManager.GetString("NotificationsSettingsWindow_Updates_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        public static string Off {
+            get {
+                return ResourceManager.GetString("Off", resourceCulture);
             }
         }
         
@@ -3185,6 +3447,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download.
+        /// </summary>
+        public static string PackageControl_Download {
+            get {
+                return ResourceManager.GetString("PackageControl_Download", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} downloaded!.
         /// </summary>
         public static string PackageControl_DownloadComplete_Message {
@@ -3262,6 +3533,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string PackageControl_OldPackageWarning {
             get {
                 return ResourceManager.GetString("PackageControl_OldPackageWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open README.
+        /// </summary>
+        public static string PackageControl_OpenReadme {
+            get {
+                return ResourceManager.GetString("PackageControl_OpenReadme", resourceCulture);
             }
         }
         
@@ -3348,7 +3628,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Download to.
+        ///   Looks up a localized string similar to Download folder.
         /// </summary>
         public static string PackagesPage_DownloadTo {
             get {
@@ -3380,6 +3660,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string PackagesPage_OnlyShowUpdates {
             get {
                 return ResourceManager.GetString("PackagesPage_OnlyShowUpdates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Download folder.
+        /// </summary>
+        public static string PackagesPage_OpenDownloadTo {
+            get {
+                return ResourceManager.GetString("PackagesPage_OpenDownloadTo", resourceCulture);
             }
         }
         
@@ -3857,6 +4146,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Revert to default.
+        /// </summary>
+        public static string RevertToDefault {
+            get {
+                return ResourceManager.GetString("RevertToDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adjust keyboard backlight preset..
         /// </summary>
         public static string RGBKeyboardBacklightAutomationStepControl_Message {
@@ -4155,6 +4453,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change the accent color of the app..
         /// </summary>
         public static string SettingsPage_AccentColor_Description {
@@ -4187,6 +4494,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string SettingsPage_Autorun_Title {
             get {
                 return ResourceManager.GetString("SettingsPage_Autorun_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customize Boot Logo image, visible during system startup..
+        /// </summary>
+        public static string SettingsPage_BootLogo_Message {
+            get {
+                return ResourceManager.GetString("SettingsPage_BootLogo_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Boot Logo.
+        /// </summary>
+        public static string SettingsPage_BootLogo_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_BootLogo_Title", resourceCulture);
             }
         }
         
@@ -4375,6 +4700,33 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Share fan speed, battery temperature etc. with HWiNFO64. You may need to restart HWiNFO64 after changing this option..
+        /// </summary>
+        public static string SettingsPage_HWiNFO_Message {
+            get {
+                return ResourceManager.GetString("SettingsPage_HWiNFO_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HWiNFO64.
+        /// </summary>
+        public static string SettingsPage_HWiNFO_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_HWiNFO_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Integrations.
+        /// </summary>
+        public static string SettingsPage_Integrations_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_Integrations_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select language..
         /// </summary>
         public static string SettingsPage_Language_Message {
@@ -4461,6 +4813,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string SettingsPage_PowerPlansControlPanel_Title {
             get {
                 return ResourceManager.GetString("SettingsPage_PowerPlansControlPanel_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fn Lock will be temporarily disabled when Alt, Ctrl or Shift key is depressed..
+        /// </summary>
+        public static string SettingsPage_SmartFnLock_Message {
+            get {
+                return ResourceManager.GetString("SettingsPage_SmartFnLock_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Smart Fn Lock.
+        /// </summary>
+        public static string SettingsPage_SmartFnLock_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_SmartFnLock_Title", resourceCulture);
             }
         }
         
@@ -4668,6 +5038,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string SpectrumKeyboardBacklightControl_NoEffects_Text {
             get {
                 return ResourceManager.GetString("SpectrumKeyboardBacklightControl_NoEffects_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preset.
+        /// </summary>
+        public static string SpectrumKeyboardBacklightControl_Preset {
+            get {
+                return ResourceManager.GetString("SpectrumKeyboardBacklightControl_Preset", resourceCulture);
             }
         }
         
@@ -5252,6 +5631,33 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string WhiteKeyboardBacklightControl_Title {
             get {
                 return ResourceManager.GetString("WhiteKeyboardBacklightControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy current network name.
+        /// </summary>
+        public static string WiFiConnectedPipelineTriggerTabItemContent_CopyCurrentNetworkName {
+            get {
+                return ResourceManager.GetString("WiFiConnectedPipelineTriggerTabItemContent_CopyCurrentNetworkName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leave empty for any Wi-Fi network..
+        /// </summary>
+        public static string WiFiConnectedPipelineTriggerTabItemContent_LeaveEmptyForAnyNetwork {
+            get {
+                return ResourceManager.GetString("WiFiConnectedPipelineTriggerTabItemContent_LeaveEmptyForAnyNetwork", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Network name (SSID).
+        /// </summary>
+        public static string WiFiConnectedPipelineTriggerTabItemContent_NetworkName {
+            get {
+                return ResourceManager.GetString("WiFiConnectedPipelineTriggerTabItemContent_NetworkName", resourceCulture);
             }
         }
         

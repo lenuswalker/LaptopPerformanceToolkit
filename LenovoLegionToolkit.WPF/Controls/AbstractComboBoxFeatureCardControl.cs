@@ -2,14 +2,15 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Features;
 using LenovoLegionToolkit.Lib.Utils;
+using LenovoLegionToolkit.WPF.Controls.Custom;
 using LenovoLegionToolkit.WPF.Extensions;
 using Wpf.Ui.Common;
-using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Controls;
 
@@ -32,7 +33,11 @@ public abstract class AbstractComboBoxFeatureCardControl<T> : AbstractRefreshing
     protected string Title
     {
         get => _cardHeaderControl.Title;
-        set => _cardHeaderControl.Title = value;
+        set
+        {
+            _cardHeaderControl.Title = value;
+            AutomationProperties.SetName(_comboBox, value);
+        }
     }
 
     protected string Subtitle

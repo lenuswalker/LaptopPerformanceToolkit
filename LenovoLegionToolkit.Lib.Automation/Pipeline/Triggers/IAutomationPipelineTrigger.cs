@@ -38,6 +38,13 @@ public interface IPowerModeAutomationPipelineTrigger : IAutomationPipelineTrigge
     IPowerModeAutomationPipelineTrigger DeepCopy(PowerModeState powerModeState);
 }
 
+public interface IGodModePresetChangedAutomationPipelineTrigger : IAutomationPipelineTrigger
+{
+    Guid PresetId { get; }
+
+    IGodModePresetChangedAutomationPipelineTrigger DeepCopy(Guid powerModeState);
+}
+
 public interface IGameAutomationPipelineTrigger : IDisallowDuplicatesAutomationPipelineTrigger { }
 
 public interface IProcessesAutomationPipelineTrigger : IAutomationPipelineTrigger
@@ -63,3 +70,12 @@ public interface IUserInactivityPipelineTrigger : IAutomationPipelineTrigger
 
     IUserInactivityPipelineTrigger DeepCopy(TimeSpan timeSpan);
 }
+
+public interface IWiFiConnectedPipelineTrigger : IAutomationPipelineTrigger
+{
+    string[] Ssids { get; }
+
+    IWiFiConnectedPipelineTrigger DeepCopy(string[] ssids);
+}
+
+public interface IWiFiDisconnectedPipelineTrigger : IDisallowDuplicatesAutomationPipelineTrigger { }

@@ -38,12 +38,15 @@ public static class Compatibility
         "15ACH",
         "15APH",
         "15ARH",
+        "15ARP",
         "15IAH",
+        "15IAX",
         "15IHU",
         "15IMH",
         "15IRH",
         "15ITH",
 
+        "14APH",
         "14IRP",
 
         // Chinese variants
@@ -113,6 +116,7 @@ public static class Compatibility
                 SupportsGSync = await GetSupportsGSyncAsync().ConfigureAwait(false),
                 SupportsIGPUMode = await GetSupportsIGPUModeAsync().ConfigureAwait(false),
                 SupportsAIMode = await GetSupportsAIModeAsync().ConfigureAwait(false),
+                SupportBootLogoChange = GetSupportBootLogoChange(smartFanVersion),
                 HasQuietToPerformanceModeSwitchingBug = GetHasQuietToPerformanceModeSwitchingBug(biosVersion),
                 HasGodModeToOtherModeSwitchingBug = GetHasGodModeToOtherModeSwitchingBug(biosVersion),
                 IsExcludedFromLenovoLighting = GetIsExcludedFromLenovoLighting(biosVersion),
@@ -147,6 +151,7 @@ public static class Compatibility
             Log.Instance.Trace($"     * SupportsGSync: '{machineInformation.Properties.SupportsGSync}'");
             Log.Instance.Trace($"     * SupportsIGPUMode: '{machineInformation.Properties.SupportsIGPUMode}'");
             Log.Instance.Trace($"     * SupportsAIMode: '{machineInformation.Properties.SupportsAIMode}'");
+            Log.Instance.Trace($"     * SupportBootLogoChange: '{machineInformation.Properties.SupportBootLogoChange}'");
             Log.Instance.Trace($"     * HasQuietToPerformanceModeSwitchingBug: '{machineInformation.Properties.HasQuietToPerformanceModeSwitchingBug}'");
             Log.Instance.Trace($"     * HasGodModeToOtherModeSwitchingBug: '{machineInformation.Properties.HasGodModeToOtherModeSwitchingBug}'");
             Log.Instance.Trace($"     * IsExcludedFromLenovoLighting: '{machineInformation.Properties.IsExcludedFromLenovoLighting}'");
@@ -329,7 +334,7 @@ public static class Compatibility
         if (!supportedPowerModes.Contains(PowerModeState.GodMode))
             return false;
 
-        return smartFanVersion is 6 || legionZoneVersion is 3;
+        return smartFanVersion is 6 or 7 || legionZoneVersion is 3 or 4;
     }
 
     private static async Task<bool> GetSupportsGSyncAsync()
@@ -368,6 +373,8 @@ public static class Compatibility
             return false;
         }
     }
+
+    private static bool GetSupportBootLogoChange(int smartFanVersion) => smartFanVersion < 6;
 
     private static bool GetHasQuietToPerformanceModeSwitchingBug(BiosVersion? biosVersion)
     {

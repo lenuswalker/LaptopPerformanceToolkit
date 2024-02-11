@@ -113,6 +113,7 @@ public partial class GodModeSettingsWindow
                 GPUConfigurableTGP = preset.GPUConfigurableTGP?.WithValue(_gpuConfigurableTGPControl.Value),
                 GPUTemperatureLimit = preset.GPUTemperatureLimit?.WithValue(_gpuTemperatureLimitControl.Value),
                 GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline = preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline?.WithValue(_gpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.Value),
+                GPUToCPUDynamicBoost = preset.GPUToCPUDynamicBoost?.WithValue(_gpuToCpuDynamicBoostControl.Value),
                 FanTableInfo = preset.FanTableInfo is not null ? _fanCurveControl.GetFanTableInfo() : null,
                 FanFullSpeed = preset.FanFullSpeed is not null ? _fanFullSpeedToggle.IsChecked : null,
                 MaxValueOffset = preset.MaxValueOffset is not null ? (int?)_maxValueOffsetNumberBox.Value : null,
@@ -151,6 +152,9 @@ public partial class GodModeSettingsWindow
 
     private async Task SetStateAsync(GodModeState state)
     {
+        _cpuLongTermPowerLimitControl.ValueChanged -= CpuLongTermPowerLimitSlider_ValueChanged;
+        _cpuShortTermPowerLimitControl.ValueChanged -= CpuShortTermPowerLimitSlider_ValueChanged;
+
         var activePresetId = state.ActivePresetId;
         var preset = state.Presets[activePresetId];
 
@@ -158,7 +162,6 @@ public partial class GodModeSettingsWindow
 
         _addPresetsButton.IsEnabled = state.Presets.Count < 5;
         _deletePresetsButton.IsEnabled = state.Presets.Count > 1;
-
 
         _cpuLongTermPowerLimitControl.Set(preset.CPULongTermPowerLimit);
         _cpuShortTermPowerLimitControl.Set(preset.CPUShortTermPowerLimit);
@@ -171,6 +174,7 @@ public partial class GodModeSettingsWindow
         _gpuConfigurableTGPControl.Set(preset.GPUConfigurableTGP);
         _gpuTemperatureLimitControl.Set(preset.GPUTemperatureLimit);
         _gpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.Set(preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline);
+        _gpuToCpuDynamicBoostControl.Set(preset.GPUToCPUDynamicBoost);
 
         var fanTableInfo = preset.FanTableInfo;
         if (fanTableInfo.HasValue)
@@ -223,7 +227,8 @@ public partial class GodModeSettingsWindow
             _gpuPowerBoostControl,
             _gpuConfigurableTGPControl,
             _gpuTemperatureLimitControl,
-            _gpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl
+            _gpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl,
+            _gpuToCpuDynamicBoostControl
         }.Any(v => v.Visibility == Visibility.Visible);
 
         var fanSectionVisible = new[]
@@ -243,6 +248,9 @@ public partial class GodModeSettingsWindow
         _fanSectionTitle.Visibility = fanSectionVisible ? Visibility.Visible : Visibility.Collapsed;
         _advancedSectionTitle.Visibility = advancedSectionVisible ? Visibility.Visible : Visibility.Collapsed;
         _advancedSectionMessage.Visibility = advancedSectionVisible ? Visibility.Visible : Visibility.Collapsed;
+
+        _cpuLongTermPowerLimitControl.ValueChanged += CpuLongTermPowerLimitSlider_ValueChanged;
+        _cpuShortTermPowerLimitControl.ValueChanged += CpuShortTermPowerLimitSlider_ValueChanged;
     }
 
     private async void SetDefaults(GodModeDefaults defaults)
@@ -279,6 +287,9 @@ public partial class GodModeSettingsWindow
 
         if (_gpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.Visibility == Visibility.Visible && defaults.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline is { } gpuTotalProcessingPowerTargetOnAcOffsetFromBaseline)
             _gpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.Value = gpuTotalProcessingPowerTargetOnAcOffsetFromBaseline;
+
+        if (_gpuToCpuDynamicBoostControl.Visibility == Visibility.Visible && defaults.GPUToCPUDynamicBoost is { } gpuToCPUDynamicBoost)
+            _gpuToCpuDynamicBoostControl.Value = gpuToCPUDynamicBoost;
 
         if (_fanCurveCardControl.Visibility == Visibility.Visible && defaults.FanTable is { } fanTable)
         {

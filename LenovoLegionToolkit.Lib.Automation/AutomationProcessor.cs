@@ -7,6 +7,7 @@ using LenovoLegionToolkit.Lib.AutoListeners;
 using LenovoLegionToolkit.Lib.Automation.Pipeline;
 using LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
 using LenovoLegionToolkit.Lib.Automation.Utils;
+using LenovoLegionToolkit.Lib.Controllers.GodMode;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.Utils;
 using NeoSmart.AsyncLock;
@@ -19,10 +20,12 @@ public class AutomationProcessor
     private readonly NativeWindowsMessageListener _nativeWindowsMessageListener;
     private readonly PowerStateListener _powerStateListener;
     private readonly PowerModeListener _powerModeListener;
+    private readonly GodModeController _godModeController;
     private readonly GameAutoListener _gameAutoListener;
     private readonly ProcessAutoListener _processAutoListener;
     private readonly TimeAutoListener _timeAutoListener;
     private readonly UserInactivityAutoListener _userInactivityAutoListener;
+    private readonly WiFiAutoListener _wifiAutoListener;
 
     private readonly AsyncLock _ioLock = new();
     private readonly AsyncLock _runLock = new();
@@ -38,19 +41,23 @@ public class AutomationProcessor
         NativeWindowsMessageListener nativeWindowsMessageListener,
         PowerStateListener powerStateListener,
         PowerModeListener powerModeListener,
+        GodModeController godModeController,
         GameAutoListener gameAutoListener,
         ProcessAutoListener processAutoListener,
         TimeAutoListener timeAutoListener,
-        UserInactivityAutoListener userInactivityAutoListener)
+        UserInactivityAutoListener userInactivityAutoListener,
+        WiFiAutoListener wifiAutoListener)
     {
         _settings = settings ?? throw new ArgumentNullException(nameof(settings));
         _nativeWindowsMessageListener = nativeWindowsMessageListener ?? throw new ArgumentNullException(nameof(nativeWindowsMessageListener));
         _powerStateListener = powerStateListener ?? throw new ArgumentNullException(nameof(powerStateListener));
         _powerModeListener = powerModeListener ?? throw new ArgumentNullException(nameof(powerModeListener));
+        _godModeController = godModeController ?? throw new ArgumentNullException(nameof(godModeController));
         _gameAutoListener = gameAutoListener ?? throw new ArgumentNullException(nameof(gameAutoListener));
         _processAutoListener = processAutoListener ?? throw new ArgumentNullException(nameof(processAutoListener));
         _timeAutoListener = timeAutoListener ?? throw new ArgumentNullException(nameof(timeAutoListener));
         _userInactivityAutoListener = userInactivityAutoListener ?? throw new ArgumentNullException(nameof(userInactivityAutoListener));
+        _wifiAutoListener = wifiAutoListener ?? throw new ArgumentNullException(nameof(wifiAutoListener));
     }
 
     #region Initialization / pipeline reloading
@@ -61,7 +68,8 @@ public class AutomationProcessor
         {
             _nativeWindowsMessageListener.Changed += NativeWindowsMessageListener_Changed;
             _powerStateListener.Changed += PowerStateListener_Changed;
-            _powerModeListener.Changed += PowerModeListenerOnChanged;
+            _powerModeListener.Changed += PowerModeListener_Changed;
+            _godModeController.PresetChanged += GodModeController_PresetChanged;
 
             _pipelines = _settings.Store.Pipelines.ToList();
 
@@ -254,9 +262,15 @@ public class AutomationProcessor
         await ProcessEvent(e).ConfigureAwait(false);
     }
 
-    private async void PowerModeListenerOnChanged(object? sender, PowerModeState powerModeState)
+    private async void PowerModeListener_Changed(object? sender, PowerModeState powerModeState)
     {
         var e = new PowerModeAutomationEvent { PowerModeState = powerModeState };
+        await ProcessEvent(e).ConfigureAwait(false);
+    }
+
+    private async void GodModeController_PresetChanged(object? sender, Guid presetId)
+    {
+        var e = new CustomModePresetAutomationEvent { Id = presetId };
         await ProcessEvent(e).ConfigureAwait(false);
     }
 
@@ -284,6 +298,16 @@ public class AutomationProcessor
         {
             InactivityTimeSpan = inactivityInfo.resolution * inactivityInfo.tickCount,
             ResolutionTimeSpan = inactivityInfo.resolution
+        };
+        await ProcessEvent(e).ConfigureAwait(false);
+    }
+
+    private async void WiFiAutoListener_Changed(object? sender, (bool connected, string? ssid) wifiInfo)
+    {
+        var e = new WiFiAutomationEvent
+        {
+            IsConnected = wifiInfo.connected,
+            Ssid = wifiInfo.ssid
         };
         await ProcessEvent(e).ConfigureAwait(false);
     }
@@ -322,6 +346,7 @@ public class AutomationProcessor
         await _processAutoListener.UnsubscribeChangedAsync(ProcessAutoListener_Changed).ConfigureAwait(false);
         await _timeAutoListener.UnsubscribeChangedAsync(TimeAutoListener_Changed).ConfigureAwait(false);
         await _userInactivityAutoListener.UnsubscribeChangedAsync(UserInactivityAutoListener_Changed).ConfigureAwait(false);
+        await _wifiAutoListener.UnsubscribeChangedAsync(WiFiAutoListener_Changed).ConfigureAwait(false);
 
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Stopped listeners...");
@@ -368,6 +393,14 @@ public class AutomationProcessor
                 Log.Instance.Trace($"Starting user inactivity listener...");
 
             await _userInactivityAutoListener.SubscribeChangedAsync(UserInactivityAutoListener_Changed).ConfigureAwait(false);
+        }
+
+        if (triggers.OfType<IWiFiConnectedPipelineTrigger>().Any() || triggers.OfType<WiFiDisconnectedAutomationPipelineTrigger>().Any())
+        {
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Starting WiFi listener...");
+
+            await _wifiAutoListener.SubscribeChangedAsync(WiFiAutoListener_Changed).ConfigureAwait(false);
         }
 
         if (Log.Instance.IsTraceEnabled)

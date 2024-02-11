@@ -18,6 +18,11 @@ public readonly struct PowerModeAutomationEvent : IAutomationEvent
     public PowerModeState PowerModeState { get; init; }
 }
 
+public readonly struct CustomModePresetAutomationEvent : IAutomationEvent
+{
+    public Guid Id { get; init; }
+}
+
 public readonly struct GameAutomationEvent : IAutomationEvent
 {
     public bool Started { get; init; }
@@ -38,4 +43,10 @@ public readonly struct UserInactivityAutomationEvent : IAutomationEvent
 {
     public TimeSpan InactivityTimeSpan { get; init; }
     public TimeSpan ResolutionTimeSpan { get; init; }
+}
+
+public readonly struct WiFiAutomationEvent : IAutomationEvent
+{
+    public bool IsConnected { get; init; }
+    public string? Ssid { get; init; }
 }

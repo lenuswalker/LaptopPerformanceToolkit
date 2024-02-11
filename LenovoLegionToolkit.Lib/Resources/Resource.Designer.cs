@@ -133,6 +133,24 @@ namespace LenovoLegionToolkit.Lib.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        public static string BatteryNightChargeState_Off {
+            get {
+                return ResourceManager.GetString("BatteryNightChargeState_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On.
+        /// </summary>
+        public static string BatteryNightChargeState_On {
+            get {
+                return ResourceManager.GetString("BatteryNightChargeState_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Conservation.
         /// </summary>
         public static string BatteryState_Conservation {
@@ -318,6 +336,33 @@ namespace LenovoLegionToolkit.Lib.Resources {
         public static string MicrophoneState_On {
             get {
                 return ResourceManager.GetString("MicrophoneState_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alt.
+        /// </summary>
+        public static string ModifierKey_Alt {
+            get {
+                return ResourceManager.GetString("ModifierKey_Alt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ctrl.
+        /// </summary>
+        public static string ModifierKey_Ctrl {
+            get {
+                return ResourceManager.GetString("ModifierKey_Ctrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shift.
+        /// </summary>
+        public static string ModifierKey_Shift {
+            get {
+                return ResourceManager.GetString("ModifierKey_Shift", resourceCulture);
             }
         }
         
