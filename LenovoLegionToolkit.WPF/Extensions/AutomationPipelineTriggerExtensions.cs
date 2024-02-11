@@ -10,6 +10,7 @@ public static class AutomationPipelineTriggerExtensions
     {
         IPowerStateAutomationPipelineTrigger => SymbolRegular.BatteryCharge24,
         IPowerModeAutomationPipelineTrigger => SymbolRegular.Gauge24,
+        IGodModePresetChangedAutomationPipelineTrigger => SymbolRegular.Gauge24,
         IGameAutomationPipelineTrigger => SymbolRegular.XboxController24,
         IProcessesAutomationPipelineTrigger => SymbolRegular.WindowConsole20,
         IUserInactivityPipelineTrigger => SymbolRegular.ClockAlarm24,
@@ -17,6 +18,8 @@ public static class AutomationPipelineTriggerExtensions
         ITimeIntervalAutomationPipelineTrigger => SymbolRegular.HourglassHalf24,
         INativeWindowsMessagePipelineTrigger => SymbolRegular.Desktop24,
         IOnStartupAutomationPipelineTrigger => SymbolRegular.Flash24,
+        IWiFiConnectedPipelineTrigger => SymbolRegular.Wifi124,
+        IWiFiDisconnectedPipelineTrigger => SymbolRegular.WifiOff24,
         _ => throw new ArgumentException($"Unsupported trigger {trigger.GetType().Name}.")
     };
 }

@@ -24,6 +24,8 @@ public class AutomationEnvironment
     private const string AC_INTERVAL = "LLT_AC_INTERVAL";
     private const string DC_INTERVAL = "LLT_DC_INTERVAL";
     private const string USER_ACTIVE = "LLT_IS_USER_ACTIVE";
+    private const string WIFI_CONNECTED = "WIFI_CONNECTED";
+    private const string WIFI_SSID = "WIFI_SSID";
 
     private const string VALUE_TRUE = "TRUE";
     private const string VALUE_FALSE = "FALSE";
@@ -68,6 +70,10 @@ public class AutomationEnvironment
     public int? DCInterval { set => _dictionary[DC_INTERVAL] = value is null ? null : $"{value.Value}"; }
 
     public bool UserActive { set => _dictionary[USER_ACTIVE] = value ? VALUE_TRUE : VALUE_FALSE; }
+
+    public bool WiFiConnected { set => _dictionary[WIFI_CONNECTED] = value ? VALUE_TRUE : VALUE_FALSE; }
+
+    public string? WiFiSsid { set => _dictionary[WIFI_SSID] = value; }
 
     public Dictionary<string, string?> Dictionary => new(_dictionary);
 

@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
+using LenovoLegionToolkit.WPF.Windows.Dashboard;
 using Wpf.Ui.Common;
-using Wpf.Ui.Controls;
 using Button = Wpf.Ui.Controls.Button;
-using MenuItem = Wpf.Ui.Controls.MenuItem;
+using CardExpander = LenovoLegionToolkit.WPF.Controls.Custom.CardExpander;
 
 namespace LenovoLegionToolkit.WPF.Controls.Dashboard.Edit;
 
@@ -19,8 +18,7 @@ public class EditDashboardGroupControl : UserControl
 {
     private readonly CardExpander _cardExpander = new()
     {
-        Margin = new(0, 0, 0, 8),
-        IsExpanded = true
+        Margin = new(0, 0, 0, 8)
     };
 
     private readonly CardHeaderControl _cardHeaderControl = new();
@@ -83,6 +81,7 @@ public class EditDashboardGroupControl : UserControl
     public event EventHandler? MoveUp;
     public event EventHandler? MoveDown;
     public event EventHandler? Delete;
+    public event EventHandler? Changed;
 
     private DashboardGroupType _dashboardGroupType;
     private readonly Func<IEnumerable<DashboardItem>> _getExistingItems;
@@ -97,7 +96,7 @@ public class EditDashboardGroupControl : UserControl
         _moveUpButton.Click += (_, _) => MoveUp?.Invoke(this, EventArgs.Empty);
         _moveDownButton.Click += (_, _) => MoveDown?.Invoke(this, EventArgs.Empty);
         _deleteButton.Click += (_, _) => Delete?.Invoke(this, EventArgs.Empty);
-        _addItemButton.Click += (_, _) => ShowContextMenu();
+        _addItemButton.Click += (_, _) => ShowAddItemWindow();
 
         _buttonsStackPanel.Children.Add(_editButton);
         _buttonsStackPanel.Children.Add(_moveUpButton);
@@ -114,6 +113,12 @@ public class EditDashboardGroupControl : UserControl
         _cardHeaderControl.Accessory = _buttonsStackPanel;
         _cardExpander.Header = _cardHeaderControl;
         _cardExpander.Content = _stackPanel;
+
+        AutomationProperties.SetName(_cardExpander, _cardHeaderControl.Title);
+        AutomationProperties.SetName(_editButton, _cardHeaderControl.Title);
+        AutomationProperties.SetName(_moveUpButton, _cardHeaderControl.Title);
+        AutomationProperties.SetName(_moveDownButton, _cardHeaderControl.Title);
+        AutomationProperties.SetName(_deleteButton, _cardHeaderControl.Title);
 
         Content = _cardExpander;
     }
@@ -150,37 +155,16 @@ public class EditDashboardGroupControl : UserControl
         _cardHeaderControl.Title = result;
     }
 
-    private void ShowContextMenu()
+    private void ShowAddItemWindow()
     {
-        var allItems = Enum.GetValues<DashboardItem>();
-        var existingItems = _getExistingItems().ToArray();
-
-        var menuItems = new List<MenuItem>();
-
-        foreach (var item in allItems)
-        {
-            var menuItem = new MenuItem { SymbolIcon = item.GetIcon(), Header = item.GetTitle() };
-            menuItem.Click += (_, _) => AddItem(item);
-            menuItem.IsEnabled = !existingItems.Contains(item);
-            menuItems.Add(menuItem);
-        }
-
-        var contextMenu = new ContextMenu
-        {
-            PlacementTarget = _addItemButton,
-            Placement = PlacementMode.Bottom,
-        };
-
-        foreach (var menuItem in menuItems.OrderBy(mi => mi.Header))
-            contextMenu.Items.Add(menuItem);
-
-        _addItemButton.ContextMenu = contextMenu;
-        _addItemButton.ContextMenu.IsOpen = true;
+        var window = new AddDashboardItemWindow(_getExistingItems, AddItem) { Owner = Window.GetWindow(this) };
+        window.ShowDialog();
     }
 
     private void AddItem(DashboardItem dashboardItem)
     {
         _itemsStackPanel.Children.Add(CreateGroupControl(dashboardItem));
+        Changed?.Invoke(this, EventArgs.Empty);
     }
 
     private Control CreateGroupControl(DashboardItem dashboardItem)
@@ -202,6 +186,7 @@ public class EditDashboardGroupControl : UserControl
 
         _itemsStackPanel.Children.Remove(control);
         _itemsStackPanel.Children.Insert(index, control);
+        Changed?.Invoke(this, EventArgs.Empty);
     }
 
     private void MoveItemDown(UIElement control)
@@ -214,10 +199,14 @@ public class EditDashboardGroupControl : UserControl
 
         _itemsStackPanel.Children.Remove(control);
         _itemsStackPanel.Children.Insert(index, control);
+        Changed?.Invoke(this, EventArgs.Empty);
     }
 
     private void DeleteItem(UIElement control)
     {
         _itemsStackPanel.Children.Remove(control);
+        Changed?.Invoke(this, EventArgs.Empty);
     }
+
+    public void RefreshAdd() => _addItemButton.IsEnabled = Enum.GetValues<DashboardItem>().Except(_getExistingItems()).Any();
 }

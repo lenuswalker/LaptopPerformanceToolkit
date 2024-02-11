@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Controllers;
@@ -11,6 +12,7 @@ using LenovoLegionToolkit.WPF.Windows.Dashboard;
 using Wpf.Ui.Common;
 using Wpf.Ui.Controls;
 using Button = Wpf.Ui.Controls.Button;
+using CardControl = LenovoLegionToolkit.WPF.Controls.Custom.CardControl;
 
 namespace LenovoLegionToolkit.WPF.Controls.Dashboard;
 
@@ -59,6 +61,10 @@ public class OverclockDiscreteGPUControl : AbstractRefreshingControl
 
     private void InitializeComponent()
     {
+        AutomationProperties.SetName(_toggle, Resource.OverclockDiscreteGPUControl_Title);
+        AutomationProperties.SetName(_configButton, Resource.OverclockDiscreteGPUControl_Title);
+        AutomationProperties.SetHelpText(_configButton, Resource.Settings);
+
         _toggle.Click += Toggle_Click;
         _configButton.Click += ConfigButton_Click;
 

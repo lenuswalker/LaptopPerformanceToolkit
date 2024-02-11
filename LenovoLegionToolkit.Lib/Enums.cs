@@ -24,6 +24,14 @@ public enum AutorunState
     Disabled
 }
 
+public enum BatteryNightChargeState
+{
+    [Display(ResourceType = typeof(Resource), Name = "BatteryNightChargeState_On")]
+    On,
+    [Display(ResourceType = typeof(Resource), Name = "BatteryNightChargeState_Off")]
+    Off
+}
+
 public enum BatteryState
 {
     [Display(ResourceType = typeof(Resource), Name = "BatteryState_Conservation")]
@@ -56,6 +64,7 @@ public enum CapabilityID
     GPUConfigurableTGP = 0x0202FF00,
     GPUTemperatureLimit = 0x0203FF00,
     GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline = 0x0204FF00,
+    GPUToCPUDynamicBoost = 0x020BFF00,
     GPUStatus = 0x02070000,
     GPUDidVid = 0x02090000,
     InstantBootAc = 0x03010001,
@@ -185,6 +194,17 @@ public enum MicrophoneState
     On
 }
 
+[Flags]
+public enum ModifierKey
+{
+    [Display(ResourceType = typeof(Resource), Name = "ModifierKey_Shift")]
+    Shift = 1,
+    [Display(ResourceType = typeof(Resource), Name = "ModifierKey_Ctrl")]
+    Ctrl = 2,
+    [Display(ResourceType = typeof(Resource), Name = "ModifierKey_Alt")]
+    Alt = 4
+}
+
 public enum NativeWindowsMessage
 {
     LidOpened,
@@ -211,6 +231,7 @@ public enum NotificationType
     ACAdapterConnected,
     ACAdapterConnectedLowWattage,
     ACAdapterDisconnected,
+    AutomationNotification,
     CameraOn,
     CameraOff,
     CapsLockOn,
@@ -421,7 +442,12 @@ public enum SpecialKey
     SpectrumPreset3 = 34,
     SpectrumPreset4 = 35,
     SpectrumPreset5 = 36,
-    SpectrumPreset6 = 37
+    SpectrumPreset6 = 37,
+    FnF4 = 62,
+    FnF8 = 63,
+    WhiteBacklightOff = 64,
+    WhiteBacklight1 = 65,
+    WhiteBacklight2 = 66
 }
 
 public enum SpectrumKeyboardBacklightBrightness

@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Resources;
 using Wpf.Ui.Common;
-using Wpf.Ui.Controls;
 using Button = Wpf.Ui.Controls.Button;
+using CardControl = LenovoLegionToolkit.WPF.Controls.Custom.CardControl;
 
 namespace LenovoLegionToolkit.WPF.Controls.Dashboard.Edit;
 
@@ -14,7 +15,7 @@ public class EditDashboardItemControl : UserControl
 
     private readonly CardControl _cardControl = new()
     {
-        Margin = new(0, 0, 0, 8),
+        Margin = new(0, 0, 0, 8)
     };
 
     private readonly CardHeaderControl _cardHeaderControl = new();
@@ -71,6 +72,10 @@ public class EditDashboardItemControl : UserControl
         _cardHeaderControl.Accessory = _stackPanel;
         _cardControl.Icon = DashboardItem.GetIcon();
         _cardControl.Header = _cardHeaderControl;
+
+        AutomationProperties.SetName(_moveUpButton, _cardHeaderControl.Title);
+        AutomationProperties.SetName(_moveDownButton, _cardHeaderControl.Title);
+        AutomationProperties.SetName(_deleteButton, _cardHeaderControl.Title);
 
         Content = _cardControl;
     }

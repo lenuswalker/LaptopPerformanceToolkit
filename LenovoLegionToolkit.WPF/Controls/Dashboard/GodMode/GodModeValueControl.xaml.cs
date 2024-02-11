@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
+using System.Windows.Automation;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.WPF.Extensions;
@@ -14,7 +15,14 @@ public partial class GodModeValueControl
     public string Title
     {
         get => _cardControlHeader.Title;
-        set => _cardControlHeader.Title = value;
+        set
+        {
+            _cardControlHeader.Title = value;
+
+            AutomationProperties.SetName(_slider, _cardControlHeader.Title);
+            AutomationProperties.SetName(_comboBox, _cardControlHeader.Title);
+            AutomationProperties.SetName(_resetToDefaultButton, _cardControlHeader.Title);
+        }
     }
 
     public string Description
@@ -75,7 +83,10 @@ public partial class GodModeValueControl
         remove => _slider.ValueChanged -= value;
     }
 
-    public GodModeValueControl() => InitializeComponent();
+    public GodModeValueControl()
+    {
+        InitializeComponent();
+    }
 
     public void Set(StepperValue? stepperValue)
     {
@@ -86,29 +97,6 @@ public partial class GodModeValueControl
         }
 
         var value = stepperValue.Value;
-
-        if (value.Step != 0)
-        {
-            _slider.Visibility = Visibility.Visible;
-            _sliderLabel.Visibility = Visibility.Visible;
-            _comboBox.Visibility = Visibility.Collapsed;
-
-            _slider.Minimum = value.Min;
-            _slider.Maximum = value.Max;
-            _slider.TickFrequency = value.Step;
-            _slider.Value = value.Value;
-
-            _sliderLabel.ContentStringFormat = $"{0} {Unit}";
-
-            _comboBox.Items.Clear();
-            _comboBox.SelectedItem = null;
-
-            _defaultValue = value.DefaultValue;
-            _resetToDefaultButton.Visibility = _defaultValue.HasValue ? Visibility.Visible : Visibility.Collapsed;
-
-            Visibility = Visibility.Visible;
-            return;
-        }
 
         if (value.Steps.Length > 0)
         {
@@ -124,6 +112,29 @@ public partial class GodModeValueControl
             _sliderLabel.ContentStringFormat = null;
 
             _comboBox.SetItems(value.Steps, value.Value, v => $"{v} {Unit}");
+
+            _defaultValue = value.DefaultValue;
+            _resetToDefaultButton.Visibility = _defaultValue.HasValue ? Visibility.Visible : Visibility.Collapsed;
+
+            Visibility = Visibility.Visible;
+            return;
+        }
+
+        if (value.Step > 0)
+        {
+            _slider.Visibility = Visibility.Visible;
+            _sliderLabel.Visibility = Visibility.Visible;
+            _comboBox.Visibility = Visibility.Collapsed;
+
+            _slider.Minimum = value.Min;
+            _slider.Maximum = value.Max;
+            _slider.TickFrequency = value.Step;
+            _slider.Value = value.Value;
+
+            _sliderLabel.ContentStringFormat = $"{0} {Unit}";
+
+            _comboBox.Items.Clear();
+            _comboBox.SelectedItem = null;
 
             _defaultValue = value.DefaultValue;
             _resetToDefaultButton.Visibility = _defaultValue.HasValue ? Visibility.Visible : Visibility.Collapsed;

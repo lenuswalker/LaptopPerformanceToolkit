@@ -268,6 +268,7 @@ public readonly struct GodModeDefaults
     public int? GPUConfigurableTGP { get; init; }
     public int? GPUTemperatureLimit { get; init; }
     public int? GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline { get; init; }
+    public int? GPUToCPUDynamicBoost { get; init; }
     public FanTable? FanTable { get; init; }
     public bool? FanFullSpeed { get; init; }
 
@@ -283,6 +284,7 @@ public readonly struct GodModeDefaults
         $" {nameof(GPUConfigurableTGP)}: {GPUConfigurableTGP}," +
         $" {nameof(GPUTemperatureLimit)}: {GPUTemperatureLimit}," +
         $" {nameof(GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline)}: {GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline}," +
+        $" {nameof(GPUToCPUDynamicBoost)}: {GPUToCPUDynamicBoost}," +
         $" {nameof(FanTable)}: {FanTable}," +
         $" {nameof(FanFullSpeed)}: {FanFullSpeed}";
 }
@@ -307,6 +309,7 @@ public readonly struct GodModePreset
     public StepperValue? GPUConfigurableTGP { get; init; }
     public StepperValue? GPUTemperatureLimit { get; init; }
     public StepperValue? GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline { get; init; }
+    public StepperValue? GPUToCPUDynamicBoost { get; init; }
     public FanTableInfo? FanTableInfo { get; init; }
     public bool? FanFullSpeed { get; init; }
     public int? MinValueOffset { get; init; }
@@ -325,6 +328,7 @@ public readonly struct GodModePreset
         $" {nameof(GPUConfigurableTGP)}: {GPUConfigurableTGP}," +
         $" {nameof(GPUTemperatureLimit)}: {GPUTemperatureLimit}," +
         $" {nameof(GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline)}: {GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline}," +
+        $" {nameof(GPUToCPUDynamicBoost)}: {GPUToCPUDynamicBoost}," +
         $" {nameof(FanTableInfo)}: {FanTableInfo}," +
         $" {nameof(FanFullSpeed)}: {FanFullSpeed}," +
         $" {nameof(MinValueOffset)}: {MinValueOffset}," +
@@ -412,6 +416,7 @@ public readonly struct MachineInformation
         public bool SupportsGSync { get; init; }
         public bool SupportsIGPUMode { get; init; }
         public bool SupportsAIMode { get; init; }
+        public bool SupportBootLogoChange { get; init; }
         public bool HasQuietToPerformanceModeSwitchingBug { get; init; }
         public bool HasGodModeToOtherModeSwitchingBug { get; init; }
         public bool IsExcludedFromLenovoLighting { get; init; }

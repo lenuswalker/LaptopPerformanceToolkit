@@ -16,6 +16,8 @@ public abstract class AbstractGodModeController : IGodModeController
     protected readonly VantageDisabler VantageDisabler;
     protected readonly LegionZoneDisabler LegionZoneDisabler;
 
+    public event EventHandler<Guid>? PresetChanged;
+
     protected AbstractGodModeController(GodModeSettings settings, VantageDisabler vantageDisabler, LegionZoneDisabler legionZoneDisabler)
     {
         _settings = settings ?? throw new ArgumentNullException(nameof(settings));
@@ -26,6 +28,8 @@ public abstract class AbstractGodModeController : IGodModeController
     public abstract Task<bool> NeedsVantageDisabledAsync();
 
     public abstract Task<bool> NeedsLegionZoneDisabledAsync();
+
+    public Task<Guid> GetActivePresetIdAsync() => Task.FromResult(_settings.Store.ActivePresetId);
 
     public Task<string?> GetActivePresetNameAsync()
     {
@@ -88,6 +92,7 @@ public abstract class AbstractGodModeController : IGodModeController
                 GPUConfigurableTGP = preset.GPUConfigurableTGP,
                 GPUTemperatureLimit = preset.GPUTemperatureLimit,
                 GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline = preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline,
+                GPUToCPUDynamicBoost = preset.GPUToCPUDynamicBoost,
                 FanTable = preset.FanTableInfo?.Table,
                 FanFullSpeed = preset.FanFullSpeed,
                 MinValueOffset = preset.MinValueOffset,
@@ -121,7 +126,9 @@ public abstract class AbstractGodModeController : IGodModeController
 
     protected abstract Task<GodModePreset> GetDefaultStateAsync();
 
-    protected async Task<GodModeSettings.GodModeSettingsStore.Preset> GetActivePresetAsync()
+    protected void RaisePresetChanged(Guid presetId) => PresetChanged?.Invoke(this, presetId);
+
+    protected async Task<(Guid, GodModeSettings.GodModeSettingsStore.Preset)> GetActivePresetAsync()
     {
         if (!IsValidStore(_settings.Store))
         {
@@ -136,7 +143,7 @@ public abstract class AbstractGodModeController : IGodModeController
         var presets = _settings.Store.Presets;
 
         if (presets.TryGetValue(activePresetId, out var activePreset))
-            return activePreset;
+            return (activePresetId, activePreset);
 
         throw new InvalidOperationException($"Preset with ID {activePresetId} not found.");
     }
@@ -173,6 +180,7 @@ public abstract class AbstractGodModeController : IGodModeController
                     preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline,
                     preset.MinValueOffset,
                     preset.MaxValueOffset),
+                GPUToCPUDynamicBoost = CreateStepperValue(defaultState.GPUToCPUDynamicBoost, preset.GPUToCPUDynamicBoost),
                 FanTableInfo = await GetFanTableInfoAsync(preset, defaultState.FanTableInfo?.Data).ConfigureAwait(false),
                 FanFullSpeed = preset.FanFullSpeed,
                 MinValueOffset = preset.MinValueOffset ?? defaultState.MinValueOffset,
@@ -192,6 +200,21 @@ public abstract class AbstractGodModeController : IGodModeController
         if (state is not { } stateValue)
             return null;
 
+        if (stateValue.Steps.Length > 0)
+        {
+            var value = store?.Value ?? stateValue.Value;
+            var steps = stateValue.Steps;
+            var defaultValue = stateValue.DefaultValue;
+
+            if (!steps.Contains(value))
+            {
+                var valueTemp = value;
+                value = steps.MinBy(v => Math.Abs((long)v - valueTemp));
+            }
+
+            return new(value, 0, 0, 0, steps, defaultValue);
+        }
+
         if (stateValue.Step > 0)
         {
             var value = store?.Value ?? stateValue.Value;
@@ -206,21 +229,6 @@ public abstract class AbstractGodModeController : IGodModeController
                 value = defaultValue ?? Math.Clamp(value, min, max);
 
             return new(value, min, max, step, Array.Empty<int>(), defaultValue);
-        }
-
-        if (stateValue.Steps.Length > 0)
-        {
-            var value = store?.Value ?? stateValue.Value;
-            var steps = stateValue.Steps;
-            var defaultValue = stateValue.DefaultValue;
-
-            if (!steps.Contains(value))
-            {
-                var valueTemp = value;
-                value = steps.MinBy(v => Math.Abs((long)v - valueTemp));
-            }
-
-            return new(value, 0, 0, 0, steps, defaultValue);
         }
 
         return null;

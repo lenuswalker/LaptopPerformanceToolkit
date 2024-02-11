@@ -1,13 +1,13 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Extensions;
 using NeoSmart.AsyncLock;
 using Octokit;
+using Octokit.Internal;
 
 namespace LenovoLegionToolkit.Lib.Utils;
 
@@ -16,13 +16,29 @@ public class UpdateChecker
     private readonly TimeSpan _minimumTimeSpanForRefresh = new(hours: 3, minutes: 0, seconds: 0);
     private readonly AsyncLock _updateSemaphore = new();
 
+    private readonly HttpClientFactory _httpClientFactory;
+
     private DateTime _lastUpdate = DateTime.MinValue;
     private Update[] _updates = Array.Empty<Update>();
+
+    public bool Disable { get; set; }
+
+    public UpdateChecker(HttpClientFactory httpClientFactory)
+    {
+        _httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
+    }
 
     public async Task<Version?> CheckAsync()
     {
         using (await _updateSemaphore.LockAsync().ConfigureAwait(false))
         {
+            if (Disable)
+            {
+                _lastUpdate = DateTime.UtcNow;
+                _updates = Array.Empty<Update>();
+                return null;
+            }
+
             try
             {
                 var timeSpanSinceLastUpdate = DateTime.UtcNow - _lastUpdate;
@@ -34,7 +50,10 @@ public class UpdateChecker
                 if (Log.Instance.IsTraceEnabled)
                     Log.Instance.Trace($"Checking...");
 
-                var githubClient = new GitHubClient(new ProductHeaderValue("LenovoLegionToolkit-UpdateChecker"));
+                var adapter = new HttpClientAdapter(_httpClientFactory.CreateHandler);
+                var productInformation = new ProductHeaderValue("LenovoLegionToolkit-UpdateChecker");
+                var connection = new Connection(productInformation, adapter);
+                var githubClient = new GitHubClient(connection);
                 var releases = await githubClient.Repository.Release.GetAll("lenuswalker", "LaptopPerformanceToolkit", new ApiOptions { PageSize = 5 }).ConfigureAwait(false);
 
                 var thisReleaseVersion = Assembly.GetEntryAssembly()?.GetName().Version;
@@ -89,7 +108,7 @@ public class UpdateChecker
                 throw new InvalidOperationException("Setup file URL could not be found");
 
             await using var fileStream = File.OpenWrite(tempPath);
-            using var httpClient = new HttpClient();
+            using var httpClient = _httpClientFactory.Create();
             await httpClient.DownloadAsync(latestUpdate.Url, fileStream, progress, cancellationToken).ConfigureAwait(false);
 
             return tempPath;

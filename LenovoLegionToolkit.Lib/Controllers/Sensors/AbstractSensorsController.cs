@@ -44,19 +44,26 @@ public abstract class AbstractSensorsController : ISensorsController
 
     public abstract Task<bool> IsSupportedAsync();
 
+    public Task PrepareAsync()
+    {
+        _percentProcessorPerformanceCounter.Reset();
+        _percentProcessorUtilityCounter.Reset();
+        return Task.CompletedTask;
+    }
+
     public async Task<SensorsData> GetDataAsync()
     {
         const int genericMaxUtilization = 100;
         const int genericMaxTemperature = 100;
 
-        var cpuUtilization = GetCpuUtilization();
-        var cpuCoreClock = GetCpuCoreClock();
+        var cpuUtilization = GetCpuUtilization(genericMaxUtilization);
         var cpuMaxCoreClock = _cpuMaxCoreClockCache ??= await GetCpuMaxCoreClockAsync().ConfigureAwait(false);
+        var cpuCoreClock = GetCpuCoreClock();
         var cpuCurrentTemperature = await GetCpuCurrentTemperatureAsync().ConfigureAwait(false);
         var cpuCurrentFanSpeed = await GetCpuCurrentFanSpeedAsync().ConfigureAwait(false);
         var cpuMaxFanSpeed = _cpuMaxFanSpeedCache ??= await GetCpuMaxFanSpeedAsync().ConfigureAwait(false);
 
-        var gpuInfo = GetGPUInfo();
+        var gpuInfo = await GetGPUInfoAsync().ConfigureAwait(false);
         var gpuCurrentTemperature = gpuInfo.Temperature >= 0 ? gpuInfo.Temperature : await GetGpuCurrentTemperatureAsync().ConfigureAwait(false);
         var gpuMaxTemperature = gpuInfo.MaxTemperature >= 0 ? gpuInfo.MaxTemperature : genericMaxTemperature;
         var gpuCurrentFanSpeed = await GetGpuCurrentFanSpeedAsync().ConfigureAwait(false);
@@ -96,6 +103,13 @@ public abstract class AbstractSensorsController : ISensorsController
         return result;
     }
 
+    public async Task<(int cpuFanSpeed, int gpuFanSpeed)> GetFanSpeedsAsync()
+    {
+        var cpuFanSpeed = await GetCpuCurrentFanSpeedAsync().ConfigureAwait(false);
+        var gpuFanSpeed = await GetGpuCurrentFanSpeedAsync().ConfigureAwait(false);
+        return (cpuFanSpeed, gpuFanSpeed);
+    }
+
     protected abstract Task<int> GetCpuCurrentTemperatureAsync();
 
     protected abstract Task<int> GetGpuCurrentTemperatureAsync();
@@ -108,17 +122,21 @@ public abstract class AbstractSensorsController : ISensorsController
 
     protected abstract Task<int> GetGpuMaxFanSpeedAsync();
 
-    private int GetCpuUtilization()
+    private int GetCpuUtilization(int maxUtilization)
     {
-        var result = _percentProcessorUtilityCounter.NextValue();
-        return Math.Min(100, result == 0.0 ? -1 : (int)result);
+        var result = (int)_percentProcessorUtilityCounter.NextValue();
+        if (result < 0)
+            return -1;
+        return Math.Min(result, maxUtilization);
     }
 
     private int GetCpuCoreClock()
     {
         var baseClock = _cpuBaseClockCache ??= GetCpuBaseClock();
-        var clock = baseClock * (_percentProcessorPerformanceCounter.NextValue() / 100.0);
-        return clock < 1 ? -1 : (int)clock;
+        var clock = (int)(baseClock * (_percentProcessorPerformanceCounter.NextValue() / 100f));
+        if (clock < 1)
+            return -1;
+        return clock;
     }
 
     private static unsafe int GetCpuBaseClock()
@@ -157,9 +175,9 @@ public abstract class AbstractSensorsController : ISensorsController
 
     private static Task<int> GetCpuMaxCoreClockAsync() => WMI.LenovoGameZoneData.GetCPUFrequencyAsync();
 
-    private GPUInfo GetGPUInfo()
+    private async Task<GPUInfo> GetGPUInfoAsync()
     {
-        if (_gpuController.LastKnownState is GPUState.Inactive or GPUState.PoweredOff)
+        if (await _gpuController.GetLastKnownStateAsync().ConfigureAwait(false) is GPUState.PoweredOff or GPUState.Unknown)
             return GPUInfo.Empty;
 
         try

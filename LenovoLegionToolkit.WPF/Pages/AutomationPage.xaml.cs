@@ -162,6 +162,7 @@ public partial class AutomationPage
         {
             new AlwaysOnUsbAutomationStep(default),
             new BatteryAutomationStep(default),
+            new BatteryNightChargeAutomationStep(default),
             new DeactivateGPUAutomationStep(default),
             new DelayAutomationStep(default),
             new DisplayBrightnessAutomationStep(50),
@@ -172,6 +173,7 @@ public partial class AutomationPage
             new HDRAutomationStep(default),
             new InstantBootAutomationStep(default),
             new MicrophoneAutomationStep(default),
+            new NotificationAutomationStep(default),
             new OneLevelWhiteKeyboardBacklightAutomationStep(default),
             new OverclockDiscreteGPUAutomationStep(default),
             new OverDriveAutomationStep(default),

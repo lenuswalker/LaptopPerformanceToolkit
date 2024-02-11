@@ -152,20 +152,20 @@
     <value>Añadir nueva</value>
   </data>
   <data name="AlwaysActivatePowerPlans_Message" xml:space="preserve">
-	  <value>Activar el Plan de energía aunque Vantage o sus servicios estén activados.
+    <value>Activar el Plan de energía aunque Vantage o sus servicios estén activados.
 Esta opción solo está pensada para dispositivos que no vienen con varios planes de energía.</value>
   </data>
   <data name="AlwaysActivatePowerPlans_Title" xml:space="preserve">
     <value>Activar siempre el plan de energía de Windows</value>
   </data>
   <data name="AlwaysOnUSBControl_Message" xml:space="preserve">
-	  <value>Cargar dispositivos USB, cuando el equipo esté apagado o en modo de suspensión/hibernación.</value>
+    <value>Cargar dispositivos USB, cuando el equipo esté apagado o en modo de suspensión/hibernación.</value>
   </data>
   <data name="AlwaysOnUSBControl_Title" xml:space="preserve">
     <value>USB siempre encendido</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
-	  <value>Cargar dispositivos USB, cuando el equipo esté apagado o en modo de suspensión/ hibernación.</value>
+    <value>Cargar dispositivos USB, cuando el equipo esté apagado o en modo de suspensión/ hibernación.</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Title" xml:space="preserve">
     <value>USB siempre encendido</value>
@@ -189,7 +189,7 @@ Esta opción solo está pensada para dispositivos que no vienen con varios plane
     <value>Ninguna acción definida. Haga clic en "Añadir nueva" para crear una nueva acción.</value>
   </data>
   <data name="AutomationPage_Actions_Message" xml:space="preserve">
-	  <value>Al activar estas acciones, se ejecutarán automáticamente. Cada vez que el estado cambie, se evaluarán las acciones de arriba a abajo.
+    <value>Al activar estas acciones, se ejecutarán automáticamente. Cada vez que el estado cambie, se evaluarán las acciones de arriba a abajo.
 Sólo se ejecutarán las acciones que coincidan con el estado actual.</value>
   </data>
   <data name="AutomationPage_Actions_Title" xml:space="preserve">
@@ -370,7 +370,7 @@ Sólo se ejecutarán las acciones que coincidan con el estado actual.</value>
     <value>Fecha de fabricación</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Message" xml:space="preserve">
-	  <value>Tiempo transcurrido desde la última conexión del portátil a la corriente eléctrica.
+    <value>Tiempo transcurrido desde la última conexión del portátil a la corriente eléctrica.
 Esta hora puede no ser correcta si el portátil se ha cargado mientras estaba suspendido o apagado.</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Title" xml:space="preserve">
@@ -432,7 +432,7 @@ El cambio de modo puede requerir un reinicio.</value>
     <value>Inicio</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Desactivar la GPU externa si está activa innecesariamente.
+    <value>Desactivar la GPU dedicada si está activa innecesariamente.
 
 AVISO: Esta acción no se ejecutará correctamente, si la pantalla interna está apagada o el modo híbrido no está activo.</value>
   </data>
@@ -503,7 +503,7 @@ AVISO: Esta acción no se ejecutará correctamente, si la pantalla interna está
     <value>Terminar aplicaciones</value>
   </data>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
-	  <value>Desactivar la GPU externa si está activa innecesariamente.</value>
+    <value>Desactivar la GPU dedicada si está activa innecesariamente.</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
     <value>Un monitor está conectado a la GPU nVidia.</value>
@@ -524,10 +524,10 @@ AVISO: Esta acción no se ejecutará correctamente, si la pantalla interna está
     <value>Reiniciar la GPU</value>
   </data>
   <data name="DiscreteGPUControl_Title" xml:space="preserve">
-    <value>GPU externa</value>
+    <value>GPU dedicada</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-	  <value>Cambiar el brillo de la pantalla integrada.
+    <value>Cambiar el brillo de la pantalla integrada.
 Los modos de energía modifican el brillo en algunos dispositivos. Asegúrese de realizar este paso en último lugar, si algo no funciona bien.
 
 AVISO: Esta acción no se ejecutará correctamente, si la pantalla interna está apagada.</value>
@@ -571,7 +571,7 @@ Haga clic en el logotipo de PayPal que aparece a continuación, o escanee el có
   </data>
   <data name="ExtendedHybridModeInfoWindow_Auto_Message" xml:space="preserve">
     <value>Utilizar la GPU integrada sólo si está en modo batería. 
-Utilizar la GPU integrada y externa si el adaptador de CA está conectado. Si se conecta un adaptador no estándar, el sistema cambiará sólo al modo híbrido-iGPU.</value>
+Utilizar la GPU integrada y dedicada si el adaptador de CA está conectado. Si se conecta un adaptador no estándar, el sistema cambiará sólo al modo híbrido-iGPU.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Auto_Title" xml:space="preserve">
     <value>Modo híbrido-automático</value>
@@ -580,20 +580,20 @@ Utilizar la GPU integrada y externa si el adaptador de CA está conectado. Si se
     <value>El cambio a/desde este modo requiere un reinicio.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_DGPU_Message" xml:space="preserve">
-    <value>Utilizar sólo la GPU externa. Este modo proporciona el mejor rendimiento gráfico, pero aumenta el consumo de energía.</value>
+    <value>Utilizar sólo la GPU dedicada. Este modo proporciona el mejor rendimiento gráfico, pero aumenta el consumo de energía.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_DGPU_Title" xml:space="preserve">
-    <value>Modo dGPU</value>
+    <value>Modo dGPU (GPU dedicada)</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Hybrid_Message" xml:space="preserve">
-    <value>La GPU integrada y la externa están activadas.
+    <value>Las GPUs integrada y dedicada están activadas.
 El sistema alternará automáticamente entre ellas, en función de sus necesidades.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Hybrid_Title" xml:space="preserve">
     <value>Modo híbrido</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_IGPU_Disclaimer" xml:space="preserve">
-    <value>Este modo sólo surte efecto si la GPU externa no está funcionando.</value>
+    <value>Este modo sólo surte efecto si la GPU dedicada no está funcionando.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_IGPU_Message" xml:space="preserve">
     <value>Utilizar sólo la GPU integrada. Este modo minimiza el consumo de energía y el ruido.</value>
@@ -647,18 +647,18 @@ El sistema alternará automáticamente entre ellas, en función de sus necesidad
     <value>Bloqueo de la tecla Fn</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Message" xml:space="preserve">
-	  <value>¡ATENCIÓN!
+    <value>¡ATENCIÓN!
 Algunos portátiles pueden aceptar valores más bajos de los indicados, pero tenga cuidado. Esta opción puede dar lugar a un comportamiento impredecible, así que si no está seguro de lo que está haciendo, déjelo en 0.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Title" xml:space="preserve">
-    <value>Desplazamiento mínimo</value>
+    <value>Compensación mínima</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
-	  <value>¡ATENCIÓN!
+    <value>¡ATENCIÓN!
 Algunos portátiles pueden aceptar valores más altos de los indicados, pero tenga cuidado. Esta opción puede dar lugar a un comportamiento impredecible, así que si no está seguro de lo que está haciendo, déjelo en 0.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
-    <value>Desplazamiento máximo </value>
+    <value>Compensación máxima</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
     <value>No cambiar las opciones siguientes a menos que sepa realmente lo que está haciendo.</value>
@@ -708,7 +708,7 @@ En serio, ¡tenga cuidado con esta opción!</value>
     <value>Potencia gráfica total configurable</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost" xml:space="preserve">
-    <value>Dynamic Boost</value>
+    <value>Mejora dinámica</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit" xml:space="preserve">
     <value>Límite de temperatura de la GPU</value>
@@ -755,7 +755,7 @@ AVISO: Esta acción no se ejecutará correctamente si la pantalla interna está 
     <value>La retroiluminación del teclado no puede ser controlada aquí, si Vantage o sus servicios están funcionando.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-	  <value>Lenovo Vantage o sus servicios se están ejecutando</value>
+    <value>Lenovo Vantage o sus servicios se están ejecutando</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
     <value>Acerca de</value>
@@ -906,13 +906,13 @@ Activar esta opción si tiene conflictos con las aplicaciones en pantalla comple
     <value>Mejorar el tiempo de respuesta de la pantalla integrada.</value>
   </data>
   <data name="OverDriveAutomationStepControl_Title" xml:space="preserve">
-    <value>OverDrive</value>
+    <value>Aumentar la velocidad del tiempo de respuesta del monitor</value>
   </data>
   <data name="OverDriveControl_Message" xml:space="preserve">
     <value>Mejorar el tiempo de respuesta de la pantalla integrada.</value>
   </data>
   <data name="OverDriveControl_Title" xml:space="preserve">
-    <value>OverDrive</value>
+    <value>Aumentar la velocidad del tiempo de respuesta del monitor</value>
   </data>
   <data name="PackageControl_DownloadComplete_Message" xml:space="preserve">
     <value>{0} descargado(s)</value>
@@ -960,9 +960,6 @@ Asegúrese de instalar siempre los paquetes correctos.</value>
   <data name="PackagesPage_DownloadInProgress_Title" xml:space="preserve">
     <value>Descarga en curso</value>
   </data>
-  <data name="PackagesPage_DownloadTo" xml:space="preserve">
-    <value>Descargar en</value>
-  </data>
   <data name="Filter" xml:space="preserve">
     <value>Filtro...</value>
   </data>
@@ -1003,13 +1000,13 @@ Asegúrese de instalar siempre los paquetes correctos.</value>
     <value>Pegar</value>
   </data>
   <data name="PowerModeAutomationStepControl_Message" xml:space="preserve">
-	  <value>Seleccionar modo de rendimiento.</value>
+    <value>Seleccionar modo de rendimiento.</value>
   </data>
   <data name="PowerModeAutomationStepControl_Title" xml:space="preserve">
     <value>Modo de alimentación</value>
   </data>
   <data name="PowerModeControl_Message" xml:space="preserve">
-	  <value>Seleccionar el modo de rendimiento.
+    <value>Seleccionar el modo de rendimiento.
 Puede cambiar de modo con Fn+Q.</value>
   </data>
   <data name="PowerModeControl_Settings" xml:space="preserve">
@@ -1022,7 +1019,7 @@ Puede cambiar de modo con Fn+Q.</value>
     <value>El modo de alimentación seleccionado puede no funcionar correctamente sin el adaptador de corriente alterna conectado.</value>
   </data>
   <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Message" xml:space="preserve">
-	  <value>Activar esta opción si Lenovo Vantage o sus servicios se están ejecutando y eso cambia los planes de energía de su portátil, lo que podría dar lugar a un comportamiento inesperado.</value>
+    <value>Activar esta opción si Lenovo Vantage o sus servicios se están ejecutando y eso cambia los planes de energía de su portátil, lo que podría dar lugar a un comportamiento inesperado.</value>
   </data>
   <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Title" xml:space="preserve">
     <value>¿Está seguro?</value>
@@ -1209,10 +1206,10 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>No se pueden activar las teclas de acceso rápido de Lenovo</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-	  <value>Vantage y/o ImController pueden no haber sido activados correctamente</value>
+    <value>Vantage y/o ImController pueden no haber sido activados correctamente</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
-	  <value>No se ha podido activar Vantage y/o ImController</value>
+    <value>No se ha podido activar Vantage y/o ImController</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>Puede excluir las tasas de refresco, para que el acceso rápido Fn+R sea más útil.</value>
@@ -1363,7 +1360,7 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Hora</value>
   </data>
   <data name="ToggleHybridModeControl_Message" xml:space="preserve">
-    <value>Permitir cambiar entre la GPU integrada y la GPU externa.
+    <value>Permitir cambiar entre la GPU integrada y la GPU dedicada.
 Requiere un reinicio.</value>
   </data>
   <data name="ToggleHybridModeControl_RestartRequired_Message" xml:space="preserve">
@@ -1535,7 +1532,7 @@ AVISO: Esta acción no se ejecutará correctamente, si la pantalla interna está
     <value>Nombre</value>
   </data>
   <data name="EditDashboardWindow_Disclaimer_Message" xml:space="preserve">
-	  <value>Es posible que algunas funciones no aparezcan en el panel de control en función del estado y la configuración del dispositivo.</value>
+    <value>Es posible que algunas funciones no aparezcan en el panel de control en función del estado y la configuración del dispositivo.</value>
   </data>
   <data name="DashboardPage_Customize" xml:space="preserve">
     <value>Personalizar</value>
@@ -1666,7 +1663,7 @@ Esta configuración sólo tiene efecto si el modo personalizado está activado.<
     <value>Potencia total del procesador en corriente alterna</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description" xml:space="preserve">
-    <value>Punto en el que la CPU activa el ajuste dinámico de consumo de energía de la GPU.</value>
+    <value>El punto en el que la CPU activa el ajuste dinámico de consumo de energía de la GPU.</value>
   </data>
   <data name="Create" xml:space="preserve">
     <value>Crear</value>
@@ -1684,7 +1681,7 @@ Esta configuración sólo tiene efecto si el modo personalizado está activado.<
     <value>Preestablecido</value>
   </data>
   <data name="StatusTrayPopup_DiscreteGPU" xml:space="preserve">
-    <value>GPU externa</value>
+    <value>GPU dedicada</value>
   </data>
   <data name="StatusTrayPopup_PowerState" xml:space="preserve">
     <value>Estado de energía</value>
@@ -1717,7 +1714,7 @@ Esta configuración sólo tiene efecto si el modo personalizado está activado.<
     <value>S0 Modelo de menor potencia detectado</value>
   </data>
   <data name="PowerPlansWindow_AoAcWarning_Message" xml:space="preserve">
-	  <value>Windows informa de que este dispositivo soporta Modern Standby. El uso de planes de energía distintos a Equilibrado puede provocar un comportamiento inesperado.</value>
+    <value>Windows informa de que este dispositivo soporta Modern Standby. El uso de planes de energía distintos a Equilibrado puede provocar un comportamiento inesperado.</value>
   </data>
   <data name="SettingsPage_PowerPlans_Message" xml:space="preserve">
     <value>Seleccione Planes de energía de Windows para aplicar al cambiar el modo de energía.</value>
@@ -1751,22 +1748,22 @@ Esta configuración sólo tiene efecto si el modo personalizado está activado.<
     <value>Ajustes de overclocking de la GPU</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title" xml:space="preserve">
-    <value>Desviación de frecuencia del núcleo</value>
+    <value>Compensación de frecuencia del núcleo</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title" xml:space="preserve">
-    <value>Desviación de frecuencia de la memoria</value>
+    <value>Compensación de frecuencia de la memoria</value>
   </data>
   <data name="OverclockDiscreteGPUControl_Title" xml:space="preserve">
     <value>Overclock de la GPU</value>
   </data>
   <data name="OverclockDiscreteGPUControl_Message" xml:space="preserve">
-    <value>Aumentar el rendimiento haciendo overclocking en la GPU externa.</value>
+    <value>Aumentar el rendimiento haciendo overclocking en la GPU dedicada.</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
     <value>Overclock de la GPU</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Aumentar el rendimiento haciendo overclocking en la GPU externa.
+    <value>Aumentar el rendimiento haciendo overclocking en la GPU dedicada.
 
 AVISO: Esta acción no se ejecutará correctamente si no se dispone de una GPU externa.</value>
   </data>
@@ -1801,102 +1798,241 @@ AVISO: Esta acción no se ejecutará correctamente si no se dispone de una GPU e
     <value>MHz</value>
   </data>
   <data name="SensorsControl_Maximum" xml:space="preserve">
-	  <value>Máximo: {0}</value>
+    <value>Máximo: {0}</value>
   </data>
   <data name="SensorsControl_CPU_Title" xml:space="preserve">
-	  <value>Unidad de control de potencia (CPU)</value>
+    <value>Unidad de control de potencia (CPU)</value>
   </data>
   <data name="SensorsControl_Utilization_Title" xml:space="preserve">
-	  <value>Uso</value>
+    <value>Uso</value>
   </data>
   <data name="SensorsControl_CoreClock_Title" xml:space="preserve">
-	  <value>Reloj del procesador</value>
+    <value>Reloj del procesador</value>
   </data>
   <data name="SensorsControl_Temperature_Title" xml:space="preserve">
-	  <value>Temperatura</value>
+    <value>Temperatura</value>
   </data>
   <data name="SensorsControl_Fan_Title" xml:space="preserve">
-	  <value>Ventilador</value>
+    <value>Ventilador</value>
   </data>
   <data name="SensorsControl_GPU_Title" xml:space="preserve">
-	  <value>Unidad de procesamiento gráfico (GPU)</value>
+    <value>Unidad de procesamiento gráfico (GPU)</value>
   </data>
   <data name="SensorsControl_MemoryClock_Title" xml:space="preserve">
-	  <value>Reloj de memoria</value>
+    <value>Reloj de memoria</value>
   </data>
   <data name="SensorsControl_RefreshInterval" xml:space="preserve">
-	  <value>Intervalo de actualización</value>
+    <value>Intervalo de actualización</value>
   </data>
   <data name="InstantBootControl_Title" xml:space="preserve">
-	  <value>Inicio inmediato</value>
+    <value>Inicio inmediato</value>
   </data>
   <data name="InstantBootControl_Message" xml:space="preserve">
-	  <value>Encender el portátil cuando haya un cargador conectado.</value>
+    <value>Encender el portátil cuando haya un cargador conectado.</value>
   </data>
   <data name="InstantBootAutomationStepControl_Title" xml:space="preserve">
-	  <value>Inicio inmediato</value>
+    <value>Inicio inmediato</value>
   </data>
   <data name="InstantBootAutomationStepControl_Message" xml:space="preserve">
-	  <value>Encender el portátil cuando haya un cargador conectado.</value>
+    <value>Encender el portátil cuando haya un cargador conectado.</value>
   </data>
   <data name="PowerModeUnavailableWithoutACException_Title" xml:space="preserve">
-	  <value>No se puede cambiar el modo de energía</value>
+    <value>No se puede cambiar el modo de energía</value>
   </data>
   <data name="PowerModeUnavailableWithoutACException_Message" xml:space="preserve">
-	  <value>El modo de energía {0} no está disponible sin alimentación de corriente eléctrica.</value>
-	  <comment>For example: "{Performance} power mode is not available without AC power."</comment>
+    <value>El modo de energía {0} no está disponible sin alimentación de corriente eléctrica.</value>
+    <comment>For example: "{Performance} power mode is not available without AC power."</comment>
   </data>
   <data name="EditDashboardWindow_Sensors" xml:space="preserve">
-	  <value>Sensores</value>
+    <value>Sensores</value>
   </data>
   <data name="IGPUModeChangeException_Title" xml:space="preserve">
-	  <value>No se puede cambiar el modo de trabajo de la GPU</value>
+    <value>No se puede cambiar el modo de trabajo de la GPU</value>
   </data>
   <data name="IGPUModeChangeException_Message" xml:space="preserve">
-	  <value>Intentar cambiar el modo de nuevo en un par de segundos, si no ve el resultado esperado.&#x0a;Si dGPU no responde del todo, reinicie su portátil.</value>
+    <value>En un par de segundos intentar cambiar el modo de nuevo, si no obtiene el resultado esperado.
+Si la dGPU no responde del todo, reinicie su portátil.</value>
   </data>
   <data name="IGPUModeChangeException_Title_IGPUOnly" xml:space="preserve">
-	  <value>La dGPU está actualmente en uso</value>
+    <value>La dGPU está actualmente en uso</value>
   </data>
   <data name="IGPUModeChangeException_Message_IGPUOnly" xml:space="preserve">
-	  <value>La dGPU se desconectará automáticamente si no está en uso.</value>
+    <value>La dGPU se desconectará automáticamente si no está en uso.</value>
   </data>
   <data name="IGPUModeChangeException_Title_Auto" xml:space="preserve">
-	  <value>La dGPU está actualmente en uso o el portátil no está alimentado por batería</value>
+    <value>La dGPU está actualmente en uso o el portátil no está alimentado por batería</value>
   </data>
   <data name="IGPUModeChangeException_Message_Auto" xml:space="preserve">
-	  <value>La dGPU se desconectará automáticamente si no está en uso y el portátil está alimentado por batería.</value>
+    <value>La dGPU se desconectará automáticamente si no está en uso y el portátil está alimentado por batería.</value>
   </data>
   <data name="GodModeSettingsWindow_VantageWarning_Title" xml:space="preserve">
-	  <value>Los ajustes del modo personalizado no se aplicarán correctamente, si Lenovo Vantage o sus servicios se están ejecutando.</value>
+    <value>Los ajustes del modo personalizado no se aplicarán correctamente, si Lenovo Vantage o sus servicios se están ejecutando.</value>
   </data>
   <data name="GodModeSettingsWindow_LegionZoneWarning_Title" xml:space="preserve">
-	  <value>Los ajustes del modo personalizado no se aplicarán correctamente, si Legion Zone o sus servicios se están ejecutando.</value>
+    <value>Los ajustes del modo personalizado no se aplicarán correctamente, si Legion Zone o sus servicios se están ejecutando.</value>
   </data>
   <data name="DGPU_Connected_Title" xml:space="preserve">
-	  <value>DGPU conectada</value>
+    <value>DGPU conectada</value>
   </data>
   <data name="DGPU_Disconnected_Title" xml:space="preserve">
-	  <value>DGPU desconectada</value>
+    <value>DGPU desconectada</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
-	  <value>Modo de trabajo de la GPU</value>
+    <value>Modo de trabajo de la GPU</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
-	  <value>Seleccionar el modo de funcionamiento de la GPU, según el uso y las condiciones de energía de su equipo.
+    <value>Seleccionar el modo de funcionamiento de la GPU, según el uso y las condiciones de energía de su equipo.
 El cambio de modo puede requerir un reinicio.</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
-	  <value>Modo híbrido</value>
+    <value>Modo híbrido</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
-	  <value>Permitir cambiar entre la GPU integrada y la GPU externa.
+    <value>Permitir cambiar entre la GPU integrada y la GPU dedicada.
 Requiere un reinicio.</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationDuration_Title" xml:space="preserve">
-	  <value>Duración</value>
+    <value>Duración</value>
   </data>
   <data name="NotificationsSettingsWindow_Updates_Title" xml:space="preserve">
-	  <value>Actualizaciones</value>
+    <value>Actualizaciones</value>
+  </data>
+  <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl" xml:space="preserve">
+    <value>Mejora dinámica de la GPU a la CPU</value>
+  </data>
+  <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description" xml:space="preserve">
+    <value>Es la máxima potencia adicional que puede asignarse a la GPU desde la CPU, en base al uso de ésta. Cuanto mayor sea el valor, mejor será el rendimiento de las aplicaciones que utilizan la GPU.</value>
+  </data>
+  <data name="SettingsPage_BootLogo_Title" xml:space="preserve">
+    <value>Logo de arranque</value>
+  </data>
+  <data name="SettingsPage_BootLogo_Message" xml:space="preserve">
+    <value>Personalizar la imagen del logo de arranque, visible durante el inicio del sistema.</value>
+  </data>
+  <data name="BootLogoWindow_Title" xml:space="preserve">
+    <value>Logo de arranque</value>
+  </data>
+  <data name="BootLogoWindow_DefaultLogoSet" xml:space="preserve">
+    <value>Logo de arranque predefinido está configurado</value>
+  </data>
+  <data name="BootLogoWindow_CustomLogoSet" xml:space="preserve">
+    <value>Logo de arranque personalizado está configurado</value>
+  </data>
+  <data name="BootLogoWindow_Status" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="RevertToDefault" xml:space="preserve">
+    <value>Volver al valor predefinido</value>
+  </data>
+  <data name="BootLogoWindow_Customize" xml:space="preserve">
+    <value>Personalizar</value>
+  </data>
+  <data name="NotificationsSettingsWindow_Automation" xml:space="preserve">
+    <value>Acciones</value>
+  </data>
+  <data name="NotificationAutomationStepControl_NotificationText" xml:space="preserve">
+    <value>Texto de notificación</value>
+  </data>
+  <data name="NotificationAutomationStepControl_Title" xml:space="preserve">
+    <value>Mostrar notificación</value>
+  </data>
+  <data name="AutomationPipelineControl_SubtitlePart_Preset" xml:space="preserve">
+    <value>Predefinido</value>
+  </data>
+  <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
+    <value>Bloqueo Fn inteligente</value>
+  </data>
+  <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
+    <value>El bloqueo Fn se desactivará temporalmente al pulsar las teclas Mayús, Ctrl o Alt.</value>
+  </data>
+  <data name="Off" xml:space="preserve">
+    <value>Apagado</value>
+  </data>
+  <data name="BootLogoWindow_Description" xml:space="preserve">
+    <value>El logo de arranque personalizado debe tener un tamaño exacto de {0} píxeles. Los formatos soportados son: {1}.</value>
+  </data>
+  <data name="BatteryNightChargeModeControl_Title" xml:space="preserve">
+    <value>Carga nocturna de la batería</value>
+  </data>
+  <data name="BatteryNightChargeModeControl_Message" xml:space="preserve">
+    <value>Si está activado y enchufa este dispositivo durante la noche, cargará al 80% y terminará de cargarse al 100% cuando lo utilice por la mañana.</value>
+  </data>
+  <data name="BatteryNightChargeAutomationStepControl_Title" xml:space="preserve">
+    <value>Carga nocturna de la batería</value>
+  </data>
+  <data name="BatteryNightChargeAutomationStepControl_Message" xml:space="preserve">
+    <value>Si está activado y enchufa este dispositivo durante la noche, cargará al 80% y terminará de cargarse al 100% cuando lo utilice por la mañana.</value>
+  </data>
+  <data name="BootLogoWindow_SetError_Invalid_Image_Size" xml:space="preserve">
+    <value>Tamaño de imagen no válido.</value>
+  </data>
+  <data name="BootLogoWindow_SetError_Invalid_Image_Format" xml:space="preserve">
+    <value>Formato de imagen no válido.</value>
+  </data>
+  <data name="BootLogoWindow_SetError_Cannot_Mount_EFI_Partition" xml:space="preserve">
+    <value>No se puede montar la partición EFI.</value>
+  </data>
+  <data name="BootLogoWindow_SetError_Cannot_Set_UEFI_Privilege" xml:space="preserve">
+    <value>No se puede establecer el privilegio UEFI.</value>
+  </data>
+  <data name="BootLogoWindow_SetError_Not_Enough_Free_Space_On_EFI_Partition" xml:space="preserve">
+    <value>No hay suficiente espacio libre en la partición EFI.</value>
+  </data>
+  <data name="BootLogoWindow_SetCustomFailed" xml:space="preserve">
+    <value>No se ha podido establecer el logo personalizado: {0}</value>
+  </data>
+  <data name="BootLogoWindow_SetDefaultFailed" xml:space="preserve">
+    <value>No se ha podido establecer el logo predefinido: {0}</value>
+  </data>
+  <data name="BootLogoWindow_SetDefaultSuccess" xml:space="preserve">
+    <value>Logo de arranque predefinido.</value>
+  </data>
+  <data name="BootLogoWindow_SetCustomSuccess" xml:space="preserve">
+    <value>Logo de arranque personalizado.</value>
+  </data>
+  <data name="WiFiConnectedPipelineTriggerTabItemContent_NetworkName" xml:space="preserve">
+	  <value>Nombre de la red (SSID)</value>
+  </data>
+  <data name="WiFiConnectedPipelineTriggerTabItemContent_CopyCurrentNetworkName" xml:space="preserve">
+	  <value>Copiar el nombre de la red actual</value>
+  </data>
+  <data name="WiFiConnectedPipelineTriggerTabItemContent_LeaveEmptyForAnyNetwork" xml:space="preserve">
+	  <value>Dejar vacío para cualquier red Wi-Fi.</value>
+  </data>
+  <data name="SettingsPage_HWiNFO_Title" xml:space="preserve">
+	  <value>HWiNFO64</value>
+  </data>
+  <data name="SettingsPage_HWiNFO_Message" xml:space="preserve">
+	  <value>Compartir la velocidad del ventilador, la temperatura de la batería, etc... con HWiNFO64. Puede que tenga que reiniciar HWiNFO64 después de cambiar esta opción.</value>
+  </data>
+  <data name="SettingsPage_Integrations_Title" xml:space="preserve">
+	  <value>Integraciones</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+	  <value>Ajustes</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+	  <value>Información</value>
+  </data>
+  <data name="PackagesPage_DownloadTo" xml:space="preserve">
+	  <value>Carpeta de descargas</value>
+  </data>
+  <data name="PackagesPage_OpenDownloadTo" xml:space="preserve">
+	  <value>Abrir carpeta de descargas</value>
+  </data>
+  <data name="PackageControl_Download" xml:space="preserve">
+	  <value>Descargar</value>
+  </data>
+  <data name="PackageControl_OpenReadme" xml:space="preserve">
+	  <value>Abrir README</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightControl_Preset" xml:space="preserve">
+	  <value>Predefinido</value>
+  </data>
+  <data name="DeviceInformationWindow_Refresh" xml:space="preserve">
+	  <value>Actualizar</value>
+  </data>
+  <data name="AbstractAutomationStepControl_Delete" xml:space="preserve">
+	  <value>Eliminar</value>
   </data>
 </root>

@@ -11,6 +11,7 @@ using LenovoLegionToolkit.Lib.Automation.Pipeline;
 using LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
 using LenovoLegionToolkit.Lib.Automation.Steps;
 using LenovoLegionToolkit.Lib.Extensions;
+using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Controls.Automation.Steps;
 using LenovoLegionToolkit.WPF.Extensions;
@@ -18,8 +19,8 @@ using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
 using LenovoLegionToolkit.WPF.Windows.Automation;
 using Wpf.Ui.Common;
-using Wpf.Ui.Controls;
 using Button = Wpf.Ui.Controls.Button;
+using CardExpander = LenovoLegionToolkit.WPF.Controls.Custom.CardExpander;
 using MenuItem = Wpf.Ui.Controls.MenuItem;
 
 namespace LenovoLegionToolkit.WPF.Controls.Automation;
@@ -29,6 +30,7 @@ public class AutomationPipelineControl : UserControl
     private readonly TaskCompletionSource _initializedTaskCompletionSource = new();
 
     private readonly AutomationProcessor _automationProcessor = IoCContainer.Resolve<AutomationProcessor>();
+    private readonly GodModeSettings _godModeSettings = IoCContainer.Resolve<GodModeSettings>();
 
     private readonly CardExpander _cardExpander = new()
     {
@@ -249,6 +251,15 @@ public class AutomationPipelineControl : UserControl
         if (AutomationPipeline.Trigger is IPowerModeAutomationPipelineTrigger pm)
             result += $" | {Resource.AutomationPipelineControl_SubtitlePart_PowerMode}: {pm.PowerModeState.GetDisplayName()}";
 
+        if (AutomationPipeline.Trigger is IGodModePresetChangedAutomationPipelineTrigger gmpt)
+        {
+            var name = _godModeSettings.Store.Presets.Where(kv => kv.Key == gmpt.PresetId)
+                .Select(kv => kv.Value.Name)
+                .DefaultIfEmpty("-")
+                .First();
+            result += $" | {Resource.AutomationPipelineControl_SubtitlePart_Preset}: {name}";
+        }
+
         if (AutomationPipeline.Trigger is IProcessesAutomationPipelineTrigger pt && pt.Processes.Any())
             result += $" | {Resource.AutomationPipelineControl_SubtitlePart_Apps}: {string.Join(", ", pt.Processes.Select(p => p.Name))}";
 
@@ -275,6 +286,9 @@ public class AutomationPipelineControl : UserControl
 
         if (AutomationPipeline.Trigger is IUserInactivityPipelineTrigger ut && ut.InactivityTimeSpan > TimeSpan.Zero)
             result += $" | {string.Format(Resource.AutomationPipelineControl_SubtitlePart_After, ut.InactivityTimeSpan.Humanize(culture: Resource.Culture))}";
+
+        if (AutomationPipeline.Trigger is IWiFiConnectedPipelineTrigger wt && wt.Ssids.Any())
+            result += $" | {string.Join(",", wt.Ssids)}";
 
         return result;
     }
@@ -315,6 +329,7 @@ public class AutomationPipelineControl : UserControl
         {
             AlwaysOnUsbAutomationStep s => new AlwaysOnUsbAutomationStepControl(s),
             BatteryAutomationStep s => new BatteryAutomationStepControl(s),
+            BatteryNightChargeAutomationStep s => new BatteryNightChargeAutomationStepControl(s),
             DeactivateGPUAutomationStep s => new DeactivateGPUAutomationStepControl(s),
             DelayAutomationStep s => new DelayAutomationStepControl(s),
             DisplayBrightnessAutomationStep s => new DisplayBrightnessAutomationStepControl(s),
@@ -326,6 +341,7 @@ public class AutomationPipelineControl : UserControl
             HybridModeAutomationStep s => await HybridModeAutomationStepControlFactory.GetControlAsync(s),
             InstantBootAutomationStep s => new InstantBootAutomationStepControl(s),
             MicrophoneAutomationStep s => new MicrophoneAutomationStepControl(s),
+            NotificationAutomationStep s => new NotificationAutomationStepControl(s),
             OneLevelWhiteKeyboardBacklightAutomationStep s => new OneLevelWhiteKeyboardBacklightAutomationStepControl(s),
             OverDriveAutomationStep s => new OverDriveAutomationStepControl(s),
             OverclockDiscreteGPUAutomationStep s => new OverclockDiscreteGPUAutomationStepControl(s),
@@ -412,6 +428,8 @@ public class AutomationPipelineControl : UserControl
         _stepsStackPanel.Children.Add(control);
         _cardHeaderControl.Subtitle = GenerateSubtitle();
         _cardHeaderControl.SubtitleToolTip = _cardHeaderControl.Subtitle;
+
+        control.Focus();
 
         OnChanged?.Invoke(this, EventArgs.Empty);
     }
