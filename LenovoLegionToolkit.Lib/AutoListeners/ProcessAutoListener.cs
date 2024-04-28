@@ -8,15 +8,26 @@ using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.Lib.AutoListeners;
 
-public class ProcessAutoListener : AbstractAutoListener<ProcessEventInfo>
+public class ProcessAutoListener(
+    InstanceStartedEventAutoAutoListener instanceStartedEventAutoAutoListener,
+    InstanceStoppedEventAutoAutoListener instanceStoppedEventAutoAutoListener)
+    : AbstractAutoListener<ProcessAutoListener.ChangedEventArgs>
 {
+    public class ChangedEventArgs(ProcessEventInfoType type, ProcessInfo processInfo) : EventArgs
+    {
+        public ProcessEventInfoType Type { get; } = type;
+
+        public ProcessInfo ProcessInfo { get; } = processInfo;
+    }
+
     private static readonly object Lock = new();
 
     // ReSharper disable StringLiteralTypo
 
     private static readonly string[] IgnoredNames =
-    {
+    [
         "backgroundTaskHost",
+        "cmd",
         "CompPkgSrv",
         "conhost",
         "dllhost",
@@ -26,96 +37,95 @@ public class ProcessAutoListener : AbstractAutoListener<ProcessEventInfo>
         "NvOAWrapperCache",
         "SearchProtocolHost",
         "svchost",
+        "taskhostw",
+        "WmiApSrv",
         "WmiPrvSE"
-    };
+    ];
 
     // ReSharper restore StringLiteralTypo
 
     private static readonly string[] IgnoredPaths =
-    {
+    [
         Environment.GetFolderPath(Environment.SpecialFolder.Windows),
-    };
+    ];
 
-    private readonly InstanceStartedEventAutoAutoListener _instanceStartedEventAutoAutoListener;
-    private readonly InstanceStoppedEventAutoAutoListener _instanceStoppedEventAutoAutoListener;
-
-    private readonly Dictionary<int, ProcessInfo> _processCache = new();
-
-    public ProcessAutoListener(InstanceStartedEventAutoAutoListener instanceStartedEventAutoAutoListener, InstanceStoppedEventAutoAutoListener instanceStoppedEventAutoAutoListener)
-    {
-        _instanceStartedEventAutoAutoListener = instanceStartedEventAutoAutoListener ?? throw new ArgumentNullException(nameof(instanceStartedEventAutoAutoListener));
-        _instanceStoppedEventAutoAutoListener = instanceStoppedEventAutoAutoListener ?? throw new ArgumentNullException(nameof(instanceStoppedEventAutoAutoListener));
-
-    }
+    private readonly Dictionary<int, ProcessInfo> _processCache = [];
 
     protected override async Task StartAsync()
     {
-        await _instanceStartedEventAutoAutoListener.SubscribeChangedAsync(InstanceStartedEventAutoAutoListener_Changed).ConfigureAwait(false);
-        await _instanceStoppedEventAutoAutoListener.SubscribeChangedAsync(InstanceStoppedEventAutoAutoListener_Changed).ConfigureAwait(false);
+        await instanceStartedEventAutoAutoListener.SubscribeChangedAsync(InstanceStartedEventAutoListener_Changed).ConfigureAwait(false);
+        await instanceStoppedEventAutoAutoListener.SubscribeChangedAsync(InstanceStoppedEventAutoListener_Changed).ConfigureAwait(false);
     }
 
     protected override async Task StopAsync()
     {
-        await _instanceStartedEventAutoAutoListener.UnsubscribeChangedAsync(InstanceStartedEventAutoAutoListener_Changed).ConfigureAwait(false);
-        await _instanceStoppedEventAutoAutoListener.UnsubscribeChangedAsync(InstanceStoppedEventAutoAutoListener_Changed).ConfigureAwait(false);
+        await instanceStartedEventAutoAutoListener.UnsubscribeChangedAsync(InstanceStartedEventAutoListener_Changed).ConfigureAwait(false);
+        await instanceStoppedEventAutoAutoListener.UnsubscribeChangedAsync(InstanceStoppedEventAutoListener_Changed).ConfigureAwait(false);
 
         lock (Lock)
             _processCache.Clear();
     }
 
-    private void InstanceStartedEventAutoAutoListener_Changed(object? sender, (int processId, string processName) e)
+    private void InstanceStartedEventAutoListener_Changed(object? sender, InstanceStartedEventAutoAutoListener.ChangedEventArgs e)
     {
         lock (Lock)
         {
-            if (e.processId < 0)
+            if (e.ProcessId < 0)
                 return;
 
-            if (string.IsNullOrWhiteSpace(e.processName))
+            if (string.IsNullOrWhiteSpace(e.ProcessName))
                 return;
 
-            if (IgnoredNames.Contains(e.processName, StringComparer.InvariantCultureIgnoreCase))
+            if (IgnoredNames.Contains(e.ProcessName, StringComparer.InvariantCultureIgnoreCase))
                 return;
 
             string? processPath = null;
             try
             {
-                processPath = Process.GetProcessById(e.processId).GetFileName();
+                processPath = Process.GetProcessById(e.ProcessId).GetFileName();
+            }
+            catch (ArgumentException)
+            {
+                if (Log.Instance.IsTraceEnabled)
+                    Log.Instance.Trace($"Process {e.ProcessName} isn't running, ignoring... [processId={e.ProcessId}]");
             }
             catch (Exception ex)
             {
                 if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Can't get process {e.processName} details.", ex);
+                    Log.Instance.Trace($"Can't get process {e.ProcessName} details. [processId={e.ProcessId}]", ex);
             }
 
             if (!string.IsNullOrEmpty(processPath) && IgnoredPaths.Any(p => processPath.StartsWith(p, StringComparison.InvariantCultureIgnoreCase)))
                 return;
 
-            var processInfo = new ProcessInfo(e.processName, processPath);
-            _processCache[e.processId] = processInfo;
+            var processInfo = new ProcessInfo(e.ProcessName, processPath);
+            _processCache[e.ProcessId] = processInfo;
 
-            RaiseChanged(new(ProcessEventInfoType.Started, processInfo));
+            CleanUpCacheIfNecessary();
+
+            RaiseChanged(new ChangedEventArgs(ProcessEventInfoType.Started, processInfo));
         }
     }
 
-    private void InstanceStoppedEventAutoAutoListener_Changed(object? sender, (int processId, string processName) e)
+    private void InstanceStoppedEventAutoListener_Changed(object? sender, InstanceStoppedEventAutoAutoListener.ChangedEventArgs e)
     {
         lock (Lock)
         {
             CleanUpCacheIfNecessary();
 
-            if (e.processId < 0)
+            if (e.ProcessId < 0)
                 return;
 
-            if (string.IsNullOrWhiteSpace(e.processName))
+            if (string.IsNullOrWhiteSpace(e.ProcessName))
                 return;
 
-            if (IgnoredNames.Contains(e.processName, StringComparer.InvariantCultureIgnoreCase))
+            if (IgnoredNames.Contains(e.ProcessName, StringComparer.InvariantCultureIgnoreCase))
                 return;
 
-            if (!_processCache.Remove(e.processId, out var processInfo))
+            if (!_processCache.Remove(e.ProcessId, out var processInfo))
                 return;
 
-            RaiseChanged(new(ProcessEventInfoType.Stopped, processInfo));
+            RaiseChanged(new ChangedEventArgs(ProcessEventInfoType.Stopped, processInfo));
         }
     }
 

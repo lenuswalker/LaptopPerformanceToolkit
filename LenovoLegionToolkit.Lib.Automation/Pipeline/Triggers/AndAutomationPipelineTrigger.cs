@@ -5,17 +5,12 @@ using Newtonsoft.Json;
 
 namespace LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
 
-public class AndAutomationPipelineTrigger : ICompositeAutomationPipelineTrigger
+[method: JsonConstructor]
+public class AndAutomationPipelineTrigger(IAutomationPipelineTrigger[] triggers) : ICompositeAutomationPipelineTrigger
 {
     public string DisplayName => string.Join(Environment.NewLine, Triggers.Select(t => t.DisplayName));
 
-    public IAutomationPipelineTrigger[] Triggers { get; }
-
-    [JsonConstructor]
-    public AndAutomationPipelineTrigger(IAutomationPipelineTrigger[] triggers)
-    {
-        Triggers = triggers;
-    }
+    public IAutomationPipelineTrigger[] Triggers { get; } = triggers;
 
     public async Task<bool> IsMatchingEvent(IAutomationEvent automationEvent)
     {
@@ -38,10 +33,10 @@ public class AndAutomationPipelineTrigger : ICompositeAutomationPipelineTrigger
 
     public Task<bool> IsMatchingState() => Task.FromResult(false);
 
-    public void UpdateEnvironment(ref AutomationEnvironment environment)
+    public void UpdateEnvironment(AutomationEnvironment environment)
     {
         foreach (var trigger in Triggers)
-            trigger.UpdateEnvironment(ref environment);
+            trigger.UpdateEnvironment(environment);
     }
 
     public IAutomationPipelineTrigger DeepCopy() => new AndAutomationPipelineTrigger(Triggers);

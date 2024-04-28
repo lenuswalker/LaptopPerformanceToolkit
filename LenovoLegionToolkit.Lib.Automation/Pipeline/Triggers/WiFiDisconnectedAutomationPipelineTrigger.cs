@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
+using LenovoLegionToolkit.Lib.Automation.Resources;
 using LenovoLegionToolkit.Lib.System;
 
 namespace LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
 
 public class WiFiDisconnectedAutomationPipelineTrigger : IWiFiDisconnectedPipelineTrigger
 {
-    public string DisplayName => "When WiFi is disconnected";
+    public string DisplayName => Resource.WiFiDisconnectedAutomationPipelineTrigger_DisplayName;
 
     public Task<bool> IsMatchingEvent(IAutomationEvent automationEvent)
     {
@@ -16,11 +17,11 @@ public class WiFiDisconnectedAutomationPipelineTrigger : IWiFiDisconnectedPipeli
 
     public Task<bool> IsMatchingState()
     {
-        var ssid = WiFi.GetConnectedNetworkSSID();
+        var ssid = WiFi.GetConnectedNetworkSsid();
         return Task.FromResult(ssid is null);
     }
 
-    public void UpdateEnvironment(ref AutomationEnvironment environment) => environment.WiFiConnected = false;
+    public void UpdateEnvironment(AutomationEnvironment environment) => environment.WiFiConnected = false;
 
     public IAutomationPipelineTrigger DeepCopy() => new WiFiDisconnectedAutomationPipelineTrigger();
 

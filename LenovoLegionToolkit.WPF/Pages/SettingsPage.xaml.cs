@@ -81,6 +81,7 @@ public partial class SettingsPage
         _accentColorSourceComboBox.SetItems(Enum.GetValues<AccentColorSource>(), _settings.Store.AccentColorSource, t => t.GetDisplayName());
 
         _autorunComboBox.SetItems(Enum.GetValues<AutorunState>(), Autorun.State, t => t.GetDisplayName());
+        _minimizeToTrayToggle.IsChecked = _settings.Store.MinimizeToTray;
         _minimizeOnCloseToggle.IsChecked = _settings.Store.MinimizeOnClose;
 
         var vantageStatus = await _vantageDisabler.GetStatusAsync();
@@ -95,9 +96,9 @@ public partial class SettingsPage
         _fnKeysCard.Visibility = fnKeysStatus != SoftwareStatus.NotFound ? Visibility.Visible : Visibility.Collapsed;
         _fnKeysToggle.IsChecked = fnKeysStatus == SoftwareStatus.Disabled;
 
-        _smartFnLockComboBox.SetItems(new[] { (ModifierKey)0, ModifierKey.Alt, ModifierKey.Alt | ModifierKey.Ctrl | ModifierKey.Shift },
+        _smartFnLockComboBox.SetItems([ModifierKey.None, ModifierKey.Alt, ModifierKey.Alt | ModifierKey.Ctrl | ModifierKey.Shift],
             _settings.Store.SmartFnLockFlags,
-            m => m is 0 ? Resource.Off : m.GetFlagsDisplayName());
+            m => m is ModifierKey.None ? Resource.Off : m.GetFlagsDisplayName(ModifierKey.None));
 
         _smartKeySinglePressActionCard.Visibility = fnKeysStatus != SoftwareStatus.Enabled ? Visibility.Visible : Visibility.Collapsed;
         _smartKeyDoublePressActionCard.Visibility = fnKeysStatus != SoftwareStatus.Enabled ? Visibility.Visible : Visibility.Collapsed;
@@ -105,10 +106,12 @@ public partial class SettingsPage
         _notificationsCard.Visibility = fnKeysStatus != SoftwareStatus.Enabled ? Visibility.Visible : Visibility.Collapsed;
         _excludeRefreshRatesCard.Visibility = fnKeysStatus != SoftwareStatus.Enabled ? Visibility.Visible : Visibility.Collapsed;
         _synchronizeBrightnessToAllPowerPlansToggle.IsChecked = _settings.Store.SynchronizeBrightnessToAllPowerPlans;
+        _onBatterySinceResetToggle.IsChecked = _settings.Store.ResetBatteryOnSinceTimerOnReboot;
 
         _bootLogoCard.Visibility = await BootLogo.IsSupportedAsync() ? Visibility.Visible : Visibility.Collapsed;
 
         _powerPlansCard.Visibility = await _powerModeFeature.IsSupportedAsync() ? Visibility.Visible : Visibility.Collapsed;
+        _onBatterySinceResetToggle.Visibility = Visibility.Visible;
 
         _hwinfoIntegrationToggle.IsChecked = _integrationsSettings.Store.HWiNFO;
 
@@ -116,6 +119,7 @@ public partial class SettingsPage
 
         _themeComboBox.Visibility = Visibility.Visible;
         _autorunComboBox.Visibility = Visibility.Visible;
+        _minimizeToTrayToggle.Visibility = Visibility.Visible;
         _minimizeOnCloseToggle.Visibility = Visibility.Visible;
         _vantageToggle.Visibility = Visibility.Visible;
         _legionZoneToggle.Visibility = Visibility.Visible;
@@ -229,6 +233,19 @@ public partial class SettingsPage
 
         var window = new SelectSmartKeyPipelinesWindow(isDoublePress: true) { Owner = Window.GetWindow(this) };
         window.ShowDialog();
+    }
+
+    private void MinimizeToTrayToggle_Click(object sender, RoutedEventArgs e)
+    {
+        if (_isRefreshing)
+            return;
+
+        var state = _minimizeToTrayToggle.IsChecked;
+        if (state is null)
+            return;
+
+        _settings.Store.MinimizeToTray = state.Value;
+        _settings.SynchronizeStore();
     }
 
     private void MinimizeOnCloseToggle_Click(object sender, RoutedEventArgs e)
@@ -494,6 +511,19 @@ public partial class SettingsPage
     private void PowerPlansControlPanel_Click(object sender, RoutedEventArgs e)
     {
         Process.Start("control", "/name Microsoft.PowerOptions");
+    }
+
+    private void OnBatterySinceResetToggle_Click(object sender, RoutedEventArgs e)
+    {
+        if (_isRefreshing)
+            return;
+
+        var state = _onBatterySinceResetToggle.IsChecked;
+        if (state is null)
+            return;
+
+        _settings.Store.ResetBatteryOnSinceTimerOnReboot = state.Value;
+        _settings.SynchronizeStore();
     }
 
     private async void HWiNFOIntegrationToggle_Click(object sender, RoutedEventArgs e)

@@ -89,8 +89,9 @@ public enum FanTableType
 {
     Unknown,
     CPU,
+    CPUSensor,
     GPU,
-    CPUSensor
+    GPU2
 }
 
 public enum FlipToStartState
@@ -197,6 +198,7 @@ public enum MicrophoneState
 [Flags]
 public enum ModifierKey
 {
+    None = 0,
     [Display(ResourceType = typeof(Resource), Name = "ModifierKey_Shift")]
     Shift = 1,
     [Display(ResourceType = typeof(Resource), Name = "ModifierKey_Ctrl")]
@@ -350,6 +352,14 @@ public enum PowerModeState
     GodMode = 254
 }
 
+public enum PowerStateEvent
+{
+    Unknown = -1,
+    StatusChange,
+    Suspend,
+    Resume,
+}
+
 public enum ProcessEventInfoType
 {
     Started,
@@ -365,7 +375,7 @@ public enum RebootType
     Delayed = 5
 }
 
-public enum RGBKeyboardBacklightChanged { }
+public enum RGBKeyboardBacklightChanged;
 
 public enum RGBKeyboardBacklightBrightness
 {
@@ -411,6 +421,14 @@ public enum RGBKeyboardBacklightSpeed
     Fast,
     [Display(ResourceType = typeof(Resource), Name = "RGBKeyboardBacklightSpeed_Fastest")]
     Fastest
+}
+
+public enum SpeakerState
+{
+    [Display(ResourceType = typeof(Resource), Name = "SpeakerState_Mute")]
+    Mute,
+    [Display(ResourceType = typeof(Resource), Name = "SpeakerState_Unmute")]
+    Unmute
 }
 
 public enum SoftwareStatus
@@ -527,7 +545,8 @@ public enum SpectrumLayout
 {
     KeyboardOnly,
     KeyboardAndFront,
-    Full
+    Full,
+    FullAlternative
 }
 
 public enum Theme
@@ -589,4 +608,4 @@ public enum WinKeyState
     On
 }
 
-public enum WinKeyChanged { }
+public enum WinKeyChanged;

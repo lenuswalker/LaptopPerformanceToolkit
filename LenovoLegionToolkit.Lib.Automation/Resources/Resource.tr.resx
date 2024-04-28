@@ -194,6 +194,19 @@
     <value>Açık</value>
   </data>
   <data name="GodModePresetChangedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-	  <value>Özel mod ön ayarı değiştiğinde</value>
+    <value>Özel mod ön ayarı değiştiğinde</value>
+  </data>
+  <data name="PeriodicActionPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Süreli eylem</value>
+    <comment>The display name of the periodic automation action.</comment>
+  </data>
+  <data name="WiFiConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Wi-Fi bağlandığında</value>
+  </data>
+  <data name="WiFiDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Wi-Fi bağlantısı kesildiğinde</value>
+  </data>
+  <data name="OnResumeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+	  <value>Özgeçmişte</value>
   </data>
 </root>

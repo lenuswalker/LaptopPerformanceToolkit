@@ -8,11 +8,12 @@ public class AutomationEnvironment
 {
     private const string AC_ADAPTER_CONNECTED = "LLT_IS_AC_ADAPTER_CONNECTED";
     private const string LOW_POWER_AC_ADAPTER = "LLT_IS_AC_ADAPTER_LOW_POWER";
-    private const string DISPLAY_ON = "LLT_IS_LID_OPEN";
+    private const string DISPLAY_ON = "LLT_IS_DISPLAY_ON";
     private const string EXTERNAL_DISPLAY_CONNECTED = "LLT_IS_EXTERNAL_DISPLAY_CONNECTED";
     private const string GAME_RUNNING = "LLT_IS_GAME_RUNNING";
     private const string LID_OPEN = "LLT_IS_LID_OPEN";
     private const string STARTUP = "LLT_STARTUP";
+    private const string RESUME = "LLT_RESUME";
     private const string POWER_MODE = "LLT_POWER_MODE";
     private const string POWER_MODE_NAME = "LLT_POWER_MODE_NAME";
     private const string PROCESSES_STARTED = "LLT_PROCESSES_STARTED";
@@ -21,9 +22,10 @@ public class AutomationEnvironment
     private const string IS_SUNRISE = "LLT_IS_SUNRISE";
     private const string TIME = "LLT_TIME";
     private const string DAYS = "LLT_DAYS";
+    private const string PERIOD = "LLT_PERIOD";
     private const string USER_ACTIVE = "LLT_IS_USER_ACTIVE";
-    private const string WIFI_CONNECTED = "WIFI_CONNECTED";
-    private const string WIFI_SSID = "WIFI_SSID";
+    private const string WIFI_CONNECTED = "LLT_WIFI_CONNECTED";
+    private const string WIFI_SSID = "LLT_WIFI_SSID";
 
     private const string VALUE_TRUE = "TRUE";
     private const string VALUE_FALSE = "FALSE";
@@ -42,12 +44,28 @@ public class AutomationEnvironment
 
     public bool Startup { set => _dictionary[STARTUP] = value ? VALUE_TRUE : VALUE_FALSE; }
 
+    public bool Resume { set => _dictionary[RESUME] = value ? VALUE_TRUE : VALUE_FALSE; }
+
     public PowerModeState PowerMode
     {
         set
         {
-            _dictionary[POWER_MODE] = $"{(int)value}";
-            _dictionary[POWER_MODE_NAME] = value.ToString().ToUpperInvariant();
+            _dictionary[POWER_MODE] = value switch
+            {
+                PowerModeState.Quiet => "1",
+                PowerModeState.Balance => "2",
+                PowerModeState.Performance => "3",
+                PowerModeState.GodMode => "255",
+                _ => string.Empty
+            };
+            _dictionary[POWER_MODE_NAME] = value switch
+            {
+                PowerModeState.Quiet => "QUIET",
+                PowerModeState.Balance => "BALANCE",
+                PowerModeState.Performance => "PERFORMANCE",
+                PowerModeState.GodMode => "CUSTOM",
+                _ => string.Empty
+            };
         }
     }
 
@@ -63,6 +81,8 @@ public class AutomationEnvironment
 
     public DayOfWeek[] Days { set => _dictionary[DAYS] = value.Length < 1 ? null : string.Join(",", value.Select(v => v.ToString().ToUpperInvariant())); }
 
+    public TimeSpan Period { set => _dictionary[PERIOD] = $"{(int)value.TotalSeconds}"; }
+
     public bool UserActive { set => _dictionary[USER_ACTIVE] = value ? VALUE_TRUE : VALUE_FALSE; }
 
     public bool WiFiConnected { set => _dictionary[WIFI_CONNECTED] = value ? VALUE_TRUE : VALUE_FALSE; }
@@ -71,5 +91,5 @@ public class AutomationEnvironment
 
     public Dictionary<string, string?> Dictionary => new(_dictionary);
 
-    private readonly Dictionary<string, string?> _dictionary = new();
+    private readonly Dictionary<string, string?> _dictionary = [];
 }

@@ -10,11 +10,10 @@ using CardControl = LenovoLegionToolkit.WPF.Controls.Custom.CardControl;
 
 namespace LenovoLegionToolkit.WPF.Controls.Automation;
 
-public abstract class AbstractAutomationStepControl<T> : AbstractAutomationStepControl where T : IAutomationStep
+public abstract class AbstractAutomationStepControl<T>(T automationStep) : AbstractAutomationStepControl(automationStep)
+    where T : IAutomationStep
 {
     protected new T AutomationStep => (T)base.AutomationStep;
-
-    protected AbstractAutomationStepControl(T automationStep) : base(automationStep) { }
 }
 
 public abstract class AbstractAutomationStepControl : UserControl
@@ -58,6 +57,18 @@ public abstract class AbstractAutomationStepControl : UserControl
     {
         get => _cardHeaderControl.Subtitle;
         set => _cardHeaderControl.Subtitle = value;
+    }
+
+    public VerticalAlignment TitleVerticalAlignment
+    {
+        get => _cardHeaderControl.TitleVerticalAlignment;
+        set => _cardHeaderControl.TitleVerticalAlignment = value;
+    }
+
+    public VerticalAlignment SubtitleVerticalAlignment
+    {
+        get => _cardHeaderControl.SubtitleVerticalAlignment;
+        set => _cardHeaderControl.SubtitleVerticalAlignment = value;
     }
 
     public event EventHandler? Changed;

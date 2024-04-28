@@ -260,7 +260,7 @@ public class AutomationPipelineControl : UserControl
             result += $" | {Resource.AutomationPipelineControl_SubtitlePart_Preset}: {name}";
         }
 
-        if (AutomationPipeline.Trigger is IProcessesAutomationPipelineTrigger pt && pt.Processes.Any())
+        if (AutomationPipeline.Trigger is IProcessesAutomationPipelineTrigger pt && pt.Processes.Length != 0)
             result += $" | {Resource.AutomationPipelineControl_SubtitlePart_Apps}: {string.Join(", ", pt.Processes.Select(p => p.Name))}";
 
         if (AutomationPipeline.Trigger is ITimeAutomationPipelineTrigger tt)
@@ -287,13 +287,16 @@ public class AutomationPipelineControl : UserControl
         if (AutomationPipeline.Trigger is IUserInactivityPipelineTrigger ut && ut.InactivityTimeSpan > TimeSpan.Zero)
             result += $" | {string.Format(Resource.AutomationPipelineControl_SubtitlePart_After, ut.InactivityTimeSpan.Humanize(culture: Resource.Culture))}";
 
-        if (AutomationPipeline.Trigger is IWiFiConnectedPipelineTrigger wt && wt.Ssids.Any())
+        if (AutomationPipeline.Trigger is IWiFiConnectedPipelineTrigger wt && wt.Ssids.Length != 0)
             result += $" | {string.Join(",", wt.Ssids)}";
+
+        if (AutomationPipeline.Trigger is IPeriodicAutomationPipelineTrigger pet)
+            result += $" | {Resource.PeriodicActionPipelineTriggerTabItemContent_PeriodMinutes}: {pet.Period.TotalMinutes}";
 
         return result;
     }
 
-    private UIElement? GenerateAccessory()
+    private Button? GenerateAccessory()
     {
         var triggers = AutomationPipeline.AllTriggers
             .ToArray();
@@ -352,10 +355,13 @@ public class AutomationPipelineControl : UserControl
             ResolutionAutomationStep s => new ResolutionAutomationStepControl(s),
             RGBKeyboardBacklightAutomationStep s => new RGBKeyboardBacklightAutomationStepControl(s),
             RunAutomationStep s => new RunAutomationStepControl(s),
+            SpeakerAutomationStep s => new SpeakerAutomationStepControl(s),
             SpectrumKeyboardBacklightBrightnessAutomationStep s => new SpectrumKeyboardBacklightBrightnessAutomationStepControl(s),
             SpectrumKeyboardBacklightImportProfileAutomationStep s => new SpectrumKeyboardBacklightImportProfileAutomationStepControl(s),
             SpectrumKeyboardBacklightProfileAutomationStep s => new SpectrumKeyboardBacklightProfileAutomationStepControl(s),
             TurnOffMonitorsAutomationStep s => new TurnOffMonitorsAutomationStepControl(s),
+            TurnOffWiFiAutomationStep s => new TurnOffWiFiAutomationStepControl(s),
+            TurnOnWiFiAutomationStep s => new TurnOnWiFiAutomationStepControl(s),
             TouchpadLockAutomationStep s => new TouchpadLockAutomationStepControl(s),
             WhiteKeyboardBacklightAutomationStep s => new WhiteKeyboardBacklightAutomationStepControl(s),
             WinKeyAutomationStep s => new WinKeyAutomationStepControl(s),

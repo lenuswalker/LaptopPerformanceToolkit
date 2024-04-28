@@ -13,7 +13,7 @@ public class ACAdapterConnectedAutomationPipelineTrigger : IPowerStateAutomation
 
     public async Task<bool> IsMatchingEvent(IAutomationEvent automationEvent)
     {
-        if (automationEvent is not (PowerStateAutomationEvent or StartupAutomationEvent))
+        if (automationEvent is not (PowerStateAutomationEvent { PowerStateEvent: PowerStateEvent.StatusChange, PowerAdapterStateChanged: true } or StartupAutomationEvent))
             return false;
 
         var status = await Power.IsPowerAdapterConnectedAsync().ConfigureAwait(false);
@@ -26,7 +26,7 @@ public class ACAdapterConnectedAutomationPipelineTrigger : IPowerStateAutomation
         return status == PowerAdapterStatus.Connected;
     }
 
-    public void UpdateEnvironment(ref AutomationEnvironment environment) => environment.AcAdapterConnected = true;
+    public void UpdateEnvironment(AutomationEnvironment environment) => environment.AcAdapterConnected = true;
 
     public IAutomationPipelineTrigger DeepCopy() => new ACAdapterConnectedAutomationPipelineTrigger();
 

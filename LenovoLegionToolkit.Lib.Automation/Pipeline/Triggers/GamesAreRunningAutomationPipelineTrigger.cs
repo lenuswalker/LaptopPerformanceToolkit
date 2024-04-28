@@ -10,7 +10,7 @@ public class GamesAreRunningAutomationPipelineTrigger : IGameAutomationPipelineT
 
     public Task<bool> IsMatchingEvent(IAutomationEvent automationEvent)
     {
-        var result = automationEvent is GameAutomationEvent { Started: true };
+        var result = automationEvent is GameAutomationEvent { Running: true };
         return Task.FromResult(result);
     }
 
@@ -21,7 +21,7 @@ public class GamesAreRunningAutomationPipelineTrigger : IGameAutomationPipelineT
         return Task.FromResult(result);
     }
 
-    public void UpdateEnvironment(ref AutomationEnvironment environment) => environment.GameRunning = true;
+    public void UpdateEnvironment(AutomationEnvironment environment) => environment.GameRunning = true;
 
     public IAutomationPipelineTrigger DeepCopy() => new GamesAreRunningAutomationPipelineTrigger();
 }

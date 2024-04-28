@@ -1,22 +1,22 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Controllers;
 
 namespace LenovoLegionToolkit.Lib.Automation.Steps;
 
-public class OverclockDiscreteGPUAutomationStep : IAutomationStep<OverclockDiscreteGPUAutomationStepState>
+public class OverclockDiscreteGPUAutomationStep(OverclockDiscreteGPUAutomationStepState state)
+    : IAutomationStep<OverclockDiscreteGPUAutomationStepState>
 {
     private readonly GPUOverclockController _controller = IoCContainer.Resolve<GPUOverclockController>();
 
-    public OverclockDiscreteGPUAutomationStepState State { get; }
-
-    public OverclockDiscreteGPUAutomationStep(OverclockDiscreteGPUAutomationStepState state) => State = state;
+    public OverclockDiscreteGPUAutomationStepState State { get; } = state;
 
     public Task<OverclockDiscreteGPUAutomationStepState[]> GetAllStatesAsync() => Task.FromResult(Enum.GetValues<OverclockDiscreteGPUAutomationStepState>());
 
     public Task<bool> IsSupportedAsync() => _controller.IsSupportedAsync();
 
-    public async Task RunAsync(AutomationEnvironment _)
+    public async Task RunAsync(AutomationContext context, AutomationEnvironment environment, CancellationToken token)
     {
         if (!await _controller.IsSupportedAsync().ConfigureAwait(false))
             return;

@@ -68,6 +68,7 @@ public class IoCModule : Module
         builder.Register<PowerModeFeature>();
         builder.Register<RefreshRateFeature>();
         builder.Register<ResolutionFeature>();
+        builder.Register<SpeakerFeature>();
         builder.Register<TouchpadLockFeature>();
         builder.Register<WhiteKeyboardBacklightFeature>();
         builder.Register<WhiteKeyboardDriverBacklightFeature>(true);
@@ -85,7 +86,6 @@ public class IoCModule : Module
         builder.Register<LightingChangeListener>().AutoActivateListener();
         builder.Register<NativeWindowsMessageListener>().AutoActivateListener();
         builder.Register<PowerModeListener>().AutoActivateListener();
-        builder.Register<PowerPlanListener>().AutoActivateListener();
         builder.Register<PowerStateListener>().AutoActivateListener();
         builder.Register<RGBKeyboardBacklightListener>().AutoActivateListener();
         builder.Register<SpecialKeyListener>().AutoActivateListener();

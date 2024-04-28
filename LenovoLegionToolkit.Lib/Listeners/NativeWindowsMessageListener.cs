@@ -14,8 +14,13 @@ using Windows.Win32.UI.WindowsAndMessaging;
 
 namespace LenovoLegionToolkit.Lib.Listeners;
 
-public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindowsMessage>
+public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindowsMessageListener.ChangedEventArgs>
 {
+    public class ChangedEventArgs(NativeWindowsMessage message) : EventArgs
+    {
+        public NativeWindowsMessage Message { get; } = message;
+    }
+
     private readonly IMainThreadDispatcher _mainThreadDispatcher;
     private readonly DGPUNotify _dgpuNotify;
     private readonly SmartFnLockController _smartFnLockController;
@@ -34,13 +39,13 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
     public bool IsMonitorOn { get; private set; }
     public bool IsLidOpen { get; private set; }
 
-    public event EventHandler<NativeWindowsMessage>? Changed;
+    public event EventHandler<ChangedEventArgs>? Changed;
 
     public NativeWindowsMessageListener(IMainThreadDispatcher mainThreadDispatcher, DGPUNotify dgpuNotify, SmartFnLockController smartFnLockController)
     {
-        _mainThreadDispatcher = mainThreadDispatcher ?? throw new ArgumentNullException(nameof(mainThreadDispatcher));
-        _dgpuNotify = dgpuNotify ?? throw new ArgumentNullException(nameof(dgpuNotify));
-        _smartFnLockController = smartFnLockController ?? throw new ArgumentNullException(nameof(smartFnLockController));
+        _mainThreadDispatcher = mainThreadDispatcher;
+        _dgpuNotify = dgpuNotify;
+        _smartFnLockController = smartFnLockController;
 
         _kbProc = LowLevelKeyboardProc;
     }
@@ -207,7 +212,7 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
         IsMonitorOn = true;
         _isMonitorOnTaskCompletionSource.TrySetResult();
 
-        Changed?.Invoke(this, NativeWindowsMessage.MonitorOn);
+        RaiseChanged(NativeWindowsMessage.MonitorOn);
     }
 
     private void OnMonitorOff()
@@ -215,7 +220,7 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
         IsMonitorOn = false;
         _isMonitorOnTaskCompletionSource.TrySetResult();
 
-        Changed?.Invoke(this, NativeWindowsMessage.MonitorOff);
+        RaiseChanged(NativeWindowsMessage.MonitorOff);
     }
 
     private void OnLidOpened()
@@ -223,7 +228,7 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
         IsLidOpen = true;
         _isLidOpenTaskCompletionSource.TrySetResult();
 
-        Changed?.Invoke(this, NativeWindowsMessage.LidOpened);
+        RaiseChanged(NativeWindowsMessage.LidOpened);
     }
 
     private void OnLidClosed()
@@ -231,17 +236,17 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
         IsLidOpen = false;
         _isLidOpenTaskCompletionSource.TrySetResult();
 
-        Changed?.Invoke(this, NativeWindowsMessage.LidClosed);
+        RaiseChanged(NativeWindowsMessage.LidClosed);
     }
 
     private void OnMonitorConnected()
     {
-        Changed?.Invoke(this, NativeWindowsMessage.MonitorConnected);
+        RaiseChanged(NativeWindowsMessage.MonitorConnected);
     }
 
     private void OnMonitorDisconnected()
     {
-        Changed?.Invoke(this, NativeWindowsMessage.MonitorDisconnected);
+        RaiseChanged(NativeWindowsMessage.MonitorDisconnected);
     }
 
     private void OnDisplayDeviceArrival()
@@ -252,8 +257,10 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
                 await _dgpuNotify.NotifyAsync().ConfigureAwait(false);
         });
 
-        Changed?.Invoke(this, NativeWindowsMessage.OnDisplayDeviceArrival);
+        RaiseChanged(NativeWindowsMessage.OnDisplayDeviceArrival);
     }
+
+    private void RaiseChanged(NativeWindowsMessage message) => Changed?.Invoke(this, new ChangedEventArgs(message));
 
     private LRESULT LowLevelKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
     {
