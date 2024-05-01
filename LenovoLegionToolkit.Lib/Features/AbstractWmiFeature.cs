@@ -4,28 +4,36 @@ using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.Lib.Features;
 
-public abstract class AbstractWmiFeature<T>(
-    Func<Task<int>> getValue,
-    Func<int, Task> setValue,
-    Func<Task<int>>? isSupported = null,
-    int offset = 0)
-    : IFeature<T>
-    where T : struct, Enum, IComparable
+public abstract class AbstractWmiFeature<T> : IFeature<T> where T : struct, Enum, IComparable
 {
-    public async Task<bool> IsSupportedAsync()
+    private readonly Func<Task<int>> _getValue;
+    private readonly Func<int, Task> _setValue;
+    public readonly Func<Task<int>>? _isSupported;
+    private readonly int _offset;
+
+    protected AbstractWmiFeature(Func<Task<int>> getValue, Func<int, Task> setValue, Func<Task<int>>? isSupported = null, int offset = 0)
+    {
+        _getValue = getValue;
+        _setValue = setValue;
+        _isSupported = isSupported;
+        _offset = offset;
+    }
+
+    public virtual async Task<bool> IsSupportedAsync()
     {
         try
         {
-            if (isSupported is null)
+            if (_isSupported is null)
                 return true;
 
-            return await isSupported().ConfigureAwait(false) > 0;
+            return await _isSupported().ConfigureAwait(false) > 0;
         }
         catch
         {
             return false;
         }
     }
+
     public virtual Task<T[]> GetAllStatesAsync() => Task.FromResult(Enum.GetValues<T>());
 
     public virtual async Task<T> GetStateAsync()
@@ -33,7 +41,7 @@ public abstract class AbstractWmiFeature<T>(
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Getting state... [feature={GetType().Name}]");
 
-        var internalResult = await getValue().ConfigureAwait(false);
+        var internalResult = await _getValue().ConfigureAwait(false);
         var result = FromInternal(internalResult);
 
         if (Log.Instance.IsTraceEnabled)
@@ -48,13 +56,13 @@ public abstract class AbstractWmiFeature<T>(
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Setting state to {state}... [feature={GetType().Name}]");
 
-        await setValue(ToInternal(state)).ConfigureAwait(false);
+        await _setValue(ToInternal(state)).ConfigureAwait(false);
 
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Set state to {state} [feature={GetType().Name}]");
     }
 
-    private int ToInternal(T state) => (int)(object)state + offset;
+    private int ToInternal(T state) => (int)(object)state + _offset;
 
-    private T FromInternal(int state) => (T)(object)(state - offset);
+    private T FromInternal(int state) => (T)(object)(state - _offset);
 }

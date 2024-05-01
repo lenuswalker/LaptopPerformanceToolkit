@@ -5,8 +5,13 @@ using System.Timers;
 
 namespace LenovoLegionToolkit.Lib.AutoListeners;
 
-public class TimeIntervalAutoListener : AbstractAutoListener<int>
+public class TimeIntervalAutoListener : AbstractAutoListener<TimeIntervalAutoListener.ChangedEventArgs>
 {
+    public class ChangedEventArgs(int interval) : EventArgs
+    {
+        public int Interval { get; } = interval;
+    }
+
     private readonly Timer _timer;
     
     public TimeIntervalAutoListener()
@@ -60,5 +65,5 @@ public class TimeIntervalAutoListener : AbstractAutoListener<int>
         return Task.CompletedTask;
     }
 
-    private void Timer_Elapsed(object? sender, ElapsedEventArgs e) => RaiseChanged((int)_timer.Interval);
+    private void Timer_Elapsed(object? sender, ElapsedEventArgs e) => RaiseChanged(new ChangedEventArgs((int)_timer.Interval));
 }

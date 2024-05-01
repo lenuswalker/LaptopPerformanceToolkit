@@ -19,5 +19,5 @@ public class DisplayBrightnessAutomationStep(int brightness)
         return _controller.SetBrightnessAsync(Brightness);
     }
 
-    public override IAutomationStep DeepCopy() => new DisplayBrightnessAutomationStep(State);
+    IAutomationStep IAutomationStep.DeepCopy() => new DisplayBrightnessAutomationStep(Brightness);
 }

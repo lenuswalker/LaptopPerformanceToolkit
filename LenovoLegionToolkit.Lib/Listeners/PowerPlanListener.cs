@@ -42,15 +42,14 @@ public class PowerPlanListener : AbstractEventLogListener
             }
 
         var vantageStatus = await _vantageDisabler.GetStatusAsync().ConfigureAwait(false);
-        var activateWhenVantageEnabled = _settings.Store.ActivatePowerProfilesWithVantageEnabled;
-        if (vantageStatus == SoftwareStatus.Enabled && !activateWhenVantageEnabled)
+        if (vantageStatus == SoftwareStatus.Enabled)
         {
             if (Log.Instance.IsTraceEnabled)
-                Log.Instance.Trace($"Ignoring. [vantage.status={vantageStatus}, activateWhenVantageEnabled={activateWhenVantageEnabled}]");
+                Log.Instance.Trace($"Ignoring. [vantage.status={vantageStatus}]");
             return;
         }
 
-        var powerPlans = _powerPlanController.GetPowerPlans().ToArray();
+        var powerPlans = _powerPlanController.GetPowerPlans(true, false).ToArray();
         var activePowerPlan = powerPlans.First(pp => pp.IsActive);
 
         var powerModes = _powerPlanController.GetMatchingPowerModes(activePowerPlan.Guid);

@@ -21,6 +21,8 @@ namespace LenovoLegionToolkit.WPF.Windows.Utils;
 
 public partial class StatusWindow
 {
+    private static readonly ProcessorController _controller = IoCContainer.Resolve<ProcessorController>().GetCurrent();
+
     private readonly struct StatusWindowData(
         PowerModeState? powerModeState,
         string? godModePresetName,

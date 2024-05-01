@@ -47,7 +47,7 @@ public class TimeIntervalAutomationPipelineTrigger : ITimeIntervalAutomationPipe
         return false;
     }
 
-    public void UpdateEnvironment(ref AutomationEnvironment environment)
+    public void UpdateEnvironment(AutomationEnvironment environment)
     {
         environment.ACInterval = ACInterval;
         environment.DCInterval = DCInterval;

@@ -12,7 +12,7 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils;
 public class ProcessorManager
 {
     private readonly ProcessorController _controller = IoCContainer.Resolve<ProcessorController>();
-    private readonly TimeIntervalAutoListener _timeIntervalListener;
+    private readonly TimeIntervalAutoListener _timeIntervalAutoListener;
 
     private readonly AsyncLock _ioLock = new();
 
@@ -26,9 +26,9 @@ public class ProcessorManager
     private double _slow;
     private bool _useMSR;
 
-    public ProcessorManager(TimeIntervalAutoListener timeIntervalListener)
+    public ProcessorManager(TimeIntervalAutoListener timeIntervalAutoListener)
     {
-        _timeIntervalListener = timeIntervalListener ?? throw new ArgumentNullException(nameof(timeIntervalListener));
+        _timeIntervalAutoListener = timeIntervalAutoListener ?? throw new ArgumentNullException(nameof(timeIntervalAutoListener));
         // initialize processor
         _controller = _controller.GetCurrent();
     }
@@ -44,7 +44,7 @@ public class ProcessorManager
         using (await _ioLock.LockAsync().ConfigureAwait(false))
         {
             //_timeIntervalListener.Changed += TimeIntervalListener_Changed;
-            await _timeIntervalListener.SubscribeChangedAsync(TimeIntervalListener_Changed).ConfigureAwait(false);
+            await _timeIntervalAutoListener.SubscribeChangedAsync(TimeIntervalAutoListener_Changed).ConfigureAwait(false);
 
             await StopAsync().ConfigureAwait(false);
         }
@@ -58,13 +58,24 @@ public class ProcessorManager
         _useMSR = useMSR;
 
         if (Log.Instance.IsTraceEnabled)
-            Log.Instance.Trace($"Starting time interval listener...");
+            Log.Instance.Trace($"Setting processor TDP/power limits...");
 
-        _timeIntervalListener.StartAsync(interval*1000);
+        MaintainTDP(_stapm, _fast, _slow, _useMSR).ConfigureAwait(false);
 
         if (Log.Instance.IsTraceEnabled)
-            Log.Instance.Trace($"Stopped time interval listener...");
+            Log.Instance.Trace($"Processor TDP/power limits set");
 
+        if (interval > 0)
+        {
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Starting time interval listener...");
+
+            _timeIntervalAutoListener.StartAsync(interval * 1000);
+
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Started time interval listener.");
+        }
+        
         return Task.CompletedTask;
     }
 
@@ -73,10 +84,10 @@ public class ProcessorManager
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Stopping time interval listener...");
 
-        _timeIntervalListener.StopNowAsync();
+        _timeIntervalAutoListener.StopNowAsync();
 
         if (Log.Instance.IsTraceEnabled)
-            Log.Instance.Trace($"Stopped time interval listener...");
+            Log.Instance.Trace($"Stopped time interval listener.");
 
         _stapm = 0;
         _fast = 0;
@@ -177,7 +188,7 @@ public class ProcessorManager
         return Task.CompletedTask;
     }
 
-    private async void TimeIntervalListener_Changed(object? sender, int interval)
+    private async void TimeIntervalAutoListener_Changed(object? sender, TimeIntervalAutoListener.ChangedEventArgs e)
     {
         await MaintainTDP(_stapm, _fast, _slow, _useMSR).ConfigureAwait(false);
     }

@@ -46,7 +46,7 @@ public class PowerModeFeature(
             uint result = Power.PowerGetEffectiveOverlayScheme(out Guid currentMode);
             if (result == 0)
                 return true;
-            else                
+            else
                 return false;
         }
     }
@@ -108,12 +108,12 @@ public class PowerModeFeature(
                 throw new PowerModeUnavailableWithoutACException(state);
 
 
-        if (mi.Properties.HasQuietToPerformanceModeSwitchingBug && currentState == PowerModeState.Quiet && state == PowerModeState.Performance)
-        {
-            thermalModeListener.SuppressNext();
-            await base.SetStateAsync(PowerModeState.Balance).ConfigureAwait(false);
-            await Task.Delay(TimeSpan.FromMilliseconds(500)).ConfigureAwait(false);
-        }
+            if (mi.Properties.HasQuietToPerformanceModeSwitchingBug && currentState == PowerModeState.Quiet && state == PowerModeState.Performance)
+            {
+                thermalModeListener.SuppressNext();
+                await base.SetStateAsync(PowerModeState.Balance).ConfigureAwait(false);
+                await Task.Delay(TimeSpan.FromMilliseconds(500)).ConfigureAwait(false);
+            }
 
             if (mi.Properties.HasGodModeToOtherModeSwitchingBug && currentState == PowerModeState.GodMode && state != PowerModeState.GodMode)
             {

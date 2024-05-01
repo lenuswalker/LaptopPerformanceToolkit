@@ -87,6 +87,7 @@ public class IoCModule : Module
         builder.Register<LightingChangeListener>().AutoActivateListener();
         builder.Register<NativeWindowsMessageListener>().AutoActivateListener();
         builder.Register<PowerModeListener>().AutoActivateListener();
+        builder.Register<PowerPlanListener>().AutoActivateListener();
         builder.Register<PowerStateListener>().AutoActivateListener();
         builder.Register<RGBKeyboardBacklightListener>().AutoActivateListener();
         builder.Register<SpecialKeyListener>().AutoActivateListener();
@@ -104,6 +105,7 @@ public class IoCModule : Module
         builder.Register<WiFiAutoListener>();
 
         builder.Register<AIController>();
+        builder.Register<DisplayBrightnessController>();
         builder.Register<GodModeController>();
         builder.Register<GodModeControllerV1>(true);
         builder.Register<GodModeControllerV2>(true);

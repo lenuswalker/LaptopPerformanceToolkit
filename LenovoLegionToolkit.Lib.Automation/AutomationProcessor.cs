@@ -23,7 +23,7 @@ public class AutomationProcessor(
     GameAutoListener gameAutoListener,
     ProcessAutoListener processAutoListener,
     TimeAutoListener timeAutoListener,
-    TimeInveralAutoListener timeInveralAutoListener,
+    TimeIntervalAutoListener timeIntervalAutoListener,
     UserInactivityAutoListener userInactivityAutoListener,
     WiFiAutoListener wifiAutoListener)
 {
@@ -270,9 +270,9 @@ public class AutomationProcessor(
         await ProcessEvent(e).ConfigureAwait(false);
     }
 
-    private async void TimeIntervalAutoListener_Changed(object? sender, int interval)
+    private async void TimeIntervalAutoListener_Changed(object? sender, TimeIntervalAutoListener.ChangedEventArgs args)
     {
-        var e = new TimeIntervalAutomationEvent { Interval = interval };
+        var e = new TimeIntervalAutomationEvent(args.Interval);
         await ProcessEvent(e).ConfigureAwait(false);
     }
 
@@ -321,7 +321,7 @@ public class AutomationProcessor(
         await gameAutoListener.UnsubscribeChangedAsync(GameAutoListener_Changed).ConfigureAwait(false);
         await processAutoListener.UnsubscribeChangedAsync(ProcessAutoListener_Changed).ConfigureAwait(false);
         await timeAutoListener.UnsubscribeChangedAsync(TimeAutoListener_Changed).ConfigureAwait(false);
-        await timeInveralAutoListener.UnsubscribeChangedAsync(TimeIntervalAutoListener_Changed).ConfigureAwait(false);
+        await timeIntervalAutoListener.UnsubscribeChangedAsync(TimeIntervalAutoListener_Changed).ConfigureAwait(false);
         await userInactivityAutoListener.UnsubscribeChangedAsync(UserInactivityAutoListener_Changed).ConfigureAwait(false);
         await wifiAutoListener.UnsubscribeChangedAsync(WiFiAutoListener_Changed).ConfigureAwait(false);
 

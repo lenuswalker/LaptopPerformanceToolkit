@@ -78,7 +78,7 @@ public static class DashboardItemExtensions
         DashboardItem.OverclockDiscreteGpu => [new OverclockDiscreteGPUControl()],
         DashboardItem.Resolution => [new ResolutionControl()],
         DashboardItem.RefreshRate => [new RefreshRateControl()],
-        dashboardItem.DisplayBrightness => [new DisplayBrightnessControl()],
+        DashboardItem.DisplayBrightness => [new DisplayBrightnessControl()],
         DashboardItem.DpiScale => [new DpiScaleControl()],
         DashboardItem.Hdr => [new HDRControl()],
         DashboardItem.OverDrive => [new OverDriveControl()],

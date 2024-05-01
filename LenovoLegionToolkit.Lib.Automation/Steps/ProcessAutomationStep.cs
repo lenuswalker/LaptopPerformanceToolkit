@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.System;
 using Newtonsoft.Json;
@@ -17,7 +18,7 @@ public class ProcessAutomationStep : IAutomationStep
 
     public Task<bool> IsSupportedAsync() => Task.FromResult(true);
 
-    public async Task RunAsync(AutomationEnvironment _)
+    public async Task RunAsync(AutomationContext context, AutomationEnvironment environment, CancellationToken token)
     {
 
         if (State.Processes == null)

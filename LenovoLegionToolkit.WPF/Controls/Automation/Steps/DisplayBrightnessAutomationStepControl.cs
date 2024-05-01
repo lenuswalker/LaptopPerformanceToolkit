@@ -45,7 +45,7 @@ public class DisplayBrightnessAutomationStepControl : AbstractAutomationStepCont
     {
         _brightness.ValueChanged += (_, _) =>
         {
-            if (_brightness.Value != AutomationStep.State)
+            if (_brightness.Value != AutomationStep.Brightness)
                 RaiseChanged();
         };
 
@@ -58,7 +58,7 @@ public class DisplayBrightnessAutomationStepControl : AbstractAutomationStepCont
 
     protected override Task RefreshAsync()
     {
-        _brightness.Value = AutomationStep.State;
+        _brightness.Value = AutomationStep.Brightness;
         return Task.CompletedTask;
     }
 }

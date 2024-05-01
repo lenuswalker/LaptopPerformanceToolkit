@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Extensions;
@@ -59,7 +60,11 @@ public class PowerPlanController(ApplicationSettings settings, VantageDisabler v
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Power plan for power mode {powerModeState} was not found in settings");
 
-            powerPlanId = DefaultPowerPlan;
+            if (DefaultPowerModes.TryGetValue(powerModeState, out var defaultPowerPlanId))
+                powerPlanId = defaultPowerPlanId;
+            else
+                throw new InvalidOperationException("Unknown state");
+
             isDefault = true;
         }
 
@@ -102,6 +107,20 @@ public class PowerPlanController(ApplicationSettings settings, VantageDisabler v
 
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Power plan {powerPlanToActivate.Guid} activated. [name={powerPlanToActivate.Name}]");
+    }
+
+    public PowerModeState[] GetMatchingPowerModes(Guid powerPlanGuid)
+    {
+        var powerModes = new Dictionary<PowerModeState, Guid>(DefaultPowerModes);
+
+        foreach (var kv in settings.Store.PowerPlans)
+        {
+            powerModes[kv.Key] = kv.Value;
+        }
+
+        return powerModes.Where(kv => kv.Value == powerPlanGuid)
+            .Select(kv => kv.Key)
+            .ToArray();
     }
 
     public void SetPowerPlanParameter(PowerPlan powerPlan, Brightness brightness)
