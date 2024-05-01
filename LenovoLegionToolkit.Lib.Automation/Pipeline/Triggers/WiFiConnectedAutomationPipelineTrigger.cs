@@ -1,23 +1,19 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using LenovoLegionToolkit.Lib.Automation.Resources;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.System;
 using Newtonsoft.Json;
 
 namespace LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
 
-public class WiFiConnectedAutomationPipelineTrigger : IWiFiConnectedPipelineTrigger
+[method: JsonConstructor]
+public class WiFiConnectedAutomationPipelineTrigger(string[] ssids) : IWiFiConnectedPipelineTrigger
 {
-    public string DisplayName => "When WiFi is connected";
+    public string DisplayName => Resource.WiFiConnectedAutomationPipelineTrigger_DisplayName;
 
-    public string[] Ssids { get; }
-
-    [JsonConstructor]
-    public WiFiConnectedAutomationPipelineTrigger(string[] ssids)
-    {
-        Ssids = ssids;
-    }
+    public string[] Ssids { get; } = ssids;
 
     public Task<bool> IsMatchingEvent(IAutomationEvent automationEvent)
     {
@@ -29,7 +25,7 @@ public class WiFiConnectedAutomationPipelineTrigger : IWiFiConnectedPipelineTrig
 
     public Task<bool> IsMatchingState()
     {
-        var ssid = WiFi.GetConnectedNetworkSSID();
+        var ssid = WiFi.GetConnectedNetworkSsid();
 
         if (Ssids.IsEmpty() && ssid is not null)
             return Task.FromResult(true);
@@ -37,7 +33,7 @@ public class WiFiConnectedAutomationPipelineTrigger : IWiFiConnectedPipelineTrig
         return Task.FromResult(Ssids.Contains(ssid));
     }
 
-    public void UpdateEnvironment(ref AutomationEnvironment environment)
+    public void UpdateEnvironment(AutomationEnvironment environment)
     {
         environment.WiFiConnected = true;
         environment.WiFiSsid = string.Join(",", Ssids);

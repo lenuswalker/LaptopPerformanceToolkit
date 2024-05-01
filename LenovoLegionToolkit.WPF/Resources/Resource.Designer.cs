@@ -214,25 +214,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Activate Power Plan even when Vantage or its services are enabled.
-        ///This option is intended only for devices that didn&apos;t come with multiple power plans..
-        /// </summary>
-        public static string AlwaysActivatePowerPlans_Message {
-            get {
-                return ResourceManager.GetString("AlwaysActivatePowerPlans_Message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Always activate Windows Power Plan.
-        /// </summary>
-        public static string AlwaysActivatePowerPlans_Title {
-            get {
-                return ResourceManager.GetString("AlwaysActivatePowerPlans_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Charge USB devices, when the laptop is off, sleeping or hibernated..
         /// </summary>
         public static string AlwaysOnUsbAutomationStepControl_Message {
@@ -1990,6 +1971,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string FanCurveControl_GPU {
             get {
                 return ResourceManager.GetString("FanCurveControl_GPU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPU #2.
+        /// </summary>
+        public static string FanCurveControl_GPU2 {
+            get {
+                return ResourceManager.GetString("FanCurveControl_GPU2", resourceCulture);
             }
         }
         
@@ -3826,6 +3816,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Period (minutes).
+        /// </summary>
+        public static string PeriodicActionPipelineTriggerTabItemContent_PeriodMinutes {
+            get {
+                return ResourceManager.GetString("PeriodicActionPipelineTriggerTabItemContent_PeriodMinutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Turn on or off the backlight of the ports on the back of the laptop..
         /// </summary>
         public static string PortsBacklightAutomationStepControl_Message {
@@ -4327,6 +4326,42 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Run silently.
+        /// </summary>
+        public static string RunAutomationStepControl_ProcessRunSilently {
+            get {
+                return ResourceManager.GetString("RunAutomationStepControl_ProcessRunSilently", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Execute console applications, without creating a console window..
+        /// </summary>
+        public static string RunAutomationStepControl_ProcessRunSilently_Description {
+            get {
+                return ResourceManager.GetString("RunAutomationStepControl_ProcessRunSilently_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wait until finished.
+        /// </summary>
+        public static string RunAutomationStepControl_ProcessWaitUntilFinished {
+            get {
+                return ResourceManager.GetString("RunAutomationStepControl_ProcessWaitUntilFinished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wait until program or script finishes executing.
+        /// </summary>
+        public static string RunAutomationStepControl_ProcessWaitUntilFinished_Description {
+            get {
+                return ResourceManager.GetString("RunAutomationStepControl_ProcessWaitUntilFinished_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Run.
         /// </summary>
         public static string RunAutomationStepControl_Title {
@@ -4781,6 +4816,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Always minimize to tray instead of taskbar..
+        /// </summary>
+        public static string SettingsPage_MinimizeToTray_Message {
+            get {
+                return ResourceManager.GetString("SettingsPage_MinimizeToTray_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimize to tray.
+        /// </summary>
+        public static string SettingsPage_MinimizeToTray_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_MinimizeToTray_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configure which notifications are shown..
         /// </summary>
         public static string SettingsPage_Notifications_Message {
@@ -4795,6 +4848,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string SettingsPage_Notifications_Title {
             get {
                 return ResourceManager.GetString("SettingsPage_Notifications_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resets the counter for &quot;On battery since&quot; in the battery section when the system reboots..
+        /// </summary>
+        public static string SettingsPage_OnBatterySinceReset_Message {
+            get {
+                return ResourceManager.GetString("SettingsPage_OnBatterySinceReset_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset &quot;On battery since&quot; at startup.
+        /// </summary>
+        public static string SettingsPage_OnBatterySinceReset_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_OnBatterySinceReset_Title", resourceCulture);
             }
         }
         
@@ -4930,6 +5001,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string SettingsPage_Title {
             get {
                 return ResourceManager.GetString("SettingsPage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When mute, all active audio output devices will be muted..
+        /// </summary>
+        public static string SpeakerAutomationStepControl_Message {
+            get {
+                return ResourceManager.GetString("SpeakerAutomationStepControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Speaker.
+        /// </summary>
+        public static string SpeakerAutomationStepControl_Title {
+            get {
+                return ResourceManager.GetString("SpeakerAutomationStepControl_Title", resourceCulture);
             }
         }
         
@@ -5500,6 +5589,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string TurnOffMonitorsControl_TurnOff {
             get {
                 return ResourceManager.GetString("TurnOffMonitorsControl_TurnOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turn off WiFi.
+        /// </summary>
+        public static string TurnOffWiFiAutomationStepControl_Title {
+            get {
+                return ResourceManager.GetString("TurnOffWiFiAutomationStepControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turn on WiFi.
+        /// </summary>
+        public static string TurnOnWiFiAutomationStepControl_Title {
+            get {
+                return ResourceManager.GetString("TurnOnWiFiAutomationStepControl_Title", resourceCulture);
             }
         }
         

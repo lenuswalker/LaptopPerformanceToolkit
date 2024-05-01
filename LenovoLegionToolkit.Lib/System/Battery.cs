@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using LenovoLegionToolkit.Lib.Extensions;
+using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.Utils;
 using Windows.Win32;
 using Windows.Win32.System.Power;
@@ -11,6 +12,8 @@ namespace LenovoLegionToolkit.Lib.System;
 
 public static class Battery
 {
+    private static readonly ApplicationSettings Settings = IoCContainer.Resolve<ApplicationSettings>();
+
     public static BatteryInformation GetBatteryInformation()
     {
         var powerStatus = GetSystemPowerStatus();
@@ -38,22 +41,19 @@ public static class Battery
                 Log.Instance.Trace($"Failed to get temperature of battery.", ex);
         }
 
-        return new()
-        {
-            IsCharging = powerStatus.ACLineStatus == 1,
-            BatteryPercentage = powerStatus.BatteryLifePercent,
-            BatteryLifeRemaining = (int)powerStatus.BatteryLifeTime,
-            FullBatteryLifeRemaining = (int)powerStatus.BatteryFullLifeTime,
-            DischargeRate = status.Rate,
-            EstimateChargeRemaining = (int)status.Capacity,
-            DesignCapacity = (int)information.DesignedCapacity,
-            FullChargeCapacity = (int)information.FullChargedCapacity,
-            CycleCount = (int)information.CycleCount,
-            IsLowBattery = powerStatus.ACLineStatus == 0 && information.DefaultAlert2 >= status.Capacity,
-            BatteryTemperatureC = temperatureC,
-            ManufactureDate = manufactureDate,
-            FirstUseDate = firstUseDate
-        };
+        return new(powerStatus.ACLineStatus == 1,
+            powerStatus.BatteryLifePercent,
+            (int)powerStatus.BatteryLifeTime,
+            (int)powerStatus.BatteryFullLifeTime,
+            status.Rate,
+            (int)status.Capacity,
+            (int)information.DesignedCapacity,
+            (int)information.FullChargedCapacity,
+            (int)information.CycleCount,
+            powerStatus.ACLineStatus == 0 && information.DefaultAlert2 >= status.Capacity,
+            temperatureC,
+            manufactureDate,
+            firstUseDate);
     }
 
     public static double? GetBatteryTemperatureC()
@@ -75,11 +75,15 @@ public static class Battery
     {
         try
         {
+            var resetOnReboot = Settings.Store.ResetBatteryOnSinceTimerOnReboot;
+
+            var lastRebootTime = DateTime.Now - TimeSpan.FromMilliseconds(Environment.TickCount);
+
             var logs = new List<(DateTime Date, bool IsACOnline)>();
 
             var query = new EventLogQuery("System", PathType.LogName, "*[System[EventID=105]]");
             using var logReader = new EventLogReader(query);
-            using var propertySelector = new EventLogPropertySelector(new[] { "Event/EventData/Data[@Name='AcOnline']" });
+            using var propertySelector = new EventLogPropertySelector(["Event/EventData/Data[@Name='AcOnline']"]);
 
             while (logReader.ReadEvent() is EventLogRecord record)
             {
@@ -89,15 +93,22 @@ public static class Battery
                 if (date is null || isAcOnline is null)
                     continue;
 
+                if (resetOnReboot && date < lastRebootTime)
+                    continue;
+
                 logs.Add((date.Value, isAcOnline.Value));
             }
 
             if (logs.Count < 1)
                 return null;
 
-            var (dateTime, isACOnline) = logs.MaxBy(l => l.Date);
-            if (!isACOnline)
-                return dateTime;
+            logs.Reverse();
+
+            var (dateTime, _) = logs
+                .TakeWhile(log => log.IsACOnline != true)
+                .LastOrDefault();
+
+            return dateTime;
         }
         catch (Exception ex)
         {

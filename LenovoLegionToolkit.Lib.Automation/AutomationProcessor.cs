@@ -14,54 +14,28 @@ using NeoSmart.AsyncLock;
 
 namespace LenovoLegionToolkit.Lib.Automation;
 
-public class AutomationProcessor
+public class AutomationProcessor(
+    AutomationSettings settings,
+    NativeWindowsMessageListener nativeWindowsMessageListener,
+    PowerStateListener powerStateListener,
+    PowerModeListener powerModeListener,
+    GodModeController godModeController,
+    GameAutoListener gameAutoListener,
+    ProcessAutoListener processAutoListener,
+    TimeAutoListener timeAutoListener,
+    TimeInveralAutoListener timeInveralAutoListener,
+    UserInactivityAutoListener userInactivityAutoListener,
+    WiFiAutoListener wifiAutoListener)
 {
-    private readonly AutomationSettings _settings;
-    private readonly NativeWindowsMessageListener _nativeWindowsMessageListener;
-    private readonly PowerStateListener _powerStateListener;
-    private readonly PowerModeListener _powerModeListener;
-    private readonly GodModeController _godModeController;
-    private readonly GameAutoListener _gameAutoListener;
-    private readonly ProcessAutoListener _processAutoListener;
-    private readonly TimeAutoListener _timeAutoListener;
-    private readonly TimeIntervalAutoListener _timeIntervalAutoListener;
-    private readonly UserInactivityAutoListener _userInactivityAutoListener;
-    private readonly WiFiAutoListener _wifiAutoListener;
-
     private readonly AsyncLock _ioLock = new();
     private readonly AsyncLock _runLock = new();
 
-    private List<AutomationPipeline> _pipelines = new();
+    private List<AutomationPipeline> _pipelines = [];
     private CancellationTokenSource? _cts;
 
-    public bool IsEnabled => _settings.Store.IsEnabled;
+    public bool IsEnabled => settings.Store.IsEnabled;
 
     public event EventHandler<List<AutomationPipeline>>? PipelinesChanged;
-
-    public AutomationProcessor(AutomationSettings settings,
-        NativeWindowsMessageListener nativeWindowsMessageListener,
-        PowerStateListener powerStateListener,
-        PowerModeListener powerModeListener,
-        GodModeController godModeController,
-        GameAutoListener gameAutoListener,
-        ProcessAutoListener processAutoListener,
-        TimeAutoListener timeAutoListener,
-        TimeIntervalAutoListener timeIntervalAutoListener,
-        UserInactivityAutoListener userInactivityAutoListener,
-        WiFiAutoListener wifiAutoListener)
-    {
-        _settings = settings ?? throw new ArgumentNullException(nameof(settings));
-        _nativeWindowsMessageListener = nativeWindowsMessageListener ?? throw new ArgumentNullException(nameof(nativeWindowsMessageListener));
-        _powerStateListener = powerStateListener ?? throw new ArgumentNullException(nameof(powerStateListener));
-        _powerModeListener = powerModeListener ?? throw new ArgumentNullException(nameof(powerModeListener));
-        _godModeController = godModeController ?? throw new ArgumentNullException(nameof(godModeController));
-        _gameAutoListener = gameAutoListener ?? throw new ArgumentNullException(nameof(gameAutoListener));
-        _processAutoListener = processAutoListener ?? throw new ArgumentNullException(nameof(processAutoListener));
-        _timeAutoListener = timeAutoListener ?? throw new ArgumentNullException(nameof(timeAutoListener));
-        _timeIntervalAutoListener = timeIntervalAutoListener ?? throw new ArgumentNullException(nameof(timeIntervalAutoListener));
-        _userInactivityAutoListener = userInactivityAutoListener ?? throw new ArgumentNullException(nameof(userInactivityAutoListener));
-        _wifiAutoListener = wifiAutoListener ?? throw new ArgumentNullException(nameof(wifiAutoListener));
-    }
 
     #region Initialization / pipeline reloading
 
@@ -69,12 +43,12 @@ public class AutomationProcessor
     {
         using (await _ioLock.LockAsync().ConfigureAwait(false))
         {
-            _nativeWindowsMessageListener.Changed += NativeWindowsMessageListener_Changed;
-            _powerStateListener.Changed += PowerStateListener_Changed;
-            _powerModeListener.Changed += PowerModeListener_Changed;
-            _godModeController.PresetChanged += GodModeController_PresetChanged;
+            nativeWindowsMessageListener.Changed += NativeWindowsMessageListener_Changed;
+            powerStateListener.Changed += PowerStateListener_Changed;
+            powerModeListener.Changed += PowerModeListener_Changed;
+            godModeController.PresetChanged += GodModeController_PresetChanged;
 
-            _pipelines = _settings.Store.Pipelines.ToList();
+            _pipelines = [.. settings.Store.Pipelines];
 
             RaisePipelinesChanged();
 
@@ -86,8 +60,8 @@ public class AutomationProcessor
     {
         using (await _ioLock.LockAsync().ConfigureAwait(false))
         {
-            _settings.Store.IsEnabled = enabled;
-            _settings.SynchronizeStore();
+            settings.Store.IsEnabled = enabled;
+            settings.SynchronizeStore();
 
             await UpdateListenersAsync().ConfigureAwait(false);
         }
@@ -105,8 +79,8 @@ public class AutomationProcessor
 
             _pipelines = pipelines.Select(p => p.DeepCopy()).ToList();
 
-            _settings.Store.Pipelines = pipelines;
-            _settings.SynchronizeStore();
+            settings.Store.Pipelines = pipelines;
+            settings.SynchronizeStore();
 
             RaisePipelinesChanged();
 
@@ -192,7 +166,8 @@ public class AutomationProcessor
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Run starting...");
 
-            _cts?.Cancel();
+            if (_cts is not null)
+                await _cts.CancelAsync().ConfigureAwait(false);
 
             if (!IsEnabled)
                 return;
@@ -253,45 +228,45 @@ public class AutomationProcessor
 
     #region Listeners
 
-    private async void NativeWindowsMessageListener_Changed(object? sender, NativeWindowsMessage message)
+    private async void NativeWindowsMessageListener_Changed(object? sender, NativeWindowsMessageListener.ChangedEventArgs args)
     {
-        var e = new NativeWindowsMessageEvent { Message = message };
+        var e = new NativeWindowsMessageEvent(args.Message);
         await ProcessEvent(e).ConfigureAwait(false);
     }
 
-    private async void PowerStateListener_Changed(object? sender, EventArgs _)
+    private async void PowerStateListener_Changed(object? sender, PowerStateListener.ChangedEventArgs args)
     {
-        var e = new PowerStateAutomationEvent();
+        var e = new PowerStateAutomationEvent(args.PowerStateEvent, args.PowerAdapterStateChanged);
         await ProcessEvent(e).ConfigureAwait(false);
     }
 
-    private async void PowerModeListener_Changed(object? sender, PowerModeState powerModeState)
+    private async void PowerModeListener_Changed(object? sender, PowerModeListener.ChangedEventArgs args)
     {
-        var e = new PowerModeAutomationEvent { PowerModeState = powerModeState };
+        var e = new PowerModeAutomationEvent(args.State);
         await ProcessEvent(e).ConfigureAwait(false);
     }
 
     private async void GodModeController_PresetChanged(object? sender, Guid presetId)
     {
-        var e = new CustomModePresetAutomationEvent { Id = presetId };
+        var e = new CustomModePresetAutomationEvent(presetId);
         await ProcessEvent(e).ConfigureAwait(false);
     }
 
-    private async void GameAutoListener_Changed(object? sender, bool started)
+    private async void GameAutoListener_Changed(object? sender, GameAutoListener.ChangedEventArgs args)
     {
-        var e = new GameAutomationEvent { Started = started };
+        var e = new GameAutomationEvent(args.Running);
         await ProcessEvent(e).ConfigureAwait(false);
     }
 
-    private async void ProcessAutoListener_Changed(object? sender, ProcessEventInfo processEventInfo)
+    private async void ProcessAutoListener_Changed(object? sender, ProcessAutoListener.ChangedEventArgs args)
     {
-        var e = new ProcessAutomationEvent { ProcessEventInfo = processEventInfo };
+        var e = new ProcessAutomationEvent(args.Type, args.ProcessInfo);
         await ProcessEvent(e).ConfigureAwait(false);
     }
 
-    private async void TimeAutoListener_Changed(object? sender, (Time time, DayOfWeek day) timeDay)
+    private async void TimeAutoListener_Changed(object? sender, TimeAutoListener.ChangedEventArgs args)
     {
-        var e = new TimeAutomationEvent { Time = timeDay.time, Day = timeDay.day };
+        var e = new TimeAutomationEvent(args.Time, args.Day);
         await ProcessEvent(e).ConfigureAwait(false);
     }
 
@@ -301,23 +276,15 @@ public class AutomationProcessor
         await ProcessEvent(e).ConfigureAwait(false);
     }
 
-    private async void UserInactivityAutoListener_Changed(object? sender, (TimeSpan resolution, uint tickCount) inactivityInfo)
+    private async void UserInactivityAutoListener_Changed(object? sender, UserInactivityAutoListener.ChangedEventArgs args)
     {
-        var e = new UserInactivityAutomationEvent
-        {
-            InactivityTimeSpan = inactivityInfo.resolution * inactivityInfo.tickCount,
-            ResolutionTimeSpan = inactivityInfo.resolution
-        };
+        var e = new UserInactivityAutomationEvent(args.TimerResolution * args.TickCount);
         await ProcessEvent(e).ConfigureAwait(false);
     }
 
-    private async void WiFiAutoListener_Changed(object? sender, (bool connected, string? ssid) wifiInfo)
+    private async void WiFiAutoListener_Changed(object? sender, WiFiAutoListener.ChangedEventArgs args)
     {
-        var e = new WiFiAutomationEvent
-        {
-            IsConnected = wifiInfo.connected,
-            Ssid = wifiInfo.ssid
-        };
+        var e = new WiFiAutomationEvent(args.IsConnected, args.Ssid);
         await ProcessEvent(e).ConfigureAwait(false);
     }
 
@@ -351,12 +318,12 @@ public class AutomationProcessor
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Stopping listeners...");
 
-        await _gameAutoListener.UnsubscribeChangedAsync(GameAutoListener_Changed).ConfigureAwait(false);
-        await _processAutoListener.UnsubscribeChangedAsync(ProcessAutoListener_Changed).ConfigureAwait(false);
-        await _timeAutoListener.UnsubscribeChangedAsync(TimeAutoListener_Changed).ConfigureAwait(false);
-        await _timeIntervalAutoListener.UnsubscribeChangedAsync(TimeIntervalAutoListener_Changed).ConfigureAwait(false);
-        await _userInactivityAutoListener.UnsubscribeChangedAsync(UserInactivityAutoListener_Changed).ConfigureAwait(false);
-        await _wifiAutoListener.UnsubscribeChangedAsync(WiFiAutoListener_Changed).ConfigureAwait(false);
+        await gameAutoListener.UnsubscribeChangedAsync(GameAutoListener_Changed).ConfigureAwait(false);
+        await processAutoListener.UnsubscribeChangedAsync(ProcessAutoListener_Changed).ConfigureAwait(false);
+        await timeAutoListener.UnsubscribeChangedAsync(TimeAutoListener_Changed).ConfigureAwait(false);
+        await timeInveralAutoListener.UnsubscribeChangedAsync(TimeIntervalAutoListener_Changed).ConfigureAwait(false);
+        await userInactivityAutoListener.UnsubscribeChangedAsync(UserInactivityAutoListener_Changed).ConfigureAwait(false);
+        await wifiAutoListener.UnsubscribeChangedAsync(WiFiAutoListener_Changed).ConfigureAwait(false);
 
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Stopped listeners...");
@@ -378,7 +345,7 @@ public class AutomationProcessor
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Starting game listener...");
 
-            await _gameAutoListener.SubscribeChangedAsync(GameAutoListener_Changed).ConfigureAwait(false);
+            await gameAutoListener.SubscribeChangedAsync(GameAutoListener_Changed).ConfigureAwait(false);
         }
 
         if (triggers.OfType<IProcessesAutomationPipelineTrigger>().Any())
@@ -386,22 +353,22 @@ public class AutomationProcessor
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Starting process listener...");
 
-            await _processAutoListener.SubscribeChangedAsync(ProcessAutoListener_Changed).ConfigureAwait(false);
+            await processAutoListener.SubscribeChangedAsync(ProcessAutoListener_Changed).ConfigureAwait(false);
         }
 
-        if (triggers.OfType<ITimeAutomationPipelineTrigger>().Any())
+        if (triggers.OfType<ITimeAutomationPipelineTrigger>().Any() || triggers.OfType<IPeriodicAutomationPipelineTrigger>().Any())
         {
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Starting time listener...");
 
-            await _timeAutoListener.SubscribeChangedAsync(TimeAutoListener_Changed).ConfigureAwait(false);
+            await timeAutoListener.SubscribeChangedAsync(TimeAutoListener_Changed).ConfigureAwait(false);
         }
 
         if (triggers.OfType<ITimeIntervalAutomationPipelineTrigger>().Any()) {
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Starting time interval listener...");
 
-            await _timeIntervalAutoListener.SubscribeChangedAsync(TimeIntervalAutoListener_Changed).ConfigureAwait(false);
+            await timeIntervalAutoListener.SubscribeChangedAsync(TimeIntervalAutoListener_Changed).ConfigureAwait(false);
         }
 
         if (triggers.OfType<IUserInactivityPipelineTrigger>().Any())
@@ -409,7 +376,7 @@ public class AutomationProcessor
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Starting user inactivity listener...");
 
-            await _userInactivityAutoListener.SubscribeChangedAsync(UserInactivityAutoListener_Changed).ConfigureAwait(false);
+            await userInactivityAutoListener.SubscribeChangedAsync(UserInactivityAutoListener_Changed).ConfigureAwait(false);
         }
 
         if (triggers.OfType<IWiFiConnectedPipelineTrigger>().Any() || triggers.OfType<WiFiDisconnectedAutomationPipelineTrigger>().Any())
@@ -417,7 +384,7 @@ public class AutomationProcessor
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Starting WiFi listener...");
 
-            await _wifiAutoListener.SubscribeChangedAsync(WiFiAutoListener_Changed).ConfigureAwait(false);
+            await wifiAutoListener.SubscribeChangedAsync(WiFiAutoListener_Changed).ConfigureAwait(false);
         }
 
         if (Log.Instance.IsTraceEnabled)

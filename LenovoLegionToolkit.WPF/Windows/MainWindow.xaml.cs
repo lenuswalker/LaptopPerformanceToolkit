@@ -270,7 +270,10 @@ public partial class MainWindow
 
     public void SendToTray()
     {
+        if (!_applicationSettings.Store.MinimizeToTray)
+            return;
+
         Hide();
-        ShowInTaskbar = false;
+        ShowInTaskbar = true;
     }
 }

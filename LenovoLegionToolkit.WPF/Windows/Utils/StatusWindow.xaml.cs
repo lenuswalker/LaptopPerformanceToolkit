@@ -21,18 +21,22 @@ namespace LenovoLegionToolkit.WPF.Windows.Utils;
 
 public partial class StatusWindow
 {
-    private static readonly ProcessorController _controller = IoCContainer.Resolve<ProcessorController>().GetCurrent();
-
-    private readonly struct StatusWindowData
+    private readonly struct StatusWindowData(
+        PowerModeState? powerModeState,
+        string? godModePresetName,
+        GPUStatus? gpuStatus,
+        BatteryInformation? batteryInformation,
+        BatteryState? batteryState,
+        bool hasUpdate,
+        ProcessorTDPState? processorTDPState)
     {
-        public PowerModeState? PowerModeState { get; init; }
-        public string? GodModePresetName { get; init; }
-        public GPUStatus? GPUStatus { get; init; }
-        public BatteryInformation? BatteryInformation { get; init; }
-        public BatteryState? BatteryState { get; init; }
-        public bool HasUpdate { get; init; }
-        public ProcessorTDPState? ProcessorTDPState { get; init; }
-
+        public PowerModeState? PowerModeState { get; } = powerModeState;
+        public string? GodModePresetName { get; } = godModePresetName;
+        public GPUStatus? GPUStatus { get; } = gpuStatus;
+        public BatteryInformation? BatteryInformation { get; } = batteryInformation;
+        public BatteryState? BatteryState { get; } = batteryState;
+        public bool HasUpdate { get; } = hasUpdate;
+        public ProcessorTDPState? ProcessorTDPState { get; } = processorTDPState;
     }
 
     public static async Task<StatusWindow> CreateAsync() => new(await GetStatusWindowDataAsync());
@@ -55,12 +59,12 @@ public partial class StatusWindow
 
         try
         {
-            if (await powerModeFeature.IsSupportedAsync().ConfigureAwait(false))
+            if (await powerModeFeature.IsSupportedAsync())
             {
-                state = await powerModeFeature.GetStateAsync().ConfigureAwait(false);
+                state = await powerModeFeature.GetStateAsync();
 
                 if (state == PowerModeState.GodMode)
-                    godModePresetName = await godModeController.GetActivePresetNameAsync().ConfigureAwait(false);
+                    godModePresetName = await godModeController.GetActivePresetNameAsync();
             }
         }
         catch { /* Ignored */ }
@@ -68,7 +72,7 @@ public partial class StatusWindow
         try
         {
             if (gpuController.IsSupported())
-                gpuStatus = await gpuController.RefreshNowAsync().ConfigureAwait(false);
+                gpuStatus = await gpuController.RefreshNowAsync();
 
         }
         catch { /* Ignored */ }
@@ -81,15 +85,15 @@ public partial class StatusWindow
 
         try
         {
-            if (await batteryFeature.IsSupportedAsync().ConfigureAwait(false))
-                batteryState = await batteryFeature.GetStateAsync().ConfigureAwait(false);
+            if (await batteryFeature.IsSupportedAsync())
+                batteryState = await batteryFeature.GetStateAsync();
 
         }
         catch { /* Ignored */ }
 
         try
         {
-            hasUpdate = await updateChecker.CheckAsync().ConfigureAwait(false) is not null;
+            hasUpdate = await updateChecker.CheckAsync() is not null;
         }
         catch { /* Ignored */ }
 
@@ -100,16 +104,7 @@ public partial class StatusWindow
         }
         catch { /* Ignored */ }
 
-        return new()
-        {
-            PowerModeState = state,
-            GodModePresetName = godModePresetName,
-            GPUStatus = gpuStatus,
-            BatteryInformation = batteryInformation,
-            BatteryState = batteryState,
-            HasUpdate = hasUpdate,
-            ProcessorTDPState = processorTDPState
-        };
+        return new(state, godModePresetName, gpuStatus, batteryInformation, batteryState, hasUpdate, processorTDPState);
     }
 
     private StatusWindow(StatusWindowData data)

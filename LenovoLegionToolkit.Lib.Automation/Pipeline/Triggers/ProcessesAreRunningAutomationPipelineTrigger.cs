@@ -8,27 +8,25 @@ using Newtonsoft.Json;
 
 namespace LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
 
-public class ProcessesAreRunningAutomationPipelineTrigger : IProcessesAutomationPipelineTrigger
+[method: JsonConstructor]
+public class ProcessesAreRunningAutomationPipelineTrigger(ProcessInfo[] processes) : IProcessesAutomationPipelineTrigger
 {
     public string DisplayName => Resource.ProcessesAreRunningAutomationPipelineTrigger_DisplayName;
 
-    public ProcessInfo[] Processes { get; }
-
-    [JsonConstructor]
-    public ProcessesAreRunningAutomationPipelineTrigger(ProcessInfo[] processes) => Processes = processes;
+    public ProcessInfo[] Processes { get; } = processes;
 
     public Task<bool> IsMatchingEvent(IAutomationEvent automationEvent)
     {
-        if (automationEvent is not ProcessAutomationEvent { ProcessEventInfo.Type: ProcessEventInfoType.Started } e)
+        if (automationEvent is not ProcessAutomationEvent { Type: ProcessEventInfoType.Started } e)
             return Task.FromResult(false);
 
         if (Log.Instance.IsTraceEnabled)
-            Log.Instance.Trace($"Checking for {e.ProcessEventInfo.Process.Name}... [processes={string.Join(",", Processes.Select(p => p.Name))}]");
+            Log.Instance.Trace($"Checking for {e.ProcessInfo.Name}... [processes={string.Join(",", Processes.Select(p => p.Name))}]");
 
-        if (!Processes.Contains(e.ProcessEventInfo.Process) && !Processes.Select(p => p.Name).Contains(e.ProcessEventInfo.Process.Name))
+        if (!Processes.Contains(e.ProcessInfo) && !Processes.Select(p => p.Name).Contains(e.ProcessInfo.Name))
         {
             if (Log.Instance.IsTraceEnabled)
-                Log.Instance.Trace($"Process name {e.ProcessEventInfo.Process.Name} not in the list.");
+                Log.Instance.Trace($"Process name {e.ProcessInfo.Name} not in the list.");
 
             return Task.FromResult(false);
         }
@@ -36,7 +34,7 @@ public class ProcessesAreRunningAutomationPipelineTrigger : IProcessesAutomation
         var result = Processes.SelectMany(p => Process.GetProcessesByName(p.Name)).Any();
 
         if (Log.Instance.IsTraceEnabled)
-            Log.Instance.Trace($"Process name {e.ProcessEventInfo.Process.Name} found in process list: {result}.");
+            Log.Instance.Trace($"Process name {e.ProcessInfo.Name} found in process list: {result}.");
 
         return Task.FromResult(result);
     }
@@ -47,7 +45,7 @@ public class ProcessesAreRunningAutomationPipelineTrigger : IProcessesAutomation
         return Task.FromResult(result);
     }
 
-    public void UpdateEnvironment(ref AutomationEnvironment environment)
+    public void UpdateEnvironment(AutomationEnvironment environment)
     {
         environment.ProcessesStarted = true;
         environment.Processes = Processes;

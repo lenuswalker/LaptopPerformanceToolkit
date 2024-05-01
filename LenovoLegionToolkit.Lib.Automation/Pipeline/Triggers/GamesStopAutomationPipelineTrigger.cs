@@ -10,7 +10,7 @@ public class GamesStopAutomationPipelineTrigger : IGameAutomationPipelineTrigger
 
     public Task<bool> IsMatchingEvent(IAutomationEvent automationEvent)
     {
-        var result = automationEvent is GameAutomationEvent { Started: false };
+        var result = automationEvent is GameAutomationEvent { Running: false };
         return Task.FromResult(result);
     }
 
@@ -21,7 +21,7 @@ public class GamesStopAutomationPipelineTrigger : IGameAutomationPipelineTrigger
         return Task.FromResult(result);
     }
 
-    public void UpdateEnvironment(ref AutomationEnvironment environment) => environment.GameRunning = false;
+    public void UpdateEnvironment(AutomationEnvironment environment) => environment.GameRunning = false;
 
     public IAutomationPipelineTrigger DeepCopy() => new GamesStopAutomationPipelineTrigger();
 }

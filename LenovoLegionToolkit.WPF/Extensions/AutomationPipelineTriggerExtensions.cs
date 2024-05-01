@@ -18,8 +18,10 @@ public static class AutomationPipelineTriggerExtensions
         ITimeIntervalAutomationPipelineTrigger => SymbolRegular.HourglassHalf24,
         INativeWindowsMessagePipelineTrigger => SymbolRegular.Desktop24,
         IOnStartupAutomationPipelineTrigger => SymbolRegular.Flash24,
+        IOnResumeAutomationPipelineTrigger => SymbolRegular.Flash24,
         IWiFiConnectedPipelineTrigger => SymbolRegular.Wifi124,
         IWiFiDisconnectedPipelineTrigger => SymbolRegular.WifiOff24,
+        IPeriodicAutomationPipelineTrigger => SymbolRegular.ArrowRepeatAll24,
         _ => throw new ArgumentException($"Unsupported trigger {trigger.GetType().Name}.")
     };
 }

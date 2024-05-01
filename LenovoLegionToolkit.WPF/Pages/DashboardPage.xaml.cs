@@ -22,7 +22,7 @@ public partial class DashboardPage
 {
     private readonly DashboardSettings _dashboardSettings = IoCContainer.Resolve<DashboardSettings>();
 
-    private readonly List<DashboardGroupControl> _dashboardGroupControls = new();
+    private readonly List<DashboardGroupControl> _dashboardGroupControls = [];
 
     public DashboardPage() => InitializeComponent();
 

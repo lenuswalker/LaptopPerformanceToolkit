@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Controllers.GodMode;
 using LenovoLegionToolkit.Lib.Features;
@@ -7,18 +8,14 @@ using Newtonsoft.Json;
 
 namespace LenovoLegionToolkit.Lib.Automation.Steps;
 
-public class GodModePresetAutomationStep : IAutomationStep
+[method: JsonConstructor]
+public class GodModePresetAutomationStep(Guid presetId)
+    : IAutomationStep
 {
     private readonly PowerModeFeature _feature = IoCContainer.Resolve<PowerModeFeature>();
     private readonly GodModeController _controller = IoCContainer.Resolve<GodModeController>();
 
-    public Guid PresetId { get; }
-
-    [JsonConstructor]
-    public GodModePresetAutomationStep(Guid presetId)
-    {
-        PresetId = presetId;
-    }
+    public Guid PresetId { get; } = presetId;
 
     public async Task<bool> IsSupportedAsync()
     {
@@ -28,7 +25,7 @@ public class GodModePresetAutomationStep : IAutomationStep
 
     public Task<GodModeState> GetStateAsync() => _controller.GetStateAsync();
 
-    public async Task RunAsync(AutomationEnvironment _)
+    public async Task RunAsync(AutomationContext context, AutomationEnvironment environment, CancellationToken token)
     {
         var state = await _controller.GetStateAsync().ConfigureAwait(false);
         if (!state.Presets.ContainsKey(PresetId))

@@ -9,8 +9,13 @@ using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.Lib.AutoListeners;
 
-public class GameAutoListener : AbstractAutoListener<bool>
+public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEventArgs>
 {
+    public class ChangedEventArgs(bool running) : EventArgs
+    {
+        public bool Running { get; } = running;
+    }
+
     private class ProcessEqualityComparer : IEqualityComparer<Process>
     {
         public bool Equals(Process? x, Process? y)
@@ -32,14 +37,14 @@ public class GameAutoListener : AbstractAutoListener<bool>
     private readonly GameConfigStoreDetector _gameConfigStoreDetector;
     private readonly EffectiveGameModeDetector _effectiveGameModeDetector;
 
-    private readonly HashSet<ProcessInfo> _detectedGamePathsCache = new();
+    private readonly HashSet<ProcessInfo> _detectedGamePathsCache = [];
     private readonly HashSet<Process> _processCache = new(new ProcessEqualityComparer());
 
     private bool _lastState;
 
     public GameAutoListener(InstanceStartedEventAutoAutoListener instanceStartedEventAutoAutoListener)
     {
-        _instanceStartedEventAutoAutoListener = instanceStartedEventAutoAutoListener ?? throw new ArgumentNullException(nameof(instanceStartedEventAutoAutoListener));
+        _instanceStartedEventAutoAutoListener = instanceStartedEventAutoAutoListener;
 
         _gameConfigStoreDetector = new GameConfigStoreDetector();
         _gameConfigStoreDetector.GamesDetected += GameConfigStoreDetectorGamesConfigStoreDetected;
@@ -128,7 +133,7 @@ public class GameAutoListener : AbstractAutoListener<bool>
     {
         lock (Lock)
         {
-            if (_processCache.Any())
+            if (_processCache.Count != 0)
             {
                 if (Log.Instance.IsTraceEnabled)
                     Log.Instance.Trace($"Ignoring, process cache is not empty.");
@@ -139,25 +144,25 @@ public class GameAutoListener : AbstractAutoListener<bool>
         }
     }
 
-    private void InstanceStartedEventAutoAutoListener_Changed(object? sender, (int processId, string processName) e)
+    private void InstanceStartedEventAutoAutoListener_Changed(object? sender, InstanceStartedEventAutoAutoListener.ChangedEventArgs e)
     {
         lock (Lock)
         {
-            if (e.processId < 0)
+            if (e.ProcessId < 0)
                 return;
 
-            if (!_detectedGamePathsCache.Any(p => e.processName.Equals(p.Name, StringComparison.CurrentCultureIgnoreCase)))
+            if (!_detectedGamePathsCache.Any(p => e.ProcessName.Equals(p.Name, StringComparison.CurrentCultureIgnoreCase)))
                 return;
 
             try
             {
-                var process = Process.GetProcessById(e.processId);
+                var process = Process.GetProcessById(e.ProcessId);
                 var processPath = process.GetFileName();
 
                 if (string.IsNullOrEmpty(processPath))
                 {
                     if (Log.Instance.IsTraceEnabled)
-                        Log.Instance.Trace($"Can't get path for {e.processName}. [processId={e.processId}]");
+                        Log.Instance.Trace($"Can't get path for {e.ProcessName}. [processId={e.ProcessId}]");
 
                     return;
                 }
@@ -167,7 +172,7 @@ public class GameAutoListener : AbstractAutoListener<bool>
                     return;
 
                 if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Game {processInfo} is running. [processId={e.processId}, processPath={processPath}]");
+                    Log.Instance.Trace($"Game {processInfo} is running. [processId={e.ProcessId}, processPath={processPath}]");
 
                 Attach(process);
                 _processCache.Add(process);
@@ -177,7 +182,7 @@ public class GameAutoListener : AbstractAutoListener<bool>
             catch (Exception ex)
             {
                 if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Failed to attach to {e.processName}. [processId={e.processId}]", ex);
+                    Log.Instance.Trace($"Failed to attach to {e.ProcessName}. [processId={e.ProcessId}]", ex);
             }
         }
     }
@@ -191,7 +196,7 @@ public class GameAutoListener : AbstractAutoListener<bool>
 
             _lastState = newState;
 
-            RaiseChanged(newState);
+            RaiseChanged(new ChangedEventArgs(newState));
         }
     }
 
@@ -235,7 +240,7 @@ public class GameAutoListener : AbstractAutoListener<bool>
                     Log.Instance.Trace($"Removed {staleProcesses} stale processes.");
             }
 
-            if (_processCache.Any())
+            if (_processCache.Count != 0)
             {
                 if (Log.Instance.IsTraceEnabled)
                     Log.Instance.Trace($"More games are running...");

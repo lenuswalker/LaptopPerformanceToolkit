@@ -6,17 +6,12 @@ using Newtonsoft.Json;
 
 namespace LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
 
-public class PowerModeAutomationPipelineTrigger : IPowerModeAutomationPipelineTrigger
+[method: JsonConstructor]
+public class PowerModeAutomationPipelineTrigger(PowerModeState powerModeState) : IPowerModeAutomationPipelineTrigger
 {
     public string DisplayName => Resource.PowerModeAutomationPipelineTrigger_DisplayName;
 
-    public PowerModeState PowerModeState { get; }
-
-    [JsonConstructor]
-    public PowerModeAutomationPipelineTrigger(PowerModeState powerModeState)
-    {
-        PowerModeState = powerModeState;
-    }
+    public PowerModeState PowerModeState { get; } = powerModeState;
 
     public Task<bool> IsMatchingEvent(IAutomationEvent automationEvent)
     {
@@ -33,7 +28,7 @@ public class PowerModeAutomationPipelineTrigger : IPowerModeAutomationPipelineTr
         return await feature.GetStateAsync().ConfigureAwait(false) == PowerModeState;
     }
 
-    public void UpdateEnvironment(ref AutomationEnvironment environment) => environment.PowerMode = PowerModeState;
+    public void UpdateEnvironment(AutomationEnvironment environment) => environment.PowerMode = PowerModeState;
 
     public IAutomationPipelineTrigger DeepCopy() => new PowerModeAutomationPipelineTrigger(PowerModeState);
 

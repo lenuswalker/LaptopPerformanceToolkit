@@ -11,23 +11,18 @@ using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.Lib.Features;
 
-public class PowerModeUnavailableWithoutACException : Exception
+public class PowerModeUnavailableWithoutACException(PowerModeState powerMode) : Exception
 {
-    public PowerModeState PowerMode { get; }
-
-    public PowerModeUnavailableWithoutACException(PowerModeState powerMode)
-    {
-        PowerMode = powerMode;
-    }
+    public PowerModeState PowerMode { get; } = powerMode;
 }
 
-public class PowerModeFeature : AbstractWmiFeature<PowerModeState>
+public class PowerModeFeature(
+    GodModeController godModeController,
+    PowerPlanController powerPlanController,
+    ThermalModeListener thermalModeListener,
+    PowerModeListener powerModeListener)
+    : AbstractWmiFeature<PowerModeState>(WMI.LenovoGameZoneData.GetSmartFanModeAsync, WMI.LenovoGameZoneData.SetSmartFanModeAsync, WMI.LenovoGameZoneData.IsSupportSmartFanAsync, 1)
 {
-    private readonly GodModeController _godModeController;
-    private readonly PowerPlanController _powerPlanController;
-    private readonly ThermalModeListener _thermalModeListener;
-    private readonly PowerModeListener _powerModeListener;
-
     public bool AllowAllPowerModesOnBattery { get; set; }
 
     private static readonly Dictionary<PowerModeState, string> defaultGenericPowerModes = new()
@@ -36,15 +31,6 @@ public class PowerModeFeature : AbstractWmiFeature<PowerModeState>
         { PowerModeState.Balance , "00000000-0000-0000-0000-000000000000" },
         { PowerModeState.Performance , "ded574b5-45a0-4f42-8737-46345c09c238" },
     };
-
-    public PowerModeFeature(GodModeController godModeController, PowerPlanController powerPlanController, ThermalModeListener thermalModeListener, PowerModeListener powerModeListener)
-        : base(WMI.LenovoGameZoneData.GetSmartFanModeAsync, WMI.LenovoGameZoneData.SetSmartFanModeAsync, WMI.LenovoGameZoneData.IsSupportSmartFanAsync, 1)
-    {
-        _godModeController = godModeController ?? throw new ArgumentNullException(nameof(godModeController));
-        _powerPlanController = powerPlanController ?? throw new ArgumentNullException(nameof(powerPlanController));
-        _thermalModeListener = thermalModeListener ?? throw new ArgumentNullException(nameof(thermalModeListener));
-        _powerModeListener = powerModeListener ?? throw new ArgumentNullException(nameof(powerModeListener));
-    }
 
     public override async Task<bool> IsSupportedAsync()
     {
@@ -122,16 +108,16 @@ public class PowerModeFeature : AbstractWmiFeature<PowerModeState>
                 throw new PowerModeUnavailableWithoutACException(state);
 
 
-            if (mi.Properties.HasQuietToPerformanceModeSwitchingBug && currentState == PowerModeState.Quiet && state == PowerModeState.Performance)
-            {
-                _thermalModeListener.SuppressNext();
-                await base.SetStateAsync(PowerModeState.Balance).ConfigureAwait(false);
-                await Task.Delay(TimeSpan.FromMilliseconds(500)).ConfigureAwait(false);
-            }
+        if (mi.Properties.HasQuietToPerformanceModeSwitchingBug && currentState == PowerModeState.Quiet && state == PowerModeState.Performance)
+        {
+            thermalModeListener.SuppressNext();
+            await base.SetStateAsync(PowerModeState.Balance).ConfigureAwait(false);
+            await Task.Delay(TimeSpan.FromMilliseconds(500)).ConfigureAwait(false);
+        }
 
             if (mi.Properties.HasGodModeToOtherModeSwitchingBug && currentState == PowerModeState.GodMode && state != PowerModeState.GodMode)
             {
-                _thermalModeListener.SuppressNext();
+                thermalModeListener.SuppressNext();
                 await base.SetStateAsync(PowerModeState.Quiet).ConfigureAwait(false);
 
                 switch (state)
@@ -151,7 +137,7 @@ public class PowerModeFeature : AbstractWmiFeature<PowerModeState>
 
             }
 
-            _thermalModeListener.SuppressNext();
+            thermalModeListener.SuppressNext();
             await base.SetStateAsync(state).ConfigureAwait(false);
         }
         else
@@ -160,9 +146,9 @@ public class PowerModeFeature : AbstractWmiFeature<PowerModeState>
         }
 
         if (state == PowerModeState.GodMode)
-            await _godModeController.ApplyStateAsync().ConfigureAwait(false);
+            await godModeController.ApplyStateAsync().ConfigureAwait(false);
 
-        await _powerModeListener.NotifyAsync(state).ConfigureAwait(false);
+        await powerModeListener.NotifyAsync(state).ConfigureAwait(false);
     }
 
     public async Task EnsureCorrectPowerPlanIsSetAsync()
@@ -170,7 +156,7 @@ public class PowerModeFeature : AbstractWmiFeature<PowerModeState>
         var compatibility = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
         if (compatibility.isCompatible) {
             var state = await GetStateAsync().ConfigureAwait(false);
-            await _powerPlanController.ActivatePowerPlanAsync(state, true).ConfigureAwait(false);
+            await powerPlanController.SetPowerPlanAsync(state, true).ConfigureAwait(false);
         }
     }
 
@@ -180,6 +166,6 @@ public class PowerModeFeature : AbstractWmiFeature<PowerModeState>
         if (state != PowerModeState.GodMode)
             return;
 
-        await _godModeController.ApplyStateAsync().ConfigureAwait(false);
+        await godModeController.ApplyStateAsync().ConfigureAwait(false);
     }
 }

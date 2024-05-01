@@ -6,18 +6,14 @@ using Newtonsoft.Json;
 
 namespace LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
 
-public class GodModePresetChangedAutomationPipelineTrigger : IGodModePresetChangedAutomationPipelineTrigger
+[method: JsonConstructor]
+public class GodModePresetChangedAutomationPipelineTrigger(Guid presetId)
+    : IGodModePresetChangedAutomationPipelineTrigger
 {
     [JsonIgnore]
     public string DisplayName => Resource.GodModePresetChangedAutomationPipelineTrigger_DisplayName;
 
-    public Guid PresetId { get; }
-
-    [JsonConstructor]
-    public GodModePresetChangedAutomationPipelineTrigger(Guid presetId)
-    {
-        PresetId = presetId;
-    }
+    public Guid PresetId { get; } = presetId;
 
     public Task<bool> IsMatchingEvent(IAutomationEvent automationEvent)
     {
@@ -33,7 +29,7 @@ public class GodModePresetChangedAutomationPipelineTrigger : IGodModePresetChang
         return PresetId == await controller.GetActivePresetIdAsync().ConfigureAwait(false);
     }
 
-    public void UpdateEnvironment(ref AutomationEnvironment environment) { /* Ignored */ }
+    public void UpdateEnvironment(AutomationEnvironment environment) { /* Ignored */ }
 
     public IAutomationPipelineTrigger DeepCopy() => new GodModePresetChangedAutomationPipelineTrigger(PresetId);
 

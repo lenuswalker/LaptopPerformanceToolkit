@@ -214,6 +214,15 @@ namespace LenovoLegionToolkit.Lib.Automation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to On resume.
+        /// </summary>
+        public static string OnResumeAutomationPipelineTrigger_DisplayName {
+            get {
+                return ResourceManager.GetString("OnResumeAutomationPipelineTrigger_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to On startup.
         /// </summary>
         public static string OnStartupAutomationPipelineTrigger_DisplayName {
@@ -237,6 +246,15 @@ namespace LenovoLegionToolkit.Lib.Automation.Resources {
         public static string OverclockDiscreteGPUAutomationStepState_On {
             get {
                 return ResourceManager.GetString("OverclockDiscreteGPUAutomationStepState_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Periodic action.
+        /// </summary>
+        public static string PeriodicActionPipelineTrigger_DisplayName {
+            get {
+                return ResourceManager.GetString("PeriodicActionPipelineTrigger_DisplayName", resourceCulture);
             }
         }
         
@@ -291,6 +309,24 @@ namespace LenovoLegionToolkit.Lib.Automation.Resources {
         public static string UserInactivityAutomationPipelineTrigger_DisplayName_Zero {
             get {
                 return ResourceManager.GetString("UserInactivityAutomationPipelineTrigger_DisplayName_Zero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When WiFi is connected.
+        /// </summary>
+        public static string WiFiConnectedAutomationPipelineTrigger_DisplayName {
+            get {
+                return ResourceManager.GetString("WiFiConnectedAutomationPipelineTrigger_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When WiFi is disconnected.
+        /// </summary>
+        public static string WiFiDisconnectedAutomationPipelineTrigger_DisplayName {
+            get {
+                return ResourceManager.GetString("WiFiDisconnectedAutomationPipelineTrigger_DisplayName", resourceCulture);
             }
         }
     }

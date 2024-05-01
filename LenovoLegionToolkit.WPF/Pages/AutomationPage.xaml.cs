@@ -29,7 +29,7 @@ public partial class AutomationPage
 
     private readonly AutomationProcessor _automationProcessor = IoCContainer.Resolve<AutomationProcessor>();
 
-    private IAutomationStep[] _supportedAutomationSteps = Array.Empty<IAutomationStep>();
+    private IAutomationStep[] _supportedAutomationSteps = [];
 
     public AutomationPage()
     {
@@ -173,6 +173,7 @@ public partial class AutomationPage
             new HDRAutomationStep(default),
             new InstantBootAutomationStep(default),
             new MicrophoneAutomationStep(default),
+            new SpeakerAutomationStep(default),
             new NotificationAutomationStep(default),
             new OneLevelWhiteKeyboardBacklightAutomationStep(default),
             new OverclockDiscreteGPUAutomationStep(default),
@@ -185,12 +186,14 @@ public partial class AutomationPage
             new RefreshRateAutomationStep(default),
             new ResolutionAutomationStep(default),
             new RGBKeyboardBacklightAutomationStep(default),
-            new RunAutomationStep(default, default),
+            new RunAutomationStep(default, default, default, default),
             new SpectrumKeyboardBacklightBrightnessAutomationStep(0),
             new SpectrumKeyboardBacklightProfileAutomationStep(1),
             new SpectrumKeyboardBacklightImportProfileAutomationStep(default),
             new TouchpadLockAutomationStep(default),
             new TurnOffMonitorsAutomationStep(),
+            new TurnOffWiFiAutomationStep(),
+            new TurnOnWiFiAutomationStep(),
             new WhiteKeyboardBacklightAutomationStep(default),
             new WinKeyAutomationStep(default)
         };
@@ -204,7 +207,7 @@ public partial class AutomationPage
                 steps.RemoveAt(index);
         }
 
-        return steps.ToArray();
+        return [.. steps];
     }
 
     private AutomationPipelineControl GenerateControl(AutomationPipeline pipeline, Panel stackPanel)
@@ -318,9 +321,6 @@ public partial class AutomationPage
             Resource.AutomationPage_RenamePipeline_Placeholder,
             name,
             allowEmpty: true);
-
-        if (string.IsNullOrEmpty(newName))
-            return;
 
         control.SetName(newName);
     }

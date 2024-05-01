@@ -9,16 +9,22 @@ using Windows.Win32.NetworkManagement.WiFi;
 
 namespace LenovoLegionToolkit.Lib.AutoListeners;
 
-public class WiFiAutoListener : AbstractAutoListener<(bool connected, string? ssid)>
+public class WiFiAutoListener : AbstractAutoListener<WiFiAutoListener.ChangedEventArgs>
 {
+    public class ChangedEventArgs(bool isConnected, string? ssid) : EventArgs
+    {
+        public bool IsConnected { get; } = isConnected;
+        public string? Ssid { get; } = ssid;
+    }
+
     private readonly IMainThreadDispatcher _mainThreadDispatcher;
     private readonly WLAN_NOTIFICATION_CALLBACK _wlanCallback;
 
-    private IDisposable? _wlanNotificationDisposable;
+    private LambdaDisposable? _wlanNotificationDisposable;
 
     public unsafe WiFiAutoListener(IMainThreadDispatcher mainThreadDispatcher)
     {
-        _mainThreadDispatcher = mainThreadDispatcher ?? throw new ArgumentNullException(nameof(mainThreadDispatcher));
+        _mainThreadDispatcher = mainThreadDispatcher;
 
         _wlanCallback = WlanCallback;
     }
@@ -36,7 +42,7 @@ public class WiFiAutoListener : AbstractAutoListener<(bool connected, string? ss
         return Task.CompletedTask;
     });
 
-    private unsafe IDisposable? RegisterWlanNotification()
+    private unsafe LambdaDisposable? RegisterWlanNotification()
     {
         var handlePtr = IntPtr.Zero;
 
@@ -90,13 +96,13 @@ public class WiFiAutoListener : AbstractAutoListener<(bool connected, string? ss
                 if (Log.Instance.IsTraceEnabled)
                     Log.Instance.Trace($"WiFi connected. [ssid={ssid}]");
 
-                RaiseChanged((true, ssid));
+                RaiseChanged(new ChangedEventArgs(true, ssid));
                 break;
             case 0x15: /* Disconnected */
                 if (Log.Instance.IsTraceEnabled)
                     Log.Instance.Trace($"WiFi disconnected.");
 
-                RaiseChanged((false, ssid: null));
+                RaiseChanged(new ChangedEventArgs(false, null));
                 break;
         }
     }

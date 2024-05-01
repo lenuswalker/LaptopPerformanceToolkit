@@ -27,23 +27,24 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettings.Applicat
         public Theme Theme { get; set; }
         public RGBColor? AccentColor { get; set; }
         public AccentColorSource AccentColorSource { get; set; }
-        public Dictionary<PowerModeState, Guid> PowerPlans { get; set; } = new();
+        public Dictionary<PowerModeState, Guid> PowerPlans { get; set; } = [];
+        public bool MinimizeToTray { get; set; } = true;
         public bool MinimizeOnClose { get; set; }
         public WindowSize? WindowSize { get; set; }
-        public bool ActivatePowerProfilesWithVantageEnabled { get; set; }
         public bool DontShowNotifications { get; set; }
         public NotificationPosition NotificationPosition { get; set; } = NotificationPosition.BottomCenter;
         public NotificationDuration NotificationDuration { get; set; } = NotificationDuration.Normal;
         public Notifications Notifications { get; set; } = new();
         public TemperatureUnit TemperatureUnit { get; set; }
-        public List<RefreshRate> ExcludedRefreshRates { get; set; } = new();
+        public List<RefreshRate> ExcludedRefreshRates { get; set; } = [];
         public WarrantyInfo? WarrantyInfo { get; set; }
         public Guid? SmartKeySinglePressActionId { get; set; }
         public Guid? SmartKeyDoublePressActionId { get; set; }
-        public List<Guid> SmartKeySinglePressActionList { get; set; } = new();
-        public List<Guid> SmartKeyDoublePressActionList { get; set; } = new();
+        public List<Guid> SmartKeySinglePressActionList { get; set; } = [];
+        public List<Guid> SmartKeyDoublePressActionList { get; set; } = [];
         public bool SynchronizeBrightnessToAllPowerPlans { get; set; }
         public ModifierKey SmartFnLockFlags { get; set; }
+        public bool ResetBatteryOnSinceTimerOnReboot { get; set; }
     }
 
     public ApplicationSettings() : base("settings.json")
