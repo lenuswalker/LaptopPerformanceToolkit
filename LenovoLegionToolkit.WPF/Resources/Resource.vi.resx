@@ -610,6 +610,9 @@ Xin chân thành cảm ơn!</value>
   <data name="FanCurveControl_GPU" xml:space="preserve">
     <value>GPU</value>
   </data>
+  <data name="FanCurveControl_GPU2" xml:space="preserve">
+    <value>GPU #2</value>
+  </data>
   <data name="RPM" xml:space="preserve">
     <value>RPM</value>
   </data>
@@ -732,9 +735,6 @@ CẢNH BÁO: Hành động này sẽ không chạy nếu màn hình laptop tắt
   </data>
   <data name="IncompatibleDevice_Message" xml:space="preserve">
     <value>Thiết bị này không tương thích với Lenovo Legion Toolkit.</value>
-  </data>
-  <data name="IncompatibleDevice_Title" xml:space="preserve">
-    <value>Lenovo Legion Toolkit</value>
   </data>
   <data name="KeyboardBacklightPage_NoCompatibleKeyboardsFound" xml:space="preserve">
     <value>Không tìm thấy bàn phím tương thích</value>
@@ -1009,28 +1009,10 @@ Bạn có thể chuyển đổi giữa các Chế độ với Fn+Q.</value>
   <data name="PowerModeControl_Warning" xml:space="preserve">
     <value>Chế độ được lựa chọn có thể không hoạt động nếu không được kết nối nguồn điện ngoài.</value>
   </data>
-  <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Message" xml:space="preserve">
-    <value>Bật tùy chọn này khi Lenovo Vantage hoặc các dịch vụ của nó đang chạy khiến thay đổi Power plans của Laptop và có thể gây ra lỗi.</value>
-  </data>
-  <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Title" xml:space="preserve">
-    <value>Bạn chắc chứ?</value>
-  </data>
-  <data name="PowerPlansWindow_BalanceMode" xml:space="preserve">
-    <value>Cân Bằng</value>
-  </data>
-  <data name="PowerPlansWindow_CustomMode" xml:space="preserve">
-    <value>Tùy Chỉnh</value>
-  </data>
-  <data name="PowerPlansWindow_DefaultPowerPlan" xml:space="preserve">
+  <data name="WindowsPowerPlansWindow_DefaultPowerPlan" xml:space="preserve">
     <value>Mặc định</value>
   </data>
-  <data name="PowerPlansWindow_PerformanceMode" xml:space="preserve">
-    <value>Hiệu Suất</value>
-  </data>
-  <data name="PowerPlansWindow_QuietMode" xml:space="preserve">
-    <value>Im Lặng</value>
-  </data>
-  <data name="PowerPlansWindow_Title" xml:space="preserve">
+  <data name="WindowsPowerPlansWindow_Title" xml:space="preserve">
     <value>Power Plans</value>
   </data>
   <data name="RGBKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
@@ -1050,6 +1032,9 @@ Bạn có thể chuyển đổi giữa các Chế độ với Fn+Q.</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Preset3" xml:space="preserve">
     <value>Thiết lập 3</value>
+  </data>
+  <data name="RGBKeyboardBacklightControl_Preset4" xml:space="preserve">
+    <value>Thiết lập 4</value>
   </data>
   <data name="RGBKeyboardBacklightControl_PresetOff" xml:space="preserve">
     <value>Tắt</value>
@@ -1226,8 +1211,8 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
   <data name="SettingsPage_Notifications_Title" xml:space="preserve">
     <value>Thông báo</value>
   </data>
-  <data name="SettingsPage_PowerPlans_Title" xml:space="preserve">
-    <value>Power plans</value>
+  <data name="SettingsPage_WindowsPowerPlans_Title" xml:space="preserve">
+    <value>Power Plans</value>
   </data>
   <data name="SettingsPage_SmartKeyDoublePressAction_Message" xml:space="preserve">
     <value>Gán hành động nhanh khi gõ đúp tổ hợp phím Fn+F9.</value>
@@ -1706,13 +1691,13 @@ Chỉ hoạt động khi chế độ Tùy Chỉnh đang bật.</value>
   <data name="PowerPlansWindow_AoAcWarning_Message" xml:space="preserve">
     <value>Windows báo rằng thiết bị này hỗ trợ Modern Standby. Dùng power plan khác ngoài Balance có thể gây ra lỗi ngoài ý muốn.</value>
   </data>
-  <data name="SettingsPage_PowerPlans_Message" xml:space="preserve">
+  <data name="SettingsPage_WindowsPowerPlans_Message" xml:space="preserve">
     <value>Chọn Windows Power Plan được sử dụng tương ứng khi thay đổi Chế độ hiệu năng.</value>
   </data>
   <data name="SettingsPage_Power_Title" xml:space="preserve">
     <value>Nguồn</value>
   </data>
-  <data name="SettingsPage_PowerPlansControlPanel_Title" xml:space="preserve">
+  <data name="SettingsPage_WindowsPowerPlansControlPanel_Title" xml:space="preserve">
     <value>Tùy chỉnh Power Plan trong Windows Control Panel</value>
   </data>
   <data name="PoweredOff" xml:space="preserve">
@@ -1891,7 +1876,7 @@ Yêu cầu khởi động lại.</value>
     <value>Công suất Dynamic Boost nhường từ GPU sang CPU</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description" xml:space="preserve">
-    <value>Đây là công suất bổ sung tối đa có thể được đưa cho GPU từ CPU dựa trên mức sử dụng CPU. Giá trị càng cao thì hiệu suất của các ứng dụng sử dụng GPU càng cao.</value>
+    <value>Đây là công suất bổ sung tối đa có thể được đưa cho CPU từ GPU dựa trên mức sử dụng CPU. Giá trị càng cao thì hiệu suất của các ứng dụng sử dụng CPU càng cao.</value>
   </data>
   <data name="SettingsPage_BootLogo_Title" xml:space="preserve">
     <value>Logo khởi động</value>
@@ -2048,7 +2033,124 @@ Các định dạng hỗ trợ: {1}.</value>
   <data name="RunAutomationStepControl_ProcessWaitUntilFinished" xml:space="preserve">
     <value>Đợi cho đến khi hoàn thành</value>
   </data>
+  <data name="RunAutomationStepControl_ProcessRunSilently_Description" xml:space="preserve">
+    <value>Thực thi ứng dụng mà không hiển thị cửa sổ lệnh.</value>
+  </data>
   <data name="RunAutomationStepControl_ProcessWaitUntilFinished_Description" xml:space="preserve">
-	  <value>Đợi cho đến khi chương trình hoặc tập lệnh thực thi xong</value>
+    <value>Đợi cho đến khi chương trình hoặc tập lệnh thực thi xong</value>
+  </data>
+  <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
+    <value>Khi tắt tiếng, tất cả các đầu ra âm thanh đang sử dụng cũng sẽ bị tắt.</value>
+  </data>
+  <data name="SpeakerAutomationStepControl_Title" xml:space="preserve">
+    <value>Loa ngoài</value>
+  </data>
+  <data name="SettingsPage_MinimizeToTray_Title" xml:space="preserve">
+    <value>Thu nhỏ về khay hệ thống</value>
+  </data>
+  <data name="SettingsPage_MinimizeToTray_Message" xml:space="preserve">
+    <value>Luôn luôn thu nhỏ về khay hệ thống thay vì thanh tác vụ.</value>
+  </data>
+  <data name="WindowsPowerModesWindow_Title" xml:space="preserve">
+    <value>Chế độ nguồn</value>
+  </data>
+  <data name="Settings_GodModeFnQSwitchable_Title" xml:space="preserve">
+    <value>Đổi sang Chế độ Tùy chỉnh khi Fn+Q</value>
+  </data>
+  <data name="Settings_GodModeFnQSwitchable_Message" xml:space="preserve">
+    <value>Cho phép chuyển đổi nhanh sang Chế độ Tùy chỉnh khi Fn+Q.</value>
+  </data>
+  <data name="SettingsPage_PowerModeMapping_Title" xml:space="preserve">
+    <value>Đồng bộ hóa Chế độ Năng lượng</value>
+  </data>
+  <data name="SettingsPage_PowerModeMapping_Message" xml:space="preserve">
+    <value>Tự động thay đổi Windows Power Plan hoặc Windows Power Mode khi thay đổi các chế độ năng lượng.</value>
+  </data>
+  <data name="SettingsPage_WindowsPowerModes_Title" xml:space="preserve">
+    <value>Chế độ nguồn</value>
+  </data>
+  <data name="SettingsPage_WindowsPowerModes_Message" xml:space="preserve">
+    <value>Chọn Windows Power Plan được sử dụng tương ứng khi thay đổi Chế độ hiệu năng.</value>
+  </data>
+  <data name="CompatibilityCheckError_Message" xml:space="preserve">
+    <value>Lỗi đã xảy ra khi đọc thông tin thiết bị.</value>
+  </data>
+  <data name="MainWindow_NavigationItem_Macro" xml:space="preserve">
+    <value>Macro</value>
+  </data>
+  <data name="MacroPage_Title" xml:space="preserve">
+    <value>Macro</value>
+  </data>
+  <data name="MacroSequenceControl_Repeat_Title" xml:space="preserve">
+    <value>Lặp lại</value>
+  </data>
+  <data name="MacroSequenceControl_IgnoreDelays_Title" xml:space="preserve">
+    <value>Bỏ qua thời gian chờ</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
+  <data name="MacroSequenceControl_Record" xml:space="preserve">
+    <value>Bắt đầu ghi</value>
+  </data>
+  <data name="MacroSequenceControl_StopRecording" xml:space="preserve">
+    <value>Dừng Ghi</value>
+  </data>
+  <data name="MacroSequenceControl_DontRepeat" xml:space="preserve">
+    <value>Không lặp lại</value>
+  </data>
+  <data name="MacroPage_Enable_Subtitle" xml:space="preserve">
+    <value>Lenovo Legion Toolkit phải chạy trong nền để Macros làm việc.</value>
+  </data>
+  <data name="MacroPage_Enable_Title" xml:space="preserve">
+    <value>Kích hoạt</value>
+  </data>
+  <data name="MacroPage_Subtitle" xml:space="preserve">
+    <value>Bạn có thể ghi lại các Macro và gọi chúng qua bàn phím số.</value>
+  </data>
+  <data name="MacroAutomationStepControl_Title" xml:space="preserve">
+    <value>Macro</value>
+  </data>
+  <data name="MacroAutomationStepControl_Message" xml:space="preserve">
+    <value>Bật hoặc tắt macros.</value>
+  </data>
+  <data name="MacroSequenceControl_InterruptOnOtherKey_Title" xml:space="preserve">
+    <value>Ngắt nếu phím khác được bấm</value>
+  </data>
+  <data name="Hide" xml:space="preserve">
+    <value>Ẩn</value>
+  </data>
+  <data name="HideAll" xml:space="preserve">
+    <value>Ẩn tất cả</value>
+  </data>
+  <data name="DevicePipelineTriggerTabItemContent_Devices" xml:space="preserve">
+    <value>Thiết bị</value>
+  </data>
+  <data name="DeselectAll" xml:space="preserve">
+    <value>Bỏ chọn tất cả</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>Chọn tất cả</value>
+  </data>
+  <data name="MacroSequenceControl_Keyboard" xml:space="preserve">
+    <value>Chỉ bàn phím</value>
+  </data>
+  <data name="MacroRecordingWindow_Preparing_Title" xml:space="preserve">
+    <value>Quá trình ghi macro sẽ bắt đầu sau 3 giây...</value>
+  </data>
+  <data name="MacroRecordingWindow_Recording_Title" xml:space="preserve">
+    <value>Đang ghi macro...</value>
+  </data>
+  <data name="MacroRecordingWindow_Recording_Message" xml:space="preserve">
+    <value>Nhấn ESC để dừng.</value>
+  </data>
+  <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlySelected" xml:space="preserve">
+    <value>Chỉ hiển thị các thiết bị đã chọn</value>
+  </data>
+  <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlyRemovable" xml:space="preserve">
+    <value>Chỉ hiển thị các thiết bị gắn ngoài</value>
+  </data>
+  <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlyConnected" xml:space="preserve">
+    <value>Chỉ hiển thị các thiết bị đang kết nối</value>
   </data>
 </root>

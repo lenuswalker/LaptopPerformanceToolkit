@@ -4,7 +4,7 @@
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 		<Platforms>x64</Platforms>
 		<Nullable>enable</Nullable>
-		<Copyright>© 2023 Bartosz Cichecki</Copyright>
+		<Copyright>© 2024 Bartosz Cichecki</Copyright>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<NeutralLanguage>en</NeutralLanguage>
 	</PropertyGroup>
@@ -15,6 +15,7 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 	<ItemGroup>
+	  <ProjectReference Include="..\LenovoLegionToolkit.Lib.Macro\LenovoLegionToolkit.Lib.Macro.csproj" />
 	  <ProjectReference Include="..\LenovoLegionToolkit.Lib\LenovoLegionToolkit.Lib.csproj" />
 	</ItemGroup>
 	<ItemGroup>

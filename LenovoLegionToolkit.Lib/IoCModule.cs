@@ -9,6 +9,7 @@ using LenovoLegionToolkit.Lib.Features.FlipToStart;
 using LenovoLegionToolkit.Lib.Features.Hybrid;
 using LenovoLegionToolkit.Lib.Features.Hybrid.Notify;
 using LenovoLegionToolkit.Lib.Features.InstantBoot;
+using LenovoLegionToolkit.Lib.Features.OverDrive;
 using LenovoLegionToolkit.Lib.Features.PanelLogo;
 using LenovoLegionToolkit.Lib.Features.WhiteKeyboardBacklight;
 using LenovoLegionToolkit.Lib.Integrations;
@@ -61,6 +62,8 @@ public class IoCModule : Module
         builder.Register<MicrophoneFeature>();
         builder.Register<OneLevelWhiteKeyboardBacklightFeature>();
         builder.Register<OverDriveFeature>();
+        builder.Register<OverDriveGameZoneFeature>(true);
+        builder.Register<OverDriveCapabilityFeature>(true);
         builder.Register<PanelLogoBacklightFeature>();
         builder.Register<PanelLogoSpectrumBacklightFeature>(true);
         builder.Register<PanelLogoLenovoLightingBacklightFeature>(true);
@@ -108,7 +111,6 @@ public class IoCModule : Module
         builder.Register<GodModeControllerV2>(true);
         builder.Register<GPUController>();
         builder.Register<GPUOverclockController>();
-        builder.Register<PowerPlanController>();
         builder.Register<RGBKeyboardBacklightController>();
         builder.Register<SensorsController>();
         builder.Register<SensorsControllerV1>(true);
@@ -116,6 +118,8 @@ public class IoCModule : Module
         builder.Register<SensorsControllerV3>(true);
         builder.Register<SmartFnLockController>();
         builder.Register<SpectrumKeyboardBacklightController>();
+        builder.Register<WindowsPowerModeController>();
+        builder.Register<WindowsPowerPlanController>();
 
         builder.Register<UpdateChecker>();
         builder.Register<WarrantyChecker>();

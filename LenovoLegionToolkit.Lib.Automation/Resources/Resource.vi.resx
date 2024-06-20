@@ -207,6 +207,24 @@
     <value>Khi ngắt kết nối WiFi</value>
   </data>
   <data name="OnResumeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-	  <value>Khi tạm dừng</value>
+    <value>Khi tạm dừng</value>
+  </data>
+  <data name="HDROffAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Khi HDR tắt</value>
+  </data>
+  <data name="HDROnAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Khi HDR bật</value>
+  </data>
+  <data name="MacroAutomationStepState_Off" xml:space="preserve">
+	  <value>Tắt</value>
+  </data>
+  <data name="MacroAutomationStepState_On" xml:space="preserve">
+	  <value>Bật</value>
+  </data>
+  <data name="DeviceDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+	  <value>Khi ngắt kết nối thiết bị</value>
+  </data>
+  <data name="DeviceConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+	  <value>Khi kết nối thiết bị</value>
   </data>
 </root>

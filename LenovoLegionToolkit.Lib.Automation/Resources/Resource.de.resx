@@ -207,6 +207,24 @@
     <value>Wenn die WLAN-Verbindung getrennt wird</value>
   </data>
   <data name="OnResumeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-	  <value>Beim aufwachen</value>
+    <value>Beim aufwachen</value>
+  </data>
+  <data name="HDROffAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Wenn HDR ausgeschaltet ist</value>
+  </data>
+  <data name="HDROnAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Wenn HDR eingeschaltet ist</value>
+  </data>
+  <data name="MacroAutomationStepState_Off" xml:space="preserve">
+	  <value>Aus</value>
+  </data>
+  <data name="MacroAutomationStepState_On" xml:space="preserve">
+	  <value>An</value>
+  </data>
+  <data name="DeviceDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+	  <value>Wenn Gerät getrennt ist</value>
+  </data>
+  <data name="DeviceConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+	  <value>Wenn Gerät verbunden ist</value>
   </data>
 </root>

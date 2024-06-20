@@ -25,7 +25,16 @@ public interface ICompositeAutomationPipelineTrigger : IAutomationPipelineTrigge
     public IAutomationPipelineTrigger[] Triggers { get; }
 }
 
-public interface INativeWindowsMessagePipelineTrigger : IDisallowDuplicatesAutomationPipelineTrigger;
+public interface IHDRPipelineTrigger : IDisallowDuplicatesAutomationPipelineTrigger;
+
+public interface INativeWindowsMessagePipelineTrigger : IAutomationPipelineTrigger;
+
+public interface IDeviceAutomationPipelineTrigger : INativeWindowsMessagePipelineTrigger
+{
+    string[] InstanceIds { get; }
+
+    IDeviceAutomationPipelineTrigger DeepCopy(string[] instanceIds);
+}
 
 public interface IOnStartupAutomationPipelineTrigger : IDisallowDuplicatesAutomationPipelineTrigger;
 
