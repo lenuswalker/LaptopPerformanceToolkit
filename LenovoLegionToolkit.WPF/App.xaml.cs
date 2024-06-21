@@ -83,8 +83,8 @@ public partial class App
         {
             try
             {
-                if (!await CheckBasicCompatibilityAsync())
-                    return;
+                //if (!await CheckBasicCompatibilityAsync())
+                //    return;
                 if (!await CheckCompatibilityAsync())
                     return;
             }
@@ -317,7 +317,7 @@ public partial class App
         var result = await unsupportedWindow.ShouldContinue;
         if (result)
         {
-            Log.Instance.IsTraceEnabled = true;
+            //Log.Instance.IsTraceEnabled = true;
 
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Compatibility check OVERRIDE. [Vendor={mi.Vendor}, Model={mi.Model}, MachineType={mi.MachineType}, version={Assembly.GetEntryAssembly()?.GetName().Version}, build={Assembly.GetEntryAssembly()?.GetBuildDateTimeString() ?? string.Empty}]");
