@@ -1,34 +1,27 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Automation.Resources;
 using LenovoLegionToolkit.Lib.System;
 using Newtonsoft.Json;
-using WindowsDisplayAPI;
 
 namespace LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
 
-public class ExternalDisplayConnectedAutomationPipelineTrigger : INativeWindowsMessagePipelineTrigger
+public class ExternalDisplayConnectedAutomationPipelineTrigger : INativeWindowsMessagePipelineTrigger, IDisallowDuplicatesAutomationPipelineTrigger
 {
     [JsonIgnore]
     public string DisplayName => Resource.ExternalDisplayConnectedAutomationPipelineTrigger_DisplayName;
 
     public Task<bool> IsMatchingEvent(IAutomationEvent automationEvent)
     {
-        var result = automationEvent is NativeWindowsMessageEvent { Message: NativeWindowsMessage.MonitorConnected };
+        var result = automationEvent is NativeWindowsMessageEvent { Message: NativeWindowsMessage.ExternalMonitorConnected };
         return Task.FromResult(result);
     }
 
     public Task<bool> IsMatchingState()
     {
-        var displays = Display.GetDisplays();
-        var internalDisplay = InternalDisplay.Get();
-        if (internalDisplay is not null)
-            displays = displays.Where(d => d.DevicePath != internalDisplay.DevicePath);
-        var result = displays.Any();
+        var result = ExternalDisplays.Get().Length > 0;
         return Task.FromResult(result);
     }
-
 
     public void UpdateEnvironment(AutomationEnvironment environment) => environment.ExternalDisplayConnected = true;
 

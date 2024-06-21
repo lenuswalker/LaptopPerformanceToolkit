@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Controllers;
@@ -18,50 +19,36 @@ public class PowerModeUnavailableWithoutACException(PowerModeState powerMode) : 
 
 public class PowerModeFeature(
     GodModeController godModeController,
-    PowerPlanController powerPlanController,
+    WindowsPowerModeController windowsPowerModeController,
+    WindowsPowerPlanController windowsPowerPlanController,
     ThermalModeListener thermalModeListener,
     PowerModeListener powerModeListener)
     : AbstractWmiFeature<PowerModeState>(WMI.LenovoGameZoneData.GetSmartFanModeAsync, WMI.LenovoGameZoneData.SetSmartFanModeAsync, WMI.LenovoGameZoneData.IsSupportSmartFanAsync, 1)
 {
     public bool AllowAllPowerModesOnBattery { get; set; }
 
-    private static readonly Dictionary<PowerModeState, string> defaultGenericPowerModes = new()
+    private static readonly Dictionary<PowerModeState, string> defaultPowerModes = new()
     {
-        { PowerModeState.Efficiency , "961cc777-2547-4f9d-8174-7d86181b8a7a" },
-        { PowerModeState.Balance , "00000000-0000-0000-0000-000000000000" },
+        { PowerModeState.Quiet , "961cc777-2547-4f9d-8174-7d86181b8a7a" },
+        { PowerModeState.Balance , "381b4222-f694-41f0-9685-ff5bb260df2e" },
         { PowerModeState.Performance , "ded574b5-45a0-4f42-8737-46345c09c238" },
     };
 
     public override async Task<bool> IsSupportedAsync()
     {
-        try
-        {
-            if (_isSupported is null)
-                return true;
-
-            return await _isSupported().ConfigureAwait(false) > 0;
-        }
-        catch
-        {
-            uint result = Power.PowerGetEffectiveOverlayScheme(out Guid currentMode);
-            if (result == 0)
-                return true;
-            else
-                return false;
-        }
+        uint result = Power.PowerGetEffectiveOverlayScheme(out Guid currentMode);
+        if (result == 0)
+            return true;
+        else
+            return false;
     }
 
     public override async Task<PowerModeState[]> GetAllStatesAsync()
     {
-        var compatibility = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
         var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
-
-        if (compatibility.isCompatible)
-            return mi.Properties.SupportsGodMode
-                ? new[] { PowerModeState.Quiet, PowerModeState.Balance, PowerModeState.Performance, PowerModeState.GodMode }
-                : new[] { PowerModeState.Quiet, PowerModeState.Balance, PowerModeState.Performance };
-        else
-            return new[] { PowerModeState.Efficiency, PowerModeState.Balance, PowerModeState.Performance };
+        return mi.Properties.SupportsGodMode
+            ? [PowerModeState.Quiet, PowerModeState.Balance, PowerModeState.Performance, PowerModeState.GodMode]
+            : [PowerModeState.Quiet, PowerModeState.Balance, PowerModeState.Performance];
     }
 
     public override async Task<PowerModeState> GetStateAsync()
@@ -76,9 +63,9 @@ public class PowerModeFeature(
             switch (currentMode.ToString())
             {
                 case "961cc777-2547-4f9d-8174-7d86181b8a7a":
-                    state = PowerModeState.Efficiency;
+                    state = PowerModeState.Quiet;
                     break;
-                case "00000000-0000-0000-0000-000000000000":
+                case "381b4222-f694-41f0-9685-ff5bb260df2e":
                     state = PowerModeState.Balance;
                     break;
                 case "ded574b5-45a0-4f42-8737-46345c09c238":
@@ -95,6 +82,11 @@ public class PowerModeFeature(
         if (!allStates.Contains(state))
             throw new InvalidOperationException($"Unsupported power mode {state}.");
 
+        if (state is PowerModeState.Performance or PowerModeState.GodMode
+            && !AllowAllPowerModesOnBattery
+            && await Power.IsPowerAdapterConnectedAsync().ConfigureAwait(false) is PowerAdapterStatus.Disconnected)
+            throw new PowerModeUnavailableWithoutACException(state);
+
         var currentState = await GetStateAsync().ConfigureAwait(false);
 
         var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
@@ -102,12 +94,6 @@ public class PowerModeFeature(
         var compatibility = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
         if (compatibility.isCompatible)
         {
-            if (state is PowerModeState.Performance or PowerModeState.GodMode
-                && !AllowAllPowerModesOnBattery
-                && await Power.IsPowerAdapterConnectedAsync().ConfigureAwait(false) is PowerAdapterStatus.Disconnected)
-                throw new PowerModeUnavailableWithoutACException(state);
-
-
             if (mi.Properties.HasQuietToPerformanceModeSwitchingBug && currentState == PowerModeState.Quiet && state == PowerModeState.Performance)
             {
                 thermalModeListener.SuppressNext();
@@ -118,7 +104,6 @@ public class PowerModeFeature(
             if (mi.Properties.HasGodModeToOtherModeSwitchingBug && currentState == PowerModeState.GodMode && state != PowerModeState.GodMode)
             {
                 thermalModeListener.SuppressNext();
-                await base.SetStateAsync(PowerModeState.Quiet).ConfigureAwait(false);
 
                 switch (state)
                 {
@@ -141,23 +126,16 @@ public class PowerModeFeature(
             await base.SetStateAsync(state).ConfigureAwait(false);
         }
         else
-        {
-            Power.PowerSetActiveOverlayScheme(new Guid(defaultGenericPowerModes[state]));
-        }
-
-        if (state == PowerModeState.GodMode)
-            await godModeController.ApplyStateAsync().ConfigureAwait(false);
+            Power.PowerSetActiveOverlayScheme(new Guid(defaultPowerModes[state]));
 
         await powerModeListener.NotifyAsync(state).ConfigureAwait(false);
     }
 
-    public async Task EnsureCorrectPowerPlanIsSetAsync()
+    public async Task EnsureCorrectWindowsPowerSettingsAreSetAsync()
     {
-        var compatibility = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
-        if (compatibility.isCompatible) {
-            var state = await GetStateAsync().ConfigureAwait(false);
-            await powerPlanController.SetPowerPlanAsync(state, true).ConfigureAwait(false);
-        }
+        var state = await GetStateAsync().ConfigureAwait(false);
+        await windowsPowerModeController.SetPowerModeAsync(state).ConfigureAwait(false);
+        await windowsPowerPlanController.SetPowerPlanAsync(state, true).ConfigureAwait(false);
     }
 
     public async Task EnsureGodModeStateIsAppliedAsync()

@@ -83,16 +83,50 @@ public readonly struct DiscreteCapability(CapabilityID id, int value)
     public int Value { get; } = value;
 }
 
-public readonly struct DisplayAdvancedColorInfo(
-    bool advancedColorSupported,
-    bool advancedColorEnabled,
-    bool wideColorEnforced,
-    bool advancedColorForceDisabled)
+public readonly struct DisplayAdvancedColorInfo(bool advancedColorSupported, bool advancedColorEnabled, bool wideColorEnforced, bool advancedColorForceDisabled)
 {
     public bool AdvancedColorSupported { get; } = advancedColorSupported;
     public bool AdvancedColorEnabled { get; } = advancedColorEnabled;
     public bool WideColorEnforced { get; } = wideColorEnforced;
     public bool AdvancedColorForceDisabled { get; } = advancedColorForceDisabled;
+}
+
+public struct Device(
+    string name,
+    string description,
+    string busReportedDeviceDescription,
+    string deviceInstanceId,
+    Guid classGuid,
+    string className,
+    bool isRemovable,
+    bool isDisconnected)
+{
+    public string Name { get; } = name;
+    public string Description { get; } = description;
+    public string BusReportedDeviceDescription { get; } = busReportedDeviceDescription;
+    public string DeviceInstanceId { get; } = deviceInstanceId;
+    public Guid ClassGuid { get; } = classGuid;
+    public string ClassName { get; } = className;
+    public bool IsRemovable { get; } = isRemovable;
+    public bool IsDisconnected { get; } = isDisconnected;
+
+    private string? _index;
+
+    public string Index
+    {
+        get
+        {
+            _index ??= new StringBuilder()
+                .Append(ClassName)
+                .Append(ClassGuid)
+                .Append(BusReportedDeviceDescription)
+                .Append(Description)
+                .Append(Name)
+                .Append(DeviceInstanceId)
+                .ToString();
+            return _index;
+        }
+    }
 }
 
 public readonly struct DriverInfo(string deviceId, string hardwareId, Version? version, DateTime? date)
@@ -358,9 +392,9 @@ public readonly struct HardwareId(string vendor, string device)
 
 public readonly struct MachineInformation
 {
-    public readonly struct FeatureData
+    public readonly struct FeatureData(FeatureData.SourceType sourceType, IEnumerable<CapabilityID> capabilities)
     {
-        public static readonly FeatureData Unknown = new() { Source = SourceType.Unknown };
+        public static readonly FeatureData Unknown = new(SourceType.Unknown);
 
         public enum SourceType
         {
@@ -369,15 +403,25 @@ public readonly struct MachineInformation
             CapabilityData
         }
 
-        public SourceType Source { get; init; }
-        public bool IGPUMode { get; init; }
-        public bool AIChip { get; init; }
-        public bool FlipToStart { get; init; }
-        public bool NvidiaGPUDynamicDisplaySwitching { get; init; }
-        public bool InstantBootAc { get; init; }
-        public bool InstantBootUsbPowerDelivery { get; init; }
-        public bool AMDSmartShiftMode { get; init; }
-        public bool AMDSkinTemperatureTracking { get; init; }
+        private readonly HashSet<CapabilityID> _capabilities = [.. capabilities];
+
+        public SourceType Source { get; } = sourceType;
+
+        public IEnumerable<CapabilityID> All => _capabilities.Order().AsEnumerable();
+
+        public FeatureData(SourceType sourceType) : this(sourceType, []) { }
+
+        public bool this[CapabilityID key]
+        {
+            get => _capabilities.Contains(key);
+            init
+            {
+                if (value)
+                    _capabilities.Add(key);
+                else
+                    _capabilities.Remove(key);
+            }
+        }
     }
 
     public readonly struct PropertyData
@@ -499,24 +543,23 @@ public readonly struct Notification(NotificationType type, params object[] args)
     public override string ToString() => $@"{nameof(Type)}: {Type}, {nameof(Args)}: [{string.Join(", ", Args)}]";
 }
 
-public readonly struct PowerPlan(Guid guid, string name, bool isActive, bool isOverlay)
+public readonly struct WindowsPowerPlan(Guid guid, string name, bool isActive)
 {
     public Guid Guid { get; } = guid;
     public string Name { get; } = name;
     public bool IsActive { get; } = isActive;
-    public bool IsOverlay { get; } = isOverlay;
 
-    public override string ToString() => $"{nameof(Guid)}: {Guid}, {nameof(Name)}: {Name}, {nameof(IsActive)}: {IsActive}, {nameof(IsOverlay)}: {IsOverlay}";
+    public override string ToString() => $"{nameof(Guid)}: {Guid}, {nameof(Name)}: {Name}, {nameof(IsActive)}: {IsActive}";
 
     #region Equality
 
-    public override bool Equals(object? obj) => obj is PowerPlan other && Guid.Equals(other.Guid);
+    public override bool Equals(object? obj) => obj is WindowsPowerPlan other && Guid.Equals(other.Guid);
 
     public override int GetHashCode() => Guid.GetHashCode();
 
-    public static bool operator ==(PowerPlan left, PowerPlan right) => left.Equals(right);
+    public static bool operator ==(WindowsPowerPlan left, WindowsPowerPlan right) => left.Equals(right);
 
-    public static bool operator !=(PowerPlan left, PowerPlan right) => !left.Equals(right);
+    public static bool operator !=(WindowsPowerPlan left, WindowsPowerPlan right) => !left.Equals(right);
 
     #endregion
 }
@@ -572,6 +615,13 @@ public readonly struct RangeCapability(CapabilityID id, int defaultValue, int mi
 [method: JsonConstructor]
 public readonly struct RGBColor(byte r, byte g, byte b)
 {
+    public static readonly RGBColor Green = new(142, 255, 0);
+    public static readonly RGBColor Pink = new(186, 0, 255);
+    public static readonly RGBColor Purple = new(101, 0, 255);
+    public static readonly RGBColor Red = new(255, 0, 0);
+    public static readonly RGBColor Teal = new(0, 212, 255);
+    public static readonly RGBColor White = new(255, 255, 255);
+
     public byte R { get; } = r;
     public byte G { get; } = g;
     public byte B { get; } = b;
@@ -604,6 +654,8 @@ public readonly struct RGBKeyboardBacklightBacklightPresetDescription(
     RGBColor zone3,
     RGBColor zone4)
 {
+    public static readonly RGBKeyboardBacklightBacklightPresetDescription Default = new(RGBKeyboardBacklightEffect.Static, RGBKeyboardBacklightSpeed.Slowest, RGBKeyboardBacklightBrightness.High, RGBColor.White, RGBColor.White, RGBColor.White, RGBColor.White);
+
     public RGBKeyboardBacklightEffect Effect { get; } = effect;
     public RGBKeyboardBacklightSpeed Speed { get; } = speed;
     public RGBKeyboardBacklightBrightness Brightness { get; } = brightness;

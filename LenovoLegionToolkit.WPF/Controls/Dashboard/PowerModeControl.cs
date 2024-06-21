@@ -21,7 +21,6 @@ public class PowerModeControl : AbstractComboBoxFeatureCardControl<PowerModeStat
 {
     private readonly ThermalModeListener _thermalModeListener = IoCContainer.Resolve<ThermalModeListener>();
     private readonly PowerModeListener _powerModeListener = IoCContainer.Resolve<PowerModeListener>();
-    private readonly PowerPlanListener _powerPlanListener = IoCContainer.Resolve<PowerPlanListener>();
 
     private readonly ThrottleLastDispatcher _throttleDispatcher = new(TimeSpan.FromMilliseconds(500), nameof(PowerModeControl));
 
@@ -43,7 +42,6 @@ public class PowerModeControl : AbstractComboBoxFeatureCardControl<PowerModeStat
 
         _thermalModeListener.Changed += ThermalModeListener_Changed;
         _powerModeListener.Changed += PowerModeListener_Changed;
-        _powerPlanListener.Changed += PowerPlanListener_Changed;
     }
 
     private async void ThermalModeListener_Changed(object? sender, ThermalModeListener.ChangedEventArgs e) => await _throttleDispatcher.DispatchAsync(async () =>
@@ -85,9 +83,9 @@ public class PowerModeControl : AbstractComboBoxFeatureCardControl<PowerModeStat
             Warning = string.Empty;
     }
 
-    protected override async Task OnStateChange(ComboBox comboBox, IFeature<PowerModeState> feature, PowerModeState? newValue, PowerModeState? oldValue)
+    protected override async Task OnStateChangeAsync(ComboBox comboBox, IFeature<PowerModeState> feature, PowerModeState? newValue, PowerModeState? oldValue)
     {
-        await base.OnStateChange(comboBox, feature, newValue, oldValue);
+        await base.OnStateChangeAsync(comboBox, feature, newValue, oldValue);
 
         var mi = await Compatibility.GetMachineInformationAsync();
 

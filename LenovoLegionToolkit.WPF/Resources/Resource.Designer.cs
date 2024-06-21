@@ -1108,6 +1108,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clear.
+        /// </summary>
+        public static string Clear {
+            get {
+                return ResourceManager.GetString("Clear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
         public static string Close {
@@ -1196,6 +1205,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string ComboBoxHybridModeControl_Title {
             get {
                 return ResourceManager.GetString("ComboBoxHybridModeControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error occured when reading device information..
+        /// </summary>
+        public static string CompatibilityCheckError_Message {
+            get {
+                return ResourceManager.GetString("CompatibilityCheckError_Message", resourceCulture);
             }
         }
         
@@ -1382,6 +1400,42 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deselect all.
+        /// </summary>
+        public static string DeselectAll {
+            get {
+                return ResourceManager.GetString("DeselectAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show connected devices only.
+        /// </summary>
+        public static string DeviceAutomationPipelineTriggerTabItemContent_OnlyConnected {
+            get {
+                return ResourceManager.GetString("DeviceAutomationPipelineTriggerTabItemContent_OnlyConnected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show removable devices only.
+        /// </summary>
+        public static string DeviceAutomationPipelineTriggerTabItemContent_OnlyRemovable {
+            get {
+                return ResourceManager.GetString("DeviceAutomationPipelineTriggerTabItemContent_OnlyRemovable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show selected devices only.
+        /// </summary>
+        public static string DeviceAutomationPipelineTriggerTabItemContent_OnlySelected {
+            get {
+                return ResourceManager.GetString("DeviceAutomationPipelineTriggerTabItemContent_OnlySelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BIOS version.
         /// </summary>
         public static string DeviceInformationWindow_BiosVersion_Title {
@@ -1486,6 +1540,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string DeviceInformationWindow_WarrantyStartDate_Title {
             get {
                 return ResourceManager.GetString("DeviceInformationWindow_WarrantyStartDate_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Devices.
+        /// </summary>
+        public static string DevicePipelineTriggerTabItemContent_Devices {
+            get {
+                return ResourceManager.GetString("DevicePipelineTriggerTabItemContent_Devices", resourceCulture);
             }
         }
         
@@ -2448,7 +2511,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This is the maximum additional power that can be allocated to the GPU from the CPU based on CPU usage. The higher the value, the better the performance of applications that use the GPU..
+        ///   Looks up a localized string similar to This is the maximum additional power that can be allocated to the CPU from the GPU based on CPU usage. The higher the value, the better the performance of applications that use the CPU..
         /// </summary>
         public static string GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description {
             get {
@@ -2551,6 +2614,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hide.
+        /// </summary>
+        public static string Hide {
+            get {
+                return ResourceManager.GetString("Hide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hide all.
+        /// </summary>
+        public static string HideAll {
+            get {
+                return ResourceManager.GetString("HideAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Try changing the mode again in a couple of seconds, if you do not see expected result.
         ///If dGPU does not respond at all, please restart your laptop..
         /// </summary>
@@ -2629,15 +2710,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string IncompatibleDevice_Message {
             get {
                 return ResourceManager.GetString("IncompatibleDevice_Message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lenovo Legion Toolkit.
-        /// </summary>
-        public static string IncompatibleDevice_Title {
-            get {
-                return ResourceManager.GetString("IncompatibleDevice_Title", resourceCulture);
             }
         }
         
@@ -2732,6 +2804,177 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable or disable macros..
+        /// </summary>
+        public static string MacroAutomationStepControl_Message {
+            get {
+                return ResourceManager.GetString("MacroAutomationStepControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Macro.
+        /// </summary>
+        public static string MacroAutomationStepControl_Title {
+            get {
+                return ResourceManager.GetString("MacroAutomationStepControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lenovo Legion Toolkit must be running for macros to work..
+        /// </summary>
+        public static string MacroPage_Enable_Subtitle {
+            get {
+                return ResourceManager.GetString("MacroPage_Enable_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable.
+        /// </summary>
+        public static string MacroPage_Enable_Title {
+            get {
+                return ResourceManager.GetString("MacroPage_Enable_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can record series of key presses and invoke them using the number pad on your keyboard..
+        /// </summary>
+        public static string MacroPage_Subtitle {
+            get {
+                return ResourceManager.GetString("MacroPage_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Macro.
+        /// </summary>
+        public static string MacroPage_Title {
+            get {
+                return ResourceManager.GetString("MacroPage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recording will start in 3 seconds....
+        /// </summary>
+        public static string MacroRecordingWindow_Preparing_Title {
+            get {
+                return ResourceManager.GetString("MacroRecordingWindow_Preparing_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Press ESC to stop..
+        /// </summary>
+        public static string MacroRecordingWindow_Recording_Message {
+            get {
+                return ResourceManager.GetString("MacroRecordingWindow_Recording_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recording....
+        /// </summary>
+        public static string MacroRecordingWindow_Recording_Title {
+            get {
+                return ResourceManager.GetString("MacroRecordingWindow_Recording_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t repeat.
+        /// </summary>
+        public static string MacroSequenceControl_DontRepeat {
+            get {
+                return ResourceManager.GetString("MacroSequenceControl_DontRepeat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ignore delays.
+        /// </summary>
+        public static string MacroSequenceControl_IgnoreDelays_Title {
+            get {
+                return ResourceManager.GetString("MacroSequenceControl_IgnoreDelays_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interrupt if another key was pressed.
+        /// </summary>
+        public static string MacroSequenceControl_InterruptOnOtherKey_Title {
+            get {
+                return ResourceManager.GetString("MacroSequenceControl_InterruptOnOtherKey_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keyboard only.
+        /// </summary>
+        public static string MacroSequenceControl_Keyboard {
+            get {
+                return ResourceManager.GetString("MacroSequenceControl_Keyboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keyboard keys and mouse buttons.
+        /// </summary>
+        public static string MacroSequenceControl_KeyboardMouse {
+            get {
+                return ResourceManager.GetString("MacroSequenceControl_KeyboardMouse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All inputs.
+        /// </summary>
+        public static string MacroSequenceControl_KeyboardMouseMovement {
+            get {
+                return ResourceManager.GetString("MacroSequenceControl_KeyboardMouseMovement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Record.
+        /// </summary>
+        public static string MacroSequenceControl_Record {
+            get {
+                return ResourceManager.GetString("MacroSequenceControl_Record", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recording options.
+        /// </summary>
+        public static string MacroSequenceControl_RecordingOptions {
+            get {
+                return ResourceManager.GetString("MacroSequenceControl_RecordingOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repeat.
+        /// </summary>
+        public static string MacroSequenceControl_Repeat_Title {
+            get {
+                return ResourceManager.GetString("MacroSequenceControl_Repeat_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop recording.
+        /// </summary>
+        public static string MacroSequenceControl_StopRecording {
+            get {
+                return ResourceManager.GetString("MacroSequenceControl_StopRecording", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
         public static string MainWindow_NavigationItem_About {
@@ -2782,6 +3025,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string MainWindow_NavigationItem_Keyboard {
             get {
                 return ResourceManager.GetString("MainWindow_NavigationItem_Keyboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Macro.
+        /// </summary>
+        public static string MainWindow_NavigationItem_Macro {
+            get {
+                return ResourceManager.GetString("MainWindow_NavigationItem_Macro", resourceCulture);
             }
         }
         
@@ -3943,24 +4195,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enabling this option when Lenovo Vantage or its services are running and it changes power plans on your laptop might result in unexpected behavior..
-        /// </summary>
-        public static string PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Message {
-            get {
-                return ResourceManager.GetString("PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure?.
-        /// </summary>
-        public static string PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Title {
-            get {
-                return ResourceManager.GetString("PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Windows reports that this laptop supports Modern Standby. Using power plans other than Balanced may cause unexpected behavior..
         /// </summary>
         public static string PowerPlansWindow_AoAcWarning_Message {
@@ -3975,60 +4209,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string PowerPlansWindow_AoAcWarning_Title {
             get {
                 return ResourceManager.GetString("PowerPlansWindow_AoAcWarning_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Balance mode.
-        /// </summary>
-        public static string PowerPlansWindow_BalanceMode {
-            get {
-                return ResourceManager.GetString("PowerPlansWindow_BalanceMode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Custom mode.
-        /// </summary>
-        public static string PowerPlansWindow_CustomMode {
-            get {
-                return ResourceManager.GetString("PowerPlansWindow_CustomMode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Default.
-        /// </summary>
-        public static string PowerPlansWindow_DefaultPowerPlan {
-            get {
-                return ResourceManager.GetString("PowerPlansWindow_DefaultPowerPlan", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Performance mode.
-        /// </summary>
-        public static string PowerPlansWindow_PerformanceMode {
-            get {
-                return ResourceManager.GetString("PowerPlansWindow_PerformanceMode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Quiet mode.
-        /// </summary>
-        public static string PowerPlansWindow_QuietMode {
-            get {
-                return ResourceManager.GetString("PowerPlansWindow_QuietMode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Power Plans.
-        /// </summary>
-        public static string PowerPlansWindow_Title {
-            get {
-                return ResourceManager.GetString("PowerPlansWindow_Title", resourceCulture);
             }
         }
         
@@ -4226,6 +4406,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Preset 4.
+        /// </summary>
+        public static string RGBKeyboardBacklightControl_Preset4 {
+            get {
+                return ResourceManager.GetString("RGBKeyboardBacklightControl_Preset4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Off.
         /// </summary>
         public static string RGBKeyboardBacklightControl_PresetOff {
@@ -4398,6 +4587,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select all.
+        /// </summary>
+        public static string SelectAll {
+            get {
+                return ResourceManager.GetString("SelectAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choose one or more quick actions to cycle through.
         /// </summary>
         public static string SelectSmartKeyPipelinesWindow_List_Description {
@@ -4515,6 +4713,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Allow quick switching to Custom Mode with Fn+Q..
+        /// </summary>
+        public static string Settings_GodModeFnQSwitchable_Message {
+            get {
+                return ResourceManager.GetString("Settings_GodModeFnQSwitchable_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch to Custom Mode with Fn+Q.
+        /// </summary>
+        public static string Settings_GodModeFnQSwitchable_Title {
+            get {
+                return ResourceManager.GetString("Settings_GodModeFnQSwitchable_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change the accent color of the app..
         /// </summary>
         public static string SettingsPage_AccentColor_Description {
@@ -4565,6 +4781,42 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string SettingsPage_BootLogo_Title {
             get {
                 return ResourceManager.GetString("SettingsPage_BootLogo_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable Command Line Interface that allows control from command line..
+        /// </summary>
+        public static string SettingsPage_CLI_Message {
+            get {
+                return ResourceManager.GetString("SettingsPage_CLI_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CLI.
+        /// </summary>
+        public static string SettingsPage_CLI_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_CLI_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add CLI to user&apos;s PATH environment variable..
+        /// </summary>
+        public static string SettingsPage_CLIAddToPath_Message {
+            get {
+                return ResourceManager.GetString("SettingsPage_CLIAddToPath_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add CLI to PATH.
+        /// </summary>
+        public static string SettingsPage_CLIAddToPath_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_CLIAddToPath_Title", resourceCulture);
             }
         }
         
@@ -4879,29 +5131,20 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select Windows Power Plans to apply when Power Mode changes..
+        ///   Looks up a localized string similar to Automatically change Windows Power Plan or Windows Power Mode when changing Power Modes..
         /// </summary>
-        public static string SettingsPage_PowerPlans_Message {
+        public static string SettingsPage_PowerModeMapping_Message {
             get {
-                return ResourceManager.GetString("SettingsPage_PowerPlans_Message", resourceCulture);
+                return ResourceManager.GetString("SettingsPage_PowerModeMapping_Message", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Power plans.
+        ///   Looks up a localized string similar to Power Mode Synchronization.
         /// </summary>
-        public static string SettingsPage_PowerPlans_Title {
+        public static string SettingsPage_PowerModeMapping_Title {
             get {
-                return ResourceManager.GetString("SettingsPage_PowerPlans_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Power Plan options in Windows Control Panel.
-        /// </summary>
-        public static string SettingsPage_PowerPlansControlPanel_Title {
-            get {
-                return ResourceManager.GetString("SettingsPage_PowerPlansControlPanel_Title", resourceCulture);
+                return ResourceManager.GetString("SettingsPage_PowerModeMapping_Title", resourceCulture);
             }
         }
         
@@ -5001,6 +5244,51 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string SettingsPage_Title {
             get {
                 return ResourceManager.GetString("SettingsPage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Windows Power Mode to apply when Power Mode changes..
+        /// </summary>
+        public static string SettingsPage_WindowsPowerModes_Message {
+            get {
+                return ResourceManager.GetString("SettingsPage_WindowsPowerModes_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Power Modes.
+        /// </summary>
+        public static string SettingsPage_WindowsPowerModes_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_WindowsPowerModes_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Windows Power Plans to apply when Power Mode changes..
+        /// </summary>
+        public static string SettingsPage_WindowsPowerPlans_Message {
+            get {
+                return ResourceManager.GetString("SettingsPage_WindowsPowerPlans_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Power Plans.
+        /// </summary>
+        public static string SettingsPage_WindowsPowerPlans_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_WindowsPowerPlans_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Power Plan options in Windows Control Panel.
+        /// </summary>
+        public static string SettingsPage_WindowsPowerPlansControlPanel_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_WindowsPowerPlansControlPanel_Title", resourceCulture);
             }
         }
         
@@ -5792,6 +6080,33 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string WiFiConnectedPipelineTriggerTabItemContent_NetworkName {
             get {
                 return ResourceManager.GetString("WiFiConnectedPipelineTriggerTabItemContent_NetworkName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Power Modes.
+        /// </summary>
+        public static string WindowsPowerModesWindow_Title {
+            get {
+                return ResourceManager.GetString("WindowsPowerModesWindow_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default.
+        /// </summary>
+        public static string WindowsPowerPlansWindow_DefaultPowerPlan {
+            get {
+                return ResourceManager.GetString("WindowsPowerPlansWindow_DefaultPowerPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Power Plans.
+        /// </summary>
+        public static string WindowsPowerPlansWindow_Title {
+            get {
+                return ResourceManager.GetString("WindowsPowerPlansWindow_Title", resourceCulture);
             }
         }
         

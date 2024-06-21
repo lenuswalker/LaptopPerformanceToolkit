@@ -11,6 +11,7 @@ public class AutomationEnvironment
     private const string DISPLAY_ON = "LLT_IS_DISPLAY_ON";
     private const string EXTERNAL_DISPLAY_CONNECTED = "LLT_IS_EXTERNAL_DISPLAY_CONNECTED";
     private const string GAME_RUNNING = "LLT_IS_GAME_RUNNING";
+    private const string HDR_ON = "LLT_IS_HDR_ON";
     private const string LID_OPEN = "LLT_IS_LID_OPEN";
     private const string STARTUP = "LLT_STARTUP";
     private const string RESUME = "LLT_RESUME";
@@ -18,6 +19,8 @@ public class AutomationEnvironment
     private const string POWER_MODE_NAME = "LLT_POWER_MODE_NAME";
     private const string PROCESSES_STARTED = "LLT_PROCESSES_STARTED";
     private const string PROCESSES = "LLT_PROCESSES";
+    private const string DEVICE_CONNECTED = "LLT_DEVICE_CONNECTED";
+    private const string DEVICE_INSTANCE_IDS = "LLT_DEVICE_INSTANCE_IDS";
     private const string IS_SUNSET = "LLT_IS_SUNSET";
     private const string IS_SUNRISE = "LLT_IS_SUNRISE";
     private const string TIME = "LLT_TIME";
@@ -41,6 +44,8 @@ public class AutomationEnvironment
     public bool ExternalDisplayConnected { set => _dictionary[EXTERNAL_DISPLAY_CONNECTED] = value ? VALUE_TRUE : VALUE_FALSE; }
 
     public bool GameRunning { set => _dictionary[GAME_RUNNING] = value ? VALUE_TRUE : VALUE_FALSE; }
+
+    public bool HDROn { set => _dictionary[HDR_ON] = value ? VALUE_TRUE : VALUE_FALSE; }
 
     public bool LidOpen { set => _dictionary[LID_OPEN] = value ? VALUE_TRUE : VALUE_FALSE; }
 
@@ -74,6 +79,10 @@ public class AutomationEnvironment
     public bool ProcessesStarted { set => _dictionary[PROCESSES_STARTED] = value ? VALUE_TRUE : VALUE_FALSE; }
 
     public ProcessInfo[] Processes { set => _dictionary[PROCESSES] = string.Join(",", value.Select(p => p.Name)); }
+
+    public bool DeviceConnected { set => _dictionary[DEVICE_CONNECTED] = value ? VALUE_TRUE : VALUE_FALSE; }
+
+    public string[] DeviceInstanceIds { set => _dictionary[DEVICE_INSTANCE_IDS] = string.Join(",", value); }
 
     public bool IsSunset { set => _dictionary[IS_SUNSET] = value ? VALUE_TRUE : VALUE_FALSE; }
 

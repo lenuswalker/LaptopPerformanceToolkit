@@ -5,16 +5,15 @@ using LenovoLegionToolkit.Lib.System;
 
 namespace LenovoLegionToolkit.Lib.Features;
 
-public class BatteryNightChargeFeature()
-    : AbstractDriverFeature<BatteryNightChargeState>(Drivers.GetEnergy, Drivers.IOCTL_ENERGY_BATTERY_NIGHT_CHARGE)
+public class BatteryNightChargeFeature() : AbstractDriverFeature<BatteryNightChargeState>(Drivers.GetEnergy, Drivers.IOCTL_ENERGY_BATTERY_NIGHT_CHARGE)
 {
     protected override uint GetInBufferValue() => 0x11;
 
     protected override Task<uint[]> ToInternalAsync(BatteryNightChargeState state)
     {
-        var result = state switch
+        uint[] result = state switch
         {
-            BatteryNightChargeState.On => new[] { 0x80000012u },
+            BatteryNightChargeState.On => [0x80000012u],
             BatteryNightChargeState.Off => [0x12u],
             _ => throw new InvalidOperationException("Invalid state.")
         };

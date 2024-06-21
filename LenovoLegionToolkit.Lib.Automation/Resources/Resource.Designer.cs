@@ -124,6 +124,24 @@ namespace LenovoLegionToolkit.Lib.Automation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to When device is connected.
+        /// </summary>
+        public static string DeviceConnectedAutomationPipelineTrigger_DisplayName {
+            get {
+                return ResourceManager.GetString("DeviceConnectedAutomationPipelineTrigger_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When device is disconnected.
+        /// </summary>
+        public static string DeviceDisconnectedAutomationPipelineTrigger_DisplayName {
+            get {
+                return ResourceManager.GetString("DeviceDisconnectedAutomationPipelineTrigger_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to When displays turn off.
         /// </summary>
         public static string DisplayOffAutomationPipelineTrigger_DisplayName {
@@ -187,6 +205,24 @@ namespace LenovoLegionToolkit.Lib.Automation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to When HDR turns off.
+        /// </summary>
+        public static string HDROffAutomationPipelineTrigger_DisplayName {
+            get {
+                return ResourceManager.GetString("HDROffAutomationPipelineTrigger_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When HDR turns on.
+        /// </summary>
+        public static string HDROnAutomationPipelineTrigger_DisplayName {
+            get {
+                return ResourceManager.GetString("HDROnAutomationPipelineTrigger_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lid closed.
         /// </summary>
         public static string LidClosedAutomationPipelineTrigger_DisplayName {
@@ -210,6 +246,24 @@ namespace LenovoLegionToolkit.Lib.Automation.Resources {
         public static string LowWattageACAdapterConnectedAutomationPipelineTrigger_DisplayName {
             get {
                 return ResourceManager.GetString("LowWattageACAdapterConnectedAutomationPipelineTrigger_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        public static string MacroAutomationStepState_Off {
+            get {
+                return ResourceManager.GetString("MacroAutomationStepState_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On.
+        /// </summary>
+        public static string MacroAutomationStepState_On {
+            get {
+                return ResourceManager.GetString("MacroAutomationStepState_On", resourceCulture);
             }
         }
         

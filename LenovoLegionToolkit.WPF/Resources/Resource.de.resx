@@ -735,9 +735,6 @@ WARNUNG: Diese Aktion wird nicht korrekt ausgeführt, wenn der interne Bildschir
   <data name="IncompatibleDevice_Message" xml:space="preserve">
     <value>Dieses Gerät ist nicht mit dem Lenovo Legion Toolkit kompatibel.</value>
   </data>
-  <data name="IncompatibleDevice_Title" xml:space="preserve">
-    <value>Lenovo Legion Toolkit</value>
-  </data>
   <data name="KeyboardBacklightPage_NoCompatibleKeyboardsFound" xml:space="preserve">
     <value>Keine kompatible Tastatur gefunden</value>
   </data>
@@ -1011,29 +1008,11 @@ Sie können den Modus mit Fn+Q wechseln.</value>
   <data name="PowerModeControl_Warning" xml:space="preserve">
     <value>Der gewählte Leistungsmodus funktioniert möglicherweise nicht richtig, wenn kein Netzteil angeschlossen ist.</value>
   </data>
-  <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Message" xml:space="preserve">
-    <value>Wenn Sie diese Option aktivieren, während Lenovo Vantage oder die zugehörigen Dienste ausgeführt werden und den Energiesparplan Ihres Laptops ändern, kann dies zu unerwartetem Verhalten führen.</value>
-  </data>
-  <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Title" xml:space="preserve">
-    <value>Sind Sie sicher?</value>
-  </data>
-  <data name="PowerPlansWindow_BalanceMode" xml:space="preserve">
-    <value>Ausgeglichener Modus</value>
-  </data>
-  <data name="PowerPlansWindow_CustomMode" xml:space="preserve">
-    <value>Benutzerdefinierter Modus</value>
-  </data>
-  <data name="PowerPlansWindow_DefaultPowerPlan" xml:space="preserve">
+  <data name="WindowsPowerPlansWindow_DefaultPowerPlan" xml:space="preserve">
     <value>Standard</value>
   </data>
-  <data name="PowerPlansWindow_PerformanceMode" xml:space="preserve">
-    <value>Leistungsmodus</value>
-  </data>
-  <data name="PowerPlansWindow_QuietMode" xml:space="preserve">
-    <value>Stiller Modus</value>
-  </data>
-  <data name="PowerPlansWindow_Title" xml:space="preserve">
-    <value>Energiesparpläne</value>
+  <data name="WindowsPowerPlansWindow_Title" xml:space="preserve">
+    <value>Windows Energiesparpläne</value>
   </data>
   <data name="RGBKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
     <value>Vorlage der Tastaturbeleuchtung einstellen.</value>
@@ -1052,6 +1031,9 @@ Sie können den Modus mit Fn+Q wechseln.</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Preset3" xml:space="preserve">
     <value>Vorlage 3</value>
+  </data>
+  <data name="RGBKeyboardBacklightControl_Preset4" xml:space="preserve">
+    <value>Vorlage 4</value>
   </data>
   <data name="RGBKeyboardBacklightControl_PresetOff" xml:space="preserve">
     <value>Aus</value>
@@ -1228,7 +1210,7 @@ Nach dem Ändern dieser Option wird ein Neustart empfohlen.</value>
   <data name="SettingsPage_Notifications_Title" xml:space="preserve">
     <value>Benachrichtigungen</value>
   </data>
-  <data name="SettingsPage_PowerPlans_Title" xml:space="preserve">
+  <data name="SettingsPage_WindowsPowerPlans_Title" xml:space="preserve">
     <value>Energiesparpläne</value>
   </data>
   <data name="SettingsPage_SmartKeyDoublePressAction_Message" xml:space="preserve">
@@ -1708,13 +1690,13 @@ Diese Einstellung wird nur wirksam, wenn der benutzerdefinierte Modus aktiviert 
   <data name="PowerPlansWindow_AoAcWarning_Message" xml:space="preserve">
     <value>Windows meldet, dass dieses Gerät den modernen Standby-Modus unterstützt. Die Verwendung anderer Energiesparpläne als "Ausbalanciert" kann zu unerwartetem Verhalten führen.</value>
   </data>
-  <data name="SettingsPage_PowerPlans_Message" xml:space="preserve">
+  <data name="SettingsPage_WindowsPowerPlans_Message" xml:space="preserve">
     <value>Wählen Sie Windows-Energiepläne aus, die bei einer Änderung des Energiemodus angewendet werden sollen.</value>
   </data>
   <data name="SettingsPage_Power_Title" xml:space="preserve">
     <value>Energie</value>
   </data>
-  <data name="SettingsPage_PowerPlansControlPanel_Title" xml:space="preserve">
+  <data name="SettingsPage_WindowsPowerPlansControlPanel_Title" xml:space="preserve">
     <value>Energieplanoptionen in der Windows-Systemsteuerung</value>
   </data>
   <data name="PoweredOff" xml:space="preserve">
@@ -1893,7 +1875,7 @@ Erfordert einen Neustart.</value>
     <value>GPU zu CPU Dynamischer Boost</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description" xml:space="preserve">
-    <value>Dies ist die maximale zusätzliche Leistung, die der GPU von der CPU auf der Grundlage der CPU-Nutzung zugewiesen werden kann. Je höher der Wert, desto besser ist die Leistung von Anwendungen, welche die GPU nutzen.</value>
+    <value>Dies ist die maximale zusätzliche Leistung, die der CPU von der GPU auf der Grundlage der CPU-Nutzung zugewiesen werden kann. Je höher der Wert, desto besser die Leistung von Anwendungen, die die CPU nutzen.</value>
   </data>
   <data name="SettingsPage_BootLogo_Title" xml:space="preserve">
     <value>Boot-Logo</value>
@@ -2051,9 +2033,144 @@ Unterstützte Formate sind: {1}.</value>
     <value>Warten bis fertig</value>
   </data>
   <data name="RunAutomationStepControl_ProcessRunSilently_Description" xml:space="preserve">
-	  <value>Führen Sie Konsolenanwendungen aus, ohne ein Konsolenfenster zu erstellen.</value>
+    <value>Führen Sie Konsolenanwendungen aus, ohne ein Konsolenfenster zu erstellen.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessWaitUntilFinished_Description" xml:space="preserve">
-	  <value>Warten, bis das Programm oder Skript fertig ausgeführt ist</value>
+    <value>Warten, bis das Programm oder Skript fertig ausgeführt ist</value>
+  </data>
+  <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
+    <value>Wenn Sie die Stummschaltung aktivieren, werden alle aktiven Audioausgangsgeräte stummgeschaltet.</value>
+  </data>
+  <data name="SpeakerAutomationStepControl_Title" xml:space="preserve">
+    <value>Lautsprecher</value>
+  </data>
+  <data name="SettingsPage_MinimizeToTray_Title" xml:space="preserve">
+    <value>In Infobereich minimieren</value>
+  </data>
+  <data name="SettingsPage_MinimizeToTray_Message" xml:space="preserve">
+    <value>Immer zum Infobereich anstatt zur Taskleiste minimieren.</value>
+  </data>
+  <data name="WindowsPowerModesWindow_Title" xml:space="preserve">
+    <value>Windows Energiemodi</value>
+  </data>
+  <data name="Settings_GodModeFnQSwitchable_Title" xml:space="preserve">
+    <value>Mit Fn+Q in den benutzerdefinierten Modus wechseln</value>
+  </data>
+  <data name="Settings_GodModeFnQSwitchable_Message" xml:space="preserve">
+    <value>Schnelles Umschalten in den benutzerdefinierten Modus mit Fn+Q ermöglichen.</value>
+  </data>
+  <data name="SettingsPage_PowerModeMapping_Title" xml:space="preserve">
+    <value>Synchronisation mit Leistungsmodus</value>
+  </data>
+  <data name="SettingsPage_PowerModeMapping_Message" xml:space="preserve">
+    <value>Automatischer Wechsel des Windows-Energiesparplans oder des Windows-Energiemodus beim Wechsel des Leistungsmodus.</value>
+  </data>
+  <data name="SettingsPage_WindowsPowerModes_Title" xml:space="preserve">
+    <value>Windows Energiemodi</value>
+  </data>
+  <data name="SettingsPage_WindowsPowerModes_Message" xml:space="preserve">
+    <value>Wählen Sie den Windows-Energiemodus aus, der angewendet werden soll, wenn sich der Leistungsmodus ändert.</value>
+  </data>
+  <data name="CompatibilityCheckError_Message" xml:space="preserve">
+    <value>Beim Lesen der Geräteinformationen ist ein Fehler aufgetreten.</value>
+  </data>
+  <data name="MainWindow_NavigationItem_Macro" xml:space="preserve">
+    <value>Makro</value>
+  </data>
+  <data name="MacroPage_Title" xml:space="preserve">
+    <value>Makro</value>
+  </data>
+  <data name="MacroSequenceControl_Repeat_Title" xml:space="preserve">
+    <value>Wiederholen</value>
+  </data>
+  <data name="MacroSequenceControl_IgnoreDelays_Title" xml:space="preserve">
+    <value>Verzögerungen ignorieren</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="MacroSequenceControl_Record" xml:space="preserve">
+    <value>Aufnahme</value>
+  </data>
+  <data name="MacroSequenceControl_StopRecording" xml:space="preserve">
+    <value>Aufnahme beenden</value>
+  </data>
+  <data name="MacroSequenceControl_DontRepeat" xml:space="preserve">
+    <value>Nicht wiederholen</value>
+  </data>
+  <data name="MacroPage_Enable_Subtitle" xml:space="preserve">
+    <value>Lenovo Legion Toolkit muss ausgeführt werden, damit Makros funktionieren.</value>
+  </data>
+  <data name="MacroPage_Enable_Title" xml:space="preserve">
+    <value>Aktivieren</value>
+  </data>
+  <data name="MacroPage_Subtitle" xml:space="preserve">
+    <value>Sie können Serien von Tastendrücken aufzeichnen und über den Ziffernblock Ihrer Tastatur abrufen.</value>
+  </data>
+  <data name="MacroAutomationStepControl_Title" xml:space="preserve">
+    <value>Makro</value>
+  </data>
+  <data name="MacroAutomationStepControl_Message" xml:space="preserve">
+    <value>Aktiviert oder deaktiviert Makros.</value>
+  </data>
+  <data name="MacroSequenceControl_InterruptOnOtherKey_Title" xml:space="preserve">
+    <value>Unterbrechung, wenn eine andere Taste gedrückt wurde</value>
+  </data>
+  <data name="Hide" xml:space="preserve">
+    <value>Verbergen</value>
+  </data>
+  <data name="HideAll" xml:space="preserve">
+    <value>Alle verbergen</value>
+  </data>
+  <data name="DevicePipelineTriggerTabItemContent_Devices" xml:space="preserve">
+    <value>Geräte</value>
+  </data>
+  <data name="DeselectAll" xml:space="preserve">
+    <value>Alle abwählen</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>Alle auswählen</value>
+  </data>
+  <data name="MacroSequenceControl_Keyboard" xml:space="preserve">
+    <value>Nur Tastatur</value>
+  </data>
+  <data name="MacroSequenceControl_KeyboardMouse" xml:space="preserve">
+    <value>Tastaturtasten und Maustasten</value>
+  </data>
+  <data name="MacroSequenceControl_KeyboardMouseMovement" xml:space="preserve">
+    <value>Alle Eingaben</value>
+  </data>
+  <data name="MacroSequenceControl_RecordingOptions" xml:space="preserve">
+    <value>Aufnahme-Optionen</value>
+  </data>
+  <data name="MacroRecordingWindow_Preparing_Title" xml:space="preserve">
+    <value>Die Aufnahme beginnt in 3 Sekunden...</value>
+  </data>
+  <data name="MacroRecordingWindow_Recording_Title" xml:space="preserve">
+    <value>Aufnahme...</value>
+  </data>
+  <data name="MacroRecordingWindow_Recording_Message" xml:space="preserve">
+    <value>Drücken Sie ESC, um zu stoppen.</value>
+  </data>
+  <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlySelected" xml:space="preserve">
+    <value>Nur ausgewählte Geräte anzeigen</value>
+  </data>
+  <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlyRemovable" xml:space="preserve">
+    <value>Nur entfernbare Geräte anzeigen</value>
+  </data>
+  <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlyConnected" xml:space="preserve">
+    <value>Nur verbundene Geräte anzeigen</value>
+  </data>
+  <data name="SettingsPage_CLI_Title" xml:space="preserve">
+    <value>CLI</value>
+  </data>
+  <data name="SettingsPage_CLI_Message" xml:space="preserve">
+    <value>Aktiviere die Befehlszeilenschnittstelle, die eine Steuerung über die Kommandozeile ermöglicht.</value>
+  </data>
+  <data name="SettingsPage_CLIAddToPath_Title" xml:space="preserve">
+	  <value>CLI zu PATH hinzufügen</value>
+  </data>
+  <data name="SettingsPage_CLIAddToPath_Message" xml:space="preserve">
+	  <value>Füge CLI zur PATH-Umgebungsvariable des Benutzers hinzu.</value>
   </data>
 </root>

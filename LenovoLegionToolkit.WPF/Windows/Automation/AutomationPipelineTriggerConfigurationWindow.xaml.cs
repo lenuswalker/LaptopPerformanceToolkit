@@ -95,27 +95,29 @@ public partial class AutomationPipelineTriggerConfigurationWindow
 
     private static bool IsValid(IAutomationPipelineTrigger trigger) => trigger switch
     {
-        IPowerModeAutomationPipelineTrigger => true,
+        IDeviceAutomationPipelineTrigger => true,
         IGodModePresetChangedAutomationPipelineTrigger => true,
+        IPeriodicAutomationPipelineTrigger t1 when t1.Period > TimeSpan.Zero => true,
         IProcessesAutomationPipelineTrigger => true,
-        IUserInactivityPipelineTrigger ut when ut.InactivityTimeSpan > TimeSpan.Zero => true,
+        IPowerModeAutomationPipelineTrigger => true,
         ITimeAutomationPipelineTrigger => true,
         ITimeIntervalAutomationPipelineTrigger => true,
+        IUserInactivityPipelineTrigger t2 when t2.InactivityTimeSpan > TimeSpan.Zero => true,
         IWiFiConnectedPipelineTrigger => true,
-        IPeriodicAutomationPipelineTrigger papt when papt.Period > TimeSpan.Zero => true,
         _ => false
     };
 
     private static IAutomationPipelineTriggerTabItemContent<IAutomationPipelineTrigger>? Create(IAutomationPipelineTrigger trigger) => trigger switch
     {
-        IPowerModeAutomationPipelineTrigger pmt => new PowerModeAutomationPipelineTriggerTabItemContent(pmt),
-        IGodModePresetChangedAutomationPipelineTrigger gmpt => new GodModePresetPipelineTriggerTabItemContent(gmpt),
+        IDeviceAutomationPipelineTrigger dt => new DeviceAutomationPipelineTriggerTabItemContent(dt),
+        IGodModePresetChangedAutomationPipelineTrigger gpt => new GodModePresetPipelineTriggerTabItemContent(gpt),
+        IPeriodicAutomationPipelineTrigger pet => new PeriodicAutomationPipelineTriggerTabItemContent(pet),
         IProcessesAutomationPipelineTrigger pt => new ProcessAutomationPipelineTriggerTabItemControl(pt),
+        IPowerModeAutomationPipelineTrigger pmt => new PowerModeAutomationPipelineTriggerTabItemContent(pmt),
         IUserInactivityPipelineTrigger ut when ut.InactivityTimeSpan > TimeSpan.Zero => new UserInactivityPipelineTriggerTabItemContent(ut),
         ITimeAutomationPipelineTrigger tt => new TimeAutomationPipelineTriggerTabItemContent(tt),
         ITimeIntervalAutomationPipelineTrigger ti => new TimeIntervalAutomationPipelineTriggerTabItemContent(ti),
         IWiFiConnectedPipelineTrigger wt => new WiFiConnectedPipelineTriggerTabItemContent(wt),
-        IPeriodicAutomationPipelineTrigger pet => new PeriodicAutomationPipelineTriggerTabItemContent(pet),
         _ => null
     };
 }

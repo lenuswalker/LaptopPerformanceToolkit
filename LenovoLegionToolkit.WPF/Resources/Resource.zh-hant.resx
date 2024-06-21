@@ -734,9 +734,6 @@
   <data name="IncompatibleDevice_Message" xml:space="preserve">
     <value>此裝置不相容於 Lenovo Legion 工具套件。</value>
   </data>
-  <data name="IncompatibleDevice_Title" xml:space="preserve">
-    <value>Lenovo Legion 工具套件</value>
-  </data>
   <data name="KeyboardBacklightPage_NoCompatibleKeyboardsFound" xml:space="preserve">
     <value>尚未發現相容的鍵盤</value>
   </data>
@@ -1010,29 +1007,11 @@
   <data name="PowerModeControl_Warning" xml:space="preserve">
     <value>尚未連接電源供應器時，電源模式可能無法正確地的運作。</value>
   </data>
-  <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Message" xml:space="preserve">
-    <value>當 Lenovo Vantage 或其相關服務正在執行且變更筆記型電腦上的電源計劃時，啟用此選項可能會導致未預期的行為。</value>
-  </data>
-  <data name="PowerPlansWindow_ActivatePowerProfilesWithVantageEnabled_Confirmation_Title" xml:space="preserve">
-    <value>您確定嗎？</value>
-  </data>
-  <data name="PowerPlansWindow_BalanceMode" xml:space="preserve">
-    <value>平衡模式</value>
-  </data>
-  <data name="PowerPlansWindow_CustomMode" xml:space="preserve">
-    <value>客製化模式</value>
-  </data>
-  <data name="PowerPlansWindow_DefaultPowerPlan" xml:space="preserve">
+  <data name="WindowsPowerPlansWindow_DefaultPowerPlan" xml:space="preserve">
     <value>預設</value>
   </data>
-  <data name="PowerPlansWindow_PerformanceMode" xml:space="preserve">
-    <value>效能模式</value>
-  </data>
-  <data name="PowerPlansWindow_QuietMode" xml:space="preserve">
-    <value>安靜模式</value>
-  </data>
-  <data name="PowerPlansWindow_Title" xml:space="preserve">
-    <value>電源計劃</value>
+  <data name="WindowsPowerPlansWindow_Title" xml:space="preserve">
+    <value>Windows 電源計劃</value>
   </data>
   <data name="RGBKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
     <value>調整鍵盤背光預設。</value>
@@ -1051,6 +1030,9 @@
   </data>
   <data name="RGBKeyboardBacklightControl_Preset3" xml:space="preserve">
     <value>預設 3</value>
+  </data>
+  <data name="RGBKeyboardBacklightControl_Preset4" xml:space="preserve">
+    <value>預設 4</value>
   </data>
   <data name="RGBKeyboardBacklightControl_PresetOff" xml:space="preserve">
     <value>關閉</value>
@@ -1227,7 +1209,7 @@
   <data name="SettingsPage_Notifications_Title" xml:space="preserve">
     <value>通知</value>
   </data>
-  <data name="SettingsPage_PowerPlans_Title" xml:space="preserve">
+  <data name="SettingsPage_WindowsPowerPlans_Title" xml:space="preserve">
     <value>電源計劃</value>
   </data>
   <data name="SettingsPage_SmartKeyDoublePressAction_Message" xml:space="preserve">
@@ -1707,13 +1689,13 @@
   <data name="PowerPlansWindow_AoAcWarning_Message" xml:space="preserve">
     <value>Windows 回報裝置支援新式待命（Modern Standby）。使用平衡以外的電源計劃可能導致未預期的行為。</value>
   </data>
-  <data name="SettingsPage_PowerPlans_Message" xml:space="preserve">
+  <data name="SettingsPage_WindowsPowerPlans_Message" xml:space="preserve">
     <value>選擇電源模式變更時要套用的 Windows 電源計劃。</value>
   </data>
   <data name="SettingsPage_Power_Title" xml:space="preserve">
     <value>電源</value>
   </data>
-  <data name="SettingsPage_PowerPlansControlPanel_Title" xml:space="preserve">
+  <data name="SettingsPage_WindowsPowerPlansControlPanel_Title" xml:space="preserve">
     <value>開啟 Windows 控制台中的電源計劃選項</value>
   </data>
   <data name="PoweredOff" xml:space="preserve">
@@ -1892,7 +1874,7 @@
     <value>GPU 到 CPU Dynamic Boost</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description" xml:space="preserve">
-    <value>這是根據 CPU 使用情況可以從 CPU 分配給 GPU 的最大額外功率。該值越高，使用此 GPU 的應用程式的效能越好。</value>
+    <value>這是根據 GPU 使用情況可以從 GPU 分配給 CPU 的最大額外功率。該值越高，使用此 CPU 的應用程式的效能越好。</value>
   </data>
   <data name="SettingsPage_BootLogo_Title" xml:space="preserve">
     <value>啟動商標</value>
@@ -2050,9 +2032,132 @@
     <value>等待直到任務完成</value>
   </data>
   <data name="RunAutomationStepControl_ProcessRunSilently_Description" xml:space="preserve">
-	  <value>在不建立控制台視窗的情況下，執行控制台應用程式。</value>
+    <value>在不建立控制台視窗的情況下，執行控制台應用程式。</value>
   </data>
   <data name="RunAutomationStepControl_ProcessWaitUntilFinished_Description" xml:space="preserve">
-	  <value>等待直到程式或腳本完成執行</value>
+    <value>等待直到程式或腳本完成執行</value>
+  </data>
+  <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
+    <value>當開啟靜音後，所有活動的音訊輸出裝置都將會被靜音。</value>
+  </data>
+  <data name="SpeakerAutomationStepControl_Title" xml:space="preserve">
+    <value>喇叭</value>
+  </data>
+  <data name="SettingsPage_MinimizeToTray_Title" xml:space="preserve">
+    <value>最小化到系統匣</value>
+  </data>
+  <data name="SettingsPage_MinimizeToTray_Message" xml:space="preserve">
+    <value>始終最小化到系統匣而不是工作列。</value>
+  </data>
+  <data name="WindowsPowerModesWindow_Title" xml:space="preserve">
+    <value>Windows 電源模式</value>
+  </data>
+  <data name="Settings_GodModeFnQSwitchable_Title" xml:space="preserve">
+    <value>使用 Fn+Q 切換到客製化模式</value>
+  </data>
+  <data name="Settings_GodModeFnQSwitchable_Message" xml:space="preserve">
+    <value>允許使用 Fn+Q 快速切換到客製化模式。</value>
+  </data>
+  <data name="SettingsPage_PowerModeMapping_Title" xml:space="preserve">
+    <value>電源模式同步</value>
+  </data>
+  <data name="SettingsPage_PowerModeMapping_Message" xml:space="preserve">
+    <value>當變更電源模式時，自動地變更 Windows 電源計劃或 Windows 電源模式。</value>
+  </data>
+  <data name="SettingsPage_WindowsPowerModes_Title" xml:space="preserve">
+    <value>Windows 電源模式</value>
+  </data>
+  <data name="SettingsPage_WindowsPowerModes_Message" xml:space="preserve">
+    <value>選擇電源模式變更時要套用的 Windows 電源模式。</value>
+  </data>
+  <data name="CompatibilityCheckError_Message" xml:space="preserve">
+    <value>讀取裝置資訊時發生錯誤。</value>
+  </data>
+  <data name="MainWindow_NavigationItem_Macro" xml:space="preserve">
+    <value>巨集</value>
+  </data>
+  <data name="MacroPage_Title" xml:space="preserve">
+    <value>巨集</value>
+  </data>
+  <data name="MacroSequenceControl_Repeat_Title" xml:space="preserve">
+    <value>重複</value>
+  </data>
+  <data name="MacroSequenceControl_IgnoreDelays_Title" xml:space="preserve">
+    <value>忽略延遲</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>清除</value>
+  </data>
+  <data name="MacroSequenceControl_Record" xml:space="preserve">
+    <value>記錄</value>
+  </data>
+  <data name="MacroSequenceControl_StopRecording" xml:space="preserve">
+    <value>停止記錄</value>
+  </data>
+  <data name="MacroSequenceControl_DontRepeat" xml:space="preserve">
+    <value>不重複</value>
+  </data>
+  <data name="MacroPage_Enable_Subtitle" xml:space="preserve">
+    <value>巨集功能一定要在 Lenovo Legion 工具套件執行時才可以運作。</value>
+  </data>
+  <data name="MacroPage_Enable_Title" xml:space="preserve">
+    <value>啟用</value>
+  </data>
+  <data name="MacroPage_Subtitle" xml:space="preserve">
+    <value>您可以記錄一系列的按鍵操作並使用鍵盤上的數字鍵呼叫它們。</value>
+  </data>
+  <data name="MacroAutomationStepControl_Title" xml:space="preserve">
+    <value>巨集</value>
+  </data>
+  <data name="MacroAutomationStepControl_Message" xml:space="preserve">
+    <value>啟用或停用巨集。</value>
+  </data>
+  <data name="MacroSequenceControl_InterruptOnOtherKey_Title" xml:space="preserve">
+    <value>當按下其它按鍵後中斷</value>
+  </data>
+  <data name="Hide" xml:space="preserve">
+    <value>隱藏</value>
+  </data>
+  <data name="HideAll" xml:space="preserve">
+    <value>隱藏全部</value>
+  </data>
+  <data name="DevicePipelineTriggerTabItemContent_Devices" xml:space="preserve">
+    <value>裝置</value>
+  </data>
+  <data name="DeselectAll" xml:space="preserve">
+    <value>取消全部選擇</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>選取全部</value>
+  </data>
+  <data name="MacroSequenceControl_Keyboard" xml:space="preserve">
+    <value>僅限鍵盤</value>
+  </data>
+  <data name="MacroSequenceControl_KeyboardMouse" xml:space="preserve">
+    <value>鍵盤與滑鼠按鍵</value>
+  </data>
+  <data name="MacroSequenceControl_KeyboardMouseMovement" xml:space="preserve">
+    <value>所有輸入</value>
+  </data>
+  <data name="MacroSequenceControl_RecordingOptions" xml:space="preserve">
+    <value>記錄選項</value>
+  </data>
+  <data name="MacroRecordingWindow_Preparing_Title" xml:space="preserve">
+    <value>將在 3 秒內進行記錄……</value>
+  </data>
+  <data name="MacroRecordingWindow_Recording_Title" xml:space="preserve">
+    <value>正在記錄……</value>
+  </data>
+  <data name="MacroRecordingWindow_Recording_Message" xml:space="preserve">
+    <value>按下 ESC 鍵停止記錄。</value>
+  </data>
+  <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlySelected" xml:space="preserve">
+    <value>僅顯示已選擇的裝置</value>
+  </data>
+  <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlyRemovable" xml:space="preserve">
+    <value>僅顯示可移動的裝置</value>
+  </data>
+  <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlyConnected" xml:space="preserve">
+    <value>僅顯示已連接的裝置</value>
   </data>
 </root>
