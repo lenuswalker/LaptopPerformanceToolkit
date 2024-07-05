@@ -4,6 +4,8 @@ using System.Windows;
 using System.Windows.Controls;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Features;
+using LenovoLegionToolkit.Lib.Messaging.Messages;
+using LenovoLegionToolkit.Lib.Messaging;
 using LenovoLegionToolkit.WPF.Extensions;
 using Wpf.Ui.Common;
 using Wpf.Ui.Controls;
@@ -80,7 +82,13 @@ public abstract class AbstractSliderFeatureCardControl<T> : AbstractRefreshingCo
     {
         _slider.Visibility = Visibility.Visible;
 
-        MessagingCenter.Subscribe<T>(this, () => Dispatcher.InvokeTask(RefreshAsync));
+        MessagingCenter.Subscribe<FeatureStateMessage<T>>(this, () => Dispatcher.InvokeTask(async () =>
+        {
+            if (!IsVisible)
+                return;
+
+            await RefreshAsync();
+        }));
     }
 
     protected virtual async Task OnStateChange(Slider slider, IFeature<T> feature)
