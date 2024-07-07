@@ -13,9 +13,9 @@ public abstract class AbstractUEFIFeature<T>(string guid, string scopeName, uint
     {
         try
         {
-            //var compatibility = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
-            //if (!compatibility.isCompatible)
-            //    return false;
+            var compatibility = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
+            if (!compatibility.isCompatible)
+                return false;
 
             _ = await GetStateAsync().ConfigureAwait(false);
             return true;
