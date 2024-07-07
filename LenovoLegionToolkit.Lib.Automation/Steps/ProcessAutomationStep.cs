@@ -28,7 +28,18 @@ public class ProcessAutomationStep : IAutomationStep
         {
             case ProcessState.Start:
                 foreach (ProcessInfo process in State.Processes)
-                    await CMD.RunAsync(process.ExecutablePath, "", false).ConfigureAwait(false);
+                {
+                    if (string.IsNullOrEmpty(process.ExecutablePath))
+                        return;
+
+                    var (_, output) = await CMD.RunAsync(process.ExecutablePath,
+                        string.Empty,
+                        true,
+                        false,
+                        environment.Dictionary,
+                        token).ConfigureAwait(false);
+                    context.LastRunOutput = output.TrimEnd();
+                }
                 break;
             case ProcessState.Stop:
                 foreach (ProcessInfo process in State.Processes)
