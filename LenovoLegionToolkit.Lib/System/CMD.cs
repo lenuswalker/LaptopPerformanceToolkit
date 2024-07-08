@@ -49,4 +49,40 @@ public static class CMD
 
         return (exitCode, output);
     }
+
+    public static async Task<(int, string)> RunAsync(string file, string arguments, bool useShellExecute, bool createNoWindow = true, bool waitForExit = true, CancellationToken token = default)
+    {
+        if (Log.Instance.IsTraceEnabled)
+            Log.Instance.Trace($"Running... [file={file}, argument={arguments}, useShellExecute={useShellExecute}, createNoWindow={createNoWindow}, waitForExit={waitForExit}]");
+
+        var cmd = new Process();
+        cmd.StartInfo.UseShellExecute = useShellExecute;
+        cmd.StartInfo.CreateNoWindow = createNoWindow;
+        cmd.StartInfo.RedirectStandardOutput = false;
+        cmd.StartInfo.RedirectStandardError = false;
+        cmd.StartInfo.WindowStyle = createNoWindow ? ProcessWindowStyle.Hidden : ProcessWindowStyle.Normal;
+        cmd.StartInfo.FileName = file;
+        if (!string.IsNullOrWhiteSpace(arguments))
+            cmd.StartInfo.Arguments = arguments;
+
+        cmd.Start();
+
+        if (!waitForExit)
+        {
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Ran [file={file}, argument={arguments}, useShellExecute={useShellExecute}, createNoWindow={createNoWindow}, waitForExit={waitForExit}]");
+
+            return (-1, string.Empty);
+        }
+
+        await cmd.WaitForExitAsync(token).ConfigureAwait(false);
+
+        var exitCode = cmd.ExitCode;
+        var output = createNoWindow ? await cmd.StandardOutput.ReadToEndAsync(token).ConfigureAwait(false) : string.Empty;
+
+        if (Log.Instance.IsTraceEnabled)
+            Log.Instance.Trace($"Ran [file={file}, argument={arguments}, useShellExecute={useShellExecute}, createNoWindow={createNoWindow}, waitForExit={waitForExit}, exitCode={exitCode} output={output}]");
+
+        return (exitCode, output);
+    }
 }

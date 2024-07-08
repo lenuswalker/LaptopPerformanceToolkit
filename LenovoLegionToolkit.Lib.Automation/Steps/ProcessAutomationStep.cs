@@ -35,8 +35,8 @@ public class ProcessAutomationStep : IAutomationStep
                     var (_, output) = await CMD.RunAsync(process.ExecutablePath,
                         string.Empty,
                         true,
+                        true,
                         false,
-                        environment.Dictionary,
                         token).ConfigureAwait(false);
                     context.LastRunOutput = output.TrimEnd();
                 }
