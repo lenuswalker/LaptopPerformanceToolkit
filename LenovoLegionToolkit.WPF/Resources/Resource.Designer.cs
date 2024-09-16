@@ -2975,6 +2975,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Legion Zone is running in the background..
+        /// </summary>
+        public static string MainWindow_LegionZoneRunning {
+            get {
+                return ResourceManager.GetString("MainWindow_LegionZoneRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
         public static string MainWindow_NavigationItem_About {
@@ -3070,6 +3079,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string MainWindow_UpdateAvailableWithVersion {
             get {
                 return ResourceManager.GetString("MainWindow_UpdateAvailableWithVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lenovo Hotkeys is running in the background..
+        /// </summary>
+        public static string MainWindows_FnKeysRunning {
+            get {
+                return ResourceManager.GetString("MainWindows_FnKeysRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lenovo Vantage and/or ImController is running in the background..
+        /// </summary>
+        public static string MainWindows_VantageRunning {
+            get {
+                return ResourceManager.GetString("MainWindows_VantageRunning", resourceCulture);
             }
         }
         
