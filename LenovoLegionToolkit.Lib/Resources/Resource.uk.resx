@@ -396,7 +396,7 @@
     <comment>Informs the user that Touchpad Lock is or will be turned on.</comment>
   </data>
   <data name="WhiteKeyboardBacklightState_High" xml:space="preserve">
-    <value>Висока</value>
+    <value>Яскрава</value>
   </data>
   <data name="WhiteKeyboardBacklightState_Low" xml:space="preserve">
     <value>Тьмяна</value>
@@ -470,10 +470,10 @@
 	  <value>Вимкнений</value>
   </data>
   <data name="PowerModeMappingMode_WindowsPowerMode" xml:space="preserve">
-	  <value>План живлення</value>
+	  <value>Режим живлення Windows</value>
   </data>
   <data name="PowerModeMappingMode_WindowsPowerPlan" xml:space="preserve">
-	  <value>План живлення</value>
+	  <value>План живлення Windows</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_Four" xml:space="preserve">
 	  <value>Шаблон 4</value>

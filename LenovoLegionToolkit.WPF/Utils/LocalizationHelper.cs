@@ -34,6 +34,7 @@ public static class LocalizationHelper
         new("ja"),
         new("lv"),
         new("nl-nl"),
+        new("pl"),
         new("pt"),
         new("pt-br"),
         new("ro"),
@@ -124,7 +125,7 @@ public static class LocalizationHelper
             var name = await File.ReadAllTextAsync(LanguagePath);
             var cultureInfo = new CultureInfo(name);
             if (!Languages.Contains(cultureInfo))
-                throw new InvalidOperationException("Unknown language.");
+                throw new InvalidOperationException("Unknown language");
             return cultureInfo;
         }
         catch
