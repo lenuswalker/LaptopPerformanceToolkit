@@ -118,332 +118,332 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AccentColorSource_Custom" xml:space="preserve">
-    <value>Tùy Chỉnh</value>
+    <value>Egyéni</value>
   </data>
   <data name="AccentColorSource_System" xml:space="preserve">
-    <value>Hệ thống</value>
+    <value>Rendszer</value>
   </data>
   <data name="AlwaysOnUSBState_Off" xml:space="preserve">
-    <value>Tắt</value>
+    <value>Kikapcsolva</value>
   </data>
   <data name="AlwaysOnUSBState_OnAlways" xml:space="preserve">
-    <value>Luôn Bật</value>
+    <value>Mindig bekapcsolva</value>
   </data>
   <data name="AlwaysOnUSBState_OnWhenSleeping" xml:space="preserve">
-    <value>Bật, Chỉ khi Ngủ</value>
+    <value>Bekapcsolva, alvó állapot esetén</value>
   </data>
   <data name="AutorunState_Disabled" xml:space="preserve">
-    <value>Tắt</value>
+    <value>Letiltva</value>
   </data>
   <data name="AutorunState_Enabled" xml:space="preserve">
-    <value>Bật</value>
+    <value>Engedélyezve</value>
   </data>
   <data name="AutorunState_EnabledDelayed" xml:space="preserve">
-    <value>Bật với độ trễ</value>
+    <value>Bekapcsolva, késleltetve</value>
   </data>
   <data name="BatteryState_Conservation" xml:space="preserve">
-    <value>Bảo vệ pin</value>
+    <value>Konzerváló mód</value>
   </data>
   <data name="BatteryState_Normal" xml:space="preserve">
-    <value>Bình thường</value>
+    <value>Normál</value>
   </data>
   <data name="BatteryState_RapidCharge" xml:space="preserve">
-    <value>Sạc Nhanh</value>
+    <value>Gyorstöltés</value>
   </data>
   <data name="FlipToStartState_Off" xml:space="preserve">
-    <value>Tắt</value>
+    <value>Ki</value>
     <comment>Informs the user that Flip to Start is or will be turned off.</comment>
   </data>
   <data name="FlipToStartState_On" xml:space="preserve">
-    <value>Bật</value>
+    <value>Be</value>
     <comment>Informs the user that Flip to Start is or will be turned on.</comment>
   </data>
   <data name="FnLockState_Off" xml:space="preserve">
-    <value>Tắt</value>
+    <value>Ki</value>
     <comment>Informs the user that Fn Lock is or will be turned off.</comment>
   </data>
   <data name="FnLockState_On" xml:space="preserve">
-    <value>Bật</value>
+    <value>Be</value>
     <comment>Informs the user that Fn Lock is or will be turned on.</comment>
   </data>
   <data name="GPUController_PoweredOff" xml:space="preserve">
-    <value>Ngắt kích hoạt</value>
+    <value>Kikapcsolva</value>
   </data>
   <data name="GPUController_PoweredOn" xml:space="preserve">
-    <value>Kích hoạt</value>
+    <value>Bekapcsolva</value>
   </data>
   <data name="HDRState_Off" xml:space="preserve">
-    <value>Tắt</value>
+    <value>Ki</value>
     <comment>Informs the user that HDR is or will be turned off.</comment>
   </data>
   <data name="HDRState_On" xml:space="preserve">
-    <value>Bật</value>
+    <value>Be</value>
     <comment>Informs the user that HDR is or will be turned on.</comment>
   </data>
   <data name="HybridModeState_Off" xml:space="preserve">
-    <value>GPU rời</value>
+    <value>Dedikált videókártya</value>
   </data>
   <data name="HybridModeState_On" xml:space="preserve">
-    <value>Hybrid</value>
+    <value>Hibrid</value>
   </data>
   <data name="HybridModeState_OnAuto" xml:space="preserve">
-    <value>Hybrid- Tự động</value>
+    <value>Automata-hibrid</value>
   </data>
   <data name="HybridModeState_OnIGPUOnly" xml:space="preserve">
-    <value>Hybrid- chỉ GPU tích hợp</value>
+    <value>Hibrid-Integrált videókártya</value>
   </data>
   <data name="MicrophoneState_Off" xml:space="preserve">
-    <value>Tắt</value>
+    <value>Ki</value>
     <comment>Informs the user that the microphone is or will be turned off.</comment>
   </data>
   <data name="MicrophoneState_On" xml:space="preserve">
-    <value>Bật</value>
+    <value>Be</value>
     <comment>Informs the user that the microphone is or will be turned on.</comment>
   </data>
   <data name="NotificationPosition_BottomCenter" xml:space="preserve">
-    <value>Ở dưới chính giữa</value>
+    <value>Középen alul</value>
   </data>
   <data name="NotificationPosition_BottomLeft" xml:space="preserve">
-    <value>Góc dưới bên trái</value>
+    <value>Bal alul</value>
   </data>
   <data name="NotificationPosition_BottomRight" xml:space="preserve">
-    <value>Góc dưới bên phải</value>
+    <value>Jobb alul</value>
   </data>
   <data name="NotificationPosition_Center" xml:space="preserve">
-    <value>Ở giữa</value>
+    <value>Középen</value>
   </data>
   <data name="NotificationPosition_CenterLeft" xml:space="preserve">
-    <value>Ở giữa bên trái</value>
+    <value>Középen balra</value>
   </data>
   <data name="NotificationPosition_CenterRight" xml:space="preserve">
-    <value>Ở giữa bên phải</value>
+    <value>Középen jobbra</value>
   </data>
   <data name="NotificationPosition_TopCenter" xml:space="preserve">
-    <value>Ở trên chính giữa</value>
+    <value>Középen fent</value>
   </data>
   <data name="NotificationPosition_TopLeft" xml:space="preserve">
-    <value>Góc trên bên trái</value>
+    <value>Bal fent</value>
   </data>
   <data name="NotificationPosition_TopRight" xml:space="preserve">
-    <value>Góc trên bên phải</value>
+    <value>Jobb fent</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightState_Off" xml:space="preserve">
-    <value>Tắt</value>
+    <value>Ki</value>
     <comment>Informs the user that One Level White Keyboard Backlight is or will be turned off.</comment>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightState_On" xml:space="preserve">
-    <value>Bật</value>
+    <value>Be</value>
     <comment>Informs the user that One Level White Keyboard Backlight is or will be turned on.</comment>
   </data>
   <data name="OverdriveState_Off" xml:space="preserve">
-    <value>Tắt</value>
+    <value>Ki</value>
     <comment>Informs the user that Overdrive is or will be turned off.</comment>
   </data>
   <data name="OverdriveState_On" xml:space="preserve">
-    <value>Bật</value>
+    <value>Be</value>
     <comment>Informs the user that Overdrive is or will be turned on.</comment>
   </data>
   <data name="PowerModeState_Balance" xml:space="preserve">
-    <value>Cân Bằng</value>
+    <value>Kiegyensúlyozott</value>
   </data>
   <data name="PowerModeState_GodMode" xml:space="preserve">
-    <value>Tùy Chỉnh</value>
+    <value>Egyéni</value>
   </data>
   <data name="PowerModeState_Performance" xml:space="preserve">
-    <value>Hiệu Suất</value>
+    <value>Teljesítménycentrikus</value>
   </data>
   <data name="PowerModeState_Quiet" xml:space="preserve">
-    <value>Im Lặng</value>
+    <value>Csendes</value>
   </data>
   <data name="RGBKeyboardBacklightSpeed_Fast" xml:space="preserve">
-    <value>Nhanh</value>
+    <value>Gyors</value>
   </data>
   <data name="RGBKeyboardBacklightSpeed_Fastest" xml:space="preserve">
-    <value>Nhanh nhất</value>
+    <value>Leggyorsabb</value>
   </data>
   <data name="RGBKeyboardBacklightSpeed_Slow" xml:space="preserve">
-    <value>Chậm</value>
+    <value>Lassú</value>
   </data>
   <data name="RGBKeyboardBacklightSpeed_Slowest" xml:space="preserve">
-    <value>Chậm nhất</value>
+    <value>Leglassabb</value>
   </data>
   <data name="RGBKeyboardBacklightBrightness_High" xml:space="preserve">
-    <value>Cao</value>
+    <value>Magas</value>
   </data>
   <data name="RGBKeyboardBacklightBrightness_Low" xml:space="preserve">
-    <value>Thấp</value>
+    <value>Alacsony</value>
   </data>
   <data name="RGBKeyboardBacklightEffect_Breath" xml:space="preserve">
-    <value>Thở</value>
+    <value>Lélegző</value>
   </data>
   <data name="RGBKeyboardBacklightEffect_Smooth" xml:space="preserve">
-    <value>Mượt</value>
+    <value>Sima</value>
   </data>
   <data name="RGBKeyboardBacklightEffect_Static" xml:space="preserve">
-    <value>Tĩnh</value>
+    <value>Állandó</value>
   </data>
   <data name="RGBKeyboardBacklightEffect_WaveLTR" xml:space="preserve">
-    <value>Sóng, bên trái</value>
+    <value>Hullám (balra)</value>
   </data>
   <data name="RGBKeyboardBacklightEffect_WaveRTL" xml:space="preserve">
-    <value>Sóng, bên phải</value>
+    <value>Hullám (jobbra)</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_Off" xml:space="preserve">
-    <value>Tắt</value>
+    <value>Kikapcsolva</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_One" xml:space="preserve">
-    <value>Thiết lập 1</value>
+    <value>Előre beállított 1</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_Three" xml:space="preserve">
-    <value>Thiết lập 3</value>
+    <value>Előre beállított 3</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_Two" xml:space="preserve">
-    <value>Thiết lập 2</value>
+    <value>Előre beállított 2</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightness_High" xml:space="preserve">
-    <value>Cao</value>
+    <value>Magas</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightness_Low" xml:space="preserve">
-    <value>Thấp</value>
+    <value>Alacsony</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightness_Medium" xml:space="preserve">
-    <value>Trung bình</value>
+    <value>Közepes</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightness_Off" xml:space="preserve">
-    <value>Tắt</value>
+    <value>Kikapcsolva</value>
   </data>
   <data name="SpectrumKeyboardBacklightDirection_BottomToTop" xml:space="preserve">
-    <value>Từ dưới lên trên</value>
+    <value>Lentről felfelé</value>
   </data>
   <data name="SpectrumKeyboardBacklightDirection_Clockwise" xml:space="preserve">
-    <value>Xuôi chiều kim đồng hồ</value>
+    <value>Óramutató járásával megegyező</value>
   </data>
   <data name="SpectrumKeyboardBacklightDirection_CounterClockwise" xml:space="preserve">
-    <value>Ngược chiều kim đồng hồ</value>
+    <value>Óramutató járásával ellentétes</value>
   </data>
   <data name="SpectrumKeyboardBacklightDirection_LeftToRight" xml:space="preserve">
-    <value>Trái sang phải</value>
+    <value>Balról jobbra</value>
   </data>
   <data name="SpectrumKeyboardBacklightDirection_RightToLeft" xml:space="preserve">
-    <value>Phải sang trái</value>
+    <value>Jobbról balra</value>
   </data>
   <data name="SpectrumKeyboardBacklightDirection_TopToBottom" xml:space="preserve">
-    <value>Từ trên xuống dưới</value>
+    <value>Fentről lefelé</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Always" xml:space="preserve">
-    <value>Luôn luôn</value>
+    <value>Mindig</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_AudioBounce" xml:space="preserve">
     <value>Audio Bounce</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_AudioRipple" xml:space="preserve">
-    <value>Audio Ripple</value>
+    <value>Audio hullámzás</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_AuroraSync" xml:space="preserve">
-    <value>Aurora Sync</value>
+    <value>Aurora szinkronizáció</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorChange" xml:space="preserve">
-    <value>Đổi màu</value>
+    <value>Színváltós</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorPulse" xml:space="preserve">
-    <value>Nhịp điệu</value>
+    <value>Szín pulzálás</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorWave" xml:space="preserve">
-    <value>Sóng 7 màu</value>
+    <value>Színhullám</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Rain" xml:space="preserve">
-    <value>Mưa</value>
+    <value>Eső</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_RainbowScrew" xml:space="preserve">
-    <value>Xoáy cầu vồng</value>
+    <value>Szivárvány csavar</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_RainbowWave" xml:space="preserve">
-    <value>Sóng cầu vồng</value>
+    <value>Szivárvány hullám</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Ripple" xml:space="preserve">
-    <value>Gợn sóng</value>
+    <value>Hullámzás</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Smooth" xml:space="preserve">
-    <value>Mượt</value>
+    <value>Sima</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Type" xml:space="preserve">
-    <value>Gõ</value>
+    <value>Típus</value>
   </data>
   <data name="SpectrumKeyboardBacklightSpeed_Speed1" xml:space="preserve">
-    <value>Chậm</value>
+    <value>Lassú</value>
   </data>
   <data name="SpectrumKeyboardBacklightSpeed_Speed2" xml:space="preserve">
-    <value>Trung bình</value>
+    <value>Közepes</value>
   </data>
   <data name="SpectrumKeyboardBacklightSpeed_Speed3" xml:space="preserve">
-    <value>Nhanh</value>
+    <value>Gyors</value>
   </data>
   <data name="Theme_Dark" xml:space="preserve">
-    <value>Tối</value>
+    <value>Sötét</value>
   </data>
   <data name="Theme_Light" xml:space="preserve">
-    <value>Sáng</value>
+    <value>Világos</value>
   </data>
   <data name="Theme_System" xml:space="preserve">
-    <value>Hệ thống</value>
+    <value>Rendszer</value>
   </data>
   <data name="TouchpadLockState_Off" xml:space="preserve">
-    <value>Tắt</value>
+    <value>Ki</value>
     <comment>Informs the user that Touchpad Lock is or will be turned off.</comment>
   </data>
   <data name="TouchpadLockState_On" xml:space="preserve">
-    <value>Bật</value>
+    <value>Be</value>
     <comment>Informs the user that Touchpad Lock is or will be turned on.</comment>
   </data>
   <data name="WhiteKeyboardBacklightState_High" xml:space="preserve">
-    <value>Cao</value>
+    <value>Magas</value>
   </data>
   <data name="WhiteKeyboardBacklightState_Low" xml:space="preserve">
-    <value>Thấp</value>
+    <value>Alacsony</value>
   </data>
   <data name="WhiteKeyboardBacklightState_Off" xml:space="preserve">
-    <value>Tắt</value>
+    <value>Kikapcsolva</value>
   </data>
   <data name="WinKeyState_Off" xml:space="preserve">
-    <value>Tắt</value>
+    <value>Ki</value>
     <comment>Informs the user that WinLock is or will be turned on.</comment>
   </data>
   <data name="WinKeyState_On" xml:space="preserve">
-    <value>Bật</value>
+    <value>Be</value>
     <comment>Informs the user that WinLock is or will be turned on.</comment>
   </data>
   <data name="PortsBacklightState_Off" xml:space="preserve">
-    <value>Tắt</value>
+    <value>Ki</value>
   </data>
   <data name="PortsBacklightState_On" xml:space="preserve">
-    <value>Bật</value>
+    <value>Be</value>
   </data>
   <data name="PanelLogoBacklightState_On" xml:space="preserve">
-    <value>Bật</value>
+    <value>Be</value>
   </data>
   <data name="PanelLogoBacklightState_Off" xml:space="preserve">
-    <value>Tắt</value>
+    <value>Ki</value>
   </data>
   <data name="InstantBootState_Off" xml:space="preserve">
-    <value>Tắt</value>
+    <value>Ki</value>
   </data>
   <data name="InstantBootState_AcAdapter" xml:space="preserve">
-    <value>Bộ sạc</value>
+    <value>Váltóáramú adapter</value>
   </data>
   <data name="InstantBootState_UsbPowerDelivery" xml:space="preserve">
-    <value>USB Power Delivery</value>
+    <value>USB energiaellátás (PD)</value>
   </data>
   <data name="InstantBootState_AcAdapterAndUsbPowerDelivery" xml:space="preserve">
-    <value>AC và USB PD</value>
+    <value>AC és USB PD</value>
   </data>
   <data name="NotificationDuration_Long" xml:space="preserve">
-    <value>Dài</value>
+    <value>Hosszú</value>
   </data>
   <data name="NotificationDuration_Normal" xml:space="preserve">
-    <value>Bình thường</value>
+    <value>Normál</value>
   </data>
   <data name="NotificationDuration_Short" xml:space="preserve">
-    <value>Ngắn</value>
+    <value>Rövid</value>
   </data>
   <data name="ModifierKey_Shift" xml:space="preserve">
     <value>Shift</value>
@@ -455,27 +455,45 @@
     <value>Alt</value>
   </data>
   <data name="BatteryNightChargeState_On" xml:space="preserve">
-    <value>Bật</value>
+    <value>Be</value>
   </data>
   <data name="BatteryNightChargeState_Off" xml:space="preserve">
-    <value>Tắt</value>
+    <value>Ki</value>
   </data>
   <data name="SpeakerState_Mute" xml:space="preserve">
-    <value>Tắt tiếng</value>
+    <value>Némítás</value>
   </data>
   <data name="SpeakerState_Unmute" xml:space="preserve">
-    <value>Bật tiếng</value>
+    <value>Némítás feloldása</value>
   </data>
   <data name="PowerModeMappingMode_Disabled" xml:space="preserve">
-    <value>Tắt</value>
+    <value>Letiltva</value>
   </data>
   <data name="PowerModeMappingMode_WindowsPowerMode" xml:space="preserve">
-    <value>Chế độ nguồn</value>
+    <value>Windows energiagazdálkodási mód</value>
   </data>
   <data name="PowerModeMappingMode_WindowsPowerPlan" xml:space="preserve">
-    <value>Power Plan</value>
+    <value>Windows Energiaséma</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_Four" xml:space="preserve">
-    <value>Thiết lập 4</value>
+    <value>Előre beállított 4</value>
+  </data>
+  <data name="UpdateCheckFrequency_PerDay" xml:space="preserve">
+    <value>Naponta</value>
+  </data>
+  <data name="UpdateCheckFrequency_PerHour" xml:space="preserve">
+    <value>Óránként</value>
+  </data>
+  <data name="UpdateCheckFrequency_PerMonth" xml:space="preserve">
+    <value>Havonta</value>
+  </data>
+  <data name="UpdateCheckFrequency_PerThreeHours" xml:space="preserve">
+    <value>3 óránként</value>
+  </data>
+  <data name="UpdateCheckFrequency_PerTwelveHours" xml:space="preserve">
+    <value>12 óránként</value>
+  </data>
+  <data name="UpdateCheckFrequency_PerWeek" xml:space="preserve">
+    <value>Hetente</value>
   </data>
 </root>

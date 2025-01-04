@@ -118,497 +118,496 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutPage_AppName" xml:space="preserve">
-    <value>Lenovo Legion Toolkit</value>
+    <value>Lenovo Legion eszköztár</value>
   </data>
   <data name="AboutPage_Build" xml:space="preserve">
-    <value>Yapı</value>
+    <value>Verzió</value>
   </data>
   <data name="AboutPage_LatestReleaseOnGitHub" xml:space="preserve">
-    <value>GitHub üstündeki son sürüm</value>
+    <value>Legfrissebb kiadás GitHub-on</value>
   </data>
   <data name="AboutPage_Links" xml:space="preserve">
-    <value>Bağlantılar</value>
+    <value>Linkek</value>
   </data>
   <data name="AboutPage_ProjectWebsiteOnGitHub" xml:space="preserve">
-    <value>Projenin Github sayfası</value>
+    <value>Projekt GitHub-on</value>
   </data>
   <data name="AboutPage_ThirdPartyLibraries" xml:space="preserve">
-    <value>3. parti kütüphaneler</value>
+    <value>Külső könyvtárak</value>
   </data>
   <data name="AboutPage_Title" xml:space="preserve">
-    <value>Hakkında</value>
+    <value>Névjegy</value>
   </data>
   <data name="AboutPage_TranslationCredit" xml:space="preserve">
-    <value>Undervolt tarafından Türkçe çeviri</value>
+    <value>Translated into Hungarian by LabodiDavid.</value>
     <comment>Please replace this text with something like "Translated into &lt;language&gt; by &lt;your name&gt;."</comment>
   </data>
   <data name="AboutPage_Version" xml:space="preserve">
-    <value>Sürüm</value>
+    <value>Verziók</value>
   </data>
   <data name="Add" xml:space="preserve">
-    <value>Ekle</value>
+    <value>Hozzáadás</value>
   </data>
   <data name="AddNew" xml:space="preserve">
-    <value>Yeni ekle</value>
+    <value>Új hozzáadása</value>
   </data>
   <data name="AlwaysOnUSBControl_Message" xml:space="preserve">
-    <value>Bilgisayar kapalı, uyku veya hazırda bekletme modundayken USB cihazlarını şarj edin.</value>
+    <value>Töltse az USB eszközöket a számítógép kikapcsolt, alvó vagy hibernált állapota esetén is.</value>
   </data>
   <data name="AlwaysOnUSBControl_Title" xml:space="preserve">
-    <value>Her zaman açık USB</value>
+    <value>Állandó USB</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
-    <value>Bilgisayar kapalı, uyku veya hazırda bekletme modundayken USB cihazlarını şarj edin.</value>
+    <value>Töltse az USB eszközöket a számítógép kikapcsolt, alvó vagy hibernált állapota esetén is.</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Title" xml:space="preserve">
-    <value>Her zaman açık USB</value>
+    <value>Állandó USB</value>
   </data>
   <data name="AppName" xml:space="preserve">
-    <value>Lenovo Legion Toolkit</value>
+    <value>Lenovo Legion eszköztár</value>
   </data>
   <data name="Apply" xml:space="preserve">
-    <value>Uygula</value>
+    <value>Alkamaz</value>
   </data>
   <data name="ApplyAndClose" xml:space="preserve">
-    <value>Uygula &amp; Kapat</value>
+    <value>Alkalmazás és bezárás</value>
   </data>
   <data name="AutomationPage_ActionsEnable_Message" xml:space="preserve">
-    <value>Otomatik eylemlerin çalışması için Lenovo Legion Toolkit çalışıyor olmalıdır.</value>
+    <value>A Lenovo Legion eszköztárnak futnia kell az automatikus műveletek működéséhez.</value>
   </data>
   <data name="AutomationPage_ActionsEnabled_Title" xml:space="preserve">
-    <value>Etkinleştir</value>
+    <value>Engedélyezés</value>
   </data>
   <data name="AutomationPage_Actions_Empty" xml:space="preserve">
-    <value>Eylem bulunamadı. Yeni Eylem oluşturmak için "Yeni ekle"yi tıklayın.</value>
+    <value>Nincsenek meghatározott műveletek. Kattints az "Új hozzáadása" gombra új művelet létrehozásához.</value>
   </data>
   <data name="AutomationPage_Actions_Message" xml:space="preserve">
-    <value>Etkinleştirilirse, bu eylem otomatik olarak çalışacaktır. Durum değiştiğinde, tüm eylemler yukarıdan aşağıya doğru çalıştırılacaktır.
-Yalnızca mevcut durumla eşleşen eylemler çalışacaktır.</value>
+    <value>Ha engedélyezve van, ezek a műveletek automatikusan lefutnak. Amikor az állapot megváltozik, az összes művelet futásra kerül felülről lefelé haladva.
+Csak az aktuális állapotnak megfelelő műveletek fognak futni.</value>
   </data>
   <data name="AutomationPage_Actions_Title" xml:space="preserve">
-    <value>Eylemler</value>
+    <value>Műveletek</value>
   </data>
   <data name="AutomationPage_AddManualPipeline_Placeholder" xml:space="preserve">
-    <value>İsim...</value>
+    <value>Név...</value>
   </data>
   <data name="AutomationPage_AddManualPipeline_Title" xml:space="preserve">
-    <value>Yeni ekle</value>
+    <value>Új hozzáadása</value>
   </data>
   <data name="AutomationPage_QuickActions_Empty" xml:space="preserve">
-    <value>Hızlı Eylem bulunamadı. Yeni Hızlı Eylem oluşturmak için "Yeni ekle"yi tıklayın.</value>
+    <value>Nincsenek meghatározott gyorsműveletek. Kattints az "Új hozzáadása" gombra új gyorsművelet létrehozásához.</value>
   </data>
   <data name="AutomationPage_QuickActions_Message" xml:space="preserve">
-    <value>Hızlı eylemler, görev çubuğundaki sağ tıklama menüsünde mevcuttur.</value>
+    <value>A gyorsműveletek jobb egérgombbal a tálcaikonra kattintva érhetők el.</value>
   </data>
   <data name="AutomationPage_QuickActions_Title" xml:space="preserve">
-    <value>Hızlı Eylemler</value>
+    <value>Gyors műveletek</value>
   </data>
   <data name="AutomationPage_RenamePipeline_Placeholder" xml:space="preserve">
-    <value>İsim...</value>
+    <value>Név...</value>
   </data>
   <data name="AutomationPage_RenamePipeline_Title" xml:space="preserve">
-    <value>Adlandır</value>
+    <value>Átnevezés</value>
   </data>
   <data name="AutomationPage_Reverted_Message" xml:space="preserve">
-    <value>Tüm değişiklikler geri alındı!</value>
+    <value>Minden változás visszállítva!</value>
   </data>
   <data name="AutomationPage_Reverted_Title" xml:space="preserve">
-    <value>Geri Alındı</value>
+    <value>Visszaszállítva</value>
   </data>
   <data name="AutomationPage_Saved_Message" xml:space="preserve">
-    <value>Değişiklikler başarıyla kaydedildi!</value>
+    <value>Módosítások sikeresen elmentve!</value>
   </data>
   <data name="AutomationPage_Saved_Title" xml:space="preserve">
-    <value>Kaydedildi</value>
+    <value>Mentve</value>
   </data>
   <data name="AutomationPage_Title" xml:space="preserve">
-    <value>Otomasyon</value>
+    <value>Automatizálás</value>
   </data>
   <data name="AutomationPipelineControl_AddStep" xml:space="preserve">
-    <value>Adım ekle</value>
+    <value>Lépés hozzáadása</value>
   </data>
   <data name="AutomationPipelineControl_Configure" xml:space="preserve">
-    <value>Yapılandır</value>
+    <value>Beállítás</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive" xml:space="preserve">
-    <value>Ayrıcalıklı</value>
+    <value>Exkluzív</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive_ToolTip" xml:space="preserve">
-    <value>Bu eylem çalıştığında başka eylemler yürütmeyin.</value>
+    <value>Ne hajtson végre további műveleteket, ha ez a művelet fut.</value>
   </data>
   <data name="AutomationPipelineControl_RunNow" xml:space="preserve">
-    <value>Şimdi çalıştır</value>
+    <value>Futtatás most</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Error_Message" xml:space="preserve">
-    <value>Hatalarla Tamamlandı.</value>
+    <value>Befejezve hibával.</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Error_Title" xml:space="preserve">
-    <value>Şimdi çalıştır</value>
+    <value>Futtatás most</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Success_Message" xml:space="preserve">
-    <value>Başarıyla tamamlandı!</value>
+    <value>Sikeresen befejezve!</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Success_Title" xml:space="preserve">
-    <value>Şimdi çalıştır</value>
+    <value>Futtatás most</value>
   </data>
   <data name="AutomationPipelineControl_Running" xml:space="preserve">
-    <value>Çalışıyor...</value>
+    <value>Futás...</value>
   </data>
   <data name="AutomationPipelineControl_Step" xml:space="preserve">
-    <value>{0} adım</value>
+    <value>{0} lépés</value>
   </data>
   <data name="AutomationPipelineControl_Step_Many" xml:space="preserve">
-    <value>{0} adım</value>
+    <value>{0} lépés</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_Apps" xml:space="preserve">
-    <value>Uygulamalar</value>
+    <value>Alkalmazások</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_AtSunrise" xml:space="preserve">
-    <value>Gün doğumunda</value>
+    <value>Napkeltekor</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_AtSunset" xml:space="preserve">
-    <value>Gün batımında</value>
+    <value>Naplementekor</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_AtTime" xml:space="preserve">
-    <value>{0:D2}:{1:D2}</value>
+    <value>{0:D2}:{1:D2}-kor</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_PowerMode" xml:space="preserve">
-    <value>Güç Kipi</value>
+    <value>Teljesítménymód</value>
   </data>
   <data name="AutomationPipelineControl_Unnamed" xml:space="preserve">
-    <value>İsimsiz</value>
+    <value>Névtelen</value>
   </data>
   <data name="BalanceModeSettingsWindow_AIEngine_Message" xml:space="preserve">
-    <value>Belirli oyunların ne zaman çalıştığını otomatik olarak algılar ve CPU ve GPU performansını düzenler. Sıcaklıklar ve fan sesi artabilir.</value>
+    <value>Automatikusan érzkékeli egyes játékok futtatását és javítja a processzor, illetve videókártya teljesítményét. A hőmérséklet értéke és a ventilátor zaja megnövekedhet.</value>
   </data>
   <data name="BalanceModeSettingsWindow_AIEngine_Title" xml:space="preserve">
-    <value>AI Motorunu etkinleştir</value>
+    <value>AI Engine engedélyezése</value>
   </data>
   <data name="BalanceModeSettingsWindow_Title" xml:space="preserve">
-    <value>Denge Kipi Ayarları</value>
+    <value>Kiegyensúlyozott mód beállításai</value>
   </data>
   <data name="BatteryAutomationStepControl_Message" xml:space="preserve">
-    <value>Pilin nasıl şarj edileceğini seçin.</value>
+    <value>Válaszd ki, hogyan töltődjön az akkumulátor.</value>
   </data>
   <data name="BatteryAutomationStepControl_Title" xml:space="preserve">
-    <value>Pil Modu</value>
+    <value>Akkumulátor mód</value>
   </data>
   <data name="BatteryModeControl_Message" xml:space="preserve">
-    <value>Pilin nasıl şarj edileceğini seçin.</value>
+    <value>Válaszd ki, hogyan töltődjön az akkumulátor.</value>
   </data>
   <data name="BatteryModeControl_Title" xml:space="preserve">
-    <value>Pil Modu</value>
+    <value>Akkumulátor mód</value>
   </data>
   <data name="BatteryPage_ACAdapterConnectedAndCharging" xml:space="preserve">
-    <value>Bağlı, şarj oluyor...</value>
+    <value>Csatlakoztatva, töltés...</value>
   </data>
   <data name="BatteryPage_ACAdapterConnectedNotCharging" xml:space="preserve">
-    <value>Bağlı, şarj etmiyor</value>
+    <value>Csatlakoztatva, nem töltődik</value>
   </data>
   <data name="BatteryPage_BatteryTemperature_Message" xml:space="preserve">
-    <value>Pilin mevcut sıcaklığı.</value>
+    <value>Az akkumulátor aktuális hőmérséklete.</value>
   </data>
   <data name="BatteryPage_BatteryTemperature_Title" xml:space="preserve">
-    <value>Pil sıcaklığı</value>
+    <value>Akkumulátor hőmérséklete</value>
   </data>
   <data name="BatteryPage_CurrentCapacity_Message" xml:space="preserve">
-    <value>Mevcut pil kapasitesi.</value>
+    <value>Aktuális akkumulátor töltöttség.</value>
   </data>
   <data name="BatteryPage_CurrentCapacity_Title" xml:space="preserve">
-    <value>Mevcut kapasite</value>
+    <value>Aktuális tölöttség</value>
   </data>
   <data name="BatteryPage_CycleCount_Message" xml:space="preserve">
-    <value>Şarj/deşarj döngüsü sayısı.</value>
+    <value>A töltések/kisülések száma.</value>
   </data>
   <data name="BatteryPage_CycleCount_Title" xml:space="preserve">
-    <value>Döngü sayısı</value>
+    <value>Ciklusszám</value>
   </data>
   <data name="BatteryPage_DesignCapacity_Message" xml:space="preserve">
-    <value>Tasarlanmış pil kapasitesi.</value>
+    <value>Az akkumulátor kapacitása a tervezés szerint.</value>
   </data>
   <data name="BatteryPage_DesignCapacity_Title" xml:space="preserve">
-    <value>Tasarım kapasitesi</value>
+    <value>Tervezési kapacitás</value>
   </data>
   <data name="BatteryPage_DischargeRate_Message" xml:space="preserve">
-    <value>Pilin şarj (+) veya deşarj (-) oranı.</value>
+    <value>Az akkumulátor töltésének (+) vagy merülésének (-) sebessége.</value>
   </data>
   <data name="BatteryPage_DischargeRate_Title" xml:space="preserve">
-    <value>Deşarj oranı</value>
+    <value>Merülési ráta</value>
   </data>
   <data name="BatteryPage_EstimatedBatteryLifeRemaining" xml:space="preserve">
-    <value>Tahmini kalan süre: {0}</value>
+    <value>Becsült hátralévő idő: {0}</value>
   </data>
   <data name="BatteryPage_EstimatingBatteryLife" xml:space="preserve">
-    <value>Süre tahmin ediliyor...</value>
+    <value>Idő becslése...</value>
   </data>
   <data name="BatteryPage_FirstUseDate_Title" xml:space="preserve">
-    <value>İlk kullanım tarihi</value>
+    <value>Első használat dátuma</value>
   </data>
   <data name="BatteryPage_FirstUse_Message" xml:space="preserve">
-    <value>Pilin ilk kullanım tarihi.</value>
+    <value>Mikor volt az akkumulátor először használva.</value>
   </data>
   <data name="BatteryPage_FullChargeCapacity_Message" xml:space="preserve">
-    <value>Tam şarj olduğundaki pil kapasitesi.</value>
+    <value>Az akkumulátor kapacitása teljes töltöttség esetén.</value>
   </data>
   <data name="BatteryPage_FullChargeCapacity_Title" xml:space="preserve">
-    <value>Tam şarj kapasitesi</value>
+    <value>Teljes töltöttségi szint</value>
   </data>
   <data name="BatteryPage_LowWattageChargerConnected" xml:space="preserve">
-    <value>Düşük voltajlı şarj cihazı bağlı</value>
+    <value>Alacsony teljesítményű töltő csatlakoztatva</value>
   </data>
   <data name="BatteryPage_ManufactureDate_Message" xml:space="preserve">
-    <value>Pilin üretim tarihi.</value>
+    <value>Az akkumulátor gyártási ideje.</value>
   </data>
   <data name="BatteryPage_ManufactureDate_Title" xml:space="preserve">
-    <value>Üretim tarihi</value>
+    <value>Gyártás dátuma</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Message" xml:space="preserve">
-    <value>Dizüstü bilgisayarın AC gücüne en son bağlandığından beri geçen süre.
-Dizüstü bilgisayar uyurken veya kapalıyken şarj edildiyse bu süre doğru olmayabilir.</value>
+    <value>A laptop utolsó hálózati csatlakoztatása óta eltelt idő.
+Ez az idő nem biztos, hogy pontos, ha a laptopot alvó vagy kikapcsolt állapotban töltötték fel.</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Title" xml:space="preserve">
-    <value>Pil ile geçen süre</value>
+    <value>Akkumulátoron ennyi ideje</value>
   </data>
   <data name="BatteryPage_Title" xml:space="preserve">
-    <value>Pil</value>
+    <value>Akkumulátor</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>İptal</value>
+    <value>Mégsem</value>
   </data>
   <data name="Celsius" xml:space="preserve">
     <value>°C</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Kapat</value>
+    <value>Bezárás</value>
   </data>
   <data name="Color_Blue" xml:space="preserve">
-    <value>Mavi</value>
+    <value>Kék</value>
   </data>
   <data name="Color_Green" xml:space="preserve">
-    <value>Yeşil</value>
+    <value>Zöld</value>
   </data>
   <data name="Color_Red" xml:space="preserve">
-    <value>Kırmızı</value>
+    <value>Vörös</value>
   </data>
   <data name="ComboBoxHybridModeControl_Message" xml:space="preserve">
-    <value>Bilgisayarınızın kullanımına ve güç koşullarına göre GPU çalışma modunu seçin.
-Bu modları değiştirmek yeniden başlatma gerektirebilir.</value>
+    <value>Válaszd ki a videókártya működési módját a számítógép használati és energiaellátási körülményei alapján.
+Az üzemmódok közötti váltás újraindítást igényelhet.</value>
   </data>
   <data name="ComboBoxHybridModeControl_RestartRequired_Message" xml:space="preserve">
-    <value>{0} olarak değiştirmek, yeniden başlatmayı gerektirir. Şimdi yeniden başlatmak istiyor musunuz?</value>
+    <value>A {0} módra való váltás újraindítást igényel. Újraindítod most?</value>
   </data>
   <data name="ComboBoxHybridModeControl_RestartRequired_Title" xml:space="preserve">
-    <value>Yeniden başlatma gerekli</value>
+    <value>Újraindítás szükséges</value>
   </data>
   <data name="ComboBoxHybridModeControl_Title" xml:space="preserve">
-    <value>GPU Çalışma Modu</value>
+    <value>GPU működési mód</value>
   </data>
   <data name="ContextMenu_QuickActions" xml:space="preserve">
-    <value>Hızlı Eylemler</value>
+    <value>Gyors műveletek</value>
   </data>
   <data name="Continue" xml:space="preserve">
-    <value>Devam et</value>
+    <value>Tovább</value>
   </data>
   <data name="CopyAll" xml:space="preserve">
-    <value>Tümünü kopyala</value>
+    <value>Összes másolása</value>
   </data>
   <data name="DashboardPage_Graphics_Title" xml:space="preserve">
-    <value>Grafikler</value>
+    <value>Grafikus beállítások</value>
   </data>
   <data name="DashboardPage_Other_Title" xml:space="preserve">
-    <value>Diğer</value>
+    <value>Egyéb</value>
   </data>
   <data name="DashboardPage_Power_Title" xml:space="preserve">
-    <value>Güç</value>
+    <value>Tápellátás</value>
   </data>
   <data name="DashboardPage_Title" xml:space="preserve">
-    <value>Ana Sayfa</value>
+    <value>Kezdőlap</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Gereksiz yere aktifse harici GPU'yu devre dışı bırakın.
+    <value>Letiltja a diszkrét GPU-t, ha az feleslegesen aktív.
 
-UYARI: Dahili ekran kapalıysa veya Hibrit modu etkin değilse bu eylem düzgün çalışmayacaktır.</value>
+FIGYELMEZTETÉS: Ez a művelet nem fog helyesen futni, ha a belső kijelző ki van kapcsolva vagy a hibrid üzemmód nem aktív.</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
-    <value>GPU Pasifleştir</value>
+    <value>GPU deaktiválása</value>
   </data>
   <data name="DelayAutomationStepControl_Message" xml:space="preserve">
-    <value>Sonraki adımı çalıştırmadan önce gecikme ekleyin.</value>
+    <value>Késleltetés hozzáadása a következő lépés futtatása előtt.</value>
   </data>
   <data name="DelayAutomationStepControl_Title" xml:space="preserve">
-    <value>Gecikme</value>
+    <value>Késleltetés</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Sil</value>
+    <value>Törlés</value>
   </data>
   <data name="DeviceInformationWindow_BiosVersion_Title" xml:space="preserve">
-    <value>BIOS sürümü</value>
+    <value>BIOS verzió</value>
   </data>
   <data name="CopiedToClipboard_Message" xml:space="preserve">
-    <value>Metin panoya kopyalandı.</value>
+    <value>Szöveg vágólapra másolva.</value>
   </data>
   <data name="CopiedToClipboard_Message_WithParam" xml:space="preserve">
-    <value>"{0}" panoya kopyalandı.</value>
+    <value>{0} vágólapra másolva.</value>
   </data>
   <data name="CopiedToClipboard_Title" xml:space="preserve">
-    <value>Kopyalandı!</value>
+    <value>Másolva!</value>
   </data>
   <data name="DeviceInformationWindow_Device_Title" xml:space="preserve">
-    <value>Cihaz</value>
+    <value>Eszköz</value>
   </data>
   <data name="DeviceInformationWindow_LenovoSupport" xml:space="preserve">
-    <value>Lenovo Destek</value>
+    <value>Lenovo ügyfélszolgálat</value>
   </data>
   <data name="DeviceInformationWindow_MachineType_Title" xml:space="preserve">
-    <value>Cihaz Tipi</value>
+    <value>Számítógép típusa</value>
   </data>
   <data name="DeviceInformationWindow_Manufacturer_Title" xml:space="preserve">
-    <value>Üretici</value>
+    <value>Gyártó</value>
   </data>
   <data name="DeviceInformationWindow_Model_Title" xml:space="preserve">
-    <value>Model</value>
+    <value>Modell</value>
   </data>
   <data name="DeviceInformationWindow_SerialNumber_Title" xml:space="preserve">
-    <value>Seri numarası</value>
+    <value>Sorozatszám</value>
   </data>
   <data name="DeviceInformationWindow_Title" xml:space="preserve">
-    <value>Cihaz hakkında</value>
+    <value>Az eszköz névjegye</value>
   </data>
   <data name="DeviceInformationWindow_WarrantyEndDate_Title" xml:space="preserve">
-    <value>Bitiş tarihi</value>
+    <value>Lejárat dátuma</value>
   </data>
   <data name="DeviceInformationWindow_WarrantyStartDate_Title" xml:space="preserve">
-    <value>Başlangıç tarihi</value>
+    <value>Kezdés dátuma</value>
   </data>
   <data name="DeviceInformationWindow_Warranty_Title" xml:space="preserve">
-    <value>Garanti</value>
+    <value>Jótállás</value>
   </data>
   <data name="Active" xml:space="preserve">
-    <value>Aktif</value>
+    <value>Aktív</value>
   </data>
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
-    <value>Pasifleştir</value>
+    <value>Deaktiválás</value>
   </data>
   <data name="Inactive" xml:space="preserve">
-    <value>Aktif değil</value>
+    <value>Inaktív</value>
   </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
-    <value>Uygulamaları kapat</value>
+    <value>Alkalmazások kilövése</value>
   </data>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
-    <value>Gereksiz yere etkinse harici GPU'yu devre dışı bırakın.</value>
+    <value>Letiltja a diszkrét GPU-t, ha az feleslegesen aktív.</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
-    <value>nVidia GPU'ya bir monitör bağlı.</value>
+    <value>Kijelző csatlakoztatva az NVIDIA videókártyához.</value>
   </data>
   <data name="DiscreteGPUControl_NoProcesses" xml:space="preserve">
-    <value>İşlem yok</value>
+    <value>Nincsenek folyamatok</value>
   </data>
   <data name="DiscreteGPUControl_PerformanceState" xml:space="preserve">
-    <value>Performans durumu</value>
+    <value>Teljesítmény állapot</value>
   </data>
   <data name="DiscreteGPUControl_PerformanceState_Unknown" xml:space="preserve">
-    <value>Bilinmeyen</value>
+    <value>Ismeretlen</value>
   </data>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
-    <value>İşlemler</value>
+    <value>Folyamatok</value>
   </data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
-    <value>GPU'yu yeniden başlat</value>
+    <value>Videókártya újraindítása</value>
   </data>
   <data name="DiscreteGPUControl_Title" xml:space="preserve">
-    <value>Harici GPU</value>
+    <value>Diszkrét GPU</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Yerleşik ekranın parlaklığını değiştirin.
-Güç modları, bazı cihazlarda parlaklığı değiştirir. Bir şey doğru çalışmıyorsa, bu adımı en son koyduğunuzdan emin olun.
+    <value>A beépített kijelző fényerejének módosítása.
 
-UYARI: Dahili ekran kapalıysa bu eylem düzgün çalışmayacaktır.</value>
+FIGYELMEZTETÉS: Ez a művelet nem fog megfelelően futni, ha a belső kijelző ki van kapcsolva.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
-    <value>Ekran parlaklığı</value>
+    <value>Kijelző fényereje</value>
   </data>
   <data name="DonatePage_DonateWith" xml:space="preserve">
-    <value>Bağış yapın</value>
+    <value>Támogatás ezzel</value>
   </data>
   <data name="DonatePage_Message" xml:space="preserve">
-    <value>Lenovo Legion Toolkit'in geliştirilmesi ve bakımı çok zaman alıyor. Bu yazılımı kullanmayı seviyorsanız, istediğiniz miktarda bağış yaparak geleceğine destek olabilirsiniz.
+    <value>A Lenovo Legion Toolkit fejlesztése és karbantartása sok időt vesz igénybe. Ha szívesen használja ezt a szoftvert, akkor támogathatja a jövőjét az Ön által választott összeg felajánlásával.
 
-PayPal ile bağış yapmak için aşağıdaki PayPal logosuna tıklayın veya QR kodunu tarayın.
+Kattintson az alábbi PayPal-logóra, vagy szkennelje be a QR-kódot a PayPal segítségével történő adományozáshoz.
 
-Şimdiden teşekkürler!</value>
+Előre is köszönjük!</value>
   </data>
   <data name="DonatePage_Title" xml:space="preserve">
-    <value>Bağış</value>
+    <value>Támogatás</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>Düzenle</value>
+    <value>Szerkesztés</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Description" xml:space="preserve">
-    <value>Fn+R kısayolu kullanıldığında kullanmak istemediğiniz yenileme hızlarını kaldırın.</value>
+    <value>Törölje a jelölőnégyzetből azokat a frissítési sebességeket, amelyeket nem szeretne használni az Fn+R gyorsbillentyű használatakor.</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_NoRefreshRatesFound_Message" xml:space="preserve">
-    <value>Dizüstü bilgisayar ekranının açık olduğundan emin olun. Lenovo Legion Toolkit, açık olmayan bir ekran için yenileme hızlarını yükleyemez.</value>
+    <value>Győződjön meg róla, hogy a laptop kijelzője be van kapcsolva. A Lenovo Legion Toolkit nem tudja betölteni a frissítési frekvenciákat egy nem bekapcsolt kijelzőhöz.</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_NoRefreshRatesFound_Title" xml:space="preserve">
-    <value>Yenileme Hızı bulunamadı</value>
+    <value>Nem található frissítési arányok</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Title" xml:space="preserve">
-    <value>Yenileme Hızlarını Hariç Tut</value>
+    <value>Frissítési ráták kihagyása</value>
   </data>
   <data name="Exit" xml:space="preserve">
-    <value>Çıkış</value>
+    <value>Kilépés</value>
   </data>
   <data name="Export" xml:space="preserve">
-    <value>Dışa Aktar</value>
+    <value>Exportálás</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Auto_Message" xml:space="preserve">
-    <value>Pille çalışırken yalnızca tümleşik GPU'yu ve AC adaptörü bağlıyken hem tümleşik hem de harici GPU'yu kullanın. Standart olmayan bir adaptör bağlandığında, sistem Yalnızca Hibrit-iGPU Moduna geçer.</value>
+    <value>Használja csak az integrált GPU-t, ha akkumulátorral működik, és az integrált és a különálló GPU-t is, ha hálózati adapter van csatlakoztatva. Ha nem szabványos adaptert csatlakoztat, a rendszer átvált a Csak hibrid-iGPU módra.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Auto_Title" xml:space="preserve">
-    <value>Hibrit-Oto Modu</value>
+    <value>Hybrid-Auto mód</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_DGPU_Disclaimer" xml:space="preserve">
-    <value>Bu moda geçmek ve bu moddan çıkmak yeniden başlatmayı gerektirir.</value>
+    <value>Ebbe az üzemmódba és ebből az üzemmódból való váltás újraindítást igényel.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_DGPU_Message" xml:space="preserve">
-    <value>Yalnızca harici GPU'yu kullanın. Bu mod, en iyi grafik performansını sağlar, ancak güç tüketimini artırır.</value>
+    <value>Csak diszkrét GPU-t használ. Ez az üzemmód biztosítja a legjobb grafikus teljesítményt, de növeli az energiafogyasztást.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_DGPU_Title" xml:space="preserve">
-    <value>dGPU Modu</value>
+    <value>dGPU Mód</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Hybrid_Message" xml:space="preserve">
-    <value>Hem entegre hem de harici GPU etkinleştirilmiştir. Sistem, ihtiyaçlarına göre bunlar arasında otomatik olarak geçiş yapacaktır.</value>
+    <value>Mind az integrált, mind a diszkrét GPU engedélyezett. A rendszer automatikusan váltogat közöttük az igényei alapján.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Hybrid_Title" xml:space="preserve">
-    <value>Hibrit Kipi</value>
+    <value>Hibrid mód</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_IGPU_Disclaimer" xml:space="preserve">
-    <value>Bu mod, yalnızca harici GPU çalışmadığında etkili olur.</value>
+    <value>Ez az üzemmód csak akkor lép életbe, ha a diszkrét GPU nem működik.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_IGPU_Message" xml:space="preserve">
-    <value>Yalnızca entegre GPU'yu kullanın. Bu mod, güç tüketimini ve gürültüyü en aza indirir.</value>
+    <value>Csak integrált GPU-t használjon. Ez az üzemmód minimalizálja az energiafogyasztást és a zajszintet.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_IGPU_Title" xml:space="preserve">
-    <value>Yalnızca Hibrit-iGPU Modu</value>
+    <value>Csak hibrid-iGPU mód</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Title" xml:space="preserve">
-    <value>GPU Çalışma Modları Hakkında</value>
+    <value>A GPU-munkamódokról</value>
   </data>
   <data name="Fahrenheit" xml:space="preserve">
     <value>°F</value>
   </data>
   <data name="FanCurveControl_CPU" xml:space="preserve">
-    <value>CPU</value>
+    <value>Processzor</value>
   </data>
   <data name="FanCurveControl_CPUSensor" xml:space="preserve">
-    <value>CPU Sensörü</value>
+    <value>CPU érzékelő</value>
   </data>
   <data name="FanCurveControl_FanSpeed" xml:space="preserve">
-    <value>Fan Hızı</value>
+    <value>Ventillátor sebesség</value>
   </data>
   <data name="FanCurveControl_GPU" xml:space="preserve">
-    <value>GPU</value>
+    <value>Videókártya</value>
   </data>
   <data name="FanCurveControl_GPU2" xml:space="preserve">
     <value>GPU #2</value>
@@ -617,1148 +616,1154 @@ PayPal ile bağış yapmak için aşağıdaki PayPal logosuna tıklayın veya QR
     <value>RPM</value>
   </data>
   <data name="FlipToStartAutomationStepControl_Message" xml:space="preserve">
-    <value>Kapağı açtığınızda bilgisayarı açın.</value>
+    <value>Kapcsolja be a laptopot, amikor kinyitja a fedelet.</value>
   </data>
   <data name="FlipToStartAutomationStepControl_Title" xml:space="preserve">
-    <value>Flip To Start</value>
+    <value>Fedél felhajtása az indításhoz</value>
   </data>
   <data name="FlipToStartControl_Message" xml:space="preserve">
-    <value>Kapağı açtığınızda bilgisayarı açın.</value>
+    <value>Kapcsolja be a laptopot, amikor kinyitja a fedelet.</value>
   </data>
   <data name="FlipToStartControl_Title" xml:space="preserve">
-    <value>Flip To Start</value>
+    <value>Fedél felhajtása az indításhoz</value>
   </data>
   <data name="FnLockAutomationStepControl_Message" xml:space="preserve">
-    <value>Fn tuşunu basılı tutmadan F1-F12 tuşlarının ikincil işlevlerini kullanın.</value>
+    <value>Az F1-F12 billentyűk másodlagos funkcióinak használata az Fn billentyű lenyomva tartása nélkül.</value>
   </data>
   <data name="FnLockAutomationStepControl_Title" xml:space="preserve">
-    <value>Fn Kilidi</value>
+    <value>Fn Lock</value>
   </data>
   <data name="FnLockControl_Message" xml:space="preserve">
-    <value>Fn tuşunu basılı tutmadan F1-F12 tuşlarının ikincil işlevlerini kullanın.</value>
+    <value>Az F1-F12 billentyűk másodlagos funkcióinak használata az Fn billentyű lenyomva tartása nélkül.</value>
   </data>
   <data name="FnLockControl_Title" xml:space="preserve">
-    <value>Fn Kilidi</value>
+    <value>Fn Lock</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Message" xml:space="preserve">
-    <value>UYARI!
-Bazı bilgisayarlar, belirtilenden daha düşük değerleri kabul edebilir, ancak dikkatli olun. Bu seçenek öngörülemeyen davranışlara neden olabilir, bu nedenle ne yaptığınızdan emin değilseniz, bunu 0'da bırakın.</value>
+    <value>FIGYELEM!
+Egyes laptopok alacsonyabb értékeket is elfogadnak, mint amennyit jeleznek, de legyen óvatos. Ez az opció kiszámíthatatlan viselkedést eredményezhet. Ha nem biztos benne, hogy mit csinál, hagyja ezt 0-án.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Title" xml:space="preserve">
-    <value>Minimum ofset</value>
+    <value>Minimális eltolás</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
-    <value>UYARI!
-Bazı bilgisayarlar, belirtilenden daha yüksek değerleri kabul edebilir, ancak dikkatli olun. Bu seçenek öngörülemeyen davranışlara neden olabilir, bu nedenle ne yaptığınızdan emin değilseniz, bunu 0'da bırakın.</value>
+    <value>FIGYELEM!
+Egyes laptopok nagyobb értékeket is elfogadnak, mint amennyit jeleznek, de legyen óvatos. Ez az opció kiszámíthatatlan viselkedést eredményezhet. Ha nem biztos benne, hogy mit csinál, hagyja ezt 0-án.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
-    <value>Maksimum ofset</value>
+    <value>Maximum eltolás</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
-    <value>Ne yaptığınızı gerçekten bilmiyorsanız aşağıdaki seçenekler ile oynamayın.</value>
+    <value>Ne változtassa meg az alábbi beállításokat, hacsak nem tudja, mit csinál.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Title" xml:space="preserve">
-    <value>Gelişmiş</value>
+    <value>Haladó</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading" xml:space="preserve">
-    <value>Uzun Vadeli Güç Limiti (Çapraz Yükleme)</value>
+    <value>Hosszú távú teljesítménykorlátozás (keresztterhelés)</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL" xml:space="preserve">
-    <value>Uzun Vadeli Güç Limiti</value>
+    <value>Hosszú távú teljesítménykorlátozás</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL" xml:space="preserve">
-    <value>Kısa Vadeli Güç Limiti</value>
+    <value>Rövid távú teljesítménykorlátozás</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit" xml:space="preserve">
-    <value>CPU Sıcaklık Limiti</value>
+    <value>CPU hőmérséklet-határ</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_Title" xml:space="preserve">
     <value>CPU</value>
   </data>
   <data name="GodModeSettingsWindow_Error_Apply_Title" xml:space="preserve">
-    <value>Ayar uygulanamadı</value>
+    <value>Nem sikerült alkalmazni a beállítást</value>
   </data>
   <data name="GodModeSettingsWindow_Error_Load_Title" xml:space="preserve">
-    <value>Ayar yüklenemedi.</value>
+    <value>Beállítás betöltése sikertelen.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
-    <value>Fan hızı kesin olarak 1 sıcaklık sensörü tarafından belirlenmemektedir. CPU, GPU ve Soğutucu sıcaklığı arasındaki en yüksek sensör başına hızı artıracak veya azaltacaktır. Fareyi her adımın üzerine getirdiğinizde tam değerler görünecektir.</value>
+    <value>A ventillátor sebességét nem minden esetben csak egy hőmérséklet szenzor határozza meg. A processzor, videókártya és a hűtőborda szenzorai közüli legmelegebb értékhez képest változik a ventillátor sebessége. A pontos értékek megjeleníthetők az egér mozgatásával.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Title" xml:space="preserve">
-    <value>Fan eğrisi</value>
+    <value>Ventilátor görbe</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Message" xml:space="preserve">
-    <value>UYARI!
-Bu seçeneğin uzun süreli kullanımı, fanların ömrünü azaltabilir.
-Cidden, bu seçeneğe dikkat edin!</value>
+    <value>FIGYELEM!
+Ennek az opciónak a hosszan tartó használata károsítja a ventilátorokat, csökkentve azok élettartamát.
+Komolyan, legyen óvatos ezzel az opcióval!</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Title" xml:space="preserve">
-    <value>Azami Çalışma Hızı</value>
+    <value>Maximális ventilátor sebesség</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Title" xml:space="preserve">
-    <value>Fanlar</value>
+    <value>Ventilátorok</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_CTGP" xml:space="preserve">
-    <value>Yapılandırılabilir TGP</value>
+    <value>Konfigurálható TGP</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost" xml:space="preserve">
-    <value>Dynamic Boost</value>
+    <value>Dinamikus Boost</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit" xml:space="preserve">
-    <value>GPU Sıcaklık Limiti</value>
+    <value>GPU hőmérsékleti határérték</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_Title" xml:space="preserve">
-    <value>GPU</value>
+    <value>Videókártya</value>
   </data>
   <data name="GodModeSettingsWindow_Title" xml:space="preserve">
-    <value>Özel Kipi Ayarları</value>
+    <value>Egyéni üzemmód-beállítások</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
-    <value>Yerleşik ekranda yüksek dinamik aralığı (HDR) etkinleştirin.
+    <value>A nagy dinamikatartomány (HDR) engedélyezése a beépített kijelzőn.
 
-UYARI: Dahili ekran kapalıysa bu işlem doğru çalışmaz.</value>
+FIGYELMEZTETÉS: Ez a művelet nem fog megfelelően futni, ha a belső kijelző ki van kapcsolva.</value>
   </data>
   <data name="HDRAutomationStepControl_Title" xml:space="preserve">
     <value>HDR</value>
   </data>
   <data name="HDRControl_Message" xml:space="preserve">
-    <value>Yerleşik ekranda yüksek dinamik aralığı (HDR) etkinleştirin.</value>
+    <value>A nagy dinamikatartomány (HDR) engedélyezése a beépített kijelzőn.</value>
   </data>
   <data name="HDRControl_Title" xml:space="preserve">
     <value>HDR</value>
   </data>
   <data name="HDRControl_Warning" xml:space="preserve">
-    <value>HDR kullanımı, Windows ayarları tarafından engellenmiş.</value>
+    <value>A HDR használatát a Windows beállításai blokkolják.</value>
   </data>
   <data name="Import" xml:space="preserve">
-    <value>İçe Aktar</value>
+    <value>Importálás</value>
   </data>
   <data name="IncompatibleDevice_Message" xml:space="preserve">
-    <value>Bu cihaz, Lenovo Legion Toolkit ile uyumlu değildir.</value>
+    <value>Ez a készülék nem kompatibilis a Lenovo Legion Toolkit-tel.</value>
   </data>
   <data name="KeyboardBacklightPage_NoCompatibleKeyboardsFound" xml:space="preserve">
-    <value>Uyumlu klavye bulunmadı</value>
+    <value>Nem találtunk kompatibilis billentyűzeteket</value>
   </data>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
-    <value>Klavye Işığı</value>
+    <value>Billentyűzet háttérvilágítás</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>Vantage veya servisleri çalışırken klavye ışığı burada kontrol edilemez.</value>
+    <value>A billentyűzet háttérvilágítása nem szabályozható itt, amikor a Vantage vagy annak szolgáltatásai futnak.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Lenovo Vantage veya hizmetleri çalışıyor</value>
+    <value>A Lenovo Vantage vagy annak szolgáltatásai futnak</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
-    <value>Hakkında</value>
+    <value>Névjegy</value>
   </data>
   <data name="MainWindow_NavigationItem_Actions" xml:space="preserve">
-    <value>Eylemler</value>
+    <value>Műveletek</value>
   </data>
   <data name="MainWindow_NavigationItem_Battery" xml:space="preserve">
-    <value>Pil</value>
+    <value>Akkumulátor</value>
   </data>
   <data name="MainWindow_NavigationItem_Dashboard" xml:space="preserve">
-    <value>Menü</value>
+    <value>Irányítópult</value>
   </data>
   <data name="MainWindow_NavigationItem_Donate" xml:space="preserve">
-    <value>Bağış</value>
+    <value>Támogatás</value>
   </data>
   <data name="MainWindow_NavigationItem_Keyboard" xml:space="preserve">
-    <value>Klavye</value>
+    <value>Billentyűzet</value>
   </data>
   <data name="MainWindow_NavigationItem_Packages" xml:space="preserve">
-    <value>İndirilenler</value>
+    <value>Letöltések</value>
   </data>
   <data name="MainWindow_NavigationItem_Settings" xml:space="preserve">
-    <value>Ayarlar</value>
+    <value>Beállítások</value>
   </data>
   <data name="MainWindow_UpdateAvailable" xml:space="preserve">
-    <value>Güncelleme mevcut!</value>
+    <value>Frissítés érhető el!</value>
   </data>
   <data name="MainWindow_UpdateAvailableWithVersion" xml:space="preserve">
-    <value>{0} Güncelleme mevcut!</value>
+    <value>{0} frissítés érhető el!</value>
   </data>
   <data name="MoveDown" xml:space="preserve">
-    <value>Aşağı Taşı</value>
+    <value>Mozgatás le</value>
   </data>
   <data name="MoveUp" xml:space="preserve">
-    <value>Yukarı taşı</value>
+    <value>Mozgatás fel</value>
   </data>
   <data name="No" xml:space="preserve">
-    <value>Hayır</value>
+    <value>Nem</value>
   </data>
   <data name="Notification_ACAdapterConnected" xml:space="preserve">
-    <value>AC adaptörü bağlı</value>
+    <value>Hálózati töltőadapter csatlakoztatva</value>
   </data>
   <data name="Notification_ACAdapterConnectedLowWattage" xml:space="preserve">
-    <value>AC adaptörü bağlı (Düşük watt)</value>
+    <value>Hálózati töltőadapter csatlakoztatva (alacsony teljesítményű)</value>
   </data>
   <data name="Notification_ACAdapterDisconnected" xml:space="preserve">
-    <value>AC adaptörü bağlantısı kesildi</value>
+    <value>Hálózati adapter lecsatlakoztatva</value>
   </data>
   <data name="Notification_CameraOff" xml:space="preserve">
-    <value>Kamera kapalı</value>
+    <value>Kamera ki</value>
   </data>
   <data name="Notification_CameraOn" xml:space="preserve">
-    <value>Kamera açık</value>
+    <value>Kamera be</value>
   </data>
   <data name="Notification_CapsLockOff" xml:space="preserve">
-    <value>Büyük Harf Kilidi kapalı</value>
+    <value>Caps Lock ki</value>
   </data>
   <data name="Notification_CapsLockOn" xml:space="preserve">
-    <value>Büyük Harf Kilidi açık</value>
+    <value>Caps Lock be</value>
   </data>
   <data name="Notification_FnLockOff" xml:space="preserve">
-    <value>Fn Kilidi kapalı</value>
+    <value>Fn Lock ki</value>
   </data>
   <data name="Notification_FnLockOn" xml:space="preserve">
-    <value>Fn Kilidi açık</value>
+    <value>Fn Lock be</value>
   </data>
   <data name="Notification_MicrophoneOff" xml:space="preserve">
-    <value>Mikrofon kapalı</value>
+    <value>Mikrofon ki</value>
   </data>
   <data name="Notification_MicrophoneOn" xml:space="preserve">
-    <value>Mikrofon Açık</value>
+    <value>Mikrofon be</value>
   </data>
   <data name="Notification_NumLockOff" xml:space="preserve">
-    <value>Num Kilidi kapalı</value>
+    <value>Num Lock ki</value>
   </data>
   <data name="Notification_NumLockOn" xml:space="preserve">
-    <value>Num Kilidi açık</value>
+    <value>Num Lock be</value>
   </data>
   <data name="Notification_SpectrumKeyboardBacklight_Backlight" xml:space="preserve">
-    <value>Arka ışık {0}</value>
+    <value>Háttérvilágítás {0}</value>
   </data>
   <data name="Notification_SpectrumKeyboardBacklight_Brightness" xml:space="preserve">
-    <value>Parlaklık {0}</value>
+    <value>Fényerő {0}</value>
   </data>
   <data name="Notification_SpectrumKeyboardBacklight_Profile" xml:space="preserve">
-    <value>Profil {0}</value>
+    <value>Profil: {0}</value>
   </data>
   <data name="Notification_TouchpadOff" xml:space="preserve">
-    <value>Touchpad kapalı</value>
+    <value>Érintőfelület ki</value>
   </data>
   <data name="Notification_TouchpadOn" xml:space="preserve">
-    <value>Touchpad açık</value>
+    <value>Érintőfelület be</value>
   </data>
   <data name="Notification_WhiteKeyboardBacklight" xml:space="preserve">
-    <value>Arka ışık {0}</value>
+    <value>Háttérvilágítás {0}</value>
   </data>
   <data name="NotificationsSettingsWindow_ACAdapter" xml:space="preserve">
-    <value>AC Adaptörü</value>
+    <value>Hálózati adapter</value>
   </data>
   <data name="NotificationsSettingsWindow_Camera" xml:space="preserve">
     <value>Kamera</value>
   </data>
   <data name="NotificationsSettingsWindow_CapsAndNumLock" xml:space="preserve">
-    <value>Büyük Tuş Kilidi ve Num Kilidi</value>
+    <value>Caps Lock és Num Lock</value>
   </data>
   <data name="NotificationsSettingsWindow_DontShowNotifications_Message" xml:space="preserve">
-    <value>Mikrofonun sesini kapatma gibi Fn tuşları eylemleri için ekran bildirimini devre dışı bırakır
-Tam ekran uygulamalarda rahatsız oluyorsanız bu seçeneği etkinleştirin.</value>
+    <value>Az Fn billentyűkkel végzett műveletek, például a mikrofon elnémítása esetén az értesítés letiltása.
+Engedélyezze ezt az opciót, ha konfliktusok vannak a teljes képernyős alkalmazásokkal.</value>
   </data>
   <data name="NotificationsSettingsWindow_DontShowNotifications_Title" xml:space="preserve">
-    <value>Bildirimleri gösterme</value>
+    <value>Ne jelenítsen meg értesítéseket</value>
   </data>
   <data name="NotificationsSettingsWindow_FnLock" xml:space="preserve">
-    <value>Fn Kilidi</value>
+    <value>Fn Lock</value>
   </data>
   <data name="NotificationsSettingsWindow_KeyboardBacklight" xml:space="preserve">
-    <value>Klavye Işığı</value>
+    <value>Billentyűzet háttérvilágítás</value>
   </data>
   <data name="NotificationsSettingsWindow_Microphone" xml:space="preserve">
     <value>Mikrofon</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationPosition_Title" xml:space="preserve">
-    <value>Konum</value>
+    <value>Pozíció</value>
   </data>
   <data name="NotificationsSettingsWindow_PowerMode" xml:space="preserve">
-    <value>Güç Modu</value>
+    <value>Energiagazdálkodási üzemmód</value>
   </data>
   <data name="NotificationsSettingsWindow_RefreshRate" xml:space="preserve">
-    <value>Yenileme Hızı</value>
+    <value>Frissítés gyakorisága</value>
   </data>
   <data name="NotificationsSettingsWindow_SmartKey" xml:space="preserve">
-    <value>Akıllı Tuş</value>
+    <value>Okos gomb</value>
   </data>
   <data name="NotificationsSettingsWindow_Title" xml:space="preserve">
-    <value>Bildirimler</value>
+    <value>Értesítések</value>
   </data>
   <data name="NotificationsSettingsWindow_TouchpadLock" xml:space="preserve">
-    <value>Touchpad Kilidi</value>
+    <value>Touchpad zár</value>
   </data>
   <data name="OK" xml:space="preserve">
-    <value>Tamam</value>
+    <value>OK</value>
   </data>
   <data name="Open" xml:space="preserve">
-    <value>Aç</value>
+    <value>Megnyitás</value>
   </data>
   <data name="OverDriveAutomationStepControl_Message" xml:space="preserve">
-    <value>Yerleşik ekranın yanıt süresini iyileştirin.</value>
+    <value>A beépített kijelző válaszidejének gyorsítása.</value>
   </data>
   <data name="OverDriveAutomationStepControl_Title" xml:space="preserve">
     <value>Over Drive</value>
   </data>
   <data name="OverDriveControl_Message" xml:space="preserve">
-    <value>Yerleşik ekranın yanıt süresini iyileştirin.</value>
+    <value>A beépített kijelző válaszidejének gyorsítása.</value>
   </data>
   <data name="OverDriveControl_Title" xml:space="preserve">
     <value>Over Drive</value>
   </data>
   <data name="PackageControl_DownloadComplete_Message" xml:space="preserve">
-    <value>{0} indirildi!</value>
+    <value>{0} letöltve!</value>
   </data>
   <data name="PackageControl_DownloadComplete_Title" xml:space="preserve">
-    <value>İndirme tamamlandı</value>
+    <value>Letöltés kész</value>
   </data>
   <data name="PackageControl_GeneralError_Title" xml:space="preserve">
-    <value>Bir şeyler ters gitti</value>
+    <value>Valami hiba történt</value>
   </data>
   <data name="PackageControl_Http404Error_Message" xml:space="preserve">
-    <value>Sunucu 404 kodunu döndürdü.</value>
+    <value>A szerver 404-es kódot küldött vissza.</value>
   </data>
   <data name="PackageControl_Http404Error_Title" xml:space="preserve">
-    <value>Dosya kaldırılmış gibi görünüyor</value>
+    <value>Úgy tűnik, a fájl eltűnt</value>
   </data>
   <data name="PackageControl_HttpGeneralError_Message" xml:space="preserve">
-    <value>İnternet bağlantınızın açık ve çalışır durumda olup olmadığını kontrol edin.</value>
+    <value>Ellenőrizze, hogy az internetkapcsolata működik-e.</value>
   </data>
   <data name="PackageControl_HttpGeneralError_Title" xml:space="preserve">
-    <value>Bir şeyler ters gitti</value>
+    <value>Valami hiba történt</value>
   </data>
   <data name="PackageControl_IsUpdateInfo" xml:space="preserve">
-    <value>Güncelleme mevcut!</value>
+    <value>Frissítés érhető el!</value>
   </data>
   <data name="PackageControl_OldPackageWarning" xml:space="preserve">
-    <value>Bu paket bir yıldan daha eski.</value>
+    <value>Ez a csomag több mint egy éves.</value>
   </data>
   <data name="PackageControl_Version" xml:space="preserve">
-    <value>Sürüm</value>
+    <value>Verzió</value>
   </data>
   <data name="PackagesPage_Disclaimer_Message" xml:space="preserve">
-    <value>Aşağıda, dizüstü bilgisayarınızla uyumlu olarak işaretlenmiş yazılım paketlerinin bir listesi bulunmaktadır.
-Daima doğru paketleri kurduğunuzdan emin olun.</value>
+    <value>Az alábbiakban a laptopjával kompatibilisnek jelölt szoftvercsomagok listáját találja.
+Mindig győződjön meg arról, hogy a megfelelő csomagokat telepíti.</value>
   </data>
   <data name="PackagesPage_DownloadFailed_Message" xml:space="preserve">
-    <value>Makine Türü ve işletim sisteminin doğru ayarlanıp ayarlanmadığını kontrol edin.</value>
+    <value>Ellenőrizze, hogy a gép típusa és az operációs rendszer helyesen van-e beállítva.</value>
   </data>
   <data name="PackagesPage_DownloadFailed_Title" xml:space="preserve">
-    <value>Bir şeyler ters gitti</value>
+    <value>Valami nem sikerült</value>
   </data>
   <data name="PackagesPage_DownloadInProgress_Message" xml:space="preserve">
-    <value>Sıralamayı değiştirmek, sonuçları filtrelemek, paketleri gizlemek veya listeyi yenilemek indirmeyi durduracaktır. Devam etmek istiyor musun?</value>
+    <value>A rendezés megváltoztatása, az eredmények szűrése, a csomagok elrejtése vagy a lista frissítése leállítja a letöltést. Folytatni szeretné?</value>
   </data>
   <data name="PackagesPage_DownloadInProgress_Title" xml:space="preserve">
-    <value>İndirme devam ediyor</value>
+    <value>Letöltés folyamatban</value>
   </data>
   <data name="Filter" xml:space="preserve">
-    <value>Filtre...</value>
+    <value>Szűrő...</value>
   </data>
   <data name="PackagesPage_MachineType" xml:space="preserve">
-    <value>Cihaz Tipi</value>
+    <value>Gép típusa</value>
   </data>
   <data name="PackagesPage_OperatingSystem" xml:space="preserve">
-    <value>İşletim sistemi</value>
+    <value>Operációs rendszer</value>
   </data>
   <data name="PackagesPage_PrimarySource" xml:space="preserve">
-    <value>Birincil (Önerilen)</value>
+    <value>Elsődleges (ajánlott)</value>
   </data>
   <data name="PackagesPage_PrimarySource_Message" xml:space="preserve">
-    <value>Lenovo Vantage ile aynı</value>
+    <value>Ugyanaz, mint a Lenovo Vantage</value>
   </data>
   <data name="PackagesPage_SecondarySource" xml:space="preserve">
-    <value>İkincil</value>
+    <value>Másodlagos</value>
   </data>
   <data name="PackagesPage_SecondarySource_Message" xml:space="preserve">
-    <value>Lenovo PC Desteği ile aynı</value>
+    <value>Ugyanaz, mint a Lenovo PC Support</value>
   </data>
   <data name="PackagesPage_Sort_Category" xml:space="preserve">
-    <value>Kategori</value>
+    <value>Kategória</value>
   </data>
   <data name="PackagesPage_Sort_Date" xml:space="preserve">
-    <value>Tarih</value>
+    <value>Dátum</value>
   </data>
   <data name="PackagesPage_Sort_Name" xml:space="preserve">
-    <value>İsim</value>
+    <value>Név</value>
   </data>
   <data name="PackagesPage_Source" xml:space="preserve">
-    <value>Kaynak</value>
+    <value>Forrás</value>
   </data>
   <data name="PackagesPage_Title" xml:space="preserve">
-    <value>İndirilenler</value>
+    <value>Letöltések</value>
   </data>
   <data name="Paste" xml:space="preserve">
-    <value>Yapıştır</value>
+    <value>Beillesztés</value>
   </data>
   <data name="PowerModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Performans modunu seçin.</value>
+    <value>Teljesítmény üzemmód váltása.</value>
   </data>
   <data name="PowerModeAutomationStepControl_Title" xml:space="preserve">
-    <value>Güç Modu</value>
+    <value>Teljesítménymód</value>
   </data>
   <data name="PowerModeControl_Message" xml:space="preserve">
-    <value>Performans modunu seçin.
-Fn+Q ile modu değiştirebilirsiniz.</value>
+    <value>Teljesítmény üzemmód váltása.
+A teljesítménymódot az Fn+Q billentyűkombinációval is meg lehet változtatni.</value>
   </data>
   <data name="PowerModeControl_Settings" xml:space="preserve">
-    <value>Ayarlar</value>
+    <value>Beállítások</value>
   </data>
   <data name="PowerModeControl_Title" xml:space="preserve">
-    <value>Güç Modu</value>
+    <value>Teljesítménymód</value>
   </data>
   <data name="PowerModeControl_Warning" xml:space="preserve">
-    <value>Seçilen güç modu, AC adaptörü bağlı olmadan düzgün çalışmayabilir.</value>
+    <value>A kiválasztott teljesítménymód nem biztos, hogy megfelelően működik hálózati adapter csatlakoztatása nélkül.</value>
   </data>
   <data name="WindowsPowerPlansWindow_DefaultPowerPlan" xml:space="preserve">
-    <value>Varsayılan</value>
+    <value>Alapértelmezett</value>
   </data>
   <data name="WindowsPowerPlansWindow_Title" xml:space="preserve">
-    <value>Windows Güç Planları</value>
+    <value>Windows Energiasémák</value>
   </data>
   <data name="RGBKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>Klavye ışıklarını ayarlayın.</value>
+    <value>Billentyűzet háttérvilágítás beállítása.</value>
   </data>
   <data name="RGBKeyboardBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>Klavye ışığı</value>
+    <value>Billentyűzet háttérvilágítás</value>
   </data>
   <data name="RGBKeyboardBacklightBrightnessCardControl_Brightness" xml:space="preserve">
-    <value>Parlaklık</value>
+    <value>Fényerő</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Preset1" xml:space="preserve">
-    <value>Ön ayar 1</value>
+    <value>Előre beállított 1</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Preset2" xml:space="preserve">
-    <value>Ön ayar 2</value>
+    <value>Előre beállított 2</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Preset3" xml:space="preserve">
-    <value>Ön ayar 3</value>
+    <value>Előre beállított 3</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Preset4" xml:space="preserve">
-    <value>Ön ayar 4</value>
+    <value>Előre beállított 4</value>
   </data>
   <data name="RGBKeyboardBacklightControl_PresetOff" xml:space="preserve">
-    <value>Kapalı</value>
+    <value>Ki</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Zone1" xml:space="preserve">
-    <value>Bölge 1</value>
+    <value>Zóna 1</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Zone2" xml:space="preserve">
-    <value>Bölge 2</value>
+    <value>Zóna 2</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Zone3" xml:space="preserve">
-    <value>Bölge 3</value>
+    <value>Zóna 3</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Zone4" xml:space="preserve">
-    <value>Bölge 4</value>
+    <value>Zóna 4</value>
   </data>
   <data name="RGBKeyboardBacklightEffectCardControl_Title" xml:space="preserve">
-    <value>Efekt</value>
+    <value>Hatás</value>
   </data>
   <data name="RGBKeyboardBacklightSpeedCardControl_Title" xml:space="preserve">
-    <value>Hız</value>
+    <value>Sebesség</value>
   </data>
   <data name="ReadmeWindow_Title" xml:space="preserve">
-    <value>Benioku</value>
+    <value>Olvass el</value>
   </data>
   <data name="Refresh" xml:space="preserve">
-    <value>Yenile</value>
+    <value>Frissítés</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Message" xml:space="preserve">
-    <value>Yerleşik ekranın yenileme hızını değiştirin.
+    <value>A beépített kijelző frissítési sebességének módosítása.
 
-UYARI: Yerleşik ekran kapalıysa bu eylem düzgün çalışmayacaktır.</value>
+FIGYELMEZTETÉS: Ez a művelet nem fog megfelelően futni, ha a belső kijelző ki van kapcsolva.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
-    <value>Yenileme hızı</value>
+    <value>Frissítés gyakorisága</value>
   </data>
   <data name="RefreshRateControl_Message" xml:space="preserve">
-    <value>Yerleşik ekranın yenileme hızını değiştirin.</value>
+    <value>A beépített kijelző frissítési sebességének módosítása.</value>
   </data>
   <data name="RefreshRateControl_Title" xml:space="preserve">
-    <value>Yenileme hızı</value>
+    <value>Frissítés gyakorisága</value>
   </data>
   <data name="Rename" xml:space="preserve">
-    <value>Adlandır</value>
+    <value>Átnevezés</value>
   </data>
   <data name="RestartLater" xml:space="preserve">
-    <value>Sonra yeniden başlatacağım</value>
+    <value>Később újraindítom</value>
   </data>
   <data name="RestartNow" xml:space="preserve">
-    <value>Şimdi yeniden başlat</value>
+    <value>Újraindítás most</value>
   </data>
   <data name="Revert" xml:space="preserve">
-    <value>Geri al</value>
+    <value>Visszaállítás</value>
   </data>
   <data name="RunAutomationStepControl_ExeArguments" xml:space="preserve">
-    <value>Argümanlar</value>
+    <value>Paraméterek</value>
   </data>
   <data name="RunAutomationStepControl_ExePath" xml:space="preserve">
-    <value>Çalıştıralabilirin Konumu</value>
+    <value>Futtatható elérési útvonal</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
-    <value>Bir komut veya program çalıştırın.
-Önce komutun doğru çalıştığından emin olun.</value>
+    <value>Szkript vagy program futtatása.
+Először győződjön meg róla, hogy a szkript helyesen fut.</value>
   </data>
   <data name="RunAutomationStepControl_Title" xml:space="preserve">
-    <value>Çalıştır</value>
+    <value>Futtatás</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Kaydet</value>
+    <value>Mentés</value>
   </data>
   <data name="Saving" xml:space="preserve">
-    <value>Kaydediliyor...</value>
+    <value>Mentés...</value>
   </data>
   <data name="SelectSmartKeyPipelinesWindow_List_Description" xml:space="preserve">
-    <value>Geçiş yapmak için bir veya daha fazla hızlı işlem seçin</value>
+    <value>Válasszon ki egy vagy több gyorsműveletet, hogy végigmenjen</value>
   </data>
   <data name="SelectSmartKeyPipelinesWindow_List_Empty" xml:space="preserve">
-    <value>Hızlı İşlem tanımlanmadı.</value>
+    <value>Nincsenek gyors műveletek definiálva.</value>
   </data>
   <data name="SelectSmartKeyPipelinesWindow_ShowThisApp" xml:space="preserve">
-    <value>Bu uygulamayı göster</value>
+    <value>Mutassa ezt az alkalmazást</value>
   </data>
   <data name="SettingsPage_AccentColor_Description" xml:space="preserve">
-    <value>Uygulamanın rengini değiştirin.</value>
+    <value>Az alkalmazás kiemelő színének módosítása.</value>
   </data>
   <data name="SettingsPage_AccentColor_Title" xml:space="preserve">
-    <value>Renk</value>
+    <value>Kiemelőszín</value>
   </data>
   <data name="SettingsPage_Autorun_Message" xml:space="preserve">
-    <value>Windows'ta oturum açtığınızda küçültülmüş halde başlatın.</value>
+    <value>A Windows rendszerbe való bejelentkezéskor a tálcára minimalizálva indul.</value>
   </data>
   <data name="SettingsPage_Autorun_Title" xml:space="preserve">
-    <value>Otomatik Çalıştırma</value>
+    <value>Automatikus indítás</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone düzgün bir şekilde devre dışı bırakılmamış olabilir</value>
+    <value>Lehet, hogy a Legion Zone nem megfelelően lett letiltva</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Title" xml:space="preserve">
-    <value>Legion Zone devre dışı bırakılamadı</value>
+    <value>Nem tudta letiltani a Legion Zone-t</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Message" xml:space="preserve">
-    <value>Legion Zone'u ve hizmetini kaldırmadan devre dışı bırakın.
-Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
+    <value>Tiltja le a Legion Zone-t és szolgáltatását anélkül, hogy eltávolítaná.
+Az opció módosítása után ajánlott az újraindítás.</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Title" xml:space="preserve">
-    <value>Legion Zone'u devre dışı bırak</value>
+    <value>Legion Zone letiltása</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys doğru bir şekilde devre dışı bırakılmamış olabilir</value>
+    <value>A Lenovo gyorsbillentyűk esetleg nem megfelelően lettek letiltva</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>Lenovo Hotkeys devre dışı bırakılamadı</value>
+    <value>Nem sikerült letiltani a Lenovo Hotkeys-t</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys ve hizmetini kaldırmadan devre dışı bırakın.
-Devre dışı bırakılırsa, bu uygulama Fn kısayollarını idare edecektir
-Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
+    <value>A Lenovo Hotkeys és szolgáltatásának letiltása eltávolítás nélkül.
+Ha letiltja, ez az alkalmazás kezeli az Fn parancsikonokat.
+Az opció módosítása után ajánlott az újraindítás.</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
-    <value>Lenovo Hotkeys'i Devre Dışı Bırak</value>
+    <value>Lenovo gyorsbillentyűk (Hotkeys) letiltása</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>Vantage ve/veya ImController doğru şekilde devre dışı bırakılmamış olabilir</value>
+    <value>A Vantage és/vagy az ImController esetleg nem megfelelően lett letiltva</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
-    <value>Vantage ve/veya ImController devre dışı bırakılamadı</value>
+    <value>Nem sikerült letiltani a Vantage és/vagy ImController-t</value>
   </data>
   <data name="SettingsPage_DisableVantage_Message" xml:space="preserve">
-    <value>Lenovo Vantage'ı ve lmController hizmetini kaldırmadan devre dışı bırakın.
-Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
+    <value>A Lenovo Vantage és az ImController letiltása eltávolításuk nélkül.
+Az opció módosítása után ajánlott az újraindítás.</value>
   </data>
   <data name="SettingsPage_DisableVantage_Title" xml:space="preserve">
-    <value>Lenovo Vantage ve ImController'ı devre dışı bırakın</value>
+    <value>A Lenovo Vantage és az ImController letiltása</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone doğru bir şekilde etkinleştirilmemiş olabilir</value>
+    <value>Lehet, hogy a Legion Zone nem megfelelően lett engedélyezve</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Title" xml:space="preserve">
-    <value>Legion Zone etkinleştirilemedi</value>
+    <value>Nem sikerült engedélyezni a Legion Zone-t</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys doğru bir şekilde etkinleştirilmemiş olabilir</value>
+    <value>A Lenovo gyorsbillentyűk esetleg nem megfelelően lettek engedélyezve</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>Lenovo Hotkeys Tuşları etkinleştirilemedi</value>
+    <value>Nem sikerült engedélyezni a Lenovo Hotkeys billentyűket</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Vantage ve/veya ImController doğru şekilde etkinleştirilmemiş olabilir</value>
+    <value>A Vantage és/vagy az ImController esetleg nem megfelelően lett engedélyezve</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
-    <value>Vantage ve/veya ImController etkinleştirilemedi</value>
+    <value>Nem sikerült engedélyezni a Vantage és/vagy ImController-t</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
-    <value>Fn+R kısayolunu daha kullanışlı hale getirmek için yenileme hızlarını hariç tutabilirsiniz.</value>
+    <value>Kizárhat frissítési rátákat, hogy az Fn+R gyorsbillentyű hasznosabbá váljon.</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Title" xml:space="preserve">
-    <value>Yenileme Hızlarını Hariç Tut</value>
+    <value>Frissítési ráták kihagyása</value>
   </data>
   <data name="SettingsPage_Language_Message" xml:space="preserve">
-    <value>Dil seçin.</value>
+    <value>Nyelv kiválasztása.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
-    <value>Dil</value>
+    <value>Nyelv</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
-    <value>Her zaman görev çubuğu tepsisine küçültün. Tepsi simgesine sağ tıklayarak kapatın.</value>
+    <value>Mindig minimalizálja a tálcára. Zárja be a tálca ikonjára való jobb kattintással.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
-    <value>Kapatırken simge durumuna küçült</value>
+    <value>Minimalizálás bezáráskor</value>
   </data>
   <data name="SettingsPage_Notifications_Message" xml:space="preserve">
-    <value>Hangi bildirimlerin gösterileceğini ayarlayın.</value>
+    <value>Annak beállítása, hogy mely értesítések jelenjenek meg.</value>
   </data>
   <data name="SettingsPage_Notifications_Title" xml:space="preserve">
-    <value>Bildirimler</value>
+    <value>Értesítések</value>
   </data>
   <data name="SettingsPage_WindowsPowerPlans_Title" xml:space="preserve">
-    <value>Windows Güç Planları</value>
+    <value>Windows Energiasémák</value>
   </data>
   <data name="SettingsPage_SmartKeyDoublePressAction_Message" xml:space="preserve">
-    <value>Fn+F9'a çift basışa Hızlı İşlem atayın.</value>
+    <value>Az Fn+F9 dupla lenyomásához rendelje hozzá a gyors műveletet.</value>
   </data>
   <data name="SettingsPage_SmartKeyDoublePressAction_Title" xml:space="preserve">
-    <value>Akıllı Tuş İkincil İşlem</value>
+    <value>Okos gomb másodlagos művelet</value>
   </data>
   <data name="SettingsPage_SmartKeySinglePressAction_Message" xml:space="preserve">
-    <value>Fn+F9 tek basışına Hızlı Eylem atayın.</value>
+    <value>Gyors művelet hozzárendelése az Fn+F9 egyszeri megnyomásához.</value>
   </data>
   <data name="SettingsPage_SmartKeySinglePressAction_Title" xml:space="preserve">
-    <value>Akıllı Tuş Eylemi</value>
+    <value>Okos gomb művelete</value>
   </data>
   <data name="SettingsPage_Theme_Description" xml:space="preserve">
-    <value>Açık temayı, koyu temayı ayarlayın veya sistem ayarlarını takip edin.</value>
+    <value>Állítson be világos témát, sötét témát vagy kövesse a rendszerbeállításokat.</value>
   </data>
   <data name="SettingsPage_Theme_Title" xml:space="preserve">
-    <value>Tema</value>
+    <value>Téma</value>
   </data>
   <data name="SettingsPage_Title" xml:space="preserve">
-    <value>Ayarlar</value>
+    <value>Beállítások</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Klavye ışık seviyesini ayarlayın.</value>
+    <value>Billentyűzet háttérvilágításának beállítása.</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Off" xml:space="preserve">
-    <value>Kapalı</value>
+    <value>Ki</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Title" xml:space="preserve">
-    <value>Klavye ışık parlaklığı</value>
+    <value>A billentyűzet háttérvilágítás fényereje</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_AddEffect" xml:space="preserve">
-    <value>Efekt ekle</value>
+    <value>Effekt hozzáadása</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ApplyProfileError_Title" xml:space="preserve">
-    <value>Profil uygulanamadı</value>
+    <value>Nem lehetett alkalmazni a profilt</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ApplyProfileError_Message" xml:space="preserve">
-    <value>Işık profili uygulanamadı.</value>
+    <value>A világítási profilt nem lehetett alkalmazni.</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_Brightness_Title" xml:space="preserve">
-    <value>Parlaklık</value>
+    <value>Fényerő</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_DeselectAll_ToolTip" xml:space="preserve">
-    <value>Tüm bölgelerin seçimini kaldır</value>
+    <value>Az összes zóna kijelölésének megszüntetése</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_Effects" xml:space="preserve">
-    <value>Efektler</value>
+    <value>Effektek</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ExportProfileError_Message" xml:space="preserve">
-    <value>Profil dışa aktarılamadı</value>
+    <value>A profilt nem lehetett exportálni</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ExportProfileError_Title" xml:space="preserve">
-    <value>Profil dışa aktarılamadı</value>
+    <value>Nem sikerült exportálni a profilt</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ImportProfileError_Message" xml:space="preserve">
-    <value>Profil içe aktarılamadı</value>
+    <value>A profilt nem lehetett importálni</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ImportProfileError_Title" xml:space="preserve">
-    <value>Profil içe aktarılamadı</value>
+    <value>Nem sikerült importálni a profilt</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_NoEffects_Text" xml:space="preserve">
-    <value>Hiçbir efekt eklenmedi.</value>
+    <value>Nincs hozzáadott effektus.</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ResetToDefault_Tooltip" xml:space="preserve">
-    <value>Varsayılana sıfırla</value>
+    <value>Alapbeállítások visszaállítása</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_SelectAll_ToolTip" xml:space="preserve">
-    <value>Tüm bölgeleri seç</value>
+    <value>Összes zóna kiválasztása</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_SwitchKeyboardLayout_ToolTip" xml:space="preserve">
-    <value>Klavye düzenini değiştir</value>
+    <value>Billentyűzetkiosztás váltása</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_ClockwiseDirection_Title" xml:space="preserve">
-    <value>Yön</value>
+    <value>Irány</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Color_Title" xml:space="preserve">
-    <value>Renk</value>
+    <value>Szín</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Colors_Title" xml:space="preserve">
-    <value>Renkler</value>
+    <value>Színek</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Direction_Title" xml:space="preserve">
-    <value>Yön</value>
+    <value>Irány</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Effect_Title" xml:space="preserve">
-    <value>Efekt</value>
+    <value>Effekt</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Effect_Warning" xml:space="preserve">
-    <value>Bu efekt tüm klavyeye uygulanacak ve diğer tüm efektlerin yerini alacaktır.</value>
+    <value>Ez az effekt az egész billentyűzetre vonatkozik, és minden más effekt helyébe lép.</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Speed_Title" xml:space="preserve">
-    <value>Hız</value>
+    <value>Gyorsaság</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Title_Add" xml:space="preserve">
-    <value>Efekt ekle</value>
+    <value>Effekt hozzáadása</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Title_Edit" xml:space="preserve">
-    <value>Efekti düzenle</value>
+    <value>Effekt szerkesztése</value>
   </data>
   <data name="SpectrumKeyboardBacklightProfileAutomationStepControl_Message" xml:space="preserve">
-    <value>Klavye ışık profilini ayarlayın.</value>
+    <value>Billentyűzet háttérvilágítás profiljának beállítása.</value>
   </data>
   <data name="SpectrumKeyboardBacklightProfileAutomationStepControl_Title" xml:space="preserve">
-    <value>Klavye ışık profili</value>
+    <value>Billentyűzet háttérvilágítás profilja</value>
   </data>
   <data name="SpectrumKeyboardEffectControl_Description_AllZones" xml:space="preserve">
-    <value>Bütün tuşlar</value>
+    <value>Minden gomb</value>
   </data>
   <data name="SpectrumKeyboardEffectControl_Description_Zones" xml:space="preserve">
-    <value>{0} bölge</value>
+    <value>{0} zónák</value>
   </data>
   <data name="TimeAutomationPipelineTriggerTabItemContent_Sunrise" xml:space="preserve">
-    <value>Gündoğumu</value>
+    <value>Napkelte</value>
   </data>
   <data name="TimeAutomationPipelineTriggerTabItemContent_Sunset" xml:space="preserve">
-    <value>Gün batımı</value>
+    <value>Napnyugta</value>
   </data>
   <data name="TimeAutomationPipelineTriggerTabItemContent_Time" xml:space="preserve">
-    <value>Zaman</value>
+    <value>Idő</value>
   </data>
   <data name="ToggleHybridModeControl_Message" xml:space="preserve">
-    <value>Entegre ve harici GPU arasında geçişe izin verin.
-Yeniden başlatma gerektirir.</value>
+    <value>Lehetővé teszi az integrált és a diszkrét GPU közötti váltást.
+Újraindítást igényel.</value>
   </data>
   <data name="ToggleHybridModeControl_RestartRequired_Message" xml:space="preserve">
-    <value>Hibrit Modun değiştirilmesi yeniden başlatmayı gerektirir. Şimdi yeniden başlatmak istiyor musunuz?</value>
+    <value>A hibrid üzemmód megváltoztatása újraindítást igényel. Most szeretné újraindítani?</value>
   </data>
   <data name="ToggleHybridModeControl_RestartRequired_Title" xml:space="preserve">
-    <value>Yeniden başlatma gerekli</value>
+    <value>Újraindítás szükséges</value>
   </data>
   <data name="ToggleHybridModeControl_Title" xml:space="preserve">
-    <value>Hibrit Kipi</value>
+    <value>Hibrid mód</value>
   </data>
   <data name="TouchpadLockAutomationStepControl_Message" xml:space="preserve">
-    <value>Touchpad'i devre dışı bırak.</value>
+    <value>Az érintőpad kikapcsolása.</value>
   </data>
   <data name="TouchpadLockAutomationStepControl_Title" xml:space="preserve">
-    <value>Touchpad Kilidi</value>
+    <value>Touchpad zár</value>
   </data>
   <data name="TouchpadLockControl_Message" xml:space="preserve">
-    <value>Touchpad'i devre dışı bırakın.</value>
+    <value>Az érintőpad kikapcsolása.</value>
   </data>
   <data name="TouchpadLockControl_Title" xml:space="preserve">
-    <value>Touchpad Kilidi</value>
+    <value>Touchpad zár</value>
   </data>
   <data name="TryAgain" xml:space="preserve">
-    <value>Tekrar deneyin</value>
+    <value>Próbálja meg újra</value>
   </data>
   <data name="UnexpectedException" xml:space="preserve">
-    <value>Beklenmeyen bir hata oluştu:
+    <value>Váratlan hiba történt:
 {0}
 
-Lütfen sorunu {1} üzerinden bildirin.</value>
+Kérjük, jelentse a problémát itt: {1}.</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
-    <value>Adsız</value>
+    <value>Névtelen</value>
   </data>
   <data name="UnsupportedWindow_Disclaimer" xml:space="preserve">
-    <value>Risk size ait olmak üzere devam etmeyi seçebilirsiniz, ancak bazı özelliklerin kullanılamayabileceğini ve/veya düzgün çalışmayabileceğini unutmayın.
+    <value>A folytatást saját felelősségére választhatja, de ne feledje, hogy egyes funkciók esetleg nem állnak rendelkezésre és/vagy nem működnek megfelelően.
 
-Devam etmeyi seçerseniz, kayıt etme otomatik olarak etkinleştirilecektir.</value>
+A naplózás automatikusan engedélyezésre kerül, ha a folytatást választja.</value>
   </data>
   <data name="UnsupportedWindow_Disclaimer_GitHub" xml:space="preserve">
-    <value>Daha fazla bilgi için GitHub'daki proje sayfasına göz atın.</value>
+    <value>További információkért nézd meg a projekt oldalát a GitHubon.</value>
   </data>
   <data name="UnsupportedWindow_Disclaimer_Logs" xml:space="preserve">
-    <value>Kayıt dosyası</value>
+    <value>Napló mappa</value>
   </data>
   <data name="UnsupportedWindow_MachineType" xml:space="preserve">
-    <value>Cihaz Tipi</value>
+    <value>Számítógép típusa</value>
   </data>
   <data name="UnsupportedWindow_Message" xml:space="preserve">
-    <value>Lenovo Legion Toolkit, cihazınızla test edilmemiştir.</value>
+    <value>A Lenovo Legion Toolkitet nem tesztelték az Ön készülékével.</value>
   </data>
   <data name="UnsupportedWindow_Model" xml:space="preserve">
-    <value>Model</value>
+    <value>Modell</value>
   </data>
   <data name="UnsupportedWindow_Title" xml:space="preserve">
-    <value>Desteklenmeyen cihaz</value>
+    <value>Nem támogatott eszköz</value>
   </data>
   <data name="UnsupportedWindow_Vendor" xml:space="preserve">
-    <value>Üretici</value>
+    <value>Gyártó</value>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>Güncelle</value>
+    <value>Frissítés</value>
   </data>
   <data name="UpdateWindow_Title" xml:space="preserve">
-    <value>Güncelleme mevcut</value>
+    <value>Frissítés elérhető</value>
   </data>
   <data name="UpdateWindow_WhatsNew" xml:space="preserve">
-    <value>Yenilikler nedir?</value>
+    <value>Mik az újdonságok?</value>
   </data>
   <data name="WhiteKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>Klavye parlaklığını ayarlayın.</value>
+    <value>Billentyűzet háttérvilágításának beállítása.</value>
   </data>
   <data name="WhiteKeyboardBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>Klavye parlaklığı</value>
+    <value>Billentyűzet háttérvilágítás</value>
   </data>
   <data name="WhiteKeyboardBacklightControl_Message" xml:space="preserve">
-    <value>Fn+Space ile parlaklığı değiştirebilirsiniz</value>
+    <value>A fényerőt az Fn+Space billentyűkombinációval módosíthatja</value>
   </data>
   <data name="WhiteKeyboardBacklightControl_Title" xml:space="preserve">
-    <value>Klavye ışığı</value>
+    <value>Billentyűzet háttérvilágítás</value>
+  </data>
+  <data name="WinKeyAutomationStepControl_Message" xml:space="preserve">
+    <value>A beépített billentyűzet Windows gombjának letiltása.</value>
+  </data>
+  <data name="WinKeyAutomationStepControl_Title" xml:space="preserve">
+    <value>Windows gomb zár</value>
   </data>
   <data name="WinKeyControl_Message" xml:space="preserve">
-    <value>Sadece yerleşik klavyede çalışır.</value>
+    <value>Csak a beépített billentyűzeten működik.</value>
   </data>
   <data name="WinKeyControl_Title" xml:space="preserve">
-    <value>Windows Tuş Kilidi</value>
+    <value>Windows gomb zár</value>
   </data>
   <data name="Yes" xml:space="preserve">
-    <value>Evet</value>
+    <value>Igen</value>
   </data>
   <data name="MicrophoneControl_Title" xml:space="preserve">
     <value>Mikrofon</value>
   </data>
   <data name="MicrophoneControl_Message" xml:space="preserve">
-    <value>Kapatıldığında, mikrofonların sesi kapatılır.</value>
+    <value>Kikapcsolt állapotban a mikrofonok ellesznek némítva.</value>
   </data>
   <data name="MicrophoneAutomationStepControl_Title" xml:space="preserve">
     <value>Mikrofon</value>
   </data>
   <data name="MicrophoneAutomationStepControl_Message" xml:space="preserve">
-    <value>Kapatıldığında, mikrofonların sesi kapatılır.</value>
+    <value>Kikapcsolt állapotban a mikrofonok ellesznek némítva.</value>
   </data>
   <data name="ResolutionControl_Title" xml:space="preserve">
-    <value>Çözünürlük</value>
+    <value>Felbontás</value>
   </data>
   <data name="ResolutionControl_Message" xml:space="preserve">
-    <value>Yerleşik ekranın çözünürlüğünü değiştirin.</value>
+    <value>A beépített kijelző felbontásának módosítása.</value>
   </data>
   <data name="ResolutionAutomationStepControl_Title" xml:space="preserve">
-    <value>Çözünürlük</value>
+    <value>Felbontás</value>
   </data>
   <data name="ResolutionAutomationStepControl_Message" xml:space="preserve">
-    <value>Yerleşik ekranın çözünürlüğünü değiştirin.
+    <value>A beépített kijelző felbontásának módosítása.
 
-UYARI: Dahili ekran kapalıysa, bu işlem doğru çalışmaz.</value>
+FIGYELMEZTETÉS: Ez a művelet nem fog megfelelően futni, ha a belső kijelző ki van kapcsolva.</value>
   </data>
   <data name="DpiScaleControl_Title" xml:space="preserve">
     <value>DPI</value>
   </data>
   <data name="DpiScaleControl_Message" xml:space="preserve">
-    <value>Yerleşik ekranın ölçeğini değiştirin.</value>
+    <value>A beépített kijelző méretarányának módosítása.</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Title" xml:space="preserve">
     <value>DPI</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Message" xml:space="preserve">
-    <value>Yerleşik ekranın ölçeklendirmesini değiştirin.
+    <value>A beépített kijelző méretezésének módosítása.
 
-UYARI: Dahili ekran kapalıysa, bu işlem doğru çalışmaz.</value>
+FIGYELMEZTETÉS: Ez a művelet nem fog megfelelően futni, ha a belső kijelző ki van kapcsolva.</value>
   </data>
   <data name="DashboardPage_Display_Title" xml:space="preserve">
-    <value>Ekran</value>
+    <value>Kijelző</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightControl_Title" xml:space="preserve">
-    <value>Klavye ışığı</value>
+    <value>Billentyűzet háttérvilágítás</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightControl_Message" xml:space="preserve">
-    <value>Işığı Fn+Boşluk ile açıp kapatabilirsiniz.</value>
+    <value>A háttérvilágítást az Fn+Space billentyűkombinációval kapcsolhatja be vagy ki.</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>Klavye ışığı</value>
+    <value>Billentyűzet háttérvilágítás</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>Işığı açın veya kapatın.</value>
+    <value>A háttérvilágítás be- vagy kikapcsolása.</value>
   </data>
   <data name="PackagesPage_NoMatchingDownloads" xml:space="preserve">
-    <value>Eşleşen bir indirme bulunmamakta</value>
+    <value>Nincs megfelelő letöltés</value>
   </data>
   <data name="PackagesPage_OnlyShowUpdates" xml:space="preserve">
-    <value>Sadece güncellemeleri göster</value>
+    <value>Csak a frissítések megjelenítése</value>
   </data>
   <data name="EditDashboardWindow_Title" xml:space="preserve">
-    <value>Ana Sayfayı Düzenle</value>
+    <value>Az irányítópult testreszabása</value>
   </data>
   <data name="Load" xml:space="preserve">
-    <value>Yükle</value>
+    <value>Betöltés</value>
   </data>
   <data name="EditDashboardWindow_CreateGroup_Title" xml:space="preserve">
-    <value>Grup oluştur</value>
+    <value>Csoport létrehozása</value>
   </data>
   <data name="EditDashboardWindow_CreateGroup_Message" xml:space="preserve">
-    <value>İsim</value>
+    <value>Név</value>
   </data>
   <data name="EditDashboardWindow_Disclaimer_Message" xml:space="preserve">
-    <value>Cihazınızın durumuna ve yapılandırmasına bağlı olarak bazı özellikler Ana Menü'de görünmeyebilir.</value>
+    <value>Előfordulhat, hogy egyes funkciók nem jelennek meg a műszerfalon a laptop állapotától és konfigurációjától függően.</value>
   </data>
   <data name="DashboardPage_Customize" xml:space="preserve">
-    <value>Özelleştir</value>
+    <value>Testreszabás</value>
   </data>
   <data name="TurnOffMonitorsControl_Title" xml:space="preserve">
-    <value>Ekranları kapat</value>
+    <value>Kijelző kikapcsolása</value>
   </data>
   <data name="TurnOffMonitorsControl_Message" xml:space="preserve">
-    <value>Mevcut tüm ekranları kapatın.
-Fareyi hareket ettirmek veya klavyeye basmak ekranları uyandırır.</value>
+    <value>Kapcsolja ki az összes rendelkezésre álló kijelzőt.
+Az egér mozgatása vagy a billentyűzet megnyomása felébreszti a kijelzőket.</value>
   </data>
   <data name="TurnOffMonitorsControl_TurnOff" xml:space="preserve">
-    <value>Kapat</value>
+    <value>Kikapcsolás</value>
   </data>
   <data name="TurnOffMonitorsAutomationStepControl_Title" xml:space="preserve">
-    <value>Ekranları kapat</value>
+    <value>Kijelzők kikapcsolása</value>
   </data>
   <data name="TurnOffMonitorsAutomationStepControl_Message" xml:space="preserve">
-    <value>Mevcut tüm ekranları kapat.</value>
+    <value>Kikapcsolja az összes rendelkezésre álló kijelzőt.</value>
   </data>
   <data name="EditDashboardGroupControl_EditGroup_Title" xml:space="preserve">
-    <value>Grup adını düzenle</value>
+    <value>Csoportnév szerkesztése</value>
   </data>
   <data name="EditDashboardGroupControl_EditGroup_Message" xml:space="preserve">
-    <value>İsim</value>
+    <value>Név</value>
   </data>
   <data name="Notification_PanelLogoLightingOn" xml:space="preserve">
-    <value>Legion logosu açık</value>
+    <value>Legion logó bekapcsolva</value>
   </data>
   <data name="Notification_PanelLogoLightingOff" xml:space="preserve">
-    <value>Legion logosu kapalı</value>
+    <value>Legion logó kikapcsolva</value>
   </data>
   <data name="Notification_PortLightingOn" xml:space="preserve">
-    <value>Port ışıkları açık</value>
+    <value>Portok háttérvilágítás bekapcsolva</value>
   </data>
   <data name="Notification_PortLightingOff" xml:space="preserve">
-    <value>Port ışıkları kapalı</value>
+    <value>Portok háttérvilágítás kikapcsolva</value>
   </data>
   <data name="PackageControl_RebootRequired" xml:space="preserve">
-    <value>Yeniden başlatma gerekli</value>
+    <value>Újraindítás szükséges</value>
   </data>
   <data name="PackageControl_ShutdownRequired" xml:space="preserve">
-    <value>Sistemi kapatma gerekli</value>
+    <value>Leállítás szükséges</value>
   </data>
   <data name="PackageControl_RebootRecommended" xml:space="preserve">
-    <value>Yeniden başlatma önerilir</value>
+    <value>Újraindítás ajánlott</value>
   </data>
   <data name="SaveAndClose" xml:space="preserve">
-    <value>Kaydet &amp; Kapat</value>
+    <value>Mentés &amp; bezárás</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Title" xml:space="preserve">
-    <value>Özel Mod Ön Ayarı</value>
+    <value>Egyéni üzemmód beállítása</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Özel Modu ön ayarını etkinleştirin.
-Bu ayarlar yalnızca Özel Mod etkinleştirildiğinde etkili olur.</value>
+    <value>Egyéni üzemmód előbeállítás aktiválása.
+Ez a beállítás csak akkor lép hatályba, ha az Egyéni üzemmód engedélyezve van.</value>
   </data>
   <data name="GodModeSettingsWindow_EditPreset_Title" xml:space="preserve">
-    <value>Ön ayar adı</value>
+    <value>Előbeállítás neve</value>
   </data>
   <data name="GodModeSettingsWindow_EditPreset_Message" xml:space="preserve">
-    <value>İsim</value>
+    <value>Név</value>
   </data>
   <data name="GodModeSettingsWindow_ActivePreset_Title" xml:space="preserve">
-    <value>Etkin Ön Ayar</value>
+    <value>Aktív előbeállítás</value>
   </data>
   <data name="AboutPage_ApplicationFolders" xml:space="preserve">
-    <value>Uygulama klasörleri</value>
+    <value>Alkalmazás mappái</value>
   </data>
   <data name="AboutPage_Data" xml:space="preserve">
-    <value>Veri</value>
+    <value>Adatok</value>
   </data>
   <data name="AboutPage_Temp" xml:space="preserve">
-    <value>Sıcaklık</value>
+    <value>Ideiglenes</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Title" xml:space="preserve">
-    <value>Tek Ekran Parlaklığı</value>
+    <value>Egyetlen kijelző fényereje</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Message" xml:space="preserve">
-    <value>Açık olduğunda, değiştirdiğinizde tüm Windows güç planlarına aynı parlaklık düzeyi uygulanacaktır.</value>
+    <value>Ha be van kapcsolva, akkor a Windows összes energiatakarékossági tervére ugyanaz a fényerőszint lesz érvényben, amikor megváltoztatja azt.</value>
   </data>
   <data name="Notification_UpdateAvailable" xml:space="preserve">
-    <value>{0} sürümü güncelleme için mevcut!</value>
+    <value>{0} frissítés elérhető!</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL" xml:space="preserve">
-    <value>Tepe Güç Sınırı</value>
+    <value>Csúcsteljesítmény-határérték</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_APUsPPT_PL" xml:space="preserve">
-    <value>APU sPPT Güç Limiti</value>
+    <value>APU sPPT teljesítményhatár</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL_Description" xml:space="preserve">
-    <value>CPU tarafından ulaşılabilen sürekli güç tüketimi.</value>
+    <value>A CPU által elérhető folyamatos energiafogyasztás.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL_Description" xml:space="preserve">
-    <value>CPU tarafından kısa bir süre içinde ulaşılabilen en yüksek güç tüketimi.</value>
+    <value>A CPU által rövid időn belül elérhető maximális energiafogyasztás.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Description" xml:space="preserve">
-    <value>CPU tarafından ulaşılabilen maksimum anlık güç tüketimi.</value>
+    <value>A CPU által elérhető maximális pillanatnyi energiafogyasztás.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Description" xml:space="preserve">
-    <value>Hem CPU hem de GPU tamamen kullanıldığında CPU tarafından ulaşılabilen maksimum güç tüketimi.</value>
+    <value>A maximális energiafogyasztás, amelyet a CPU elérhet, ha a CPU és a GPU teljes mértékben ki van használva.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_APUsPPT_PL_Description" xml:space="preserve">
-    <value>CPU tarafından küçük bir gecikmeyle ulaşılabilen en yüksek güç tüketimi.</value>
+    <value>A CPU által kisebb késleltetéssel elérhető maximális energiafogyasztás.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Description" xml:space="preserve">
-    <value>Frekans ve güç düşürülmeden önce CPU'nun ulaşabileceği maksimum sıcaklık.</value>
+    <value>A maximális hőmérséklet, amelyet a CPU elérhet, mielőtt a frekvencia és a teljesítmény csökkenne.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost_Description" xml:space="preserve">
-    <value>CPU'nun güç tüketimine bağlı olarak GPU'ya tahsis edilebilecek ek maksimum güç.</value>
+    <value>A GPU-nak a CPU energiafogyasztása alapján kiosztható további maximális teljesítmény.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_CTGP_Description" xml:space="preserve">
-    <value>Temel güç tüketimine ek olarak GPU'ya tahsis edilebilecek ek güç miktarı.</value>
+    <value>A GPU-nak az alap energiafogyasztáson felül kiosztható további teljesítmény.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Description" xml:space="preserve">
-    <value>Frekans ve güç düşürülmeden önce GPU'nun ulaşabileceği maksimum sıcaklık.</value>
+    <value>Az a maximális hőmérséklet, amelyet a GPU elérhet, mielőtt a frekvencia és a teljesítmény csökkenne.</value>
   </data>
   <data name="Default" xml:space="preserve">
-    <value>Varsayılan</value>
+    <value>Alapértelmezett</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL1Tau" xml:space="preserve">
-    <value>Kısa Vadeli Güç Sınırı</value>
+    <value>Rövid távú teljesítménykorlátozás időtartama</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL1Tau_Description" xml:space="preserve">
-    <value>CPU'nun Kısa Süreli Güç Sınırını artırmasına ve kullanmasına izin verilen süre. Tau sona erdiğinde, Uzun Süreli Güç Limiti kullanılır.</value>
+    <value>Az az időtartam, ameddig a CPU növelheti és használhatja a rövid távú teljesítménykorlátozást. Ha a Tau lejár, a hosszú távú teljesítménykorlátozás kerül használatba.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl" xml:space="preserve">
-    <value>AC'de Toplam İşlemci Gücü Hedefi</value>
+    <value>Teljes processzor teljesítménycél AC-ben</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description" xml:space="preserve">
-    <value>CPU'nun GPU için dinamik güç tüketimi ayarını tetiklediği nokta.</value>
+    <value>Az a pont, amikor a CPU elindítja a GPU dinamikus energiafogyasztásának beállítását.</value>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>Oluştur</value>
+    <value>Létrehozás</value>
   </data>
   <data name="AddAutomationStepWindow_Title" xml:space="preserve">
-    <value>Adım ekle</value>
+    <value>Lépés hozzáadása</value>
   </data>
   <data name="CreateAutomationPipelineWindow_Title" xml:space="preserve">
-    <value>Eylem Oluştur</value>
+    <value>Művelet létrehozása</value>
   </data>
   <data name="StatusTrayPopup_PowerMode" xml:space="preserve">
-    <value>Güç Modu</value>
+    <value>Teljesítménymód</value>
   </data>
   <data name="StatusTrayPopup_Preset" xml:space="preserve">
-    <value>Ön Ayar</value>
+    <value>Sablon</value>
   </data>
   <data name="StatusTrayPopup_DiscreteGPU" xml:space="preserve">
-    <value>Harici GPU</value>
+    <value>Diszkrét GPU</value>
   </data>
   <data name="StatusTrayPopup_PowerState" xml:space="preserve">
-    <value>Güç Durumu</value>
+    <value>Áramellátás állapota</value>
   </data>
   <data name="StatusTrayPopup_Battery" xml:space="preserve">
-    <value>Pil</value>
+    <value>Akkumulátor</value>
   </data>
   <data name="StatusTrayPopup_Mode" xml:space="preserve">
-    <value>Mod</value>
+    <value>Mód</value>
   </data>
   <data name="StatusTrayPopup_DischargeRate" xml:space="preserve">
-    <value>Deşarj oranı</value>
+    <value>Merülési ráta</value>
   </data>
   <data name="StatusTrayPopup_UpdateAvailable" xml:space="preserve">
-    <value>Güncelleme mevcut!</value>
+    <value>Frissítés érhető el!</value>
   </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
-    <value>Simge seç</value>
+    <value>Ikon kiválasztása</value>
   </data>
   <data name="AutomationPage_ChangeIcon" xml:space="preserve">
-    <value>Simgeyi değiştir</value>
+    <value>Ikon módosítása</value>
   </data>
   <data name="BatteryPage_LowLevel" xml:space="preserve">
-    <value>Düşük pil seviyesi</value>
+    <value>Alacsony töltöttség</value>
   </data>
   <data name="AutomationPipelineTriggerConfigurationWindow_Title" xml:space="preserve">
-    <value>Yapılandır</value>
+    <value>Beállítás</value>
   </data>
   <data name="PowerPlansWindow_AoAcWarning_Title" xml:space="preserve">
-    <value>S0 Düşük Güç Modu algılandı</value>
+    <value>S0 Alacsonyabb teljesítményű modell észlelve</value>
   </data>
   <data name="PowerPlansWindow_AoAcWarning_Message" xml:space="preserve">
-    <value>Windows, bu aygıtın Modern Beklemeyi desteklediğini bildiriyor. Dengeli dışında güç planlarının kullanılması beklenmeyen davranışlara neden olabilir.</value>
+    <value>A Windows jelentése szerint ez a laptop támogatja a Modern Standby funkciót. A Kiegyensúlyozottaktól eltérő energiatakarékossági tervek használata váratlan viselkedést okozhat.</value>
   </data>
   <data name="SettingsPage_WindowsPowerPlans_Message" xml:space="preserve">
-    <value>Güç Modu değiştiğinde uygulanacak Windows Güç Planlarını seçin.</value>
+    <value>Válassza ki az Energiagazdálkodási mód változása esetén alkalmazandó Windows energiatakarékossági terveket.</value>
   </data>
   <data name="SettingsPage_Power_Title" xml:space="preserve">
-    <value>Güç</value>
+    <value>Tápellátás</value>
   </data>
   <data name="SettingsPage_WindowsPowerPlansControlPanel_Title" xml:space="preserve">
-    <value>Windows Denetim Masası'ndaki Güç Planı seçenekleri</value>
+    <value>Energiaséma beállítások a Windows Vezérlőpultban</value>
   </data>
   <data name="PoweredOff" xml:space="preserve">
-    <value>Güç Kapatıldı</value>
+    <value>Kikapcsolva</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Title" xml:space="preserve">
-    <value>Klavye ışık profilini içe aktarın</value>
+    <value>Billentyűzet háttérvilágítás profil importálása</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Message" xml:space="preserve">
-    <value>Işık yapılandırmasını içe aktarın ve mevcut profile uygulayın.</value>
+    <value>A háttérvilágítás konfigurációjának importálása és alkalmazása az aktuális profilhoz.</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Path" xml:space="preserve">
-    <value>Yol</value>
+    <value>Elérési út</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_After" xml:space="preserve">
-    <value>{0} sonrası</value>
+    <value>Ezután {0}</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Çoklu tetikleyiciler...</value>
+    <value>Több trigger...</value>
     <comment>Allows the user to merge multiple triggers for the execution of selected actions.</comment>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_Title" xml:space="preserve">
-    <value>GPU Hız Aşırtma Ayarları</value>
+    <value>GPU Overclock beállítások</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title" xml:space="preserve">
-    <value>Çekirdek Frekans Ofseti</value>
+    <value>Core Frequency Eltolás</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title" xml:space="preserve">
-    <value>Bellek Frekans Ofseti</value>
+    <value>Memory Frequency Eltolás</value>
   </data>
   <data name="OverclockDiscreteGPUControl_Title" xml:space="preserve">
-    <value>GPU Hız Aşırtma</value>
+    <value>GPU Overclock</value>
   </data>
   <data name="OverclockDiscreteGPUControl_Message" xml:space="preserve">
-    <value>Harici GPU'yu hız aşırtarak performansı artırın.</value>
+    <value>Növelje a teljesítményt a diszkrét GPU túlhajtásával.</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
-    <value>GPU Hız Aşırtma</value>
+    <value>GPU Overclock</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Harici GPU'yu hız aşırtarak performansı artırın.
+    <value>Növelje a teljesítményt a diszkrét GPU túlhajtásával.
 
-UYARI: Harici GPU mevcut değilse, bu işlem doğru çalışmaz.</value>
+FIGYELMEZTETÉS: Ez a művelet nem fog megfelelően futni, ha nem áll rendelkezésre diszkrét GPU.</value>
   </data>
   <data name="PortsBacklightControl_Title" xml:space="preserve">
-    <value>Port ışıkları</value>
+    <value>Portok háttérvilágítása</value>
   </data>
   <data name="PortsBacklightControl_Message" xml:space="preserve">
-    <value>Bilgisayarın arkasındaki bağlantı noktalarının ışığını açın veya kapatın.</value>
+    <value>Kapcsolja be vagy ki a laptop hátoldalán lévő portok háttérvilágítását.</value>
   </data>
   <data name="PortsBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>Port ışıkları</value>
+    <value>Portok háttérvilágítása</value>
   </data>
   <data name="PortsBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>Bilgisayarın arkasındaki bağlantı noktalarının ışığını açın veya kapatın.</value>
+    <value>Kapcsolja be vagy ki a laptop hátoldalán lévő portok háttérvilágítását.</value>
   </data>
   <data name="PanelLogoBacklightControl_Title" xml:space="preserve">
-    <value>Panel logosu ışığı</value>
+    <value>Panel logó háttérvilágítás</value>
   </data>
   <data name="PanelLogoBacklightControl_Message" xml:space="preserve">
-    <value>Bilgisayarın kapağındaki ışığı açın veya kapatın.</value>
+    <value>Kapcsolja be vagy ki a laptop fedelén lévő háttérvilágítást.</value>
   </data>
   <data name="PanelLogoBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>Panel logosu ışığı</value>
+    <value>Panel logó háttérvilágítás</value>
   </data>
   <data name="PanelLogoBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>Bilgisayarın kapağındaki ışığı açın veya kapatın.</value>
+    <value>Kapcsolja be vagy ki a laptop fedelén lévő háttérvilágítást.</value>
   </data>
   <data name="GHz" xml:space="preserve">
     <value>GHz</value>
@@ -1767,303 +1772,465 @@ UYARI: Harici GPU mevcut değilse, bu işlem doğru çalışmaz.</value>
     <value>MHz</value>
   </data>
   <data name="SensorsControl_Maximum" xml:space="preserve">
-    <value>Azami: {0}</value>
+    <value>Maximum: {0}</value>
   </data>
   <data name="SensorsControl_CPU_Title" xml:space="preserve">
     <value>CPU</value>
   </data>
   <data name="SensorsControl_Utilization_Title" xml:space="preserve">
-    <value>Kullanım</value>
+    <value>Kihasználtság</value>
   </data>
   <data name="SensorsControl_CoreClock_Title" xml:space="preserve">
-    <value>Çekirdek Saati</value>
+    <value>Mag órajel</value>
   </data>
   <data name="SensorsControl_Temperature_Title" xml:space="preserve">
-    <value>Sıcaklık</value>
+    <value>Hőmérséklet</value>
   </data>
   <data name="SensorsControl_Fan_Title" xml:space="preserve">
-    <value>Fan</value>
+    <value>Ventilátor</value>
   </data>
   <data name="SensorsControl_GPU_Title" xml:space="preserve">
     <value>GPU</value>
   </data>
   <data name="SensorsControl_MemoryClock_Title" xml:space="preserve">
-    <value>Bellek Saati</value>
+    <value>Memória órajel</value>
   </data>
   <data name="SensorsControl_RefreshInterval" xml:space="preserve">
-    <value>Yenileme aralığı</value>
+    <value>Frissítési gyakoriság</value>
   </data>
   <data name="InstantBootControl_Title" xml:space="preserve">
-    <value>Anında Önyükleme</value>
+    <value>Instant Boot</value>
   </data>
   <data name="InstantBootControl_Message" xml:space="preserve">
-    <value>Bir şarj cihazı bağlandığında dizüstü bilgisayarı açın.</value>
+    <value>Kapcsolja be a laptopot, ha a töltő csatlakoztatva van.</value>
   </data>
   <data name="InstantBootAutomationStepControl_Title" xml:space="preserve">
-    <value>Anında Önyükleme</value>
+    <value>Instant Boot</value>
   </data>
   <data name="InstantBootAutomationStepControl_Message" xml:space="preserve">
-    <value>Bir şarj cihazı bağlandığında dizüstü bilgisayarı açın.</value>
+    <value>Kapcsolja be a laptopot, ha a töltő csatlakoztatva van.</value>
   </data>
   <data name="PowerModeUnavailableWithoutACException_Title" xml:space="preserve">
-    <value>Güç Modu değiştirilemiyor</value>
+    <value>Nem lehet megváltoztatni a Teljesítmény üzemmódot</value>
   </data>
   <data name="PowerModeUnavailableWithoutACException_Message" xml:space="preserve">
-    <value>{0} güç modu, AC gücü olmadan kullanılamaz.</value>
+    <value>{0} üzemmód nem érhető el hálózati AC áram nélkül.</value>
     <comment>For example: "{Performance} power mode is not available without AC power."</comment>
   </data>
   <data name="EditDashboardWindow_Sensors" xml:space="preserve">
-    <value>Sensörler</value>
+    <value>Szenzorok</value>
   </data>
   <data name="IGPUModeChangeException_Title" xml:space="preserve">
-    <value>GPU Çalışma Modu Değiştirilemedi</value>
+    <value>Nem tudta megváltoztatni a GPU munkamódját</value>
   </data>
   <data name="IGPUModeChangeException_Message" xml:space="preserve">
-    <value>Beklenen sonucu görmezseniz, birkaç saniye içinde modu tekrar değiştirmeyi deneyin.
-GPU hiç yanıt vermiyorsa, lütfen dizüstü bilgisayarınızı yeniden başlatın.</value>
+    <value>Ha nem látja a várt eredményt, pár másodperc múlva próbálja meg újra megváltoztatni az üzemmódot.
+Ha a dGPU egyáltalán nem reagál, kérjük, indítsa újra a laptopját.</value>
   </data>
   <data name="IGPUModeChangeException_Title_IGPUOnly" xml:space="preserve">
-    <value>dGPU şuan kullanımda</value>
+    <value>a dGPU jelenleg használatban van</value>
   </data>
   <data name="IGPUModeChangeException_Message_IGPUOnly" xml:space="preserve">
-    <value>dGPU kullanılmadığında otomatik olarak kapanacaktır.</value>
+    <value>a dGPU automatikusan kikapcsol, ha nincs használatban.</value>
   </data>
   <data name="IGPUModeChangeException_Title_Auto" xml:space="preserve">
-    <value>dGPU şuan kullanımda veya dizüstü pil gücünde çalışmıyor</value>
+    <value>a dGPU jelenleg használatban van, vagy a laptop nem akkumulátorról működik</value>
   </data>
   <data name="IGPUModeChangeException_Message_Auto" xml:space="preserve">
-    <value>dGPU kullanılmadığında ve dizüstü pil gücünde çalıştığında otomatik olarak kapanacaktır.</value>
+    <value>a dGPU automatikusan kikapcsol, ha nincs használatban, és a laptop akkumulátorral működik.</value>
   </data>
   <data name="GodModeSettingsWindow_VantageWarning_Title" xml:space="preserve">
-    <value>Özel Mod ayarları, Lenovo Vantage veya hizmetleri çalışırken doğru şekilde uygulanmayacaktır.</value>
+    <value>Az Egyéni mód beállításai nem lesznek megfelelően alkalmazva, ha a Lenovo Vantage vagy annak szolgáltatásai futnak.</value>
   </data>
   <data name="GodModeSettingsWindow_LegionZoneWarning_Title" xml:space="preserve">
-    <value>LegionZone veya hizmetleri çalışırken Özel Mod ayarları doğru uygulanmayacaktır.</value>
+    <value>Az Egyéni mód beállításai nem lesznek megfelelően alkalmazva, ha a LegionZone vagy annak szolgáltatásai futnak.</value>
   </data>
   <data name="DGPU_Connected_Title" xml:space="preserve">
-    <value>DGPU bağlı</value>
+    <value>DGPU csatlakoztatva</value>
   </data>
   <data name="DGPU_Disconnected_Title" xml:space="preserve">
-    <value>DGPU bağlı değil</value>
+    <value>DGPU lekapcsolva</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
-    <value>GPU Çalışma Modu</value>
+    <value>GPU működési mód</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Bilgisayarınızın kullanım ve güç koşullarına göre GPU çalışma modunu seçin.
-Mod değiştirme, yeniden başlatma gerektirebilir.</value>
+    <value>Válassza ki a GPU működési módját a számítógép használatának és az energiaellátás körülményeinek megfelelően.
+Az üzemmódok váltása újraindítást igényelhet.</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
-    <value>Hibrit Modu</value>
+    <value>Hibrid mód</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Dahili ve harici GPU arasında geçişe izin verin.
-Yeniden başlatma gerektirir.</value>
+    <value>Lehetővé teszi az integrált és a diszkrét GPU közötti váltást.
+Újraindítást igényel.</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationDuration_Title" xml:space="preserve">
-    <value>Süre</value>
+    <value>Időtartam</value>
   </data>
   <data name="NotificationsSettingsWindow_Updates_Title" xml:space="preserve">
-    <value>Güncellemeler</value>
+    <value>Frissítések</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl" xml:space="preserve">
-    <value>GPU Üstünden CPU Üstüne Dinamik Güç</value>
+    <value>GPU és CPU közötti dinamikus boost</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description" xml:space="preserve">
-    <value>Bu CPU kullanımına bağlı olarak GPU üstünden CPU üstüne tahsis edilebilecek azami ek güçtür. Değer ne kadar yüksek olursa CPU kullanan uygulamaların performansı da o kadar iyi olur.</value>
+    <value>Ez az a maximális többletteljesítmény, amely a CPU-nak a GPU-tól a CPU-használat alapján kiosztható. Minél magasabb az érték, annál jobb a CPU-t használó alkalmazások teljesítménye.</value>
   </data>
   <data name="SettingsPage_BootLogo_Title" xml:space="preserve">
-    <value>Açılış Logosu</value>
+    <value>Boot logó</value>
   </data>
   <data name="SettingsPage_BootLogo_Message" xml:space="preserve">
-    <value>Sistem başladığında görülebilen Açılış Logosu görüntüsünü özelleştirin.</value>
+    <value>A rendszer indításakor látható Boot Logo kép testreszabása.</value>
   </data>
   <data name="BootLogoWindow_Title" xml:space="preserve">
-    <value>Açılış Logosu</value>
+    <value>Boot logó</value>
   </data>
   <data name="BootLogoWindow_DefaultLogoSet" xml:space="preserve">
-    <value>Varsayılan Başlangıç Logosu ayarla</value>
+    <value>Alapértelmezett boot logó beállítva</value>
   </data>
   <data name="BootLogoWindow_CustomLogoSet" xml:space="preserve">
-    <value>Özel Başlangıç Logosu ayarla</value>
+    <value>Testreszabott boot logó beállítva</value>
   </data>
   <data name="BootLogoWindow_Status" xml:space="preserve">
-    <value>Durum</value>
+    <value>Státusz</value>
   </data>
   <data name="RevertToDefault" xml:space="preserve">
-    <value>Varsayılana döndür</value>
+    <value>Alapértelmezett visszaállítása</value>
   </data>
   <data name="BootLogoWindow_Customize" xml:space="preserve">
-    <value>Özelleştir</value>
+    <value>Testreszabás</value>
   </data>
   <data name="NotificationsSettingsWindow_Automation" xml:space="preserve">
-    <value>Eylemler</value>
+    <value>Műveletek</value>
   </data>
   <data name="NotificationAutomationStepControl_NotificationText" xml:space="preserve">
-    <value>Bildirim Metni</value>
+    <value>Értesítési szöveg</value>
   </data>
   <data name="NotificationAutomationStepControl_Title" xml:space="preserve">
-    <value>Bildirimi göster</value>
+    <value>Értesítés megjelenítése</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_Preset" xml:space="preserve">
-    <value>Ön ayar</value>
+    <value>Előbeállítás</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
-    <value>Akıllı Fn Kilidi</value>
+    <value>Smart Fn Zár</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
-    <value>Shift, Ctrl veya Alt tuşuna basıldığında Fn Kilidi geçici olarak devre dışı bırakılacaktır.</value>
+    <value>Az Fn Zár ideiglenesen kikapcsol, ha az Alt, Ctrl vagy Shift billentyű le van nyomva.</value>
   </data>
   <data name="Off" xml:space="preserve">
-    <value>Kapalı</value>
+    <value>Ki</value>
   </data>
   <data name="BootLogoWindow_Description" xml:space="preserve">
-    <value>Özel önyükleme logosu tam olarak {0} piksel olmalı.
-Desteklenen biçimler: {1}.</value>
+    <value>Az egyéni boot logónak pontosan {0} pixel méretűnek kell lennie.
+A támogatott formátumok a következők: {1}.</value>
   </data>
   <data name="BatteryNightChargeModeControl_Title" xml:space="preserve">
-    <value>Gecelik Pil Şarjı</value>
+    <value>Éjszakai akkumulátortöltés</value>
   </data>
   <data name="BatteryNightChargeModeControl_Message" xml:space="preserve">
-    <value>Etkinleştirildiğinde, bu cihaz gece takıldığında %80 oranında şarj olur ve sabah siz bu cihazı kullandığınızda şarj işlemi %100 oranında biter.</value>
+    <value>Ha engedélyezve van, ez a készülék éjszakára 80%-ra töltődik, amikor csatlakoztatva van, és reggelre 100%-ra töltődik, mire használja a készüléket.</value>
   </data>
   <data name="BatteryNightChargeAutomationStepControl_Title" xml:space="preserve">
-    <value>Gecelik Pil Şarjı</value>
+    <value>Éjszakai akkumulátortöltés</value>
   </data>
   <data name="BatteryNightChargeAutomationStepControl_Message" xml:space="preserve">
-    <value>Etkinleştirildiğinde, bu cihaz gece takıldığında %80 oranında şarj olur ve sabah siz bu cihazı kullandığınızda şarj işlemi %100 oranında biter.</value>
+    <value>Ha engedélyezve van, ez a készülék éjszakára 80%-ra töltődik, amikor csatlakoztatva van, és reggelre 100%-ra töltődik, mire használja a készüléket.</value>
   </data>
   <data name="BootLogoWindow_SetError_Invalid_Image_Size" xml:space="preserve">
-    <value>Geçersiz görsel boyutu.</value>
+    <value>Érvénytelen képméret.</value>
   </data>
   <data name="BootLogoWindow_SetError_Invalid_Image_Format" xml:space="preserve">
-    <value>Geçersiz görsel biçimi.</value>
+    <value>Érvénytelen képformátum.</value>
   </data>
   <data name="BootLogoWindow_SetError_Cannot_Mount_EFI_Partition" xml:space="preserve">
-    <value>EFI bölümü bağlanamıyor.</value>
+    <value>Nem lehet csatlakoztatni az EFI partíciót.</value>
   </data>
   <data name="BootLogoWindow_SetError_Cannot_Set_UEFI_Privilege" xml:space="preserve">
-    <value>UEFI ayrıcalığı ayarlanamıyor.</value>
+    <value>Nem lehet UEFI jogosultságot beállítani.</value>
   </data>
   <data name="BootLogoWindow_SetError_Not_Enough_Free_Space_On_EFI_Partition" xml:space="preserve">
-    <value>EFI bölümünde yeterli boş alan yok.</value>
+    <value>Nincs elég szabad hely az EFI partíción.</value>
   </data>
   <data name="BootLogoWindow_SetCustomFailed" xml:space="preserve">
-    <value>Özel logo ayarlanamadı: {0}</value>
+    <value>Az egyéni logót nem lehetett beállítani: {0}</value>
   </data>
   <data name="BootLogoWindow_SetDefaultFailed" xml:space="preserve">
-    <value>Varsayılan logo ayarlanamadı: {0}</value>
+    <value>Az alapértelmezett logót nem lehetett beállítani: {0}</value>
   </data>
   <data name="BootLogoWindow_SetDefaultSuccess" xml:space="preserve">
-    <value>Varsayılan başlangıç logosu ayarla.</value>
+    <value>Az alapértelmezett boot logó beállításra került.</value>
   </data>
   <data name="BootLogoWindow_SetCustomSuccess" xml:space="preserve">
-    <value>Özel başlangıç logosu ayarla.</value>
+    <value>Az testreszabott boot logó beállításra került.</value>
   </data>
   <data name="WiFiConnectedPipelineTriggerTabItemContent_NetworkName" xml:space="preserve">
-    <value>Ağ adı (SSID)</value>
+    <value>Hálózati név (SSID)</value>
   </data>
   <data name="WiFiConnectedPipelineTriggerTabItemContent_CopyCurrentNetworkName" xml:space="preserve">
-    <value>Mevcut ağ adını kopyala</value>
+    <value>Jelenlegi hálózati név másolása</value>
   </data>
   <data name="WiFiConnectedPipelineTriggerTabItemContent_LeaveEmptyForAnyNetwork" xml:space="preserve">
-    <value>Herhangi bir Wi-Fi ağı için boş bırakın.</value>
+    <value>Hagyja üresen bármilyen Wi-Fi hálózat esetén.</value>
   </data>
   <data name="SettingsPage_HWiNFO_Title" xml:space="preserve">
     <value>HWiNFO64</value>
   </data>
   <data name="SettingsPage_HWiNFO_Message" xml:space="preserve">
-    <value>HWiNFO64 ile fan hızını, pil sıcaklığını vb. paylaşın. Bu seçeneği değiştirdikten sonra HWiNFO64 yeniden başlatılması gerekebilir.</value>
+    <value>Ossza meg a ventilátor sebességét, az akkumulátor hőmérsékletét stb. a HWiNFO64-gyel. Előfordulhat, hogy az opció módosítása után újra kell indítania a HWiNFO64-et.</value>
   </data>
   <data name="SettingsPage_Integrations_Title" xml:space="preserve">
-    <value>Bütünleşmeler</value>
+    <value>Integrációk</value>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Ayarlar</value>
+    <value>Beállítások</value>
   </data>
   <data name="Information" xml:space="preserve">
-    <value>Bilgi</value>
+    <value>Információ</value>
   </data>
   <data name="PackagesPage_DownloadTo" xml:space="preserve">
-    <value>İndirme klasörü</value>
+    <value>Letöltési könyvtár</value>
   </data>
   <data name="PackagesPage_OpenDownloadTo" xml:space="preserve">
-    <value>İndirme klasörünü aç</value>
+    <value>Letöltési mappa megnyitása</value>
   </data>
   <data name="PackageControl_Download" xml:space="preserve">
-    <value>İndir</value>
+    <value>Letöltés</value>
   </data>
   <data name="PackageControl_OpenReadme" xml:space="preserve">
-    <value>BENİOKU'yu Aç</value>
+    <value>OLVASSEL Megnyitása</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_Preset" xml:space="preserve">
-    <value>Ön ayar</value>
+    <value>Előbeállítás</value>
   </data>
   <data name="DeviceInformationWindow_Refresh" xml:space="preserve">
-    <value>Yenile</value>
+    <value>Újratölt</value>
   </data>
   <data name="AbstractAutomationStepControl_Delete" xml:space="preserve">
-    <value>Sil</value>
+    <value>Törlés</value>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_PeriodMinutes" xml:space="preserve">
-    <value>Süre (dakika)</value>
+    <value>Periódus (perc)</value>
     <comment>A prompt that is used both to ask the user to input an integer, representing the number of minutes between two periodic actions are triggered, and to inform the user what have they set once they are done configuring the action.</comment>
   </data>
   <data name="SettingsPage_OnBatterySinceReset_Message" xml:space="preserve">
-    <value>Sistem yeniden başlatıldığında pil bölümündeki "Pil süresi" sayacını sıfırlar.</value>
+    <value>A rendszer újraindításakor visszaállítja az „Akkumulátoron ennyi ideje” számlálót az akkumulátor szakaszban.</value>
   </data>
   <data name="SettingsPage_OnBatterySinceReset_Title" xml:space="preserve">
-    <value>Başlangıçta "Pilde" ifadesini sıfırla</value>
+    <value>„Akkumulátoron ennyi ideje” visszaállítása indításkor</value>
   </data>
   <data name="TurnOffWiFiAutomationStepControl_Title" xml:space="preserve">
-    <value>WiFi'yi kapat</value>
+    <value>Wifi kikapcsolása</value>
   </data>
   <data name="TurnOnWiFiAutomationStepControl_Title" xml:space="preserve">
-    <value>WiFi'yi aç</value>
+    <value>Wi-Fi bekapcsolása</value>
   </data>
   <data name="RunAutomationStepControl_ProcessRunSilently" xml:space="preserve">
-    <value>Sessizce çalış</value>
+    <value>Futás csendben</value>
   </data>
   <data name="RunAutomationStepControl_ProcessWaitUntilFinished" xml:space="preserve">
-    <value>Bitene kadar bekle</value>
+    <value>Várjon, amíg befejeződik</value>
   </data>
   <data name="RunAutomationStepControl_ProcessRunSilently_Description" xml:space="preserve">
-    <value>Konsol penceresini oluşturmadan konsol uygulamalarını yürütün.</value>
+    <value>Konzolalkalmazások végrehajtása konzolablak létrehozása nélkül.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessWaitUntilFinished_Description" xml:space="preserve">
-    <value>Program veya betiğin yürütülmesi bitene kadar bekleyin</value>
+    <value>Várjon, amíg a program vagy a szkript befejezi a végrehajtást</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
-    <value>Sessize alındığında tüm aktif ses çıkış cihazlarının sesi kapatılacaktır.</value>
+    <value>Némításkor az összes aktív hangkimeneti eszköz elnémul.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Title" xml:space="preserve">
-    <value>Hoparlör</value>
+    <value>Hangszóró</value>
   </data>
   <data name="SettingsPage_MinimizeToTray_Title" xml:space="preserve">
-    <value>Sistem tepsisine küçült</value>
+    <value>Kicsinyítés a rendszerikonok közé</value>
   </data>
   <data name="SettingsPage_MinimizeToTray_Message" xml:space="preserve">
-    <value>Görev çubuğu yerine, her zaman sistem tepsisine küçült.</value>
+    <value>Mindig a rendszerikonokhoz minimalizálja a programot a tálca helyett.</value>
   </data>
   <data name="WindowsPowerModesWindow_Title" xml:space="preserve">
-    <value>Windows Güç Modları</value>
+    <value>Windows energiagazdálkodási módok</value>
+  </data>
+  <data name="Settings_GodModeFnQSwitchable_Title" xml:space="preserve">
+    <value>Egyéni módra váltás az Fn+Q billentyűkombinációval</value>
+  </data>
+  <data name="Settings_GodModeFnQSwitchable_Message" xml:space="preserve">
+    <value>Gyors váltás egyéni módba az Fn+Q billentyűkombinációval.</value>
+  </data>
+  <data name="SettingsPage_PowerModeMapping_Title" xml:space="preserve">
+    <value>Teljesítmény üzemmód szinkronizálása</value>
+  </data>
+  <data name="SettingsPage_PowerModeMapping_Message" xml:space="preserve">
+    <value>A Windows energiagazdálkodási terv vagy a Windows energiaellátási mód automatikus módosítása az energiaellátási módok váltásakor.</value>
+  </data>
+  <data name="SettingsPage_WindowsPowerModes_Title" xml:space="preserve">
+    <value>Windows energiagazdálkodási módok</value>
+  </data>
+  <data name="SettingsPage_WindowsPowerModes_Message" xml:space="preserve">
+    <value>Válassza ki a Windows Energiagazdálkodási módot az Energiagazdálkodási mód változása esetén történő alkalmazáshoz.</value>
+  </data>
+  <data name="CompatibilityCheckError_Message" xml:space="preserve">
+    <value>Hiba lépett fel az eszközinformációk olvasásakor.</value>
+  </data>
+  <data name="MainWindow_NavigationItem_Macro" xml:space="preserve">
+    <value>Makró</value>
+  </data>
+  <data name="MacroPage_Title" xml:space="preserve">
+    <value>Makró</value>
+  </data>
+  <data name="MacroSequenceControl_Repeat_Title" xml:space="preserve">
+    <value>Ismétlés</value>
+  </data>
+  <data name="MacroSequenceControl_IgnoreDelays_Title" xml:space="preserve">
+    <value>Késedelmek figyelmen kívül hagyása</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Törlés</value>
+  </data>
+  <data name="MacroSequenceControl_Record" xml:space="preserve">
+    <value>Felvétel</value>
+  </data>
+  <data name="MacroSequenceControl_StopRecording" xml:space="preserve">
+    <value>Felvétel leállítása</value>
+  </data>
+  <data name="MacroSequenceControl_DontRepeat" xml:space="preserve">
+    <value>Nincs ismétlés</value>
+  </data>
+  <data name="MacroPage_Enable_Subtitle" xml:space="preserve">
+    <value>A makrók működéséhez a Lenovo Legion Toolkit-nek futnia kell.</value>
+  </data>
+  <data name="MacroPage_Enable_Title" xml:space="preserve">
+    <value>Engedélyezés</value>
+  </data>
+  <data name="MacroPage_Subtitle" xml:space="preserve">
+    <value>A billentyűleütések sorozatát rögzítheti, és a billentyűzet számtáblájával hívhatja elő őket.</value>
+  </data>
+  <data name="MacroAutomationStepControl_Title" xml:space="preserve">
+    <value>Makró</value>
+  </data>
+  <data name="MacroAutomationStepControl_Message" xml:space="preserve">
+    <value>Makrók engedélyezése vagy letiltása.</value>
+  </data>
+  <data name="MacroSequenceControl_InterruptOnOtherKey_Title" xml:space="preserve">
+    <value>Megszakítás, ha egy másik billentyűt nyomtak le</value>
   </data>
   <data name="Hide" xml:space="preserve">
-    <value>Gizle</value>
+    <value>Elrejtés</value>
   </data>
   <data name="HideAll" xml:space="preserve">
-    <value>Tümünü gizle</value>
+    <value>Összes elrejtése</value>
+  </data>
+  <data name="DevicePipelineTriggerTabItemContent_Devices" xml:space="preserve">
+    <value>Eszközök</value>
   </data>
   <data name="DeselectAll" xml:space="preserve">
-    <value>Tüm seçimi kaldır</value>
+    <value>Összes kijelölés megszüntetése</value>
   </data>
   <data name="SelectAll" xml:space="preserve">
-    <value>Tümünü seç</value>
+    <value>Összes kijelölése</value>
+  </data>
+  <data name="MacroSequenceControl_Keyboard" xml:space="preserve">
+    <value>Csak billentyűzet</value>
+  </data>
+  <data name="MacroSequenceControl_KeyboardMouse" xml:space="preserve">
+    <value>Billentyűk és egérgombok</value>
+  </data>
+  <data name="MacroSequenceControl_KeyboardMouseMovement" xml:space="preserve">
+    <value>Minden bemenet</value>
   </data>
   <data name="MacroSequenceControl_RecordingOptions" xml:space="preserve">
-    <value>Kayıt seçenekleri</value>
+    <value>A felvételek beállításai</value>
+  </data>
+  <data name="MacroRecordingWindow_Preparing_Title" xml:space="preserve">
+    <value>A felvétel 3 másodperc múlva indul...</value>
   </data>
   <data name="MacroRecordingWindow_Recording_Title" xml:space="preserve">
-    <value>Kaydediliyor...</value>
+    <value>Felvétel...</value>
+  </data>
+  <data name="MacroRecordingWindow_Recording_Message" xml:space="preserve">
+    <value>A leállításhoz nyomja meg az ESC gombot.</value>
+  </data>
+  <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlySelected" xml:space="preserve">
+    <value>Csak a kiválasztott eszközök megjelenítése</value>
+  </data>
+  <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlyRemovable" xml:space="preserve">
+    <value>Csak az eltávolítható eszközök megjelenítése</value>
+  </data>
+  <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlyConnected" xml:space="preserve">
+    <value>Csak a csatlakoztatott eszközök megjelenítése</value>
+  </data>
+  <data name="SettingsPage_CLI_Title" xml:space="preserve">
+    <value>CLI</value>
+  </data>
+  <data name="SettingsPage_CLI_Message" xml:space="preserve">
+    <value>Engedélyezze a parancssori felületet, amely lehetővé teszi a vezérlést a parancssorból.</value>
+  </data>
+  <data name="SettingsPage_CLIAddToPath_Title" xml:space="preserve">
+    <value>CLI hozzáadása a PATH-hoz</value>
+  </data>
+  <data name="SettingsPage_CLIAddToPath_Message" xml:space="preserve">
+    <value>A CLI hozzáadása a felhasználó PATH környezeti változójához.</value>
+  </data>
+  <data name="SettingsPage_Temperature_Title" xml:space="preserve">
+    <value>Hőmérséklet</value>
+  </data>
+  <data name="SettingsPage_Temperature_Message" xml:space="preserve">
+    <value>Válassza ki a hőmérséklet-érzékelők egységeit.</value>
+  </data>
+  <data name="MainWindows_FnKeysRunning" xml:space="preserve">
+    <value>A Lenovo Hotkeys a háttérben fut.</value>
+  </data>
+  <data name="MainWindow_LegionZoneRunning" xml:space="preserve">
+    <value>A Legion Zone a háttérben fut.</value>
+  </data>
+  <data name="MainWindows_VantageRunning" xml:space="preserve">
+    <value>Lenovo Vantage és/vagy ImController fut a háttérben.</value>
+  </data>
+  <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
+    <value>Ellenőrzés</value>
+  </data>
+  <data name="SettingsPage_CheckUpdates_Started_Title" xml:space="preserve">
+    <value>Frissítések keresése...</value>
+  </data>
+  <data name="SettingsPage_CheckUpdates_Title" xml:space="preserve">
+    <value>Frissítések ellenőrzése</value>
+  </data>
+  <data name="SettingsPage_Update_Title" xml:space="preserve">
+    <value>Frissítés</value>
+  </data>
+  <data name="MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message" xml:space="preserve">
+    <value>Az API ráta korlátját elértük, kérjük, próbálja meg később újra.</value>
+  </data>
+  <data name="MainWindow_CheckForUpdates_Error_Title" xml:space="preserve">
+    <value>Nem sikerült ellenőrizni a frissítéseket</value>
+  </data>
+  <data name="MainWindow_CheckForUpdates_Error_Unknown_Message" xml:space="preserve">
+    <value>Hiba történt. Kérjük, próbálkozzon később.</value>
+  </data>
+  <data name="MainWindow_CheckForUpdates_Success_Title" xml:space="preserve">
+    <value>Nincs elérhető frissítés</value>
+  </data>
+  <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
+    <value>Frissítések automatikus keresése</value>
+  </data>
+  <data name="PackagesPage_UpdateCatalogNotFound_Title" xml:space="preserve">
+	  <value>Frissítési katalógus nem található</value>
+  </data>
+  <data name="PackagesPage_UpdateCatalogNotFound_Message" xml:space="preserve">
+	  <value>Próbáljon meg frissítéseket más forrásból szerezni.</value>
+  </data>
+  <data name="PackagesPage_Error_Title" xml:space="preserve">
+	  <value>Valami nem sikerült</value>
+  </data>
+  <data name="PackagesPage_Error_CheckInternet_Message" xml:space="preserve">
+	  <value>Ellenőrizze, hogy az internetkapcsolata működik-e.</value>
+  </data>
+  <data name="PlaySoundAutomationStepControl_Title" xml:space="preserve">
+	  <value>Hang lejátszása</value>
+  </data>
+  <data name="PlaySoundAutomationStepControl_Message" xml:space="preserve">
+	  <value>Az általános zenei formátumok, mint a wav vagy az mp3, támogatottak.</value>
   </data>
 </root>
