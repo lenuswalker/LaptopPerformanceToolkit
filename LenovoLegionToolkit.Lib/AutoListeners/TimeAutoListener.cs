@@ -34,7 +34,7 @@ public class TimeAutoListener : AbstractAutoListener<TimeAutoListener.ChangedEve
     {
         if (!_timer.Enabled)
         {
-            _timer.Interval = interval;
+            _timer.Interval = interval * 1000;
             _timer.Enabled = true;
         }
 
