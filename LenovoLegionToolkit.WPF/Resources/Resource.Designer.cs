@@ -2975,6 +2975,42 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to API rate limit reached, please try again later..
+        /// </summary>
+        public static string MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message {
+            get {
+                return ResourceManager.GetString("MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to check for updates.
+        /// </summary>
+        public static string MainWindow_CheckForUpdates_Error_Title {
+            get {
+                return ResourceManager.GetString("MainWindow_CheckForUpdates_Error_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something went wrong, please try again later..
+        /// </summary>
+        public static string MainWindow_CheckForUpdates_Error_Unknown_Message {
+            get {
+                return ResourceManager.GetString("MainWindow_CheckForUpdates_Error_Unknown_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No updates found.
+        /// </summary>
+        public static string MainWindow_CheckForUpdates_Success_Title {
+            get {
+                return ResourceManager.GetString("MainWindow_CheckForUpdates_Success_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Legion Zone is running in the background..
         /// </summary>
         public static string MainWindow_LegionZoneRunning {
@@ -3924,6 +3960,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check if your internet connection is up and running..
+        /// </summary>
+        public static string PackagesPage_Error_CheckInternet_Message {
+            get {
+                return ResourceManager.GetString("PackagesPage_Error_CheckInternet_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something went wrong.
+        /// </summary>
+        public static string PackagesPage_Error_Title {
+            get {
+                return ResourceManager.GetString("PackagesPage_Error_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Machine Type.
         /// </summary>
         public static string PackagesPage_MachineType {
@@ -4050,6 +4104,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Try getting updates from the other source..
+        /// </summary>
+        public static string PackagesPage_UpdateCatalogNotFound_Message {
+            get {
+                return ResourceManager.GetString("PackagesPage_UpdateCatalogNotFound_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update catalog not found.
+        /// </summary>
+        public static string PackagesPage_UpdateCatalogNotFound_Title {
+            get {
+                return ResourceManager.GetString("PackagesPage_UpdateCatalogNotFound_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Turn on or off the backlight on the lid of the laptop..
         /// </summary>
         public static string PanelLogoBacklightAutomationStepControl_Message {
@@ -4100,6 +4172,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string PeriodicActionPipelineTriggerTabItemContent_PeriodMinutes {
             get {
                 return ResourceManager.GetString("PeriodicActionPipelineTriggerTabItemContent_PeriodMinutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Common music formats like wav or mp3 are supported..
+        /// </summary>
+        public static string PlaySoundAutomationStepControl_Message {
+            get {
+                return ResourceManager.GetString("PlaySoundAutomationStepControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Play sound.
+        /// </summary>
+        public static string PlaySoundAutomationStepControl_Title {
+            get {
+                return ResourceManager.GetString("PlaySoundAutomationStepControl_Title", resourceCulture);
             }
         }
         
@@ -4812,6 +4902,33 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Checking for updates....
+        /// </summary>
+        public static string SettingsPage_CheckUpdates_Started_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_CheckUpdates_Started_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check for updates.
+        /// </summary>
+        public static string SettingsPage_CheckUpdates_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_CheckUpdates_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check.
+        /// </summary>
+        public static string SettingsPage_CheckUpdatesButton_Content {
+            get {
+                return ResourceManager.GetString("SettingsPage_CheckUpdatesButton_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable Command Line Interface that allows control from command line..
         /// </summary>
         public static string SettingsPage_CLI_Message {
@@ -5289,6 +5406,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string SettingsPage_Title {
             get {
                 return ResourceManager.GetString("SettingsPage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        public static string SettingsPage_Update_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_Update_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automatically check for updates.
+        /// </summary>
+        public static string SettingsPage_UpdateCheckFrequency_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_UpdateCheckFrequency_Title", resourceCulture);
             }
         }
         
@@ -6156,7 +6291,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enabled or disable Windows key..
+        ///   Looks up a localized string similar to Disable Windows key on built-in keyboard..
         /// </summary>
         public static string WinKeyAutomationStepControl_Message {
             get {
@@ -6165,7 +6300,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Windows Key.
+        ///   Looks up a localized string similar to Windows Key Lock.
         /// </summary>
         public static string WinKeyAutomationStepControl_Title {
             get {

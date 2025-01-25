@@ -118,332 +118,332 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AccentColorSource_Custom" xml:space="preserve">
-    <value>Προσαρμοσμένο</value>
+    <value>Egyéni</value>
   </data>
   <data name="AccentColorSource_System" xml:space="preserve">
-    <value>Συστήματος</value>
+    <value>Rendszer</value>
   </data>
   <data name="AlwaysOnUSBState_Off" xml:space="preserve">
-    <value>Ανενεργό</value>
+    <value>Kikapcsolva</value>
   </data>
   <data name="AlwaysOnUSBState_OnAlways" xml:space="preserve">
-    <value>Πάντα ενεργό</value>
+    <value>Mindig bekapcsolva</value>
   </data>
   <data name="AlwaysOnUSBState_OnWhenSleeping" xml:space="preserve">
-    <value>Ενεργό όταν είναι σε αδράνεια</value>
+    <value>Bekapcsolva, alvó állapot esetén</value>
   </data>
   <data name="AutorunState_Disabled" xml:space="preserve">
-    <value>Ανενεργό</value>
+    <value>Letiltva</value>
   </data>
   <data name="AutorunState_Enabled" xml:space="preserve">
-    <value>Ενεργό</value>
+    <value>Engedélyezve</value>
   </data>
   <data name="AutorunState_EnabledDelayed" xml:space="preserve">
-    <value>Ενεργό, με καθυστέρηση</value>
+    <value>Bekapcsolva, késleltetve</value>
   </data>
   <data name="BatteryState_Conservation" xml:space="preserve">
-    <value>Διατήρηση</value>
+    <value>Konzerváló mód</value>
   </data>
   <data name="BatteryState_Normal" xml:space="preserve">
-    <value>Κανονική</value>
+    <value>Normál</value>
   </data>
   <data name="BatteryState_RapidCharge" xml:space="preserve">
-    <value>Ταχεία Φόρτιση</value>
+    <value>Gyorstöltés</value>
   </data>
   <data name="FlipToStartState_Off" xml:space="preserve">
-    <value>Ανενεργό</value>
+    <value>Ki</value>
     <comment>Informs the user that Flip to Start is or will be turned off.</comment>
   </data>
   <data name="FlipToStartState_On" xml:space="preserve">
-    <value>Ενεργό</value>
+    <value>Be</value>
     <comment>Informs the user that Flip to Start is or will be turned on.</comment>
   </data>
   <data name="FnLockState_Off" xml:space="preserve">
-    <value>Ανενεργό</value>
+    <value>Ki</value>
     <comment>Informs the user that Fn Lock is or will be turned off.</comment>
   </data>
   <data name="FnLockState_On" xml:space="preserve">
-    <value>Ενεργό</value>
+    <value>Be</value>
     <comment>Informs the user that Fn Lock is or will be turned on.</comment>
   </data>
   <data name="GPUController_PoweredOff" xml:space="preserve">
-    <value>Απενεργοποίηση</value>
+    <value>Kikapcsolva</value>
   </data>
   <data name="GPUController_PoweredOn" xml:space="preserve">
-    <value>Ενεργοποίηση</value>
+    <value>Bekapcsolva</value>
   </data>
   <data name="HDRState_Off" xml:space="preserve">
-    <value>Ανενεργό</value>
+    <value>Ki</value>
     <comment>Informs the user that HDR is or will be turned off.</comment>
   </data>
   <data name="HDRState_On" xml:space="preserve">
-    <value>Ενεργό</value>
+    <value>Be</value>
     <comment>Informs the user that HDR is or will be turned on.</comment>
   </data>
   <data name="HybridModeState_Off" xml:space="preserve">
-    <value>dGPU</value>
+    <value>Dedikált videókártya</value>
   </data>
   <data name="HybridModeState_On" xml:space="preserve">
-    <value>Υβριδική</value>
+    <value>Hibrid</value>
   </data>
   <data name="HybridModeState_OnAuto" xml:space="preserve">
-    <value>Υβριδική-Αυτόματο</value>
+    <value>Hibrid-Automata</value>
   </data>
   <data name="HybridModeState_OnIGPUOnly" xml:space="preserve">
-    <value>Υβριδική-iGPU</value>
+    <value>Hibrid-Integrált videókártya</value>
   </data>
   <data name="MicrophoneState_Off" xml:space="preserve">
-    <value>Ανενεργό</value>
+    <value>Ki</value>
     <comment>Informs the user that the microphone is or will be turned off.</comment>
   </data>
   <data name="MicrophoneState_On" xml:space="preserve">
-    <value>Ενεργό</value>
+    <value>Be</value>
     <comment>Informs the user that the microphone is or will be turned on.</comment>
   </data>
   <data name="NotificationPosition_BottomCenter" xml:space="preserve">
-    <value>Κάτω κέντρο</value>
+    <value>Középen alul</value>
   </data>
   <data name="NotificationPosition_BottomLeft" xml:space="preserve">
-    <value>Κάτω αριστερά</value>
+    <value>Bal alul</value>
   </data>
   <data name="NotificationPosition_BottomRight" xml:space="preserve">
-    <value>Κάτω δεξιά</value>
+    <value>Jobb alul</value>
   </data>
   <data name="NotificationPosition_Center" xml:space="preserve">
-    <value>Κέντρο</value>
+    <value>Középen</value>
   </data>
   <data name="NotificationPosition_CenterLeft" xml:space="preserve">
-    <value>Κέντρο αριστερά</value>
+    <value>Középen balra</value>
   </data>
   <data name="NotificationPosition_CenterRight" xml:space="preserve">
-    <value>Κέντρο δεξιά</value>
+    <value>Középen jobbra</value>
   </data>
   <data name="NotificationPosition_TopCenter" xml:space="preserve">
-    <value>Πάνω κέντρο</value>
+    <value>Középen fent</value>
   </data>
   <data name="NotificationPosition_TopLeft" xml:space="preserve">
-    <value>Πάνω αριστερά</value>
+    <value>Bal fent</value>
   </data>
   <data name="NotificationPosition_TopRight" xml:space="preserve">
-    <value>Πάνω δεξιά</value>
+    <value>Jobb fent</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightState_Off" xml:space="preserve">
-    <value>Ανενεργό</value>
+    <value>Ki</value>
     <comment>Informs the user that One Level White Keyboard Backlight is or will be turned off.</comment>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightState_On" xml:space="preserve">
-    <value>Ενεργό</value>
+    <value>Be</value>
     <comment>Informs the user that One Level White Keyboard Backlight is or will be turned on.</comment>
   </data>
   <data name="OverdriveState_Off" xml:space="preserve">
-    <value>Ανενεργή</value>
+    <value>Ki</value>
     <comment>Informs the user that Overdrive is or will be turned off.</comment>
   </data>
   <data name="OverdriveState_On" xml:space="preserve">
-    <value>Ενεργή</value>
+    <value>Be</value>
     <comment>Informs the user that Overdrive is or will be turned on.</comment>
   </data>
   <data name="PowerModeState_Balance" xml:space="preserve">
-    <value>Ισορροπημένη</value>
+    <value>Kiegyensúlyozott</value>
   </data>
   <data name="PowerModeState_GodMode" xml:space="preserve">
-    <value>Προσαρμοσμένη</value>
+    <value>Egyéni</value>
   </data>
   <data name="PowerModeState_Performance" xml:space="preserve">
-    <value>Υψηλή απόδοση</value>
+    <value>Teljesítménycentrikus</value>
   </data>
   <data name="PowerModeState_Quiet" xml:space="preserve">
-    <value>Αθόρυβη</value>
+    <value>Csendes</value>
   </data>
   <data name="RGBKeyboardBacklightSpeed_Fast" xml:space="preserve">
-    <value>Γρήγορη</value>
+    <value>Gyors</value>
   </data>
   <data name="RGBKeyboardBacklightSpeed_Fastest" xml:space="preserve">
-    <value>Ταχύτατη</value>
+    <value>Leggyorsabb</value>
   </data>
   <data name="RGBKeyboardBacklightSpeed_Slow" xml:space="preserve">
-    <value>Αργή</value>
+    <value>Lassú</value>
   </data>
   <data name="RGBKeyboardBacklightSpeed_Slowest" xml:space="preserve">
-    <value>Πολύ αργή</value>
+    <value>Leglassabb</value>
   </data>
   <data name="RGBKeyboardBacklightBrightness_High" xml:space="preserve">
-    <value>Υψηλή</value>
+    <value>Magas</value>
   </data>
   <data name="RGBKeyboardBacklightBrightness_Low" xml:space="preserve">
-    <value>Χαμηλή</value>
+    <value>Alacsony</value>
   </data>
   <data name="RGBKeyboardBacklightEffect_Breath" xml:space="preserve">
-    <value>Αναπνοή</value>
+    <value>Lélegző</value>
   </data>
   <data name="RGBKeyboardBacklightEffect_Smooth" xml:space="preserve">
-    <value>Ομαλό</value>
+    <value>Sima</value>
   </data>
   <data name="RGBKeyboardBacklightEffect_Static" xml:space="preserve">
-    <value>Στατικό</value>
+    <value>Állandó</value>
   </data>
   <data name="RGBKeyboardBacklightEffect_WaveLTR" xml:space="preserve">
-    <value>Κύμα Αριστερά</value>
+    <value>Hullám (balra)</value>
   </data>
   <data name="RGBKeyboardBacklightEffect_WaveRTL" xml:space="preserve">
-    <value>Κύμα Δεξιά</value>
+    <value>Hullám (jobbra)</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_Off" xml:space="preserve">
-    <value>Ανενεργό</value>
+    <value>Kikapcsolva</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_One" xml:space="preserve">
-    <value>Προεπιλογή 1</value>
+    <value>Előre beállított 1</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_Three" xml:space="preserve">
-    <value>Προεπιλογή 3</value>
+    <value>Előre beállított 3</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_Two" xml:space="preserve">
-    <value>Προεπιλογή 2</value>
+    <value>Előre beállított 2</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightness_High" xml:space="preserve">
-    <value>Υψηλή</value>
+    <value>Magas</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightness_Low" xml:space="preserve">
-    <value>Χαμηλή</value>
+    <value>Alacsony</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightness_Medium" xml:space="preserve">
-    <value>Μέτρια</value>
+    <value>Közepes</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightness_Off" xml:space="preserve">
-    <value>Ανενεργή</value>
+    <value>Kikapcsolva</value>
   </data>
   <data name="SpectrumKeyboardBacklightDirection_BottomToTop" xml:space="preserve">
-    <value>Από κάτω προς τα πάνω</value>
+    <value>Lentről felfelé</value>
   </data>
   <data name="SpectrumKeyboardBacklightDirection_Clockwise" xml:space="preserve">
-    <value>Δεξιόστροφα</value>
+    <value>Óramutató járásával megegyező</value>
   </data>
   <data name="SpectrumKeyboardBacklightDirection_CounterClockwise" xml:space="preserve">
-    <value>Αριστερόστροφα</value>
+    <value>Óramutató járásával ellentétes</value>
   </data>
   <data name="SpectrumKeyboardBacklightDirection_LeftToRight" xml:space="preserve">
-    <value>Αριστερά προς Δεξιά</value>
+    <value>Balról jobbra</value>
   </data>
   <data name="SpectrumKeyboardBacklightDirection_RightToLeft" xml:space="preserve">
-    <value>Δεξιά προς Αριστερά</value>
+    <value>Jobbról balra</value>
   </data>
   <data name="SpectrumKeyboardBacklightDirection_TopToBottom" xml:space="preserve">
-    <value>Από πάνω προς τα κάτω</value>
+    <value>Fentről lefelé</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Always" xml:space="preserve">
-    <value>Πάντα</value>
+    <value>Mindig</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_AudioBounce" xml:space="preserve">
-    <value>Αναπήδηση Ήχου</value>
+    <value>Audio Bounce</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_AudioRipple" xml:space="preserve">
-    <value>Κυματισμός Ήχου</value>
+    <value>Audio hullámzás</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_AuroraSync" xml:space="preserve">
-    <value>Συγχρονισμός Aurora</value>
+    <value>Aurora szinkronizáció</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorChange" xml:space="preserve">
-    <value>Εναλλαγή Χρωμάτων</value>
+    <value>Színváltós</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorPulse" xml:space="preserve">
-    <value>Παλμός Χρωμάτων</value>
+    <value>Szín pulzálás</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorWave" xml:space="preserve">
-    <value>Κυματισμός Χρωμάτων</value>
+    <value>Színhullám</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Rain" xml:space="preserve">
-    <value>Βροχή</value>
+    <value>Eső</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_RainbowScrew" xml:space="preserve">
-    <value>Κυκλικό Ουράνιο Τόξο</value>
+    <value>Szivárvány csavar</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_RainbowWave" xml:space="preserve">
-    <value>Κυματισμός Ουράνιου Τόξου</value>
+    <value>Szivárvány hullám</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Ripple" xml:space="preserve">
-    <value>Κυματισμός</value>
+    <value>Hullámzás</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Smooth" xml:space="preserve">
-    <value>Ομαλή</value>
+    <value>Sima</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Type" xml:space="preserve">
-    <value>Τύπος</value>
+    <value>Típus</value>
   </data>
   <data name="SpectrumKeyboardBacklightSpeed_Speed1" xml:space="preserve">
-    <value>Αργή</value>
+    <value>Lassú</value>
   </data>
   <data name="SpectrumKeyboardBacklightSpeed_Speed2" xml:space="preserve">
-    <value>Μέτρια</value>
+    <value>Közepes</value>
   </data>
   <data name="SpectrumKeyboardBacklightSpeed_Speed3" xml:space="preserve">
-    <value>Γρήγορη</value>
+    <value>Gyors</value>
   </data>
   <data name="Theme_Dark" xml:space="preserve">
-    <value>Σκοτεινό</value>
+    <value>Sötét</value>
   </data>
   <data name="Theme_Light" xml:space="preserve">
-    <value>Φωτεινό</value>
+    <value>Világos</value>
   </data>
   <data name="Theme_System" xml:space="preserve">
-    <value>Συστήματος</value>
+    <value>Rendszer</value>
   </data>
   <data name="TouchpadLockState_Off" xml:space="preserve">
-    <value>Ανενεργό</value>
+    <value>Ki</value>
     <comment>Informs the user that Touchpad Lock is or will be turned off.</comment>
   </data>
   <data name="TouchpadLockState_On" xml:space="preserve">
-    <value>Ενεργό</value>
+    <value>Be</value>
     <comment>Informs the user that Touchpad Lock is or will be turned on.</comment>
   </data>
   <data name="WhiteKeyboardBacklightState_High" xml:space="preserve">
-    <value>Υψηλό</value>
+    <value>Magas</value>
   </data>
   <data name="WhiteKeyboardBacklightState_Low" xml:space="preserve">
-    <value>Χαμηλό</value>
+    <value>Alacsony</value>
   </data>
   <data name="WhiteKeyboardBacklightState_Off" xml:space="preserve">
-    <value>Ανενεργό</value>
+    <value>Kikapcsolva</value>
   </data>
   <data name="WinKeyState_Off" xml:space="preserve">
-    <value>Ανενεργό</value>
+    <value>Ki</value>
     <comment>Informs the user that WinLock is or will be turned on.</comment>
   </data>
   <data name="WinKeyState_On" xml:space="preserve">
-    <value>Ενεργό</value>
+    <value>Be</value>
     <comment>Informs the user that WinLock is or will be turned on.</comment>
   </data>
   <data name="PortsBacklightState_Off" xml:space="preserve">
-    <value>Ανενεργός</value>
+    <value>Ki</value>
   </data>
   <data name="PortsBacklightState_On" xml:space="preserve">
-    <value>Ενεργός</value>
+    <value>Be</value>
   </data>
   <data name="PanelLogoBacklightState_On" xml:space="preserve">
-    <value>Ενεργό</value>
+    <value>Be</value>
   </data>
   <data name="PanelLogoBacklightState_Off" xml:space="preserve">
-    <value>Ανενεργό</value>
+    <value>Ki</value>
   </data>
   <data name="InstantBootState_Off" xml:space="preserve">
-    <value>Ανενεργή</value>
+    <value>Ki</value>
   </data>
   <data name="InstantBootState_AcAdapter" xml:space="preserve">
-    <value>Φορτιστής Ρεύματος</value>
+    <value>Váltóáramú adapter</value>
   </data>
   <data name="InstantBootState_UsbPowerDelivery" xml:space="preserve">
-    <value>USB Power Delivery</value>
+    <value>USB energiaellátás (PD)</value>
   </data>
   <data name="InstantBootState_AcAdapterAndUsbPowerDelivery" xml:space="preserve">
-    <value>Ρεύμα και USB PD</value>
+    <value>AC és USB PD</value>
   </data>
   <data name="NotificationDuration_Long" xml:space="preserve">
-    <value>Μεγάλη</value>
+    <value>Hosszú</value>
   </data>
   <data name="NotificationDuration_Normal" xml:space="preserve">
-    <value>Κανονική</value>
+    <value>Normál</value>
   </data>
   <data name="NotificationDuration_Short" xml:space="preserve">
-    <value>Μικρή</value>
+    <value>Rövid</value>
   </data>
   <data name="ModifierKey_Shift" xml:space="preserve">
     <value>Shift</value>
@@ -455,45 +455,45 @@
     <value>Alt</value>
   </data>
   <data name="BatteryNightChargeState_On" xml:space="preserve">
-    <value>Ενεργή</value>
+    <value>Be</value>
   </data>
   <data name="BatteryNightChargeState_Off" xml:space="preserve">
-    <value>Ανενεργή</value>
+    <value>Ki</value>
   </data>
   <data name="SpeakerState_Mute" xml:space="preserve">
-    <value>Σίγαση </value>
+    <value>Némítás</value>
   </data>
   <data name="SpeakerState_Unmute" xml:space="preserve">
-    <value>Τέλος σίγασης</value>
+    <value>Némítás feloldása</value>
   </data>
   <data name="PowerModeMappingMode_Disabled" xml:space="preserve">
-    <value>Απενεργοποιημένο</value>
+    <value>Letiltva</value>
   </data>
   <data name="PowerModeMappingMode_WindowsPowerMode" xml:space="preserve">
-    <value>Λειτουργία Ισχύος Windows</value>
+    <value>Windows energiagazdálkodási mód</value>
   </data>
   <data name="PowerModeMappingMode_WindowsPowerPlan" xml:space="preserve">
-    <value>Πλάνο Τροφοδοσίας Windows</value>
+    <value>Windows Energiaséma</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_Four" xml:space="preserve">
-    <value>Προεπιλογή 4</value>
+    <value>Előre beállított 4</value>
   </data>
   <data name="UpdateCheckFrequency_PerDay" xml:space="preserve">
-    <value>Καθημερινά</value>
+    <value>Naponta</value>
   </data>
   <data name="UpdateCheckFrequency_PerHour" xml:space="preserve">
-    <value>Ωριαία</value>
+    <value>Óránként</value>
   </data>
   <data name="UpdateCheckFrequency_PerMonth" xml:space="preserve">
-    <value>Μηνιαία</value>
+    <value>Havonta</value>
   </data>
   <data name="UpdateCheckFrequency_PerThreeHours" xml:space="preserve">
-    <value>Κάθε 3 ώρες</value>
+    <value>3 óránként</value>
   </data>
   <data name="UpdateCheckFrequency_PerTwelveHours" xml:space="preserve">
-    <value>Κάθε 12 ώρες</value>
+    <value>12 óránként</value>
   </data>
   <data name="UpdateCheckFrequency_PerWeek" xml:space="preserve">
-    <value>Εβδομαδιαία</value>
+    <value>Hetente</value>
   </data>
 </root>

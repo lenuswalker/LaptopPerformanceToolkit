@@ -201,7 +201,7 @@
     <comment>Informs the user that the microphone is or will be turned on.</comment>
   </data>
   <data name="NotificationPosition_BottomCenter" xml:space="preserve">
-    <value>底部居中</value>
+    <value>底部置中</value>
   </data>
   <data name="NotificationPosition_BottomLeft" xml:space="preserve">
     <value>左下角</value>
@@ -210,16 +210,16 @@
     <value>右下角</value>
   </data>
   <data name="NotificationPosition_Center" xml:space="preserve">
-    <value>居中</value>
+    <value>置中</value>
   </data>
   <data name="NotificationPosition_CenterLeft" xml:space="preserve">
-    <value>居中左側</value>
+    <value>置中左側</value>
   </data>
   <data name="NotificationPosition_CenterRight" xml:space="preserve">
-    <value>居中右側</value>
+    <value>置中右側</value>
   </data>
   <data name="NotificationPosition_TopCenter" xml:space="preserve">
-    <value>頂部居中</value>
+    <value>頂部置中</value>
   </data>
   <data name="NotificationPosition_TopLeft" xml:space="preserve">
     <value>左上角</value>
@@ -467,15 +467,33 @@
     <value>解除靜音</value>
   </data>
   <data name="PowerModeMappingMode_Disabled" xml:space="preserve">
-	  <value>已停用</value>
+    <value>已停用</value>
   </data>
   <data name="PowerModeMappingMode_WindowsPowerMode" xml:space="preserve">
-	  <value>Windows 電源模式</value>
+    <value>Windows 電源模式</value>
   </data>
   <data name="PowerModeMappingMode_WindowsPowerPlan" xml:space="preserve">
-	  <value>Windows 電源計劃</value>
+    <value>Windows 電源計劃</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_Four" xml:space="preserve">
-	  <value>預設 4</value>
+    <value>預設 4</value>
+  </data>
+  <data name="UpdateCheckFrequency_PerDay" xml:space="preserve">
+    <value>每天</value>
+  </data>
+  <data name="UpdateCheckFrequency_PerHour" xml:space="preserve">
+    <value>每小時</value>
+  </data>
+  <data name="UpdateCheckFrequency_PerMonth" xml:space="preserve">
+    <value>每月</value>
+  </data>
+  <data name="UpdateCheckFrequency_PerThreeHours" xml:space="preserve">
+    <value>每 3 小時</value>
+  </data>
+  <data name="UpdateCheckFrequency_PerTwelveHours" xml:space="preserve">
+    <value>每 12 小時</value>
+  </data>
+  <data name="UpdateCheckFrequency_PerWeek" xml:space="preserve">
+    <value>每週</value>
   </data>
 </root>

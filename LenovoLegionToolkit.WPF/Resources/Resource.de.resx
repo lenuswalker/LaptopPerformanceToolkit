@@ -1418,10 +1418,10 @@ Die Protokollierung wird automatisch aktiviert, wenn Sie fortfahren möchten.</v
     <value>Tastaturbeleuchtung</value>
   </data>
   <data name="WinKeyAutomationStepControl_Message" xml:space="preserve">
-    <value>Aktiviere oder deaktiviere die Windows-Taste.</value>
+    <value>Deaktiviert die Windows-Taste der integrierten Tastatur.</value>
   </data>
   <data name="WinKeyAutomationStepControl_Title" xml:space="preserve">
-    <value>Windows-Taste</value>
+    <value>Windows-Tasten-Sperre</value>
   </data>
   <data name="WinKeyControl_Message" xml:space="preserve">
     <value>Funktioniert nur bei integrierter Tastatur.</value>
@@ -1843,7 +1843,7 @@ Wenn die dGPU überhaupt nicht reagiert, starten Sie bitte Ihren Laptop neu.</va
     <value>Die Einstellungen des benutzerdefinierten Modus werden nicht korrekt angewendet, wenn Lenovo Vantage oder dessen Dienste ausgeführt werden.</value>
   </data>
   <data name="GodModeSettingsWindow_LegionZoneWarning_Title" xml:space="preserve">
-    <value>Die Einstellungen des benutzerdefinierten Modus werden nicht korrekt angewendet, wenn LegionZone oder dessen Dienste ausgeführt werden.</value>
+    <value>Die Einstellungen des benutzerdefinierten Modus werden nicht korrekt angewendet, wenn Legion Zone oder dessen Dienste ausgeführt werden.</value>
   </data>
   <data name="DGPU_Connected_Title" xml:space="preserve">
     <value>DGPU verbunden</value>
@@ -2168,24 +2168,69 @@ Unterstützte Formate sind: {1}.</value>
     <value>Aktiviere die Befehlszeilenschnittstelle, die eine Steuerung über die Kommandozeile ermöglicht.</value>
   </data>
   <data name="SettingsPage_CLIAddToPath_Title" xml:space="preserve">
-	  <value>CLI zu PATH hinzufügen</value>
+    <value>CLI zu PATH hinzufügen</value>
   </data>
   <data name="SettingsPage_CLIAddToPath_Message" xml:space="preserve">
-	  <value>Füge CLI zur PATH-Umgebungsvariable des Benutzers hinzu.</value>
+    <value>Füge CLI zur PATH-Umgebungsvariable des Benutzers hinzu.</value>
   </data>
   <data name="SettingsPage_Temperature_Title" xml:space="preserve">
-	  <value>Temperatur</value>
+    <value>Temperatur</value>
   </data>
   <data name="SettingsPage_Temperature_Message" xml:space="preserve">
-	  <value>Wählen Sie die Einheiten für die Temperatursensoren.</value>
+    <value>Wählen Sie die Einheiten für die Temperatursensoren.</value>
   </data>
   <data name="MainWindows_FnKeysRunning" xml:space="preserve">
-	  <value>Lenovo Hotkeys wird im Hintergrund ausgeführt.</value>
+    <value>Lenovo Hotkeys wird im Hintergrund ausgeführt.</value>
   </data>
   <data name="MainWindow_LegionZoneRunning" xml:space="preserve">
-	  <value>Legion Zone wird im Hintergrund ausgeführt.</value>
+    <value>Legion Zone wird im Hintergrund ausgeführt.</value>
   </data>
   <data name="MainWindows_VantageRunning" xml:space="preserve">
-	  <value>Lenovo Vantage und/oder ImController wird im Hintergrund ausgeführt.</value>
+    <value>Lenovo Vantage und/oder ImController wird im Hintergrund ausgeführt.</value>
+  </data>
+  <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
+    <value>Überprüfe</value>
+  </data>
+  <data name="SettingsPage_CheckUpdates_Started_Title" xml:space="preserve">
+    <value>Nach Updates suchen...</value>
+  </data>
+  <data name="SettingsPage_CheckUpdates_Title" xml:space="preserve">
+    <value>Nach Updates suchen</value>
+  </data>
+  <data name="SettingsPage_Update_Title" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message" xml:space="preserve">
+    <value>API-Ratenlimit erreicht, bitte versuchen Sie es später noch einmal.</value>
+  </data>
+  <data name="MainWindow_CheckForUpdates_Error_Title" xml:space="preserve">
+    <value>Prüfung auf Updates fehlgeschlagen</value>
+  </data>
+  <data name="MainWindow_CheckForUpdates_Error_Unknown_Message" xml:space="preserve">
+    <value>Es ist ein Fehler aufgetreten, bitte versuchen Sie es später noch einmal.</value>
+  </data>
+  <data name="MainWindow_CheckForUpdates_Success_Title" xml:space="preserve">
+    <value>Keine Updates gefunden</value>
+  </data>
+  <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
+    <value>Automatisch auf Updates prüfen</value>
+  </data>
+  <data name="PackagesPage_UpdateCatalogNotFound_Title" xml:space="preserve">
+	  <value>Update-Katalog nicht gefunden</value>
+  </data>
+  <data name="PackagesPage_UpdateCatalogNotFound_Message" xml:space="preserve">
+	  <value>Versuche Updates von der anderen Quelle zu erhalten.</value>
+  </data>
+  <data name="PackagesPage_Error_Title" xml:space="preserve">
+	  <value>Etwas ist schiefgelaufen</value>
+  </data>
+  <data name="PackagesPage_Error_CheckInternet_Message" xml:space="preserve">
+	  <value>Prüfen Sie, ob Ihre Internetverbindung funktioniert.</value>
+  </data>
+  <data name="PlaySoundAutomationStepControl_Title" xml:space="preserve">
+	  <value>Ton abspielen</value>
+  </data>
+  <data name="PlaySoundAutomationStepControl_Message" xml:space="preserve">
+	  <value>Gängige Musikformate wie wav oder mp3 werden unterstützt.</value>
   </data>
 </root>

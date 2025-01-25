@@ -139,7 +139,7 @@
     <value>關於</value>
   </data>
   <data name="AboutPage_TranslationCredit" xml:space="preserve">
-    <value>翻譯多數由 flandretw 提供，開源社區校正。</value>
+    <value>翻譯多數由 flandretw 提供，開源社群校正。</value>
     <comment>Please replace this text with something like "Translated into &lt;language&gt; by &lt;your name&gt;."</comment>
   </data>
   <data name="AboutPage_Version" xml:space="preserve">
@@ -227,7 +227,7 @@
     <value>新增條件</value>
   </data>
   <data name="AutomationPipelineControl_Configure" xml:space="preserve">
-    <value>配置</value>
+    <value>組態設定</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive" xml:space="preserve">
     <value>獨佔此條件</value>
@@ -543,7 +543,7 @@
     <value>編輯</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Description" xml:space="preserve">
-    <value>使用 Fn+R 快捷方式時，取消選中您不想使用的更新率。</value>
+    <value>使用 Fn+R 快捷鍵時，取消選擇您不想使用的更新率。</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_NoRefreshRatesFound_Message" xml:space="preserve">
     <value>請確保筆記型電腦顯示器已開啟。否則 Lenovo Legion 工具套件無法載入顯示器資訊。</value>
@@ -630,13 +630,13 @@
     <value>不需要按住 Fn 鍵即可使用 F1-F12 功能鍵。</value>
   </data>
   <data name="FnLockAutomationStepControl_Title" xml:space="preserve">
-    <value>固定 Fn 鍵</value>
+    <value>鎖定 Fn 鍵</value>
   </data>
   <data name="FnLockControl_Message" xml:space="preserve">
     <value>不需要按住 Fn 鍵即可使用 F1-F12 功能鍵。</value>
   </data>
   <data name="FnLockControl_Title" xml:space="preserve">
-    <value>固定 Fn 鍵</value>
+    <value>鎖定 Fn 鍵</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Message" xml:space="preserve">
     <value>警告！
@@ -697,7 +697,7 @@
     <value>風扇</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_CTGP" xml:space="preserve">
-    <value>可配置 TGP</value>
+    <value>可設定 TGP</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost" xml:space="preserve">
     <value>動態加速</value>
@@ -774,7 +774,7 @@
     <value>已有可供使用的更新！</value>
   </data>
   <data name="MainWindow_UpdateAvailableWithVersion" xml:space="preserve">
-    <value>已有可供使用的更新 {0} ！</value>
+    <value>已有可供使用的更新 {0}！</value>
   </data>
   <data name="MoveDown" xml:space="preserve">
     <value>往下移</value>
@@ -807,10 +807,10 @@
     <value>開啟 Caps Lock</value>
   </data>
   <data name="Notification_FnLockOff" xml:space="preserve">
-    <value>關閉固定 Fn 鍵</value>
+    <value>關閉鎖定 Fn 鍵</value>
   </data>
   <data name="Notification_FnLockOn" xml:space="preserve">
-    <value>開啟固定 Fn 鍵</value>
+    <value>開啟鎖定 Fn 鍵</value>
   </data>
   <data name="Notification_MicrophoneOff" xml:space="preserve">
     <value>關閉麥克風</value>
@@ -859,7 +859,7 @@
     <value>不要顯示通知</value>
   </data>
   <data name="NotificationsSettingsWindow_FnLock" xml:space="preserve">
-    <value>固定 Fn 鍵</value>
+    <value>鎖定 Fn 鍵</value>
   </data>
   <data name="NotificationsSettingsWindow_KeyboardBacklight" xml:space="preserve">
     <value>鍵盤背光</value>
@@ -910,7 +910,7 @@
     <value>下載完成</value>
   </data>
   <data name="PackageControl_GeneralError_Title" xml:space="preserve">
-    <value>發生了億些錯誤</value>
+    <value>發生錯誤</value>
   </data>
   <data name="PackageControl_Http404Error_Message" xml:space="preserve">
     <value>伺服器返回代碼 404。</value>
@@ -919,10 +919,10 @@
     <value>找不到資料</value>
   </data>
   <data name="PackageControl_HttpGeneralError_Message" xml:space="preserve">
-    <value>檢查您的網路連接是否正常。</value>
+    <value>檢查您的網路連線是否正常。</value>
   </data>
   <data name="PackageControl_HttpGeneralError_Title" xml:space="preserve">
-    <value>發生了億些錯誤</value>
+    <value>發生錯誤</value>
   </data>
   <data name="PackageControl_IsUpdateInfo" xml:space="preserve">
     <value>已有可供使用的更新！</value>
@@ -934,17 +934,17 @@
     <value>版本</value>
   </data>
   <data name="PackagesPage_Disclaimer_Message" xml:space="preserve">
-    <value>以下是標記為與您的筆記型電腦相容的套件列表。
+    <value>以下是標記為與您的筆記型電腦相容的套件清單。
 請您始終確保安裝正確的套件。</value>
   </data>
   <data name="PackagesPage_DownloadFailed_Message" xml:space="preserve">
     <value>檢查裝置類型和系統設定是否正確。</value>
   </data>
   <data name="PackagesPage_DownloadFailed_Title" xml:space="preserve">
-    <value>發生了億些錯誤</value>
+    <value>發生錯誤</value>
   </data>
   <data name="PackagesPage_DownloadInProgress_Message" xml:space="preserve">
-    <value>變更排序、篩選結果、隱藏套件或重新整理列表將停止下載。您確定嗎？</value>
+    <value>變更排序、篩選結果、隱藏套件或重新整理清單將停止下載。您確定嗎？</value>
   </data>
   <data name="PackagesPage_DownloadInProgress_Title" xml:space="preserve">
     <value>下載進行中</value>
@@ -1148,7 +1148,7 @@
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
     <value>在不解除安裝 Lenovo Hotkeys 及相關服務的情況下停用它們。
-如果停用，此應用程式將處理 Fn 快捷方式。
+如果停用，此應用程式將處理 Fn 快捷鍵。
 變更此選項後建議重新啟動。</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
@@ -1204,7 +1204,7 @@
     <value>關閉時最小化</value>
   </data>
   <data name="SettingsPage_Notifications_Message" xml:space="preserve">
-    <value>配置顯示通知。</value>
+    <value>設定哪些通知要顯示。</value>
   </data>
   <data name="SettingsPage_Notifications_Title" xml:space="preserve">
     <value>通知</value>
@@ -1282,7 +1282,7 @@
     <value>選擇所有區域</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_SwitchKeyboardLayout_ToolTip" xml:space="preserve">
-    <value>切換鍵盤布局</value>
+    <value>切換鍵盤配置</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_ClockwiseDirection_Title" xml:space="preserve">
     <value>方向</value>
@@ -1505,7 +1505,7 @@
     <value>名稱</value>
   </data>
   <data name="EditDashboardWindow_Disclaimer_Message" xml:space="preserve">
-    <value>根據裝置的狀態和配置，某些功能可能不會出現在控制面板上。</value>
+    <value>根據裝置的狀態和組態設定，某些功能可能不會出現在控制面板上。</value>
   </data>
   <data name="DashboardPage_Customize" xml:space="preserve">
     <value>客製化</value>
@@ -1588,7 +1588,7 @@
     <value>當啟用後，變更 Windows 電源計劃時仍將保持亮度不變。</value>
   </data>
   <data name="Notification_UpdateAvailable" xml:space="preserve">
-    <value>已有可供使用的更新 {0} ！</value>
+    <value>已有可供使用的更新 {0}！</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL" xml:space="preserve">
     <value>峰值功率限制</value>
@@ -1681,7 +1681,7 @@
     <value>電池低電量</value>
   </data>
   <data name="AutomationPipelineTriggerConfigurationWindow_Title" xml:space="preserve">
-    <value>配置檔案</value>
+    <value>組態設定</value>
   </data>
   <data name="PowerPlansWindow_AoAcWarning_Title" xml:space="preserve">
     <value>偵測到 S0 Lower Power Model</value>
@@ -1705,7 +1705,7 @@
     <value>匯入鍵盤背光設定檔</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Message" xml:space="preserve">
-    <value>匯入並套用背光配置檔案到目前的設定檔。</value>
+    <value>匯入並套用背光組態設定到目前的設定檔。</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Path" xml:space="preserve">
     <value>路徑</value>
@@ -1813,7 +1813,7 @@
     <value>無法變更電源模式</value>
   </data>
   <data name="PowerModeUnavailableWithoutACException_Message" xml:space="preserve">
-    <value>當未連接電源供應器時無法啟用{0}。</value>
+    <value>當未連接電源供應器時無法啟用 {0}。</value>
     <comment>For example: "{Performance} power mode is not available without AC power."</comment>
   </data>
   <data name="EditDashboardWindow_Sensors" xml:space="preserve">
@@ -1836,7 +1836,7 @@
     <value>dGPU（獨立顯示卡）目前正在使用或筆記型電腦未使用電池電源</value>
   </data>
   <data name="IGPUModeChangeException_Message_Auto" xml:space="preserve">
-    <value>未使用筆記本電腦或使用電池供電時，dGPU（獨立顯示卡）將自動中斷連接。</value>
+    <value>未使用筆記型電腦或使用電池供電時，dGPU（獨立顯示卡）將自動中斷連接。</value>
   </data>
   <data name="GodModeSettingsWindow_VantageWarning_Title" xml:space="preserve">
     <value>當 Lenovo Vantage 或其他服務正在執行時，客製化模式設定將無法被正確地套用。</value>
@@ -1913,10 +1913,10 @@
     <value>預設</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
-    <value>智慧固定 Fn 鍵</value>
+    <value>智慧鎖定 Fn 鍵</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
-    <value>按下 Alt、Ctrl 或 Shift 鍵時，Fn 將會暫時解除固定。</value>
+    <value>按下 Alt、Ctrl 或 Shift 鍵時，Fn 將會暫時解除鎖定。</value>
   </data>
   <data name="Off" xml:space="preserve">
     <value>關閉</value>
@@ -2167,24 +2167,69 @@
     <value>啟用命令列介面，允許使用命令列進行控制。</value>
   </data>
   <data name="SettingsPage_CLIAddToPath_Title" xml:space="preserve">
-	  <value>新增命令列介面（CLI）至 PATH 變數</value>
+    <value>新增命令列介面（CLI）至 PATH 變數</value>
   </data>
   <data name="SettingsPage_CLIAddToPath_Message" xml:space="preserve">
-	  <value>新增命令列介面（CLI）至使用者 PATH 環境變數。</value>
+    <value>新增命令列介面（CLI）至使用者 PATH 環境變數。</value>
   </data>
   <data name="SettingsPage_Temperature_Title" xml:space="preserve">
-	  <value>溫度</value>
+    <value>溫度</value>
   </data>
   <data name="SettingsPage_Temperature_Message" xml:space="preserve">
-	  <value>選擇溫度感應器使用的單位。</value>
+    <value>選擇溫度感應器使用的單位。</value>
   </data>
   <data name="MainWindows_FnKeysRunning" xml:space="preserve">
-	  <value>Lenovo Hotkeys 正在背景執行。</value>
+    <value>Lenovo Hotkeys 正在背景執行。</value>
   </data>
   <data name="MainWindow_LegionZoneRunning" xml:space="preserve">
-	  <value>Legion Zone 正在背景執行。</value>
+    <value>Legion Zone 正在背景執行。</value>
   </data>
   <data name="MainWindows_VantageRunning" xml:space="preserve">
-	  <value>Lenovo Vantage 與（或）ImController 正在背景執行。</value>
+    <value>Lenovo Vantage 與（或）ImController 正在背景執行。</value>
+  </data>
+  <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
+    <value>檢查</value>
+  </data>
+  <data name="SettingsPage_CheckUpdates_Started_Title" xml:space="preserve">
+    <value>正在檢查更新⋯⋯</value>
+  </data>
+  <data name="SettingsPage_CheckUpdates_Title" xml:space="preserve">
+    <value>檢查更新</value>
+  </data>
+  <data name="SettingsPage_Update_Title" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message" xml:space="preserve">
+    <value>已達到 API 訪問頻率上限，請稍後再試。</value>
+  </data>
+  <data name="MainWindow_CheckForUpdates_Error_Title" xml:space="preserve">
+    <value>無法檢查更新。</value>
+  </data>
+  <data name="MainWindow_CheckForUpdates_Error_Unknown_Message" xml:space="preserve">
+    <value>發生錯誤，請稍後再試一次。</value>
+  </data>
+  <data name="MainWindow_CheckForUpdates_Success_Title" xml:space="preserve">
+    <value>沒有找到更新</value>
+  </data>
+  <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
+    <value>自動檢查更新</value>
+  </data>
+  <data name="PackagesPage_UpdateCatalogNotFound_Title" xml:space="preserve">
+	  <value>沒有找到更新目錄</value>
+  </data>
+  <data name="PackagesPage_UpdateCatalogNotFound_Message" xml:space="preserve">
+	  <value>嘗試從其他資源獲得更新</value>
+  </data>
+  <data name="PackagesPage_Error_Title" xml:space="preserve">
+	  <value>發生錯誤</value>
+  </data>
+  <data name="PackagesPage_Error_CheckInternet_Message" xml:space="preserve">
+	  <value>檢查您的網路連線是否正常。</value>
+  </data>
+  <data name="PlaySoundAutomationStepControl_Title" xml:space="preserve">
+	  <value>播放聲音</value>
+  </data>
+  <data name="PlaySoundAutomationStepControl_Message" xml:space="preserve">
+	  <value>支援像 wav 或 mp3 等音訊格式。</value>
   </data>
 </root>
