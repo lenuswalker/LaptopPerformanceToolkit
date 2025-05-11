@@ -743,7 +743,7 @@ CẢNH BÁO: Hành động này sẽ không chạy nếu màn hình laptop tắt
     <value>Đèn nền bàn phím</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>Đèn nền bàn phím không thể được tùy chỉnh nếu Lenovo vantage hoặc các chương trình con của nó đang chạy.</value>
+    <value>Đèn nền bàn phím không thể được tùy chỉnh nếu Lenovo Vantage hoặc các chương trình con của nó đang chạy.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
     <value>Lenovo Vantage hoặc các dịch vụ của nó đang chạy</value>
@@ -1157,10 +1157,10 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Ngắt kích hoạt Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>Vantage và/hoặc ImController đã không được ngắt đúng cách</value>
+    <value>Lenovo Vantage và/hoặc ImController đã không được ngắt đúng cách</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
-    <value>Không thể ngắt Vantage và/hoặc ImController</value>
+    <value>Không thể ngắt Lenovo Vantage và/hoặc ImController</value>
   </data>
   <data name="SettingsPage_DisableVantage_Message" xml:space="preserve">
     <value>Ngắt kích hoạt Lenovo Vantage và các dịch vụ con mà không cần gỡ cài đặt.
@@ -1182,10 +1182,10 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Không thể kích hoạt Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Vantage và/hoặc ImController có thể đã không được kích hoạt đúng cách</value>
+    <value>Lenovo Vantage và/hoặc ImController có thể đã không được kích hoạt đúng cách</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
-    <value>Không thể kích hoạt Vantage và/hoặc ImController</value>
+    <value>Không thể kích hoạt Lenovo Vantage và/hoặc ImController</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>Bạn có thể loại trừ một số tần số quét, để chức năng Fn+R hữu dụng hơn.</value>
@@ -1361,12 +1361,6 @@ Yêu cầu khởi động lại.</value>
   </data>
   <data name="TryAgain" xml:space="preserve">
     <value>Thử lại</value>
-  </data>
-  <data name="UnexpectedException" xml:space="preserve">
-    <value>Lỗi ngoài ý muốn đã xảy ra: 
-{0}
-
-Hãy báo cáo lỗi này tại {1}.</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
     <value>Chưa có tên</value>
@@ -2022,10 +2016,10 @@ Các định dạng hỗ trợ: {1}.</value>
     <value>Đặt lại "Thời gian chạy trên pin" khi khởi động</value>
   </data>
   <data name="TurnOffWiFiAutomationStepControl_Title" xml:space="preserve">
-    <value>Tắt WiFi</value>
+    <value>Tắt Wi-Fi</value>
   </data>
   <data name="TurnOnWiFiAutomationStepControl_Title" xml:space="preserve">
-    <value>Bật WiFi</value>
+    <value>Bật Wi-Fi</value>
   </data>
   <data name="RunAutomationStepControl_ProcessRunSilently" xml:space="preserve">
     <value>Chạy im lặng</value>
@@ -2189,6 +2183,12 @@ Các định dạng hỗ trợ: {1}.</value>
   <data name="MainWindows_VantageRunning" xml:space="preserve">
     <value>Lenovo Vantage và/hoặc ImController đang chạy ngầm trong hệ thống.</value>
   </data>
+  <data name="NotificationsSettingsWindow_NotificationOnAllScreens_Message" xml:space="preserve">
+    <value>Hiển thị thông báo lên tất cả các màn hình đang kết nối với máy.</value>
+  </data>
+  <data name="NotificationsSettingsWindow_NotificationOnAllScreens_Title" xml:space="preserve">
+    <value>Hiện thông báo lên mọi màn hình</value>
+  </data>
   <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
     <value>Kiểm tra</value>
   </data>
@@ -2217,21 +2217,27 @@ Các định dạng hỗ trợ: {1}.</value>
     <value>Tự động kiểm tra cập nhật</value>
   </data>
   <data name="PackagesPage_UpdateCatalogNotFound_Title" xml:space="preserve">
-	  <value>Không tìm thấy danh mục cập nhật</value>
+    <value>Không tìm thấy danh mục cập nhật</value>
   </data>
   <data name="PackagesPage_UpdateCatalogNotFound_Message" xml:space="preserve">
-	  <value>Thử kiểm tra cập nhật từ nguồn khác.</value>
+    <value>Thử kiểm tra cập nhật từ nguồn khác.</value>
   </data>
   <data name="PackagesPage_Error_Title" xml:space="preserve">
-	  <value>Đã có lỗi xảy ra</value>
+    <value>Đã có lỗi xảy ra</value>
   </data>
   <data name="PackagesPage_Error_CheckInternet_Message" xml:space="preserve">
-	  <value>Kiểm tra kết nối internet của bạn.</value>
+    <value>Kiểm tra kết nối internet của bạn.</value>
   </data>
   <data name="PlaySoundAutomationStepControl_Title" xml:space="preserve">
-	  <value>Phát</value>
+    <value>Phát âm thanh</value>
   </data>
   <data name="PlaySoundAutomationStepControl_Message" xml:space="preserve">
-	  <value>Hỗ trợ các định dạng âm thanh phổ biến như .wav hoặc .mp3.</value>
+    <value>Hỗ trợ các định dạng âm thanh phổ biến như .wav hoặc .mp3.</value>
+  </data>
+  <data name="QuickActionAutomationStepControl_Title" xml:space="preserve">
+    <value>Phím tắt Hành động</value>
+  </data>
+  <data name="QuickActionAutomationStepControl_Message" xml:space="preserve">
+    <value>Chạy một hành động đã lưu.</value>
   </data>
 </root>

@@ -148,10 +148,10 @@
     <value>Όταν ξεκινά η εφαρμογή</value>
   </data>
   <data name="ProcessesStopRunningAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Όταν η εφαρμογή κλείνει</value>
+    <value>Όταν κλείνει η εφαρμογή</value>
   </data>
   <data name="TimeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Σε καθορισμένο χρόνο</value>
+    <value>Σε καθορισμένη ώρα</value>
   </data>
   <data name="ExternalDisplayConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Όταν συνδεθεί εξωτερική οθόνη</value>
@@ -172,10 +172,10 @@
     <value>Όταν κλείνει το καπάκι</value>
   </data>
   <data name="GamesStopAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Όταν το παιχνίδι κλείνει</value>
+    <value>Όταν κλείνει το παιχνίδι</value>
   </data>
   <data name="GamesAreRunningAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Όταν το παιχνίδι εκτελείται</value>
+    <value>Όταν εκτελείται το παιχνίδι</value>
   </data>
   <data name="UserInactivityAutomationPipelineTrigger_DisplayName_Zero" xml:space="preserve">
     <value>Όταν ο χρήστης γίνεται ενεργός</value>
@@ -196,15 +196,11 @@
   <data name="GodModePresetChangedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Όταν η προεπιλογή Προσαρμοσμένης Λειτουργίας αλλάζει</value>
   </data>
-  <data name="PeriodicActionPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Περιοδική ενέργεια</value>
-    <comment>The display name of the periodic automation action.</comment>
-  </data>
   <data name="WiFiConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Όταν το WiFi είναι συνδεδεμένο</value>
+    <value>Όταν το Wi-Fi είναι συνδεδεμένο</value>
   </data>
   <data name="WiFiDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Όταν το WiFi είναι αποσυνδεδεμένο</value>
+    <value>Όταν το Wi-Fi είναι αποσυνδεδεμένο</value>
   </data>
   <data name="OnResumeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Στη συνέχιση</value>
@@ -216,15 +212,15 @@
     <value>Όταν το HDR απενεργοποιείται</value>
   </data>
   <data name="MacroAutomationStepState_Off" xml:space="preserve">
-	  <value>Ανενεργό</value>
+    <value>Ανενεργό</value>
   </data>
   <data name="MacroAutomationStepState_On" xml:space="preserve">
-	  <value>Ενεργό</value>
+    <value>Ενεργό</value>
   </data>
   <data name="DeviceDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-	  <value>Όταν η συσκευή είναι αποσυνδεδεμένη</value>
+    <value>Όταν η συσκευή είναι αποσυνδεδεμένη</value>
   </data>
   <data name="DeviceConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-	  <value>Όταν η συσκευή είναι συνδεδεμένη</value>
+    <value>Όταν η συσκευή είναι συνδεδεμένη</value>
   </data>
 </root>

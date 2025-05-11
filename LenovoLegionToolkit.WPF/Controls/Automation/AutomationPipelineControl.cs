@@ -359,6 +359,7 @@ public class AutomationPipelineControl : UserControl
             PowerModeAutomationStep s => new PowerModeAutomationStepControl(s),
             ProcessAutomationStep s => new ProcessAutomationStepControl(s),
             ProcessorTDPAutomationStep s => new ProcessorTDPAutomationStepControl(s),
+            QuickActionAutomationStep s => new QuickActionAutomationStepControl(s),
             RefreshRateAutomationStep s => new RefreshRateAutomationStepControl(s),
             ResolutionAutomationStep s => new ResolutionAutomationStepControl(s),
             RGBKeyboardBacklightAutomationStep s => new RGBKeyboardBacklightAutomationStepControl(s),

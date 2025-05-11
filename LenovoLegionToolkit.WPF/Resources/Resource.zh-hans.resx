@@ -858,7 +858,7 @@
     <value>Caps Lock 和 Num Lock</value>
   </data>
   <data name="NotificationsSettingsWindow_DontShowNotifications_Message" xml:space="preserve">
-    <value>禁用麦克风静音等 Fn 键操作的弹窗
+    <value>禁用麦克风静音等 Fn 键操作的弹窗。
 如果弹窗与全屏应用有冲突，请启用此选项。</value>
   </data>
   <data name="NotificationsSettingsWindow_DontShowNotifications_Title" xml:space="preserve">
@@ -1189,7 +1189,7 @@
     <value>无法启用 Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Vantage 与 ImController 可能没有被正确禁用。</value>
+    <value>Lenovo Vantage 与 ImController 可能没有被正确禁用。</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
     <value>无法启用 Lenovo Vantage 与 ImController</value>
@@ -1368,12 +1368,6 @@
   </data>
   <data name="TryAgain" xml:space="preserve">
     <value>重试</value>
-  </data>
-  <data name="UnexpectedException" xml:space="preserve">
-    <value>发生了意外错误：
-{0}
-
-请在 {1} 上报告。</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
     <value>未命名</value>
@@ -2196,6 +2190,12 @@
   <data name="MainWindows_VantageRunning" xml:space="preserve">
     <value>Lenovo Vantage 和 / 或 ImController 正在后台运行。</value>
   </data>
+  <data name="NotificationsSettingsWindow_NotificationOnAllScreens_Message" xml:space="preserve">
+    <value>在所有连接到设备的显示器上显示提示弹窗。</value>
+  </data>
+  <data name="NotificationsSettingsWindow_NotificationOnAllScreens_Title" xml:space="preserve">
+    <value>在所有显示器上显示提示弹窗</value>
+  </data>
   <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
     <value>检查</value>
   </data>
@@ -2224,21 +2224,27 @@
     <value>自动检查更新</value>
   </data>
   <data name="PackagesPage_UpdateCatalogNotFound_Title" xml:space="preserve">
-	  <value>未找到更新日志</value>
+    <value>未找到更新日志</value>
   </data>
   <data name="PackagesPage_UpdateCatalogNotFound_Message" xml:space="preserve">
-	  <value>尝试从其它源获取更新。</value>
+    <value>尝试从其它源获取更新。</value>
   </data>
   <data name="PackagesPage_Error_Title" xml:space="preserve">
-	  <value>出现了一些错误</value>
+    <value>出现了一些错误</value>
   </data>
   <data name="PackagesPage_Error_CheckInternet_Message" xml:space="preserve">
-	  <value>请确保你的网络连接正常。</value>
+    <value>请确保你的网络连接正常。</value>
   </data>
   <data name="PlaySoundAutomationStepControl_Title" xml:space="preserve">
-	  <value>播放音频</value>
+    <value>播放音频</value>
   </data>
   <data name="PlaySoundAutomationStepControl_Message" xml:space="preserve">
-	  <value>支持如 wav 和 mp3 等常规音频格式。</value>
+    <value>支持如 wav 和 mp3 等常规音频格式。</value>
+  </data>
+  <data name="QuickActionAutomationStepControl_Title" xml:space="preserve">
+    <value>快捷操作</value>
+  </data>
+  <data name="QuickActionAutomationStepControl_Message" xml:space="preserve">
+    <value>运行一个保存的快捷操作。</value>
   </data>
 </root>

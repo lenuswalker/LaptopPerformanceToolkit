@@ -742,7 +742,7 @@ FIGYELMEZTETÉS: Ez a művelet nem fog megfelelően futni, ha a belső kijelző 
     <value>Billentyűzet háttérvilágítás</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>A billentyűzet háttérvilágítása nem szabályozható itt, amikor a Vantage vagy annak szolgáltatásai futnak.</value>
+    <value>A billentyűzet háttérvilágítása nem szabályozható itt, amikor a Lenovo Vantage vagy annak szolgáltatásai futnak.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
     <value>A Lenovo Vantage vagy annak szolgáltatásai futnak</value>
@@ -1156,10 +1156,10 @@ Az opció módosítása után ajánlott az újraindítás.</value>
     <value>Lenovo gyorsbillentyűk (Hotkeys) letiltása</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>A Vantage és/vagy az ImController esetleg nem megfelelően lett letiltva</value>
+    <value>A Lenovo Vantage és/vagy az ImController esetleg nem megfelelően lett letiltva</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
-    <value>Nem sikerült letiltani a Vantage és/vagy ImController-t</value>
+    <value>Nem sikerült letiltani a Lenovo Vantage és/vagy ImController-t</value>
   </data>
   <data name="SettingsPage_DisableVantage_Message" xml:space="preserve">
     <value>A Lenovo Vantage és az ImController letiltása eltávolításuk nélkül.
@@ -1181,10 +1181,10 @@ Az opció módosítása után ajánlott az újraindítás.</value>
     <value>Nem sikerült engedélyezni a Lenovo Hotkeys billentyűket</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>A Vantage és/vagy az ImController esetleg nem megfelelően lett engedélyezve</value>
+    <value>A Lenovo Vantage és/vagy az ImController esetleg nem megfelelően lett engedélyezve</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
-    <value>Nem sikerült engedélyezni a Vantage és/vagy ImController-t</value>
+    <value>Nem sikerült engedélyezni a Lenovo Vantage és/vagy ImController-t</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>Kizárhat frissítési rátákat, hogy az Fn+R gyorsbillentyű hasznosabbá váljon.</value>
@@ -1362,10 +1362,7 @@ Az opció módosítása után ajánlott az újraindítás.</value>
     <value>Próbálja meg újra</value>
   </data>
   <data name="UnexpectedException" xml:space="preserve">
-    <value>Váratlan hiba történt:
-{0}
-
-Kérjük, jelentse a problémát itt: {1}.</value>
+    <value>Váratlan kivétel történt: {0}</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
     <value>Névtelen</value>
@@ -1846,10 +1843,10 @@ Ha a dGPU egyáltalán nem reagál, kérjük, indítsa újra a laptopját.</valu
     <value>Az Egyéni mód beállításai nem lesznek megfelelően alkalmazva, ha a Legion Zone vagy annak szolgáltatásai futnak.</value>
   </data>
   <data name="DGPU_Connected_Title" xml:space="preserve">
-    <value>DGPU csatlakoztatva</value>
+    <value>dGPU csatlakoztatva</value>
   </data>
   <data name="DGPU_Disconnected_Title" xml:space="preserve">
-    <value>DGPU lekapcsolva</value>
+    <value>dGPU lekapcsolva</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>GPU működési mód</value>
@@ -2188,6 +2185,12 @@ A támogatott formátumok a következők: {1}.</value>
   <data name="MainWindows_VantageRunning" xml:space="preserve">
     <value>Lenovo Vantage és/vagy ImController fut a háttérben.</value>
   </data>
+  <data name="NotificationsSettingsWindow_NotificationOnAllScreens_Message" xml:space="preserve">
+    <value>Mutassa az értesítéseket minden csatlakoztatott kijelzőn.</value>
+  </data>
+  <data name="NotificationsSettingsWindow_NotificationOnAllScreens_Title" xml:space="preserve">
+    <value>Értesítések minden kijelzőn</value>
+  </data>
   <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
     <value>Ellenőrzés</value>
   </data>
@@ -2216,21 +2219,27 @@ A támogatott formátumok a következők: {1}.</value>
     <value>Frissítések automatikus keresése</value>
   </data>
   <data name="PackagesPage_UpdateCatalogNotFound_Title" xml:space="preserve">
-	  <value>Frissítési katalógus nem található</value>
+    <value>Frissítési katalógus nem található</value>
   </data>
   <data name="PackagesPage_UpdateCatalogNotFound_Message" xml:space="preserve">
-	  <value>Próbáljon meg frissítéseket más forrásból szerezni.</value>
+    <value>Próbáljon meg frissítéseket más forrásból szerezni.</value>
   </data>
   <data name="PackagesPage_Error_Title" xml:space="preserve">
-	  <value>Valami nem sikerült</value>
+    <value>Valami nem sikerült</value>
   </data>
   <data name="PackagesPage_Error_CheckInternet_Message" xml:space="preserve">
-	  <value>Ellenőrizze, hogy az internetkapcsolata működik-e.</value>
+    <value>Ellenőrizze, hogy az internetkapcsolata működik-e.</value>
   </data>
   <data name="PlaySoundAutomationStepControl_Title" xml:space="preserve">
-	  <value>Hang lejátszása</value>
+    <value>Hang lejátszása</value>
   </data>
   <data name="PlaySoundAutomationStepControl_Message" xml:space="preserve">
-	  <value>Az általános zenei formátumok, mint a wav vagy az mp3, támogatottak.</value>
+    <value>Az általános zenei formátumok, mint a wav vagy az mp3, támogatottak.</value>
+  </data>
+  <data name="QuickActionAutomationStepControl_Title" xml:space="preserve">
+    <value>Gyors művelet</value>
+  </data>
+  <data name="QuickActionAutomationStepControl_Message" xml:space="preserve">
+    <value>Mentett gyors művelet futtatása.</value>
   </data>
 </root>

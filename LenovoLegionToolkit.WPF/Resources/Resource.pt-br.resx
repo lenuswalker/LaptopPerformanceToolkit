@@ -742,7 +742,7 @@ AVISO: Esta ação não será executada corretamente se o display interno estive
     <value>Iluminação do teclado</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>A luz de fundo do teclado não pode ser controlada aqui quando o Vantage ou seus serviços estão em execução.</value>
+    <value>A luz de fundo do teclado não pode ser controlada aqui quando o Lenovo Vantage ou seus serviços estão em execução.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
     <value>Lenovo Vantage ou seus serviços estão em execução</value>
@@ -853,7 +853,7 @@ AVISO: Esta ação não será executada corretamente se o display interno estive
     <value>Caps Lock e Num Lock</value>
   </data>
   <data name="NotificationsSettingsWindow_DontShowNotifications_Message" xml:space="preserve">
-    <value>Desativar as notificações para ações das teclas Fn como silenciar o microfone
+    <value>Desativar as notificações para ações das teclas Fn como silenciar o microfone.
 Ative esta opção se você tiver conflitos com aplicativos de tela inteira.</value>
   </data>
   <data name="NotificationsSettingsWindow_DontShowNotifications_Title" xml:space="preserve">
@@ -1156,10 +1156,10 @@ A reinicialização é recomendada após alterar esta opção.</value>
     <value>Desativar o Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>Vantage e/ou ImController podem não ter sido desabilitados corretamente</value>
+    <value>Lenovo Vantage e/ou ImController podem não ter sido desabilitados corretamente</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
-    <value>Não foi possível desativar o Vantage e/ou ImController</value>
+    <value>Não foi possível desativar o Lenovo Vantage e/ou ImController</value>
   </data>
   <data name="SettingsPage_DisableVantage_Message" xml:space="preserve">
     <value>Desative o Lenovo Vantage e o ImController sem desinstalá-los.
@@ -1181,10 +1181,10 @@ Uma reinicialização é recomendada após alterar esta opção.</value>
     <value>Não foi possível ativar o Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Vantage e/ou ImController podem não ter sido ativados corretamente</value>
+    <value>Lenovo Vantage e/ou ImController podem não ter sido ativados corretamente</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
-    <value>Não foi possível habilitar o Vantage e/ou ImController</value>
+    <value>Não foi possível habilitar o Lenovo Vantage e/ou ImController</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>Você pode excluir taxas de atualização para tornar o atalho Fn+R mais útil.</value>
@@ -1360,12 +1360,6 @@ Requer reinicialização.</value>
   </data>
   <data name="TryAgain" xml:space="preserve">
     <value>Tente Novamente</value>
-  </data>
-  <data name="UnexpectedException" xml:space="preserve">
-    <value>Ocorreu uma exceção inesperada:
-{0}
-
-Informe o problema em {1}.</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
     <value>Sem nome</value>
@@ -2187,6 +2181,12 @@ Requer reinicialização.</value>
   <data name="MainWindows_VantageRunning" xml:space="preserve">
     <value>O Lenovo Vantage e/ou o ImController estão sendo executados em segundo plano.</value>
   </data>
+  <data name="NotificationsSettingsWindow_NotificationOnAllScreens_Message" xml:space="preserve">
+    <value>Mostre a notificação em todas as telas conectadas ao seu dispositivo.</value>
+  </data>
+  <data name="NotificationsSettingsWindow_NotificationOnAllScreens_Title" xml:space="preserve">
+    <value>Notificação em todas as telas</value>
+  </data>
   <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
     <value>Verificar</value>
   </data>
@@ -2215,21 +2215,27 @@ Requer reinicialização.</value>
     <value>Verificar atualizações automaticamente</value>
   </data>
   <data name="PackagesPage_UpdateCatalogNotFound_Title" xml:space="preserve">
-	  <value>Catálogo de atualizações não encontrado</value>
+    <value>Catálogo de atualizações não encontrado</value>
   </data>
   <data name="PackagesPage_UpdateCatalogNotFound_Message" xml:space="preserve">
-	  <value>Tente obter atualizações da outra fonte.</value>
+    <value>Tente obter atualizações da outra fonte.</value>
   </data>
   <data name="PackagesPage_Error_Title" xml:space="preserve">
-	  <value>Alguma coisa deu errado</value>
+    <value>Alguma coisa deu errado</value>
   </data>
   <data name="PackagesPage_Error_CheckInternet_Message" xml:space="preserve">
-	  <value>Verifique se sua conexão com a internet está em ok.</value>
+    <value>Verifique se sua conexão com a internet está em ok.</value>
   </data>
   <data name="PlaySoundAutomationStepControl_Title" xml:space="preserve">
-	  <value>Reproduzir som</value>
+    <value>Reproduzir som</value>
   </data>
   <data name="PlaySoundAutomationStepControl_Message" xml:space="preserve">
-	  <value>Formatos de música comuns como WAV ou MP3 são suportados.</value>
+    <value>Formatos de música comuns como WAV ou MP3 são suportados.</value>
+  </data>
+  <data name="QuickActionAutomationStepControl_Title" xml:space="preserve">
+    <value>Ação Rápida</value>
+  </data>
+  <data name="QuickActionAutomationStepControl_Message" xml:space="preserve">
+    <value>Rodar e salvar ação rápida.</value>
   </data>
 </root>
