@@ -210,4 +210,27 @@ WlanRegisterNotification
 
 MONITORINFOF_PRIMARY
 
+AC_SRC_ALPHA
+AC_SRC_OVER
+CreateCompatibleDC
+DeleteDC
+DeleteObject
+GetDC
+GetWindowRect
+ReleaseDC
+SelectObject
 SetWindowPos
+ShowWindow
+UpdateLayeredWindow
+WINDOW_STYLE
+WINDOW_EX_STYLE
+
+WTSINFOEXW
+WTS_INFO_CLASS
+WTS_SESSIONSTATE_UNKNOWN
+WTSGetActiveConsoleSessionId
+WTSQuerySessionInformation
+WTS_CURRENT_SERVER_HANDLE
+WTSFreeMemory
+WTS_SESSIONSTATE_LOCK
+WTS_SESSIONSTATE_UNLOCK

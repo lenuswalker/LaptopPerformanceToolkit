@@ -1365,6 +1365,10 @@ Requiere un reinicio.</value>
   <data name="TryAgain" xml:space="preserve">
     <value>Intentar de nuevo</value>
   </data>
+  <data name="UnexpectedException" xml:space="preserve">
+    <value>Ha ocurrido una excepción inesperada: 
+{0}</value>
+  </data>
   <data name="Unnamed" xml:space="preserve">
     <value>Sin nombre</value>
   </data>
@@ -2241,5 +2245,12 @@ Requiere un reinicio.</value>
   </data>
   <data name="QuickActionAutomationStepControl_Message" xml:space="preserve">
     <value>Ejecutar una acción rápida guardada.</value>
+  </data>
+  <data name="NotificationsSettingsWindow_NotificationAlwaysOnTop_Title" xml:space="preserve">
+    <value>Notificaciones siempre visibles</value>
+  </data>
+  <data name="NotificationsSettingsWindow_NotificationAlwaysOnTop_Message" xml:space="preserve">
+    <value>Poner siempre las notificaciones visibles.
+No afectará a otras ventanas a pantalla completa, pero no podrá hacer clic en las notificaciones.</value>
   </data>
 </root>
