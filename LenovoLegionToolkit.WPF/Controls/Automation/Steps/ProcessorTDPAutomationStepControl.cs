@@ -6,7 +6,6 @@ using Wpf.Ui.Common;
 using NumberBox = Wpf.Ui.Controls.NumberBox;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Controllers;
-using System.Linq;
 
 namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps;
 
@@ -96,8 +95,7 @@ public class ProcessorTDPAutomationStepControl : AbstractAutomationStepControl<P
 
     protected override UIElement? GetCustomControl()
     {
-        ProcessorController processor = _controller.GetCurrent();
-        if (processor.GetType() == typeof(AMDProcessorController))
+        if (_controller.SupportsStapm)
         {
             _stapm.ValueChanged += (_, _) =>
             {
@@ -120,22 +118,26 @@ public class ProcessorTDPAutomationStepControl : AbstractAutomationStepControl<P
                 RaiseChanged();
         };
 
-        if (processor.GetType() == typeof(IntelProcessorController))
+        if (_controller.SupportsMSR)
         {
-            _useMSR.Checked += (_, _) =>
+            RoutedEventHandler useMSRChanged = (_, _) =>
             {
                 if (_useMSR.IsChecked != AutomationStep.State.UseMSR)
                     RaiseChanged();
             };
+            _useMSR.Checked += useMSRChanged;
+            _useMSR.Unchecked += useMSRChanged;
 
             _stackPanel.Children.Add(_useMSR);
         }
 
-        _maintainTDP.Checked += (_, _) =>
+        RoutedEventHandler maintainTDPChanged = (_, _) =>
         {
             if (_maintainTDP.IsChecked != AutomationStep.State.MaintainTDP)
                 RaiseChanged();
         };
+        _maintainTDP.Checked += maintainTDPChanged;
+        _maintainTDP.Unchecked += maintainTDPChanged;
 
         _interval.ValueChanged += (_, _) =>
         {
@@ -151,16 +153,16 @@ public class ProcessorTDPAutomationStepControl : AbstractAutomationStepControl<P
         return _stackPanel;
     }
 
-    protected override async Task RefreshAsync() {
-        var state = await AutomationStep.GetAllStatesAsync();
-        var stateList = state.ToList();
-
+    protected override Task RefreshAsync()
+    {
         _stapm.Value = AutomationStep.State.Stapm;
         _fast.Value = AutomationStep.State.Fast;
         _slow.Value = AutomationStep.State.Slow;
         _useMSR.IsChecked = AutomationStep.State.UseMSR;
         _maintainTDP.IsChecked = AutomationStep.State.MaintainTDP;
         _interval.Value = AutomationStep.State.Interval;
+
+        return Task.CompletedTask;
     }
 
     protected override void OnFinishedLoading() { }

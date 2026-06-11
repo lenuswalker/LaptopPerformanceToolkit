@@ -77,18 +77,14 @@ public static class Power
     }
 
     /// <summary>
-    /// Retrieves the active overlay power scheme and returns a GUID that identifies the scheme.
+    /// Retrieves the active overlay power scheme. Returns zero on success.
     /// </summary>
-    /// <param name="EffectiveOverlayPolicyGuid">A pointer to a GUID structure.</param>
-    /// <returns>Returns zero if the call was successful, and a nonzero value if the call failed.</returns>
-    [DllImportAttribute("powrprof.dll", EntryPoint = "PowerGetEffectiveOverlayScheme")]
-    public static extern uint PowerGetEffectiveOverlayScheme(out Guid EffectiveOverlayPolicyGuid);
+    [DllImport("powrprof.dll", EntryPoint = "PowerGetEffectiveOverlayScheme")]
+    public static extern uint PowerGetEffectiveOverlayScheme(out Guid effectiveOverlayPolicyGuid);
 
     /// <summary>
-    /// Sets the active power overlay power scheme.
+    /// Sets the active overlay power scheme. Returns zero on success.
     /// </summary>
-    /// <param name="OverlaySchemeGuid">The identifier of the overlay power scheme.</param>
-    /// <returns>Returns zero if the call was successful, and a nonzero value if the call failed.</returns>
-    [DllImportAttribute("powrprof.dll", EntryPoint = "PowerSetActiveOverlayScheme")]
-    public static extern uint PowerSetActiveOverlayScheme(Guid OverlaySchemeGuid);
+    [DllImport("powrprof.dll", EntryPoint = "PowerSetActiveOverlayScheme")]
+    public static extern uint PowerSetActiveOverlayScheme(Guid overlaySchemeGuid);
 }

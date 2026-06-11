@@ -386,10 +386,16 @@ public class AutomationProcessor(
             await timeAutoListener.SubscribeChangedAsync(TimeAutoListener_Changed).ConfigureAwait(false);
         }
 
-        if (triggers.OfType<ITimeIntervalAutomationPipelineTrigger>().Any()) {
+        var timeIntervalTriggers = triggers.OfType<ITimeIntervalAutomationPipelineTrigger>().ToArray();
+        if (timeIntervalTriggers.Length != 0)
+        {
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Starting time interval listener...");
 
+            var intervals = timeIntervalTriggers
+                .SelectMany(t => new[] { t.ACInterval, t.DCInterval })
+                .OfType<int>();
+            await timeIntervalAutoListener.UpdateIntervalsAsync(intervals).ConfigureAwait(false);
             await timeIntervalAutoListener.SubscribeChangedAsync(TimeIntervalAutoListener_Changed).ConfigureAwait(false);
         }
 

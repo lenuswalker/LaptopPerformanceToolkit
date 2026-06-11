@@ -21,7 +21,7 @@ namespace LenovoLegionToolkit.WPF.Windows.Utils;
 
 public partial class StatusWindow
 {
-    private static readonly ProcessorController _controller = IoCContainer.Resolve<ProcessorController>().GetCurrent();
+    private static readonly ProcessorController _controller = IoCContainer.Resolve<ProcessorController>();
 
     private readonly struct StatusWindowData(
         PowerModeState? powerModeState,
@@ -101,8 +101,8 @@ public partial class StatusWindow
 
         try
         {
-            if (_controller.IsSupported())
-                processorTDPState = await _controller.GetProcessorTDPAsync().ConfigureAwait(false);
+            if (await _controller.IsSupportedAsync())
+                processorTDPState = await _controller.GetProcessorTDPAsync();
         }
         catch { /* Ignored */ }
 
@@ -298,16 +298,8 @@ public partial class StatusWindow
             return;
         }
 
-        if (_controller.GetType() == typeof(IntelProcessorController))
-        {
-            _processorTDPFastLabel.Content = "PL2";
-            _processorTDPSlowLabel.Content = "PL1";
-        }
-        else
-        {
-            _processorTDPFastLabel.Content = "Fast";
-            _processorTDPSlowLabel.Content = "Slow";
-        }
+        _processorTDPFastLabel.Content = _controller.FastLimitDisplayName;
+        _processorTDPSlowLabel.Content = _controller.SlowLimitDisplayName;
 
         _processorTDPFastValueLabel.Content = $"{processorTDPState.Value.Fast} W";
         _processorTDPSlowValueLabel.Content = $"{processorTDPState.Value.Slow} W";

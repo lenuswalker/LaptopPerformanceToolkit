@@ -4,7 +4,6 @@ using System.Linq;
 using System.Security.Principal;
 using LenovoLegionToolkit.Lib.Utils;
 using Microsoft.Win32.TaskScheduler;
-using Task = System.Threading.Tasks.Task;
 
 namespace LenovoLegionToolkit.Lib.System;
 
@@ -86,14 +85,8 @@ public static class Autorun
         var fileVersion = mainModule.FileVersionInfo.FileVersion ?? throw new InvalidOperationException("Current process file version cannot be null");
         var currentUser = WindowsIdentity.GetCurrent().Name;
 
-        var taskActionParameters = "--minimized";
-
-        Task.Run(Compatibility.IsCompatibleAsync)
-            .ContinueWith(compatibility =>
-            {
-                if (!compatibility.Result.isCompatible)
-                    taskActionParameters = "--minimized --skip-compat-check";
-            });
+        var (isCompatible, _) = Compatibility.IsCompatibleAsync().GetAwaiter().GetResult();
+        var taskActionParameters = isCompatible ? "--minimized" : "--minimized --skip-compat-check";
 
         var ts = TaskService.Instance;
         var td = ts.NewTask();

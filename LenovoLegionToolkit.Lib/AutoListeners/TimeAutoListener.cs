@@ -30,25 +30,7 @@ public class TimeAutoListener : AbstractAutoListener<TimeAutoListener.ChangedEve
         return Task.CompletedTask;
     }
 
-    public Task StartNowAsync(int interval)
-    {
-        if (!_timer.Enabled)
-        {
-            _timer.Interval = interval * 1000;
-            _timer.Enabled = true;
-        }
-
-        return Task.CompletedTask;
-    }
-
     protected override Task StopAsync()
-    {
-        _timer.Enabled = false;
-
-        return Task.CompletedTask;
-    }
-
-    public Task StopNowAsync()
     {
         _timer.Enabled = false;
 

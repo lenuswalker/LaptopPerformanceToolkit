@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Controllers;
@@ -27,20 +25,18 @@ public class PowerModeFeature(
 {
     public bool AllowAllPowerModesOnBattery { get; set; }
 
-    private static readonly Dictionary<PowerModeState, string> defaultPowerModes = new()
-    {
-        { PowerModeState.Quiet , "961cc777-2547-4f9d-8174-7d86181b8a7a" },
-        { PowerModeState.Balance , "381b4222-f694-41f0-9685-ff5bb260df2e" },
-        { PowerModeState.Performance , "ded574b5-45a0-4f42-8737-46345c09c238" },
-    };
+    // Windows power mode overlays used as fallback on machines without Lenovo WMI support.
+    // Balanced is the absence of an overlay, i.e. Guid.Empty.
+    private static readonly Guid BestPowerEfficiencyOverlay = Guid.Parse("961cc777-2547-4f9d-8174-7d86181b8a7a");
+    private static readonly Guid BestPerformanceOverlay = Guid.Parse("ded574b5-45a0-4f42-8737-46345c09c238");
 
     public override async Task<bool> IsSupportedAsync()
     {
-        uint result = Power.PowerGetEffectiveOverlayScheme(out Guid currentMode);
-        if (result == 0)
-            return true;
-        else
-            return false;
+        var (isCompatible, _) = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
+        if (isCompatible)
+            return await base.IsSupportedAsync().ConfigureAwait(false);
+
+        return Power.PowerGetEffectiveOverlayScheme(out _) == 0;
     }
 
     public override async Task<PowerModeState[]> GetAllStatesAsync()
@@ -53,27 +49,19 @@ public class PowerModeFeature(
 
     public override async Task<PowerModeState> GetStateAsync()
     {
-        var compatibility = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
-        if (compatibility.isCompatible)
-            return base.GetStateAsync().Result;
-        else
-        {
-            PowerModeState state = PowerModeState.Balance;
-            uint result = Power.PowerGetEffectiveOverlayScheme(out Guid currentMode);
-            switch (currentMode.ToString())
-            {
-                case "961cc777-2547-4f9d-8174-7d86181b8a7a":
-                    state = PowerModeState.Quiet;
-                    break;
-                case "381b4222-f694-41f0-9685-ff5bb260df2e":
-                    state = PowerModeState.Balance;
-                    break;
-                case "ded574b5-45a0-4f42-8737-46345c09c238":
-                    state = PowerModeState.Performance;
-                    break;
-            }
-            return state;
-        }
+        var (isCompatible, _) = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
+        if (isCompatible)
+            return await base.GetStateAsync().ConfigureAwait(false);
+
+        if (Power.PowerGetEffectiveOverlayScheme(out var overlay) != 0)
+            return PowerModeState.Balance;
+
+        if (overlay == BestPowerEfficiencyOverlay)
+            return PowerModeState.Quiet;
+        if (overlay == BestPerformanceOverlay)
+            return PowerModeState.Performance;
+
+        return PowerModeState.Balance;
     }
 
     public override async Task SetStateAsync(PowerModeState state)
@@ -91,8 +79,8 @@ public class PowerModeFeature(
 
         var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
 
-        var compatibility = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
-        if (compatibility.isCompatible)
+        var (isCompatible, _) = await Compatibility.IsCompatibleAsync().ConfigureAwait(false);
+        if (isCompatible)
         {
             if (mi.Properties.HasQuietToPerformanceModeSwitchingBug && currentState == PowerModeState.Quiet && state == PowerModeState.Performance)
             {
@@ -119,14 +107,25 @@ public class PowerModeFeature(
                 }
 
                 await Task.Delay(TimeSpan.FromMilliseconds(500)).ConfigureAwait(false);
-
             }
 
             thermalModeListener.SuppressNext();
             await base.SetStateAsync(state).ConfigureAwait(false);
         }
         else
-            Power.PowerSetActiveOverlayScheme(new Guid(defaultPowerModes[state]));
+        {
+            var overlay = state switch
+            {
+                PowerModeState.Quiet => BestPowerEfficiencyOverlay,
+                PowerModeState.Performance => BestPerformanceOverlay,
+                _ => Guid.Empty
+            };
+
+            var result = Power.PowerSetActiveOverlayScheme(overlay);
+
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Set Windows power mode overlay. [state={state}, overlay={overlay}, result={result}]");
+        }
 
         await powerModeListener.NotifyAsync(state).ConfigureAwait(false);
     }

@@ -495,51 +495,6 @@ public struct Package
             return _index;
         }
     }
-
-    public struct ProcessorTDPState
-    {
-        public double Stapm { get; set; }
-        public double Fast { get; set; }
-        public double Slow { get; set; }
-        public bool UseMSR { get; set; }
-        public bool MaintainTDP { get; set; }
-        public int Interval { get; set; }
-
-        [JsonConstructor]
-        public ProcessorTDPState(
-            double stapm,
-            double fast,
-            double slow,
-            bool useMSR,
-            bool maintainTDP,
-            int interval
-        )
-        {
-            Stapm = stapm;
-            Fast = fast;
-            Slow = slow;
-            UseMSR = useMSR;
-            MaintainTDP = maintainTDP;
-            Interval = interval;
-        }
-    }
-
-    public struct ProcessAutomationState
-    {
-        public ProcessInfo[] Processes { get; set; }
-        public ProcessState State { get; set; }
-
-
-        [JsonConstructor]
-        public ProcessAutomationState(
-            ProcessInfo[] processes,
-            ProcessState state
-        )
-        {
-            Processes = processes;
-            State = state;
-        }
-    }
 }
 
 public readonly struct WindowsPowerPlan(Guid guid, string name, bool isActive)
@@ -939,47 +894,20 @@ public readonly struct WindowSize(double width, double height)
     public double Height { get; } = height;
 }
 
-public struct ProcessorTDPState
+[method: JsonConstructor]
+public struct ProcessorTDPState(double stapm, double fast, double slow, bool useMSR, bool maintainTDP, int interval)
 {
-    public double Stapm { get; set; }
-    public double Fast { get; set; }
-    public double Slow { get; set; }
-    public bool UseMSR { get; set; }
-    public bool MaintainTDP { get; set; }
-    public int Interval { get; set; }
-
-    [JsonConstructor]
-    public ProcessorTDPState(
-        double stapm,
-        double fast,
-        double slow,
-        bool useMSR,
-        bool maintainTDP,
-        int interval
-    )
-    {
-        Stapm = stapm;
-        Fast = fast;
-        Slow = slow;
-        UseMSR = useMSR;
-        MaintainTDP = maintainTDP;
-        Interval = interval;
-    }
+    public double Stapm { get; set; } = stapm;
+    public double Fast { get; set; } = fast;
+    public double Slow { get; set; } = slow;
+    public bool UseMSR { get; set; } = useMSR;
+    public bool MaintainTDP { get; set; } = maintainTDP;
+    public int Interval { get; set; } = interval;
 }
 
-public struct ProcessAutomationState
+[method: JsonConstructor]
+public struct ProcessAutomationState(ProcessInfo[] processes, ProcessState state)
 {
-    public ProcessInfo[] Processes { get; set; }
-    public ProcessState State { get; set; }
-
-
-    [JsonConstructor]
-    public ProcessAutomationState(
-        ProcessInfo[] processes,
-        ProcessState state
-    )
-    {
-        Processes = processes;
-        State = state;
-    }
+    public ProcessInfo[] Processes { get; set; } = processes;
+    public ProcessState State { get; set; } = state;
 }

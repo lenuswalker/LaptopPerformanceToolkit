@@ -16,19 +16,15 @@ public static class StringExtensions
         return string.Empty;
     }
 
-    public static string Between(string str, string firstString, string lastString = null, bool keepBorders = false)
+    public static string Between(this string text, string after)
     {
-        if (string.IsNullOrEmpty(str))
+        if (string.IsNullOrEmpty(text))
             return string.Empty;
-            
-        string finalString;
-        int pos1 = str.IndexOf(firstString) + firstString.Length;
-        int pos2 = str.Length;
 
-        if (lastString != null)
-            pos2 = str.IndexOf(lastString, pos1);
+        var index = text.IndexOf(after, StringComparison.Ordinal);
+        if (index < 0)
+            return string.Empty;
 
-        finalString = str.Substring(pos1, pos2 - pos1);
-        return keepBorders ? firstString + finalString + lastString : finalString;
+        return text[(index + after.Length)..];
     }
 }
