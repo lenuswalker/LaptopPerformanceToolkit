@@ -62,15 +62,6 @@ public class PowerModeControl : AbstractComboBoxFeatureCardControl<PowerModeStat
         });
     });
 
-    private async void PowerPlanListener_Changed(object? sender, EventArgs e) => await _throttleDispatcher.DispatchAsync(async () =>
-    {
-        await Dispatcher.InvokeAsync(async () =>
-        {
-            if (IsLoaded && IsVisible)
-                await RefreshAsync();
-        });
-    });
-
     protected override async Task OnRefreshAsync()
     {
         await base.OnRefreshAsync();

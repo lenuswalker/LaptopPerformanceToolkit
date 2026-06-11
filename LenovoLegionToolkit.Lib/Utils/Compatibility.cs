@@ -74,8 +74,9 @@ public static partial class Compatibility
     ];
 
     private static MachineInformation? _machineInformation;
+    private static bool? _basicCompatibility;
 
-    public static Task<bool> CheckBasicCompatibilityAsync() => WMI.LenovoGameZoneData.ExistsAsync();
+    public static async Task<bool> CheckBasicCompatibilityAsync() => _basicCompatibility ??= await WMI.LenovoGameZoneData.ExistsAsync().ConfigureAwait(false);
 
     public static async Task<(bool isCompatible, MachineInformation machineInformation)> IsCompatibleAsync()
     {

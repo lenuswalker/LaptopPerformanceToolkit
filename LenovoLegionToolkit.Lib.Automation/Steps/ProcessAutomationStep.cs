@@ -20,33 +20,39 @@ public class ProcessAutomationStep : IAutomationStep
 
     public async Task RunAsync(AutomationContext context, AutomationEnvironment environment, CancellationToken token)
     {
-
-        if (State.Processes == null)
+        if (State.Processes is null)
             return;
 
         switch (State.State)
         {
             case ProcessState.Start:
-                foreach (ProcessInfo process in State.Processes)
+                foreach (var process in State.Processes)
                 {
                     if (string.IsNullOrEmpty(process.ExecutablePath))
-                        return;
+                        continue;
 
-                    var (_, output) = await CMD.RunAsync(process.ExecutablePath,
+                    await CMD.RunAsync(process.ExecutablePath,
                         string.Empty,
-                        true,
-                        true,
-                        false,
+                        useShellExecute: true,
+                        createNoWindow: true,
+                        waitForExit: false,
                         token).ConfigureAwait(false);
-                    context.LastRunOutput = output.TrimEnd();
                 }
                 break;
             case ProcessState.Stop:
-                foreach (ProcessInfo process in State.Processes)
+                foreach (var process in State.Processes)
                 {
-                    Process[] ps = Process.GetProcessesByName(process.Name);
-                    foreach (Process p in ps)
-                        p.Kill();
+                    foreach (var p in Process.GetProcessesByName(process.Name))
+                    {
+                        using (p)
+                        {
+                            try
+                            {
+                                p.Kill();
+                            }
+                            catch { /* Already exited or access denied. */ }
+                        }
+                    }
                 }
                 break;
         }

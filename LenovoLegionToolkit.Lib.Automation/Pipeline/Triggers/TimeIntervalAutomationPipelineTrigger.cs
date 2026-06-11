@@ -32,20 +32,10 @@ public class TimeIntervalAutomationPipelineTrigger : ITimeIntervalAutomationPipe
         if (powerAdapterStatus == PowerAdapterStatus.Disconnected && DCInterval == e.Interval)
             return true;
 
-
         return false;
     }
 
-    public async Task<bool> IsMatchingState() 
-    {
-        if (ACInterval is int && (int)ACInterval > 0) 
-            return true;
-
-        if (DCInterval is int && (int)DCInterval > 0) 
-            return true;
-
-        return false;
-    }
+    public Task<bool> IsMatchingState() => Task.FromResult(ACInterval > 0 || DCInterval > 0);
 
     public void UpdateEnvironment(AutomationEnvironment environment)
     {
@@ -55,7 +45,7 @@ public class TimeIntervalAutomationPipelineTrigger : ITimeIntervalAutomationPipe
 
     public IAutomationPipelineTrigger DeepCopy() => new TimeIntervalAutomationPipelineTrigger(ACInterval, DCInterval);
 
-    public ITimeIntervalAutomationPipelineTrigger DeepCopy(int? acInterval, int? dcInterval) => new TimeIntervalAutomationPipelineTrigger(ACInterval, DCInterval);
+    public ITimeIntervalAutomationPipelineTrigger DeepCopy(int? acInterval, int? dcInterval) => new TimeIntervalAutomationPipelineTrigger(acInterval, dcInterval);
     
     public override bool Equals(object? obj)
     {

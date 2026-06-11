@@ -50,7 +50,7 @@ public partial class App
     private bool _isCompatible;
 
     public new static App Current => (App)Application.Current;
-    public bool IsCompatible { get { return _isCompatible; } }
+    public bool IsCompatible => _isCompatible;
 
     private async void Application_Startup(object sender, StartupEventArgs e)
     {
@@ -84,8 +84,6 @@ public partial class App
         {
             try
             {
-                //if (!await CheckBasicCompatibilityAsync())
-                //    return;
                 if (!await CheckCompatibilityAsync())
                     return;
             }
@@ -306,22 +304,9 @@ public partial class App
         Shutdown(101);
     }
 
-    private async Task<bool> CheckBasicCompatibilityAsync()
-    {
-        var isCompatible = await Compatibility.CheckBasicCompatibilityAsync();
-        if (isCompatible)
-            return true;
-
-        MessageBox.Show(Resource.IncompatibleDevice_Message, Resource.AppName, MessageBoxButton.OK, MessageBoxImage.Error);
-
-        Shutdown(201);
-        return false;
-    }
-
     private async Task<bool> CheckCompatibilityAsync()
     {
         var (isCompatible, mi) = await Compatibility.IsCompatibleAsync();
-        _isCompatible = isCompatible;
         if (isCompatible)
         {
             if (Log.Instance.IsTraceEnabled)
@@ -338,8 +323,6 @@ public partial class App
         var result = await unsupportedWindow.ShouldContinue;
         if (result)
         {
-            //Log.Instance.IsTraceEnabled = true;
-
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Compatibility check OVERRIDE. [Vendor={mi.Vendor}, Model={mi.Model}, MachineType={mi.MachineType}, version={Assembly.GetEntryAssembly()?.GetName().Version}, build={Assembly.GetEntryAssembly()?.GetBuildDateTimeString() ?? string.Empty}]");
             return true;

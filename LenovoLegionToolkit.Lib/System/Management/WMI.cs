@@ -39,7 +39,7 @@ public static partial class WMI
         });
     }
 
-    public static async Task<IEnumerable<T>> ReadAsync<T>(string scope, FormattableString query, Func<PropertyDataCollection, T> converter)
+    private static async Task<IEnumerable<T>> ReadAsync<T>(string scope, FormattableString query, Func<PropertyDataCollection, T> converter)
     {
         try
         {
@@ -55,7 +55,7 @@ public static partial class WMI
         }
     }
 
-    public static async Task CallAsync(string scope, FormattableString query, string methodName, Dictionary<string, object> methodParams)
+    private static async Task CallAsync(string scope, FormattableString query, string methodName, Dictionary<string, object> methodParams)
     {
         try
         {
@@ -100,28 +100,6 @@ public static partial class WMI
         {
             throw new ManagementException($"Call failed: {ex.Message}. [scope={scope}, query={query}, methodName={methodName}]", ex);
         }
-    }
-
-    public static async Task<string> CallAsync(string scope, FormattableString query, string property)
-    {
-        var queryFormatted = query.ToString(WMIPropertyValueFormatter.Instance);
-
-        var mos = new ManagementObjectSearcher(scope, queryFormatted);
-        var managementObjects = await mos.GetAsync().ConfigureAwait(false);
-        var managementObject = managementObjects.FirstOrDefault();
-
-        if (managementObject is null)
-            throw new InvalidOperationException("No results in query");
-
-        var mo = (ManagementObject)managementObject;
-
-        var resultProperties = mo.Properties;
-
-        if (resultProperties is null)
-            return "Unknown";
-
-        var result = resultProperties[property].Value.ToString() ?? "Unknown";
-        return result;
     }
 
     private class WMIPropertyValueFormatter : IFormatProvider, ICustomFormatter

@@ -1,196 +1,53 @@
-﻿using LenovoLegionToolkit.Lib.System.Management;
-using LenovoLegionToolkit.Lib.Utils;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Timers;
+using NeoSmart.AsyncLock;
 
 namespace LenovoLegionToolkit.Lib.Controllers;
 
-public class ProcessorController
+public abstract class ProcessorController
 {
-    private static ProcessorController? _controller;
+    private readonly AsyncLock _initLock = new();
 
-    protected string Name, ProcessorID;
+    private bool? _isSupported;
 
-    protected bool CanChangeTDP, CanChangeGPU;
-    protected object IsBusy = new();
-    public bool IsInitialized;
+    protected readonly AsyncLock IoLock = new();
 
-    protected Timer updateTimer = new Timer() { Interval = 3000, AutoReset = true };
+    public abstract bool SupportsStapm { get; }
+    public abstract bool SupportsMSR { get; }
+    public abstract string FastLimitDisplayName { get; }
+    public abstract string SlowLimitDisplayName { get; }
 
-    protected Dictionary<PowerType, int> m_Limits = new();
-    protected Dictionary<PowerType, int> m_PrevLimits = new();
-
-    protected Dictionary<string, float> m_Misc = new();
-    protected Dictionary<string, float> m_PrevMisc = new();
-
-    // TDP limits
-    private double[] FallbackTDP = new double[3];   // used to store fallback TDP
-    private double[] StoredTDP = new double[3];     // used to store TDP
-    private double[] CurrentTDP = new double[5];    // used to store current TDP
-
-    // GPU limits
-    private double FallbackGfxClock;
-    private double StoredGfxClock;
-    private double CurrentGfxClock;
-
-    #region events
-    public event LimitChangedHandler? LimitChanged;
-    public delegate void LimitChangedHandler(PowerType type, int limit);
-
-    public event ValueChangedHandler? ValueChanged;
-    public delegate void ValueChangedHandler(PowerType type, float value);
-
-    public event GfxChangedHandler? MiscChanged;
-    public delegate void GfxChangedHandler(string misc, float value);
-
-    public event StatusChangedHandler? StatusChanged;
-    public delegate void StatusChangedHandler(bool CanChangeTDP, bool CanChangeGPU);
-    #endregion
-
-    public ProcessorController GetCurrent()
+    public async Task<bool> IsSupportedAsync()
     {
-        if (_controller != null)
-            return _controller;
-
-        var manufacturer = GetProcessorDetailsAsync("Manufacturer").Result.ToString();
-
-        switch (manufacturer)
-        {
-            default:
-            case "GenuineIntel":
-                _controller = new IntelProcessorController();
-                break;
-            case "AuthenticAMD":
-                _controller = new AMDProcessorController();
-                break;
-        }
-        return _controller;
-    }
-
-    private Task<string> GetProcessorDetailsAsync(string property) => WMI.CallAsync(@"root\cimv2",
-        $"SELECT * FROM Win32_Processor",
-        $"{property}");
-
-    public ProcessorController()
-    {
-        Name = GetProcessorDetailsAsync("Name").Result.ToString();
-        ProcessorID = GetProcessorDetailsAsync("ProcessorId").Result.ToString();
-
-        // write default miscs
-        m_Misc["gfx_clk"] = m_PrevMisc["gfx_clk"] = 0;
-    }
-
-    public bool IsSupported()
-    {
-        return true;
-    }
-
-    public void RequestTDP(PowerType type, double value, bool UserRequested = true)
-    {
-        int idx = (int)type;
-
-        if (UserRequested)
-            FallbackTDP[idx] = value;
-
-        // update value read by timer
-        StoredTDP[idx] = value;
-    }
-
-    public virtual void Initialize()
-    {
-        StatusChanged?.Invoke(CanChangeTDP, CanChangeGPU);
-
-        if (CanChangeTDP)
-            updateTimer.Start();
-    }
-
-    public virtual void Stop()
-    {
-        if (CanChangeTDP)
-            updateTimer.Stop();
-    }
-
-    public virtual void SetTDPLimit(PowerType type, double limit, int result = 0)
-    {
-        if (Log.Instance.IsTraceEnabled)
-            Log.Instance.Trace($"User requested {type} TDP limit: {limit}, error code: {result}");
-    }
-
-    public virtual int GetTDPLimit(PowerType type)
-    {
-        if (Log.Instance.IsTraceEnabled)
-            Log.Instance.Trace($"User requested {type} TDP limit.");
-        return 0;
-    }
-
-    public virtual Task<int> GetTDPLimitAsync(PowerType type)
-    {
-        if (Log.Instance.IsTraceEnabled)
-            Log.Instance.Trace($"User requested {type} TDP limit.");
-        return Task.FromResult(0);
-    }
-
-    public virtual Task<Dictionary<PowerType, int>> GetTDPLimitsAsync()
-    {
-        if (Log.Instance.IsTraceEnabled)
-            Log.Instance.Trace($"User requested TDP limits.");
-        return Task.FromResult(new Dictionary<PowerType, int>());
+        using (await _initLock.LockAsync().ConfigureAwait(false))
+            return _isSupported ??= await InitializeAsync().ConfigureAwait(false);
     }
 
     public async Task<ProcessorTDPState> GetProcessorTDPAsync()
     {
-        if (Log.Instance.IsTraceEnabled)
-            Log.Instance.Trace($"User requested processor TDP state.");
+        var limits = await GetTDPLimitsAsync().ConfigureAwait(false);
 
-        var limits = await GetTDPLimitsAsync();
-
-        return new ProcessorTDPState()
+        return new ProcessorTDPState
         {
-            Stapm = 0,
-            Fast = limits[PowerType.Fast],
-            Slow = limits[PowerType.Slow],
-            UseMSR = false,
-            MaintainTDP = false,
-            Interval = 0
+            Stapm = limits.GetValueOrDefault(PowerType.Stapm),
+            Fast = limits.GetValueOrDefault(PowerType.Fast),
+            Slow = limits.GetValueOrDefault(PowerType.Slow)
         };
     }
 
-    public virtual void SetGPUClock(double clock, int result = 0)
+    public abstract Task<Dictionary<PowerType, int>> GetTDPLimitsAsync();
+
+    public abstract Task SetTDPLimitAsync(PowerType type, int watts);
+
+    public virtual Task SetMSRLimitsAsync(int pl1, int pl2) => Task.CompletedTask;
+
+    protected abstract Task<bool> InitializeAsync();
+
+    public static ProcessorController Create()
     {
-        /*
-         * #define ADJ_ERR_FAM_UNSUPPORTED      -1
-         * #define ADJ_ERR_SMU_TIMEOUT          -2
-         * #define ADJ_ERR_SMU_UNSUPPORTED      -3
-         * #define ADJ_ERR_SMU_REJECTED         -4
-         * #define ADJ_ERR_MEMORY_ACCESS        -5
-         */
-        if (Log.Instance.IsTraceEnabled)
-            Log.Instance.Trace($"User requested GPU clock: {clock}, error code: {result}");
-    }
-
-    protected virtual void UpdateTimer_Elapsed(object? sender, ElapsedEventArgs e)
-    {
-        //search for limit changes
-        foreach (KeyValuePair<PowerType, int> pair in m_Limits)
-        {
-            if (m_PrevLimits[pair.Key] == pair.Value)
-                continue;
-
-            LimitChanged?.Invoke(pair.Key, pair.Value);
-
-            m_PrevLimits[pair.Key] = pair.Value;
-        }
-
-        // search for misc changes
-        foreach (KeyValuePair<string, float> pair in m_Misc)
-        {
-            if (m_PrevMisc[pair.Key] == pair.Value)
-                continue;
-
-            MiscChanged?.Invoke(pair.Key, pair.Value);
-
-            m_PrevMisc[pair.Key] = pair.Value;
-        }
+        var vendor = Microsoft.Win32.Registry.GetValue(@"HKEY_LOCAL_MACHINE\HARDWARE\DESCRIPTION\System\CentralProcessor\0", "VendorIdentifier", null) as string;
+        return vendor == "AuthenticAMD"
+            ? new AMDProcessorController()
+            : new IntelProcessorController();
     }
 }

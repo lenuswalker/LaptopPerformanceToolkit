@@ -55,11 +55,14 @@ public static class CMD
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Running... [file={file}, argument={arguments}, useShellExecute={useShellExecute}, createNoWindow={createNoWindow}, waitForExit={waitForExit}]");
 
-        var cmd = new Process();
+        // Output can only be captured without shell execute; the stream must be
+        // drained while waiting or a chatty child process blocks on a full pipe.
+        var redirectOutput = !useShellExecute && waitForExit;
+
+        using var cmd = new Process();
         cmd.StartInfo.UseShellExecute = useShellExecute;
         cmd.StartInfo.CreateNoWindow = createNoWindow;
-        cmd.StartInfo.RedirectStandardOutput = false;
-        cmd.StartInfo.RedirectStandardError = false;
+        cmd.StartInfo.RedirectStandardOutput = redirectOutput;
         cmd.StartInfo.WindowStyle = createNoWindow ? ProcessWindowStyle.Hidden : ProcessWindowStyle.Normal;
         cmd.StartInfo.FileName = file;
         if (!string.IsNullOrWhiteSpace(arguments))
@@ -68,17 +71,13 @@ public static class CMD
         cmd.Start();
 
         if (!waitForExit)
-        {
-            if (Log.Instance.IsTraceEnabled)
-                Log.Instance.Trace($"Ran [file={file}, argument={arguments}, useShellExecute={useShellExecute}, createNoWindow={createNoWindow}, waitForExit={waitForExit}]");
-
             return (-1, string.Empty);
-        }
 
+        var outputTask = redirectOutput ? cmd.StandardOutput.ReadToEndAsync(token) : null;
         await cmd.WaitForExitAsync(token).ConfigureAwait(false);
 
         var exitCode = cmd.ExitCode;
-        var output = createNoWindow ? await cmd.StandardOutput.ReadToEndAsync(token).ConfigureAwait(false) : string.Empty;
+        var output = outputTask is null ? string.Empty : await outputTask.ConfigureAwait(false);
 
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Ran [file={file}, argument={arguments}, useShellExecute={useShellExecute}, createNoWindow={createNoWindow}, waitForExit={waitForExit}, exitCode={exitCode} output={output}]");

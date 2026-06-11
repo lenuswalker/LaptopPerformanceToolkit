@@ -362,8 +362,6 @@ public enum PowerModeState
 {
     [Display(ResourceType = typeof(Resource), Name = "PowerModeState_Quiet")]
     Quiet,
-    [Display(ResourceType = typeof(Resource), Name = "PowerModeState_Efficiency")]
-    Efficiency,
     [Display(ResourceType = typeof(Resource), Name = "PowerModeState_Balance")]
     Balance,
     [Display(ResourceType = typeof(Resource), Name = "PowerModeState_Performance")]
@@ -675,16 +673,19 @@ public enum PowerType
 
 public enum RyzenFamily
 {
-    FAM_UNKNOWN = -1,
-    FAM_RAVEN = 0,
-    FAM_PICASSO,
-    FAM_RENOIR,
-    FAM_CEZANNE,
-    FAM_DALI,
-    FAM_LUCIENNE,
-    FAM_VANGOGH,
-    FAM_REMBRANDT,
-    FAM_END
+    Unknown = -1,
+    Raven = 0,
+    Picasso,
+    Renoir,
+    Cezanne,
+    Dali,
+    Lucienne,
+    VanGogh,
+    Rembrandt,
+    Mendocino,
+    Phoenix,
+    HawkPoint,
+    StrixPoint
 }
 
 public enum ProcessState

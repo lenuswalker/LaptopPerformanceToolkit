@@ -5,10 +5,6 @@ namespace LenovoLegionToolkit.WPF.Controls.Dashboard;
 
 public class DisplayBrightnessControl : AbstractSliderFeatureCardControl<int>
 {
-    protected override int Value => 0;
-
-    protected override int Maximum => 100;
-
     public DisplayBrightnessControl()
     {
         Icon = SymbolRegular.BrightnessHigh24;

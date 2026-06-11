@@ -1,196 +1,136 @@
-﻿using LenovoLegionToolkit.Lib.Controllers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
-using LenovoLegionToolkit.Lib.AutoListeners;
-using NeoSmart.AsyncLock;
+using System.Timers;
+using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Utils;
+using NeoSmart.AsyncLock;
+using Timer = System.Timers.Timer;
 
 namespace LenovoLegionToolkit.Lib.Automation.Utils;
 
-public class ProcessorManager
+// Applies processor TDP limits and optionally re-applies them on an interval,
+// since firmware or vendor software can silently reset them.
+public class ProcessorManager(ProcessorController controller)
 {
-    private readonly ProcessorController _controller = IoCContainer.Resolve<ProcessorController>();
-    private readonly TimeAutoListener _timeAutoListener = IoCContainer.Resolve<TimeAutoListener>();
+    private readonly AsyncLock _stateLock = new();
 
-    private readonly AsyncLock _ioLock = new();
+    private Timer? _timer;
+    private ProcessorTDPState _state;
+    private int _applying;
 
-    // CPU limits
-    private Dictionary<PowerType, int> currentLimits = new();
-    private Dictionary<PowerType, int> currentMSRLimits = new();
-    private Dictionary<PowerType, int> savedLimits = new();
+    public Task<bool> IsSupportedAsync() => controller.IsSupportedAsync();
 
-    private double _stapm;
-    private double _fast;
-    private double _slow;
-    private bool _useMSR;
-    private int _interval;
-
-    public ProcessorManager(TimeAutoListener timeAutoListener)
+    public async Task ApplyAsync(ProcessorTDPState state)
     {
-        _timeAutoListener = timeAutoListener;
-        // initialize processor
-        _controller = _controller.GetCurrent();
-    }
-
-    public bool IsSupported()
-    {
-        // Need to add some logic here
-        return true;
-    }
-
-    public async Task InitializeAsync()
-    {
-        using (await _ioLock.LockAsync().ConfigureAwait(false))
+        using (await _stateLock.LockAsync().ConfigureAwait(false))
         {
-            await _timeAutoListener.SubscribeChangedAsync(TimeAutoListener_Changed).ConfigureAwait(false);
+            _state = state;
+            StopTimer();
+        }
 
-            await StopAsync().ConfigureAwait(false);
+        await ApplyLimitsAsync(true).ConfigureAwait(false);
+
+        if (state.MaintainTDP && state.Interval > 0)
+        {
+            using (await _stateLock.LockAsync().ConfigureAwait(false))
+                StartTimer(state.Interval);
         }
     }
 
-    public Task StartAsync(double stapm, double fast, double slow, bool useMSR, int interval)
+    public async Task StopAsync()
     {
-        _stapm = stapm;
-        _fast = fast;
-        _slow = slow;
-        _useMSR = useMSR;
-        _interval = interval;
+        using (await _stateLock.LockAsync().ConfigureAwait(false))
+            StopTimer();
+    }
+
+    private void StartTimer(int intervalSeconds)
+    {
+        _timer = new Timer(intervalSeconds * 1000) { AutoReset = true };
+        _timer.Elapsed += Timer_Elapsed;
+        _timer.Start();
 
         if (Log.Instance.IsTraceEnabled)
-            Log.Instance.Trace($"Setting processor TDP/power limits...");
+            Log.Instance.Trace($"Started TDP maintain timer. [interval={intervalSeconds}s]");
+    }
 
-        MaintainTDP(_stapm, _fast, _slow, _useMSR).ConfigureAwait(false);
+    private void StopTimer()
+    {
+        if (_timer is null)
+            return;
+
+        _timer.Elapsed -= Timer_Elapsed;
+        _timer.Dispose();
+        _timer = null;
 
         if (Log.Instance.IsTraceEnabled)
-            Log.Instance.Trace($"Processor TDP/power limits set");
+            Log.Instance.Trace($"Stopped TDP maintain timer.");
+    }
 
-        if (_interval > 0)
+    private async void Timer_Elapsed(object? sender, ElapsedEventArgs e)
+    {
+        if (Interlocked.CompareExchange(ref _applying, 1, 0) != 0)
+            return;
+
+        try
         {
-            if (Log.Instance.IsTraceEnabled)
-                Log.Instance.Trace($"Starting time interval listener...");
-
-            _timeAutoListener.StartNowAsync(_interval);
-
-            if (Log.Instance.IsTraceEnabled)
-                Log.Instance.Trace($"Started time interval listener.");
+            await ApplyLimitsAsync(false).ConfigureAwait(false);
         }
-        
-        return Task.CompletedTask;
-    }
-
-    public Task StopAsync()
-    {
-        if (Log.Instance.IsTraceEnabled)
-            Log.Instance.Trace($"Stopping time interval listener...");
-
-        _timeAutoListener.StopNowAsync();
-
-        if (Log.Instance.IsTraceEnabled)
-            Log.Instance.Trace($"Stopped time interval listener.");
-
-        _stapm = 0;
-        _fast = 0;
-        _slow = 0;
-        _useMSR = false;
-
-        return Task.CompletedTask;
-    }
-
-    public void SetTDPLimit(PowerType type, double limit)
-    {
-        _controller.SetTDPLimit(type, limit);
-    }
-
-    public void SetMSRLimits(double slow, double fast)
-    {
-        if (_controller.GetType() == typeof(IntelProcessorController))
-            ((IntelProcessorController)_controller).SetMSRLimits(slow, fast);
-    }
-
-    public Task MaintainTDP(double stapm, double fast, double slow, bool useMSR)
-    {
-        savedLimits = new()
+        catch (Exception ex)
         {
-            {
-                PowerType.Stapm,
-                (int)stapm
-            },
-            {
-                PowerType.Fast,
-                (int)fast
-            },
-            {
-                PowerType.Slow,
-                (int)slow
-            }
-        };
-
-        // get current limits
-        foreach (PowerType type in Enum.GetValues(typeof(PowerType)))
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Failed to maintain TDP limits.", ex);
+        }
+        finally
         {
-            if (_controller.GetType() == typeof(IntelProcessorController))
-            {
-                // Intel doesn't have stapm
-                if (type == PowerType.Stapm)
-                    continue;
-            }
+            Interlocked.Exchange(ref _applying, 0);
+        }
+    }
 
-            int limit = _controller.GetTDPLimit(type);
+    private async Task ApplyLimitsAsync(bool force)
+    {
+        if (!await controller.IsSupportedAsync().ConfigureAwait(false))
+        {
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Processor TDP control is not supported.");
 
-            if (limit == 0)
+            return;
+        }
+
+        ProcessorTDPState state;
+        using (await _stateLock.LockAsync().ConfigureAwait(false))
+            state = _state;
+
+        if (state.UseMSR && controller.SupportsMSR)
+        {
+            if (state.Fast > 0 && state.Slow > 0)
+                await controller.SetMSRLimitsAsync((int)state.Slow, (int)state.Fast).ConfigureAwait(false);
+
+            return;
+        }
+
+        var targets = new Dictionary<PowerType, int>();
+        if (controller.SupportsStapm && state.Stapm > 0)
+            targets[PowerType.Stapm] = (int)state.Stapm;
+        if (state.Fast > 0)
+            targets[PowerType.Fast] = (int)state.Fast;
+        if (state.Slow > 0)
+            targets[PowerType.Slow] = (int)state.Slow;
+
+        if (targets.Count == 0)
+            return;
+
+        var current = force
+            ? new Dictionary<PowerType, int>()
+            : await controller.GetTDPLimitsAsync().ConfigureAwait(false);
+
+        foreach (var (type, watts) in targets)
+        {
+            if (!force && current.TryGetValue(type, out var currentWatts) && currentWatts == watts)
                 continue;
-            else
-            {
-                if (currentLimits.ContainsKey(type))
-                    currentLimits[type] = limit;
-                else
-                    currentLimits.Add(type, limit);
-            }
+
+            await controller.SetTDPLimitAsync(type, watts).ConfigureAwait(false);
         }
-
-        // search for limit changes
-        if (currentLimits.Any())
-            foreach (KeyValuePair<PowerType, int> pair in currentLimits)
-            {
-                if (!savedLimits.ContainsKey(pair.Key))
-                    continue;
-
-                if (pair.Key == PowerType.Stapm)
-                    continue;
-
-                if (savedLimits[pair.Key] == pair.Value)
-                    continue;
-
-                _controller.SetTDPLimit(pair.Key, savedLimits[pair.Key]);
-            }
-
-        // processor specific
-        if (useMSR)
-        {
-            if (_controller.GetType() == typeof(IntelProcessorController))
-            {
-                currentMSRLimits = ((IntelProcessorController)_controller).GetMSRLimits();
-
-                foreach (KeyValuePair<PowerType, int> pair in currentMSRLimits)
-                {
-                    if (!savedLimits.ContainsKey(pair.Key))
-                        continue;
-
-                    if (savedLimits[pair.Key] == pair.Value)
-                        continue;
-
-                    // Set MSR limit
-                    ((IntelProcessorController)_controller).SetMSRLimits(savedLimits[PowerType.Slow], savedLimits[PowerType.Fast]);
-                }
-            }
-        }
-        return Task.CompletedTask;
-    }
-
-    private async void TimeAutoListener_Changed(object? sender, TimeAutoListener.ChangedEventArgs args)
-    {
-        await MaintainTDP(_stapm, _fast, _slow, _useMSR).ConfigureAwait(false);
     }
 }

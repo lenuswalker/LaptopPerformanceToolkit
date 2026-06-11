@@ -1,10 +1,13 @@
-﻿using LenovoLegionToolkit.Lib.Extensions;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
 
 namespace LenovoLegionToolkit.Lib.AutoListeners;
 
+// Raises an event for every interval (in seconds) registered via UpdateIntervalsAsync.
+// One timer per distinct interval; no timers run when no pipeline needs them.
 public class TimeIntervalAutoListener : AbstractAutoListener<TimeIntervalAutoListener.ChangedEventArgs>
 {
     public class ChangedEventArgs(int interval) : EventArgs
@@ -12,40 +15,30 @@ public class TimeIntervalAutoListener : AbstractAutoListener<TimeIntervalAutoLis
         public int Interval { get; } = interval;
     }
 
-    private readonly Timer _timer;
-    
-    public TimeIntervalAutoListener()
+    private readonly object _lock = new();
+    private readonly Dictionary<int, Timer> _timers = [];
+
+    private HashSet<int> _intervals = [];
+    private bool _started;
+
+    public Task UpdateIntervalsAsync(IEnumerable<int> intervalsSeconds)
     {
-        _timer = new Timer(60_000);
-        _timer.Elapsed += Timer_Elapsed;
-        _timer.AutoReset = true;
-    }
-    
-    protected override Task StartAsync()
-    {
-        if (!_timer.Enabled)
-            _timer.Enabled = true;
-        else
+        lock (_lock)
         {
-            _timer.Enabled = false;
-            _timer.Enabled = true;
+            _intervals = intervalsSeconds.Where(i => i > 0).ToHashSet();
+            if (_started)
+                SyncTimers();
         }
 
         return Task.CompletedTask;
     }
 
-    public Task StartAsync(int interval)
+    protected override Task StartAsync()
     {
-        if (!_timer.Enabled)
+        lock (_lock)
         {
-            _timer.Interval = interval;
-            _timer.Enabled = true;
-        }
-        else
-        {
-            _timer.Enabled = false;
-            _timer.Interval = interval;
-            _timer.Enabled = true;
+            _started = true;
+            SyncTimers();
         }
 
         return Task.CompletedTask;
@@ -53,17 +46,31 @@ public class TimeIntervalAutoListener : AbstractAutoListener<TimeIntervalAutoLis
 
     protected override Task StopAsync()
     {
-        _timer.Enabled = false;
+        lock (_lock)
+        {
+            _started = false;
+            SyncTimers();
+        }
 
         return Task.CompletedTask;
     }
 
-    public Task StopNowAsync()
+    private void SyncTimers()
     {
-        _timer.Enabled = false;
+        var wanted = _started ? _intervals : [];
 
-        return Task.CompletedTask;
+        foreach (var interval in _timers.Keys.Where(i => !wanted.Contains(i)).ToArray())
+        {
+            _timers[interval].Dispose();
+            _timers.Remove(interval);
+        }
+
+        foreach (var interval in wanted.Where(i => !_timers.ContainsKey(i)))
+        {
+            var timer = new Timer(interval * 1000) { AutoReset = true };
+            timer.Elapsed += (_, _) => RaiseChanged(new ChangedEventArgs(interval));
+            timer.Start();
+            _timers[interval] = timer;
+        }
     }
-
-    private void Timer_Elapsed(object? sender, ElapsedEventArgs e) => RaiseChanged(new ChangedEventArgs((int)_timer.Interval));
 }
