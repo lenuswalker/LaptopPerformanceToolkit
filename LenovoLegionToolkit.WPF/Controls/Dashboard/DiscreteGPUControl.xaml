@@ -102,6 +102,12 @@
                                 x:Name="_restartGPUMenuItem"
                                 Click="RestartGPUMenuItem_Click"
                                 Header="{x:Static resources:Resource.DiscreteGPUControl_RestartGPU}" />
+                            <Separator />
+                            <wpfui:MenuItem
+                                x:Name="_keepOffOnBatteryMenuItem"
+                                Click="KeepOffOnBatteryMenuItem_Click"
+                                Header="{x:Static resources:Resource.DiscreteGPUControl_KeepOffOnBattery}"
+                                IsCheckable="True" />
                         </ContextMenu.Items>
                     </ContextMenu>
                 </wpfui:Button.ContextMenu>

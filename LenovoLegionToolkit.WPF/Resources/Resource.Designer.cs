@@ -1634,6 +1634,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Keep powered off on battery.
+        /// </summary>
+        public static string DiscreteGPUControl_KeepOffOnBattery {
+            get {
+                return ResourceManager.GetString("DiscreteGPUControl_KeepOffOnBattery", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Kill apps.
         /// </summary>
         public static string DiscreteGPUControl_KillApps {
