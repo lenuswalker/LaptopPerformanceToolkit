@@ -7,6 +7,8 @@ using System.Windows.Controls.Primitives;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Listeners;
+using LenovoLegionToolkit.Lib.Services;
+using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.WPF.Resources;
 
 namespace LenovoLegionToolkit.WPF.Controls.Dashboard;
@@ -15,6 +17,8 @@ public partial class DiscreteGPUControl
 {
     private readonly GPUController _gpuController = IoCContainer.Resolve<GPUController>();
     private readonly NativeWindowsMessageListener _nativeWindowsMessageListener = IoCContainer.Resolve<NativeWindowsMessageListener>();
+    private readonly GPUKeepOffMonitorService _gpuKeepOffMonitorService = IoCContainer.Resolve<GPUKeepOffMonitorService>();
+    private readonly ApplicationSettings _settings = IoCContainer.Resolve<ApplicationSettings>();
 
     public DiscreteGPUControl()
     {
@@ -24,6 +28,8 @@ public partial class DiscreteGPUControl
         _nativeWindowsMessageListener.Changed += NativeWindowsMessageListener_Changed;
 
         IsVisibleChanged += DiscreteGPUControl_IsVisibleChanged;
+
+        _keepOffOnBatteryMenuItem.IsChecked = _settings.Store.KeepGPUOffOnBattery;
     }
 
     protected override void OnFinishedLoading() { }
@@ -159,5 +165,13 @@ public partial class DiscreteGPUControl
     {
         _deactivateGPUButton.IsEnabled = false;
         await _gpuController.RestartGPUAsync();
+    }
+
+    private async void KeepOffOnBatteryMenuItem_Click(object sender, RoutedEventArgs e)
+    {
+        _settings.Store.KeepGPUOffOnBattery = _keepOffOnBatteryMenuItem.IsChecked;
+        _settings.SynchronizeStore();
+
+        await _gpuKeepOffMonitorService.StartStopIfNeededAsync();
     }
 }

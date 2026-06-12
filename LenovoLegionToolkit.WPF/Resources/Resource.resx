@@ -531,6 +531,9 @@ WARNING: This action will not run correctly, if internal display is off or Hybri
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>Processes</value>
   </data>
+  <data name="DiscreteGPUControl_KeepOffOnBattery" xml:space="preserve">
+    <value>Keep powered off on battery</value>
+  </data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
     <value>Restart GPU</value>
   </data>

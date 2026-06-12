@@ -26,6 +26,14 @@ public static class Power
         };
     }
 
+    public static bool IsPowerAdapterConnected()
+    {
+        if (!PInvoke.GetSystemPowerStatus(out var sps))
+            return true;
+
+        return sps.ACLineStatus == 1;
+    }
+
     public static bool IsBatterySaverEnabled()
     {
         if (!PInvoke.GetSystemPowerStatus(out var sps))

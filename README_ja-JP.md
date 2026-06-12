@@ -97,23 +97,23 @@ LLTはバックグラウンドで実行されているときに最適に動作�
 #### .NETの問題？
 
 何らかの理由でLLTインストーラーが.NETを正しく設定しなかった場合：
-1. https://dotnet.microsoft.com/en-us/download/dotnet/8.0にアクセスします
+1. https://dotnet.microsoft.com/en-us/download/dotnet/10.0にアクセスします
 2. ".NET Desktop Runtime"セクションを見つけます
 3. x64 Windowsインストーラーをダウンロードします
 4. インストーラーを実行します
 
 > [!NOTE]
-> ScoopからLLTをインストールした場合、.NET 8は依存関係として自動的にインストールされるはずです。何かが失敗した場合、`scoop update`を使用してすべてのパッケージを更新し、`--force`引数を使用してLLTを再インストールしてみてください。
+> ScoopからLLTをインストールした場合、.NET 10は依存関係として自動的にインストールされるはずです。何かが失敗した場合、`scoop update`を使用してすべてのパッケージを更新し、`--force`引数を使用してLLTを再インストールしてみてください。
 
 これらの手順を実行した後、ターミナルを開いて`dotnet --info`と入力できます。出力で`.NET runtimes installed`セクションを探し、このセクションに次のようなものが表示されるはずです：
 
-`Microsoft.NETCore.App 8.0.0 [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]`
+`Microsoft.NETCore.App 10.0.0 [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]`
 
 および
 
-`Microsoft.WindowsDesktop.App 8.0.0 [C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App]`
+`Microsoft.WindowsDesktop.App 10.0.0 [C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App]`
 
-正確なバージョン番号は異なる場合がありますが、`8.x.x`であれば問題ありません。これらの手順を実行した後でも、LLTが起動時に.NETが見つからないなどのエラーを表示する場合、問題はLLTではなく、あなたのマシンにあります。
+正確なバージョン番号は異なる場合がありますが、`10.x.x`であれば問題ありません。これらの手順を実行した後でも、LLTが起動時に.NETが見つからないなどのエラーを表示する場合、問題はLLTではなく、あなたのマシンにあります。
 
 #### テストに協力したいですか？
 
