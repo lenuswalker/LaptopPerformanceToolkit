@@ -15,12 +15,6 @@ public class BatteryDischargeRateMonitorService
     {
         await StopAsync().ConfigureAwait(false);
 
-        if (_refreshTask != null)
-            return;
-
-        if (_cts is not null)
-            await _cts.CancelAsync().ConfigureAwait(false);
-
         _cts = new CancellationTokenSource();
 
         var token = _cts.Token;

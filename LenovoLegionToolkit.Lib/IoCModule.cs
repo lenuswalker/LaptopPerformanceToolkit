@@ -86,19 +86,23 @@ public class IoCModule : Module
         builder.Register<DGPUFeatureFlagsNotify>(true);
         builder.Register<DGPUGamezoneNotify>(true);
 
+        // Generic listeners: work on any laptop, always auto-started.
         builder.Register<DisplayBrightnessListener>().AutoActivateListener();
         builder.Register<DisplayConfigurationListener>().AutoActivateListener();
-        builder.Register<DriverKeyListener>().AutoActivateListener();
-        builder.Register<LightingChangeListener>().AutoActivateListener();
         builder.Register<NativeWindowsMessageListener>().AutoActivateListener();
-        builder.Register<PowerModeListener>().AutoActivateListener();
         builder.Register<PowerStateListener>().AutoActivateListener();
-        builder.Register<RGBKeyboardBacklightListener>().AutoActivateListener();
         builder.Register<SessionLockUnlockListener>().AutoActivateListener();
-        builder.Register<SpecialKeyListener>().AutoActivateListener();
         builder.Register<SystemThemeListener>().AutoActivateListener();
-        builder.Register<ThermalModeListener>().AutoActivateListener();
-        builder.Register<WinKeyListener>().AutoActivateListener();
+
+        // Lenovo-only listeners: subscribe to Lenovo WMI/driver event sources. Auto-started only on
+        // compatible hardware so they consume zero resources on unsupported machines.
+        builder.Register<DriverKeyListener>().AutoActivateLenovoListener();
+        builder.Register<LightingChangeListener>().AutoActivateLenovoListener();
+        builder.Register<PowerModeListener>().AutoActivateLenovoListener();
+        builder.Register<RGBKeyboardBacklightListener>().AutoActivateLenovoListener();
+        builder.Register<SpecialKeyListener>().AutoActivateLenovoListener();
+        builder.Register<ThermalModeListener>().AutoActivateLenovoListener();
+        builder.Register<WinKeyListener>().AutoActivateLenovoListener();
 
         builder.Register<GameAutoListener>();
         builder.Register<InstanceStartedEventAutoAutoListener>();

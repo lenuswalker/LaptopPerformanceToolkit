@@ -71,10 +71,24 @@ public class MacroController
 
     public void Start()
     {
+        // Don't install a system-wide keyboard hook unless macros are enabled. When disabled (the
+        // default) the hook would otherwise route every keystroke through managed code for nothing.
+        if (!IsEnabled)
+            return;
+
         if (_kbHook != default)
             return;
 
         _kbHook = PInvoke.SetWindowsHookEx(WINDOWS_HOOK_ID.WH_KEYBOARD_LL, _kbProc, HINSTANCE.Null, 0);
+    }
+
+    public void Stop()
+    {
+        if (_kbHook == default)
+            return;
+
+        PInvoke.UnhookWindowsHookEx(_kbHook);
+        _kbHook = default;
     }
 
     public void StartRecording(MacroRecorderSettings settings = MacroRecorderSettings.Keyboard) => _recorder.StartRecording(settings);
