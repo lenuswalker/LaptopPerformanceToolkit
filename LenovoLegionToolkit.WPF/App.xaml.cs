@@ -104,6 +104,10 @@ public partial class App
         WinFormsApp.SetHighDpiMode(WinFormsHighDpiMode.PerMonitorV2);
         RenderOptions.ProcessRenderMode = RenderMode.SoftwareOnly;
 
+        // Determine basic (Lenovo hardware) compatibility BEFORE building the IoC container, so that
+        // Lenovo-only listeners are not auto-activated on unsupported machines.
+        _isCompatible = await Compatibility.CheckBasicCompatibilityAsync();
+
         IoCContainer.Initialize(
             new Lib.IoCModule(),
             new Lib.Automation.IoCModule(),
@@ -125,7 +129,6 @@ public partial class App
 
         AutomationPage.EnableHybridModeAutomation = flags.EnableHybridModeAutomation;
 
-        _isCompatible = await Compatibility.CheckBasicCompatibilityAsync();
         if (_isCompatible)
         {
             await LogSoftwareStatusAsync();
@@ -133,17 +136,24 @@ public partial class App
             await InitRgbKeyboardControllerAsync();
             await InitSpectrumKeyboardControllerAsync();
             await InitGpuOverclockControllerAsync();
+
+            // Lenovo-only features: only initialize on compatible hardware.
+            await InitHybridModeAsync();
+            InitMacroController();
+
+            await IoCContainer.Resolve<AIController>().StartIfNeededAsync();
+            await IoCContainer.Resolve<BatteryDischargeRateMonitorService>().StartStopIfNeededAsync();
+
+            // HWiNFO integration exposes Lenovo sensor readings, so it is only meaningful here.
+            await IoCContainer.Resolve<HWiNFOIntegration>().StartStopIfNeededAsync();
         }
 
+        // Cross-platform features (Windows power overlay fallback, processor TDP automation, CLI/IPC,
+        // discrete-GPU power management): available on any supported laptop.
         await InitPowerModeFeatureAsync();
-        await InitHybridModeAsync();
         await InitAutomationProcessorAsync();
-        InitMacroController();
 
-        await IoCContainer.Resolve<AIController>().StartIfNeededAsync();
-        await IoCContainer.Resolve<HWiNFOIntegration>().StartStopIfNeededAsync();
         await IoCContainer.Resolve<IpcServer>().StartStopIfNeededAsync();
-        await IoCContainer.Resolve<BatteryDischargeRateMonitorService>().StartStopIfNeededAsync();
         await IoCContainer.Resolve<GPUKeepOffMonitorService>().StartStopIfNeededAsync();
 
 #if !DEBUG
@@ -272,6 +282,15 @@ public partial class App
             if (IoCContainer.TryResolve<BatteryDischargeRateMonitorService>() is { } batteryDischargeMon)
             {
                 await batteryDischargeMon.StopAsync();
+            }
+        }
+        catch { /* Ignored. */ }
+
+        try
+        {
+            if (IoCContainer.TryResolve<MacroController>() is { } macroController)
+            {
+                macroController.Stop();
             }
         }
         catch { /* Ignored. */ }

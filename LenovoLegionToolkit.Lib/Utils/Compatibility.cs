@@ -76,6 +76,13 @@ public static partial class Compatibility
     private static MachineInformation? _machineInformation;
     private static bool? _basicCompatibility;
 
+    /// <summary>
+    /// Synchronous view of the basic (Lenovo hardware) compatibility result.
+    /// Returns <c>false</c> until <see cref="CheckBasicCompatibilityAsync"/> has run at least once.
+    /// Used to gate Lenovo-only background components so they consume no resources on unsupported machines.
+    /// </summary>
+    public static bool IsBasicCompatible => _basicCompatibility ?? false;
+
     public static async Task<bool> CheckBasicCompatibilityAsync() => _basicCompatibility ??= await WMI.LenovoGameZoneData.ExistsAsync().ConfigureAwait(false);
 
     public static async Task<(bool isCompatible, MachineInformation machineInformation)> IsCompatibleAsync()

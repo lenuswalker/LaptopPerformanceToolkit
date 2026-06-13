@@ -30,7 +30,15 @@ public partial class MacroPage
 
     private void EnableMacroToggle_Click(object sender, RoutedEventArgs e)
     {
-        _controller.SetEnabled(_enableMacroToggle.IsChecked ?? false);
+        var enabled = _enableMacroToggle.IsChecked ?? false;
+        _controller.SetEnabled(enabled);
+
+        // Install/remove the low-level keyboard hook live. This runs on the UI thread, which owns the
+        // message loop the hook callback is dispatched on, so the hook only exists while macros are on.
+        if (enabled)
+            _controller.Start();
+        else
+            _controller.Stop();
     }
 
     private void NumberPadButton_Click(object sender, RoutedEventArgs e)
