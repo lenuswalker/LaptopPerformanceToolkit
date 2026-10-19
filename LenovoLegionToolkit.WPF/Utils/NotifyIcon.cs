@@ -37,6 +37,8 @@ public class NotifyIcon : NativeWindow, IDisposable
         set
         {
             _visible = value;
+            if (!value)
+                HideToolTip();
             UpdateIcon();
         }
     }
@@ -122,6 +124,7 @@ public class NotifyIcon : NativeWindow, IDisposable
             default:
                 if (m.Msg == TaskbarCreatedMessage && _visible)
                 {
+                    HideToolTip();
                     _visible = true;
                     _added = false;
                     UpdateIcon();
@@ -134,52 +137,53 @@ public class NotifyIcon : NativeWindow, IDisposable
 
     private async void ShowToolTipAsync()
     {
-        if (_toolTipWindow is null)
+        var factory = _toolTipWindow;
+        if (factory is null || _showToolTipCancellationTokenSource is not null || _currentToolTipWindow is not null)
             return;
 
-        if (_showToolTipCancellationTokenSource is not null)
-            await _showToolTipCancellationTokenSource.CancelAsync();
-        _showToolTipCancellationTokenSource = new();
-
-        var token = _showToolTipCancellationTokenSource.Token;
+        using var cancellation = new CancellationTokenSource();
+        _showToolTipCancellationTokenSource = cancellation;
+        var token = cancellation.Token;
+        UiWindow? window = null;
 
         try
         {
-            await Task.Delay(TimeSpan.FromMilliseconds(500), token);
-
             if (ContextMenu is not null && ContextMenu.IsOpen)
                 return;
 
-            _currentToolTipWindow?.Close();
-            _currentToolTipWindow = await _toolTipWindow();
+            window = await factory();
 
             token.ThrowIfCancellationRequested();
 
-            _currentToolTipWindow?.Show();
+            _currentToolTipWindow = window;
+            window.Show();
         }
         catch (OperationCanceledException)
         {
-            _currentToolTipWindow?.Close();
-            _currentToolTipWindow = null;
+            window?.Close();
         }
         catch (Exception ex)
         {
-            _currentToolTipWindow?.Close();
-            _currentToolTipWindow = null;
+            window?.Close();
+            if (ReferenceEquals(_currentToolTipWindow, window))
+                _currentToolTipWindow = null;
 
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Failed to show tooltip.", ex);
+        }
+        finally
+        {
+            if (ReferenceEquals(_showToolTipCancellationTokenSource, cancellation))
+                _showToolTipCancellationTokenSource = null;
         }
     }
 
     private void HideToolTip()
     {
-        if (_toolTipWindow is null)
-            return;
-
         _showToolTipCancellationTokenSource?.Cancel();
+        _showToolTipCancellationTokenSource = null;
 
-        _currentToolTipWindow?.Hide();
+        _currentToolTipWindow?.Close();
         _currentToolTipWindow = null;
     }
 

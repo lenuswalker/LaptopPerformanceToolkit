@@ -41,7 +41,10 @@ public partial class StatusWindow
         public ProcessorTDPState? ProcessorTDPState { get; } = processorTDPState;
     }
 
-    public static async Task<StatusWindow> CreateAsync() => new(await GetStatusWindowDataAsync());
+    private static StatusWindowData _lastData;
+    private static Task<StatusWindowData>? _pendingData;
+
+    public static Task<StatusWindow> CreateAsync() => Task.FromResult(new StatusWindow(_lastData));
 
     private static async Task<StatusWindowData> GetStatusWindowDataAsync()
     {
@@ -138,6 +141,11 @@ public partial class StatusWindow
         if (Log.Instance.IsTraceEnabled)
             _title.Text += " [LOGGING ENABLED]";
 
+        RefreshData(data);
+    }
+
+    private void RefreshData(StatusWindowData data)
+    {
         RefreshPowerMode(data.PowerModeState, data.GodModePresetName);
         RefreshDiscreteGpu(data.GPUStatus);
         RefreshBattery(data.BatteryInformation, data.BatteryState);
@@ -145,7 +153,31 @@ public partial class StatusWindow
         RefreshProcessorTDP(data.ProcessorTDPState);
     }
 
-    private void StatusWindow_Loaded(object sender, RoutedEventArgs e) => MoveBottomRightEdgeOfWindowToMousePosition();
+    private async void StatusWindow_Loaded(object sender, RoutedEventArgs e)
+    {
+        MoveBottomRightEdgeOfWindowToMousePosition();
+        var pendingData = _pendingData ??= Task.Run(GetStatusWindowDataAsync);
+        try
+        {
+            _lastData = await pendingData;
+            if (!IsVisible)
+                return;
+
+            RefreshData(_lastData);
+            UpdateLayout();
+            MoveBottomRightEdgeOfWindowToMousePosition();
+        }
+        catch (Exception ex)
+        {
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Failed to refresh tooltip.", ex);
+        }
+        finally
+        {
+            if (ReferenceEquals(_pendingData, pendingData))
+                _pendingData = null;
+        }
+    }
 
     private void MoveBottomRightEdgeOfWindowToMousePosition()
     {
@@ -163,7 +195,7 @@ public partial class StatusWindow
         var screenRectangle = Screen.FromPoint(mousePoint).WorkingArea;
 
         var mouse = transform.Value.Transform(new Point(mousePoint.X, mousePoint.Y));
-        var screen = transform.Value.Transform(new Vector(screenRectangle.Width, screenRectangle.Height));
+        var screen = transform.Value.Transform(new Point(screenRectangle.Right, screenRectangle.Bottom));
 
         if (mouse.X + offset + ActualWidth > screen.X)
             Left = mouse.X - ActualWidth - offset;
@@ -273,6 +305,8 @@ public partial class StatusWindow
 
         if (batteryInformation.Value.IsLowBattery)
             _batteryValueLabel.SetResourceReference(ForegroundProperty, "SystemFillColorCautionBrush");
+        else
+            _batteryValueLabel.ClearValue(ForegroundProperty);
 
         _batteryIcon.Symbol = symbol;
         _batteryValueLabel.Content = $"{batteryInformation.Value.BatteryPercentage}%";
@@ -300,6 +334,8 @@ public partial class StatusWindow
 
         _processorTDPFastLabel.Content = _controller.FastLimitDisplayName;
         _processorTDPSlowLabel.Content = _controller.SlowLimitDisplayName;
+        _processorTDPFastLabel.Visibility = Visibility.Visible;
+        _processorTDPSlowLabel.Visibility = Visibility.Visible;
 
         _processorTDPFastValueLabel.Content = $"{processorTDPState.Value.Fast} W";
         _processorTDPSlowValueLabel.Content = $"{processorTDPState.Value.Slow} W";
