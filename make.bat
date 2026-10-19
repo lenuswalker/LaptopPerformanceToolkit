@@ -1,7 +1,7 @@
 @echo off
 
 IF "%1"=="" (
-	SET VERSION=0.0.1
+	SET VERSION=2.28.0
 ) ELSE (
 	SET VERSION=%1
 )

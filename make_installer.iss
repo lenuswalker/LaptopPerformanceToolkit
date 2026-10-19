@@ -7,7 +7,7 @@
 #define MyAppExeName "Lenovo Legion Toolkit.exe"
 
 #ifndef MyAppVersion
-  #define MyAppVersion "0.0.1"
+  #define MyAppVersion "2.28.0"
 #endif
 
 [Setup]
