@@ -30,7 +30,7 @@
             CanMaximize="false"
             ShowMaximize="false"
             ShowMinimize="false"
-            UseSnapLayout="false" />
+            />
 
         <Grid
             Grid.Row="0"
@@ -53,7 +53,7 @@
             x:Name="_filterTextBox"
             Grid.Row="1"
             Margin="16"
-            Icon="Search24"
+            Icon="{wpfui:SymbolIcon Search24}"
             PlaceholderEnabled="True"
             PlaceholderText="{x:Static resources:Resource.Filter}"
             TextChanged="FilterTextBox_TextChanged" />

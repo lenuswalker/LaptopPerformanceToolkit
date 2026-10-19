@@ -1,7 +1,7 @@
 ﻿using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.WPF.Resources;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Controls.Dashboard;
 
@@ -15,7 +15,7 @@ public class PortsBacklightControl : AbstractToggleFeatureCardControl<PortsBackl
 
     public PortsBacklightControl()
     {
-        Icon = SymbolRegular.UsbPlug24;
+        Icon = new SymbolIcon(SymbolRegular.UsbPlug24);
         Title = Resource.PortsBacklightControl_Title;
         Subtitle = Resource.PortsBacklightControl_Message;
 

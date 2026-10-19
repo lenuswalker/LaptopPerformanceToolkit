@@ -29,7 +29,7 @@
             CanMaximize="false"
             ShowMaximize="false"
             ShowMinimize="false"
-            UseSnapLayout="false" />
+            />
 
         <Grid
             Grid.Row="0"
@@ -111,7 +111,7 @@
                             x:Name="_refreshWarrantyButton"
                             Grid.Column="1"
                             Click="RefreshWarrantyButton_OnClick"
-                            Icon="ArrowClockwise32"
+                            Icon="{wpfui:SymbolIcon ArrowClockwise32}"
                             ToolTip="{x:Static resources:Resource.DeviceInformationWindow_Refresh}" />
                     </Grid>
 
@@ -141,7 +141,7 @@
                         Margin="0,8,0,8"
                         Click="WarrantyLinkCardAction_OnClick"
                         Content="{x:Static resources:Resource.DeviceInformationWindow_LenovoSupport}"
-                        Icon="Open24"
+                        Icon="{wpfui:SymbolIcon Open24}"
                         IsChevronVisible="False"
                         IsEnabled="False" />
                 </StackPanel>
@@ -150,12 +150,9 @@
 
         </wpfui:DynamicScrollViewer>
 
-        <wpfui:Snackbar
-            x:Name="_snackBar"
+        <wpfui:SnackbarPresenter
+            x:Name="_snackbarPresenter"
             Grid.Row="1"
-            HorizontalAlignment="Center"
-            CloseButtonEnabled="False"
-            Icon="Checkmark24"
-            Timeout="1000" />
+            HorizontalAlignment="Center" />
     </Grid>
 </local:BaseWindow>

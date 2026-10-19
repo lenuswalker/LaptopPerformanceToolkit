@@ -30,7 +30,7 @@
             CanMaximize="false"
             ShowMaximize="false"
             ShowMinimize="false"
-            UseSnapLayout="false" />
+            />
 
         <Grid
             Grid.Row="0"
@@ -65,7 +65,7 @@
                 <custom:CardControl
                     Grid.Row="0"
                     Margin="0,8,0,8"
-                    Icon="Info24">
+                    Icon="{wpfui:SymbolIcon Info24}">
                     <custom:CardControl.Header>
                         <TextBlock Text="{x:Static resources:Resource.ExcludeRefreshRatesWindow_Description}" TextWrapping="Wrap" />
                     </custom:CardControl.Header>

@@ -77,7 +77,10 @@ public partial class DiscreteGPUControl
         {
             try { await _gpuController.RefreshNowAsync(); }
             catch { SetUnknownStatus(Resource.DiscreteGPUControl_Status_Unknown); }
-            try { await _gpuController.StartAsync(); } catch { }
+            if (_isLoaded && IsVisible)
+            {
+                try { await _gpuController.StartAsync(); } catch { }
+            }
         }
         finally
         {
@@ -225,6 +228,7 @@ public partial class DiscreteGPUControl
 
     private void SetUnknownStatus(string text)
     {
+        _lastState = GPUState.Unknown;
         _discreteGPUStatusActiveIndicator.Visibility = Visibility.Collapsed;
         _discreteGPUStatusInactiveIndicator.Visibility = Visibility.Collapsed;
         _discreteGPUStatusPoweredOffIndicator.Visibility = Visibility.Collapsed;

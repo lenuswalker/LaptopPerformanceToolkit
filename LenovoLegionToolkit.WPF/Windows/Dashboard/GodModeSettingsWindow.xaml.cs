@@ -14,11 +14,15 @@ using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
+using Wpf.Ui;
+using Wpf.Ui.Controls;
+using MenuItem = System.Windows.Controls.MenuItem;
 
 namespace LenovoLegionToolkit.WPF.Windows.Dashboard;
 
 public partial class GodModeSettingsWindow
 {
+    private readonly SnackbarService _snackbarService = new();
     private readonly PowerModeFeature _powerModeFeature = IoCContainer.Resolve<PowerModeFeature>();
     private readonly GodModeController _godModeController = IoCContainer.Resolve<GodModeController>();
 
@@ -32,6 +36,7 @@ public partial class GodModeSettingsWindow
     public GodModeSettingsWindow()
     {
         InitializeComponent();
+        _snackbarService.SetSnackbarPresenter(_snackbarPresenter);
 
         IsVisibleChanged += GodModeSettingsWindow_IsVisibleChanged;
     }
@@ -78,7 +83,7 @@ public partial class GodModeSettingsWindow
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Couldn't load settings.", ex);
 
-            await _snackBar.ShowAsync(Resource.GodModeSettingsWindow_Error_Load_Title, ex.Message);
+            ShowSnackbar(Resource.GodModeSettingsWindow_Error_Load_Title, ex.Message);
 
             Close();
         }
@@ -144,10 +149,22 @@ public partial class GodModeSettingsWindow
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Couldn't apply settings", ex);
 
-            await _snackBar.ShowAsync(Resource.GodModeSettingsWindow_Error_Apply_Title, ex.Message);
+            ShowSnackbar(Resource.GodModeSettingsWindow_Error_Apply_Title, ex.Message);
 
             return false;
         }
+    }
+
+    private void ShowSnackbar(string title, string message)
+    {
+        _snackbarService.Show(
+            title,
+            message,
+            ControlAppearance.Danger,
+            new SymbolIcon(SymbolRegular.ErrorCircle24),
+            TimeSpan.FromMilliseconds(5000));
+        if (_snackbarPresenter.Content is Snackbar snackbar)
+            snackbar.IsCloseButtonEnabled = true;
     }
 
     private async Task SetStateAsync(GodModeState state)

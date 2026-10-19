@@ -27,7 +27,7 @@
             Grid.Column="0"
             Margin="16,16,0,16"
             AutomationProperties.Name="{x:Static resources:Resource.Filter}"
-            Icon="Search24"
+            Icon="{ui:SymbolIcon Search24}"
             PlaceholderEnabled="True"
             PlaceholderText="{x:Static resources:Resource.Filter}"
             TextChanged="FilterTextBox_TextChanged" />
@@ -38,7 +38,7 @@
             Margin="16,16,0,16"
             VerticalAlignment="Stretch"
             Click="OnlySelected_Click"
-            Icon="SelectAllOn24"
+            Icon="{ui:SymbolIcon SelectAllOn24}"
             ToolTip="{x:Static resources:Resource.DeviceAutomationPipelineTriggerTabItemContent_OnlySelected}" />
         <ui:Button
             x:Name="_onlyConnectedButton"
@@ -47,7 +47,7 @@
             Margin="8,16,0,16"
             VerticalAlignment="Stretch"
             Click="OnlyConnectedButton_Click"
-            Icon="Connected20"
+            Icon="{ui:SymbolIcon Connected20}"
             ToolTip="{x:Static resources:Resource.DeviceAutomationPipelineTriggerTabItemContent_OnlyConnected}" />
         <ui:Button
             x:Name="_onlyRemovableButton"
@@ -56,7 +56,7 @@
             Margin="8,16,32,16"
             VerticalAlignment="Stretch"
             Click="OnlyRemovableButton_Click"
-            Icon="ArrowEject20"
+            Icon="{ui:SymbolIcon ArrowEject20}"
             ToolTip="{x:Static resources:Resource.DeviceAutomationPipelineTriggerTabItemContent_OnlyRemovable}" />
         <ScrollViewer
             x:Name="_scrollViewer"

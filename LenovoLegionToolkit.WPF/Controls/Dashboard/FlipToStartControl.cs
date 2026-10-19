@@ -1,6 +1,6 @@
 ﻿using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.WPF.Resources;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Controls.Dashboard;
 
@@ -12,7 +12,7 @@ public class FlipToStartControl : AbstractToggleFeatureCardControl<FlipToStartSt
 
     public FlipToStartControl()
     {
-        Icon = SymbolRegular.Power24;
+        Icon = new SymbolIcon(SymbolRegular.Power24);
         Title = Resource.FlipToStartControl_Title;
         Subtitle = Resource.FlipToStartControl_Message;
     }

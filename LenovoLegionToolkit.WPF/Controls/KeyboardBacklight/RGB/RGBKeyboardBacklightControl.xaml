@@ -130,7 +130,7 @@
             Grid.Column="0"
             Margin="0,0,8,8"
             VerticalAlignment="Top"
-            Icon="Color24">
+            Icon="{wpfui:SymbolIcon Color24}">
             <custom:CardControl.Header>
                 <controls:CardHeaderControl Title="{x:Static resources:Resource.RGBKeyboardBacklightControl_Zone1}" />
             </custom:CardControl.Header>
@@ -140,7 +140,7 @@
                     <wpfui:MenuItem
                         Click="SynchroniseZonesMenuItem_Click"
                         Header="Synchronise zones"
-                        SymbolIcon="ArrowsBidirectional24" />
+                        Icon="{wpfui:SymbolIcon ArrowsBidirectional24}" />
                 </ContextMenu>
             </custom:CardControl.ContextMenu>
             <controls:ColorPickerControl x:Name="_zone1ColorPicker" ColorChangedDelayed="CardControl_Changed" />
@@ -152,7 +152,7 @@
             Grid.Column="1"
             Margin="0,0,8,8"
             VerticalAlignment="Top"
-            Icon="Color24">
+            Icon="{wpfui:SymbolIcon Color24}">
             <custom:CardControl.Header>
                 <controls:CardHeaderControl Title="{x:Static resources:Resource.RGBKeyboardBacklightControl_Zone2}" />
             </custom:CardControl.Header>
@@ -162,7 +162,7 @@
                     <wpfui:MenuItem
                         Click="SynchroniseZonesMenuItem_Click"
                         Header="Synchronise zones"
-                        SymbolIcon="ArrowsBidirectional24" />
+                        Icon="{wpfui:SymbolIcon ArrowsBidirectional24}" />
                 </ContextMenu>
             </custom:CardControl.ContextMenu>
             <controls:ColorPickerControl x:Name="_zone2ColorPicker" ColorChangedDelayed="CardControl_Changed" />
@@ -174,7 +174,7 @@
             Grid.Column="2"
             Margin="0,0,8,8"
             VerticalAlignment="Top"
-            Icon="Color24">
+            Icon="{wpfui:SymbolIcon Color24}">
             <custom:CardControl.Header>
                 <controls:CardHeaderControl Title="{x:Static resources:Resource.RGBKeyboardBacklightControl_Zone3}" />
             </custom:CardControl.Header>
@@ -184,7 +184,7 @@
                     <wpfui:MenuItem
                         Click="SynchroniseZonesMenuItem_Click"
                         Header="Synchronise zones"
-                        SymbolIcon="ArrowsBidirectional24" />
+                        Icon="{wpfui:SymbolIcon ArrowsBidirectional24}" />
                 </ContextMenu>
             </custom:CardControl.ContextMenu>
             <controls:ColorPickerControl x:Name="_zone3ColorPicker" ColorChangedDelayed="CardControl_Changed" />
@@ -196,7 +196,7 @@
             Grid.Column="3"
             Margin="0,0,8,8"
             VerticalAlignment="Top"
-            Icon="Color24">
+            Icon="{wpfui:SymbolIcon Color24}">
             <custom:CardControl.Header>
                 <controls:CardHeaderControl Title="{x:Static resources:Resource.RGBKeyboardBacklightControl_Zone4}" />
             </custom:CardControl.Header>
@@ -206,7 +206,7 @@
                     <wpfui:MenuItem
                         Click="SynchroniseZonesMenuItem_Click"
                         Header="Synchronise zones"
-                        SymbolIcon="ArrowsBidirectional24" />
+                        Icon="{wpfui:SymbolIcon ArrowsBidirectional24}" />
                 </ContextMenu>
             </custom:CardControl.ContextMenu>
             <controls:ColorPickerControl x:Name="_zone4ColorPicker" ColorChangedDelayed="CardControl_Changed" />

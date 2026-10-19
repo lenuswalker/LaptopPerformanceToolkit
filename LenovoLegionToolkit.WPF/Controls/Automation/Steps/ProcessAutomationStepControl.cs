@@ -3,7 +3,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
+using Button = Wpf.Ui.Controls.Button;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Automation.Steps;
 using LenovoLegionToolkit.Lib.Extensions;
@@ -34,7 +35,7 @@ public class ProcessAutomationStepControl : AbstractAutomationStepControl<Proces
 
     public ProcessAutomationStepControl(ProcessAutomationStep step) : base(step)
     {
-        Icon = SymbolRegular.Apps24;
+        Icon = new SymbolIcon(SymbolRegular.Apps24);
         Title = "Process Automation";
         Subtitle = "Select Processes to start or stop.";
     }

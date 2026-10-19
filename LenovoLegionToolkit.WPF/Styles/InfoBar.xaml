@@ -88,8 +88,11 @@
                                         Background="Transparent"
                                         BorderThickness="0"
                                         Command="{Binding Path=TemplateButtonCommand, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                        Icon="Dismiss24"
-                                        IsEnabled="True" />
+                                        IsEnabled="True">
+                                        <controls:Button.Icon>
+                                            <controls:SymbolIcon Symbol="Dismiss24" />
+                                        </controls:Button.Icon>
+                                    </controls:Button>
                                 </Border>
                             </Grid>
                         </Border>

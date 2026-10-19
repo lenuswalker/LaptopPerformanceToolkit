@@ -1,7 +1,7 @@
 ﻿using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.WPF.Resources;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Controls.Dashboard;
 
@@ -15,7 +15,7 @@ public class PanelLogoBacklightControl : AbstractToggleFeatureCardControl<PanelL
 
     public PanelLogoBacklightControl()
     {
-        Icon = SymbolRegular.LightbulbCircle24;
+        Icon = new SymbolIcon(SymbolRegular.LightbulbCircle24);
         Title = Resource.PanelLogoBacklightControl_Title;
         Subtitle = Resource.PanelLogoBacklightControl_Message;
 

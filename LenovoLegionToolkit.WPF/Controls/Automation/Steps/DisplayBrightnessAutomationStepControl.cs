@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using LenovoLegionToolkit.Lib.Automation.Steps;
 using LenovoLegionToolkit.WPF.Resources;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 using NumberBox = Wpf.Ui.Controls.NumberBox;
 
 namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps;
@@ -25,7 +25,7 @@ public class DisplayBrightnessAutomationStepControl : AbstractAutomationStepCont
 
     public DisplayBrightnessAutomationStepControl(DisplayBrightnessAutomationStep step) : base(step)
     {
-        Icon = SymbolRegular.BrightnessHigh48;
+        Icon = new SymbolIcon(SymbolRegular.BrightnessHigh48);
         Title = Resource.DisplayBrightnessAutomationStepControl_Title;
         Subtitle = Resource.DisplayBrightnessAutomationStepControl_Message;
     }

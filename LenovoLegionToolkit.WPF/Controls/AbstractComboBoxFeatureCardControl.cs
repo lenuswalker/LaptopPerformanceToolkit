@@ -11,7 +11,8 @@ using LenovoLegionToolkit.Lib.Messaging.Messages;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Controls.Custom;
 using LenovoLegionToolkit.WPF.Extensions;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
+using CardControl = LenovoLegionToolkit.WPF.Controls.Custom.CardControl;
 
 namespace LenovoLegionToolkit.WPF.Controls;
 
@@ -25,7 +26,7 @@ public abstract class AbstractComboBoxFeatureCardControl<T> : AbstractRefreshing
 
     private readonly ComboBox _comboBox = new();
 
-    protected SymbolRegular Icon
+    protected IconElement? Icon
     {
         get => _cardControl.Icon;
         set => _cardControl.Icon = value;

@@ -1,4 +1,4 @@
-﻿<wpfui:UiPage
+﻿<Page
     x:Class="LenovoLegionToolkit.WPF.Pages.DashboardPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -10,10 +10,10 @@
     Title="{x:Static resources:Resource.DashboardPage_Title}"
     FlowDirection="{x:Static utils:LocalizationHelper.Direction}"
     Initialized="DashboardPage_Initialized"
-    Scrollable="True"
     SizeChanged="DashboardPage_SizeChanged">
 
-    <controls:LoadableControl
+    <wpfui:DynamicScrollViewer x:Name="_pageScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <controls:LoadableControl
         x:Name="_loader"
         Margin="0,0,0,12"
         IndicatorMargin="0,64,0,0">
@@ -21,6 +21,7 @@
             <dashboard:SensorsControl x:Name="_sensors" Margin="0,16,16,0" />
             <Grid x:Name="_content" />
         </StackPanel>
-    </controls:LoadableControl>
+        </controls:LoadableControl>
+    </wpfui:DynamicScrollViewer>
 
-</wpfui:UiPage>
+</Page>

@@ -1,6 +1,6 @@
 ﻿using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.WPF.Resources;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Controls.Dashboard;
 
@@ -8,7 +8,7 @@ public class AlwaysOnUSBControl : AbstractComboBoxFeatureCardControl<AlwaysOnUSB
 {
     public AlwaysOnUSBControl()
     {
-        Icon = SymbolRegular.UsbStick24;
+        Icon = new SymbolIcon(SymbolRegular.UsbStick24);
         Title = Resource.AlwaysOnUSBControl_Title;
         Subtitle = Resource.AlwaysOnUSBControl_Message;
     }

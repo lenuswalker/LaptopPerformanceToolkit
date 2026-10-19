@@ -1,7 +1,7 @@
 ﻿using LenovoLegionToolkit.Lib.Automation;
 using LenovoLegionToolkit.Lib.Automation.Steps;
 using LenovoLegionToolkit.WPF.Resources;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps;
 
@@ -9,7 +9,7 @@ public class DeactivateGPUAutomationStepControl : AbstractComboBoxAutomationStep
 {
     public DeactivateGPUAutomationStepControl(DeactivateGPUAutomationStep step) : base(step)
     {
-        Icon = SymbolRegular.DeveloperBoard24;
+        Icon = new SymbolIcon(SymbolRegular.DeveloperBoard24);
         Title = Resource.DeactivateGPUAutomationStepControl_Title;
         Subtitle = Resource.DeactivateGPUAutomationStepControl_Message;
     }

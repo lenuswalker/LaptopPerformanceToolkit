@@ -13,7 +13,6 @@ using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
 using LenovoLegionToolkit.WPF.Windows.Dashboard;
-using Wpf.Ui.Common;
 using Wpf.Ui.Controls;
 using Button = Wpf.Ui.Controls.Button;
 
@@ -35,14 +34,14 @@ public static class HybridModeControlFactory
 
         private readonly Button _infoButton = new()
         {
-            Icon = SymbolRegular.Info24,
+            Icon = new SymbolIcon(SymbolRegular.Info24),
             FontSize = 20,
             Margin = new(8, 0, 0, 0),
         };
 
         public ComboBoxHybridModeControl()
         {
-            Icon = SymbolRegular.LeafOne24;
+            Icon = new SymbolIcon(SymbolRegular.LeafOne24);
             Title = Resource.ComboBoxHybridModeControl_Title;
             Subtitle = Resource.ComboBoxHybridModeControl_Message;
 
@@ -134,7 +133,7 @@ public static class HybridModeControlFactory
 
         public ToggleHybridModeControl()
         {
-            Icon = SymbolRegular.LeafOne24;
+            Icon = new SymbolIcon(SymbolRegular.LeafOne24);
             Title = Resource.ToggleHybridModeControl_Title;
             Subtitle = Resource.ToggleHybridModeControl_Message;
         }

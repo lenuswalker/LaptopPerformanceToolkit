@@ -111,13 +111,13 @@ If for whatever reason LLT installer did not setup .NET properly:
 
 After following these steps, you can open Terminal and type: `dotnet --info`. In the output look for section `.NET runtimes installed`, in this section you should see something like:
 
-`Microsoft.NETCore.App 10.0.0 [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]`
+`Microsoft.NETCore.App 10.0.13 [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]`
 
 and
 
-`Microsoft.WindowsDesktop.App 10.0.0 [C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App]`
+`Microsoft.WindowsDesktop.App 10.0.13 [C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App]`
 
-The exact version number can be different, but as long as it is `10.x.x` it should be fine. If after these steps LLT still shows an error on startup that .NET couldn't be found or similar, the problem is on your machine and not with LLT.
+Version `10.0.13` or newer is required. If after these steps LLT still shows an error on startup that .NET couldn't be found or similar, the problem is on your machine and not with LLT.
 
 #### Want to help with testing?
 
@@ -590,6 +590,8 @@ To collect logs:
 7. You should see at least one file. Theses are the logs you should attach to the issue.
 
 ## Contribution
+
+Building from source requires the .NET SDK `10.0.402`; the repository's `global.json` selects it. Run `dotnet build LenovoLegionToolkit.sln` from the repository root.
 
 I appreciate any feedback that you have, so please do not hesitate to report issues.
 Pull Requests are also welcome, but make sure to check out [CONTRIBUTING.md](CONTRIBUTING.md) first!

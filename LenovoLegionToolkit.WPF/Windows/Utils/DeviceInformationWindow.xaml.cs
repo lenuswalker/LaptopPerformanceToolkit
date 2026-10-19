@@ -7,15 +7,22 @@ using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
+using Wpf.Ui;
 using Wpf.Ui.Controls;
+using TextBlock = System.Windows.Controls.TextBlock;
 
 namespace LenovoLegionToolkit.WPF.Windows.Utils;
 
 public partial class DeviceInformationWindow
 {
+    private readonly SnackbarService _snackbarService = new();
     private readonly WarrantyChecker _warrantyChecker = IoCContainer.Resolve<WarrantyChecker>();
 
-    public DeviceInformationWindow() => InitializeComponent();
+    public DeviceInformationWindow()
+    {
+        InitializeComponent();
+        _snackbarService.SetSnackbarPresenter(_snackbarPresenter);
+    }
 
     private async void DeviceInformationWindow_Loaded(object sender, RoutedEventArgs e) => await RefreshAsync();
 
@@ -62,7 +69,7 @@ public partial class DeviceInformationWindow
 
     private async void RefreshWarrantyButton_OnClick(object sender, RoutedEventArgs e) => await RefreshAsync(true);
 
-    private async void DeviceCardControl_Click(object sender, RoutedEventArgs e)
+    private void DeviceCardControl_Click(object sender, RoutedEventArgs e)
     {
         if (((sender as CardControl)?.Content as TextBlock)?.Text is not { } str)
             return;
@@ -70,7 +77,14 @@ public partial class DeviceInformationWindow
         try
         {
             Clipboard.SetText(str);
-            await _snackBar.ShowAsync(Resource.CopiedToClipboard_Title, string.Format(Resource.CopiedToClipboard_Message_WithParam, str));
+            _snackbarService.Show(
+                Resource.CopiedToClipboard_Title,
+                string.Format(Resource.CopiedToClipboard_Message_WithParam, str),
+                ControlAppearance.Secondary,
+                new SymbolIcon(SymbolRegular.Checkmark24),
+                TimeSpan.FromMilliseconds(1000));
+            if (_snackbarPresenter.Content is Snackbar snackbar)
+                snackbar.IsCloseButtonEnabled = false;
         }
         catch (Exception ex)
         {

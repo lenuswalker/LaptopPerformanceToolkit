@@ -5,14 +5,14 @@ using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Windows;
 
-public class BaseWindow : UiWindow
+public class BaseWindow : FluentWindow
 {
     protected BaseWindow()
     {
         SnapsToDevicePixels = true;
         ExtendsContentIntoTitleBar = true;
 
-        WindowBackdropType = BackgroundType.Mica;
+        WindowBackdropType = Wpf.Ui.Controls.WindowBackdropType.Mica;
 
         DpiChanged += BaseWindow_DpiChanged;
     }

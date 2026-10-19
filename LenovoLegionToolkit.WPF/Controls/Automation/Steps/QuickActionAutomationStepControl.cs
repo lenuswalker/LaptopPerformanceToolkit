@@ -8,7 +8,7 @@ using LenovoLegionToolkit.Lib.Automation.Pipeline;
 using LenovoLegionToolkit.Lib.Automation.Steps;
 using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Resources;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps;
 
@@ -25,7 +25,7 @@ public class QuickActionAutomationStepControl : AbstractAutomationStepControl<Qu
 
     public QuickActionAutomationStepControl(QuickActionAutomationStep step) : base(step)
     {
-        Icon = SymbolRegular.Play24;
+        Icon = new SymbolIcon(SymbolRegular.Play24);
         Title = Resource.QuickActionAutomationStepControl_Title;
         Subtitle = Resource.QuickActionAutomationStepControl_Message;
     }

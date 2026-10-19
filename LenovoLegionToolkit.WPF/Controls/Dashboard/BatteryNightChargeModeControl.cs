@@ -1,6 +1,6 @@
 ﻿using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.WPF.Resources;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Controls.Dashboard;
 
@@ -11,7 +11,7 @@ public class BatteryNightChargeModeControl : AbstractToggleFeatureCardControl<Ba
 
     public BatteryNightChargeModeControl()
     {
-        Icon = SymbolRegular.WeatherMoon24;
+        Icon = new SymbolIcon(SymbolRegular.WeatherMoon24);
         Title = Resource.BatteryNightChargeModeControl_Title;
         Subtitle = Resource.BatteryNightChargeModeControl_Message;
     }

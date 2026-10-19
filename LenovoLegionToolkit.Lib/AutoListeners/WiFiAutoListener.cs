@@ -45,44 +45,36 @@ public class WiFiAutoListener : AbstractAutoListener<WiFiAutoListener.ChangedEve
 
     private unsafe LambdaDisposable? RegisterWlanNotification()
     {
-        var handlePtr = IntPtr.Zero;
+        if (PInvoke.WlanOpenHandle(2, out _, out var safeHandle) != 0)
+            return null;
 
-        try
+        var handle = (HANDLE)safeHandle.DangerousGetHandle();
+
+        var result = PInvoke.WlanRegisterNotification(handle,
+            WLAN_NOTIFICATION_SOURCES.WLAN_NOTIFICATION_SOURCE_ACM,
+            true,
+            _wlanCallback,
+            null,
+            null,
+            null);
+        if (result != 0)
         {
-            handlePtr = Marshal.AllocHGlobal(Marshal.SizeOf<HANDLE>());
+            safeHandle.Dispose();
+            return null;
+        }
 
-            if (PInvoke.WlanOpenHandle(2, out _, (HANDLE*)handlePtr) != 0)
-                return null;
-
-            var handle = Marshal.PtrToStructure<HANDLE>(handlePtr);
-
-            var result = PInvoke.WlanRegisterNotification(handle,
-                WLAN_NOTIFICATION_SOURCES.WLAN_NOTIFICATION_SOURCE_ACM,
+        return new LambdaDisposable(() =>
+        {
+            _ = PInvoke.WlanRegisterNotification(handle,
+                WLAN_NOTIFICATION_SOURCES.WLAN_NOTIFICATION_SOURCE_NONE,
                 true,
                 _wlanCallback,
                 null,
                 null,
                 null);
-            if (result != 0)
-                return null;
 
-            return new LambdaDisposable(() =>
-            {
-                _ = PInvoke.WlanRegisterNotification(handle,
-                    WLAN_NOTIFICATION_SOURCES.WLAN_NOTIFICATION_SOURCE_NONE,
-                    true,
-                    _wlanCallback,
-                    null,
-                    null,
-                    null);
-
-                _ = PInvoke.WlanCloseHandle(handle, null);
-            });
-        }
-        finally
-        {
-            Marshal.FreeHGlobal(handlePtr);
-        }
+            safeHandle.Dispose();
+        });
     }
 
     private unsafe void WlanCallback(L2_NOTIFICATION_DATA* param0, void* param1)

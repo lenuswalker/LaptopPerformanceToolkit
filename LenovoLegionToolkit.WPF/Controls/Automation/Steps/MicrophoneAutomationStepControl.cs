@@ -1,7 +1,7 @@
 ﻿using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Automation.Steps;
 using LenovoLegionToolkit.WPF.Resources;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps;
 
@@ -9,7 +9,7 @@ public class MicrophoneAutomationStepControl : AbstractComboBoxAutomationStepCar
 {
     public MicrophoneAutomationStepControl(IAutomationStep<MicrophoneState> step) : base(step)
     {
-        Icon = SymbolRegular.Mic24;
+        Icon = new SymbolIcon(SymbolRegular.Mic24);
         Title = Resource.MicrophoneAutomationStepControl_Title;
         Subtitle = Resource.MicrophoneAutomationStepControl_Message;
     }

@@ -134,13 +134,13 @@
                         Margin="0,0,8,0"
                         Click="ReadmeButton_Click"
                         FontSize="18"
-                        Icon="DocumentBulletList24"
+                        Icon="{wpfui:SymbolIcon DocumentBulletList24}"
                         ToolTip="{x:Static resources:Resource.PackageControl_OpenReadme}" />
 
                     <wpfui:Button
                         Click="DownloadButton_Click"
                         FontSize="18"
-                        Icon="ArrowDownload24"
+                        Icon="{wpfui:SymbolIcon ArrowDownload24}"
                         ToolTip="{x:Static resources:Resource.PackageControl_Download}" />
 
                 </StackPanel>
@@ -175,7 +175,7 @@
                         Margin="8,0,0,0"
                         Click="CancelDownloadButton_Click"
                         FontSize="18"
-                        Icon="Dismiss24"
+                        Icon="{wpfui:SymbolIcon Dismiss24}"
                         ToolTip="{x:Static resources:Resource.Cancel}" />
 
                 </StackPanel>

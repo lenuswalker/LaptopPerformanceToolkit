@@ -4,7 +4,7 @@ using System.Windows.Automation;
 using System.Windows.Controls;
 using LenovoLegionToolkit.Lib.Automation.Steps;
 using LenovoLegionToolkit.WPF.Resources;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 using TextBox = Wpf.Ui.Controls.TextBox;
 
 namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps;
@@ -41,7 +41,7 @@ public class RunAutomationStepControl : AbstractAutomationStepControl<RunAutomat
 
     public RunAutomationStepControl(RunAutomationStep step) : base(step)
     {
-        Icon = SymbolRegular.WindowConsole20;
+        Icon = new SymbolIcon(SymbolRegular.WindowConsole20);
         Title = Resource.RunAutomationStepControl_Title;
         Subtitle = Resource.RunAutomationStepControl_Message;
         TitleVerticalAlignment = VerticalAlignment.Bottom;

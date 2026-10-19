@@ -86,14 +86,14 @@ public class ThemeManager
 
     private void SetTheme()
     {
-        var theme = IsDarkMode() ? Wpf.Ui.Appearance.ThemeType.Dark : Wpf.Ui.Appearance.ThemeType.Light;
-        Wpf.Ui.Appearance.Theme.Apply(theme, Wpf.Ui.Appearance.BackgroundType.Mica, false);
+        var theme = IsDarkMode() ? Wpf.Ui.Appearance.ApplicationTheme.Dark : Wpf.Ui.Appearance.ApplicationTheme.Light;
+        Wpf.Ui.Appearance.ApplicationThemeManager.Apply(theme, Wpf.Ui.Controls.WindowBackdropType.Mica, false);
     }
 
     private void SetColor()
     {
         var accentColor = GetAccentColor().ToColor();
-        Wpf.Ui.Appearance.Accent.Apply(systemAccent: accentColor,
+        Wpf.Ui.Appearance.ApplicationAccentColorManager.Apply(systemAccent: accentColor,
             primaryAccent: accentColor,
             secondaryAccent: accentColor,
             tertiaryAccent: accentColor);

@@ -10,13 +10,18 @@ using LenovoLegionToolkit.Lib.System.Management;
 using LenovoLegionToolkit.Lib.Utils;
 using NeoSmart.AsyncLock;
 using NvAPIWrapper.Native;
+using NvAPIWrapper.Native.Exceptions;
+using NvAPIWrapper.Native.General;
 
 namespace LenovoLegionToolkit.Lib.Controllers;
 
 public class GPUController
 {
+    private const Status GpuNotPoweredStatus = (Status)(-220);
+
     private readonly AsyncLock _lock = new();
     private readonly SemaphoreSlim _lifecycleLock = new(1, 1);
+    private Func<IDisposable> _sessionFactory = NVAPI.AcquireSession;
     private static readonly HashSet<string> ProtectedProcesses = new(StringComparer.OrdinalIgnoreCase)
     {
         "System", "Idle", "dwm", "explorer", "csrss", "winlogon", "services", "lsass", "smss",
@@ -209,7 +214,7 @@ public class GPUController
             {
                 try
                 {
-                    session ??= NVAPI.AcquireSession();
+                    session ??= _sessionFactory();
                     await RefreshNowAsync(token).ConfigureAwait(false);
                 }
                 catch (OperationCanceledException) when (token.IsCancellationRequested) { break; }
@@ -217,6 +222,11 @@ public class GPUController
                 {
                     session?.Dispose();
                     session = null;
+                    try
+                    {
+                        await PublishUnknownAsync(token).ConfigureAwait(false);
+                    }
+                    catch (OperationCanceledException) when (token.IsCancellationRequested) { break; }
                     if (Log.Instance.IsTraceEnabled)
                         Log.Instance.Trace($"GPU refresh failed; will retry.", ex);
                 }
@@ -230,6 +240,20 @@ public class GPUController
         {
             session?.Dispose();
         }
+    }
+
+    private async Task PublishUnknownAsync(CancellationToken token)
+    {
+        GPUStatus status;
+        using (await _lock.LockAsync(token).ConfigureAwait(false))
+        {
+            _state = GPUState.Unknown;
+            _performanceState = null;
+            _gpuInstanceId = null;
+            _processes = [];
+            status = new GPUStatus(_state, _performanceState, _processes);
+        }
+        Refreshed?.Invoke(this, status);
     }
 
     private async Task RefreshStateAsync(CancellationToken token)
@@ -260,7 +284,7 @@ public class GPUController
             if (!string.IsNullOrWhiteSpace(stateId))
                 _performanceState += $", {stateId}";
         }
-        catch (Exception ex) when (ex.Message == "NVAPI_GPU_NOT_POWERED")
+        catch (NVIDIAApiException ex) when (IsGpuNotPoweredException(ex))
         {
             _state = GPUState.PoweredOff;
             _performanceState = Resource.GPUController_PoweredOff;
@@ -314,4 +338,7 @@ public class GPUController
                 Log.Instance.Trace($"Inactive [state={_state}, processes.Count={_processes.Count}, gpuInstanceId={_gpuInstanceId}]");
         }
     }
+
+    private static bool IsGpuNotPoweredException(Exception exception) =>
+        exception is NVIDIAApiException { Status: GpuNotPoweredStatus };
 }

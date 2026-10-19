@@ -1,6 +1,6 @@
 ﻿using LenovoLegionToolkit.Lib.Automation.Steps;
 using LenovoLegionToolkit.WPF.Resources;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps;
 
@@ -8,7 +8,7 @@ public class SpectrumKeyboardBacklightBrightnessAutomationStepControl : Abstract
 {
     public SpectrumKeyboardBacklightBrightnessAutomationStepControl(IAutomationStep<int> step) : base(step)
     {
-        Icon = SymbolRegular.BrightnessHigh24;
+        Icon = new SymbolIcon(SymbolRegular.BrightnessHigh24);
         Title = Resource.SpectrumKeyboardBacklightBrightnessAutomationStepControl_Title;
         Subtitle = Resource.SpectrumKeyboardBacklightBrightnessAutomationStepControl_Message;
     }

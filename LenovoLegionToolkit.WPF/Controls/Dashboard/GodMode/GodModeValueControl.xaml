@@ -51,7 +51,7 @@
                 Height="36"
                 Margin="16,0,0,0"
                 Click="ResetToDefaultButton_OnClick"
-                Icon="ArrowClockwise24"
+                Icon="{wpfui:SymbolIcon ArrowClockwise24}"
                 ToolTip="{x:Static resources:Resource.Default}" />
         </Grid>
     </custom:CardControl>

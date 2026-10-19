@@ -118,12 +118,16 @@ public class Program
 
             if (result.GetValue(listOption))
             {
-                var value = await IpcClient.ListFeatureValuesAsync(name).ConfigureAwait(false);
-                Console.WriteLine(value);
+                var availableValues = await IpcClient.ListFeatureValuesAsync(name).ConfigureAwait(false);
+                Console.WriteLine(availableValues);
                 return 0;
             }
 
-            await IpcClient.SetFeatureValueAsync(name, result.GetValue(valueArgument)).ConfigureAwait(false);
+            var value = result.GetValue(valueArgument);
+            if (value is null)
+                return Error($"{valueArgument.Name} should be specified");
+
+            await IpcClient.SetFeatureValueAsync(name, value).ConfigureAwait(false);
             return 0;
         }));
 

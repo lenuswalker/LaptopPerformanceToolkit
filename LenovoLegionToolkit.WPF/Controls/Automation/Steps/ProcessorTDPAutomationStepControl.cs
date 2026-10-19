@@ -2,7 +2,7 @@
 using LenovoLegionToolkit.Lib;
 using System.Windows;
 using System.Windows.Controls;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 using NumberBox = Wpf.Ui.Controls.NumberBox;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Controllers;
@@ -77,7 +77,7 @@ public class ProcessorTDPAutomationStepControl : AbstractAutomationStepControl<P
 
     public ProcessorTDPAutomationStepControl(ProcessorTDPAutomationStep step) : base(step)
     {
-        Icon = SymbolRegular.DeveloperBoardLightning20;
+        Icon = new SymbolIcon(SymbolRegular.DeveloperBoardLightning20);
         Title = "Processor TDP";
         Subtitle = "Change the TDP limits of the processor.\n\nNOTE: This action uses RyzenAdj for AMD,\nand KX utility for Intel.";
     }

@@ -5,7 +5,8 @@ using System.Windows.Controls;
 using LenovoLegionToolkit.Lib.Automation.Steps;
 using LenovoLegionToolkit.WPF.Resources;
 using Microsoft.Win32;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
+using TextBlock = System.Windows.Controls.TextBlock;
 using Button = Wpf.Ui.Controls.Button;
 using Orientation = System.Windows.Controls.Orientation;
 
@@ -22,7 +23,7 @@ public class PlaySoundAutomationStepControl : AbstractAutomationStepControl<Play
 
     private readonly Button _openButton = new()
     {
-        Icon = SymbolRegular.Folder20,
+        Icon = new SymbolIcon(SymbolRegular.Folder20),
         MinWidth = 34,
         Height = 34,
         Margin = new(8, 0, 0, 0)
@@ -35,7 +36,7 @@ public class PlaySoundAutomationStepControl : AbstractAutomationStepControl<Play
 
     public PlaySoundAutomationStepControl(PlaySoundAutomationStep automationStep) : base(automationStep)
     {
-        Icon = SymbolRegular.MusicNote2Play20;
+        Icon = new SymbolIcon(SymbolRegular.MusicNote2Play20);
         Title = Resource.PlaySoundAutomationStepControl_Title;
         Subtitle = Resource.PlaySoundAutomationStepControl_Message;
     }

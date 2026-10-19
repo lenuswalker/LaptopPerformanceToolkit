@@ -9,9 +9,7 @@ using LenovoLegionToolkit.Lib.Automation.Pipeline;
 using LenovoLegionToolkit.WPF.Assets;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Windows.Utils;
-using Wpf.Ui.Common;
 using Wpf.Ui.Controls;
-using Wpf.Ui.Controls.Interfaces;
 using MenuItem = Wpf.Ui.Controls.MenuItem;
 
 namespace LenovoLegionToolkit.WPF.Utils;
@@ -34,11 +32,11 @@ public class TrayHelper : IDisposable
 
     private NotifyIcon? _notifyIcon;
 
-    public TrayHelper(INavigation navigation, Action bringToForeground, bool trayTooltipEnabled)
+    public TrayHelper(NavigationView navigationView, Action bringToForeground, bool trayTooltipEnabled)
     {
         _bringToForeground = bringToForeground;
 
-        InitializeStaticItems(navigation);
+        InitializeStaticItems(navigationView);
 
         var notifyIcon = new NotifyIcon
         {
@@ -65,23 +63,24 @@ public class TrayHelper : IDisposable
         _automationProcessor.PipelinesChanged += (_, p) => SetAutomationItems(p);
     }
 
-    private void InitializeStaticItems(INavigation navigation)
+    private void InitializeStaticItems(NavigationView navigationView)
     {
-        foreach (var navigationItem in navigation.Items.OfType<NavigationItem>())
+        foreach (var navigationItem in navigationView.MenuItems.OfType<NavigationViewItem>())
         {
             var navigationMenuItem = new MenuItem
             {
-                SymbolIcon = navigationItem.Icon,
                 Header = navigationItem.Content,
                 Tag = NAVIGATION_TAG
             };
+            if (navigationItem.Icon is SymbolIcon symbolIcon)
+                navigationMenuItem.Icon = new SymbolIcon(symbolIcon.Symbol);
             navigationMenuItem.Click += async (_, _) =>
             {
                 _contextMenu.IsOpen = false;
                 _bringToForeground();
 
                 await Task.Delay(TimeSpan.FromMilliseconds(500));
-                navigation.Navigate(navigationItem.PageTag);
+                navigationView.Navigate(navigationItem.TargetPageTag);
             };
             _contextMenu.Items.Add(navigationMenuItem);
         }
@@ -123,7 +122,7 @@ public class TrayHelper : IDisposable
 
             var item = new MenuItem
             {
-                SymbolIcon = icon,
+                Icon = new SymbolIcon { Symbol = icon },
                 Header = pipeline.Name ?? Resource.Unnamed,
                 Tag = AUTOMATION_TAG
             };

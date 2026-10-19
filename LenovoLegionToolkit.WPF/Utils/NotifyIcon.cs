@@ -64,10 +64,10 @@ public class NotifyIcon : NativeWindow, IDisposable
         }
     }
 
-    private UiWindow? _currentToolTipWindow;
+    private FluentWindow? _currentToolTipWindow;
 
-    private Func<Task<UiWindow>>? _toolTipWindow;
-    public Func<Task<UiWindow>>? ToolTipWindow
+    private Func<Task<FluentWindow>>? _toolTipWindow;
+    public Func<Task<FluentWindow>>? ToolTipWindow
     {
         set
         {
@@ -144,7 +144,7 @@ public class NotifyIcon : NativeWindow, IDisposable
         using var cancellation = new CancellationTokenSource();
         _showToolTipCancellationTokenSource = cancellation;
         var token = cancellation.Token;
-        UiWindow? window = null;
+        FluentWindow? window = null;
 
         try
         {

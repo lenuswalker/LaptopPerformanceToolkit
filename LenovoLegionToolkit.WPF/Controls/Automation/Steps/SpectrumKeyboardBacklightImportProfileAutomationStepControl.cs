@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using LenovoLegionToolkit.Lib.Automation.Steps;
 using LenovoLegionToolkit.WPF.Resources;
 using Microsoft.Win32;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 using Button = Wpf.Ui.Controls.Button;
 using TextBox = Wpf.Ui.Controls.TextBox;
 
@@ -20,7 +20,7 @@ public class SpectrumKeyboardBacklightImportProfileAutomationStepControl : Abstr
 
     private readonly Button _openButton = new()
     {
-        Icon = SymbolRegular.MoreHorizontal24,
+        Icon = new SymbolIcon(SymbolRegular.MoreHorizontal24),
         MinWidth = 34,
         Height = 34,
         Margin = new(8, 0, 0, 0)
@@ -33,7 +33,7 @@ public class SpectrumKeyboardBacklightImportProfileAutomationStepControl : Abstr
 
     public SpectrumKeyboardBacklightImportProfileAutomationStepControl(SpectrumKeyboardBacklightImportProfileAutomationStep step) : base(step)
     {
-        Icon = SymbolRegular.BrightnessHigh24;
+        Icon = new SymbolIcon(SymbolRegular.BrightnessHigh24);
         Title = Resource.SpectrumKeyboardBacklightImportProfileAutomationStepControl_Title;
         Subtitle = Resource.SpectrumKeyboardBacklightImportProfileAutomationStepControl_Message;
 

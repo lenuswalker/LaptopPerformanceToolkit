@@ -1,7 +1,7 @@
 ﻿using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Automation.Steps;
 using LenovoLegionToolkit.WPF.Resources;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps;
 
@@ -9,7 +9,7 @@ public class OneLevelWhiteKeyboardBacklightAutomationStepControl : AbstractCombo
 {
     public OneLevelWhiteKeyboardBacklightAutomationStepControl(IAutomationStep<OneLevelWhiteKeyboardBacklightState> step) : base(step)
     {
-        Icon = SymbolRegular.Keyboard24;
+        Icon = new SymbolIcon(SymbolRegular.Keyboard24);
         Title = Resource.OneLevelWhiteKeyboardBacklightAutomationStepControl_Title;
         Subtitle = Resource.OneLevelWhiteKeyboardBacklightAutomationStepControl_Message;
     }

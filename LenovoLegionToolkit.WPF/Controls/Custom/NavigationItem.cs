@@ -3,7 +3,7 @@ using System.Windows.Automation.Peers;
 
 namespace LenovoLegionToolkit.WPF.Controls.Custom;
 
-public class NavigationItem : Wpf.Ui.Controls.NavigationItem
+public class NavigationItem : Wpf.Ui.Controls.NavigationViewItem
 {
     protected override AutomationPeer OnCreateAutomationPeer() => new NavigationItemAutomationPeer(this);
 

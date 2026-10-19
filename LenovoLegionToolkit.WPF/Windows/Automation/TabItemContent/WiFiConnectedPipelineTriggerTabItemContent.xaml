@@ -21,12 +21,12 @@
                     Appearance="Primary"
                     Click="AddNetworkNameButton_OnClick"
                     Content="{x:Static resources:Resource.Add}"
-                    Icon="Add24" />
+                    Icon="{ui:SymbolIcon Add24}" />
                 <ui:Button
                     Height="{Binding ActualHeight, ElementName=_addNetworkNameButton}"
                     Margin="8,0,0,0"
                     Click="CopyCurrentNetworkNameButton_OnClick"
-                    Icon="Wifi124"
+                    Icon="{ui:SymbolIcon Wifi124}"
                     ToolTip="{x:Static resources:Resource.WiFiConnectedPipelineTriggerTabItemContent_CopyCurrentNetworkName}" />
             </StackPanel>
             <Label

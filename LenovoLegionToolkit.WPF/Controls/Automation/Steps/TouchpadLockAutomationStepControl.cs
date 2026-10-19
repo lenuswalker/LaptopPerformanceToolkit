@@ -1,7 +1,7 @@
 ﻿using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Automation.Steps;
 using LenovoLegionToolkit.WPF.Resources;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps;
 
@@ -9,7 +9,7 @@ public class TouchpadLockAutomationStepControl : AbstractComboBoxAutomationStepC
 {
     public TouchpadLockAutomationStepControl(IAutomationStep<TouchpadLockState> step) : base(step)
     {
-        Icon = SymbolRegular.Tablet24;
+        Icon = new SymbolIcon(SymbolRegular.Tablet24);
         Title = Resource.TouchpadLockAutomationStepControl_Title;
         Subtitle = Resource.TouchpadLockAutomationStepControl_Message;
     }

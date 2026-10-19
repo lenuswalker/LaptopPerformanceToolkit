@@ -16,7 +16,7 @@ using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Resources;
 using Windows.Win32.System.Power;
 using Wpf.Ui.Appearance;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Windows.Utils;
 
@@ -42,7 +42,6 @@ public partial class StatusWindow
 
     private static StatusWindowData _lastData;
     private static Task<StatusWindowData>? _pendingData;
-    private static GPUStatus? _lastGpuStatus;
     private static Task<GPUStatus?>? _pendingGpuData;
 
     public static Task<StatusWindow> CreateAsync() => Task.FromResult(new StatusWindow(_lastData));
@@ -116,15 +115,15 @@ public partial class StatusWindow
 
         Loaded += StatusWindow_Loaded;
 
-        WindowStyle = WindowStyle.None;
         WindowStartupLocation = WindowStartupLocation.Manual;
-        WindowBackdropType = BackgroundType.None;
+        WindowBackdropType = Wpf.Ui.Controls.WindowBackdropType.None;
         ResizeMode = ResizeMode.NoResize;
         SizeToContent = SizeToContent.WidthAndHeight;
 
         Focusable = false;
         Topmost = true;
         ExtendsContentIntoTitleBar = true;
+        WindowStyle = WindowStyle.None;
         ShowInTaskbar = false;
         ShowActivated = false;
 
@@ -142,10 +141,16 @@ public partial class StatusWindow
         RefreshData(data);
     }
 
+    protected override void OnExtendsContentIntoTitleBarChanged(bool oldValue, bool newValue)
+    {
+        base.OnExtendsContentIntoTitleBarChanged(oldValue, newValue);
+        WindowStyle = WindowStyle.None;
+    }
+
     private void RefreshData(StatusWindowData data)
     {
         RefreshPowerMode(data.PowerModeState, data.GodModePresetName);
-        RefreshDiscreteGpu(_lastGpuStatus);
+        RefreshDiscreteGpu(null);
         RefreshBattery(data.BatteryInformation, data.BatteryState);
         RefreshUpdate(data.HasUpdate);
         RefreshProcessorTDP(data.ProcessorTDPState);
@@ -183,11 +188,11 @@ public partial class StatusWindow
     {
         try
         {
-            _lastGpuStatus = await pendingGpuData.WaitAsync(TimeSpan.FromSeconds(10));
+            var gpuStatus = await pendingGpuData.WaitAsync(TimeSpan.FromSeconds(10));
             if (!IsVisible)
                 return;
 
-            RefreshDiscreteGpu(_lastGpuStatus);
+            RefreshDiscreteGpu(gpuStatus);
             UpdateLayout();
             MoveBottomRightEdgeOfWindowToMousePosition();
         }
@@ -198,6 +203,8 @@ public partial class StatusWindow
         }
         catch (Exception ex)
         {
+            if (IsVisible)
+                RefreshDiscreteGpu(null);
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Failed to refresh GPU preview.", ex);
         }

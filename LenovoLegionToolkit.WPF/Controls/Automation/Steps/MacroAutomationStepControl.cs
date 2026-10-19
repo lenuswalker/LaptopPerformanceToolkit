@@ -1,7 +1,7 @@
 ﻿using LenovoLegionToolkit.Lib.Automation;
 using LenovoLegionToolkit.Lib.Automation.Steps;
 using LenovoLegionToolkit.WPF.Resources;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps;
 
@@ -9,7 +9,7 @@ public class MacroAutomationStepControl : AbstractComboBoxAutomationStepCardCont
 {
     public MacroAutomationStepControl(IAutomationStep<MacroAutomationStepState> step) : base(step)
     {
-        Icon = SymbolRegular.ReceiptPlay24;
+        Icon = new SymbolIcon(SymbolRegular.ReceiptPlay24);
         Title = Resource.MacroAutomationStepControl_Title;
         Subtitle = Resource.MacroAutomationStepControl_Message;
     }

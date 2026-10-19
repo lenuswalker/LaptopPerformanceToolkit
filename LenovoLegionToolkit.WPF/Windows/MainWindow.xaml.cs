@@ -47,7 +47,7 @@ public partial class MainWindow
     public bool DisableConflictingSoftwareWarning { get; set; }
     public bool SuppressClosingEventHandler { get; set; }
 
-    public Snackbar Snackbar => _snackbar;
+    public SnackbarPresenter SnackbarPresenter => _snackbarPresenter;
 
     public MainWindow()
     {
@@ -84,12 +84,12 @@ public partial class MainWindow
         _contentGrid.Visibility = Visibility.Hidden;
 
         if (!await KeyboardBacklightPage.IsSupportedAsync())
-            _navigationStore.Items.Remove(_keyboardItem);
+            _navigationView.MenuItems.Remove(_keyboardItem);
 
         if (!App.Current.IsCompatible)
         {
-            _navigationStore.Items.Remove(_batteryItem);
-            _navigationStore.Items.Remove(_packageItem);
+            _navigationView.MenuItems.Remove(_batteryItem);
+            _navigationView.MenuItems.Remove(_packageItem);
         }
 
         if (App.Current.IsCompatible)
@@ -103,18 +103,20 @@ public partial class MainWindow
 
         _contentGrid.Visibility = Visibility.Visible;
 
+        _navigationView.Navigate("dashboard");
+
         LoadDeviceInfo();
         UpdateIndicators();
         CheckForUpdates();
 
-        InputBindings.Add(new KeyBinding(new ActionCommand(_navigationStore.NavigateToNext), Key.Tab, ModifierKeys.Control));
-        InputBindings.Add(new KeyBinding(new ActionCommand(_navigationStore.NavigateToPrevious), Key.Tab, ModifierKeys.Control | ModifierKeys.Shift));
+        InputBindings.Add(new KeyBinding(new ActionCommand(_navigationView.NavigateToNext), Key.Tab, ModifierKeys.Control));
+        InputBindings.Add(new KeyBinding(new ActionCommand(_navigationView.NavigateToPrevious), Key.Tab, ModifierKeys.Control | ModifierKeys.Shift));
 
         var key = (int)Key.D1;
-        foreach (var item in _navigationStore.Items.OfType<NavigationItem>())
-            InputBindings.Add(new KeyBinding(new ActionCommand(() => _navigationStore.Navigate(item.PageTag)), (Key)key++, ModifierKeys.Control));
+        foreach (var item in _navigationView.MenuItems.OfType<NavigationViewItem>())
+            InputBindings.Add(new KeyBinding(new ActionCommand(() => _navigationView.Navigate(item.TargetPageTag)), (Key)key++, ModifierKeys.Control));
 
-        var trayHelper = new TrayHelper(_navigationStore, BringToForeground, TrayTooltipEnabled);
+        var trayHelper = new TrayHelper(_navigationView, BringToForeground, TrayTooltipEnabled);
         await trayHelper.InitializeAsync();
         trayHelper.MakeVisible();
         _trayHelper = trayHelper;

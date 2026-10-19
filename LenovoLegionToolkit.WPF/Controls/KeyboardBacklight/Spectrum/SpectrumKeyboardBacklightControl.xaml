@@ -21,7 +21,7 @@
 
         <StackPanel x:Name="_content">
 
-            <custom:CardControl Margin="0,0,0,24" Icon="BrightnessHigh24">
+            <custom:CardControl Margin="0,0,0,24" Icon="{wpfui:SymbolIcon BrightnessHigh24}">
                 <custom:CardControl.Header>
                     <controls:CardHeaderControl Title="{x:Static resources:Resource.SpectrumKeyboardBacklightControl_Brightness_Title}" />
                 </custom:CardControl.Header>
@@ -189,19 +189,19 @@
                         Margin="0,0,0,8"
                         Click="SelectAll_Click"
                         FontSize="20"
-                        Icon="SelectAllOn24"
+                        Icon="{wpfui:SymbolIcon SelectAllOn24}"
                         ToolTip="{x:Static resources:Resource.SpectrumKeyboardBacklightControl_SelectAll_ToolTip}" />
                     <wpfui:Button
                         Margin="0,0,0,8"
                         Click="DeselectAll_Click"
                         FontSize="20"
-                        Icon="SelectAllOff24"
+                        Icon="{wpfui:SymbolIcon SelectAllOff24}"
                         ToolTip="{x:Static resources:Resource.SpectrumKeyboardBacklightControl_DeselectAll_ToolTip}" />
                     <wpfui:Button
                         Margin="0,0,0,8"
                         Click="SwitchKeyboardLayout_Click"
                         FontSize="20"
-                        Icon="ArrowRepeatAll24"
+                        Icon="{wpfui:SymbolIcon ArrowRepeatAll24}"
                         ToolTip="{x:Static resources:Resource.SpectrumKeyboardBacklightControl_SwitchKeyboardLayout_ToolTip}" />
 
                 </StackPanel>
@@ -229,7 +229,7 @@
                     Margin="8,0,0,0"
                     Appearance="Secondary"
                     Click="ResetToDefaultButton_Click"
-                    Icon="ArrowClockwise24"
+                    Icon="{wpfui:SymbolIcon ArrowClockwise24}"
                     ToolTip="{x:Static resources:Resource.SpectrumKeyboardBacklightControl_ResetToDefault_Tooltip}" />
 
                 <wpfui:Button
@@ -237,7 +237,7 @@
                     Margin="8,0,0,0"
                     Appearance="Secondary"
                     Click="ExportButton_Click"
-                    Icon="ArrowExportLtr24"
+                    Icon="{wpfui:SymbolIcon ArrowExportLtr24}"
                     ToolTip="{x:Static resources:Resource.Export}" />
 
                 <wpfui:Button
@@ -245,7 +245,7 @@
                     Margin="8,0,0,0"
                     Appearance="Secondary"
                     Click="ImportButton_Click"
-                    Icon="ArrowImport24"
+                    Icon="{wpfui:SymbolIcon ArrowImport24}"
                     ToolTip="{x:Static resources:Resource.Import}" />
 
                 <wpfui:Button
@@ -254,7 +254,7 @@
                     Appearance="Primary"
                     Click="AddEffectButton_Click"
                     Content="{x:Static resources:Resource.SpectrumKeyboardBacklightControl_AddEffect}"
-                    Icon="Add24" />
+                    Icon="{wpfui:SymbolIcon Add24}" />
 
             </Grid>
 

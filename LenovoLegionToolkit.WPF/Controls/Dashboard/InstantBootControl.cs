@@ -1,6 +1,6 @@
 ﻿using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.WPF.Resources;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Controls.Dashboard;
 
@@ -8,7 +8,7 @@ public class InstantBootControl : AbstractComboBoxFeatureCardControl<InstantBoot
 {
     public InstantBootControl()
     {
-        Icon = SymbolRegular.PlugDisconnected24;
+        Icon = new SymbolIcon(SymbolRegular.PlugDisconnected24);
         Title = Resource.InstantBootControl_Title;
         Subtitle = Resource.InstantBootControl_Message;
     }

@@ -130,14 +130,11 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
         var bufferSize = (uint)Marshal.SizeOf<Guid>();
         var buffer = new byte[bufferSize];
 
-        fixed (byte* bufferPtr = buffer)
+        uint index = 0;
+        while (PInvoke.PowerEnumerate(null, null, null, POWER_DATA_ACCESSOR.ACCESS_SCHEME, index, buffer, ref bufferSize) == WIN32_ERROR.ERROR_SUCCESS)
         {
-            uint index = 0;
-            while (PInvoke.PowerEnumerate(null, null, null, POWER_DATA_ACCESSOR.ACCESS_SCHEME, index, bufferPtr, ref bufferSize) == WIN32_ERROR.ERROR_SUCCESS)
-            {
-                list.Add(new Guid(buffer));
-                index++;
-            }
+            list.Add(new Guid(buffer));
+            index++;
         }
 
         return list;
@@ -146,22 +143,18 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
     private static unsafe string GetPowerPlanName(Guid powerPlanGuid)
     {
         var nameSize = 2048u;
-        var namePtr = Marshal.AllocHGlobal((int)nameSize);
+        var nameBuffer = new byte[nameSize];
 
         try
         {
-            if (PInvoke.PowerReadFriendlyName(null, powerPlanGuid, null, null, (byte*)namePtr.ToPointer(), ref nameSize) != WIN32_ERROR.ERROR_SUCCESS)
+            if (PInvoke.PowerReadFriendlyName(null, powerPlanGuid, null, null, nameBuffer, ref nameSize) != WIN32_ERROR.ERROR_SUCCESS)
                 PInvokeExtensions.ThrowIfWin32Error("PowerReadFriendlyName");
 
-            return Marshal.PtrToStringUni(namePtr) ?? string.Empty;
+            return global::System.Text.Encoding.Unicode.GetString(nameBuffer, 0, (int)nameSize).TrimEnd('\0');
         }
         catch
         {
             return powerPlanGuid.ToString();
-        }
-        finally
-        {
-            Marshal.FreeHGlobal(namePtr);
         }
     }
 

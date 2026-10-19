@@ -1,7 +1,7 @@
 ﻿using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.WPF.Resources;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Controls.Dashboard;
 
@@ -11,7 +11,7 @@ public class WhiteKeyboardBacklightControl : AbstractComboBoxFeatureCardControl<
 
     public WhiteKeyboardBacklightControl()
     {
-        Icon = SymbolRegular.Keyboard24;
+        Icon = new SymbolIcon(SymbolRegular.Keyboard24);
         Title = Resource.WhiteKeyboardBacklightControl_Title;
         Subtitle = Resource.WhiteKeyboardBacklightControl_Message;
 

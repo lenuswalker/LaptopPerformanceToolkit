@@ -4,7 +4,7 @@ using System.Windows.Input;
 using Humanizer;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Macro;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Controls.Macro;
 
@@ -21,7 +21,7 @@ public abstract partial class AbstractMacroEventControl
 
     public virtual void Set(MacroEvent macroEvent)
     {
-        _card.Icon = macroEvent.Direction switch
+        _card.Icon = new SymbolIcon(macroEvent.Direction switch
         {
             MacroDirection.Up => SymbolRegular.ArrowCircleUp24,
             MacroDirection.Down => SymbolRegular.ArrowCircleDown24,
@@ -29,7 +29,7 @@ public abstract partial class AbstractMacroEventControl
             MacroDirection.HorizontalWheel => SymbolRegular.ArrowRotateClockwise24,
             MacroDirection.Move => SymbolRegular.ArrowMove24,
             _ => SymbolRegular.Empty
-        };
+        });
 
         _header.Title = (macroEvent.Source, macroEvent.Direction, macroEvent.Key) switch
         {

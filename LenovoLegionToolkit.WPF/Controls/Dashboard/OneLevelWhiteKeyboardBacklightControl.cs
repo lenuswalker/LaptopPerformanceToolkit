@@ -1,6 +1,6 @@
 ﻿using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.WPF.Resources;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Controls.Dashboard;
 
@@ -12,7 +12,7 @@ internal class OneLevelWhiteKeyboardBacklightControl : AbstractToggleFeatureCard
 
     public OneLevelWhiteKeyboardBacklightControl()
     {
-        Icon = SymbolRegular.Keyboard24;
+        Icon = new SymbolIcon(SymbolRegular.Keyboard24);
         Title = Resource.OneLevelWhiteKeyboardBacklightControl_Title;
         Subtitle = Resource.OneLevelWhiteKeyboardBacklightControl_Message;
     }

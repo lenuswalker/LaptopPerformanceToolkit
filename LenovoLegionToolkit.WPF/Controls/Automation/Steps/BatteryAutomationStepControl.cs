@@ -1,7 +1,7 @@
 ﻿using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Automation.Steps;
 using LenovoLegionToolkit.WPF.Resources;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps;
 
@@ -9,7 +9,7 @@ public class BatteryAutomationStepControl : AbstractComboBoxAutomationStepCardCo
 {
     public BatteryAutomationStepControl(IAutomationStep<BatteryState> step) : base(step)
     {
-        Icon = SymbolRegular.BatteryCharge24;
+        Icon = new SymbolIcon(SymbolRegular.BatteryCharge24);
         Title = Resource.BatteryAutomationStepControl_Title;
         Subtitle = Resource.BatteryAutomationStepControl_Message;
     }

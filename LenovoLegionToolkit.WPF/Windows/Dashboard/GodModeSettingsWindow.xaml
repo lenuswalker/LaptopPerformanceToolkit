@@ -30,7 +30,7 @@
             CanMaximize="false"
             ShowMaximize="false"
             ShowMinimize="false"
-            UseSnapLayout="false" />
+            />
 
         <Grid
             Grid.Row="0"
@@ -99,7 +99,7 @@
                             Margin="8,0,0,0"
                             VerticalAlignment="Stretch"
                             Click="EditPresetsButton_Click"
-                            Icon="Edit24"
+                            Icon="{wpfui:SymbolIcon Edit24}"
                             ToolTip="{x:Static resources:Resource.Edit}" />
                         <wpfui:Button
                             x:Name="_deletePresetsButton"
@@ -107,7 +107,7 @@
                             Margin="8,0,0,0"
                             VerticalAlignment="Stretch"
                             Click="DeletePresetsButton_Click"
-                            Icon="Dismiss24"
+                            Icon="{wpfui:SymbolIcon Dismiss24}"
                             ToolTip="{x:Static resources:Resource.Delete}" />
                         <wpfui:Button
                             x:Name="_addPresetsButton"
@@ -117,7 +117,7 @@
                             Appearance="Primary"
                             Click="AddPresetsButton_Click"
                             Content="{x:Static resources:Resource.Add}"
-                            Icon="Add24" />
+                            Icon="{wpfui:SymbolIcon Add24}" />
                     </Grid>
 
                     <TextBlock
@@ -244,7 +244,7 @@
                                     HorizontalAlignment="Right"
                                     Click="DefaultFanCurve_Click"
                                     Content="{x:Static resources:Resource.Default}"
-                                    Icon="ArrowClockwise24" />
+                                    Icon="{wpfui:SymbolIcon ArrowClockwise24}" />
                             </StackPanel>
                         </custom:CardControl.Header>
                     </custom:CardControl>
@@ -327,7 +327,7 @@
                 MinWidth="120"
                 Click="LoadButton_Click"
                 Content="{x:Static resources:Resource.Load}"
-                Icon="ChevronDown24" />
+                Icon="{wpfui:SymbolIcon ChevronDown24}" />
 
             <wpfui:Button
                 Grid.Column="2"
@@ -343,13 +343,10 @@
                 Content="{x:Static resources:Resource.SaveAndClose}" />
         </Grid>
 
-        <wpfui:Snackbar
-            x:Name="_snackBar"
+        <wpfui:SnackbarPresenter
+            x:Name="_snackbarPresenter"
             Grid.Row="1"
-            HorizontalAlignment="Center"
-            CloseButtonEnabled="True"
-            Icon="ErrorCircle24"
-            Timeout="5000" />
+            HorizontalAlignment="Center" />
 
     </Grid>
 </local:BaseWindow>

@@ -18,7 +18,7 @@ using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
 using LenovoLegionToolkit.WPF.Windows.Automation;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 using Button = Wpf.Ui.Controls.Button;
 using CardExpander = LenovoLegionToolkit.WPF.Controls.Custom.CardExpander;
 using MenuItem = Wpf.Ui.Controls.MenuItem;
@@ -129,7 +129,7 @@ public class AutomationPipelineControl : UserControl
     public void SetIcon(SymbolRegular? icon)
     {
         AutomationPipeline.IconName = icon.HasValue ? Enum.GetName(icon.Value) : null;
-        _cardExpander.Icon = GenerateIcon();
+        _cardExpander.Icon = new SymbolIcon(GenerateIcon());
 
         OnChanged?.Invoke(this, EventArgs.Empty);
     }
@@ -181,7 +181,7 @@ public class AutomationPipelineControl : UserControl
         _stackPanel.Children.Add(_stepsStackPanel);
         _stackPanel.Children.Add(_buttonsStackPanel);
 
-        _cardExpander.Icon = GenerateIcon();
+        _cardExpander.Icon = new SymbolIcon(GenerateIcon());
         _cardHeaderControl.Title = GenerateHeader();
         _cardHeaderControl.Subtitle = GenerateSubtitle();
         _cardHeaderControl.Accessory = GenerateAccessory();
@@ -402,7 +402,7 @@ public class AutomationPipelineControl : UserControl
 
         var moveUpMenuItem = new MenuItem
         {
-            SymbolIcon = SymbolRegular.ArrowUp24,
+            Icon = new SymbolIcon(SymbolRegular.ArrowUp24),
             Header = Resource.MoveUp
         };
         if (index > 0)
@@ -413,7 +413,7 @@ public class AutomationPipelineControl : UserControl
 
         var moveDownMenuItem = new MenuItem
         {
-            SymbolIcon = SymbolRegular.ArrowDown24,
+            Icon = new SymbolIcon(SymbolRegular.ArrowDown24),
             Header = Resource.MoveDown
         };
         if (index < maxIndex)

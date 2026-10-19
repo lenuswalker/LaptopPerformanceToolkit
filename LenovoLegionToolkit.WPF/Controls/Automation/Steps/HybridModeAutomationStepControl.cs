@@ -3,7 +3,7 @@ using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Automation.Steps;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Resources;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps;
 
@@ -21,7 +21,7 @@ public static class HybridModeAutomationStepControlFactory
     {
         public ComboBoxHybridModeAutomationStepControl(IAutomationStep<HybridModeState> step) : base(step)
         {
-            Icon = SymbolRegular.LeafOne24;
+            Icon = new SymbolIcon(SymbolRegular.LeafOne24);
             Title = Resource.ComboBoxHybridModeAutomationStepControl_Title;
             Subtitle = Resource.ComboBoxHybridModeAutomationStepControl_Message;
         }
@@ -31,7 +31,7 @@ public static class HybridModeAutomationStepControlFactory
     {
         public ToggleHybridModeAutomationStepControl(IAutomationStep<HybridModeState> step) : base(step)
         {
-            Icon = SymbolRegular.LeafOne24;
+            Icon = new SymbolIcon(SymbolRegular.LeafOne24);
             Title = Resource.ToggleHybridModeAutomationStepControl_Title;
             Subtitle = Resource.ToggleHybridModeAutomationStepControl_Message;
         }

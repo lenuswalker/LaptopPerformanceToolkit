@@ -1,4 +1,4 @@
-﻿<wpfui:UiPage
+﻿<Page
     x:Class="LenovoLegionToolkit.WPF.Pages.PackagesPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -119,7 +119,7 @@
                                 Margin="4,0,0,0"
                                 VerticalAlignment="Stretch"
                                 Click="DownloadToButton_Click"
-                                Icon="MoreHorizontal24"
+                                Icon="{wpfui:SymbolIcon MoreHorizontal24}"
                                 ToolTip="{x:Static resources:Resource.PackagesPage_DownloadTo}" />
 
                             <wpfui:Button
@@ -127,7 +127,7 @@
                                 Margin="4,0,0,-1"
                                 VerticalAlignment="Stretch"
                                 Click="OpenDownloadToButton_Click"
-                                Icon="Open24"
+                                Icon="{wpfui:SymbolIcon Open24}"
                                 ToolTip="{x:Static resources:Resource.PackagesPage_OpenDownloadTo}" />
 
                         </Grid>
@@ -229,7 +229,7 @@
                                 x:Name="_filterTextBox"
                                 Grid.Column="0"
                                 AutomationProperties.Name="{x:Static resources:Resource.Filter}"
-                                Icon="Search24"
+                                Icon="{wpfui:SymbolIcon Search24}"
                                 PlaceholderEnabled="True"
                                 PlaceholderText="{x:Static resources:Resource.Filter}"
                                 TextChanged="FilterTextBox_TextChanged" />
@@ -264,4 +264,4 @@
 
         </Grid>
     </Grid>
-</wpfui:UiPage>
+</Page>

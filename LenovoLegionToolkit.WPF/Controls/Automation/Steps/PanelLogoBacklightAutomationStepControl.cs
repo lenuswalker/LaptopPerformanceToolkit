@@ -1,7 +1,7 @@
 ﻿using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Automation.Steps;
 using LenovoLegionToolkit.WPF.Resources;
-using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps;
 
@@ -9,7 +9,7 @@ public class PanelLogoBacklightAutomationStepControl : AbstractComboBoxAutomatio
 {
     public PanelLogoBacklightAutomationStepControl(IAutomationStep<PanelLogoBacklightState> step) : base(step)
     {
-        Icon = SymbolRegular.LightbulbCircle24;
+        Icon = new SymbolIcon(SymbolRegular.LightbulbCircle24);
         Title = Resource.PanelLogoBacklightAutomationStepControl_Title;
         Subtitle = Resource.PanelLogoBacklightAutomationStepControl_Message;
     }

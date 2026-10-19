@@ -30,7 +30,7 @@
             CanMaximize="false"
             ShowMaximize="false"
             ShowMinimize="false"
-            UseSnapLayout="false" />
+            />
 
         <Grid
             Grid.Row="0"
@@ -62,7 +62,7 @@
                     <custom:CardControl
                         x:Name="_aoAcWarningCard"
                         Margin="0,0,0,24"
-                        Icon="Warning24"
+                        Icon="{wpfui:SymbolIcon Warning24}"
                         Visibility="Collapsed">
                         <custom:CardControl.Header>
                             <controls:CardHeaderControl Title="{x:Static resources:Resource.PowerPlansWindow_AoAcWarning_Title}" Subtitle="{x:Static resources:Resource.PowerPlansWindow_AoAcWarning_Message}" />
