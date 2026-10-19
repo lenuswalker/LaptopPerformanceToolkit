@@ -38,15 +38,8 @@ public class GPUOverclockController
 
     public static int GetMaxMemoryDeltaMhz()
     {
-        try
-        {
-            NVAPI.Initialize();
-            return GetMaxMemoryDeltaMhz(NVAPI.GetGPU());
-        }
-        finally
-        {
-            try { NVAPI.Unload(); } catch { /* Ignored */ }
-        }
+        using var session = NVAPI.AcquireSession();
+        return GetMaxMemoryDeltaMhz(NVAPI.GetGPU());
     }
 
     public async Task<bool> IsSupportedAsync()
@@ -55,18 +48,13 @@ public class GPUOverclockController
 
         try
         {
-            NVAPI.Initialize();
+            using var session = NVAPI.AcquireSession();
             isSupported = NVAPI.GetGPU() is not null;
         }
         catch
         {
             isSupported = false;
         }
-        finally
-        {
-            try { NVAPI.Unload(); } catch { /* Ignored */ }
-        }
-
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"NVAPI status: {isSupported}.");
 
@@ -154,7 +142,7 @@ public class GPUOverclockController
 
         try
         {
-            NVAPI.Initialize();
+            using var session = NVAPI.AcquireSession();
 
             var gpu = NVAPI.GetGPU();
             if (gpu is null)
@@ -184,8 +172,6 @@ public class GPUOverclockController
         finally
         {
             Changed?.Invoke(this, EventArgs.Empty);
-
-            try { NVAPI.Unload(); } catch { /* Ignored */ }
         }
     }
 

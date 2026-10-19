@@ -216,6 +216,15 @@ public partial class App
     {
         try
         {
+            if (IoCContainer.TryResolve<GPUKeepOffMonitorService>() is { } gpuMonitor)
+                await gpuMonitor.StopAsync();
+            if (IoCContainer.TryResolve<GPUController>() is { } gpuController)
+                await gpuController.StopAsync();
+        }
+        catch { }
+
+        try
+        {
             if (IoCContainer.TryResolve<AIController>() is { } aiController)
                 await aiController.StopAsync();
         }

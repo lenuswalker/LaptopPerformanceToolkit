@@ -190,68 +190,9 @@
                 FontSize="{StaticResource PrimaryFontSize}"
                 FontWeight="Medium"
                 Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
-            <StackPanel
-                x:Name="_gpuActive"
-                Grid.Row="0"
-                Grid.Column="3"
-                Margin="16,0,0,0"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Orientation="Horizontal"
-                Visibility="Collapsed">
-                <Ellipse
-                    Width="12"
-                    Height="12"
-                    Margin="0,0,0,2"
-                    Fill="#FF8BC34A" />
-                <Label
-                    Margin="8,0,0,0"
-                    VerticalContentAlignment="Center"
-                    Content="{x:Static resources:Resource.Active}"
-                    FontSize="{StaticResource PrimaryFontSize}"
-                    Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
-            </StackPanel>
-            <StackPanel
-                x:Name="_gpuInactive"
-                Grid.Row="0"
-                Grid.Column="3"
-                Margin="16,0,0,0"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Orientation="Horizontal"
-                Visibility="Collapsed">
-                <Ellipse
-                    Width="12"
-                    Height="12"
-                    Margin="0,0,0,2"
-                    Fill="#F2A541" />
-                <Label
-                    Margin="8,0,0,0"
-                    VerticalContentAlignment="Center"
-                    Content="{x:Static resources:Resource.Inactive}"
-                    FontSize="{StaticResource PrimaryFontSize}"
-                    Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
-            </StackPanel>
-            <StackPanel
-                x:Name="_gpuPoweredOff"
-                Grid.Row="0"
-                Grid.Column="3"
-                Margin="16,0,0,0"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Orientation="Horizontal"
-                Visibility="Collapsed">
-                <Ellipse
-                    Width="12"
-                    Height="12"
-                    Margin="0,0,0,2"
-                    Fill="#BF360C" />
-                <Label
-                    Margin="8,0,0,0"
-                    VerticalContentAlignment="Center"
-                    Content="{x:Static resources:Resource.PoweredOff}"
-                    FontSize="{StaticResource PrimaryFontSize}"
-                    Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+            <StackPanel Grid.Row="0" Grid.Column="3" Margin="16,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+                <Ellipse x:Name="_gpuStatusDot" Width="12" Height="12" Margin="0,0,0,2" Fill="#808080" />
+                <Label x:Name="_gpuStatusLabel" Margin="8,0,0,0" VerticalContentAlignment="Center" Content="{x:Static resources:Resource.DiscreteGPUControl_Status_Unknown}" FontSize="{StaticResource PrimaryFontSize}" Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
             </StackPanel>
 
             <Label

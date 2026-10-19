@@ -532,8 +532,40 @@ WARNING: This action will not run correctly, if internal display is off or Hybri
     <value>Processes</value>
   </data>
   <data name="DiscreteGPUControl_KeepOffOnBattery" xml:space="preserve">
-    <value>Keep powered off on battery</value>
+    <value>Help idle GPU sleep on battery</value>
   </data>
+  <data name="DiscreteGPUControl_KillApps_Confirm" xml:space="preserve">
+    <value>This will close applications using the GPU and may lose unsaved work. Continue?</value>
+  </data>
+  <data name="DiscreteGPUControl_KillApps_ConfirmTitle" xml:space="preserve">
+    <value>Close GPU applications?</value>
+  </data>
+  <data name="DiscreteGPUControl_ActionFailed" xml:space="preserve">
+    <value>The GPU action failed: {0}</value>
+  </data>
+  <data name="DiscreteGPUControl_RestartSkipped" xml:space="preserve">
+    <value>GPU restart was skipped because the GPU is in use.</value>
+  </data>
+  <data name="DiscreteGPUControl_PowerSavingStatus" xml:space="preserve">
+    <value>Battery GPU sleep: {0}</value>
+  </data>
+  <data name="DiscreteGPUControl_Status_Disabled" xml:space="preserve"><value>Off</value></data>
+  <data name="DiscreteGPUControl_Status_OnAC" xml:space="preserve"><value>Waiting for battery power</value></data>
+  <data name="DiscreteGPUControl_Status_Checking" xml:space="preserve"><value>Checking GPU activity</value></data>
+  <data name="DiscreteGPUControl_Status_ActiveApplications" xml:space="preserve"><value>Waiting for GPU applications to close</value></data>
+  <data name="DiscreteGPUControl_Status_DisplayConnected" xml:space="preserve"><value>Blocked by a display connected to the GPU</value></data>
+  <data name="DiscreteGPUControl_Status_WaitingForIdle" xml:space="preserve"><value>Waiting for GPU to become idle</value></data>
+  <data name="DiscreteGPUControl_Status_Restarting" xml:space="preserve"><value>Preparing GPU to sleep</value></data>
+  <data name="DiscreteGPUControl_Status_WaitingForSleep" xml:space="preserve"><value>Waiting for GPU to sleep</value></data>
+  <data name="DiscreteGPUControl_Status_Asleep" xml:space="preserve"><value>GPU is asleep</value></data>
+  <data name="DiscreteGPUControl_Status_RestartFailed" xml:space="preserve"><value>GPU sleep attempt failed; retrying later</value></data>
+  <data name="DiscreteGPUControl_Status_Unsupported" xml:space="preserve"><value>Not supported on this device</value></data>
+  <data name="DiscreteGPUControl_Status_Unknown" xml:space="preserve"><value>Status unavailable</value></data>
+  <data name="DiscreteGPUControl_Status_Suspended" xml:space="preserve"><value>Monitoring paused</value></data>
+  <data name="DiscreteGPUControl_Status_IdlePoweredOn" xml:space="preserve"><value>Idle (powered on)</value></data>
+  <data name="DiscreteGPUControl_Status_DisplayConnectedSimple" xml:space="preserve"><value>Display connected</value></data>
+  <data name="DiscreteGPUControl_Status_NotDetected" xml:space="preserve"><value>Not detected</value></data>
+  <data name="DiscreteGPUControl_BatteryMonitoringOff" xml:space="preserve"><value>Battery GPU monitoring is off</value></data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
     <value>Restart GPU</value>
   </data>

@@ -1722,6 +1722,29 @@ namespace LenovoLegionToolkit.WPF.Resources {
                 return ResourceManager.GetString("DiscreteGPUControl_Title", resourceCulture);
             }
         }
+
+        public static string DiscreteGPUControl_KillApps_Confirm => ResourceManager.GetString("DiscreteGPUControl_KillApps_Confirm", resourceCulture);
+        public static string DiscreteGPUControl_KillApps_ConfirmTitle => ResourceManager.GetString("DiscreteGPUControl_KillApps_ConfirmTitle", resourceCulture);
+        public static string DiscreteGPUControl_ActionFailed => ResourceManager.GetString("DiscreteGPUControl_ActionFailed", resourceCulture);
+        public static string DiscreteGPUControl_RestartSkipped => ResourceManager.GetString("DiscreteGPUControl_RestartSkipped", resourceCulture);
+        public static string DiscreteGPUControl_PowerSavingStatus => ResourceManager.GetString("DiscreteGPUControl_PowerSavingStatus", resourceCulture);
+        public static string DiscreteGPUControl_Status_Disabled => ResourceManager.GetString("DiscreteGPUControl_Status_Disabled", resourceCulture);
+        public static string DiscreteGPUControl_Status_OnAC => ResourceManager.GetString("DiscreteGPUControl_Status_OnAC", resourceCulture);
+        public static string DiscreteGPUControl_Status_Checking => ResourceManager.GetString("DiscreteGPUControl_Status_Checking", resourceCulture);
+        public static string DiscreteGPUControl_Status_ActiveApplications => ResourceManager.GetString("DiscreteGPUControl_Status_ActiveApplications", resourceCulture);
+        public static string DiscreteGPUControl_Status_DisplayConnectedSimple => ResourceManager.GetString("DiscreteGPUControl_Status_DisplayConnectedSimple", resourceCulture);
+        public static string DiscreteGPUControl_Status_WaitingForIdle => ResourceManager.GetString("DiscreteGPUControl_Status_WaitingForIdle", resourceCulture);
+        public static string DiscreteGPUControl_Status_Restarting => ResourceManager.GetString("DiscreteGPUControl_Status_Restarting", resourceCulture);
+        public static string DiscreteGPUControl_Status_WaitingForSleep => ResourceManager.GetString("DiscreteGPUControl_Status_WaitingForSleep", resourceCulture);
+        public static string DiscreteGPUControl_Status_Asleep => ResourceManager.GetString("DiscreteGPUControl_Status_Asleep", resourceCulture);
+        public static string DiscreteGPUControl_Status_RestartFailed => ResourceManager.GetString("DiscreteGPUControl_Status_RestartFailed", resourceCulture);
+        public static string DiscreteGPUControl_Status_Unsupported => ResourceManager.GetString("DiscreteGPUControl_Status_Unsupported", resourceCulture);
+        public static string DiscreteGPUControl_Status_Unknown => ResourceManager.GetString("DiscreteGPUControl_Status_Unknown", resourceCulture);
+        public static string DiscreteGPUControl_Status_Suspended => ResourceManager.GetString("DiscreteGPUControl_Status_Suspended", resourceCulture);
+        public static string DiscreteGPUControl_Status_IdlePoweredOn => ResourceManager.GetString("DiscreteGPUControl_Status_IdlePoweredOn", resourceCulture);
+        public static string DiscreteGPUControl_Status_DisplayConnected => ResourceManager.GetString("DiscreteGPUControl_Status_DisplayConnected", resourceCulture);
+        public static string DiscreteGPUControl_Status_NotDetected => ResourceManager.GetString("DiscreteGPUControl_Status_NotDetected", resourceCulture);
+        public static string DiscreteGPUControl_BatteryMonitoringOff => ResourceManager.GetString("DiscreteGPUControl_BatteryMonitoringOff", resourceCulture);
         
         /// <summary>
         ///   Looks up a localized string similar to Change display brightness of the built-in display.

@@ -21,15 +21,17 @@ public class DeactivateGPUAutomationStep(DeactivateGPUAutomationStepState state)
         if (!_controller.IsSupported())
             return;
 
-        var status = await _controller.RefreshNowAsync().ConfigureAwait(false);
+        var status = await _controller.RefreshNowAsync(token).ConfigureAwait(false);
 
         switch (State)
         {
             case DeactivateGPUAutomationStepState.KillApps when status.State is GPUState.Active:
-                await _controller.KillGPUProcessesAsync().ConfigureAwait(false);
+                await _controller.KillGPUProcessesAsync(token).ConfigureAwait(false);
                 break;
             case DeactivateGPUAutomationStepState.RestartGPU when status.State is GPUState.Active or GPUState.Inactive:
-                await _controller.RestartGPUAsync().ConfigureAwait(false);
+                var result = await _controller.RestartGPUAsync(token: token).ConfigureAwait(false);
+                if (result is GPURestartResult.Failed or GPURestartResult.TimedOut)
+                    throw new InvalidOperationException($"GPU restart failed: {result}.");
                 break;
         }
     }

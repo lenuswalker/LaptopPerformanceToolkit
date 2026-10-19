@@ -31,7 +31,7 @@ public static class Power
         if (!PInvoke.GetSystemPowerStatus(out var sps))
             return true;
 
-        return sps.ACLineStatus == 1;
+        return sps.ACLineStatus != 0;
     }
 
     public static bool IsBatterySaverEnabled()

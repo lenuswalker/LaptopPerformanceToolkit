@@ -218,10 +218,14 @@ Sometimes discrete GPU stays active even when it should not. This can happen for
 
 There are two ways to help the GPU deactivate:
 
-1. killing all processes running on dGPU (this one seems to work better),
-2. disabling dGPU for a short amount of time, which will force all processes to move to the integrated GPU.
+1. stopping applications running on dGPU, after confirmation (system processes, services, and applications in other user sessions are protected),
+2. restarting the dGPU device to let Windows release GPU resources. A restart does not guarantee that applications move to the integrated GPU or that the dGPU powers off.
 
-Deactivate button will be enabled when dGPU is active, you have Hybrid mode enabled and there are no screens connected to dGPU. If you hover over the button, you will see the current P state of dGPU and the list of processes running on it.
+The GPU information tooltip shows the current P state and the applications using the GPU. Stop-apps and restart actions are unavailable when a display is connected to the dGPU.
+
+The **Help idle GPU sleep on battery** option responds to charger and resume events and checks for GPU activity while on battery. After two idle readings at least ten seconds apart, it can restart the device, then waits for a later reading to confirm sleep. Failed restart attempts retry after a shorter backoff; successful restarts have a three-minute cooldown. The status line reports applications or displays preventing sleep and failed attempts. Applications are never stopped automatically by this option.
+
+This option helps Windows put an idle NVIDIA GPU to sleep. It does not permanently disable the device or provide ASUS Eco mode or Lenovo iGPU-only firmware controls on other manufacturers' laptops.
 
 > [!NOTE]
 > Some apps may not like this feature and crash when you use deactivate dGPU option.

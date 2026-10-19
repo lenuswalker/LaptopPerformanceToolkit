@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,16 +9,16 @@ namespace LenovoLegionToolkit.Lib.System;
 
 public static class CMD
 {
-    public static async Task<(int, string)> RunAsync(string file, string arguments, bool createNoWindow = true, bool waitForExit = true, Dictionary<string, string?>? environment = null, CancellationToken token = default)
+    public static async Task<(int, string)> RunAsync(string file, string arguments, bool createNoWindow = true, bool waitForExit = true, Dictionary<string, string?>? environment = null, CancellationToken token = default, bool killOnCancellation = false)
     {
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Running... [file={file}, argument={arguments}, createNoWindow={createNoWindow}, waitForExit={waitForExit}, environment=[{(environment is null ? string.Empty : string.Join(",", environment))}]");
 
-        var cmd = new Process();
+        using var cmd = new Process();
         cmd.StartInfo.UseShellExecute = false;
         cmd.StartInfo.CreateNoWindow = createNoWindow;
-        cmd.StartInfo.RedirectStandardOutput = createNoWindow;
-        cmd.StartInfo.RedirectStandardError = createNoWindow;
+        cmd.StartInfo.RedirectStandardOutput = createNoWindow && waitForExit;
+        cmd.StartInfo.RedirectStandardError = createNoWindow && waitForExit;
         cmd.StartInfo.WindowStyle = createNoWindow ? ProcessWindowStyle.Hidden : ProcessWindowStyle.Normal;
         cmd.StartInfo.FileName = file;
         if (!string.IsNullOrWhiteSpace(arguments))
@@ -39,10 +40,31 @@ public static class CMD
             return (-1, string.Empty);
         }
 
-        await cmd.WaitForExitAsync(token).ConfigureAwait(false);
+        var outputTask = createNoWindow ? cmd.StandardOutput.ReadToEndAsync(token) : null;
+        var errorTask = createNoWindow ? cmd.StandardError.ReadToEndAsync(token) : null;
+        try
+        {
+            await cmd.WaitForExitAsync(token).ConfigureAwait(false);
+        }
+        catch (OperationCanceledException)
+        {
+            if (killOnCancellation)
+            {
+                try
+                {
+                    if (!cmd.HasExited)
+                        cmd.Kill(true);
+                }
+                catch (global::System.InvalidOperationException) { }
+            }
+            throw;
+        }
 
         var exitCode = cmd.ExitCode;
-        var output = createNoWindow ? await cmd.StandardOutput.ReadToEndAsync(token).ConfigureAwait(false) : string.Empty;
+        var output = outputTask is null ? string.Empty : await outputTask.ConfigureAwait(false);
+        var error = errorTask is null ? string.Empty : await errorTask.ConfigureAwait(false);
+        if (!string.IsNullOrWhiteSpace(error))
+            output += global::System.Environment.NewLine + error;
 
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Ran [file={file}, argument={arguments}, createNoWindow={createNoWindow}, waitForExit={waitForExit}, exitCode={exitCode} output={output}]");

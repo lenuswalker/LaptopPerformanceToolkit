@@ -174,12 +174,14 @@ public abstract class AbstractSensorsController(GPUController gpuController) : I
         if (gpuController.IsSupported())
             await gpuController.StartAsync().ConfigureAwait(false);
 
-        if (await gpuController.GetLastKnownStateAsync().ConfigureAwait(false) is GPUState.PoweredOff or GPUState.Unknown)
+        var state = await gpuController.GetLastKnownStateAsync().ConfigureAwait(false);
+        if (state is GPUState.PoweredOff or GPUState.Unknown or GPUState.NvidiaGpuNotFound ||
+            state is GPUState.Inactive && !Power.IsPowerAdapterConnected())
             return GPUInfo.Empty;
 
         try
         {
-            NVAPI.Initialize();
+            using var session = NVAPI.AcquireSession();
 
             var gpu = NVAPI.GetGPU();
             if (gpu is null)
@@ -212,10 +214,6 @@ public abstract class AbstractSensorsController(GPUController gpuController) : I
         catch
         {
             return GPUInfo.Empty;
-        }
-        finally
-        {
-            try { NVAPI.Unload(); } catch { /* Ignored */ }
         }
     }
 }

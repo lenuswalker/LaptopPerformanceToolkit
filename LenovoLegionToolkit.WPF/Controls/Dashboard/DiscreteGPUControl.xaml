@@ -10,15 +10,21 @@
         <custom:CardControl.Header>
             <controls:CardHeaderControl Title="{x:Static resources:Resource.DiscreteGPUControl_Title}" Subtitle="{x:Static resources:Resource.DiscreteGPUControl_Message}" />
         </custom:CardControl.Header>
-        <StackPanel
+        <Grid
             x:Name="_content"
-            Orientation="Vertical"
-            Visibility="Hidden">
-            <Grid HorizontalAlignment="Right">
+            Width="260"
+            Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="36" />
+                <RowDefinition Height="24" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="44" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="12" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="40" />
                 </Grid.ColumnDefinitions>
 
                 <Ellipse
@@ -26,7 +32,7 @@
                     Grid.Column="0"
                     Width="12"
                     Height="12"
-                    Fill="#FF8BC34A"
+                    Fill="#E53935"
                     Visibility="Collapsed" />
                 <Ellipse
                     x:Name="_discreteGPUStatusInactiveIndicator"
@@ -40,8 +46,9 @@
                     Grid.Column="0"
                     Width="12"
                     Height="12"
-                    Fill="#BF360C"
+                    Fill="#4CAF50"
                     Visibility="Collapsed" />
+                <Ellipse x:Name="_discreteGPUStatusUnknownIndicator" Grid.Column="0" Width="12" Height="12" Fill="#808080" Visibility="Visible" />
                 <TextBlock
                     x:Name="_discreteGPUStatusDescription"
                     Grid.Column="1"
@@ -50,11 +57,17 @@
                     AutomationProperties.HelpText="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}"
                     AutomationProperties.Name="{x:Static resources:Resource.DiscreteGPUControl_Title}"
                     Focusable="True"
-                    FontWeight="Medium" />
+                    FontWeight="Medium"
+                    TextTrimming="CharacterEllipsis"
+                    TextWrapping="NoWrap"
+                    ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}" />
                 <wpfui:Button
                     x:Name="_gpuInfoButton"
                     Grid.Column="2"
+                    Width="32"
+                    Height="32"
                     Margin="8,0,0,0"
+                    Padding="0"
                     AutomationProperties.HelpText="{x:Static resources:Resource.Information}"
                     AutomationProperties.Name="{x:Static resources:Resource.DiscreteGPUControl_Title}"
                     ClickMode="Hover"
@@ -62,10 +75,31 @@
                     Icon="QuestionCircle24"
                     ToolTipService.InitialShowDelay="0" />
             </Grid>
+            <TextBlock
+                x:Name="_gpuProcessesStatus"
+                Grid.Row="1"
+                Margin="0,4,0,0"
+                Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                TextTrimming="CharacterEllipsis"
+                TextWrapping="NoWrap"
+                ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}" />
+            <TextBlock
+                x:Name="_powerSavingStatus"
+                Grid.Row="2"
+                Height="36"
+                Margin="0,6,0,0"
+                LineHeight="18"
+                LineStackingStrategy="BlockLineHeight"
+                TextTrimming="CharacterEllipsis"
+                TextWrapping="Wrap"
+                ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}" />
             <wpfui:Button
                 x:Name="_deactivateGPUButton"
-                MinWidth="150"
+                Grid.Row="3"
+                Width="150"
+                Height="36"
                 Margin="0,8,0,0"
+                HorizontalAlignment="Right"
                 Appearance="Primary"
                 AutomationProperties.Name="{x:Static resources:Resource.DiscreteGPUControl_Deactivate}"
                 Click="DeactivateGPUButton_Click"
@@ -112,6 +146,6 @@
                     </ContextMenu>
                 </wpfui:Button.ContextMenu>
             </wpfui:Button>
-        </StackPanel>
+        </Grid>
     </custom:CardControl>
 </controls:AbstractRefreshingControl>

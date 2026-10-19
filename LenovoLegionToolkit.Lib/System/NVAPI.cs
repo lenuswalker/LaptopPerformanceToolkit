@@ -1,18 +1,51 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Linq;
+using System.Threading;
 using NvAPIWrapper;
-using NvAPIWrapper.Display;
 using NvAPIWrapper.GPU;
+using NvAPIWrapper.Native;
 using NvAPIWrapper.Native.Exceptions;
+using NvAPIWrapper.Native.General;
 using NvAPIWrapper.Native.GPU;
 
 namespace LenovoLegionToolkit.Lib.System;
 
 internal static class NVAPI
 {
-    public static void Initialize() => NVIDIA.Initialize();
+    private static readonly object SessionLock = new();
+    private static int _sessionCount;
 
-    public static void Unload() => NVIDIA.Unload();
+    public static IDisposable AcquireSession()
+    {
+        lock (SessionLock)
+        {
+            if (_sessionCount == 0)
+                NVIDIA.Initialize();
+
+            _sessionCount++;
+            return new Session();
+        }
+    }
+
+    private sealed class Session : IDisposable
+    {
+        private int _disposed;
+
+        public void Dispose()
+        {
+            if (Interlocked.Exchange(ref _disposed, 1) != 0)
+                return;
+
+            lock (SessionLock)
+            {
+                _sessionCount--;
+                if (_sessionCount == 0)
+                {
+                    try { NVIDIA.Unload(); } catch { }
+                }
+            }
+        }
+    }
 
     public static PhysicalGPU? GetGPU()
     {
@@ -30,9 +63,9 @@ internal static class NVAPI
     {
         try
         {
-            return Display.GetDisplays().Any(d => d.PhysicalGPUs.Contains(gpu, PhysicalGPUEqualityComparer.Instance));
+            return GPUApi.GetConnectedDisplayIds(gpu.Handle, ConnectedIdsFlag.None).Any(display => display.IsConnected);
         }
-        catch (NVIDIAApiException)
+        catch (NVIDIAApiException ex) when (ex.Status == Status.NvidiaDeviceNotFound)
         {
             return false;
         }
@@ -50,14 +83,4 @@ internal static class NVAPI
         }
     }
 
-    private class PhysicalGPUEqualityComparer : IEqualityComparer<PhysicalGPU>
-    {
-        public static readonly PhysicalGPUEqualityComparer Instance = new();
-
-        private PhysicalGPUEqualityComparer() { }
-
-        public bool Equals(PhysicalGPU? x, PhysicalGPU? y) => x?.GPUId == y?.GPUId;
-
-        public int GetHashCode(PhysicalGPU obj) => obj.GPUId.GetHashCode();
-    }
 }

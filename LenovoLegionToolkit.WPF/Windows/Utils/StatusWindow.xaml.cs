@@ -13,6 +13,7 @@ using LenovoLegionToolkit.Lib.Features;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Extensions;
+using LenovoLegionToolkit.WPF.Resources;
 using Windows.Win32.System.Power;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Common;
@@ -26,7 +27,6 @@ public partial class StatusWindow
     private readonly struct StatusWindowData(
         PowerModeState? powerModeState,
         string? godModePresetName,
-        GPUStatus? gpuStatus,
         BatteryInformation? batteryInformation,
         BatteryState? batteryState,
         bool hasUpdate,
@@ -34,7 +34,6 @@ public partial class StatusWindow
     {
         public PowerModeState? PowerModeState { get; } = powerModeState;
         public string? GodModePresetName { get; } = godModePresetName;
-        public GPUStatus? GPUStatus { get; } = gpuStatus;
         public BatteryInformation? BatteryInformation { get; } = batteryInformation;
         public BatteryState? BatteryState { get; } = batteryState;
         public bool HasUpdate { get; } = hasUpdate;
@@ -43,6 +42,8 @@ public partial class StatusWindow
 
     private static StatusWindowData _lastData;
     private static Task<StatusWindowData>? _pendingData;
+    private static GPUStatus? _lastGpuStatus;
+    private static Task<GPUStatus?>? _pendingGpuData;
 
     public static Task<StatusWindow> CreateAsync() => Task.FromResult(new StatusWindow(_lastData));
 
@@ -50,13 +51,11 @@ public partial class StatusWindow
     {
         var powerModeFeature = IoCContainer.Resolve<PowerModeFeature>();
         var godModeController = IoCContainer.Resolve<GodModeController>();
-        var gpuController = IoCContainer.Resolve<GPUController>();
         var batteryFeature = IoCContainer.Resolve<BatteryFeature>();
         var updateChecker = IoCContainer.Resolve<UpdateChecker>();
 
         PowerModeState? state = null;
         string? godModePresetName = null;
-        GPUStatus? gpuStatus = null;
         BatteryInformation? batteryInformation = null;
         BatteryState? batteryState = null;
         var hasUpdate = false;
@@ -71,14 +70,6 @@ public partial class StatusWindow
                 if (state == PowerModeState.GodMode)
                     godModePresetName = await godModeController.GetActivePresetNameAsync();
             }
-        }
-        catch { /* Ignored */ }
-
-        try
-        {
-            if (gpuController.IsSupported())
-                gpuStatus = await gpuController.RefreshNowAsync();
-
         }
         catch { /* Ignored */ }
 
@@ -109,7 +100,14 @@ public partial class StatusWindow
         }
         catch { /* Ignored */ }
 
-        return new(state, godModePresetName, gpuStatus, batteryInformation, batteryState, hasUpdate, processorTDPState);
+        return new(state, godModePresetName, batteryInformation, batteryState, hasUpdate, processorTDPState);
+    }
+
+    private static async Task<GPUStatus?> GetGPUStatusAsync()
+    {
+        using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+        try { return await IoCContainer.Resolve<GPUController>().RefreshNowAsync(timeout.Token); }
+        catch { return null; }
     }
 
     private StatusWindow(StatusWindowData data)
@@ -147,7 +145,7 @@ public partial class StatusWindow
     private void RefreshData(StatusWindowData data)
     {
         RefreshPowerMode(data.PowerModeState, data.GodModePresetName);
-        RefreshDiscreteGpu(data.GPUStatus);
+        RefreshDiscreteGpu(_lastGpuStatus);
         RefreshBattery(data.BatteryInformation, data.BatteryState);
         RefreshUpdate(data.HasUpdate);
         RefreshProcessorTDP(data.ProcessorTDPState);
@@ -156,6 +154,8 @@ public partial class StatusWindow
     private async void StatusWindow_Loaded(object sender, RoutedEventArgs e)
     {
         MoveBottomRightEdgeOfWindowToMousePosition();
+        var pendingGpuData = _pendingGpuData ??= Task.Run(GetGPUStatusAsync);
+        _ = ApplyGPUStatusWhenReadyAsync(pendingGpuData);
         var pendingData = _pendingData ??= Task.Run(GetStatusWindowDataAsync);
         try
         {
@@ -176,6 +176,35 @@ public partial class StatusWindow
         {
             if (ReferenceEquals(_pendingData, pendingData))
                 _pendingData = null;
+        }
+    }
+
+    private async Task ApplyGPUStatusWhenReadyAsync(Task<GPUStatus?> pendingGpuData)
+    {
+        try
+        {
+            _lastGpuStatus = await pendingGpuData.WaitAsync(TimeSpan.FromSeconds(10));
+            if (!IsVisible)
+                return;
+
+            RefreshDiscreteGpu(_lastGpuStatus);
+            UpdateLayout();
+            MoveBottomRightEdgeOfWindowToMousePosition();
+        }
+        catch (TimeoutException)
+        {
+            if (IsVisible)
+                RefreshDiscreteGpu(null);
+        }
+        catch (Exception ex)
+        {
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Failed to refresh GPU preview.", ex);
+        }
+        finally
+        {
+            if (pendingGpuData.IsCompleted && ReferenceEquals(_pendingGpuData, pendingGpuData))
+                _pendingGpuData = null;
         }
     }
 
@@ -229,43 +258,27 @@ public partial class StatusWindow
 
     private void RefreshDiscreteGpu(GPUStatus? status)
     {
-        if (!status.HasValue)
+        var current = status ?? new GPUStatus(GPUState.Unknown, null, []);
+        _gpuStatusLabel.Content = current.State switch
         {
-            _gpuGrid.Visibility = Visibility.Collapsed;
-            return;
-        }
-
-        if (status.Value.State is GPUState.Active or GPUState.MonitorConnected)
+            GPUState.Active => Resource.Active,
+            GPUState.Inactive => Resource.DiscreteGPUControl_Status_IdlePoweredOn,
+            GPUState.MonitorConnected => Resource.DiscreteGPUControl_Status_DisplayConnectedSimple,
+            GPUState.PoweredOff => Resource.DiscreteGPUControl_Status_Asleep,
+            GPUState.NvidiaGpuNotFound => Resource.DiscreteGPUControl_Status_NotDetected,
+            _ => Resource.DiscreteGPUControl_Status_Unknown
+        };
+        _gpuStatusDot.Fill = new SolidColorBrush(current.State switch
         {
-            _gpuPowerStateValueLabel.Content = status.Value.PerformanceState ?? "-";
-
-            _gpuActive.Visibility = Visibility.Visible;
-            _gpuInactive.Visibility = Visibility.Collapsed;
-            _gpuPoweredOff.Visibility = Visibility.Collapsed;
-            _gpuPowerStateValue.Visibility = Visibility.Visible;
-            _gpuPowerStateValueLabel.Visibility = Visibility.Visible;
-        }
-        else if (status.Value.State is GPUState.PoweredOff)
-        {
-            _gpuPowerStateValueLabel.Content = null;
-
-            _gpuActive.Visibility = Visibility.Collapsed;
-            _gpuInactive.Visibility = Visibility.Collapsed;
-            _gpuPoweredOff.Visibility = Visibility.Visible;
-            _gpuPowerStateValue.Visibility = Visibility.Collapsed;
-            _gpuPowerStateValueLabel.Visibility = Visibility.Collapsed;
-        }
-        else
-        {
-            _gpuPowerStateValueLabel.Content = status.Value.PerformanceState ?? "-";
-
-            _gpuActive.Visibility = Visibility.Collapsed;
-            _gpuInactive.Visibility = Visibility.Visible;
-            _gpuPoweredOff.Visibility = Visibility.Collapsed;
-            _gpuPowerStateValue.Visibility = Visibility.Visible;
-            _gpuPowerStateValueLabel.Visibility = Visibility.Visible;
-        }
-
+            GPUState.Active => Color.FromRgb(0xE5, 0x39, 0x35),
+            GPUState.Inactive or GPUState.MonitorConnected => Color.FromRgb(0xF2, 0xA5, 0x41),
+            GPUState.PoweredOff => Color.FromRgb(0x4C, 0xAF, 0x50),
+            _ => Color.FromRgb(0x80, 0x80, 0x80)
+        });
+        var hasPerformanceState = current.State is GPUState.Active or GPUState.MonitorConnected;
+        _gpuPowerStateValueLabel.Content = hasPerformanceState ? current.PerformanceState ?? "-" : null;
+        _gpuPowerStateValue.Visibility = hasPerformanceState ? Visibility.Visible : Visibility.Collapsed;
+        _gpuPowerStateValueLabel.Visibility = hasPerformanceState ? Visibility.Visible : Visibility.Collapsed;
         _gpuGrid.Visibility = Visibility.Visible;
     }
 
